@@ -1,0 +1,23 @@
+---
+interface Props {
+  alt: string;
+  annotation: string;
+}
+
+const { alt, annotation } = Astro.props;
+---
+
+<figure class="yo-portrait">
+  <div class="yo-portrait__field" role="img" aria-label={alt}>
+    <span class="yo-portrait__plane yo-portrait__plane--cobalt"></span>
+    <span class="yo-portrait__plane yo-portrait__plane--graphite"></span>
+    <span class="yo-portrait__plane yo-portrait__plane--paper"></span>
+    <span class="yo-portrait__plane yo-portrait__plane--ochre"></span>
+    <span class="yo-portrait__plane yo-portrait__plane--burgundy"></span>
+    <i class="yo-portrait__axis yo-portrait__axis--vertical"></i>
+    <i class="yo-portrait__axis yo-portrait__axis--horizontal"></i>
+    <b>01</b>
+    <em>R.M.</em>
+  </div>
+  <figcaption>{annotation}</figcaption>
+</figure>

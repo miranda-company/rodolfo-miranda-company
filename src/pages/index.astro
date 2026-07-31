@@ -55,17 +55,17 @@ const mediaShelf = (await getCollection("mediateca"))
       <h2 id="growing-title">{ahora.data.title}</h2>
       <div class="growing-grid">
         <div class="preview-column">
-          <h3>{ahora.data.notesHeading}</h3>
+          <h6>{ahora.data.notesHeading}</h6>
           <LatestNotes entries={notes} />
           <a class="archive-link" href="/notas">{ahora.data.notesLinkLabel}</a>
         </div>
         <div class="preview-column">
-          <h3>{ahora.data.mediatecaHeading}</h3>
+          <h6>{ahora.data.mediatecaHeading}</h6>
           <LatestMedia entries={mediaShelf} />
           <a class="archive-link" href="/mediateca">{ahora.data.mediatecaLinkLabel}</a>
         </div>
         <div class="preview-column process-preview">
-          <h3>{ahora.data.processHeading}</h3>
+          <h6>{ahora.data.processHeading}</h6>
           <div class="process-field">
             <span>{ahora.data.processIndex}</span>
             <i></i>

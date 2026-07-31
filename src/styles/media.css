@@ -56,7 +56,7 @@
 
 .media-intro h1 {
   margin: 0;
-  font: 500 clamp(66px, 7vw, 102px) / 0.82 var(--font-serif);
+  font: 500 var(--heading-h1-size) / 0.82 var(--font-serif);
   letter-spacing: -0.065em;
 }
 
@@ -156,7 +156,7 @@
 
 .media-section-heading h2 {
   margin: 0;
-  font: 500 clamp(36px, 3.5vw, 50px) / 0.94 var(--font-serif);
+  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
   letter-spacing: -0.045em;
 }
 
@@ -917,7 +917,7 @@
 .media-card h2 {
   margin: 0;
   overflow-wrap: anywhere;
-  font: 500 29px/0.98 var(--font-serif);
+  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
   letter-spacing: -0.04em;
 }
 
@@ -980,7 +980,7 @@
 }
 
 .reference-main {
-  padding: 36px 0 20px;
+  padding: var(--backlink-block-offset) 0 20px;
 }
 
 .reference-back {
@@ -1014,7 +1014,7 @@
 
 .reference-header h1 {
   margin: 21px 0 13px;
-  font: 500 clamp(68px, 7vw, 98px) / 0.86 var(--font-serif);
+  font: 500 var(--heading-h1-size) / 0.86 var(--font-serif);
   letter-spacing: -0.06em;
 }
 
@@ -1122,7 +1122,7 @@
 
 .reference-reading h2 {
   margin: 0 0 24px;
-  font: 500 clamp(33px, 3.5vw, 48px) / 0.98 var(--font-serif);
+  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
   letter-spacing: -0.045em;
 }
 
@@ -1167,7 +1167,8 @@
 }
 
 .reference-body h2 {
-  font-size: 30px;
+  font-size: var(--heading-h2-size);
+  line-height: var(--heading-h2-line-height);
 }
 
 .reference-connections section {
@@ -1177,7 +1178,7 @@
 
 .reference-connections h2 {
   margin: 0 0 12px;
-  font: 500 19px/1 var(--font-serif);
+  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
   letter-spacing: -0.03em;
 }
 
@@ -1287,7 +1288,7 @@
   }
 
   .media-intro h1 {
-    font-size: 57px;
+    font-size: var(--heading-h1-size);
   }
 
   .media-intro__description {
@@ -1348,7 +1349,7 @@
   }
 
   .media-section-heading h2 {
-    font-size: 35px;
+    font-size: var(--heading-h2-size);
   }
 
   .media-section-heading > p {
@@ -1501,7 +1502,7 @@
   }
 
   .media-card h2 {
-    font-size: 23px;
+    font-size: var(--heading-h2-size);
   }
 
   .media-card__creator {
@@ -1520,7 +1521,7 @@
   }
 
   .reference-main {
-    padding-top: 30px;
+    padding-top: var(--backlink-block-offset);
   }
 
   .reference-header {
@@ -1530,7 +1531,7 @@
 
   .reference-header h1 {
     margin-top: 17px;
-    font-size: 57px;
+    font-size: var(--heading-h1-size);
   }
 
   .reference-header h1 + p {
@@ -1595,7 +1596,7 @@
 
   .reference-reading h2 {
     margin-bottom: 18px;
-    font-size: 34px;
+    font-size: var(--heading-h2-size);
   }
 
   .reference-reading p,

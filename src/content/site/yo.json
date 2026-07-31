@@ -1,0 +1,154 @@
+[
+  {
+    "id": "yo",
+    "hero": {
+      "label": "01 / ARCHIVO VIVO",
+      "name": "Rodolfo Miranda",
+      "positioning": "Estratega digital y diseñador.",
+      "profileMeta": "PERFIL / EN EVOLUCIÓN",
+      "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
+    },
+    "portrait": {
+      "alt": "Retrato abstracto de Rodolfo Miranda compuesto por planos geométricos y líneas de archivo.",
+      "annotation": "R.M. / RETRATO PROVISIONAL / 01.26",
+      "replacementNote": "Sustituir solamente el campo visual de YoPortrait por un retrato aprobado, conservando el figure y su texto alternativo."
+    },
+    "context": {
+      "index": "01.01 / CONTEXTO",
+      "title": "Un poco de contexto",
+      "paragraphs": [
+        [
+          {
+            "text": "Soy estratega digital y diseñador. Trabajo con organizaciones y equipos multidisciplinares para convertir problemas complejos de comunicación, experiencia y procesos en "
+          },
+          {
+            "text": "estrategias, productos y sistemas más claros",
+            "href": "/portafolio"
+          },
+          {
+            "text": "."
+          }
+        ],
+        [
+          {
+            "text": "Me interesa cómo el diseño, la comunicación y la tecnología pueden ayudar a las organizaciones a pensar con mayor claridad, tomar mejores decisiones y trabajar de forma más coherente."
+          }
+        ]
+      ]
+    },
+    "currentContext": {
+      "index": "01.02 / AHORA",
+      "title": "En este momento",
+      "paragraphs": [
+        [
+          {
+            "text": "Actualmente dirijo Eloquent, donde ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios."
+          }
+        ],
+        [
+          {
+            "text": "En estos momentos exploro cómo la "
+          },
+          {
+            "text": "inteligencia artificial",
+            "href": "/experimentos"
+          },
+          {
+            "text": " está transformando la comunicación, la creatividad y nuestra capacidad para tomar decisiones."
+          }
+        ]
+      ]
+    },
+    "timeline": {
+      "index": "01.03 / ARCHIVO PROFESIONAL",
+      "title": "Trayectoria",
+      "entries": [
+        {
+          "role": "Director",
+          "organization": "Eloquent",
+          "period": "Actualidad",
+          "description": "Ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios.",
+          "caseStudyLabel": "Ver proyectos relacionados ↗",
+          "caseStudyUrl": "/portafolio",
+          "current": true,
+          "placeholder": false
+        },
+        {
+          "role": "[Cargo / etapa pendiente]",
+          "organization": "[Organización pendiente]",
+          "period": "[Año–Año]",
+          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
+          "current": false,
+          "placeholder": true
+        },
+        {
+          "role": "[Cargo / etapa pendiente]",
+          "organization": "[Organización pendiente]",
+          "period": "[Año–Año]",
+          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
+          "current": false,
+          "placeholder": true
+        },
+        {
+          "role": "[Cargo / etapa pendiente]",
+          "organization": "[Organización pendiente]",
+          "period": "[Año–Año]",
+          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
+          "current": false,
+          "placeholder": true
+        },
+        {
+          "role": "[Cargo / etapa pendiente]",
+          "organization": "[Organización pendiente]",
+          "period": "[Año–Año]",
+          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
+          "current": false,
+          "placeholder": true
+        }
+      ]
+    },
+    "history": {
+      "index": "01.04 / HISTORIA",
+      "title": "Un poco de historia",
+      "paragraphs": [
+        [
+          {
+            "text": "Me formé en diseño interactivo, pero mi trayectoria me ha llevado a moverme entre la comunicación, la tecnología y negocio. He trabajado en Ciudad de México, Nueva York, Madrid, Ámsterdam y Barcelona, colaborando con agencias internacionales, instituciones públicas, centros de investigación y "
+          },
+          {
+            "text": "proyectos propios",
+            "href": "/experimentos"
+          },
+          {
+            "text": "."
+          }
+        ]
+      ],
+      "pendingParagraph": "[Completar con formación, transiciones profesionales y contexto personal que Rodolfo quiera hacer público.]",
+      "pendingLabel": "PENDIENTE / EDICIÓN BIOGRÁFICA"
+    },
+    "closing": {
+      "index": "01.05 / SIGUIENTES RUTAS",
+      "label": "Continuar por el archivo",
+      "links": [
+        {
+          "label": "Ver portafolio ↗",
+          "href": "/portafolio"
+        },
+        {
+          "label": "Explorar experimentos ↗",
+          "href": "/experimentos"
+        },
+        {
+          "label": "Contactar ↗",
+          "href": "/contacto"
+        }
+      ]
+    },
+    "language": "es"
+  }
+]

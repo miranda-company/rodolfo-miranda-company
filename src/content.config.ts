@@ -4,6 +4,12 @@ import { z } from "astro/zod";
 
 const language = z.enum(["es", "en"]).default("es");
 const translationKey = z.string().min(1).optional();
+const internalUrl = z.string().startsWith("/");
+const linkedSegment = z.object({
+  text: z.string().min(1),
+  href: internalUrl.optional(),
+});
+const linkedParagraph = z.array(linkedSegment).min(1);
 
 const notas = defineCollection({
   loader: glob({ base: "./src/content/notas", pattern: "**/*.{md,mdx}" }),
@@ -121,6 +127,106 @@ const pages = defineCollection({
   }),
 });
 
+const timelineEntry = z
+  .object({
+    role: z.string().min(1),
+    organization: z.string().min(1),
+    period: z.string().min(1),
+    description: z.string().min(1),
+    organizationUrl: z.url().optional(),
+    caseStudyLabel: z.string().min(1).optional(),
+    caseStudyUrl: internalUrl.optional(),
+    current: z.boolean().default(false),
+    placeholder: z.boolean().default(false),
+  })
+  .superRefine((entry, context) => {
+    if (entry.caseStudyUrl && !entry.caseStudyLabel) {
+      context.addIssue({
+        code: "custom",
+        message: "Un enlace de caso requiere una etiqueta visible.",
+        path: ["caseStudyLabel"],
+      });
+    }
+
+    if (entry.placeholder && (entry.organizationUrl || entry.caseStudyUrl)) {
+      context.addIssue({
+        code: "custom",
+        message: "Las etapas provisionales no pueden publicar enlaces.",
+      });
+    }
+  });
+
+const profile = defineCollection({
+  loader: file("./src/content/site/yo.json"),
+  schema: z
+    .object({
+      hero: z.object({
+        label: z.string().min(1),
+        name: z.string().min(1),
+        positioning: z.string().min(1),
+        profileMeta: z.string().min(1),
+        disciplines: z.string().min(1),
+      }),
+      portrait: z.object({
+        alt: z.string().min(1),
+        annotation: z.string().min(1),
+        replacementNote: z.string().min(1),
+      }),
+      context: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+      }),
+      currentContext: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+      }),
+      timeline: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        entries: z.array(timelineEntry).length(5),
+      }),
+      history: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+        pendingParagraph: z.string().min(1),
+        pendingLabel: z.string().min(1),
+      }),
+      closing: z.object({
+        index: z.string().min(1),
+        label: z.string().min(1),
+        links: z
+          .array(
+            z.object({
+              label: z.string().min(1),
+              href: internalUrl,
+            }),
+          )
+          .length(3),
+      }),
+      language,
+    })
+    .superRefine((entry, context) => {
+      if (entry.timeline.entries.filter((timelineItem) => timelineItem.current).length !== 1) {
+        context.addIssue({
+          code: "custom",
+          message: "La trayectoria requiere exactamente una etapa actual.",
+          path: ["timeline", "entries"],
+        });
+      }
+
+      if (entry.timeline.entries.filter((timelineItem) => timelineItem.placeholder).length !== 4) {
+        context.addIssue({
+          code: "custom",
+          message: "La trayectoria requiere cuatro etapas provisionales.",
+          path: ["timeline", "entries"],
+        });
+      }
+    }),
+});
+
 const homepage = defineCollection({
   loader: file("./src/content/site/homepage.json"),
   schema: z.object({
@@ -168,6 +274,7 @@ export const collections = {
   portafolio,
   experimentos,
   pages,
+  profile,
   homepage,
   ahora,
 };

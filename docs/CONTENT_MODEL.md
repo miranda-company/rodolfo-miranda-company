@@ -49,6 +49,31 @@ The annotations and commentary for all three anchors, including the El Modulor
 reading page, are provisional editorial copy. They must be reviewed and
 approved by Rodolfo before launch and do not contain fabricated quotations.
 
+## Yo profile
+
+`src/content/site/yo.json` contains the complete editable `/yo` prototype:
+hero labels, linked prose segments, portrait metadata, current context, five
+timeline records, personal history, the pending editorial paragraph, and the
+three closing links. The `profile` collection validates this file separately
+from the minimal provisional-page collection.
+
+The supplied hero, context, current-context, first timeline entry, history
+paragraph, and closing-link labels are approved copy. Four timeline records are
+explicit placeholders, and the additional personal-history paragraph remains
+pending editorial content. Eloquent has no organization URL because none has
+been verified. The placeholder case-study labels also have no URLs and render
+as text rather than anchors.
+
+The abstract portrait is implemented in `src/components/YoPortrait.astro` with
+CSS geometry. To replace it, preserve the outer `figure`, caption, dimensions,
+and `alt` value from the profile content, then replace only the
+`.yo-portrait__field` contents with an approved image. This keeps the existing
+layout and accessible description intact.
+
+To add a genuine case-study link, set both `caseStudyLabel` and an internal
+`caseStudyUrl` on a non-placeholder timeline entry. Validation rejects URLs on
+placeholder entries and rejects a case-study URL without visible link text.
+
 ## Portafolio
 
 Markdown entries model a deliberately curated completed project: title,

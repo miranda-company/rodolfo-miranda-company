@@ -24,6 +24,8 @@ framework-free scripts.
   indexing.
 - `/mediateca` and `/mediateca/modulor` form a design-approved catalogue and
   reference baseline with a dedicated route-scoped stylesheet.
+- `/yo` is a coded editorial prototype driven by validated profile content and
+  a dedicated route-scoped stylesheet. It is not yet a captured visual baseline.
 
 The baseline screenshots under `docs/figma-baseline/` and
 `docs/notas-baseline/`, and `docs/mediateca-baseline/` remain the visual
@@ -53,7 +55,7 @@ Editable site copy is separated from templates:
 
 - `src/content/site/homepage.json`
 - `src/content/site/ahora.json`
-- `src/content/pages/yo.md`
+- `src/content/site/yo.json`
 - `src/content/pages/contacto.md`
 
 Spanish remains at root URLs. Schemas include a language and optional

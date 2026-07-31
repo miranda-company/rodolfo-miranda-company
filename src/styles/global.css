@@ -11,6 +11,14 @@
   --font-serif: "Spectral", serif;
   --font-sans: "Instrument Sans Variable", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
+  --heading-h1-size: clamp(68px, 5.65vw, 80px);
+  --heading-h2-size: clamp(35px, 3.5vw, 39px);
+  --heading-h2-line-height: 1;
+  --heading-h3-size: clamp(27px, 2.35vw, 39px);
+  --heading-h4-size: clamp(23px, 1.8vw, 30px);
+  --heading-h5-size: 20px;
+  --heading-h6-size: 17px;
+  --backlink-block-offset: 36px;
   --page-gutter: 32px;
   --content-width: 1360px;
 }
@@ -35,6 +43,31 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+h1 {
+  font-size: var(--heading-h1-size);
+}
+
+h2 {
+  font-size: var(--heading-h2-size);
+  line-height: var(--heading-h2-line-height);
+}
+
+h3 {
+  font-size: var(--heading-h3-size);
+}
+
+h4 {
+  font-size: var(--heading-h4-size);
+}
+
+h5 {
+  font-size: var(--heading-h5-size);
+}
+
+h6 {
+  font-size: var(--heading-h6-size);
 }
 
 button,
@@ -223,7 +256,7 @@ a {
 .hero h1 {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(68px, 5.65vw, 80px);
+  font-size: var(--heading-h1-size);
   font-weight: 500;
   letter-spacing: -0.06em;
   line-height: 0.86;
@@ -368,10 +401,10 @@ a {
 .panel-copy h2 {
   margin: 0 0 9px;
   font-family: var(--font-serif);
-  font-size: 39px;
+  font-size: var(--heading-h2-size);
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: var(--heading-h2-line-height);
   transition: transform 0.22s ease-out;
 }
 
@@ -645,7 +678,7 @@ a {
 
 .growing-section > h2 {
   margin: 22px 0 30px;
-  font: 500 clamp(42px, 4.1vw, 61px) / 0.93 var(--font-serif);
+  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
   letter-spacing: -0.055em;
 }
 
@@ -666,10 +699,10 @@ a {
   border-left: 1px solid var(--line);
 }
 
-.preview-column h3 {
+.preview-column h6 {
   margin: 0 0 18px;
   color: var(--graphite);
-  font: 500 11px var(--font-mono);
+  font: 500 var(--heading-h6-size) var(--font-mono);
   letter-spacing: 0.055em;
   text-transform: uppercase;
 }
@@ -686,7 +719,7 @@ a {
 .latest-notes li {
   display: grid;
   grid-template-columns: 68px 1fr;
-  gap: 3px;
+  gap: 16px;
   align-items: baseline;
   padding: 10px 0;
   border-top: 1px solid var(--line);
@@ -890,6 +923,29 @@ a {
   outline-offset: 3px;
 }
 
+.archive-index-main {
+  padding-top: var(--backlink-block-offset);
+}
+
+.index-back {
+  display: inline-block;
+  margin-top: 0;
+  color: var(--ink);
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-underline-offset: 4px;
+}
+
+.index-back:hover,
+.index-back:focus-visible {
+  color: var(--blue);
+}
+
+.index-back:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
 .provisional-main {
   position: relative;
   z-index: 1;
@@ -907,7 +963,7 @@ a {
 
 .provisional-main h1 {
   margin: 18px 0 22px;
-  font: 500 clamp(54px, 8vw, 92px) / 0.9 var(--font-serif);
+  font: 500 var(--heading-h1-size) / 0.9 var(--font-serif);
   letter-spacing: -0.055em;
 }
 
@@ -970,6 +1026,13 @@ a {
 }
 
 @media (max-width: 767px) {
+  :root {
+    --heading-h1-size: 64px;
+    --heading-h3-size: 30px;
+    --heading-h4-size: 26px;
+    --backlink-block-offset: 30px;
+  }
+
   :root {
     --page-gutter: 20px;
   }
@@ -1058,7 +1121,7 @@ a {
 
   .hero h1 {
     width: auto;
-    font-size: 64px;
+    font-size: var(--heading-h1-size);
   }
 
   .hero .positioning {
