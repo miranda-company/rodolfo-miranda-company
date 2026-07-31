@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entries: CollectionEntry<"biblioteca">[];
+  fragmentTargets?: boolean;
+  detailLinks?: boolean;
+}
+
+const { entries, fragmentTargets = false, detailLinks = false } = Astro.props;
+---
+
+<ol class="latest-books" aria-label="Últimos tres libros leídos">
+  {
+    entries.map((entry) => (
+      <li
+        id={fragmentTargets ? entry.id : undefined}
+        class={fragmentTargets ? "fragment-target" : undefined}
+        tabindex={fragmentTargets ? "-1" : undefined}
+      >
+        <a href={detailLinks ? "/biblioteca/" + entry.id : "/biblioteca#" + entry.id}>
+          <span class:list={["book-cover", "cover-" + entry.id]} aria-hidden="true">
+            {entry.id === "modulor" && <i>LE<br />MODULOR</i>}
+            {entry.id === "cosas" && <i>LAS<br />COSAS</i>}
+            {entry.id === "orden" && <i>EL<br />ORDEN<br />DEL<br />TIEMPO</i>}
+          </span>
+          <span>{entry.data.title}</span>
+        </a>
+      </li>
+    ))
+  }
+</ol>

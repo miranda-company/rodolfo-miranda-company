@@ -1,0 +1,67 @@
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Rodolfo Miranda Company, inicio">
+    <span class="rm-mark" aria-hidden="true"><i></i><b>R</b><em>M</em></span>
+    <span>Rodolfo Miranda Company</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Navegación principal">
+    <a href="/#indice">Índice</a>
+    <a href="/experimentos">Experimentos</a>
+    <a href="/#ahora">Ahora</a>
+  </nav>
+
+  <button
+    class="mobile-index-button"
+    type="button"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-open-label="Cerrar"
+    data-closed-label="Índice"
+  >
+    Índice
+  </button>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Índice móvil" hidden>
+    <button type="button" class="menu-close">Cerrar menú</button>
+    <a href="/yo">Yo</a>
+    <a href="/notas">Notas</a>
+    <a href="/biblioteca">Biblioteca</a>
+    <a href="/experimentos">Experimentos</a>
+    <a href="/#ahora">Ahora</a>
+    <a href="/contacto">Contacto</a>
+  </nav>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".site-header").forEach((header) => {
+    if (header.dataset.menuReady === "true") return;
+    header.dataset.menuReady = "true";
+
+    const trigger = header.querySelector<HTMLButtonElement>(".mobile-index-button");
+    const menu = header.querySelector<HTMLElement>(".mobile-menu");
+    const closeButton = header.querySelector<HTMLButtonElement>(".menu-close");
+    if (!trigger || !menu || !closeButton) return;
+
+    const setOpen = (open: boolean, restoreFocus = false) => {
+      menu.hidden = !open;
+      trigger.setAttribute("aria-expanded", String(open));
+      trigger.textContent = open ? trigger.dataset.openLabel ?? "Cerrar" : trigger.dataset.closedLabel ?? "Índice";
+      header.classList.toggle("menu-open", open);
+      if (restoreFocus) window.requestAnimationFrame(() => trigger.focus());
+    };
+
+    trigger.addEventListener("click", () => {
+      setOpen(trigger.getAttribute("aria-expanded") !== "true");
+    });
+    closeButton.addEventListener("click", () => setOpen(false, true));
+    menu.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("a")) setOpen(false);
+    });
+    header.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") {
+        event.preventDefault();
+        setOpen(false, true);
+      }
+    });
+  });
+</script>

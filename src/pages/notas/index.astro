@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import LatestNotes from "../../components/LatestNotes.astro";
+import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+
+const notes = (await getCollection("notas"))
+  .filter((entry) => !entry.data.draft && entry.data.language === "es")
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+
+<ProvisionalLayout
+  title="Notas"
+  summary="Índice provisional de notas; la presentación visual está pendiente de diseño."
+>
+  <LatestNotes entries={notes} fragmentTargets detailLinks />
+</ProvisionalLayout>

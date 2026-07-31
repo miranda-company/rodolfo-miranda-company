@@ -1,0 +1,47 @@
+[
+  {
+    "id": "homepage",
+    "heroTitle": ["Rodolfo", "Miranda"],
+    "positioning": "Estratega digital, diseñador y creador de sistemas útiles.",
+    "connectionLabel": "ARCHIVO VIVO / 2026",
+    "indexLabel": "ÍNDICE DE CAMPOS",
+    "panels": [
+      {
+        "index": "01",
+        "title": "Yo",
+        "description": "Trayectoria, proyectos y forma de trabajar.",
+        "metadata": "PERFIL · EN EVOLUCIÓN",
+        "reveal": "ARCHIVO PERSONAL · 18 ENTRADAS",
+        "href": "/yo",
+        "kind": "yo"
+      },
+      {
+        "index": "02",
+        "title": "Notas",
+        "description": "Ideas en proceso, conexiones y apuntes.",
+        "metadata": "ÚLTIMA NOTA · 31.07.2026",
+        "reveal": "27 HILOS ACTIVOS · VER ÍNDICE",
+        "href": "/notas",
+        "kind": "notas"
+      },
+      {
+        "index": "03",
+        "title": "Biblioteca",
+        "description": "Libros, referencias y recomendaciones.",
+        "metadata": "LECTURAS · REFERENCIAS",
+        "reveal": "ESTANTE ACTUAL · 04 / 12",
+        "href": "/biblioteca",
+        "kind": "biblioteca"
+      },
+      {
+        "index": "04",
+        "title": "Contáctame",
+        "description": "Cuéntame qué quieres construir.",
+        "metadata": "DISPONIBLE PARA CONVERSAR",
+        "reveal": "BARCELONA + REMOTO · ESCRÍBEME",
+        "href": "/contacto",
+        "kind": "contacto"
+      }
+    ]
+  }
+]

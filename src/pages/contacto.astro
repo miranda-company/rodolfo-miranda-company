@@ -1,0 +1,12 @@
+---
+import { getEntry, render } from "astro:content";
+import ProvisionalLayout from "../layouts/ProvisionalLayout.astro";
+
+const entry = await getEntry("pages", "contacto");
+if (!entry) throw new Error("Falta src/content/pages/contacto.md");
+const { Content } = await render(entry);
+---
+
+<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
+  <Content />
+</ProvisionalLayout>

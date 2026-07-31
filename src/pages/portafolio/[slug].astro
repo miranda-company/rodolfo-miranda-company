@@ -1,0 +1,28 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("portafolio")).filter(
+    (entry) => !entry.data.draft && entry.data.language === "es",
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"portafolio">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
+  <article class="provisional-entry">
+    <Content />
+  </article>
+</ProvisionalLayout>

@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entries: CollectionEntry<"notas">[];
+  fragmentTargets?: boolean;
+  detailLinks?: boolean;
+}
+
+const { entries, fragmentTargets = false, detailLinks = false } = Astro.props;
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").reverse().join(".");
+---
+
+<ol class="latest-notes" aria-label="Últimas tres notas">
+  {
+    entries.map((entry) => (
+      <li
+        id={fragmentTargets ? entry.id : undefined}
+        class={fragmentTargets ? "fragment-target" : undefined}
+        tabindex={fragmentTargets ? "-1" : undefined}
+      >
+        <time datetime={entry.data.publishedAt.toISOString().slice(0, 10)}>
+          {formatDate(entry.data.publishedAt)}
+        </time>
+        <a href={detailLinks ? "/notas/" + entry.id : "/notas#" + entry.id}>{entry.data.title}</a>
+      </li>
+    ))
+  }
+</ol>

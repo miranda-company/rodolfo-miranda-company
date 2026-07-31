@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import LatestBooks from "../../components/LatestBooks.astro";
+import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+
+const bookOrder = ["modulor", "cosas", "orden"];
+const books = (await getCollection("biblioteca"))
+  .filter((entry) => !entry.data.draft && entry.data.language === "es")
+  .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id));
+---
+
+<ProvisionalLayout
+  title="Biblioteca"
+  summary="Índice provisional de referencias; la presentación visual está pendiente de diseño."
+>
+  <LatestBooks entries={books} fragmentTargets detailLinks />
+</ProvisionalLayout>
