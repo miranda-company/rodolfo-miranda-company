@@ -1,0 +1,120 @@
+---
+import { getEntries, render, type CollectionEntry } from "astro:content";
+import Header from "./Header.astro";
+import MediaVisual from "./MediaVisual.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/media.css";
+
+interface Props {
+  entry: CollectionEntry<"mediateca">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const relatedNotes = await getEntries(entry.data.relatedNotes);
+const relatedMedia = await getEntries(entry.data.relatedMedia);
+const formatLabels = {
+  book: "Libro",
+  article: "Artículo",
+  website: "Sitio",
+  tool: "Herramienta",
+  video: "Video",
+  podcast: "Podcast",
+  other: "Referencia",
+};
+const statusLabels = {
+  "en-curso": "En curso",
+  consultado: "Consultado",
+  "de-referencia": "De referencia",
+  "por-explorar": "Por explorar",
+};
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <div class="media-page">
+    <Header />
+    <main class="reference-main">
+      <a class="reference-back" href="/mediateca">← Volver a Mediateca</a>
+
+      <header class="reference-header">
+        <p>{entry.data.archiveNumber} / {formatLabels[entry.data.format].toUpperCase()}</p>
+        <h1>{entry.data.title}</h1>
+        <p>{entry.data.creator}</p>
+      </header>
+
+      <div class="reference-layout">
+        <aside class="reference-meta" aria-label="Ficha de la referencia">
+          <MediaVisual entry={entry} compact />
+          <dl>
+            <div><dt>Año</dt><dd>{entry.data.publicationYear ?? "—"}</dd></div>
+            <div><dt>Formato</dt><dd>{formatLabels[entry.data.format]}</dd></div>
+            <div><dt>Estado</dt><dd>{statusLabels[entry.data.status]}</dd></div>
+            <div><dt>Archivo</dt><dd>{entry.data.archiveNumber}</dd></div>
+          </dl>
+          <div class="reference-tags">
+            {entry.data.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+          {
+            entry.data.externalUrl && (
+              <a class="reference-external" href={entry.data.externalUrl} rel="external noreferrer">
+                Referencia externa ↗
+              </a>
+            )
+          }
+        </aside>
+
+        <article class="reference-reading">
+          <p class="reference-provisional">
+            <span aria-hidden="true">●</span>
+            COPIA EDITORIAL PROVISIONAL · REQUIERE APROBACIÓN
+          </p>
+          <section aria-labelledby="comentario-title">
+            <p class="reference-section-index">01 / COMENTARIO</p>
+            <h2 id="comentario-title">Comentario provisional</h2>
+            <p class="reference-lead">{entry.data.commentary}</p>
+          </section>
+          <section aria-labelledby="porque-title">
+            <p class="reference-section-index">02 / CONTEXTO</p>
+            <h2 id="porque-title">Por qué está aquí</h2>
+            <p>{entry.data.whyHere}</p>
+          </section>
+          <section aria-labelledby="ideas-title">
+            <p class="reference-section-index">03 / RECURRENCIAS</p>
+            <h2 id="ideas-title">Ideas que vuelven</h2>
+            <ol class="reference-ideas">
+              {entry.data.recurringIdeas.map((idea, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{idea}</li>)}
+            </ol>
+          </section>
+          <section class="reference-body" aria-labelledby="nota-editorial-title">
+            <h2 id="nota-editorial-title">Nota editorial</h2>
+            <Content />
+          </section>
+        </article>
+
+        <aside class="reference-connections" aria-label="Conexiones">
+          <section>
+            <h2>Notas relacionadas</h2>
+            {
+              relatedNotes.length > 0 ? (
+                <ol>{relatedNotes.map((note) => <li><a href={`/notas/${note.id}`}>{note.data.title}</a></li>)}</ol>
+              ) : (
+                <p>Conexiones pendientes.</p>
+              )
+            }
+          </section>
+          <section>
+            <h2>En la Mediateca</h2>
+            {
+              relatedMedia.length > 0 ? (
+                <ol>{relatedMedia.map((item) => <li><a href={`/mediateca/${item.id}`}>{item.data.title}</a></li>)}</ol>
+              ) : (
+                <p>Relaciones pendientes.</p>
+              )
+            }
+          </section>
+          <p class="reference-notation">CONEXIONES / {String(relatedNotes.length + relatedMedia.length).padStart(2, "0")}</p>
+        </aside>
+      </div>
+    </main>
+  </div>
+</BaseLayout>

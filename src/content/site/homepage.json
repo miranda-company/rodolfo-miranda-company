@@ -26,12 +26,12 @@
       },
       {
         "index": "03",
-        "title": "Biblioteca",
-        "description": "Libros, referencias y recomendaciones.",
-        "metadata": "LECTURAS · REFERENCIAS",
+        "title": "Mediateca",
+        "description": "Libros, artículos, herramientas y referencias.",
+        "metadata": "MEDIOS · REFERENCIAS",
         "reveal": "ESTANTE ACTUAL · 04 / 12",
-        "href": "/biblioteca",
-        "kind": "biblioteca"
+        "href": "/mediateca",
+        "kind": "mediateca"
       },
       {
         "index": "04",

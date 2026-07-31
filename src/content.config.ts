@@ -24,18 +24,27 @@ const notas = defineCollection({
   }),
 });
 
-const biblioteca = defineCollection({
-  loader: glob({ base: "./src/content/biblioteca", pattern: "**/*.{md,mdx}" }),
+const mediateca = defineCollection({
+  loader: glob({ base: "./src/content/mediateca", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string().min(1),
       creator: z.string().min(1),
-      type: z.enum(["book", "article", "website", "tool", "video", "podcast", "other"]),
+      format: z.enum(["book", "article", "website", "tool", "video", "podcast", "other"]),
+      engagementMode: z.enum(["read", "watch", "listen"]),
       summary: z.string().min(1),
-      commentary: z.string(),
-      externalUrl: z.url(),
+      commentary: z.string().min(1),
+      whyHere: z.string().min(1),
+      recurringIdeas: z.array(z.string().min(1)).default([]),
+      publicationYear: z.number().int().min(1400).max(2100).optional(),
+      status: z.enum(["en-curso", "consultado", "de-referencia", "por-explorar"]),
+      archiveNumber: z.string().regex(/^M\.\d{3}$/),
+      updatedAt: z.coerce.date(),
+      externalUrl: z.url().optional(),
       coverImage: image().optional(),
       tags: z.array(z.string().min(1)).default([]),
+      relatedNotes: z.array(reference("notas")).default([]),
+      relatedMedia: z.array(reference("mediateca")).default([]),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
       language,
@@ -128,7 +137,7 @@ const homepage = defineCollection({
           metadata: z.string().min(1),
           reveal: z.string().min(1),
           href: z.string().startsWith("/"),
-          kind: z.enum(["yo", "notas", "biblioteca", "contacto"]),
+          kind: z.enum(["yo", "notas", "mediateca", "contacto"]),
         }),
       )
       .length(4),
@@ -143,8 +152,8 @@ const ahora = defineCollection({
     title: z.string().min(1),
     notesHeading: z.string().min(1),
     notesLinkLabel: z.string().min(1),
-    libraryHeading: z.string().min(1),
-    libraryLinkLabel: z.string().min(1),
+    mediatecaHeading: z.string().min(1),
+    mediatecaLinkLabel: z.string().min(1),
     processHeading: z.string().min(1),
     processIndex: z.string().min(1),
     processTitle: z.tuple([z.string().min(1), z.string().min(1)]),
@@ -155,7 +164,7 @@ const ahora = defineCollection({
 
 export const collections = {
   notas,
-  biblioteca,
+  mediateca,
   portafolio,
   experimentos,
   pages,

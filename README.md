@@ -1,8 +1,9 @@
 # Rodolfo Miranda Company
 
 Production-oriented Astro rebuild of the Rodolfo Miranda Company website. The
-homepage, Notas garden, and Umbral reading template are design-approved visual
-baselines; all other secondary routes remain provisional.
+homepage, Notas garden, Umbral reading template, Mediateca catalogue, and
+Modulor reference template are design-approved visual baselines. All other
+secondary routes remain provisional.
 
 ## Local development
 
@@ -18,6 +19,9 @@ the `PORT` environment variable.
 
 Development shows the full 27-card Notas design fixture. Production builds
 exclude draft notes and generate only the three non-draft design anchors.
+Development also shows the complete 13-entry Mediateca catalogue; production
+keeps only `modulor`, `cosas`, and `orden` and excludes every draft fixture and
+its detail route.
 
 ## Verification
 
@@ -35,3 +39,6 @@ runs the same check before generating the static site.
 - Architecture: `docs/ARCHITECTURE.md`
 - Content schemas: `docs/CONTENT_MODEL.md`
 - Approved homepage baseline: `docs/figma-baseline/README.md`
+- Approved Notas baseline: `docs/notas-baseline/README.md`
+- Approved Mediateca baseline: `docs/mediateca-baseline/README.md`
+- Pre-launch requirements: `docs/LAUNCH_CHECKLIST.md`

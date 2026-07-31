@@ -1,0 +1,223 @@
+---
+import { getCollection } from "astro:content";
+import CurrentShelf from "../../components/CurrentShelf.astro";
+import Header from "../../components/Header.astro";
+import MediaCard from "../../components/MediaCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/media.css";
+
+const includeDrafts = import.meta.env.DEV;
+const shelfOrder = ["modulor", "cosas", "orden"];
+const entries = (await getCollection("mediateca"))
+  .filter((entry) => (includeDrafts || !entry.data.draft) && entry.data.language === "es")
+  .sort((a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime());
+const currentShelf = entries
+  .filter((entry) => shelfOrder.includes(entry.id))
+  .sort((a, b) => shelfOrder.indexOf(a.id) - shelfOrder.indexOf(b.id));
+const lastUpdated = entries[0]?.data.updatedAt ?? new Date("2026-07-31");
+const lastUpdatedLabel = new Intl.DateTimeFormat("es-ES", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+}).format(lastUpdated);
+const formatFilters = [
+  ["all", "Todo"],
+  ["book", "Libros"],
+  ["article", "Artículos"],
+  ["website", "Sitios"],
+  ["tool", "Herramientas"],
+  ["video", "Videos"],
+  ["podcast", "Podcasts"],
+] as const;
+const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edición"];
+---
+
+<BaseLayout
+  title="Mediateca"
+  description="Libros, artículos, herramientas y referencias que acompañan el trabajo."
+>
+  <div class="media-page">
+    <Header />
+    <main class="media-main">
+      <section class="media-intro" aria-labelledby="media-title">
+        <div>
+          <p class="media-kicker">03 / ARCHIVO VIVO</p>
+          <h1 id="media-title">Mediateca</h1>
+          <p class="media-intro__description">
+            Libros, artículos, herramientas y referencias que acompañan el trabajo.
+          </p>
+          <p class="media-intro__meta">
+            {String(entries.length).padStart(2, "0")} REFERENCIAS · ACTUALIZADO {lastUpdatedLabel}
+          </p>
+        </div>
+        <div class="media-intro__spines" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <i>03.{String(entries.length).padStart(2, "0")} / MEDIOS EN RELACIÓN</i>
+        </div>
+      </section>
+
+      <section class="current-shelf" aria-labelledby="shelf-title">
+        <div class="media-section-heading">
+          <div>
+            <p>SELECCIÓN / AHORA</p>
+            <h2 id="shelf-title">Libros favoritos</h2>
+          </div>
+          <p>Tres referencias que acompañan el trabajo en este momento. Las anotaciones son provisionales.</p>
+        </div>
+        <CurrentShelf entries={currentShelf} />
+      </section>
+
+      <section class="media-catalogue" aria-labelledby="catalogue-title">
+        <div class="media-section-heading media-section-heading--catalogue">
+          <div>
+            <p>CATÁLOGO / ORDEN DE ARCHIVO</p>
+            <h2 id="catalogue-title">Otras cosicas interesantes</h2>
+          </div>
+          <p data-result-count aria-live="polite">{entries.length} referencias visibles</p>
+        </div>
+
+        <details class="media-controls-disclosure" data-media-disclosure>
+          <summary>
+            <span>Filtrar y ordenar</span>
+            <span data-filter-summary>{entries.length} referencias · sin filtros</span>
+          </summary>
+
+          <form class="media-controls" data-media-controls>
+            <fieldset class="media-filter-group media-filter-group--format">
+              <legend>Formato</legend>
+              <div class="media-filter-options">
+                {
+                  formatFilters.map(([value, label]) => (
+                    <button
+                      type="button"
+                      aria-pressed={value === "all" ? "true" : "false"}
+                      data-format-filter={value}
+                    >
+                      <span aria-hidden="true">{value === "all" ? "×" : "+"}</span>{label}
+                    </button>
+                  ))
+                }
+              </div>
+            </fieldset>
+
+            <fieldset class="media-filter-group media-filter-group--themes">
+              <legend>Tema</legend>
+              <div class="media-filter-options">
+                {
+                  themes.map((theme) => (
+                    <button type="button" aria-pressed="false" data-theme-filter={theme}>
+                      <span aria-hidden="true">+</span>{theme}
+                    </button>
+                  ))
+                }
+              </div>
+            </fieldset>
+
+            <label class="media-sort">
+              <span>Orden</span>
+              <select data-media-sort>
+                <option value="recent">Actualizadas recientemente</option>
+                <option value="title">Título</option>
+                <option value="creator">Creador</option>
+              </select>
+            </label>
+          </form>
+        </details>
+
+        <div class="media-catalogue__grid" data-media-grid>
+          {entries.map((entry) => <MediaCard entry={entry} />)}
+        </div>
+        <p class="media-empty" data-media-empty hidden>
+          No hay referencias que coincidan con esta combinación. Prueba otro cruce.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const disclosure = document.querySelector<HTMLDetailsElement>("[data-media-disclosure]");
+    const mobileDisclosure = window.matchMedia("(max-width: 767px)");
+
+    if (disclosure && disclosure.dataset.viewportReady !== "true") {
+      disclosure.dataset.viewportReady = "true";
+      const syncDisclosure = () => disclosure.toggleAttribute("open", !mobileDisclosure.matches);
+      syncDisclosure();
+      mobileDisclosure.addEventListener("change", syncDisclosure);
+    }
+
+    const controls = document.querySelector<HTMLElement>("[data-media-controls]");
+    const grid = document.querySelector<HTMLElement>("[data-media-grid]");
+
+    if (controls && grid && controls.dataset.ready !== "true") {
+      controls.dataset.ready = "true";
+      const formatButtons = Array.from(
+        controls.querySelectorAll<HTMLButtonElement>("[data-format-filter]"),
+      );
+      const themeButtons = Array.from(
+        controls.querySelectorAll<HTMLButtonElement>("[data-theme-filter]"),
+      );
+      const sortControl = controls.querySelector<HTMLSelectElement>("[data-media-sort]");
+      const count = document.querySelector<HTMLElement>("[data-result-count]");
+      const filterSummary = document.querySelector<HTMLElement>("[data-filter-summary]");
+      const empty = document.querySelector<HTMLElement>("[data-media-empty]");
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-media-card]"));
+
+      let format = "all";
+      let theme = "";
+
+      const applyCatalogueState = () => {
+        const sortedCards = [...cards].sort((first, second) => {
+          if (sortControl?.value === "title") {
+            return (first.dataset.title ?? "").localeCompare(second.dataset.title ?? "", "es");
+          }
+          if (sortControl?.value === "creator") {
+            return (first.dataset.creator ?? "").localeCompare(second.dataset.creator ?? "", "es");
+          }
+          return (second.dataset.updated ?? "").localeCompare(first.dataset.updated ?? "");
+        });
+
+        let visible = 0;
+        sortedCards.forEach((card) => {
+          const matchesFormat = format === "all" || card.dataset.format === format;
+          const matchesTheme = !theme || (card.dataset.tags ?? "").split("|").includes(theme);
+          card.hidden = !(matchesFormat && matchesTheme);
+          if (!card.hidden) visible += 1;
+          grid.append(card);
+        });
+
+        const filtersActive = format !== "all" || Boolean(theme);
+        if (count) count.textContent = `${visible} ${visible === 1 ? "referencia visible" : "referencias visibles"}`;
+        if (filterSummary) {
+          filterSummary.textContent = `${visible} ${visible === 1 ? "referencia" : "referencias"} · ${
+            filtersActive ? "filtros activos" : "sin filtros"
+          }`;
+        }
+        if (empty) empty.hidden = visible !== 0;
+      };
+
+      formatButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          format = button.dataset.formatFilter ?? "all";
+          formatButtons.forEach((candidate) => {
+            candidate.setAttribute("aria-pressed", String(candidate === button));
+          });
+          applyCatalogueState();
+        });
+      });
+
+      themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextTheme = button.dataset.themeFilter ?? "";
+          theme = theme === nextTheme ? "" : nextTheme;
+          themeButtons.forEach((candidate) => {
+            candidate.setAttribute("aria-pressed", String(candidate.dataset.themeFilter === theme));
+          });
+          applyCatalogueState();
+        });
+      });
+
+      sortControl?.addEventListener("change", applyCatalogueState);
+      applyCatalogueState();
+    }
+  </script>
+</BaseLayout>

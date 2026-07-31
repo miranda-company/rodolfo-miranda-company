@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from "astro:content";
 import ArchiveCard from "../components/ArchiveCard.astro";
 import Header from "../components/Header.astro";
-import LatestBooks from "../components/LatestBooks.astro";
+import LatestMedia from "../components/LatestMedia.astro";
 import LatestNotes from "../components/LatestNotes.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -19,7 +19,7 @@ const notes = (await getCollection("notas"))
   .slice(0, 3);
 
 const bookOrder = ["modulor", "cosas", "orden"];
-const books = (await getCollection("biblioteca"))
+const mediaShelf = (await getCollection("mediateca"))
   .filter((entry) => !entry.data.draft && entry.data.language === "es" && entry.data.featured)
   .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id))
   .slice(0, 3);
@@ -60,9 +60,9 @@ const books = (await getCollection("biblioteca"))
           <a class="archive-link" href="/notas">{ahora.data.notesLinkLabel}</a>
         </div>
         <div class="preview-column">
-          <h3>{ahora.data.libraryHeading}</h3>
-          <LatestBooks entries={books} />
-          <a class="archive-link" href="/biblioteca">{ahora.data.libraryLinkLabel}</a>
+          <h3>{ahora.data.mediatecaHeading}</h3>
+          <LatestMedia entries={mediaShelf} />
+          <a class="archive-link" href="/mediateca">{ahora.data.mediatecaLinkLabel}</a>
         </div>
         <div class="preview-column process-preview">
           <h3>{ahora.data.processHeading}</h3>

@@ -23,15 +23,31 @@ by the approved homepage. Their summaries and any article bodies are
 provisional editorial copy that requires Rodolfo's review and approval before
 launch; currently only `umbral` contains a demonstration body.
 
-## Biblioteca
+## Mediateca
 
-Markdown entries contain a title, author or creator, resource type, summary,
-Rodolfo's commentary, canonical external URL, optional local cover image, tags,
-featured and draft flags, language, an optional translation key, and an
-optional Markdown body.
+Markdown entries contain a title, author or creator, format, engagement mode,
+summary, personal commentary, reason for inclusion, recurring ideas, optional
+publication year, catalogue status, archival number, update date, optional
+canonical external URL and local cover image, tags, related notes, related
+Mediateca entries, featured and draft flags, language, an optional translation
+key, and an optional Markdown body.
 
-The seeded references keep commentary empty until Rodolfo supplies it; the site
-does not invent an editorial opinion.
+Formats cover books, articles, websites, tools, videos, podcasts, and other
+useful references. Status values are `en-curso`, `consultado`,
+`de-referencia`, and `por-explorar`. Engagement mode is a separate presentation
+and consumption cue. Its internal values are `read`, `watch`, and `listen`,
+shown in the Spanish interface as `LEER`, `VER`, and `ESCUCHAR` respectively.
+It does not replace format and is not part of catalogue filtering. Status also
+remains editorial metadata but is not exposed as a catalogue filter.
+
+Development includes ten draft design fixtures so the complete 13-entry
+catalogue demonstrates every requested format, theme, and engagement treatment. Normal production
+builds include only the three non-draft design anchors: `modulor`, `cosas`, and
+`orden`. Draft fixtures and their detail routes are excluded from production.
+
+The annotations and commentary for all three anchors, including the El Modulor
+reading page, are provisional editorial copy. They must be reviewed and
+approved by Rodolfo before launch and do not contain fabricated quotations.
 
 ## Portafolio
 
