@@ -1,0 +1,44 @@
+---
+interface Props {
+  kind: "yo" | "notas" | "biblioteca" | "contacto";
+}
+
+const { kind } = Astro.props;
+---
+
+{
+  kind === "yo" && (
+    <div class="art art-portrait" aria-hidden="true">
+      <span>ESTUDIO / 2026</span>
+    </div>
+  )
+}
+{
+  kind === "notas" && (
+    <div class="art art-notes" aria-hidden="true">
+      <span class="node n1"></span>
+      <span class="node n2"></span>
+      <span class="node n3"></span>
+      <span class="node n4"></span>
+      <i class="path p1"></i>
+      <i class="path p2"></i>
+      <i class="path p3"></i>
+      <b>01. pensar<br />en voz baja</b>
+      <em>margen ↗</em>
+    </div>
+  )
+}
+{
+  kind === "biblioteca" && (
+    <div class="art art-library" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><i>R.M.</i>
+    </div>
+  )
+}
+{
+  kind === "contacto" && (
+    <div class="art art-contact" aria-hidden="true">
+      <i></i><b>→</b><em>señal abierta</em>
+    </div>
+  )
+}

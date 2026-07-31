@@ -1,0 +1,17 @@
+[
+  {
+    "id": "ahora",
+    "label": "ACTUALIZACIÓN DEL ARCHIVO",
+    "period": "JULIO / 2026",
+    "title": "Ahora está creciendo",
+    "notesHeading": "Últimas notas",
+    "notesLinkLabel": "Ver todas las notas ↗",
+    "libraryHeading": "En la biblioteca",
+    "libraryLinkLabel": "Abrir biblioteca ↗",
+    "processHeading": "En proceso",
+    "processIndex": "07",
+    "processTitle": ["Cartografía", "de ideas"],
+    "processStatus": "Experimento en crecimiento · Julio 2026",
+    "processLinkLabel": "Ver experimentos ↗"
+  }
+]

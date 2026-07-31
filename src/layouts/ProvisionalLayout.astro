@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+}
+
+const { title, summary } = Astro.props;
+---
+
+<BaseLayout title={title} description={summary}>
+  <div class="provisional-page">
+    <Header />
+    <main class="provisional-main" id="contenido">
+      <p class="provisional-kicker">RUTA PROVISIONAL · DISEÑO PENDIENTE</p>
+      <h1>{title}</h1>
+      <p class="provisional-summary">{summary}</p>
+      <div class="provisional-content">
+        <slot />
+      </div>
+    </main>
+  </div>
+</BaseLayout>

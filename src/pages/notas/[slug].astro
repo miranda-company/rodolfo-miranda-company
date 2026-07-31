@@ -1,0 +1,34 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("notas")).filter(
+    (entry) => !entry.data.draft && entry.data.language === "es",
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"notas">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
+  <p class="entry-meta">
+    <time datetime={entry.data.publishedAt.toISOString().slice(0, 10)}>
+      {entry.data.publishedAt.toISOString().slice(0, 10)}
+    </time>
+    <span>{entry.data.state}</span>
+  </p>
+  <article class="provisional-entry">
+    <Content />
+  </article>
+</ProvisionalLayout>

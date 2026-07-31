@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+
+const projects = (await getCollection("portafolio"))
+  .filter((entry) => !entry.data.draft && entry.data.language === "es")
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder);
+---
+
+<ProvisionalLayout
+  title="Portafolio"
+  summary="Selección curada pendiente de contenido y diseño."
+>
+  {
+    projects.length > 0 ? (
+      <ol class="provisional-list">
+        {projects.map((project) => (
+          <li><a href={"/portafolio/" + project.id}>{project.data.title}</a></li>
+        ))}
+      </ol>
+    ) : (
+      <p>No hay proyectos publicados todavía.</p>
+    )
+  }
+</ProvisionalLayout>
