@@ -13,6 +13,8 @@ const notas = defineCollection({
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
     state: z.enum(["semilla", "en-crecimiento", "perenne"]),
+    archiveNumber: z.string().regex(/^N\.\d{3}$/),
+    cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
     tags: z.array(z.string().min(1)).default([]),
     relatedNotes: z.array(reference("notas")).default([]),
     featured: z.boolean().default(false),

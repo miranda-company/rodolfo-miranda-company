@@ -6,9 +6,22 @@ All collection schemas live in `src/content.config.ts` and are checked by
 ## Notas
 
 Markdown entries contain a title, summary, publication and update dates, growth
-state (`semilla`, `en-crecimiento`, or `perenne`), tags, related-note
+state (`semilla`, `en-crecimiento`, or `perenne`), stable archive number, card
+format (`compact`, `standard`, `visual`, or `featured`), tags, related-note
 references, featured and draft flags, language, an optional translation key,
-and a Markdown body.
+and a Markdown body. Card format controls presentation in the garden without
+changing the editorial meaning or URL of an entry.
+
+The `draft` field is also the publication boundary for the garden. Development
+includes draft entries so the complete 27-card design fixture can be reviewed;
+normal production builds exclude draft cards and their detail routes. The 24
+generated demonstration entries are drafts and must not be treated as Rodolfo's
+approved writing.
+
+`umbral`, `margen`, and `archivo` remain the three non-draft design anchors used
+by the approved homepage. Their summaries and any article bodies are
+provisional editorial copy that requires Rodolfo's review and approval before
+launch; currently only `umbral` contains a demonstration body.
 
 ## Biblioteca
 

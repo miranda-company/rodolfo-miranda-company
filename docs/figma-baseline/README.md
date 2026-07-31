@@ -1,6 +1,6 @@
 # Figma homepage baseline
 
-The homepage (`/`) is the only design-approved page in this repository. All other routes are provisional scaffolding and must not be treated as design references.
+The homepage (`/`) is the design-approved reference preserved in this directory. The later-approved Notas references are stored under `docs/notas-baseline/`; all remaining routes are provisional scaffolding and must not be treated as design references.
 
 These full-page captures preserve the stabilized Figma homepage and define the visual baseline for the production rebuild:
 

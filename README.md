@@ -1,8 +1,8 @@
 # Rodolfo Miranda Company
 
 Production-oriented Astro rebuild of the Rodolfo Miranda Company website. The
-homepage is the only design-approved route; all secondary routes remain
-provisional until they receive their own design approval.
+homepage, Notas garden, and Umbral reading template are design-approved visual
+baselines; all other secondary routes remain provisional.
 
 ## Local development
 
@@ -15,6 +15,9 @@ pnpm run dev
 
 The development server uses `http://localhost:8443/` by default and respects
 the `PORT` environment variable.
+
+Development shows the full 27-card Notas design fixture. Production builds
+exclude draft notes and generate only the three non-draft design anchors.
 
 ## Verification
 

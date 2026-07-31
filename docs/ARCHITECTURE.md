@@ -17,12 +17,15 @@ framework-free scripts.
 - `src/components/` contains the reusable header, archive cards, artwork,
   homepage previews, and provisional-page shell.
 - `src/styles/global.css` contains the approved design tokens and custom CSS.
-- `src/pages/index.astro` is the only design-approved page.
-- Secondary routes use deliberately minimal semantic scaffolding and remain
-  excluded from indexing.
+- `src/pages/index.astro` preserves the design-approved homepage.
+- `/notas` and `/notas/umbral` are design-approved visual baselines with a
+  dedicated, route-scoped stylesheet. The remaining secondary routes use
+  deliberately minimal semantic scaffolding. Every route remains excluded from
+  indexing.
 
-The baseline screenshots under `docs/figma-baseline/` remain the visual
-reference. The tagged Figma export is a behavioral reference only.
+The baseline screenshots under `docs/figma-baseline/` and
+`docs/notas-baseline/` remain the visual references. The tagged Figma export is
+a behavioral reference only.
 
 ## Content
 
@@ -30,6 +33,12 @@ Astro content collections validate editorial entries at build time. Notes and
 library entries currently provide the approved homepage preview content and
 development routes. Portfolio and experiment collections contain only filtered
 draft templates, never invented published entries.
+
+The Notas index deliberately includes draft fixtures only when Astro is running
+in development mode. Static production builds emit the three non-draft design
+anchors and omit the 24 fixture cards and their detail routes. The homepage
+always reads only non-draft featured notes, so its three existing links do not
+change between environments.
 
 Editable site copy is separated from templates:
 

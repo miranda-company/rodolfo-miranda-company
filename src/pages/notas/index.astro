@@ -1,16 +1,198 @@
 ---
 import { getCollection } from "astro:content";
-import LatestNotes from "../../components/LatestNotes.astro";
-import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+import Header from "../../components/Header.astro";
+import NoteCard from "../../components/NoteCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/notes.css";
 
+const includeDrafts = import.meta.env.DEV;
 const notes = (await getCollection("notas"))
-  .filter((entry) => !entry.data.draft && entry.data.language === "es")
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+  .filter((entry) => (includeDrafts || !entry.data.draft) && entry.data.language === "es")
+  .sort((a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime());
 ---
 
-<ProvisionalLayout
+<BaseLayout
   title="Notas"
-  summary="Índice provisional de notas; la presentación visual está pendiente de diseño."
+  description="Ideas en proceso, conexiones y apuntes que cambian con el tiempo."
 >
-  <LatestNotes entries={notes} fragmentTargets detailLinks />
-</ProvisionalLayout>
+  <div class="notes-page page-shell">
+    <Header />
+    <main class="notes-main">
+      <section class="notes-intro" aria-labelledby="notes-title">
+        <div class="notes-intro__copy">
+          <p class="notes-kicker">02 / ARCHIVO VIVO</p>
+          <h1 id="notes-title">Notas</h1>
+          <p class="notes-intro__description">
+            Ideas en proceso, conexiones y apuntes que cambian con el tiempo.
+          </p>
+          <p class="notes-intro__meta">27 HILOS ACTIVOS · ACTUALIZADO 31.07.2026</p>
+        </div>
+        <div class="notes-intro__graph" aria-hidden="true">
+          <span class="intro-node intro-node--a"></span>
+          <span class="intro-node intro-node--b"></span>
+          <span class="intro-node intro-node--c"></span>
+          <span class="intro-node intro-node--d"></span>
+          <i class="intro-line intro-line--a"></i>
+          <i class="intro-line intro-line--b"></i>
+          <i class="intro-line intro-line--c"></i>
+          <b>02.27 / CAMPO ABIERTO</b>
+        </div>
+      </section>
+
+      <details class="note-controls-disclosure" data-note-disclosure>
+        <summary>
+          <span>Filtrar y ordenar</span>
+          <span data-filter-summary>{notes.length} notas · sin filtros</span>
+        </summary>
+
+        <form class="note-controls" data-note-controls>
+          <fieldset class="note-filter-group">
+            <legend>Madurez</legend>
+            <div class="note-filter-options">
+              <button type="button" aria-pressed="true" data-maturity="all">
+                <span aria-hidden="true">×</span>Todas
+              </button>
+              <button type="button" aria-pressed="false" data-maturity="semilla">
+                <span class="control-symbol control-symbol--seed" aria-hidden="true"></span>Semilla
+              </button>
+              <button type="button" aria-pressed="false" data-maturity="en-crecimiento">
+                <span class="control-symbol control-symbol--growth" aria-hidden="true"></span>En crecimiento
+              </button>
+              <button type="button" aria-pressed="false" data-maturity="perenne">
+                <span class="control-symbol control-symbol--perennial" aria-hidden="true"><i></i></span>
+                Perenne
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset class="note-filter-group note-filter-group--themes">
+            <legend>Tema</legend>
+            <div class="note-filter-options">
+              {[
+                "Estrategia",
+                "Diseño",
+                "Sistemas",
+                "Cultura digital",
+                "Herramientas",
+              ].map((theme) => (
+                <button type="button" aria-pressed="false" data-theme={theme}>
+                  <span aria-hidden="true">+</span>{theme}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <label class="note-sort">
+            <span>Orden</span>
+            <select data-note-sort>
+              <option value="recent">Actualizadas recientemente</option>
+              <option value="oldest">Más antiguas</option>
+              <option value="alpha">Alfabético</option>
+            </select>
+          </label>
+        </form>
+      </details>
+
+      <div class="notes-results-line">
+        <span data-result-count aria-live="polite">{notes.length} notas visibles</span>
+        <span>EXPLORAR / CONECTAR / VOLVER</span>
+      </div>
+
+      <section class="note-garden" aria-label="Jardín de notas" data-note-garden>
+        {notes.map((entry) => <NoteCard entry={entry} />)}
+      </section>
+
+      <p class="note-empty" data-note-empty hidden>
+        No hay notas que coincidan con esta combinación. Prueba otro cruce.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    const disclosure = document.querySelector<HTMLDetailsElement>("[data-note-disclosure]");
+    const mobileDisclosure = window.matchMedia("(max-width: 767px)");
+
+    if (disclosure && disclosure.dataset.viewportReady !== "true") {
+      disclosure.dataset.viewportReady = "true";
+      const syncDisclosure = () => {
+        disclosure.toggleAttribute("open", !mobileDisclosure.matches);
+      };
+
+      syncDisclosure();
+      mobileDisclosure.addEventListener("change", syncDisclosure);
+    }
+
+    const controls = document.querySelector<HTMLElement>("[data-note-controls]");
+    const garden = document.querySelector<HTMLElement>("[data-note-garden]");
+
+    if (controls && garden && controls.dataset.ready !== "true") {
+      controls.dataset.ready = "true";
+
+      const maturityButtons = Array.from(
+        controls.querySelectorAll<HTMLButtonElement>("[data-maturity]"),
+      );
+      const themeButtons = Array.from(controls.querySelectorAll<HTMLButtonElement>("[data-theme]"));
+      const sortControl = controls.querySelector<HTMLSelectElement>("[data-note-sort]");
+      const count = document.querySelector<HTMLElement>("[data-result-count]");
+      const filterSummary = document.querySelector<HTMLElement>("[data-filter-summary]");
+      const empty = document.querySelector<HTMLElement>("[data-note-empty]");
+      const cards = Array.from(garden.querySelectorAll<HTMLElement>("[data-note-card]"));
+
+      let maturity = "all";
+      let theme = "";
+
+      const applyGardenState = () => {
+        const sortedCards = [...cards].sort((first, second) => {
+          if (sortControl?.value === "alpha") {
+            return (first.dataset.title ?? "").localeCompare(second.dataset.title ?? "", "es");
+          }
+
+          const direction = sortControl?.value === "oldest" ? 1 : -1;
+          return direction * (first.dataset.updated ?? "").localeCompare(second.dataset.updated ?? "");
+        });
+
+        let visible = 0;
+        sortedCards.forEach((card) => {
+          const matchesMaturity = maturity === "all" || card.dataset.state === maturity;
+          const matchesTheme = !theme || (card.dataset.tags ?? "").split("|").includes(theme);
+          card.hidden = !(matchesMaturity && matchesTheme);
+          if (!card.hidden) visible += 1;
+          garden.append(card);
+        });
+
+        const resultLabel = `${visible} ${visible === 1 ? "nota visible" : "notas visibles"}`;
+        const filtersActive = maturity !== "all" || Boolean(theme);
+        if (count) count.textContent = resultLabel;
+        if (filterSummary) {
+          filterSummary.textContent = `${visible} ${visible === 1 ? "nota" : "notas"} · ${
+            filtersActive ? "filtros activos" : "sin filtros"
+          }`;
+        }
+        if (empty) empty.hidden = visible !== 0;
+      };
+
+      maturityButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          maturity = button.dataset.maturity ?? "all";
+          maturityButtons.forEach((candidate) => {
+            candidate.setAttribute("aria-pressed", String(candidate === button));
+          });
+          applyGardenState();
+        });
+      });
+
+      themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextTheme = button.dataset.theme ?? "";
+          theme = theme === nextTheme ? "" : nextTheme;
+          themeButtons.forEach((candidate) => {
+            candidate.setAttribute("aria-pressed", String(candidate.dataset.theme === theme));
+          });
+          applyGardenState();
+        });
+      });
+
+      sortControl?.addEventListener("change", applyGardenState);
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  variant: string;
+}
+
+const { variant } = Astro.props;
+const variantNumber = Number.parseInt(variant.replace(/\D/g, ""), 10) || 1;
+const composition = (variantNumber % 4) + 1;
+---
+
+<div class:list={["note-artwork", `composition-${composition}`]} aria-hidden="true">
+  <span class="art-label">CAMPO {variant.padStart(3, "0")}</span>
+  <i class="art-node node-a"></i>
+  <i class="art-node node-b"></i>
+  <i class="art-node node-c"></i>
+  <b class="art-line line-a"></b>
+  <b class="art-line line-b"></b>
+  <em class="art-plane"></em>
+</div>
