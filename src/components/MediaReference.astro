@@ -91,9 +91,10 @@ const statusLabels = {
           </section>
         </article>
 
-        <aside class="reference-connections" aria-label="Conexiones">
-          <section>
-            <h2>Notas relacionadas</h2>
+        <aside class="reference-connections" aria-labelledby="reference-connections-title">
+          <h2 id="reference-connections-title">Conexiones</h2>
+          <section aria-labelledby="reference-notes-title">
+            <h3 id="reference-notes-title">Notas relacionadas</h3>
             {
               relatedNotes.length > 0 ? (
                 <ol>{relatedNotes.map((note) => <li><a href={`/notas/${note.id}`}>{note.data.title}</a></li>)}</ol>
@@ -102,8 +103,8 @@ const statusLabels = {
               )
             }
           </section>
-          <section>
-            <h2>En la Mediateca</h2>
+          <section aria-labelledby="reference-media-title">
+            <h3 id="reference-media-title">En la Mediateca</h3>
             {
               relatedMedia.length > 0 ? (
                 <ol>{relatedMedia.map((item) => <li><a href={`/mediateca/${item.id}`}>{item.data.title}</a></li>)}</ol>

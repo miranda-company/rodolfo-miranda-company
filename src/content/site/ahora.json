@@ -1,14 +1,14 @@
 [
   {
     "id": "ahora",
-    "label": "ACTUALIZACIÓN DEL ARCHIVO",
-    "period": "JULIO / 2026",
-    "title": "Ahora está creciendo",
+    "label": "Hola mundo",
+    "period": "2026",
+    "title": "Un vistazo a lo más reciente",
     "notesHeading": "Últimas notas",
     "notesLinkLabel": "Ver todas las notas ↗",
     "mediatecaHeading": "En la mediateca",
     "mediatecaLinkLabel": "Abrir mediateca ↗",
-    "processHeading": "En proceso",
+    "processHeading": "Experimentos",
     "processIndex": "07",
     "processTitle": ["Cartografía", "de ideas"],
     "processStatus": "Experimento en crecimiento · Julio 2026",

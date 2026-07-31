@@ -2,16 +2,15 @@
   {
     "id": "yo",
     "hero": {
-      "label": "01 / ARCHIVO VIVO",
+      "label": "01 / Sobre mi",
       "name": "Rodolfo Miranda",
       "positioning": "Estratega digital y diseñador.",
       "profileMeta": "PERFIL / EN EVOLUCIÓN",
       "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
     },
     "portrait": {
-      "alt": "Retrato abstracto de Rodolfo Miranda compuesto por planos geométricos y líneas de archivo.",
-      "annotation": "R.M. / RETRATO PROVISIONAL / 01.26",
-      "replacementNote": "Sustituir solamente el campo visual de YoPortrait por un retrato aprobado, conservando el figure y su texto alternativo."
+      "alt": "Retrato de Rodolfo Miranda sonriendo, con camiseta negra y un paisaje urbano junto al agua al fondo.",
+      "annotation": "Barcelona, 2026"
     },
     "context": {
       "index": "01.01 / CONTEXTO",

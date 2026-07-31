@@ -30,16 +30,14 @@ const { entries } = Astro.props;
             {entry.current && <span>ACTUAL</span>}
             {entry.placeholder && <span>PENDIENTE</span>}
           </div>
-          <h3>
-            {entry.role}
-            <span>
-              {entry.organizationUrl ? (
-                <a href={entry.organizationUrl} rel="external noreferrer">{entry.organization}</a>
-              ) : (
-                entry.organization
-              )}
-            </span>
-          </h3>
+          <h3>{entry.role}</h3>
+          <p class="career-timeline__organization">
+            {entry.organizationUrl ? (
+              <a href={entry.organizationUrl} rel="external noreferrer">{entry.organization}</a>
+            ) : (
+              entry.organization
+            )}
+          </p>
           <p class="career-timeline__description">{entry.description}</p>
           {
             entry.caseStudyLabel &&

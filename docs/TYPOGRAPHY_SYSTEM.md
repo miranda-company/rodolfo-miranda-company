@@ -1,0 +1,92 @@
+# Typography system
+
+This document defines the semantic typography contract for Rodolfo Miranda Company. A heading level is selected from the document structure first; its appearance always comes from the global level selector in `src/styles/global.css`.
+
+## Font responsibilities
+
+- **Spectral, weight 500:** all semantic headings from H1 through H6, plus a small number of explicitly non-heading editorial display treatments.
+- **Instrument Sans Variable:** introductions, body copy, supporting copy, controls and interface text.
+- **IBM Plex Mono:** indices, dates, kickers, metadata, status labels, filter labels, eyebrows and technical annotations. These labels remain paragraphs, spans, legends, time elements or other appropriate non-heading elements.
+
+## Heading scale
+
+| Level | Semantic role | Size | Line height | Letter spacing |
+| --- | --- | --- | --- | --- |
+| H1 | Page title | `clamp(68px, 5.65vw, 80px)`; `64px` below 768px | `0.86` | `-0.06em` |
+| H2 | Primary page section or top-level content card | `clamp(35px, 3.5vw, 39px)` | `1` | `-0.045em` |
+| H3 | Subsection or content item nested beneath an H2 | `clamp(27px, 2.35vw, 30px)` | `1.05` | `-0.035em` |
+| H4 | Nested item | `23px` | `1.1` | `-0.025em` |
+| H5 | Minor nested heading | `20px` | `1.15` | `-0.02em` |
+| H6 | Deepest meaningful heading | `17px` | `1.2` | `-0.015em` |
+
+Every level uses Spectral at weight 500. At any one viewport, every rendered instance of a heading level must have the same computed font family, size, weight, line height and letter spacing.
+
+Component selectors may change only layout concerns such as margin, width, color, position and wrapping. A component variant must never override a heading's font family, size, weight, line height or letter spacing, and component heading selectors must not use the `font` shorthand.
+
+## Choosing a heading level
+
+1. H1 names the page. Each page has one H1.
+2. H2 starts a primary section under the page title or names a top-level content card.
+3. H3 names a subsection or item belonging to an H2 section.
+4. H4 through H6 are reserved for genuinely deeper content nesting.
+5. Never select a heading level to obtain a particular size.
+6. Never use H4 through H6 for small technical labels. Use a non-heading element and the mono role instead.
+7. Do not skip a level when the content has an intermediate parent section.
+
+## Non-heading roles
+
+The shared roles below are tokens in `src/styles/global.css`. Elements may have different margins, widths and colors while retaining the same typographic role.
+
+| Role | Font | Size | Line height | Typical use |
+| --- | --- | --- | --- | --- |
+| Introduction / lead | Instrument Sans Variable | `clamp(19px, 2vw, 27px)`; `18px` below 768px | `1.2` | Archive introductions, article summaries and editorial leads |
+| Standard body | Instrument Sans Variable | `17px` | `1.62` | Biography, note prose, reference commentary and provisional body copy |
+| Small / supporting | Instrument Sans Variable | `13px` | `1.4` | Section explanations and supporting descriptions |
+| Mono metadata | IBM Plex Mono | `10px` | `1.4` | Shared hero and record metadata |
+
+Dense card copy, display positioning statements, bylines and micro-annotations are distinct roles because their available space or purpose differs. They must have dedicated selectors and must not be implemented with semantic heading elements.
+
+## Current page examples
+
+### Homepage
+
+- H1: “Rodolfo Miranda Company”.
+- H2: the four archive-card titles and “Ahora está creciendo”.
+- H3 beneath “Ahora está creciendo”: “Últimas notas”, “En la Mediateca” and “En proceso”.
+- Archive numbers, dates and section labels are mono non-headings.
+
+### Yo
+
+- H1: “Rodolfo Miranda”.
+- H2: “Un poco de contexto”, “En este momento”, “Trayectoria” and “Un poco de historia”.
+- H3 beneath “Trayectoria”: each career role.
+- Organization names are subordinate paragraphs, not part of the H3.
+
+### Notas
+
+- Index H1: “Notas”.
+- Each garden card title is H2, including featured, standard, compact and visual variants.
+- Detail H1: the note title.
+- Markdown article sections and “Conexiones” are H2. Future subsections within those sections use H3.
+
+### Mediateca
+
+- Index H1: “Mediateca”.
+- H2: “Libros favoritos” and “Otras cosicas interesantes”.
+- H3: each shelf title and catalogue-card title beneath its H2 section.
+- Detail H1: the reference title.
+- H2: commentary, context, recurring ideas, editorial content and the parent “Conexiones” area.
+- H3 beneath “Conexiones”: “Notas relacionadas” and “En la Mediateca”.
+
+### Provisional routes
+
+- The route title is H1.
+- Future sections begin at H2 and nest in order. Provisional kickers, dates and statuses remain non-heading mono labels.
+
+## Review checklist
+
+- Confirm the page has exactly one H1.
+- Read the complete H1–H6 outline without considering visual size.
+- Confirm that each H3 has a meaningful H2 parent and that no level is skipped.
+- Compare the computed five-property typography tuple for every rendered H1, H2 and H3 at the target viewport.
+- Reject component variants that alter heading typography, even when the result looks visually convenient.

@@ -64,11 +64,17 @@ pending editorial content. Eloquent has no organization URL because none has
 been verified. The placeholder case-study labels also have no URLs and render
 as text rather than anchors.
 
-The abstract portrait is implemented in `src/components/YoPortrait.astro` with
-CSS geometry. To replace it, preserve the outer `figure`, caption, dimensions,
-and `alt` value from the profile content, then replace only the
-`.yo-portrait__field` contents with an approved image. This keeps the existing
-layout and accessible description intact.
+The approved portrait lives at
+`src/assets/images/retrato-rodolfo-miranda.jpg`. `YoPortrait.astro` imports this
+local source and uses Astro's image pipeline to generate responsive AVIF and
+WebP variants with a JPEG fallback, capped at the source's intrinsic 1280 ×
+1280 dimensions.
+
+For a future approved replacement, overwrite that repository asset with a
+sanitized local image, preserve the outer `figure`, field dimensions, border
+and caption, and update the `alt` and annotation in `src/content/site/yo.json`
+when the visible subject or provenance changes. Do not substitute a remote URL,
+upscale beyond the replacement source, or commit EXIF/GPS metadata.
 
 To add a genuine case-study link, set both `caseStudyLabel` and an internal
 `caseStudyUrl` on a non-placeholder timeline entry. Validation rejects URLs on

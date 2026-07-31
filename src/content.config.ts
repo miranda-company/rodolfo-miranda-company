@@ -164,13 +164,11 @@ const profile = defineCollection({
         label: z.string().min(1),
         name: z.string().min(1),
         positioning: z.string().min(1),
-        profileMeta: z.string().min(1),
         disciplines: z.string().min(1),
       }),
       portrait: z.object({
         alt: z.string().min(1),
         annotation: z.string().min(1),
-        replacementNote: z.string().min(1),
       }),
       context: z.object({
         index: z.string().min(1),

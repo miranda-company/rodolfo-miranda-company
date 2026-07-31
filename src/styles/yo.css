@@ -47,17 +47,15 @@
 .yo-hero h1 {
   max-width: 980px;
   margin: 0;
-  font: 500 var(--heading-h1-size) / 0.82 var(--font-serif);
-  letter-spacing: -0.065em;
 }
 
 .yo-hero__positioning {
   max-width: 660px;
   margin: 29px 0 0;
   font-family: var(--font-sans);
-  font-size: clamp(19px, 2vw, 27px);
+  font-size: var(--type-introduction-size);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: var(--type-introduction-line-height);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }
@@ -71,7 +69,8 @@
   border-top: 1px solid var(--line);
   padding-top: 17px;
   color: var(--graphite);
-  font-size: 9px;
+  font-size: var(--type-metadata-size);
+  line-height: var(--type-metadata-line-height);
 }
 
 .yo-hero__meta i {
@@ -114,8 +113,6 @@
 .yo-section__heading h2 {
   max-width: 820px;
   margin: 0;
-  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
-  letter-spacing: -0.045em;
 }
 
 .yo-context__grid {
@@ -132,8 +129,8 @@
 
 .yo-prose p {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.58;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
   letter-spacing: -0.017em;
 }
 
@@ -177,92 +174,16 @@
   background: rgba(238, 232, 220, 0.48);
 }
 
-.yo-portrait__plane,
-.yo-portrait__axis,
-.yo-portrait__field b,
-.yo-portrait__field em {
-  position: absolute;
-}
-
-.yo-portrait__plane {
+.yo-portrait__picture,
+.yo-portrait__image {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.yo-portrait__plane--cobalt {
-  inset: 8% 48% 8% 5%;
-  background: var(--blue);
-  clip-path: polygon(0 0, 100% 0, 72% 100%, 0 100%);
-}
-
-.yo-portrait__plane--graphite {
-  inset: 8% 6% 37% 45%;
-  background: var(--ink);
-  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.yo-portrait__plane--paper {
-  inset: 39% 22% 8% 26%;
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  clip-path: polygon(21% 0, 100% 9%, 80% 100%, 0 86%);
-}
-
-.yo-portrait__plane--ochre {
-  right: 6%;
-  bottom: 8%;
-  width: 22%;
-  height: 28%;
-  border: 1px solid var(--ink);
-  background: var(--ochre);
-}
-
-.yo-portrait__plane--burgundy {
-  top: 14%;
-  left: 12%;
-  width: 17%;
-  height: 12%;
-  background: var(--red);
-}
-
-.yo-portrait__axis {
-  z-index: 4;
-  display: block;
-  background: rgba(247, 243, 234, 0.72);
-}
-
-.yo-portrait__axis--vertical {
-  top: 0;
-  bottom: 0;
-  left: 62%;
-  width: 1px;
-}
-
-.yo-portrait__axis--horizontal {
-  right: 0;
-  bottom: 31%;
-  left: 0;
-  height: 1px;
-}
-
-.yo-portrait__field b,
-.yo-portrait__field em {
-  z-index: 5;
-  color: var(--paper);
-  font: 8px var(--font-mono);
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-}
-
-.yo-portrait__field b {
-  top: 13px;
-  left: 14px;
-}
-
-.yo-portrait__field em {
-  right: 13px;
-  bottom: 13px;
-  color: var(--ink);
+.yo-portrait__image {
+  object-fit: cover;
+  object-position: center;
 }
 
 .yo-portrait figcaption {
@@ -367,15 +288,15 @@
 
 .career-timeline h3 {
   margin: 0;
-  font: 500 var(--heading-h3-size) / 0.96 var(--font-serif);
-  letter-spacing: -0.045em;
 }
 
-.career-timeline h3 > span {
-  display: block;
-  margin-top: 7px;
+.career-timeline__organization {
+  margin: 7px 0 0;
   color: var(--graphite);
-  font: 500 16px/1.25 var(--font-sans);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
   letter-spacing: -0.01em;
 }
 
@@ -559,22 +480,17 @@
 
   .yo-hero h1 {
     max-width: 340px;
-    font-size: var(--heading-h1-size);
-    line-height: 0.82;
   }
 
   .yo-hero__positioning {
     max-width: none;
     margin: 16px 0 27px;
-    font-size: 18px;
-    line-height: 1.18;
   }
 
   .yo-hero__meta {
     grid-template-columns: 1fr;
     gap: 9px;
     padding-top: 13px;
-    font-size: 7.5px;
   }
 
   .yo-hero__meta i {
@@ -595,21 +511,12 @@
     font-size: 8px;
   }
 
-  .yo-section__heading h2 {
-    font-size: var(--heading-h2-size);
-  }
-
   .yo-context__grid,
   .yo-history__body,
   .yo-now {
     display: grid;
     grid-template-columns: 1fr;
     gap: 36px;
-  }
-
-  .yo-prose p {
-    font-size: 17px;
-    line-height: 1.58;
   }
 
   .yo-prose p + p {
@@ -668,11 +575,7 @@
     font-size: 7px;
   }
 
-  .career-timeline h3 {
-    font-size: var(--heading-h3-size);
-  }
-
-  .career-timeline h3 > span {
+  .career-timeline__organization {
     font-size: 14px;
   }
 

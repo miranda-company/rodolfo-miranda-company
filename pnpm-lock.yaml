@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: ^7.1.6
         version: 7.1.6(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@22.19.17)(jiti@2.6.1)(yaml@2.9.0)
+      sharp:
+        specifier: 0.35.3
+        version: 0.35.3(@types/node@22.19.17)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.10

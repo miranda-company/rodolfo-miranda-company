@@ -56,22 +56,21 @@
 
 .media-intro h1 {
   margin: 0;
-  font: 500 var(--heading-h1-size) / 0.82 var(--font-serif);
-  letter-spacing: -0.065em;
 }
 
 .media-intro__description {
   max-width: 720px;
   margin: 25px 0 0;
-  font-size: clamp(18px, 1.7vw, 24px);
-  line-height: 1.2;
+  font-size: var(--type-introduction-size);
+  line-height: var(--type-introduction-line-height);
   letter-spacing: -0.025em;
 }
 
 .media-intro__meta {
   margin: 21px 0 0;
   color: var(--graphite);
-  font-size: 10px;
+  font-size: var(--type-metadata-size);
+  line-height: var(--type-metadata-line-height);
 }
 
 .media-intro__spines {
@@ -156,8 +155,6 @@
 
 .media-section-heading h2 {
   margin: 0;
-  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
-  letter-spacing: -0.045em;
 }
 
 .media-section-heading > p {
@@ -305,10 +302,8 @@
   font-size: 8px;
 }
 
-.current-shelf__copy strong {
-  margin-top: 21px;
-  font: 500 27px/0.98 var(--font-serif);
-  letter-spacing: -0.035em;
+.current-shelf__copy h3 {
+  margin: 21px 0 0;
 }
 
 .current-shelf__copy small {
@@ -914,11 +909,9 @@
   padding: 15px 16px 13px;
 }
 
-.media-card h2 {
+.media-card h3 {
   margin: 0;
   overflow-wrap: anywhere;
-  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
-  letter-spacing: -0.04em;
 }
 
 .media-card__creator {
@@ -1014,8 +1007,6 @@
 
 .reference-header h1 {
   margin: 21px 0 13px;
-  font: 500 var(--heading-h1-size) / 0.86 var(--font-serif);
-  letter-spacing: -0.06em;
 }
 
 .reference-header h1 + p {
@@ -1122,21 +1113,19 @@
 
 .reference-reading h2 {
   margin: 0 0 24px;
-  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
-  letter-spacing: -0.045em;
 }
 
 .reference-reading p,
 .reference-body {
   max-width: 67ch;
-  font-size: 17px;
-  line-height: 1.62;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
 }
 
 .reference-reading .reference-lead {
   margin: 0;
-  font-size: 21px;
-  line-height: 1.48;
+  font-size: var(--type-introduction-size);
+  line-height: var(--type-introduction-line-height);
   letter-spacing: -0.02em;
 }
 
@@ -1166,9 +1155,8 @@
   padding-top: 27px;
 }
 
-.reference-body h2 {
-  font-size: var(--heading-h2-size);
-  line-height: var(--heading-h2-line-height);
+.reference-connections > h2 {
+  margin: 0 0 24px;
 }
 
 .reference-connections section {
@@ -1176,10 +1164,8 @@
   padding: 13px 0 24px;
 }
 
-.reference-connections h2 {
+.reference-connections h3 {
   margin: 0 0 12px;
-  font: 500 var(--heading-h2-size) / var(--heading-h2-line-height) var(--font-serif);
-  letter-spacing: -0.03em;
 }
 
 .reference-connections ol {
@@ -1262,10 +1248,6 @@
     height: 196px;
   }
 
-  .current-shelf__copy strong {
-    font-size: 22px;
-  }
-
   .current-shelf__copy p {
     font-size: 11px;
   }
@@ -1287,18 +1269,12 @@
     font-size: 11px;
   }
 
-  .media-intro h1 {
-    font-size: var(--heading-h1-size);
-  }
-
   .media-intro__description {
     margin-top: 17px;
-    font-size: 17px;
   }
 
   .media-intro__meta {
     margin-top: 16px;
-    font-size: 8px;
   }
 
   .media-intro__spines {
@@ -1348,10 +1324,6 @@
     padding: 17px 0;
   }
 
-  .media-section-heading h2 {
-    font-size: var(--heading-h2-size);
-  }
-
   .media-section-heading > p {
     margin-top: 13px;
     font-size: 11px;
@@ -1384,9 +1356,8 @@
     font-size: 6px;
   }
 
-  .current-shelf__copy strong {
+  .current-shelf__copy h3 {
     margin-top: 10px;
-    font-size: 22px;
   }
 
   .current-shelf__copy small {
@@ -1501,10 +1472,6 @@
     padding: 12px 11px 11px;
   }
 
-  .media-card h2 {
-    font-size: var(--heading-h2-size);
-  }
-
   .media-card__creator {
     margin-top: 5px;
     font-size: 10px;
@@ -1531,7 +1498,6 @@
 
   .reference-header h1 {
     margin-top: 17px;
-    font-size: var(--heading-h1-size);
   }
 
   .reference-header h1 + p {
@@ -1596,18 +1562,8 @@
 
   .reference-reading h2 {
     margin-bottom: 18px;
-    font-size: var(--heading-h2-size);
   }
 
-  .reference-reading p,
-  .reference-body {
-    font-size: 16px;
-    line-height: 1.57;
-  }
-
-  .reference-reading .reference-lead {
-    font-size: 18px;
-  }
 
   .reference-ideas li {
     grid-template-columns: 38px minmax(0, 1fr);
