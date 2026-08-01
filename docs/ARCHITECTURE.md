@@ -26,6 +26,11 @@ framework-free scripts.
   reference baseline with a dedicated route-scoped stylesheet.
 - `/yo` is a coded editorial prototype driven by validated profile content and
   a dedicated route-scoped stylesheet. It is not yet a captured visual baseline.
+- `/portafolio` is a curated case-file index with a small client-side text search
+  and single-tag filter. `/portafolio/[slug]` uses the same three-column reading
+  logic as the approved Umbral note while keeping its own components and
+  route-scoped `portfolio.css`; Portfolio does not import or couple selectors to
+  `notes.css`.
 
 The baseline screenshots under `docs/figma-baseline/` and
 `docs/notas-baseline/`, and `docs/mediateca-baseline/` remain the visual
@@ -35,8 +40,9 @@ references. The tagged Figma export is a behavioral reference only.
 
 Astro content collections validate editorial entries at build time. Notes and
 Mediateca entries currently provide the approved homepage preview content and
-development routes. Portfolio and experiment collections contain only filtered
-draft templates, never invented published entries.
+development routes. Portfolio contains three explicitly provisional draft
+fixtures plus an excluded editing template; Experimentos contains only its
+filtered draft template. Neither collection invents published work.
 
 The Notas index deliberately includes draft fixtures only when Astro is running
 in development mode. Static production builds emit the three non-draft design
@@ -50,6 +56,12 @@ variant can be reviewed. Production emits only the three non-draft anchors
 (`modulor`, `cosas`, and `orden`) and their detail routes. Status remains visible
 metadata but is not a filter. The old `/biblioteca` routes remain only as
 permanent redirect sources for the canonical `/mediateca` URLs.
+
+Portfolio follows a stricter placeholder boundary. Development renders the
+three draft placeholder cards and their detail routes so the index, metadata,
+connections and sequence navigation can be reviewed. A production build omits
+every placeholder and draft. Until a genuine project is approved, production
+emits only the `/portafolio` index with its restrained preparation state.
 
 Editable site copy is separated from templates:
 
@@ -66,6 +78,7 @@ translation key so English content can be added later without introducing
 
 Astro generates static index and detail routes from content entries. Configured
 redirects preserve the former `/biblioteca` paths while Mediateca owns the
-canonical index and detail URLs. Dynamic
-portfolio routes are ready for real content but generate no fabricated project
-pages. Experiments have an index route only, as required for Phase 1.
+canonical index and detail URLs. Portfolio detail paths are sorted and generated
+exclusively by `displayOrder`; draft placeholders and `_template.md` are omitted
+from production path generation. Experiments have an index route only, as
+required for Phase 1.

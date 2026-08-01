@@ -67,10 +67,21 @@ const portafolio = defineCollection({
       year: z.number().int().min(1900),
       role: z.string().min(1),
       disciplines: z.array(z.string().min(1)).min(1),
+      tags: z.array(z.string().min(1)).default([]),
       client: z.string().min(1).optional(),
       projectStatus: z.string().min(1),
+      archiveNumber: z.string().regex(/^P\.\d{3}$/),
       coverImage: image().optional(),
-      gallery: z.array(image()).default([]),
+      coverAlt: z.string().min(1).optional(),
+      gallery: z
+        .array(
+          z.object({
+            image: image(),
+            alt: z.string().min(1),
+            caption: z.string().min(1).optional(),
+          }),
+        )
+        .default([]),
       projectLinks: z
         .array(
           z.object({
@@ -79,8 +90,11 @@ const portafolio = defineCollection({
           }),
         )
         .default([]),
-      featured: z.boolean().default(false),
       displayOrder: z.number().int().nonnegative(),
+      updatedAt: z.coerce.date(),
+      placeholder: z.boolean().default(false),
+      relatedNotes: z.array(reference("notas")).default([]),
+      relatedMedia: z.array(reference("mediateca")).default([]),
       draft: z.boolean().default(false),
       language,
       translationKey,
@@ -91,6 +105,38 @@ const portafolio = defineCollection({
           code: "custom",
           message: "Los proyectos publicados requieren una imagen de portada.",
           path: ["coverImage"],
+        });
+      }
+
+      if (entry.coverImage && !entry.coverAlt) {
+        context.addIssue({
+          code: "custom",
+          message: "Toda imagen de portada requiere texto alternativo.",
+          path: ["coverAlt"],
+        });
+      }
+
+      if (!entry.draft && !entry.coverAlt) {
+        context.addIssue({
+          code: "custom",
+          message: "Los proyectos publicados requieren texto alternativo para su portada.",
+          path: ["coverAlt"],
+        });
+      }
+
+      if (entry.placeholder && !entry.draft) {
+        context.addIssue({
+          code: "custom",
+          message: "Un proyecto provisional siempre debe ser borrador.",
+          path: ["draft"],
+        });
+      }
+
+      if (entry.placeholder && entry.projectLinks.length > 0) {
+        context.addIssue({
+          code: "custom",
+          message: "Los proyectos provisionales no pueden publicar enlaces externos.",
+          path: ["projectLinks"],
         });
       }
     }),

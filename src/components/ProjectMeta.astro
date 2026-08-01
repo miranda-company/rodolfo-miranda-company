@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"portafolio">;
+}
+
+const { entry } = Astro.props;
+const updatedLabel = new Intl.DateTimeFormat("es-ES", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+}).format(entry.data.updatedAt);
+---
+
+<aside class="project-meta" aria-label="Metadatos del proyecto">
+  <dl>
+    <div><dt>Año</dt><dd>{entry.data.year}</dd></div>
+    <div><dt>Rol</dt><dd>{entry.data.role}</dd></div>
+    {
+      entry.data.client && (
+        <div><dt>Organización</dt><dd>{entry.data.client}</dd></div>
+      )
+    }
+    <div><dt>Estado</dt><dd>{entry.data.projectStatus}</dd></div>
+    <div>
+      <dt>Disciplinas</dt>
+      <dd class="project-meta__disciplines">{entry.data.disciplines.map((discipline) => <span>{discipline}</span>)}</dd>
+    </div>
+    <div><dt>Archivo</dt><dd>{entry.data.archiveNumber}</dd></div>
+    <div>
+      <dt>Actualizado</dt>
+      <dd><time datetime={entry.data.updatedAt.toISOString().slice(0, 10)}>{updatedLabel}</time></dd>
+    </div>
+  </dl>
+</aside>

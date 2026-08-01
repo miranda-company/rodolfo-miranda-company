@@ -1,28 +1,35 @@
 ---
-import { getCollection, render, type CollectionEntry } from "astro:content";
-import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import PortfolioProject from "../../components/PortfolioProject.astro";
 
 export async function getStaticPaths() {
-  const entries = (await getCollection("portafolio")).filter(
-    (entry) => !entry.data.draft && entry.data.language === "es",
-  );
+  const includeDrafts = import.meta.env.DEV;
+  const entries = (await getCollection("portafolio"))
+    .filter(
+      (entry) =>
+        entry.id !== "_template" &&
+        (includeDrafts || !entry.data.draft) &&
+        entry.data.language === "es",
+    )
+    .sort((first, second) => first.data.displayOrder - second.data.displayOrder);
 
-  return entries.map((entry) => ({
+  return entries.map((entry, index) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      previousProject: entries[index - 1],
+      nextProject: entries[index + 1],
+    },
   }));
 }
 
 interface Props {
   entry: CollectionEntry<"portafolio">;
+  previousProject?: CollectionEntry<"portafolio">;
+  nextProject?: CollectionEntry<"portafolio">;
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, previousProject, nextProject } = Astro.props;
 ---
 
-<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
-  <article class="provisional-entry">
-    <Content />
-  </article>
-</ProvisionalLayout>
+<PortfolioProject entry={entry} previousProject={previousProject} nextProject={nextProject} />

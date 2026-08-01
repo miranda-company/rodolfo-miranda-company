@@ -158,19 +158,16 @@ a {
 .provisional-page::before {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 8.3%,
-    rgba(29, 30, 25, 0.12) 8.38%,
-    transparent 8.45%,
-    transparent 91.5%,
-    rgba(29, 30, 25, 0.1) 91.58%,
-    transparent 91.65%
-  );
+  background-color: #f7f3ea;
+  opacity: 1;
+  background-image:  repeating-linear-gradient(to right, transparent 0, transparent 1.6666666666666667px, #f7f3ea 1.6666666666666667px, #f7f3ea 5px, transparent 5px, transparent 6.666666666666667px), repeating-linear-gradient(to bottom, transparent 0, transparent 1.6666666666666667px, #f7f3ea 1.6666666666666667px, #f7f3ea 5px, transparent 5px, transparent 6.666666666666667px), linear-gradient(to bottom, #d7d4ce 0.6px, transparent 0.6px), linear-gradient(to right, #d7d4ce 0.6px, transparent 0.6px) ;
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+  background-position: 0 0, 0 0, 0 -0.2px, -0.2px 0;
   content: "";
-  opacity: 0.22;
   pointer-events: none;
 }
+
+
 
 .site-header,
 .hero,

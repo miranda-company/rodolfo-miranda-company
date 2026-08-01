@@ -82,13 +82,74 @@ placeholder entries and rejects a case-study URL without visible link text.
 
 ## Portafolio
 
-Markdown entries model a deliberately curated completed project: title,
-summary, year, role, disciplines, optional client, project status, required
-cover image, gallery, labeled project links, featured and draft flags, display
-order, language, optional translation key, and case-study body.
+Markdown entries model a deliberately curated project rather than a complete
+chronological archive. Fields include title, summary, year, role, one or more
+disciplines, optional client or organization, project status, `P.###` archive
+number, tags, optional cover image and required companion alternative text, update
+date, structured gallery, verified project links, related Notas and Mediateca
+references, display order, placeholder and draft flags, language, optional
+translation key, and the case-study body.
 
-The draft `_template.md` entry documents the editable shape without generating
-a public project route. Published entries must provide a cover image.
+Portfolio has no `featured` field or visual state. Every selected project uses
+the same index proportions, hierarchy and interaction. `displayOrder` is the
+only ordering mechanism for both the index and previous/next navigation. Tags
+feed the index filter and remain separate from the longer discipline metadata.
+The text search matches project titles, summaries, organizations, disciplines
+and tags without changing route generation or editorial order.
+
+### Publication boundary
+
+- Development includes three equal fixtures (`proyecto-seleccionado-01` through
+  `proyecto-seleccionado-03`) so cards and detail routes can be reviewed.
+- All three fixtures use `draft: true` and `placeholder: true`. Their copy,
+  organizations, roles and disciplines are visibly pending, and they contain no
+  external project URLs.
+- A placeholder must be a draft and cannot contain project links. Schema
+  validation rejects either violation.
+- Production excludes every draft and placeholder card and detail route.
+- `_template.md` is excluded from development lists and from all generated
+  routes as well as production.
+- A genuine non-draft project requires `coverImage` and `coverAlt` and must use
+  `placeholder: false`.
+
+When no genuine project is published, the production index remains valid and
+shows “La selección de proyectos está en preparación.”
+
+### Adding a genuine project
+
+Create a Markdown file in `src/content/portafolio/` using `_template.md` as the
+field reference. Give it a unique slug, unique `P.###` archive number and
+`displayOrder`, replace every pending value with approved information, set
+`placeholder: false`, and keep it as `draft: true` until editorial and visual
+review is complete. Publish only by changing `draft` to `false` after adding an
+approved cover and alternative text.
+
+Project images should live under `src/assets/images/portafolio/<slug>/` and be
+referenced as local assets. A cover requires `coverAlt` that describes the
+visible image rather than repeating the project title. Do not use remote images,
+stock imagery, generic mockups or unverified client material.
+
+Gallery entries are objects with:
+
+- `image`: the local image asset;
+- `alt`: required descriptive alternative text;
+- `caption`: optional editorial caption.
+
+Gallery figures render after the Markdown body in the reading flow. Authors may
+also use semantic Markdown/HTML figures within the body when an image belongs to
+a specific section; those figures require alternative text and should include a
+caption when the surrounding prose does not provide enough context.
+
+Markdown H2 sections form the primary case-study sequence (for example,
+Contexto, El reto, Enfoque, Lo que construimos, and Resultado y aprendizajes).
+H3 is reserved for genuine subsections within an H2. Paragraphs, ordered and
+unordered lists, links and editorial figures inherit the shared reading
+typography.
+
+`relatedNotes` and `relatedMedia` contain content-entry IDs and render only when
+populated. `projectLinks` contains labeled, verified external URLs. Empty groups
+are omitted for genuine projects; a connection-free development placeholder
+shows one restrained pending state instead.
 
 ## Experimentos
 

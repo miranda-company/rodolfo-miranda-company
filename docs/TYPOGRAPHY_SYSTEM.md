@@ -78,6 +78,18 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 - H2: commentary, context, recurring ideas, editorial content and the parent “Conexiones” area.
 - H3 beneath “Conexiones”: “Notas relacionadas” and “En la Mediateca”.
 
+### Portafolio
+
+- Index H1: “Portafolio”.
+- Index H2: the visually hidden “Buscar y filtrar proyectos” section label.
+- Index H3: each project title within that selection.
+- Detail H1: the project title.
+- Detail H2: Markdown case-study sections and the parent “Conexiones” rail.
+- Detail H3: genuine Markdown subsections and populated connection groups.
+- Archive numbers, years, statuses, roles and dates remain mono non-headings.
+- Portfolio CSS controls layout and spacing only; it does not override the
+  global family, size, weight, line height or letter spacing of headings.
+
 ### Provisional routes
 
 - The route title is H1.
