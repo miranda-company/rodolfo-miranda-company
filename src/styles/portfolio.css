@@ -1,12 +1,3 @@
-.portfolio-main,
-.project-main {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: var(--content-width);
-  margin-inline: auto;
-}
-
 .portfolio-main {
   padding-bottom: 76px;
 }

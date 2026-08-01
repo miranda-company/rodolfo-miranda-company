@@ -1,8 +1,8 @@
 ---
 import { getEntry } from "astro:content";
 import CareerTimeline from "../components/CareerTimeline.astro";
-import Header from "../components/Header.astro";
 import LinkedParagraph from "../components/LinkedParagraph.astro";
+import PageShell from "../components/PageShell.astro";
 import YoPortrait from "../components/YoPortrait.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/yo.css";
@@ -15,9 +15,7 @@ if (!profile) throw new Error("Falta src/content/site/yo.json");
   title={profile.data.hero.name}
   description="Perfil, contexto y trayectoria profesional de Rodolfo Miranda."
 >
-  <div class="yo-page">
-    <Header />
-    <main class="yo-main archive-index-main">
+  <PageShell pageClass="yo-page" mainClass="yo-main archive-index-main">
       <a class="index-back" href="/#indice">← Volver al índice</a>
       <header class="yo-hero" aria-labelledby="yo-title">
         <div class="yo-hero__lead">
@@ -100,6 +98,5 @@ if (!profile) throw new Error("Falta src/content/site/yo.json");
           }
         </ul>
       </nav>
-    </main>
-  </div>
+  </PageShell>
 </BaseLayout>

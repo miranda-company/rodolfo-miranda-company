@@ -1,7 +1,7 @@
 ---
 import { getEntry, render } from "astro:content";
-import Header from "../../components/Header.astro";
 import MaturityMarker from "../../components/MaturityMarker.astro";
+import PageShell from "../../components/PageShell.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/notes.css";
 
@@ -16,9 +16,7 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").re
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
-  <div class="note-page page-shell">
-    <Header />
-    <main class="note-main">
+  <PageShell pageClass="note-page" mainClass="note-main">
       <a class="note-back" href="/notas">← Volver a Notas</a>
 
       <header class="note-article-header">
@@ -109,6 +107,5 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").re
         <a href="/notas/margen"><span>Nota siguiente →</span>Diseñar el margen</a>
         <a class="note-sequence__all" href="/notas">Volver a todas las notas</a>
       </nav>
-    </main>
-  </div>
+  </PageShell>
 </BaseLayout>

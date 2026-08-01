@@ -1,0 +1,18 @@
+---
+import Header from "./Header.astro";
+
+interface Props {
+  pageClass?: string;
+  mainClass?: string;
+  mainId?: string;
+}
+
+const { pageClass, mainClass, mainId = "contenido" } = Astro.props;
+---
+
+<div class:list={["page-shell", pageClass]}>
+  <Header />
+  <main class:list={["page-main", mainClass]} id={mainId}>
+    <slot />
+  </main>
+</div>

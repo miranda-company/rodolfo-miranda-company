@@ -143,20 +143,23 @@ a {
   outline-offset: 4px;
 }
 
-.page-shell,
-.provisional-page {
+.page-shell {
+  --page-shell-bottom: 40px;
+
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
+  isolation: isolate;
   overflow: hidden;
-  padding: 0 var(--page-gutter) 40px;
+  padding: 0 var(--page-gutter) var(--page-shell-bottom);
   background-color: var(--paper);
   background-image: radial-gradient(rgba(68, 62, 51, 0.12) 0.55px, transparent 0.7px);
   background-size: 10px 10px;
 }
 
-.page-shell::before,
-.provisional-page::before {
+.page-shell::before {
   position: absolute;
+  z-index: 0;
   inset: 0;
   background-color: #f7f3ea;
   opacity: 1;
@@ -167,7 +170,17 @@ a {
   pointer-events: none;
 }
 
+.page-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
 
+.home-main {
+  max-width: none;
+}
 
 .site-header,
 .hero,
@@ -200,7 +213,7 @@ a {
 
 .brand-symbol {
   display: block;
-  width: 88px;
+  width: 72px;
   height: auto;
 }
 
@@ -927,10 +940,7 @@ a {
 }
 
 .provisional-main {
-  position: relative;
-  z-index: 1;
-  width: min(760px, 100%);
-  margin: 0 auto;
+  max-width: 760px;
   padding: 88px 0;
 }
 

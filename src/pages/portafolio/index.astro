@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Header from "../../components/Header.astro";
+import PageShell from "../../components/PageShell.astro";
 import PortfolioCard from "../../components/PortfolioCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/portfolio.css";
@@ -33,9 +33,7 @@ const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags)
 ---
 
 <BaseLayout title="Portafolio" description="Selección curada de proyectos de Rodolfo Miranda Company.">
-  <div class="portfolio-page page-shell">
-    <Header />
-    <main class="portfolio-main archive-index-main">
+  <PageShell pageClass="portfolio-page" mainClass="portfolio-main archive-index-main">
       <a class="index-back" href="/#indice">← Volver al índice</a>
 
       <header class="portfolio-header" aria-labelledby="portfolio-title">
@@ -88,8 +86,7 @@ const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags)
           )
         }
       </section>
-    </main>
-  </div>
+  </PageShell>
 
   <script>
     const controls = document.querySelector<HTMLElement>("[data-portfolio-controls]");

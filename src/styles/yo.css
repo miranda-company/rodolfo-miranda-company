@@ -1,18 +1,5 @@
 .yo-page {
-  min-height: 100vh;
-  overflow: hidden;
-  padding: 0 var(--page-gutter) 72px;
-  background-color: var(--paper);
-  background-image: radial-gradient(rgba(68, 62, 51, 0.12) 0.55px, transparent 0.7px);
-  background-size: 10px 10px;
-}
-
-.yo-main {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: var(--content-width);
-  margin-inline: auto;
+  --page-shell-bottom: 72px;
 }
 
 .yo-kicker,
@@ -468,7 +455,7 @@
 
 @media (max-width: 767px) {
   .yo-page {
-    padding: 0 20px 50px;
+    --page-shell-bottom: 50px;
   }
 
   .yo-hero {

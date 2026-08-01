@@ -14,8 +14,8 @@ framework-free scripts.
 
 - `src/layouts/BaseLayout.astro` owns Spanish metadata, development noindex
   directives, locally bundled fonts, and global page behavior.
-- `src/components/` contains the reusable header, archive cards, artwork,
-  homepage previews, and provisional-page shell.
+- `src/components/` contains the reusable page shell, header, archive cards,
+  artwork, and homepage previews.
 - `src/styles/global.css` contains the approved design tokens and custom CSS.
 - `src/pages/index.astro` preserves the design-approved homepage.
 - `/notas` and `/notas/umbral` are design-approved visual baselines with a
@@ -35,6 +35,39 @@ framework-free scripts.
 The baseline screenshots under `docs/figma-baseline/` and
 `docs/notas-baseline/`, and `docs/mediateca-baseline/` remain the visual
 references. The tagged Figma export is a behavioral reference only.
+
+## Page DOM contract
+
+`BaseLayout.astro` remains the document layer for HTML, metadata, fonts, and
+global behavior. Every rendered content route uses
+`src/components/PageShell.astro` inside it as the visible page canvas. The
+component emits the canonical page-level structure:
+
+```html
+<div class="page-shell [route-page-class]">
+  <header class="site-header">...</header>
+  <main class="page-main [route-main-class]" id="contenido">...</main>
+</div>
+```
+
+`Header.astro` and the main landmark are direct siblings. A rendered route must
+contain exactly one `.page-shell`, one `.page-main`, one site header, and one
+`main` landmark. `PageShell` accepts optional `pageClass`, `mainClass`, and
+`mainId` props; `mainId` defaults to `contenido`. Redirect-only URLs do not
+render this structure.
+
+The shared shell is used directly by the homepage and archive indexes, by the
+`MediaReference` and `PortfolioProject` detail renderers, and by
+`ProvisionalLayout` for provisional routes. This keeps generated note, media,
+portfolio, experiment, and contact routes on the same landmark hierarchy.
+
+`src/styles/global.css` makes `.page-shell` the sole owner of the page canvas:
+viewport height, responsive gutters, background and technical pattern,
+overflow, isolation, and bottom padding. `.page-main` supplies the common
+content width and stacking context. Route page classes may set
+`--page-shell-bottom`, while route main classes retain only their own internal
+layout and spacing. The homepage uses `.home-main` to remove the shared main
+width cap because its existing sections manage their own approved widths.
 
 ## Content
 

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Header from "../../components/Header.astro";
 import NoteCard from "../../components/NoteCard.astro";
+import PageShell from "../../components/PageShell.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/notes.css";
 
@@ -15,9 +15,7 @@ const notes = (await getCollection("notas"))
   title="Notas"
   description="Ideas en proceso, conexiones y apuntes que cambian con el tiempo."
 >
-  <div class="notes-page page-shell">
-    <Header />
-    <main class="notes-main archive-index-main">
+  <PageShell pageClass="notes-page" mainClass="notes-main archive-index-main">
       <a class="index-back" href="/#indice">← Volver al índice</a>
       <section class="notes-intro" aria-labelledby="notes-title">
         <div class="notes-intro__copy">
@@ -105,8 +103,7 @@ const notes = (await getCollection("notas"))
       <p class="note-empty" data-note-empty hidden>
         No hay notas que coincidan con esta combinación. Prueba otro cruce.
       </p>
-    </main>
-  </div>
+  </PageShell>
 
   <script>
     const disclosure = document.querySelector<HTMLDetailsElement>("[data-note-disclosure]");

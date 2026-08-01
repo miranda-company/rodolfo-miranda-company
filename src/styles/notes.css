@@ -1,12 +1,3 @@
-.notes-main,
-.note-main {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: var(--content-width);
-  margin-inline: auto;
-}
-
 .notes-main {
   padding-bottom: 72px;
 }

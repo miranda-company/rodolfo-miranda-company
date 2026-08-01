@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { getEntries, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/portfolio.css";
-import Header from "./Header.astro";
+import PageShell from "./PageShell.astro";
 import PortfolioArtwork from "./PortfolioArtwork.astro";
 import ProjectMeta from "./ProjectMeta.astro";
 
@@ -27,9 +27,7 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
-  <div class="portfolio-page page-shell">
-    <Header />
-    <main class="project-main">
+  <PageShell pageClass="portfolio-page" mainClass="project-main">
       <a class="project-back" href="/portafolio">← Volver a Portafolio</a>
 
       <header class="project-header">
@@ -139,6 +137,5 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
         }
         <a class="project-sequence__all" href="/portafolio">Volver a todos los proyectos</a>
       </nav>
-    </main>
-  </div>
+  </PageShell>
 </BaseLayout>

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import CurrentShelf from "../../components/CurrentShelf.astro";
-import Header from "../../components/Header.astro";
 import MediaCard from "../../components/MediaCard.astro";
+import PageShell from "../../components/PageShell.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/media.css";
 
@@ -36,9 +36,7 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
   title="Mediateca"
   description="Libros, artículos, herramientas y referencias que acompañan el trabajo."
 >
-  <div class="media-page">
-    <Header />
-    <main class="media-main archive-index-main">
+  <PageShell pageClass="media-page" mainClass="media-main archive-index-main">
       <a class="index-back" href="/#indice">← Volver al índice</a>
       <section class="media-intro" aria-labelledby="media-title">
         <div>
@@ -132,8 +130,7 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
           No hay referencias que coincidan con esta combinación. Prueba otro cruce.
         </p>
       </section>
-    </main>
-  </div>
+  </PageShell>
 
   <script>
     const disclosure = document.querySelector<HTMLDetailsElement>("[data-media-disclosure]");

@@ -1,9 +1,9 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import ArchiveCard from "../components/ArchiveCard.astro";
-import Header from "../components/Header.astro";
 import LatestMedia from "../components/LatestMedia.astro";
 import LatestNotes from "../components/LatestNotes.astro";
+import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const home = await getEntry("homepage", "homepage");
@@ -26,9 +26,7 @@ const mediaShelf = (await getCollection("mediateca"))
 ---
 
 <BaseLayout>
-  <main class="page-shell">
-    <Header />
-
+  <PageShell pageClass="home-page" mainClass="home-main">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
         <h1 id="hero-title">{home.data.heroTitle[0]}<br />{home.data.heroTitle[1]}</h1>
@@ -75,5 +73,5 @@ const mediaShelf = (await getCollection("mediateca"))
         </div>
       </div>
     </section>
-  </main>
+  </PageShell>
 </BaseLayout>
