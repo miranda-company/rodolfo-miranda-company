@@ -34,13 +34,12 @@ const mediaShelf = (await getCollection("mediateca"))
         <h1 id="hero-title">{home.data.heroTitle[0]}<br />{home.data.heroTitle[1]}</h1>
         <p class="positioning">{home.data.positioning}</p>
       </div>
-      <div class="connection"><span>{home.data.connectionLabel}</span><i></i></div>
+      <div class="connection"><span>{home.data.connectionLabel}</span></div>
     </section>
 
     <section class="panel-section" id="indice" aria-label="Archivo principal">
       <div class="section-label">
         <span>{home.data.indexLabel}</span>
-        <span>04 / 04</span>
       </div>
       <div class="panels">
         {home.data.panels.map((panel) => <ArchiveCard panel={panel} />)}

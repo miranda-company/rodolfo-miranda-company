@@ -201,40 +201,10 @@ a {
   text-decoration: none;
 }
 
-.rm-mark {
-  position: relative;
+.brand-symbol {
   display: block;
-  width: 29px;
-  height: 19px;
-  overflow: hidden;
-  border: 1px solid var(--ink);
-  font-family: var(--font-mono);
-  font-size: 8px;
-  line-height: 1;
-}
-
-.rm-mark i {
-  position: absolute;
-  inset: 0 45% 0 0;
-  background: var(--blue);
-}
-
-.rm-mark b,
-.rm-mark em {
-  position: absolute;
-  z-index: 1;
-  top: 5px;
-  font-style: normal;
-  font-weight: 500;
-}
-
-.rm-mark b {
-  left: 5px;
-  color: var(--paper);
-}
-
-.rm-mark em {
-  right: 4px;
+  width: 88px;
+  height: auto;
 }
 
 .site-header nav {

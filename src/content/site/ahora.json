@@ -1,10 +1,10 @@
 [
   {
     "id": "ahora",
-    "label": "Hola mundo",
+    "label": "Hola mundo!",
     "period": "2026",
-    "title": "Un vistazo a lo más reciente",
-    "notesHeading": "Últimas notas",
+    "title": "Lo último",
+    "notesHeading": "Notas recientes",
     "notesLinkLabel": "Ver todas las notas ↗",
     "mediatecaHeading": "En la mediateca",
     "mediatecaLinkLabel": "Abrir mediateca ↗",
