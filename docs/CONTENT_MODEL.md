@@ -41,9 +41,10 @@ It does not replace format and is not part of catalogue filtering. Status also
 remains editorial metadata but is not exposed as a catalogue filter.
 
 Development includes ten draft design fixtures so the complete 13-entry
-catalogue demonstrates every requested format, theme, and engagement treatment. Normal production
-builds include only the three non-draft design anchors: `modulor`, `cosas`, and
-`orden`. Draft fixtures and their detail routes are excluded from production.
+catalogue demonstrates every requested format, theme, and engagement
+treatment. Normal production builds include only the three non-draft design
+anchors: `modulor`, `cosas`, and `orden`. Draft fixtures and their detail routes
+are excluded from production.
 
 The annotations and commentary for all three anchors, including the El Modulor
 reading page, are provisional editorial copy. They must be reviewed and
@@ -67,8 +68,8 @@ as text rather than anchors.
 The approved portrait lives at
 `src/assets/images/retrato-rodolfo-miranda.jpg`. `YoPortrait.astro` imports this
 local source and uses Astro's image pipeline to generate responsive AVIF and
-WebP variants with a JPEG fallback, capped at the source's intrinsic 1280 ×
-1280 dimensions.
+WebP variants with a JPEG fallback, capped at the source's intrinsic 2267 ×
+2267 dimensions.
 
 For a future approved replacement, overwrite that repository asset with a
 sanitized local image, preserve the outer `figure`, field dimensions, border
@@ -159,11 +160,12 @@ release, and update dates, optional GitHub and live URLs, tags, featured and
 draft flags, display order, language, and optional translation key.
 
 The draft `_template.md` entry documents the editable shape without generating
-a public experiment. Its route is semantic scaffolding only; card design and
-outbound-link behavior are deferred.
+a public experiment in development or production. The index route is semantic
+scaffolding only; card design and outbound-link behavior are deferred.
 
 ## Site copy
 
-Homepage and Ahora copy use validated JSON collections. Yo and Contacto use a
-small validated Markdown page collection. These files are intentionally
-editable without changing Astro components.
+Homepage and Ahora copy use validated JSON collections. Yo uses its own
+validated JSON profile collection, while Contacto uses the Markdown page
+collection. These files are intentionally editable without changing Astro
+components.

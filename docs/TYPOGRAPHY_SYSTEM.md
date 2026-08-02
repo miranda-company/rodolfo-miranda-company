@@ -50,9 +50,10 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 
 ### Homepage
 
-- H1: “Rodolfo Miranda Company”.
-- H2: the four archive-card titles and “Ahora está creciendo”.
-- H3 beneath “Ahora está creciendo”: “Últimas notas”, “En la Mediateca” and “En proceso”.
+- H1: “Rodolfo Miranda”.
+- H2: the four archive-card titles and “Lo último”.
+- H3 beneath “Lo último”: “Notas recientes”, “En la mediateca” and
+  “Experimentos”.
 - Archive numbers, dates and section labels are mono non-headings.
 
 ### Yo

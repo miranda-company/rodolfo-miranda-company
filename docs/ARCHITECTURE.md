@@ -6,22 +6,21 @@ The site is a static Astro application. Pages render to HTML at build time, and
 the production output does not ship React, React Router, Tailwind, a CMS, a
 database, or an authentication layer.
 
-Minimal browser JavaScript is limited to the responsive navigation menu and
-route-aware fragment scrolling. Both features are implemented as small,
-framework-free scripts.
+Browser JavaScript remains small and framework-free. It handles the responsive
+navigation menu, route-aware fragment scrolling, the Notas and Mediateca
+filters and sorting, and Portafolio search and tag filtering.
 
 ## Presentation
 
-- `src/layouts/BaseLayout.astro` owns Spanish metadata, development noindex
-  directives, locally bundled fonts, and global page behavior.
+- `src/layouts/BaseLayout.astro` owns Spanish metadata, the current site-wide
+  noindex directive, locally bundled fonts, and global page behavior.
 - `src/components/` contains the reusable page shell, header, archive cards,
   artwork, and homepage previews.
 - `src/styles/global.css` contains the approved design tokens and custom CSS.
 - `src/pages/index.astro` preserves the design-approved homepage.
 - `/notas` and `/notas/umbral` are design-approved visual baselines with a
-  dedicated, route-scoped stylesheet. The remaining secondary routes use
-  deliberately minimal semantic scaffolding. Every route remains excluded from
-  indexing.
+  dedicated, route-scoped stylesheet. Other note details use deliberately
+  minimal semantic scaffolding. Every route remains excluded from indexing.
 - `/mediateca` and `/mediateca/modulor` form a design-approved catalogue and
   reference baseline with a dedicated route-scoped stylesheet.
 - `/yo` is a coded editorial prototype driven by validated profile content and
@@ -31,10 +30,12 @@ framework-free scripts.
   logic as the approved Umbral note while keeping its own components and
   route-scoped `portfolio.css`; Portfolio does not import or couple selectors to
   `notes.css`.
+- `/experimentos` and `/contacto` remain provisional semantic scaffolds.
 
 The baseline screenshots under `docs/figma-baseline/` and
-`docs/notas-baseline/`, and `docs/mediateca-baseline/` remain the visual
-references. The tagged Figma export is a behavioral reference only.
+`docs/notas-baseline/`, `docs/mediateca-baseline/`, and
+`docs/integrated-baseline/` remain the visual references. The tagged Figma
+export is a behavioral reference only.
 
 ## Page DOM contract
 

@@ -1,19 +1,41 @@
-# Launch checklist
+# Lista de preparación para lanzamiento
 
-Complete these editorial and infrastructure tasks before enabling indexing or
-connecting the production domain.
+Estas tareas deben completarse antes de retirar `noindex`, conectar el dominio
+o presentar el jardín como una publicación terminada.
 
-## Editorial
+## Edición
 
-- [ ] Obtain Rodolfo's approval for the summaries, commentary, and article copy
-      of the three production Mediateca anchors: `modulor`, `cosas`, and `orden`.
-- [ ] Replace approved copy in the content files and remove provisional-copy
-      notices from the public reference experience.
-- [ ] Approve or replace every placeholder external URL before its associated
-      reference is published.
+- [ ] Aprobar la biografía de Yo y reemplazar las cuatro etapas provisionales de
+      la trayectoria.
+- [ ] Sustituir el párrafo biográfico pendiente y retirar su aviso editorial.
+- [ ] Revisar y aprobar los resúmenes y cuerpos de `umbral`, `margen` y
+      `archivo`.
+- [ ] Revisar y aprobar los resúmenes, comentarios y cuerpos de `modulor`,
+      `cosas` y `orden`.
+- [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
+      esté aprobado.
+- [ ] Añadir proyectos reales a Portafolio con imágenes, textos alternativos y
+      casos de estudio verificados.
+- [ ] Aprobar o reemplazar cada URL externa provisional antes de publicar su
+      entrada.
+- [ ] Completar el contenido y el diseño de Experimentos y Contacto.
 
-## Routing and hosting
+## Idiomas y metadatos
 
-- [ ] Configure hosting-level permanent redirects from `/biblioteca` to
-      `/mediateca` and from `/biblioteca/*` to `/mediateca/*`, then verify direct
-      paths and fragments in the deployed environment.
+- [ ] Confirmar el alcance editorial de la primera versión en español.
+- [ ] Preparar la versión inglesa antes de activar cualquier ruta de traducción.
+- [ ] Revisar títulos, descripciones, URL canónicas y metadatos sociales.
+- [ ] Mantener `noindex` y el bloqueo de `robots.txt` hasta la aprobación final.
+- [ ] Retirar el bloqueo de indexación solo después de verificar el entorno de
+      producción.
+
+## Rutas, hosting y dominio
+
+- [ ] Elegir y configurar un proveedor de hosting.
+- [ ] Configurar redirects permanentes de `/biblioteca` a `/mediateca` y de
+      `/biblioteca/*` a `/mediateca/*` en el hosting.
+- [ ] Verificar rutas directas, fragments y páginas de error en el entorno
+      desplegado.
+- [ ] Conectar `www.rodolfomiranda.company` y verificar DNS, HTTPS y redirección
+      del dominio raíz si se utiliza.
+- [ ] Ejecutar la comprobación, la compilación y la revisión responsive final.
