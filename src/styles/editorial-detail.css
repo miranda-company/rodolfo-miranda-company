@@ -27,7 +27,7 @@
 .entry-detail-header {
   max-width: 1050px;
   margin-top: 54px;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   padding-bottom: 48px;
 }
 

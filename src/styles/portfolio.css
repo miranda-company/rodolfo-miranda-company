@@ -24,7 +24,7 @@
 
 .portfolio-header {
   padding: 46px 0 43px;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .portfolio-kicker {
@@ -156,11 +156,11 @@
 }
 
 .portfolio-card {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .portfolio-card:last-child {
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .portfolio-card > a {
@@ -569,7 +569,7 @@
   gap: 14px 24px;
   align-items: center;
   margin-top: 55px;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   padding-top: 16px;
   color: var(--graphite);
   font-size: 9px;
@@ -580,7 +580,7 @@
 }
 
 .project-connections {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   padding-top: 17px;
 }
 
@@ -691,8 +691,8 @@
   grid-template-columns: 1fr 1fr;
   max-width: 1136px;
   margin-top: 70px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .project-sequence a {

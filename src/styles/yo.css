@@ -21,7 +21,7 @@
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
   gap: 24px 64px;
   align-items: end;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   padding: 62px 0 44px;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .yo-section {
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   padding: 78px 0 84px;
 }
 
@@ -354,7 +354,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
   gap: clamp(45px, 7vw, 110px);
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   padding: 30px 0 34px;
 }
 

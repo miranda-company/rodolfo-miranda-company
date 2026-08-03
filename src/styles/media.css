@@ -118,7 +118,7 @@
 
 .current-shelf,
 .media-catalogue {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .media-section-heading {
@@ -1082,7 +1082,7 @@
 }
 
 .reference-body {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   padding-top: 27px;
 }
 
@@ -1091,7 +1091,7 @@
 }
 
 .reference-connections section {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   padding: 13px 0 24px;
 }
 
