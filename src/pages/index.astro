@@ -5,6 +5,7 @@ import LatestMedia from "../components/LatestMedia.astro";
 import LatestNotes from "../components/LatestNotes.astro";
 import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getVisibleSpanishNotes } from "../lib/notes";
 
 const home = await getEntry("homepage", "homepage");
 const ahora = await getEntry("ahora", "ahora");
@@ -13,8 +14,8 @@ if (!home || !ahora) {
   throw new Error("Falta el contenido validado de la portada.");
 }
 
-const notes = (await getCollection("notas"))
-  .filter((entry) => !entry.data.draft && entry.data.language === "es" && entry.data.featured)
+const notes = (await getVisibleSpanishNotes(false))
+  .filter((entry) => entry.data.featured)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
 

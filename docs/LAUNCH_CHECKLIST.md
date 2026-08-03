@@ -29,6 +29,27 @@ o presentar el jardín como una publicación terminada.
 - [ ] Retirar el bloqueo de indexación solo después de verificar el entorno de
       producción.
 
+## Vídeo, MDX y código
+
+- [ ] Confirmar que cada vídeo aprobado de YouTube o Vimeo sigue disponible y
+      permite reproducción embebida.
+- [ ] Verificar que cada iframe tiene un `title` accesible, específico y acorde
+      con el contenido real.
+- [ ] Revisar captions editoriales y enlaces de respaldo hacia la página
+      canónica de cada vídeo.
+- [ ] Confirmar el uso de `youtube-nocookie.com` para YouTube y `dnt=1` para
+      Vimeo.
+- [ ] Configurar en el hosting la política CSP necesaria para los reproductores
+      externos y revisar sus requisitos de medios, privacidad y terceros.
+- [ ] Evaluar el comportamiento final de cookies y el contexto legal aplicable
+      antes de decidir si hace falta un mecanismo de consentimiento.
+- [ ] Confirmar que ninguna entrada con `fixture: true`, incluidos su HTML,
+      metadatos y muestras, aparece en producción.
+- [ ] Rechazar componentes que acepten iframes arbitrarios o scripts pegados;
+      cada futuro proveedor necesita un componente revisado y permitido.
+- [ ] Comprobar en móvil que las líneas largas de los bloques de código se
+      desplazan dentro del bloque sin desbordar la página.
+
 ## Rutas, hosting y dominio
 
 - [ ] Elegir y configurar un proveedor de hosting.

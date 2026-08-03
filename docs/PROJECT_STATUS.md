@@ -6,9 +6,13 @@ no presupone un despliegue externo.
 
 ## Snapshot
 
-- **Fecha:** 2 de agosto de 2026.
-- **Rama:** `astro-rebuild`.
-- **Framework:** Astro 7 con salida HTML estática.
+- **Fecha:** 3 de agosto de 2026.
+- **Rama:** `main`.
+- **Framework:** Astro 7 con salida HTML estática, colecciones Markdown/MDX y
+  resaltado de código Shiki generado durante la compilación.
+- **GitHub:** el `HEAD` local y `origin/main` se verificaron en
+  `6621fecda136c1d5df3e4ce1480e6d0f6e75a0ce` antes de estos cambios locales,
+  que permanecen sin commit.
 - **Idioma de la primera versión:** español en rutas raíz.
 - **Inglés:** previsto en el modelo de contenido, sin rutas ni traducciones
   implementadas.
@@ -23,8 +27,9 @@ no presupone un despliegue externo.
 | --- | --- | --- | --- | --- |
 | Portada | `/` | Baseline revisado | JSON validado y previews de los anclajes no draft | Se genera; indexación bloqueada |
 | Yo | `/yo` | Prototipo codificado, retrato aprobado | Biografía parcial; cuatro etapas y un párrafo pendientes | Se genera con avisos provisionales |
-| Notas | `/notas` | Índice revisado | 3 anclajes y 24 fixtures draft | Se genera con 3 entradas |
-| Lectura de nota | `/notas/[slug]` | Plantilla compartida basada en Umbral | 3 anclajes y 24 fixtures draft | Solo `umbral`, `margen` y `archivo` |
+| Notas | `/notas` | Índice revisado | 27 notas ordinarias en desarrollo; la fixture técnica queda aislada | Se genera con 3 entradas |
+| Lectura de nota | `/notas/[slug]` | Todas usan `NoteArticle.astro` | 27 rutas editoriales Markdown/MDX en desarrollo | Solo `umbral`, `margen` y `archivo` |
+| Referencia MDX | `/notas/ejemplo-mdx` | Misma plantilla de lectura, sin navegación circular | Fixture técnica directa con vídeos externos y código | Solo desarrollo; no genera artefactos |
 | Mediateca | `/mediateca` | Catálogo revisado | 3 anclajes y 10 fixtures draft | Se genera con 3 referencias |
 | Referencia | `/mediateca/modulor` | Plantilla revisada | Comentario editorial provisional | Se genera |
 | Otras referencias | `/mediateca/[slug]` | Renderizador codificado | `cosas` y `orden` no draft; 10 fixtures draft | Solo `cosas` y `orden` |
@@ -41,15 +46,19 @@ hosting sigue pendiente.
 
 | Colección | Desarrollo | Producción | Detalles de producción |
 | --- | ---: | ---: | --- |
-| Notas | 27 | 3 | `umbral`, `margen`, `archivo` |
+| Notas ordinarias | 27 | 3 | `umbral`, `margen`, `archivo` |
+| Fixture técnica de Notas | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, aislada mediante `fixture: true` |
 | Mediateca | 13 | 3 | `modulor`, `cosas`, `orden` |
 | Portafolio | 3 | 0 | Ninguno; `_template.md` también queda excluido |
 | Experimentos | 0 | 0 | Ninguno; solo existe el template draft excluido |
 
-Los conteos de desarrollo incluyen únicamente entradas que aparecen en sus
-índices o generan rutas, no los templates de edición. Los tres anclajes de
-Notas y los tres de Mediateca atraviesan el límite técnico de producción, pero
-su copia aún no debe considerarse aprobación editorial final.
+Los conteos ordinarios de desarrollo incluyen únicamente entradas editoriales
+que aparecen en sus índices y secuencias. `ejemplo-mdx` genera una ruta directa
+adicional para revisión técnica, pero no entra en el índice, los filtros, los
+conteos, la navegación circular ni los previews de portada. Los templates de
+edición tampoco generan rutas. Los tres anclajes de Notas y los tres de
+Mediateca atraviesan el límite técnico de producción, pero su copia aún no debe
+considerarse aprobación editorial final.
 
 ## Sistemas implementados
 
@@ -62,6 +71,15 @@ su copia aún no debe considerarse aprobación editorial final.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Menú móvil accesible con cierre por `Escape` y restauración de foco.
 - Filtros, orden y conteos en Notas y Mediateca.
+- Sistema compartido de lectura de Notas mediante `NoteArticle.astro` para
+  Markdown y MDX, con lenguaje de madurez derivado del contenido, conexiones a
+  notas y rutas internas, y navegación anterior/siguiente circular.
+- Componentes MDX aprobados con `VideoEmbed.astro`: proveedores YouTube y Vimeo
+  permitidos explícitamente, títulos accesibles, captions y enlaces de respaldo.
+- Bloques de código estáticos resaltados con Shiki, sin runtime cliente y con
+  desplazamiento interno para líneas largas.
+- Fixture MDX tipada y excluida explícitamente de listas editoriales, previews,
+  secuencias y producción.
 - Búsqueda, filtros por etiqueta, conteos, estado vacío y orden editorial estable
   en Portafolio.
 - Generación estática y carga local de las familias tipográficas.

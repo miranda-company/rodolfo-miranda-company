@@ -4,7 +4,7 @@ summary: "Una nota de desarrollo para consultar la sintaxis de vídeos y bloques
 publishedAt: 2026-08-03
 updatedAt: 2026-08-03
 state: "semilla"
-archiveNumber: "N.028"
+archiveNumber: "N.999"
 cardFormat: "standard"
 tags:
   - "MDX"
@@ -13,30 +13,34 @@ relatedNotes: []
 relatedLinks: []
 featured: false
 draft: true
+fixture: true
 language: "es"
 ---
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 
-Esta nota es una referencia técnica de desarrollo. No contiene afirmaciones sobre el trabajo de Rodolfo ni forma parte del contenido aprobado para producción.
+Esta nota es una referencia técnica de desarrollo. No contiene afirmaciones sobre el trabajo de Rodolfo, no implica su respaldo a los vídeos externos y no forma parte del contenido aprobado para producción.
 
 ## Vídeo de YouTube
 
-El componente puede colocarse entre dos párrafos. Los identificadores de esta referencia son técnicos y deben sustituirse por los del vídeo editorial antes de publicar una nota real.
+El componente puede colocarse entre dos párrafos. Este vídeo pertenece a Google for Developers y se usa aquí únicamente como demostración técnica externa.
 
 <VideoEmbed
   provider="youtube"
-  videoId="MDXTEST0001"
-  title="Vídeo técnico de ejemplo para comprobar una inserción de YouTube"
-  caption="Ejemplo de una leyenda editorial opcional."
+  videoId="M7lc1UVf-VE"
+  title="YouTube Developers Live: Embedded Web Player Customization, demostración técnica externa de Google for Developers"
+  caption="Demostración técnica externa publicada por Google for Developers; no implica autoría ni respaldo de Rodolfo."
 />
 
 ## Vídeo de Vimeo
 
+Este vídeo pertenece a Vimeo y aparece en la documentación oficial de su Player SDK. Se incluye únicamente para comprobar el reproductor externo.
+
 <VideoEmbed
   provider="vimeo"
-  videoId="000000001"
-  title="Vídeo técnico de ejemplo para comprobar una inserción de Vimeo"
+  videoId="280815263"
+  title="Volumetric Filmmakers NYC, demostración técnica externa publicada por Vimeo"
+  caption="Demostración técnica externa publicada por Vimeo; no implica autoría ni respaldo de Rodolfo."
 />
 
 ## Bloques de código

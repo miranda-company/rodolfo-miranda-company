@@ -1,15 +1,20 @@
 ---
 import { getEntries, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatNoteDate, hasEditorialNoteBody, NOTE_MATURITY } from "../lib/notes";
+import {
+  formatNoteDate,
+  hasEditorialNoteBody,
+  isEditorialNote,
+  NOTE_MATURITY,
+} from "../lib/notes";
 import "../styles/notes.css";
 import MaturityMarker from "./MaturityMarker.astro";
 import PageShell from "./PageShell.astro";
 
 interface Props {
   entry: CollectionEntry<"notas">;
-  previousNote: CollectionEntry<"notas">;
-  nextNote: CollectionEntry<"notas">;
+  previousNote?: CollectionEntry<"notas">;
+  nextNote?: CollectionEntry<"notas">;
 }
 
 const { entry, previousNote, nextNote } = Astro.props;
@@ -17,7 +22,10 @@ const { Content } = await render(entry);
 const includeDrafts = import.meta.env.DEV;
 const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(
   (note) =>
-    (includeDrafts || !note.data.draft) && note.data.language === "es" && note.id !== entry.id,
+    isEditorialNote(note) &&
+    (includeDrafts || !note.data.draft) &&
+    note.data.language === "es" &&
+    note.id !== entry.id,
 );
 const relatedLinks = entry.data.relatedLinks;
 const hasConnections = relatedNotes.length > 0 || relatedLinks.length > 0;
@@ -103,22 +111,26 @@ const updatedDate = entry.data.updatedAt.toISOString().slice(0, 10);
       </aside>
     </div>
 
-    <nav class="note-sequence" aria-label="Navegación entre notas">
-      <a
-        class="note-sequence__previous"
-        href={`/notas/${previousNote.id}`}
-        aria-label={`Nota anterior: ${previousNote.data.title}`}
-      >
-        <span>← Nota anterior</span>{previousNote.data.title}
-      </a>
-      <a
-        class="note-sequence__next"
-        href={`/notas/${nextNote.id}`}
-        aria-label={`Nota siguiente: ${nextNote.data.title}`}
-      >
-        <span>Nota siguiente →</span>{nextNote.data.title}
-      </a>
-      <a class="note-sequence__all" href="/notas">Volver a todas las notas</a>
-    </nav>
+    {
+      previousNote && nextNote && (
+        <nav class="note-sequence" aria-label="Navegación entre notas">
+          <a
+            class="note-sequence__previous"
+            href={`/notas/${previousNote.id}`}
+            aria-label={`Nota anterior: ${previousNote.data.title}`}
+          >
+            <span>← Nota anterior</span>{previousNote.data.title}
+          </a>
+          <a
+            class="note-sequence__next"
+            href={`/notas/${nextNote.id}`}
+            aria-label={`Nota siguiente: ${nextNote.data.title}`}
+          >
+            <span>Nota siguiente →</span>{nextNote.data.title}
+          </a>
+          <a class="note-sequence__all" href="/notas">Volver a todas las notas</a>
+        </nav>
+      )
+    }
   </PageShell>
 </BaseLayout>

@@ -47,9 +47,9 @@ own editorial fields and publication boundaries.
   garden.
 - Yo includes a biography, local portrait, and professional timeline; four
   career stages and one biographical passage still require editing.
-- Notas displays 27 entries in development. Production generates only
-  `umbral`, `margen`, and `archivo`; their copy still requires editorial
-  approval.
+- Notas displays 27 ordinary entries in development, plus one isolated technical
+  MDX reference at `/notas/ejemplo-mdx`. Production generates only `umbral`,
+  `margen`, and `archivo`; their copy still requires editorial approval.
 - Mediateca displays 13 references in development. Production generates only
   `modulor`, `cosas`, and `orden`; their commentary remains provisional.
 - Portafolio includes search, tag filters, and three fictional cases for design
@@ -70,14 +70,17 @@ The detailed and current source of truth is
 
 Content is edited through Astro content collections and Markdown, MDX, or JSON
 files inside `src/content/`. Notes remain Markdown by default and use MDX only
-when an approved Astro content component is required. Development fixtures make it possible to review layouts,
-filters, and routes without presenting them as published work. Entries with
-`draft: true` are excluded from normal production builds.
+when an approved Astro content component is required. Approved MDX notes can use
+the allowlisted YouTube/Vimeo video component. Development fixtures make it
+possible to review layouts, filters, and routes without presenting them as
+published work. Entries with `draft: true` are excluded from normal production
+builds.
 
 Notes and references can link to related material. Portfolio projects and
 experiments use their own content models. Complete schemas and editorial
 instructions are documented in
-[docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md).
+[docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). The practical Notas workflow is
+in [docs/WRITING_NOTES.md](docs/WRITING_NOTES.md).
 
 ## Technology
 

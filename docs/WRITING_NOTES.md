@@ -4,13 +4,14 @@ Las notas se guardan como archivos Markdown o MDX dentro de `src/content/notas/`
 utilizan la misma plantilla de lectura; `cardFormat` solo cambia su presentación en el índice.
 
 Usa `docs/templates/nota.md` para una nota normal y `docs/templates/nota-mdx.mdx` cuando necesites
-un componente aprobado. Sigue estas pautas:
+un componente aprobado. Ambas plantillas están pensadas para notas genuinas y omiten `fixture`,
+que vale `false` por defecto. Sigue estas pautas:
 
 1. Nombra el archivo con un *slug* breve y seguro para URL, en minúsculas, sin acentos y con
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
    `/notas/sistemas-que-respiran`.
-2. Asigna un `archiveNumber` único con el formato `N.000`. Comprueba que no esté usado por otra
-   nota.
+2. Asigna un `archiveNumber` único con el formato `N.000`. El próximo número disponible para una
+   nota genuina es `N.028`; `N.999` está reservado exclusivamente para la referencia técnica MDX.
 3. Elige el estado de madurez que describe honestamente el texto:
    - `semilla`: apunte inicial que todavía puede cambiar de forma;
    - `en-crecimiento`: nota desarrollada que sigue incorporando conexiones;
@@ -24,6 +25,9 @@ un componente aprobado. Sigue estas pautas:
    `label` visible y un `href` que empiece por `/`.
 8. Escribe el cuerpo debajo del frontmatter usando Markdown: párrafos, H2, H3, listas, citas,
    enlaces, énfasis, código, imágenes, figuras y notas al pie cuando aporten a la lectura.
+
+Una nota genuina no debe usar `fixture: true`. Ese campo no es una categoría editorial ni una
+forma alternativa de mantener un borrador: sirve únicamente para aislar verificaciones técnicas.
 
 ## Markdown o MDX
 
@@ -97,10 +101,22 @@ comprobar su tarjeta y su ruta, pero la producción los excluye. Actualiza `upda
 haya un cambio editorial relevante. Cambia a `draft: false` únicamente cuando el contenido y sus
 conexiones estén aprobados para publicación.
 
-La nota de desarrollo `src/content/notas/ejemplo-mdx.mdx` conserva una referencia visible de
-`VideoEmbed` y de los lenguajes de código admitidos. Sus identificadores de vídeo son técnicos, no
-contenido editorial, y deben sustituirse antes de reutilizar el ejemplo. Permanece como
-`draft: true`, por lo que aparece únicamente en desarrollo y no genera una ruta de producción.
+## Referencia técnica MDX
+
+`src/content/notas/ejemplo-mdx.mdx` conserva una referencia directamente visible de `VideoEmbed`
+y de los lenguajes de código admitidos. No es una plantilla para copiar sus metadatos: usa
+deliberadamente `fixture: true`, `draft: true` y el número reservado `N.999`. Las notas genuinas
+deben partir de las plantillas de `docs/templates/` y el próximo número editorial continúa siendo
+`N.028`.
+
+En desarrollo, la referencia se abre directamente en `/notas/ejemplo-mdx`, pero no aparece en el
+jardín, los filtros, los conteos, las conexiones editoriales ni la navegación anterior/siguiente.
+Tampoco genera una ruta o artefacto de producción.
+
+Sus vídeos son demostraciones técnicas externas: uno publicado por Google for Developers y otro
+publicado por Vimeo y usado en la documentación de su Player SDK. No pertenecen a Rodolfo ni
+implican su respaldo. Antes de publicar una nota real, sustituye el identificador, el título
+accesible y la leyenda por información editorial verificada.
 
 ## Revisión local
 

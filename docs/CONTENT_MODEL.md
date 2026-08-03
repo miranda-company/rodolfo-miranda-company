@@ -5,14 +5,24 @@ All collection schemas live in `src/content.config.ts` and are checked by
 
 ## Notas
 
-Markdown and MDX entries contain a title, summary, publication and update dates, growth
-state (`semilla`, `en-crecimiento`, or `perenne`), stable archive number, card
-format (`compact`, `standard`, `visual`, or `featured`), tags, related-note
-references, optional labeled internal links, featured and draft flags, language,
-an optional translation key, and a Markdown or MDX body. Card format controls
-presentation in the garden without changing the article hierarchy, editorial
-meaning, or URL of an entry. Renaming an entry from `.md` to `.mdx` preserves
-its content ID, slug, and public route.
+Markdown and MDX entries share one validated schema:
+
+- `title` and `summary`: required editorial text;
+- `publishedAt` and `updatedAt`: coerced dates;
+- `state`: `semilla`, `en-crecimiento`, or `perenne`;
+- `archiveNumber`: a stable `N.###` identifier;
+- `cardFormat`: `compact`, `standard`, `visual`, or `featured`;
+- `tags`: an optional array that defaults to empty;
+- `relatedNotes`: validated references to other Notas entries;
+- `relatedLinks`: optional labeled internal URLs beginning with `/`;
+- `featured`, `draft`, and `fixture`: booleans that default to `false`;
+- `language`: `es` or `en`, defaulting to `es`;
+- `translationKey`: an optional non-empty cross-language identifier;
+- the Markdown or MDX body.
+
+`cardFormat` controls presentation in the garden without changing hierarchy,
+editorial meaning, or URL. Renaming an entry from `.md` to `.mdx` preserves its
+content ID, slug, and public route.
 
 Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use
@@ -36,12 +46,24 @@ with the `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash, an
 plain text require no client-side runtime. Long lines scroll within the code
 block instead of expanding the reading column.
 
-The `draft` field is also the publication boundary for the garden. Development
-includes draft entries so the complete 27-card design fixture can be reviewed,
-plus `ejemplo-mdx`, a separate technical authoring reference. Normal production
-builds exclude draft cards and their detail routes. The 24 generated
-demonstration entries are drafts and must not be treated as Rodolfo's approved
-writing.
+`draft` is the publication boundary, while `fixture` separates technical
+verification content from genuine editorial content. Ordinary authors normally
+omit `fixture`; its default is `false`. Validation requires every
+`fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
+technical fixture and rejects `N.999` on an ordinary note.
+
+Development contains 27 ordinary entries: the three non-draft anchors and 24
+draft design entries. `ejemplo-mdx` is one additional, directly reviewable
+technical route. It uses `fixture: true`, `draft: true`, and `N.999`, so it is
+absent from the garden, counts, filters, related-note lists, homepage previews,
+and genuine circular navigation. Production contains only `umbral`, `margen`,
+and `archivo`; it generates no fixture route or artifact. `N.028` remains
+available for the next genuine note.
+
+The 24 generated demonstration entries are drafts and must not be treated as
+Rodolfo's approved writing. The external videos inside `ejemplo-mdx` are
+platform-owned technical demonstrations and do not imply Rodolfo's authorship
+or endorsement.
 
 `umbral`, `margen`, and `archivo` remain the three non-draft design anchors used
 by the approved homepage. Their summaries and any article bodies are
