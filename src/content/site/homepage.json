@@ -17,6 +17,15 @@
       },
       {
         "index": "02",
+        "title": "Portafolio",
+        "description": "Mi portafolio de proyectos y trabajo.",
+        "metadata": "Trabajo seleccionado",
+        "reveal": "0 proyectos publicados",
+        "href": "/portafolio",
+        "kind": "portafolio"
+      },
+      {
+        "index": "03",
         "title": "Notas",
         "description": "Estas son mis ideas y apuntes sobre todo lo que me genera curiosidad.",
         "metadata": "Última nota · 31.07.2026",
@@ -25,22 +34,13 @@
         "kind": "notas"
       },
       {
-        "index": "03",
+        "index": "04",
         "title": "Mediateca",
         "description": "Libros, artículos, podcasts y videos que me sirven de referencia y aprendizaje.",
         "metadata": "Inspiración · Referencias",
         "reveal": "144 medios guardados",
         "href": "/mediateca",
         "kind": "mediateca"
-      },
-      {
-        "index": "04",
-        "title": "Portafolio",
-        "description": "Mi portafolio de proyectos y trabajo.",
-        "metadata": "Trabajo seleccionado",
-        "reveal": "0 proyectos publicados",
-        "href": "/portafolio",
-        "kind": "portafolio"
       }
     ]
   }
