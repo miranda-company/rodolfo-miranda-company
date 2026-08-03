@@ -6,7 +6,7 @@ import LatestNotes from "../components/LatestNotes.astro";
 import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getVisibleSpanishMedia } from "../lib/media";
-import { getVisibleSpanishNotes } from "../lib/notes";
+import { formatNoteDate, getVisibleSpanishNotes } from "../lib/notes";
 
 const home = await getEntry("homepage", "homepage");
 const ahora = await getEntry("ahora", "ahora");
@@ -15,13 +15,38 @@ if (!home || !ahora) {
   throw new Error("Falta el contenido validado de la portada.");
 }
 
-const notes = (await getVisibleSpanishNotes(false))
+const publishedNotes = await getVisibleSpanishNotes(false);
+const publishedMedia = await getVisibleSpanishMedia(false);
+const latestPublishedNote = [...publishedNotes].sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+)[0];
+
+const panels = home.data.panels.map((panel) => {
+  if (panel.kind === "notas") {
+    return {
+      ...panel,
+      metadata: `Última nota · ${latestPublishedNote ? formatNoteDate(latestPublishedNote.data.publishedAt) : "—"}`,
+      reveal: `${publishedNotes.length} ${publishedNotes.length === 1 ? "nota publicada" : "notas publicadas"}`,
+    };
+  }
+
+  if (panel.kind === "mediateca") {
+    return {
+      ...panel,
+      reveal: `${publishedMedia.length} ${publishedMedia.length === 1 ? "medio guardado" : "medios guardados"}`,
+    };
+  }
+
+  return panel;
+});
+
+const notes = publishedNotes
   .filter((entry) => entry.data.featured)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
 
 const bookOrder = ["modulor", "cosas", "orden"];
-const mediaShelf = (await getVisibleSpanishMedia(false))
+const mediaShelf = publishedMedia
   .filter((entry) => entry.data.featured)
   .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id))
   .slice(0, 3);
@@ -42,7 +67,7 @@ const mediaShelf = (await getVisibleSpanishMedia(false))
         <span>{home.data.indexLabel}</span>
       </div>
       <div class="panels">
-        {home.data.panels.map((panel) => <ArchiveCard panel={panel} />)}
+        {panels.map((panel) => <ArchiveCard panel={panel} />)}
       </div>
     </section>
 
