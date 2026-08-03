@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Artwork from "./Artwork.astro";
 
 type Panel = CollectionEntry<"homepage">["data"]["panels"][number];
 
@@ -17,7 +16,9 @@ const { panel } = Astro.props;
       <span>{panel.index}</span>
       <span class="panel-arrow" aria-hidden="true">↗</span>
     </div>
-    <Artwork kind={panel.kind} />
+    <div class="panel-image-placeholder" aria-hidden="true">
+      <span>IMAGEN / {panel.index}</span>
+    </div>
     <div class="panel-copy">
       <h2>{panel.title}</h2>
       <p>{panel.description}</p>
