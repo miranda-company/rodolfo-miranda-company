@@ -8,9 +8,18 @@ All collection schemas live in `src/content.config.ts` and are checked by
 Markdown entries contain a title, summary, publication and update dates, growth
 state (`semilla`, `en-crecimiento`, or `perenne`), stable archive number, card
 format (`compact`, `standard`, `visual`, or `featured`), tags, related-note
-references, featured and draft flags, language, an optional translation key,
-and a Markdown body. Card format controls presentation in the garden without
-changing the editorial meaning or URL of an entry.
+references, optional labeled internal links, featured and draft flags, language,
+an optional translation key, and a Markdown body. Card format controls
+presentation in the garden without changing the article hierarchy, editorial
+meaning, or URL of an entry.
+
+Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
+The default index order and circular previous/next navigation both use
+`updatedAt` descending, with `archiveNumber` as the deterministic tie-breaker.
+`relatedNotes` stores note IDs and resolves their current titles and routes;
+`relatedLinks` stores an optional visible `label` and an internal `href` that
+begins with `/`. Empty Markdown bodies render an interface-only editorial state
+without storing fabricated prose in the content file.
 
 The `draft` field is also the publication boundary for the garden. Development
 includes draft entries so the complete 27-card design fixture can be reviewed;
@@ -22,6 +31,10 @@ approved writing.
 by the approved homepage. Their summaries and any article bodies are
 provisional editorial copy that requires Rodolfo's review and approval before
 launch; currently only `umbral` contains a demonstration body.
+
+See [WRITING_NOTES.md](WRITING_NOTES.md) and
+[templates/nota.md](templates/nota.md) for the authoring workflow and a safe
+starter file outside the content collection.
 
 ## Mediateca
 

@@ -1,15 +1,15 @@
-import { defineCollection, reference } from "astro:content";
-import { file, glob } from "astro/loaders";
-import { z } from "astro/zod";
+import { defineCollection, reference } from "astro:content"
+import { file, glob } from "astro/loaders"
+import { z } from "astro/zod"
 
-const language = z.enum(["es", "en"]).default("es");
-const translationKey = z.string().min(1).optional();
-const internalUrl = z.string().startsWith("/");
+const language = z.enum(["es", "en"]).default("es")
+const translationKey = z.string().min(1).optional()
+const internalUrl = z.string().startsWith("/")
 const linkedSegment = z.object({
   text: z.string().min(1),
   href: internalUrl.optional(),
-});
-const linkedParagraph = z.array(linkedSegment).min(1);
+})
+const linkedParagraph = z.array(linkedSegment).min(1)
 
 const notas = defineCollection({
   loader: glob({ base: "./src/content/notas", pattern: "**/*.{md,mdx}" }),
@@ -23,12 +23,20 @@ const notas = defineCollection({
     cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
     tags: z.array(z.string().min(1)).default([]),
     relatedNotes: z.array(reference("notas")).default([]),
+    relatedLinks: z
+      .array(
+        z.object({
+          label: z.string().min(1),
+          href: internalUrl,
+        }),
+      )
+      .default([]),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     language,
     translationKey,
   }),
-});
+})
 
 const mediateca = defineCollection({
   loader: glob({ base: "./src/content/mediateca", pattern: "**/*.{md,mdx}" }),
@@ -36,14 +44,27 @@ const mediateca = defineCollection({
     z.object({
       title: z.string().min(1),
       creator: z.string().min(1),
-      format: z.enum(["book", "article", "website", "tool", "video", "podcast", "other"]),
+      format: z.enum([
+        "book",
+        "article",
+        "website",
+        "tool",
+        "video",
+        "podcast",
+        "other",
+      ]),
       engagementMode: z.enum(["read", "watch", "listen"]),
       summary: z.string().min(1),
       commentary: z.string().min(1),
       whyHere: z.string().min(1),
       recurringIdeas: z.array(z.string().min(1)).default([]),
       publicationYear: z.number().int().min(1400).max(2100).optional(),
-      status: z.enum(["en-curso", "consultado", "de-referencia", "por-explorar"]),
+      status: z.enum([
+        "en-curso",
+        "consultado",
+        "de-referencia",
+        "por-explorar",
+      ]),
       archiveNumber: z.string().regex(/^M\.\d{3}$/),
       updatedAt: z.coerce.date(),
       externalUrl: z.url().optional(),
@@ -56,7 +77,7 @@ const mediateca = defineCollection({
       language,
       translationKey,
     }),
-});
+})
 
 const portafolio = defineCollection({
   loader: glob({ base: "./src/content/portafolio", pattern: "**/*.{md,mdx}" }),
@@ -98,14 +119,13 @@ const portafolio = defineCollection({
       draft: z.boolean().default(false),
       language,
       translationKey,
-    })
-    .superRefine((entry, context) => {
+    }).superRefine((entry, context) => {
       if (!entry.draft && !entry.coverImage) {
         context.addIssue({
           code: "custom",
           message: "Los proyectos publicados requieren una imagen de portada.",
           path: ["coverImage"],
-        });
+        })
       }
 
       if (entry.coverImage && !entry.coverAlt) {
@@ -113,15 +133,16 @@ const portafolio = defineCollection({
           code: "custom",
           message: "Toda imagen de portada requiere texto alternativo.",
           path: ["coverAlt"],
-        });
+        })
       }
 
       if (!entry.draft && !entry.coverAlt) {
         context.addIssue({
           code: "custom",
-          message: "Los proyectos publicados requieren texto alternativo para su portada.",
+          message:
+            "Los proyectos publicados requieren texto alternativo para su portada.",
           path: ["coverAlt"],
-        });
+        })
       }
 
       if (entry.placeholder && !entry.draft) {
@@ -129,21 +150,25 @@ const portafolio = defineCollection({
           code: "custom",
           message: "Un proyecto provisional siempre debe ser borrador.",
           path: ["draft"],
-        });
+        })
       }
 
       if (entry.placeholder && entry.projectLinks.length > 0) {
         context.addIssue({
           code: "custom",
-          message: "Los proyectos provisionales no pueden publicar enlaces externos.",
+          message:
+            "Los proyectos provisionales no pueden publicar enlaces externos.",
           path: ["projectLinks"],
-        });
+        })
       }
     }),
-});
+})
 
 const experimentos = defineCollection({
-  loader: glob({ base: "./src/content/experimentos", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/content/experimentos",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     title: z.string().min(1),
     shortDescription: z.string().min(1),
@@ -160,7 +185,7 @@ const experimentos = defineCollection({
     language,
     translationKey,
   }),
-});
+})
 
 const pages = defineCollection({
   loader: glob({ base: "./src/content/pages", pattern: "**/*.{md,mdx}" }),
@@ -171,7 +196,7 @@ const pages = defineCollection({
     language,
     translationKey,
   }),
-});
+})
 
 const timelineEntry = z
   .object({
@@ -191,16 +216,16 @@ const timelineEntry = z
         code: "custom",
         message: "Un enlace de caso requiere una etiqueta visible.",
         path: ["caseStudyLabel"],
-      });
+      })
     }
 
     if (entry.placeholder && (entry.organizationUrl || entry.caseStudyUrl)) {
       context.addIssue({
         code: "custom",
         message: "Las etapas provisionales no pueden publicar enlaces.",
-      });
+      })
     }
-  });
+  })
 
 const profile = defineCollection({
   loader: file("./src/content/site/yo.json"),
@@ -253,23 +278,30 @@ const profile = defineCollection({
       language,
     })
     .superRefine((entry, context) => {
-      if (entry.timeline.entries.filter((timelineItem) => timelineItem.current).length !== 1) {
+      if (
+        entry.timeline.entries.filter((timelineItem) => timelineItem.current)
+          .length !== 1
+      ) {
         context.addIssue({
           code: "custom",
           message: "La trayectoria requiere exactamente una etapa actual.",
           path: ["timeline", "entries"],
-        });
+        })
       }
 
-      if (entry.timeline.entries.filter((timelineItem) => timelineItem.placeholder).length !== 4) {
+      if (
+        entry.timeline.entries.filter(
+          (timelineItem) => timelineItem.placeholder,
+        ).length !== 4
+      ) {
         context.addIssue({
           code: "custom",
           message: "La trayectoria requiere cuatro etapas provisionales.",
           path: ["timeline", "entries"],
-        });
+        })
       }
     }),
-});
+})
 
 const homepage = defineCollection({
   loader: file("./src/content/site/homepage.json"),
@@ -292,7 +324,7 @@ const homepage = defineCollection({
       )
       .length(4),
   }),
-});
+})
 
 const ahora = defineCollection({
   loader: file("./src/content/site/ahora.json"),
@@ -310,7 +342,7 @@ const ahora = defineCollection({
     processStatus: z.string().min(1),
     processLinkLabel: z.string().min(1),
   }),
-});
+})
 
 export const collections = {
   notas,
@@ -321,4 +353,4 @@ export const collections = {
   profile,
   homepage,
   ahora,
-};
+}

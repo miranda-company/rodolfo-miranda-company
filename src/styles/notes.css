@@ -26,9 +26,7 @@
 .note-growth-notice,
 .note-article-footer,
 .note-sequence span,
-.note-inline-diagram figcaption,
-.diagram-label,
-.note-inline-diagram__field > em {
+.note-body figcaption {
   font-family: var(--font-mono);
   letter-spacing: 0.045em;
 }
@@ -77,7 +75,6 @@
 
 .intro-node,
 .art-node,
-.diagram-node,
 .connections-notation span {
   position: absolute;
   z-index: 2;
@@ -114,7 +111,6 @@
 
 .intro-line,
 .art-line,
-.diagram-line,
 .connections-notation i {
   position: absolute;
   z-index: 1;
@@ -650,6 +646,7 @@
 .note-article-header h1 {
   max-width: 910px;
   margin: 27px 0 0;
+  overflow-wrap: anywhere;
 }
 
 .note-article-header > p {
@@ -721,7 +718,8 @@
 }
 
 .note-body > p,
-.note-body > ol {
+.note-body > ol,
+.note-body > ul {
   margin: 0 0 1.45em;
   color: #34352f;
   font-family: var(--font-sans);
@@ -731,6 +729,10 @@
 
 .note-body h2 {
   margin: 2.15em 0 0.72em;
+}
+
+.note-body h3 {
+  margin: 1.8em 0 0.65em;
 }
 
 .note-body a {
@@ -757,13 +759,74 @@
   margin: 0;
 }
 
-.note-body ol {
+.note-body ol,
+.note-body ul {
   padding-left: 1.35em;
 }
 
-.note-body ol li {
+.note-body ol li,
+.note-body ul li {
   margin-bottom: 0.65em;
   padding-left: 0.4em;
+}
+
+.note-body strong {
+  font-weight: 650;
+}
+
+.note-body code {
+  border: 1px solid var(--line);
+  background: var(--paper-alt);
+  padding: 0.12em 0.3em;
+  font: 0.86em/1.45 var(--font-mono);
+}
+
+.note-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 2em 0;
+  border: 1px solid var(--line);
+  background: var(--paper-alt);
+  padding: 17px;
+  font: 13px/1.6 var(--font-mono);
+}
+
+.note-body pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+}
+
+.note-body hr {
+  margin: 2.7em 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.note-body img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.note-body figure {
+  margin: 2.4em 0;
+}
+
+.note-body figcaption {
+  margin-top: 10px;
+  color: var(--graphite);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.note-editorial-empty {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  color: var(--graphite) !important;
 }
 
 .note-body sup {
@@ -781,91 +844,6 @@
 .note-body .footnotes p {
   font-size: 13px;
   line-height: 1.5;
-}
-
-.note-inline-diagram {
-  margin: 58px 0 0;
-}
-
-.note-inline-diagram__field {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--paper-alt);
-}
-
-.diagram-node--idea {
-  top: 112px;
-  left: 12%;
-  border-color: var(--ochre);
-  background: var(--ochre);
-}
-
-.diagram-node--rule {
-  top: 72px;
-  left: 48%;
-}
-
-.diagram-node--system {
-  top: 124px;
-  left: 84%;
-  border-color: var(--plum);
-  background: var(--plum);
-}
-
-.diagram-line--first {
-  top: 116px;
-  left: 13.5%;
-  width: 36%;
-  transform: rotate(-10deg);
-}
-
-.diagram-line--second {
-  top: 77px;
-  left: 49.5%;
-  width: 36%;
-  transform: rotate(12deg);
-  background: var(--plum);
-}
-
-.diagram-label {
-  position: absolute;
-  color: var(--graphite);
-  font-size: 9px;
-  font-weight: 400;
-}
-
-.diagram-label--idea {
-  top: 133px;
-  left: 9%;
-}
-
-.diagram-label--rule {
-  top: 42px;
-  left: 45%;
-}
-
-.diagram-label--system {
-  top: 145px;
-  left: 79%;
-}
-
-.note-inline-diagram__field > em {
-  position: absolute;
-  right: 13px;
-  bottom: 12px;
-  color: var(--graphite);
-  font-size: 8px;
-  font-style: normal;
-}
-
-.note-inline-diagram figcaption {
-  max-width: 580px;
-  margin-top: 11px;
-  color: var(--graphite);
-  font-size: 9px;
-  line-height: 1.55;
 }
 
 .note-connections {
@@ -943,6 +921,15 @@
 .note-connections a:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
+}
+
+.note-connections__empty {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+  color: var(--graphite);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .note-article-footer {
@@ -1253,7 +1240,6 @@
 
   .note-growth-notice,
   .note-body,
-  .note-inline-diagram,
   .note-article-footer {
     width: 100%;
   }
@@ -1267,9 +1253,9 @@
     order: 2;
   }
 
-  .note-inline-diagram {
+  .note-article-footer {
     order: 3;
-    margin-top: 8px;
+    margin-top: 0;
   }
 
   .note-connections {
@@ -1278,18 +1264,9 @@
     margin-top: 0;
   }
 
-  .note-article-footer {
-    order: 5;
-    margin-top: 0;
-  }
-
   .note-body blockquote {
     padding-left: 18px;
     font-size: 24px;
-  }
-
-  .note-inline-diagram__field {
-    height: 210px;
   }
 
   .note-sequence {

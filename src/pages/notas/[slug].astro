@@ -1,36 +1,28 @@
 ---
-import { getCollection, render, type CollectionEntry } from "astro:content";
-import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import NoteArticle from "../../components/NoteArticle.astro";
+import { getVisibleSpanishNotes } from "../../lib/notes";
 
 export async function getStaticPaths() {
-  const includeDrafts = import.meta.env.DEV;
-  const entries = (await getCollection("notas")).filter(
-    (entry) =>
-      (includeDrafts || !entry.data.draft) && entry.data.language === "es" && entry.id !== "umbral",
-  );
+  const entries = await getVisibleSpanishNotes(import.meta.env.DEV);
 
-  return entries.map((entry) => ({
+  return entries.map((entry, index) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      previousNote: entries[(index - 1 + entries.length) % entries.length]!,
+      nextNote: entries[(index + 1) % entries.length]!,
+    },
   }));
 }
 
 interface Props {
   entry: CollectionEntry<"notas">;
+  previousNote: CollectionEntry<"notas">;
+  nextNote: CollectionEntry<"notas">;
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, previousNote, nextNote } = Astro.props;
 ---
 
-<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
-  <p class="entry-meta">
-    <time datetime={entry.data.publishedAt.toISOString().slice(0, 10)}>
-      {entry.data.publishedAt.toISOString().slice(0, 10)}
-    </time>
-    <span>{entry.data.state}</span>
-  </p>
-  <article class="provisional-entry">
-    <Content />
-  </article>
-</ProvisionalLayout>
+<NoteArticle entry={entry} previousNote={previousNote} nextNote={nextNote} />

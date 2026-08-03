@@ -22,6 +22,7 @@ const artworkVariant = entry.data.archiveNumber.replace("N.", "");
   data-tags={entry.data.tags.join("|")}
   data-title={entry.data.title}
   data-updated={entry.data.updatedAt.toISOString()}
+  data-archive={entry.data.archiveNumber}
 >
   <a class="note-card__link" href={`/notas/${entry.id}`} aria-label={`Abrir nota: ${entry.data.title}`}>
     {

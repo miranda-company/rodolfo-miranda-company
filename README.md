@@ -120,6 +120,7 @@ Main documentation:
 
 - [Architecture](docs/ARCHITECTURE.md)
 - [Content model](docs/CONTENT_MODEL.md)
+- [Writing notes](docs/WRITING_NOTES.md)
 - [Typography system](docs/TYPOGRAPHY_SYSTEM.md)
 - [Project status](docs/PROJECT_STATUS.md)
 - [Launch checklist](docs/LAUNCH_CHECKLIST.md)

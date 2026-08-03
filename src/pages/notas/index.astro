@@ -1,14 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import NoteCard from "../../components/NoteCard.astro";
 import PageShell from "../../components/PageShell.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatNoteDate, getVisibleSpanishNotes } from "../../lib/notes";
 import "../../styles/notes.css";
 
 const includeDrafts = import.meta.env.DEV;
-const notes = (await getCollection("notas"))
-  .filter((entry) => (includeDrafts || !entry.data.draft) && entry.data.language === "es")
-  .sort((a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime());
+const notes = await getVisibleSpanishNotes(includeDrafts);
+const latestUpdatedAt = notes[0]?.data.updatedAt;
+const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}`;
 ---
 
 <BaseLayout
@@ -24,7 +24,9 @@ const notes = (await getCollection("notas"))
           <p class="notes-intro__description">
             Ideas en proceso, conexiones y apuntes que cambian con el tiempo.
           </p>
-          <p class="notes-intro__meta">27 notas · Actualizado 31.07.2026</p>
+          <p class="notes-intro__meta">
+            {noteCountLabel} · {latestUpdatedAt ? `Actualizado ${formatNoteDate(latestUpdatedAt)}` : "Sin actualizaciones"}
+          </p>
         </div>
         <div class="notes-intro__graph" aria-hidden="true">
           <span class="intro-node intro-node--a"></span>
@@ -145,7 +147,12 @@ const notes = (await getCollection("notas"))
           }
 
           const direction = sortControl?.value === "oldest" ? 1 : -1;
-          return direction * (first.dataset.updated ?? "").localeCompare(second.dataset.updated ?? "");
+          const dateDifference =
+            direction * (first.dataset.updated ?? "").localeCompare(second.dataset.updated ?? "");
+          return (
+            dateDifference ||
+            (first.dataset.archive ?? "").localeCompare(second.dataset.archive ?? "", "es")
+          );
         });
 
         let visible = 0;

@@ -1,0 +1,44 @@
+import { getCollection, type CollectionEntry } from "astro:content"
+
+export const NOTE_MATURITY = {
+  semilla: {
+    label: "Semilla",
+    notice:
+      "Esta nota es una semilla. Es un apunte inicial que todavía puede cambiar de forma.",
+  },
+  "en-crecimiento": {
+    label: "En crecimiento",
+    notice:
+      "Esta nota está en crecimiento. Puede cambiar a medida que aparecen nuevas conexiones.",
+  },
+  perenne: {
+    label: "Perenne",
+    notice:
+      "Esta nota es perenne. Su estructura es estable, aunque puede seguir recibiendo ajustes y conexiones.",
+  },
+} as const
+
+export function compareNotesByRecent(
+  first: CollectionEntry<"notas">,
+  second: CollectionEntry<"notas">,
+) {
+  const dateDifference =
+    second.data.updatedAt.getTime() - first.data.updatedAt.getTime()
+  return (
+    dateDifference ||
+    first.data.archiveNumber.localeCompare(second.data.archiveNumber, "es")
+  )
+}
+
+export async function getVisibleSpanishNotes(includeDrafts: boolean) {
+  return (await getCollection("notas"))
+    .filter(
+      (entry) =>
+        (includeDrafts || !entry.data.draft) && entry.data.language === "es",
+    )
+    .sort(compareNotesByRecent)
+}
+
+export function formatNoteDate(date: Date) {
+  return date.toISOString().slice(0, 10).split("-").reverse().join(".")
+}

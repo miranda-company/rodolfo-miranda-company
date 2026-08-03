@@ -24,8 +24,7 @@ no presupone un despliegue externo.
 | Portada | `/` | Baseline revisado | JSON validado y previews de los anclajes no draft | Se genera; indexación bloqueada |
 | Yo | `/yo` | Prototipo codificado, retrato aprobado | Biografía parcial; cuatro etapas y un párrafo pendientes | Se genera con avisos provisionales |
 | Notas | `/notas` | Índice revisado | 3 anclajes y 24 fixtures draft | Se genera con 3 entradas |
-| Lectura de nota | `/notas/umbral` | Plantilla revisada | Copia editorial provisional | Se genera |
-| Otras notas | `/notas/[slug]` | Scaffold semántico | `margen` y `archivo` no draft; 24 fixtures draft | Solo `margen` y `archivo` |
+| Lectura de nota | `/notas/[slug]` | Plantilla compartida basada en Umbral | 3 anclajes y 24 fixtures draft | Solo `umbral`, `margen` y `archivo` |
 | Mediateca | `/mediateca` | Catálogo revisado | 3 anclajes y 10 fixtures draft | Se genera con 3 referencias |
 | Referencia | `/mediateca/modulor` | Plantilla revisada | Comentario editorial provisional | Se genera |
 | Otras referencias | `/mediateca/[slug]` | Renderizador codificado | `cosas` y `orden` no draft; 10 fixtures draft | Solo `cosas` y `orden` |
