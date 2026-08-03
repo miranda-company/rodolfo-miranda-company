@@ -39,12 +39,15 @@ own editorial fields and publication boundaries.
   using provisional development placeholders.
 - `/experimentos` — current or recently released experiments. Provisional
   semantic structure with no published entries.
-- `/contacto` — contact route. Provisional semantic structure.
 
 ## Current status
 
-- The homepage preserves the approved design and links to the main areas of the
-  garden.
+- The homepage retains the established visual system while intentionally
+  replacing the former Contacto panel with Portafolio. Its four panels now link
+  to Yo, Notas, Mediateca, and Portafolio.
+- Homepage panel statistics are derived from published collection entries: the
+  latest Nota publication date, the number of published Notas, the number of
+  published Mediateca items, and the number of published Portfolio projects.
 - Yo includes a biography, local portrait, and professional timeline; four
   career stages and one biographical passage still require editing.
 - Notas displays 27 ordinary entries in development, plus one isolated technical
@@ -56,7 +59,7 @@ own editorial fields and publication boundaries.
 - Portafolio includes search, tag filters, three fictional cases for design
   review, and one isolated technical MDX route. None are included in the
   production build.
-- Experimentos and Contacto remain provisional scaffolding.
+- Experimentos remains provisional scaffolding.
 - The first release is in Spanish. The structure allows for a future English
   version, but translated routes do not exist yet.
 - Search-engine indexing remains disabled through `noindex` and `robots.txt`

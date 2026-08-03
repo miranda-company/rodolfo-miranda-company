@@ -20,7 +20,7 @@ o presentar el jardín como una publicación terminada.
       entrada.
 - [ ] Confirmar que cada referencia aprobada usa `editorialState: revisado` y
       que ningún aviso provisional se ha retirado antes de la aprobación.
-- [ ] Completar el contenido y el diseño de Experimentos y Contacto.
+- [ ] Completar el contenido y el diseño de Experimentos.
 
 ## Imágenes y contenido enriquecido
 

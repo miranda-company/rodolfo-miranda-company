@@ -266,6 +266,20 @@ scaffolding only; card design and outbound-link behavior are deferred.
 ## Site copy
 
 Homepage and Ahora copy use validated JSON collections. Yo uses its own
-validated JSON profile collection, while Contacto uses the Markdown page
-collection. These files are intentionally editable without changing Astro
-components.
+validated JSON profile collection. These files are intentionally editable
+without changing Astro components.
+
+`homepage.json` requires exactly four archive panels with the validated kinds
+`yo`, `notas`, `mediateca`, and `portafolio`. Contacto is no longer a homepage
+panel or a content route. Static panel copy remains in JSON, while
+`src/pages/index.astro` derives these values from published Spanish entries at
+build time:
+
+- Notas: latest `publishedAt` date and total published-note count;
+- Mediateca: total published-reference count;
+- Portafolio: total published-project count.
+
+The derived statistics use `getVisibleSpanishNotes(false)`,
+`getVisibleSpanishMedia(false)`, and `getVisibleSpanishProjects(false)`. Drafts
+and `fixture: true` entries therefore never contribute to homepage publication
+statistics.

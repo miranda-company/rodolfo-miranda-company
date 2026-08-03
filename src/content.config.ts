@@ -270,17 +270,6 @@ const experimentos = defineCollection({
   }),
 })
 
-const pages = defineCollection({
-  loader: glob({ base: "./src/content/pages", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string().min(1),
-    summary: z.string().min(1),
-    draft: z.boolean().default(false),
-    language,
-    translationKey,
-  }),
-})
-
 const timelineEntry = z
   .object({
     role: z.string().min(1),
@@ -356,7 +345,7 @@ const profile = defineCollection({
               href: internalUrl,
             }),
           )
-          .length(3),
+          .length(2),
       }),
       language,
     })
@@ -402,7 +391,7 @@ const homepage = defineCollection({
           metadata: z.string().min(1),
           reveal: z.string().min(1),
           href: z.string().startsWith("/"),
-          kind: z.enum(["yo", "notas", "mediateca", "contacto"]),
+          kind: z.enum(["yo", "notas", "mediateca", "portafolio"]),
         }),
       )
       .length(4),
@@ -432,7 +421,6 @@ export const collections = {
   mediateca,
   portafolio,
   experimentos,
-  pages,
   profile,
   homepage,
   ahora,

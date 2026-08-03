@@ -15,7 +15,9 @@ filters and sorting, and Portafolio search and tag filtering.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
-- `src/pages/index.astro` preserves the design-approved homepage.
+- `src/pages/index.astro` retains the established homepage composition while
+  intentionally replacing the historical Contacto panel with Portafolio. The
+  current four-panel index links to Yo, Notas, Mediateca, and Portafolio.
 - `/notas` and `NoteArticle.astro` preserve the approved Notas garden and reading
   baseline.
 - `/mediateca` and `/mediateca/modulor` preserve the approved catalogue and
@@ -23,7 +25,7 @@ filters and sorting, and Portafolio search and tag filtering.
 - `/yo` is a coded editorial prototype driven by validated profile content.
 - `/portafolio` is a curated case-file index with framework-free search and tag
   filtering; each case uses the shared detail geometry.
-- `/experimentos` and `/contacto` remain provisional semantic scaffolds.
+- `/experimentos` remains provisional semantic scaffolding.
 
 Historical screenshots under `docs/figma-baseline/`, `docs/notas-baseline/`,
 `docs/mediateca-baseline/`, and `docs/integrated-baseline/` remain historical
@@ -115,7 +117,13 @@ Editable site copy remains separate from templates:
 - `src/content/site/homepage.json`
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
-- `src/content/pages/contacto.md`
+
+The homepage panel titles, descriptions, metadata labels, routes, and kinds are
+validated in `homepage.json`. `src/pages/index.astro` replaces collection-driven
+values at build time: the Notas panel receives the latest published-note date
+and published-note count, while Mediateca and Portafolio receive their published
+entry counts. These statistics use the same centralized helpers and production
+boundary as route generation, so drafts and technical fixtures are excluded.
 
 Spanish remains at root URLs. Schemas include language and optional translation
 keys so English can be added later without activating `/en/` routes now.
@@ -127,8 +135,8 @@ circular previous/next props. Portfolio sequence follows `displayOrder`.
 Development appends explicitly typed fixture routes without inserting fixtures
 into editorial navigation; production never appends them.
 
-Excluding redirect aliases, development exposes 53 canonical routes: seven
+Excluding redirect aliases, development exposes 52 canonical routes: six
 indexes or standalone pages, 27 ordinary Notas plus one note fixture, 13
 Mediateca references plus one media fixture, and three Portfolio placeholders
-plus one project fixture. A normal production build exposes 13 canonical routes:
-the seven standalone routes, three Notas and three Mediateca references.
+plus one project fixture. A normal production build exposes 12 canonical routes:
+the six standalone routes, three Notas and three Mediateca references.

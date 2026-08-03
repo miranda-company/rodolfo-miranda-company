@@ -25,7 +25,7 @@ no presupone un despliegue externo.
 
 | Sección | Ruta | Diseño | Contenido | Producción |
 | --- | --- | --- | --- | --- |
-| Portada | `/` | Baseline revisado | JSON validado y previews de los anclajes no draft | Se genera; indexación bloqueada |
+| Portada | `/` | Lenguaje visual establecido; Contacto sustituido intencionadamente por Portafolio | Cuatro paneles validados y estadísticas derivadas de entradas publicadas | Se genera; indexación bloqueada |
 | Yo | `/yo` | Prototipo codificado, retrato aprobado | Biografía parcial; cuatro etapas y un párrafo pendientes | Se genera con avisos provisionales |
 | Notas | `/notas` | Índice revisado | 27 notas ordinarias en desarrollo; la fixture técnica queda aislada | Se genera con 3 entradas |
 | Lectura de nota | `/notas/[slug]` | `NoteArticle.astro` sobre el scaffold editorial compartido | 27 rutas editoriales Markdown/MDX en desarrollo | Solo `umbral`, `margen` y `archivo` |
@@ -37,7 +37,6 @@ no presupone un despliegue externo.
 | Caso de estudio | `/portafolio/[slug]` | `PortfolioProject.astro` sobre el scaffold editorial compartido | 3 casos ficticios y provisionales | No se generan detalles |
 | Referencia MDX | `/portafolio/ejemplo-mdx` | Misma geometría y cuerpo enriquecido | Fixture técnica directa; no es trabajo real | Solo desarrollo; no genera artefactos |
 | Experimentos | `/experimentos` | Scaffold semántico | Solo existe `_template.md`, excluido | Se genera sin entradas |
-| Contacto | `/contacto` | Scaffold semántico | Copia Markdown provisional | Se genera |
 
 Los redirects de `/biblioteca` y `/biblioteca/*` hacia `/mediateca` y sus rutas
 canónicas están definidos en Astro. Su configuración permanente a nivel de
@@ -60,7 +59,7 @@ que aparecen en sus índices y secuencias. Cada `ejemplo-mdx` genera una ruta
 directa adicional para revisión técnica, pero no entra en índices, búsquedas,
 filtros, conteos, conexiones, secuencias ni previews de portada. Los templates
 de edición viven fuera de las colecciones y tampoco generan rutas. En total hay
-53 rutas canónicas de desarrollo y 13 de producción, sin contar aliases de
+52 rutas canónicas de desarrollo y 12 de producción, sin contar aliases de
 redirect. Los tres anclajes de Notas y los tres de
 Mediateca atraviesan el límite técnico de producción, pero su copia aún no debe
 considerarse aprobación editorial final.
@@ -75,6 +74,9 @@ considerarse aprobación editorial final.
 - Exclusión de drafts en la generación estática de producción.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Menú móvil accesible con cierre por `Escape` y restauración de foco.
+- Índice de portada con paneles para Yo, Notas, Mediateca y Portafolio. Las cifras
+  de Notas, Mediateca y Portafolio y la fecha de la última Nota se calculan desde
+  las entradas no draft, excluyendo fixtures técnicas.
 - Filtros, orden y conteos en Notas y Mediateca.
 - Sistema compartido de lectura de Notas mediante `NoteArticle.astro` para
   Markdown y MDX, con lenguaje de madurez derivado del contenido, conexiones a
@@ -105,7 +107,6 @@ considerarse aprobación editorial final.
 - Añadir proyectos profesionales reales, portadas aprobadas y contenido de caso
   de estudio.
 - Diseñar y completar Experimentos.
-- Diseñar y completar Contacto.
 - Revisar o reemplazar la copia provisional de Notas y Mediateca.
 - Añadir la futura versión en inglés.
 - Elegir y configurar el hosting.

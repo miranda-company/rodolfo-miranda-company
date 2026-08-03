@@ -7,6 +7,7 @@ import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getVisibleSpanishMedia } from "../lib/media";
 import { formatNoteDate, getVisibleSpanishNotes } from "../lib/notes";
+import { getVisibleSpanishProjects } from "../lib/portfolio";
 
 const home = await getEntry("homepage", "homepage");
 const ahora = await getEntry("ahora", "ahora");
@@ -17,6 +18,7 @@ if (!home || !ahora) {
 
 const publishedNotes = await getVisibleSpanishNotes(false);
 const publishedMedia = await getVisibleSpanishMedia(false);
+const publishedProjects = await getVisibleSpanishProjects(false);
 const latestPublishedNote = [...publishedNotes].sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 )[0];
@@ -34,6 +36,13 @@ const panels = home.data.panels.map((panel) => {
     return {
       ...panel,
       reveal: `${publishedMedia.length} ${publishedMedia.length === 1 ? "medio guardado" : "medios guardados"}`,
+    };
+  }
+
+  if (panel.kind === "portafolio") {
+    return {
+      ...panel,
+      reveal: `${publishedProjects.length} ${publishedProjects.length === 1 ? "proyecto publicado" : "proyectos publicados"}`,
     };
   }
 

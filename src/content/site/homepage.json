@@ -35,12 +35,12 @@
       },
       {
         "index": "04",
-        "title": "Contáctame",
-        "description": "¿Constuimos algo juntos?",
-        "metadata": "DISPONIBLE PARA CONVERSAR",
-        "reveal": "Barcelona + Remoto",
-        "href": "/contacto",
-        "kind": "contacto"
+        "title": "Portafolio",
+        "description": "Mi portafolio de proyectos y trabajo.",
+        "metadata": "Trabajo seleccionado",
+        "reveal": "0 proyectos publicados",
+        "href": "/portafolio",
+        "kind": "portafolio"
       }
     ]
   }
