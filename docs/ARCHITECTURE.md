@@ -6,7 +6,8 @@ The site is a static Astro application. Pages render to HTML at build time; the
 production output does not ship React, React Router, Tailwind, a CMS, a database,
 or authentication. Browser JavaScript remains small and framework-free. It
 handles navigation, route-aware fragment scrolling, the Notas and Mediateca
-filters and sorting, and Portafolio search and tag filtering.
+filters and sorting, Portafolio search and tag filtering, and synchronization
+of author-inserted image carousels.
 
 ## Presentation
 
@@ -70,7 +71,7 @@ labels live in the shared component.
 presentation used around the rendered Markdown or MDX body in all three
 collections. It covers body text, semantic H2/H3 spacing, lists, links and focus,
 blockquotes, code, horizontal rules, images, figures, captions, footnotes,
-tables, and videos at approximately 70ch. Collection stylesheets retain index
+tables, videos, and image carousels at approximately 70ch. Collection stylesheets retain index
 interfaces and structured elements such as maturity notices, project galleries,
 recurring ideas and metadata rails.
 
@@ -87,6 +88,17 @@ Vimeo only. It validates IDs, builds `youtube-nocookie.com` or Vimeo `dnt=1`
 URLs, requires a meaningful accessible title, lazy-loads without autoplay, and
 shows a visible fallback link. Arbitrary iframe URLs and pasted scripts are not
 supported.
+
+`ImageCarousel.astro` is the shared MDX component for local editorial image
+sequences. It accepts typed Astro `ImageMetadata`, validates its accessible label,
+image count, local sources, alternative text, and optional captions during
+rendering, and delegates responsive optimization to Astro's `Image` component.
+Presentation stays in `rich-content.css`; one scoped framework-free script
+initializes every instance, advances exactly one scroll-snap slide, updates the
+polite status after native scrolling, recalculates after resizing, and respects
+reduced motion. The no-JavaScript path remains a readable native horizontal
+scroller. Structured Portafolio covers and galleries stay outside this inline
+narrative component.
 
 Astro generates fenced-code highlighting statically with Shiki and the
 `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash and plain

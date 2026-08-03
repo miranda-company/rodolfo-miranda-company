@@ -3,7 +3,7 @@
 Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`. Usa
 `docs/templates/portafolio.md` para texto y contenido estándar, o
 `docs/templates/portafolio-mdx.mdx` cuando el cuerpo necesite un componente aprobado como
-`VideoEmbed`.
+`VideoEmbed` o `ImageCarousel`.
 
 ## Crear una entrada segura
 
@@ -44,12 +44,47 @@ import inlineImage from "../../assets/images/portafolio/mi-slug/imagen.jpg"
 </figure>
 ```
 
-No uses imágenes remotas, stock genérico ni material de cliente sin permiso.
+No uses imágenes remotas, stock genérico ni material de cliente sin permiso. Elimina metadatos
+personales, EXIF/GPS o datos de localización innecesarios antes de añadir un activo.
+
+### Carruseles narrativos
+
+`ImageCarousel` es un componente inline adicional para el cuerpo narrativo. `coverImage` continúa
+siendo la portada y `gallery` continúa siendo la galería estática estructurada que aparece después
+del cuerpo: no conviertas ni elimines ninguno de esos campos para usar el carrusel.
+
+```mdx
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import imageOne from "../../assets/images/portafolio/mi-proyecto/imagen-01.jpg"
+import imageTwo from "../../assets/images/portafolio/mi-proyecto/imagen-02.jpg"
+
+<ImageCarousel
+  label="Iteraciones verificadas del sistema"
+  images={[
+    {
+      src: imageOne,
+      alt: "Descripción accesible y concreta de la primera imagen",
+      caption: "Leyenda opcional.",
+    },
+    {
+      src: imageTwo,
+      alt: "Descripción accesible y concreta de la segunda imagen",
+    },
+  ]}
+/>
+```
+
+La API es `label: string` y `images: { src: ImageMetadata; alt: string; caption?: string }[]`.
+Requiere al menos dos imágenes locales, un nombre accesible no vacío y un `alt` significativo en
+cada imagen. Las leyendas son opcionales. No acepta URLs remotas, no reproduce automáticamente y
+no entra en bucle. Sin JavaScript conserva el desplazamiento horizontal nativo; el JavaScript
+añade botones, contador y sincronización con gestos táctiles o trackpad.
 
 ## Markdown, MDX, vídeo y código
 
-Markdown admite encabezados, párrafos, listas, enlaces, citas, imágenes, notas al pie, tablas y
-bloques de código. Usa MDX únicamente para componentes Astro revisados. Desde un archivo situado
+Markdown admite encabezados, párrafos, listas, enlaces, citas, imágenes estáticas, notas al pie,
+tablas y bloques de código. Usa MDX únicamente para componentes Astro revisados como vídeo o
+carrusel. Desde un archivo situado
 directamente en `src/content/portafolio/`, la importación correcta es:
 
 ```mdx
@@ -78,6 +113,7 @@ conexiones, `displayOrder` y metadatos. Cambia a `draft: false` solo con portada
 aprobados. Revisa el diff, usa `git add` únicamente sobre los archivos previstos, crea un commit
 descriptivo y haz `git push` a la rama correspondiente.
 
-`src/content/portafolio/ejemplo-mdx.mdx` es una fixture técnica, no una plantilla editorial. Se abre
+`src/content/portafolio/ejemplo-mdx.mdx` es una fixture técnica, no una plantilla editorial. Incluye
+un carrusel narrativo sin modificar su galería estructurada. Se abre
 directamente en desarrollo, usa `fixture: true`, `draft: true` y `P.999`, y queda fuera del índice,
 filtros, conteos, conexiones, secuencia y producción.

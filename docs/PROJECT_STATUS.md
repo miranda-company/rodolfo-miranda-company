@@ -83,14 +83,18 @@ considerarse aprobación editorial final.
   notas y rutas internas, y navegación anterior/siguiente circular.
 - Componentes MDX aprobados con `VideoEmbed.astro`: proveedores YouTube y Vimeo
   permitidos explícitamente, títulos accesibles, captions y enlaces de respaldo.
+- `ImageCarousel.astro` compartido por Notas, Mediateca y Portafolio: imágenes
+  locales optimizadas, etiqueta y alternativas validadas, scroll-snap, controles
+  en español, contador accesible, movimiento reducido y mejora progresiva sin
+  autoplay ni dependencias de interfaz.
 - Bloques de código estáticos resaltados con Shiki, sin runtime cliente y con
   desplazamiento interno para líneas largas.
 - Fixture MDX tipada y excluida explícitamente de listas editoriales, previews,
   secuencias y producción.
 - Scaffold `EditorialDetailLayout.astro` compartido por Notas, Portafolio y
   Mediateca, con geometría 170/720/210 y colapso lógico responsive.
-- Sistema `.rich-content` común para Markdown/MDX, imágenes, figuras, notas al
-  pie, tablas, código Shiki y vídeos permitidos en las tres colecciones.
+- Sistema `.rich-content` común para Markdown/MDX, imágenes, figuras, carruseles,
+  notas al pie, tablas, código Shiki y vídeos permitidos en las tres colecciones.
 - Generación canónica de todas las referencias mediante `/mediateca/[slug]` y
   `editorialState` separado del límite `draft`.
 - Plantillas y guías de autoría externas a las colecciones para Notas,

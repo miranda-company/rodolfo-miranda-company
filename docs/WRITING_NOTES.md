@@ -34,9 +34,10 @@ forma alternativa de mantener un borrador: sirve únicamente para aislar verific
 Usa `.md` para texto, encabezados, listas, citas, enlaces, imágenes, notas al pie y bloques de
 código. Es la opción predeterminada y no requiere importar componentes.
 
-Usa `.mdx` únicamente cuando la nota necesite `VideoEmbed` u otro componente Astro de contenido
-que haya sido revisado y aprobado. Cambiar `mi-nota.md` por `mi-nota.mdx` conserva el ID `mi-nota`,
-la ruta `/notas/mi-nota` y todas sus referencias. No hace falta modificar `NoteArticle.astro`.
+Usa `.mdx` únicamente cuando la nota necesite `VideoEmbed`, `ImageCarousel` u otro componente Astro
+de contenido que haya sido revisado y aprobado. Cambiar `mi-nota.md` por `mi-nota.mdx` conserva el
+ID `mi-nota`, la ruta `/notas/mi-nota`, sus metadatos y todas sus referencias. No hace falta
+modificar `NoteArticle.astro`.
 
 Desde `src/content/notas/`, la importación correcta del vídeo es:
 
@@ -68,6 +69,40 @@ del reproductor y no acepta URLs de iframe arbitrarias.
 - El vídeo permanece alojado en YouTube o Vimeo: no es necesario añadir el archivo audiovisual al
   repositorio.
 
+### Insertar un carrusel de imágenes
+
+`ImageCarousel` permite colocar una secuencia de imágenes locales entre párrafos, encabezados,
+vídeos, código u otros bloques del cuerpo. Requiere MDX; una imagen estática normal puede seguir en
+`.md`. Guarda los activos en `src/assets/images/notas/<slug>/` e impórtalos desde la entrada:
+
+```mdx
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import imageOne from "../../assets/images/notas/mi-nota/imagen-01.jpg"
+import imageTwo from "../../assets/images/notas/mi-nota/imagen-02.jpg"
+
+<ImageCarousel
+  label="Exploraciones iniciales del sistema"
+  images={[
+    {
+      src: imageOne,
+      alt: "Descripción accesible y concreta de la primera imagen",
+      caption: "Leyenda opcional de la primera imagen.",
+    },
+    {
+      src: imageTwo,
+      alt: "Descripción accesible y concreta de la segunda imagen",
+    },
+  ]}
+/>
+```
+
+La API es `label: string` y `images: { src: ImageMetadata; alt: string; caption?: string }[]`.
+`label` da nombre accesible a la región; se necesitan al menos dos imágenes importadas localmente y
+cada una requiere un `alt` no vacío. La leyenda es opcional, pero recomendable cuando la prosa no
+explica el contexto. No admite URLs remotas, no reproduce automáticamente ni entra en bucle. Sin
+JavaScript, las imágenes siguen disponibles mediante desplazamiento horizontal nativo; con
+JavaScript, los botones, el contador, el gesto táctil y el trackpad permanecen sincronizados.
+
 ### Añadir código
 
 Los bloques de código funcionan igual en `.md` y `.mdx`. Usa tres acentos graves e indica el
@@ -97,7 +132,9 @@ import inlineImage from "../../assets/images/notas/mi-slug/imagen.jpg"
 
 Después usa `<figure>`, un `<img>` con `src`, `width`, `height` y `alt`, y un `<figcaption>` cuando
 aporte contexto. El sistema compartido `.rich-content` mantiene la imagen dentro de la columna de
-lectura. No uses una URL remota como sustituto de un activo editorial aprobado.
+lectura. No uses una URL remota como sustituto de un activo editorial aprobado. Antes de incorporar
+cualquier archivo, elimina metadatos personales, EXIF/GPS o información de ubicación que no sea
+necesaria para publicarlo.
 
 ## Política de componentes y widgets
 
@@ -117,8 +154,10 @@ conexiones estén aprobados para publicación.
 
 ## Referencia técnica MDX
 
-`src/content/notas/ejemplo-mdx.mdx` conserva una referencia directamente visible de `VideoEmbed`
-y de los lenguajes de código admitidos. No es una plantilla para copiar sus metadatos: usa
+`src/content/notas/ejemplo-mdx.mdx` conserva una referencia directamente visible de
+`ImageCarousel`, `VideoEmbed` y los lenguajes de código admitidos. Incluye dos carruseles para
+comprobar que las instancias funcionan de manera independiente. No es una plantilla para copiar
+sus metadatos: usa
 deliberadamente `fixture: true`, `draft: true` y el número reservado `N.999`. Las notas genuinas
 deben partir de las plantillas de `docs/templates/` y el próximo número editorial continúa siendo
 `N.028`.

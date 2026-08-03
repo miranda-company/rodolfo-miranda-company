@@ -34,12 +34,13 @@ without storing fabricated prose in the content file. Both formats render
 through `render(entry)` and the same `NoteArticle.astro` component.
 
 Ordinary notes should remain `.md`; MDX is reserved for approved Astro content
-components. `VideoEmbed.astro` is the only rich embed in the current authoring
-system and allowlists YouTube and Vimeo. It validates IDs, constructs player and
-fallback URLs internally, exposes a required accessible title, and never accepts
-arbitrary iframe URLs or scripts. Future providers require their own reviewed
-component, an explicit allowlist decision, meaningful fallback content, and the
-minimum client-side JavaScript necessary.
+components. `VideoEmbed.astro` allowlists YouTube and Vimeo. It validates IDs,
+constructs player and fallback URLs internally, exposes a required accessible
+title, and never accepts arbitrary iframe URLs or scripts. `ImageCarousel.astro`
+accepts only locally imported Astro image metadata and provides the shared
+image-carousel behavior described below. Future providers or component types
+require their own reviewed implementation, an explicit allowlist decision,
+meaningful fallback content, and the minimum client-side JavaScript necessary.
 
 Fenced code blocks in Markdown and MDX use Astro's built-in Shiki highlighter
 with the `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash, and
@@ -89,6 +90,36 @@ with validated IDs, required accessible titles, visible fallback links,
 `youtube-nocookie.com`, Vimeo `dnt=1`, lazy loading and no autoplay. Arbitrary
 iframes and pasted scripts remain unsupported.
 
+`src/components/content/ImageCarousel.astro` is also collection-neutral and is
+supported inside Notas, Portafolio, and Mediateca MDX bodies. Its typed API is:
+
+```ts
+interface CarouselImage {
+  src: ImageMetadata
+  alt: string
+  caption?: string
+}
+
+interface Props {
+  label: string
+  images: CarouselImage[]
+}
+```
+
+The component requires a non-empty accessible `label`, at least two locally
+imported images, and meaningful non-empty alternative text for every image.
+Optional captions must contain text when supplied. Remote strings and malformed
+image objects fail rendering with a Spanish error. Astro generates responsive
+image sources without exceeding each local source's useful dimensions.
+
+The carousel uses a stable 16:10 contained-image stage, ordered-list and figure
+semantics, visible Spanish previous/next controls, an independently updated live
+counter, CSS scroll snap, touch and trackpad scrolling, and reduced-motion-aware
+movement. It never autoplays or loops. Without JavaScript every image, caption,
+and alternative text remains available through native horizontal scrolling;
+the small framework-free script adds one-slide controls, counter synchronization,
+responsive recalculation, and support for multiple independent instances.
+
 Preferred local-image folders are:
 
 - `src/assets/images/notas/<slug>/`;
@@ -97,7 +128,9 @@ Preferred local-image folders are:
 
 Every meaningful image needs useful alternative text. Captions are optional.
 Structured Portfolio covers and galleries remain separate from inline editorial
-images and continue through Astro's image pipeline.
+images and continue through Astro's image pipeline. Normal static images work in
+`.md`; `ImageCarousel` requires `.mdx`. Authors should strip unnecessary personal,
+EXIF/GPS, and location metadata before committing image files.
 
 ## Mediateca
 
@@ -235,6 +268,8 @@ Gallery figures render after the Markdown body in the reading flow. Authors may
 also use semantic Markdown/HTML figures within the body when an image belongs to
 a specific section; those figures require alternative text and should include a
 caption when the surrounding prose does not provide enough context.
+An inline `ImageCarousel` in the MDX body is an additional narrative component;
+it does not replace `coverImage`, convert `gallery`, or change their rendering.
 
 Markdown H2 sections form the primary case-study sequence (for example,
 Contexto, El reto, Enfoque, Lo que construimos, and Resultado y aprendizajes).

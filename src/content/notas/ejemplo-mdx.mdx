@@ -18,8 +18,54 @@ language: "es"
 ---
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import technicalSymbol from "../../assets/images/simbolo-lobo.png"
+import technicalPortrait from "../../assets/images/retrato-rodolfo-miranda.jpg"
 
 Esta nota es una referencia técnica de desarrollo. No contiene afirmaciones sobre el trabajo de Rodolfo, no implica su respaldo a los vídeos externos y no forma parte del contenido aprobado para producción.
+
+## Carrusel de imágenes locales
+
+Este primer carrusel comprueba tres proporciones de archivo diferentes sin representar una pieza editorial ni un proyecto real.
+
+<ImageCarousel
+  label="Prueba técnica principal de imágenes locales"
+  images={[
+    {
+      src: technicalSymbol,
+      alt: "Silueta geométrica rojiza de un lobo caminando sobre fondo transparente",
+      caption: "Símbolo local horizontal usado para comprobar transparencias y formato panorámico.",
+    },
+    {
+      src: technicalPortrait,
+      alt: "Retrato de Rodolfo Miranda sonriendo, con camiseta negra y un paisaje urbano junto al agua al fondo",
+      caption: "Retrato local vertical usado únicamente para comprobar que la imagen completa permanece visible.",
+    },
+    {
+      src: technicalSymbol,
+      alt: "Silueta geométrica rojiza de un lobo caminando sobre fondo transparente",
+      caption: "Repetición deliberada del activo horizontal para comprobar una tercera posición sin añadir contenido editorial.",
+    },
+  ]}
+/>
+
+El párrafo entre ejemplos confirma que el carrusel puede convivir con el flujo editorial normal.
+
+<ImageCarousel
+  label="Segunda instancia independiente del carrusel"
+  images={[
+    {
+      src: technicalPortrait,
+      alt: "Retrato de Rodolfo Miranda sonriendo, con camiseta negra y un paisaje urbano junto al agua al fondo",
+      caption: "Primera imagen de la segunda instancia técnica.",
+    },
+    {
+      src: technicalSymbol,
+      alt: "Silueta geométrica rojiza de un lobo caminando sobre fondo transparente",
+      caption: "Segunda imagen de la segunda instancia técnica.",
+    },
+  ]}
+/>
 
 ## Vídeo de YouTube
 

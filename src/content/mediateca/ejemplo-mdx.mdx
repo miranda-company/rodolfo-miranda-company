@@ -26,7 +26,9 @@ language: "es"
 ---
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
 import technicalImage from "../../assets/images/simbolo-lobo.png"
+import technicalPortrait from "../../assets/images/retrato-rodolfo-miranda.jpg"
 
 Esta ruta existe solo para verificar el sistema de contenido enriquecido. No representa una recomendación de Rodolfo ni una pieza creada por él.
 
@@ -41,6 +43,29 @@ Esta ruta existe solo para verificar el sistema de contenido enriquecido. No rep
   />
   <figcaption>Símbolo gráfico existente reutilizado únicamente como ejemplo técnico de imagen local.</figcaption>
 </figure>
+
+## Carrusel de imágenes locales
+
+<ImageCarousel
+  label="Prueba técnica del carrusel en Mediateca"
+  images={[
+    {
+      src: technicalImage,
+      alt: "Silueta geométrica rojiza de un lobo caminando sobre fondo transparente",
+      caption: "Símbolo local usado para comprobar una imagen horizontal con transparencia.",
+    },
+    {
+      src: technicalPortrait,
+      alt: "Retrato de Rodolfo Miranda sonriendo, con camiseta negra y un paisaje urbano junto al agua al fondo",
+      caption: "Retrato local usado únicamente para comprobar una imagen vertical completa.",
+    },
+    {
+      src: technicalImage,
+      alt: "Silueta geométrica rojiza de un lobo caminando sobre fondo transparente",
+      caption: "Repetición deliberada del activo horizontal para comprobar una tercera posición; no representa una referencia editorial.",
+    },
+  ]}
+/>
 
 ## Vídeos externos permitidos
 

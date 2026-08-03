@@ -77,10 +77,13 @@ Content is edited through Astro content collections and Markdown, MDX, or JSON
 files inside `src/content/`. Notas, Portafolio, and Mediateca share one detail-page
 scaffold and one rich-content presentation while retaining their own metadata and
 editorial semantics. Markdown is the default; MDX is used only when an approved
-Astro component is required. The allowlisted video component supports YouTube and
-Vimeo. Development fixtures make it possible to verify images, videos, code,
-filters, and routes without presenting them as published work. Entries with
-`draft: true` are excluded from normal production builds.
+Astro component is required. The approved component set includes allowlisted
+YouTube/Vimeo embeds and a shared local-image carousel for Notas, Mediateca, and
+Portfolio bodies. Carousels use Astro's image pipeline, native horizontal
+scrolling, accessible controls, and no autoplay. Development fixtures make it
+possible to verify images, carousels, videos, code, filters, and routes without
+presenting them as published work. Entries with `draft: true` are excluded from
+normal production builds.
 
 Notes and references can link to related material. Portfolio projects and
 experiments use their own content models. Complete schemas and editorial
@@ -96,7 +99,7 @@ instructions are documented in
 - Strict TypeScript and validated content collections.
 - Markdown, MDX, and JSON content with built-in Shiki syntax highlighting.
 - Custom CSS without a visual component framework.
-- Minimal framework-free JavaScript for navigation, filters, and search.
+- Minimal framework-free JavaScript for navigation, filters, search, and editorial image carousels.
 - Fonts bundled locally through Fontsource.
 - `pnpm` for dependencies and project tasks.
 

@@ -2,7 +2,7 @@
 
 Las referencias se guardan como Markdown o MDX en `src/content/mediateca/`. Usa
 `docs/templates/mediateca.md` para contenido estándar y `docs/templates/mediateca-mdx.mdx` cuando
-la nota editorial necesite un componente aprobado.
+la nota editorial necesite un componente aprobado como `VideoEmbed` o `ImageCarousel`.
 
 ## Crear una referencia segura
 
@@ -36,11 +36,46 @@ import inlineImage from "../../assets/images/mediateca/mi-slug/imagen.jpg"
 
 Usa el patrón semántico `<figure>`, `<img>` y `<figcaption>` de la plantilla MDX, preservando
 `width` y `height`. No uses URLs remotas como sustituto del repositorio de activos aprobado.
+Elimina EXIF/GPS, datos personales y metadatos de localización innecesarios antes de incorporar un
+archivo.
+
+### Carrusel de imágenes
+
+Guarda sus activos en `src/assets/images/mediateca/<slug>/`. El carrusel requiere MDX, aunque las
+imágenes estáticas siguen funcionando en Markdown.
+
+```mdx
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import imageOne from "../../assets/images/mediateca/mi-referencia/imagen-01.jpg"
+import imageTwo from "../../assets/images/mediateca/mi-referencia/imagen-02.jpg"
+
+<ImageCarousel
+  label="Detalles visuales de la referencia"
+  images={[
+    {
+      src: imageOne,
+      alt: "Descripción accesible y concreta de la primera imagen",
+      caption: "Leyenda opcional.",
+    },
+    {
+      src: imageTwo,
+      alt: "Descripción accesible y concreta de la segunda imagen",
+    },
+  ]}
+/>
+```
+
+La API es `label: string` y `images: { src: ImageMetadata; alt: string; caption?: string }[]`.
+Valida un nombre accesible no vacío, al menos dos imágenes locales importadas y un `alt`
+significativo por imagen. Las leyendas son opcionales y recomendables cuando añaden contexto. El
+componente no acepta URLs remotas, no reproduce automáticamente ni entra en bucle. Sin JavaScript
+mantiene el desplazamiento horizontal nativo; con JavaScript sincroniza botones y contador con
+swipe, trackpad y desplazamiento manual.
 
 ## Markdown, MDX, vídeo y código
 
-Markdown cubre encabezados, párrafos, listas, enlaces, citas, imágenes, notas al pie, tablas y
-código. MDX se reserva para componentes Astro aprobados. La importación correcta de vídeo desde
+Markdown cubre encabezados, párrafos, listas, enlaces, citas, imágenes estáticas, notas al pie,
+tablas y código. MDX se reserva para componentes Astro aprobados. La importación correcta de vídeo desde
 `src/content/mediateca/` es:
 
 ```mdx
@@ -70,5 +105,6 @@ solo cuando la referencia esté lista para producción. Revisa el diff, añade l
 crea un commit descriptivo y haz `git push` a la rama correspondiente.
 
 `src/content/mediateca/ejemplo-mdx.mdx` es una fixture técnica, no una recomendación ni una plantilla.
-Usa `fixture: true`, `draft: true` y `M.999`; solo tiene ruta directa en desarrollo y queda fuera del
+Incluye un carrusel local para verificar la presentación compartida. Usa `fixture: true`,
+`draft: true` y `M.999`; solo tiene ruta directa en desarrollo y queda fuera del
 catálogo, filtros, conteos, conexiones y producción.

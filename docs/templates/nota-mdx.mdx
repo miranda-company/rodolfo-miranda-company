@@ -16,8 +16,34 @@ language: "es"
 ---
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import imageOne from "../../assets/images/notas/slug/imagen-01.jpg"
+import imageTwo from "../../assets/images/notas/slug/imagen-02.jpg"
+import imageThree from "../../assets/images/notas/slug/imagen-03.jpg"
 
-El vídeo puede aparecer entre dos fragmentos del texto.
+Los componentes pueden aparecer entre dos fragmentos del texto.
+
+<ImageCarousel
+  label="Exploraciones iniciales del sistema"
+  images={[
+    {
+      src: imageOne,
+      alt: "Descripción accesible de la primera imagen",
+      caption: "Leyenda opcional de la primera imagen.",
+    },
+    {
+      src: imageTwo,
+      alt: "Descripción accesible de la segunda imagen",
+      caption: "Leyenda opcional de la segunda imagen.",
+    },
+    {
+      src: imageThree,
+      alt: "Descripción accesible de la tercera imagen",
+    },
+  ]}
+/>
+
+La nota continúa después del carrusel.
 
 <VideoEmbed
   provider="youtube"
