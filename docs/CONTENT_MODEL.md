@@ -5,13 +5,14 @@ All collection schemas live in `src/content.config.ts` and are checked by
 
 ## Notas
 
-Markdown entries contain a title, summary, publication and update dates, growth
+Markdown and MDX entries contain a title, summary, publication and update dates, growth
 state (`semilla`, `en-crecimiento`, or `perenne`), stable archive number, card
 format (`compact`, `standard`, `visual`, or `featured`), tags, related-note
 references, optional labeled internal links, featured and draft flags, language,
-an optional translation key, and a Markdown body. Card format controls
+an optional translation key, and a Markdown or MDX body. Card format controls
 presentation in the garden without changing the article hierarchy, editorial
-meaning, or URL of an entry.
+meaning, or URL of an entry. Renaming an entry from `.md` to `.mdx` preserves
+its content ID, slug, and public route.
 
 Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use
@@ -19,7 +20,21 @@ The default index order and circular previous/next navigation both use
 `relatedNotes` stores note IDs and resolves their current titles and routes;
 `relatedLinks` stores an optional visible `label` and an internal `href` that
 begins with `/`. Empty Markdown bodies render an interface-only editorial state
-without storing fabricated prose in the content file.
+without storing fabricated prose in the content file. Both formats render
+through `render(entry)` and the same `NoteArticle.astro` component.
+
+Ordinary notes should remain `.md`; MDX is reserved for approved Astro content
+components. `VideoEmbed.astro` is the only rich embed in the current authoring
+system and allowlists YouTube and Vimeo. It validates IDs, constructs player and
+fallback URLs internally, exposes a required accessible title, and never accepts
+arbitrary iframe URLs or scripts. Future providers require their own reviewed
+component, an explicit allowlist decision, meaningful fallback content, and the
+minimum client-side JavaScript necessary.
+
+Fenced code blocks in Markdown and MDX use Astro's built-in Shiki highlighter
+with the `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash, and
+plain text require no client-side runtime. Long lines scroll within the code
+block instead of expanding the reading column.
 
 The `draft` field is also the publication boundary for the garden. Development
 includes draft entries so the complete 27-card design fixture can be reviewed;
@@ -32,9 +47,9 @@ by the approved homepage. Their summaries and any article bodies are
 provisional editorial copy that requires Rodolfo's review and approval before
 launch; currently only `umbral` contains a demonstration body.
 
-See [WRITING_NOTES.md](WRITING_NOTES.md) and
-[templates/nota.md](templates/nota.md) for the authoring workflow and a safe
-starter file outside the content collection.
+See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
+and [templates/nota-mdx.mdx](templates/nota-mdx.mdx) for the authoring workflow
+and safe starter files outside the content collection.
 
 ## Mediateca
 

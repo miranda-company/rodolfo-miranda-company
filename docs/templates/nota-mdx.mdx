@@ -1,0 +1,38 @@
+---
+title: "Título de la nota"
+summary: "Resumen breve."
+publishedAt: 2026-08-03
+updatedAt: 2026-08-03
+state: "semilla"
+archiveNumber: "N.000"
+cardFormat: "standard"
+tags:
+  - "Diseño"
+relatedNotes: []
+relatedLinks: []
+featured: false
+draft: true
+language: "es"
+---
+
+import VideoEmbed from "../../components/content/VideoEmbed.astro"
+
+El vídeo puede aparecer entre dos fragmentos del texto.
+
+<VideoEmbed
+  provider="youtube"
+  videoId="VIDEO_ID"
+  title="Descripción accesible del vídeo"
+  caption="Comentario editorial opcional sobre el vídeo."
+/>
+
+## Lo que muestra el vídeo
+
+La nota continúa después del contenido audiovisual.
+
+```ts
+interface Note {
+  title: string
+  state: "semilla" | "en-crecimiento" | "perenne"
+}
+```

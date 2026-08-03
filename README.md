@@ -68,8 +68,9 @@ The detailed and current source of truth is
 
 ## How content grows
 
-Content is edited through Astro content collections and Markdown or JSON files
-inside `src/content/`. Development fixtures make it possible to review layouts,
+Content is edited through Astro content collections and Markdown, MDX, or JSON
+files inside `src/content/`. Notes remain Markdown by default and use MDX only
+when an approved Astro content component is required. Development fixtures make it possible to review layouts,
 filters, and routes without presenting them as published work. Entries with
 `draft: true` are excluded from normal production builds.
 
@@ -82,7 +83,7 @@ instructions are documented in
 
 - Astro with static output.
 - Strict TypeScript and validated content collections.
-- Markdown and JSON content.
+- Markdown, MDX, and JSON content with built-in Shiki syntax highlighting.
 - Custom CSS without a visual component framework.
 - Minimal framework-free JavaScript for navigation, filters, and search.
 - Fonts bundled locally through Fontsource.

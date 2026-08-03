@@ -42,3 +42,18 @@ export async function getVisibleSpanishNotes(includeDrafts: boolean) {
 export function formatNoteDate(date: Date) {
   return date.toISOString().slice(0, 10).split("-").reverse().join(".")
 }
+
+export function hasEditorialNoteBody(entry: CollectionEntry<"notas">) {
+  const body = entry.body?.trim()
+  if (!body) return false
+  if (!entry.filePath?.endsWith(".mdx")) return true
+
+  const contentWithoutAuthoringImports = body
+    .replace(/^\s*import\s+.+?\s+from\s+["'][^"']+["'];?\s*$/gm, "")
+    .replace(/^\s*import\s+["'][^"']+["'];?\s*$/gm, "")
+    .replace(/^\s*export\s+.+$/gm, "")
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+    .trim()
+
+  return contentWithoutAuthoringImports.length > 0
+}

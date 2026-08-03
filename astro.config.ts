@@ -1,9 +1,18 @@
-import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx"
+import { defineConfig } from "astro/config"
 
-const port = Number.parseInt(process.env.PORT ?? "8443", 10);
+const port = Number.parseInt(process.env.PORT ?? "8443", 10)
 
 export default defineConfig({
   output: "static",
+  integrations: [mdx()],
+  markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "github-light",
+      wrap: false,
+    },
+  },
   redirects: {
     "/biblioteca": {
       status: 301,
@@ -25,4 +34,4 @@ export default defineConfig({
     host: true,
     port,
   },
-});
+})

@@ -1,7 +1,7 @@
 ---
 import { getEntries, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatNoteDate, NOTE_MATURITY } from "../lib/notes";
+import { formatNoteDate, hasEditorialNoteBody, NOTE_MATURITY } from "../lib/notes";
 import "../styles/notes.css";
 import MaturityMarker from "./MaturityMarker.astro";
 import PageShell from "./PageShell.astro";
@@ -21,7 +21,7 @@ const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(
 );
 const relatedLinks = entry.data.relatedLinks;
 const hasConnections = relatedNotes.length > 0 || relatedLinks.length > 0;
-const hasBody = Boolean(entry.body?.trim());
+const hasBody = hasEditorialNoteBody(entry);
 const maturity = NOTE_MATURITY[entry.data.state];
 const publishedDate = entry.data.publishedAt.toISOString().slice(0, 10);
 const updatedDate = entry.data.updatedAt.toISOString().slice(0, 10);
