@@ -1,95 +1,96 @@
 # Rodolfo Miranda Company
 
-Este repositorio contiene el código fuente y el contenido editable del jardín
-digital personal de Rodolfo Miranda. Reúne contexto personal y trayectoria
-profesional, notas en distintos estados de madurez, una colección de medios,
-proyectos seleccionados y un espacio para experimentos actuales o recién
-publicados.
+This repository contains the source code and editable content for Rodolfo
+Miranda's personal digital garden. It brings together personal context and
+professional experience, notes at different stages of maturity, a mixed-media
+collection, selected projects, and a space for current or recently released
+experiments.
 
-El sitio está pensado como un cuerpo de trabajo que puede crecer, revisarse y
-establecer conexiones. No sigue la lógica de un blog cronológico ni la de un
-portafolio convencional.
+The site is designed as a growing, interconnected body of work rather than a
+chronological blog or a conventional portfolio.
 
-## El jardín
+## The garden
 
-El jardín ofrece un lugar común para ideas, referencias, proyectos y
-experimentos. Una entrada puede empezar incompleta, adquirir contexto y enlazar
-con otras partes del archivo a medida que evoluciona. La arquitectura de
-contenido admite material no terminado y hace visible su estado sin confundirlo
-con contenido final.
+The garden gives ideas, references, projects, and experiments a shared place to
+evolve and connect. An entry can begin incomplete, gain context, and link to
+other parts of the archive as it develops. The content architecture
+intentionally allows unfinished material and makes its status visible without
+presenting it as final work.
 
-Las notas usan tres estados de madurez:
+Notes use three maturity states:
 
-- **Semilla:** una observación o idea inicial.
-- **En crecimiento:** una nota desarrollada que todavía puede cambiar.
-- **Perenne:** una pieza estable que sigue abierta a revisión.
+- **Semilla (Seed):** an initial observation or idea.
+- **En crecimiento (Growing):** a developed note that can still change.
+- **Perenne (Perennial):** a stable piece that remains open to revision.
 
-Estos estados pertenecen a Notas. Mediateca, Portafolio y Experimentos tienen
-sus propios campos editoriales y límites de publicación.
+These states belong to Notas. Mediateca, Portafolio, and Experimentos use their
+own editorial fields and publication boundaries.
 
-## Recorridos
+## Routes
 
-- `/` — entrada al jardín y panorama de sus áreas principales. Diseño revisado.
-- `/yo` — biografía, trabajo actual y trayectoria profesional. Prototipo
-  implementado con contenido editorial pendiente.
-- `/notas` — notas evolutivas e ideas conectadas. Índice y plantilla de lectura
-  revisados.
-- `/mediateca` — libros y otras referencias para leer, ver o escuchar. Catálogo
-  y plantilla de referencia revisados.
-- `/portafolio` — selección de proyectos y casos de estudio. Prototipo
-  implementado con fixtures de desarrollo.
-- `/experimentos` — experimentos actuales o recién publicados. Estructura
-  semántica provisional, sin entradas publicadas.
-- `/contacto` — vía de contacto. Estructura semántica provisional.
+- `/` — entrance to the garden and overview of its main areas. Reviewed design.
+- `/yo` — biography, current work, and professional timeline. Implemented
+  prototype with editorial content still pending.
+- `/notas` — evolving notes and connected ideas. Reviewed index and reading
+  template.
+- `/mediateca` — books and other references to read, watch, or listen to.
+  Reviewed catalogue and reference template.
+- `/portafolio` — selected projects and case studies. Implemented prototype
+  using development fixtures.
+- `/experimentos` — current or recently released experiments. Provisional
+  semantic structure with no published entries.
+- `/contacto` — contact route. Provisional semantic structure.
 
-## Estado actual
+## Current status
 
-- La portada conserva el diseño aprobado y enlaza con las áreas principales.
-- Yo incluye biografía, retrato local y trayectoria; cuatro etapas profesionales
-  y un fragmento biográfico siguen pendientes de edición.
-- Notas muestra 27 entradas durante el desarrollo. Producción genera solo
-  `umbral`, `margen` y `archivo`; su copia todavía requiere aprobación editorial.
-- Mediateca muestra 13 referencias durante el desarrollo. Producción genera
-  solo `modulor`, `cosas` y `orden`; sus comentarios siguen siendo provisionales.
-- Portafolio incluye búsqueda, filtros por etiquetas y tres casos ficticios para
-  revisar el diseño. Ninguno se publica en la compilación de producción.
-- Experimentos y Contacto conservan scaffolding provisional.
-- La primera versión es en español. La estructura admite una futura versión en
-  inglés, pero todavía no existen rutas traducidas.
-- El rastreo está desactivado con `noindex` y `robots.txt` mientras el proyecto
-  permanezca en desarrollo.
-- No hay un despliegue ni proveedor de hosting documentado. El dominio previsto
-  es `www.rodolfomiranda.company`, pero todavía no está conectado según la
-  evidencia disponible en el repositorio.
+- The homepage preserves the approved design and links to the main areas of the
+  garden.
+- Yo includes a biography, local portrait, and professional timeline; four
+  career stages and one biographical passage still require editing.
+- Notas displays 27 entries in development. Production generates only
+  `umbral`, `margen`, and `archivo`; their copy still requires editorial
+  approval.
+- Mediateca displays 13 references in development. Production generates only
+  `modulor`, `cosas`, and `orden`; their commentary remains provisional.
+- Portafolio includes search, tag filters, and three fictional cases for design
+  review. None are included in the production build.
+- Experimentos and Contacto remain provisional scaffolding.
+- The first release is in Spanish. The structure allows for a future English
+  version, but translated routes do not exist yet.
+- Search-engine indexing remains disabled through `noindex` and `robots.txt`
+  while the project is in development.
+- No deployment or hosting provider is documented. The intended domain is
+  `www.rodolfomiranda.company`, but repository evidence does not show it as
+  connected yet.
 
-El detalle actualizado se mantiene en
+The detailed and current source of truth is
 [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md).
 
-## Cómo crece el contenido
+## How content grows
 
-El contenido se edita mediante colecciones de Astro, archivos Markdown y JSON
-dentro de `src/content/`. Los fixtures de desarrollo permiten revisar diseños,
-filtros y rutas sin presentarlos como obra publicada. Las entradas con
-`draft: true` se excluyen de la compilación normal de producción.
+Content is edited through Astro content collections and Markdown or JSON files
+inside `src/content/`. Development fixtures make it possible to review layouts,
+filters, and routes without presenting them as published work. Entries with
+`draft: true` are excluded from normal production builds.
 
-Notas y referencias pueden enlazar material relacionado. Los proyectos y los
-experimentos usan modelos de contenido propios. Los esquemas completos y las
-instrucciones editoriales están en
+Notes and references can link to related material. Portfolio projects and
+experiments use their own content models. Complete schemas and editorial
+instructions are documented in
 [docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md).
 
-## Tecnología
+## Technology
 
-- Astro con salida estática.
-- TypeScript estricto y colecciones de contenido validadas.
-- Contenido en Markdown y JSON.
-- CSS propio, sin framework de componentes visuales.
-- JavaScript mínimo y sin framework para navegación, filtros y búsqueda.
-- Fuentes empaquetadas localmente con Fontsource.
-- `pnpm` para dependencias y tareas del proyecto.
+- Astro with static output.
+- Strict TypeScript and validated content collections.
+- Markdown and JSON content.
+- Custom CSS without a visual component framework.
+- Minimal framework-free JavaScript for navigation, filters, and search.
+- Fonts bundled locally through Fontsource.
+- `pnpm` for dependencies and project tasks.
 
-## Desarrollo local
+## Local development
 
-El proyecto usa Node.js 22 y pnpm 10; las versiones están declaradas en
+The project uses Node.js 22 and pnpm 10. The versions are declared in
 `.mise.toml`.
 
 ```sh
@@ -100,40 +101,40 @@ pnpm run build
 pnpm run preview
 ```
 
-- `pnpm run dev` inicia Astro en `http://localhost:8443/` por defecto.
-- `pnpm run check` ejecuta los diagnósticos estrictos de Astro y TypeScript.
-- `pnpm run build` vuelve a comprobar el proyecto y genera el sitio estático.
-- `pnpm run preview` sirve localmente la última compilación de producción.
+- `pnpm run dev` starts Astro at `http://localhost:8443/` by default.
+- `pnpm run check` runs Astro and TypeScript strict diagnostics.
+- `pnpm run build` checks the project again and generates the static site.
+- `pnpm run preview` serves the latest production build locally.
 
-## Estructura y documentación
+## Structure and documentation
 
-- `src/pages/` — rutas de Astro.
-- `src/components/` — componentes y renderizadores compartidos.
-- `src/content/` — contenido editable y fixtures de desarrollo.
-- `src/styles/` — sistema visual y estilos por sección.
-- `public/` — archivos públicos que no pasan por la canalización de assets.
-- `docs/` — arquitectura, modelos editoriales, estado y referencias visuales.
+- `src/pages/` — Astro routes.
+- `src/components/` — shared components and renderers.
+- `src/content/` — editable content and development fixtures.
+- `src/styles/` — visual system and section-specific styles.
+- `public/` — public files that do not pass through the asset pipeline.
+- `docs/` — architecture, editorial models, project status, and visual
+  references.
 
-Documentación principal:
+Main documentation:
 
-- [Arquitectura](docs/ARCHITECTURE.md)
-- [Modelo de contenido](docs/CONTENT_MODEL.md)
-- [Sistema tipográfico](docs/TYPOGRAPHY_SYSTEM.md)
-- [Estado del proyecto](docs/PROJECT_STATUS.md)
-- [Lista de preparación para lanzamiento](docs/LAUNCH_CHECKLIST.md)
-- [Baseline integrado](docs/integrated-baseline/README.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Content model](docs/CONTENT_MODEL.md)
+- [Typography system](docs/TYPOGRAPHY_SYSTEM.md)
+- [Project status](docs/PROJECT_STATUS.md)
+- [Launch checklist](docs/LAUNCH_CHECKLIST.md)
+- [Integrated baseline](docs/integrated-baseline/README.md)
 
-Las referencias visuales anteriores se conservan en `docs/figma-baseline/`,
-`docs/notas-baseline/` y `docs/mediateca-baseline/`.
+Earlier visual references are preserved in `docs/figma-baseline/`,
+`docs/notas-baseline/`, and `docs/mediateca-baseline/`.
 
-## Inspiración y autoría
+## Inspiration and authorship
 
-Este jardín está diseñado para la identidad, el contenido y las necesidades de
-Rodolfo Miranda. El jardín digital de
-[Maggie Appleton](https://maggieappleton.com/) influyó en la densidad
-exploratoria de Notas y en el enfoque biográfico y cronológico de Yo. El sistema
-visual, la identidad, el modelo de contenido y la implementación en Astro son
-específicos de este proyecto.
+This garden is designed for Rodolfo Miranda's identity, content, and needs.
+[Maggie Appleton's digital garden](https://maggieappleton.com/) influenced the
+exploratory density of Notas and the biographical and chronological approach of
+Yo. The visual identity, design system, content model, and Astro implementation
+are specific to this project.
 
-El código fuente de referencia de Maggie Appleton puede consultarse en
+Maggie Appleton's reference source code is available at
 [MaggieAppleton/maggieappleton.com-V3](https://github.com/MaggieAppleton/maggieappleton.com-V3).
