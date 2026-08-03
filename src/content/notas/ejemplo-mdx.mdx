@@ -1,0 +1,99 @@
+---
+title: "Referencia técnica de MDX"
+summary: "Una nota de desarrollo para consultar la sintaxis de vídeos y bloques de código sin alterar el contenido editorial aprobado."
+publishedAt: 2026-08-03
+updatedAt: 2026-08-03
+state: "semilla"
+archiveNumber: "N.028"
+cardFormat: "standard"
+tags:
+  - "MDX"
+  - "Referencia"
+relatedNotes: []
+relatedLinks: []
+featured: false
+draft: true
+language: "es"
+---
+
+import VideoEmbed from "../../components/content/VideoEmbed.astro"
+
+Esta nota es una referencia técnica de desarrollo. No contiene afirmaciones sobre el trabajo de Rodolfo ni forma parte del contenido aprobado para producción.
+
+## Vídeo de YouTube
+
+El componente puede colocarse entre dos párrafos. Los identificadores de esta referencia son técnicos y deben sustituirse por los del vídeo editorial antes de publicar una nota real.
+
+<VideoEmbed
+  provider="youtube"
+  videoId="MDXTEST0001"
+  title="Vídeo técnico de ejemplo para comprobar una inserción de YouTube"
+  caption="Ejemplo de una leyenda editorial opcional."
+/>
+
+## Vídeo de Vimeo
+
+<VideoEmbed
+  provider="vimeo"
+  videoId="000000001"
+  title="Vídeo técnico de ejemplo para comprobar una inserción de Vimeo"
+/>
+
+## Bloques de código
+
+JavaScript:
+
+```js
+const garden = {
+  state: "en-crecimiento",
+  connected: true,
+}
+```
+
+TypeScript:
+
+```ts
+interface Note {
+  title: string
+  state: "semilla" | "en-crecimiento" | "perenne"
+}
+```
+
+HTML:
+
+```html
+<article aria-labelledby="note-title">
+  <h1 id="note-title">Una nota conectada</h1>
+</article>
+```
+
+CSS:
+
+```css
+.note {
+  max-width: 70ch;
+  color: var(--graphite);
+}
+```
+
+JSON:
+
+```json
+{
+  "draft": true,
+  "language": "es"
+}
+```
+
+Bash:
+
+```bash
+pnpm run check
+pnpm run build
+```
+
+Texto sin resaltado:
+
+```text
+Esta línea deliberadamente larga permite comprobar que un bloque de código se desplaza dentro de la columna de lectura sin provocar desbordamiento horizontal en la página completa.
+```

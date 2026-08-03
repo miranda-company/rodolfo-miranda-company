@@ -37,10 +37,11 @@ plain text require no client-side runtime. Long lines scroll within the code
 block instead of expanding the reading column.
 
 The `draft` field is also the publication boundary for the garden. Development
-includes draft entries so the complete 27-card design fixture can be reviewed;
-normal production builds exclude draft cards and their detail routes. The 24
-generated demonstration entries are drafts and must not be treated as Rodolfo's
-approved writing.
+includes draft entries so the complete 27-card design fixture can be reviewed,
+plus `ejemplo-mdx`, a separate technical authoring reference. Normal production
+builds exclude draft cards and their detail routes. The 24 generated
+demonstration entries are drafts and must not be treated as Rodolfo's approved
+writing.
 
 `umbral`, `margen`, and `archivo` remain the three non-draft design anchors used
 by the approved homepage. Their summaries and any article bodies are

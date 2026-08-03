@@ -97,6 +97,11 @@ comprobar su tarjeta y su ruta, pero la producción los excluye. Actualiza `upda
 haya un cambio editorial relevante. Cambia a `draft: false` únicamente cuando el contenido y sus
 conexiones estén aprobados para publicación.
 
+La nota de desarrollo `src/content/notas/ejemplo-mdx.mdx` conserva una referencia visible de
+`VideoEmbed` y de los lenguajes de código admitidos. Sus identificadores de vídeo son técnicos, no
+contenido editorial, y deben sustituirse antes de reutilizar el ejemplo. Permanece como
+`draft: true`, por lo que aparece únicamente en desarrollo y no genera una ruta de producción.
+
 ## Revisión local
 
 Inicia el sitio y visita tanto el índice como la ruta de la nota:
