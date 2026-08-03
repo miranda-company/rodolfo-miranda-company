@@ -1,0 +1,54 @@
+---
+title: "Título del proyecto"
+summary: "Resumen breve y verificable del proyecto."
+year: 2026
+role: "Rol desempeñado"
+client: "Organización o cliente"
+disciplines:
+  - "Diseño"
+tags:
+  - "Producto"
+projectStatus: "Publicado"
+archiveNumber: "P.004"
+coverImage: "../../assets/images/portafolio/slug/portada.jpg"
+coverAlt: "Descripción concreta de lo que muestra la portada"
+gallery: []
+projectLinks: []
+displayOrder: 4
+updatedAt: 2026-08-03
+placeholder: false
+relatedNotes: []
+relatedMedia: []
+draft: true
+language: "es"
+---
+
+import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import inlineImage from "../../assets/images/portafolio/slug/imagen-editorial.jpg"
+
+## Contexto
+
+Escribe aquí el caso de estudio aprobado.
+
+<figure>
+  <img
+    src={inlineImage.src}
+    width={inlineImage.width}
+    height={inlineImage.height}
+    alt="Descripción concreta de la imagen editorial"
+  />
+  <figcaption>Leyenda editorial opcional.</figcaption>
+</figure>
+
+<VideoEmbed
+  provider="youtube"
+  videoId="VIDEO_ID"
+  title="Descripción accesible y específica del vídeo"
+  caption="Comentario editorial opcional."
+/>
+
+```ts
+interface ProjectEvidence {
+  verified: boolean
+}
+```

@@ -2,47 +2,38 @@
 
 ## Runtime
 
-The site is a static Astro application. Pages render to HTML at build time, and
-the production output does not ship React, React Router, Tailwind, a CMS, a
-database, or an authentication layer.
-
-Browser JavaScript remains small and framework-free. It handles the responsive
-navigation menu, route-aware fragment scrolling, the Notas and Mediateca
+The site is a static Astro application. Pages render to HTML at build time; the
+production output does not ship React, React Router, Tailwind, a CMS, a database,
+or authentication. Browser JavaScript remains small and framework-free. It
+handles navigation, route-aware fragment scrolling, the Notas and Mediateca
 filters and sorting, and Portafolio search and tag filtering.
 
 ## Presentation
 
 - `src/layouts/BaseLayout.astro` owns Spanish metadata, the current site-wide
-  noindex directive, locally bundled fonts, and global page behavior.
-- `src/components/` contains the reusable page shell, header, archive cards,
-  artwork, and homepage previews.
-- `src/styles/global.css` contains the approved design tokens and custom CSS.
+  `noindex` directive, locally bundled fonts, and global page behavior.
+- `src/components/PageShell.astro` owns the canonical visible page structure.
+- `src/styles/global.css` contains design tokens and the semantic typography
+  system.
 - `src/pages/index.astro` preserves the design-approved homepage.
-- `/notas` and the `NoteArticle.astro` reading experience are the approved
-  Notas baselines with a dedicated, route-scoped stylesheet. Every Notas detail
-  route uses that shared renderer and remains excluded from indexing.
-- `/mediateca` and `/mediateca/modulor` form a design-approved catalogue and
-  reference baseline with a dedicated route-scoped stylesheet.
-- `/yo` is a coded editorial prototype driven by validated profile content and
-  a dedicated route-scoped stylesheet. It is not yet a captured visual baseline.
-- `/portafolio` is a curated case-file index with a small client-side text search
-  and single-tag filter. `/portafolio/[slug]` uses the same three-column reading
-  logic as the approved Umbral note while keeping its own components and
-  route-scoped `portfolio.css`; Portfolio does not import or couple selectors to
-  `notes.css`.
+- `/notas` and `NoteArticle.astro` preserve the approved Notas garden and reading
+  baseline.
+- `/mediateca` and `/mediateca/modulor` preserve the approved catalogue and
+  reference baseline; all references now use the canonical dynamic route.
+- `/yo` is a coded editorial prototype driven by validated profile content.
+- `/portafolio` is a curated case-file index with framework-free search and tag
+  filtering; each case uses the shared detail geometry.
 - `/experimentos` and `/contacto` remain provisional semantic scaffolds.
 
-The baseline screenshots under `docs/figma-baseline/` and
-`docs/notas-baseline/`, `docs/mediateca-baseline/`, and
-`docs/integrated-baseline/` remain the visual references. The tagged Figma
-export is a behavioral reference only.
+Historical screenshots under `docs/figma-baseline/`, `docs/notas-baseline/`,
+`docs/mediateca-baseline/`, and `docs/integrated-baseline/` remain historical
+visual references and are not rewritten to describe later implementation work.
 
 ## Page DOM contract
 
 `BaseLayout.astro` remains the document layer for HTML, metadata, fonts, and
-global behavior. Every rendered content route uses
-`src/components/PageShell.astro` inside it as the visible page canvas. The
-component emits the canonical page-level structure:
+global behavior. Every rendered content route uses `PageShell.astro` as the
+visible canvas:
 
 ```html
 <div class="page-shell [route-page-class]">
@@ -51,87 +42,93 @@ component emits the canonical page-level structure:
 </div>
 ```
 
-`Header.astro` and the main landmark are direct siblings. A rendered route must
-contain exactly one `.page-shell`, one `.page-main`, one site header, and one
-`main` landmark. `PageShell` accepts optional `pageClass`, `mainClass`, and
-`mainId` props; `mainId` defaults to `contenido`. Redirect-only URLs do not
-render this structure.
+`Header.astro` and the main landmark are direct siblings. A rendered route has
+exactly one `.page-shell`, one `.page-main`, one site header, and one `main`.
+Redirect-only URLs do not render this structure. `.page-shell` owns the viewport,
+responsive gutters, background, technical pattern, overflow and isolation;
+`.page-main` supplies common width and stacking behavior.
 
-The shared shell is used directly by the homepage and archive indexes, by the
-`MediaReference` and `PortfolioProject` detail renderers, and by
-`ProvisionalLayout` for provisional routes. This keeps generated note, media,
-portfolio, experiment, and contact routes on the same landmark hierarchy.
+## Shared editorial detail system
 
-`src/styles/global.css` makes `.page-shell` the sole owner of the page canvas:
-viewport height, responsive gutters, background and technical pattern,
-overflow, isolation, and bottom padding. `.page-main` supplies the common
-content width and stacking context. Route page classes may set
-`--page-shell-bottom`, while route main classes retain only their own internal
-layout and spacing. The homepage uses `.home-main` to remove the shared main
-width cap because its existing sections manage their own approved widths.
+`src/components/EditorialDetailLayout.astro` composes `BaseLayout` and
+`PageShell` for Notas, Portafolio and Mediateca. Named slots carry each
+collection's header metadata, summary, left metadata rail, central article,
+right connections, and optional sequence navigation. No collection-specific
+labels live in the shared component.
 
-## Content
+`src/styles/editorial-detail.css` owns the outer layout:
 
-Astro content collections validate editorial entries at build time. Notes and
-Mediateca entries currently provide the approved homepage preview content and
-development routes. Portfolio contains three explicitly provisional draft
-fixtures plus an excluded editing template; Experimentos contains only its
-filtered draft template. Neither collection invents published work.
+- desktop: `170px / minmax(0, 720px) / 210px` for metadata, article and
+  connections;
+- tablet: metadata plus article, with connections under the article;
+- mobile: one column in logical metadata, article and connections DOM order;
+- sticky side rails only when the viewport supports them.
 
-Every normal Notas detail URL is generated by `src/pages/notas/[slug].astro`
-and rendered by `NoteArticle.astro`. Markdown and MDX entries use the same
-content collection, `render(entry)` call, PageShell, metadata rail, maturity
-notice, reading column, footer, connections, and circular navigation.
-`@astrojs/mdx` enables approved Astro content components inside rich notes;
-`VideoEmbed.astro` currently allowlists only YouTube and Vimeo and constructs
-their player URLs internally. Arbitrary iframe URLs and pasted scripts are not
-supported. Astro generates Shiki syntax highlighting statically, so fenced
-code adds no client runtime.
+`src/styles/rich-content.css` owns the route-independent `.rich-content`
+presentation used around the rendered Markdown or MDX body in all three
+collections. It covers body text, semantic H2/H3 spacing, lists, links and focus,
+blockquotes, code, horizontal rules, images, figures, captions, footnotes,
+tables, and videos at approximately 70ch. Collection stylesheets retain index
+interfaces and structured elements such as maturity notices, project galleries,
+recurring ideas and metadata rails.
 
-The Notas index deliberately includes the 24 ordinary draft design entries only
-when Astro is running in development mode, producing 27 ordinary notes together
-with the three anchors. Static production builds emit the three non-draft
-anchors and omit every ordinary draft card and route. `fixture: true` identifies
-technical development content separately. The `ejemplo-mdx` fixture receives a
-direct development route for review but is excluded by the centralized helpers
-from editorial indexes, counts, filters, related-note lists, homepage previews,
-circular navigation, and production output. The homepage reads the same
-editorial helper and therefore keeps its three existing links in every
-environment.
+## Content and MDX
 
-The Mediateca follows the same publication boundary. Development includes ten
-draft design fixtures so every format, theme, consultation mode, and card
-variant can be reviewed. Production emits only the three non-draft anchors
-(`modulor`, `cosas`, and `orden`) and their detail routes. Status remains visible
-metadata but is not a filter. The old `/biblioteca` routes remain only as
-permanent redirect sources for the canonical `/mediateca` URLs.
+Astro content collections validate editorial entries at build time. Markdown
+and MDX share each collection schema and render through the same collection
+renderer. The schemas remain distinct: a note's maturity, a project's client and
+disciplines, and a reference's consultation metadata keep their own meanings.
 
-Portfolio follows a stricter placeholder boundary. Development renders the
-three draft placeholder cards and their detail routes so the index, metadata,
-connections and sequence navigation can be reviewed. A production build omits
-every placeholder and draft. Until a genuine project is approved, production
-emits only the `/portafolio` index with its restrained preparation state.
+`@astrojs/mdx` enables reviewed Astro components in Notas, Portafolio and
+Mediateca. `VideoEmbed.astro` is collection-neutral and allowlists YouTube and
+Vimeo only. It validates IDs, builds `youtube-nocookie.com` or Vimeo `dnt=1`
+URLs, requires a meaningful accessible title, lazy-loads without autoplay, and
+shows a visible fallback link. Arbitrary iframe URLs and pasted scripts are not
+supported.
 
-Editable site copy is separated from templates:
+Astro generates fenced-code highlighting statically with Shiki and the
+`github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash and plain
+text require no client runtime. Long lines scroll inside the code block rather
+than expanding the page.
+
+The Notas index includes 27 ordinary entries in development and three in a
+normal production build. Mediateca includes 13 ordinary references in
+development and three (`modulor`, `cosas`, `orden`) in production. Portafolio
+includes three draft placeholders in development and no production details.
+Each collection also has an isolated `ejemplo-mdx` technical route in
+development where applicable: one for Notas, one for Mediateca and one for
+Portafolio.
+
+Central collection helpers separate `fixture: true` entries from genuine
+editorial content. Fixtures stay out of indexes, search, filters, counts,
+homepage previews, related suggestions, previous/next navigation and production.
+Schemas require them to remain drafts and reserve `N.999`, `M.999` and `P.999`.
+
+Mediateca uses `editorialState` independently of `draft`. `provisional` controls
+the warning and “Comentario provisional” label; `revisado` removes the warning
+and uses “Comentario”. `/mediateca/[slug].astro` generates all references,
+including `/mediateca/modulor`. Legacy `/biblioteca` routes remain redirect
+sources for the canonical `/mediateca` URLs.
+
+Editable site copy remains separate from templates:
 
 - `src/content/site/homepage.json`
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
 - `src/content/pages/contacto.md`
 
-Spanish remains at root URLs. Schemas include a language and optional
-translation key so English content can be added later without introducing
-`/en/` routing in this phase.
+Spanish remains at root URLs. Schemas include language and optional translation
+keys so English can be added later without activating `/en/` routes now.
 
-## URL generation
+## URL generation and counts
 
-Astro generates static index and detail routes from content entries. Configured
-redirects preserve the former `/biblioteca` paths while Mediateca owns the
-canonical index and detail URLs. Portfolio detail paths are sorted and generated
-exclusively by `displayOrder`; draft placeholders and `_template.md` are omitted
-from production path generation. Experiments have an index route only, as
-required for Phase 1.
+Static paths come from centralized visible-entry helpers. Genuine Notas receive
+circular previous/next props. Portfolio sequence follows `displayOrder`.
+Development appends explicitly typed fixture routes without inserting fixtures
+into editorial navigation; production never appends them.
 
-Notas path generation builds the genuine previous/next sequence only from
-non-fixture entries. In development it appends explicitly typed fixture paths
-without sequence props; in production it never adds those paths.
+Excluding redirect aliases, development exposes 53 canonical routes: seven
+indexes or standalone pages, 27 ordinary Notas plus one note fixture, 13
+Mediateca references plus one media fixture, and three Portfolio placeholders
+plus one project fixture. A normal production build exposes 13 canonical routes:
+the seven standalone routes, three Notas and three Mediateca references.

@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { getEntries, render, type CollectionEntry } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { isEditorialMedia } from "../lib/media";
+import { isEditorialNote } from "../lib/notes";
 import "../styles/portfolio.css";
-import PageShell from "./PageShell.astro";
+import EditorialDetailLayout from "./EditorialDetailLayout.astro";
 import PortfolioArtwork from "./PortfolioArtwork.astro";
 import ProjectMeta from "./ProjectMeta.astro";
 
@@ -15,8 +16,8 @@ interface Props {
 
 const { entry, previousProject, nextProject } = Astro.props;
 const { Content } = await render(entry);
-const relatedNotes = await getEntries(entry.data.relatedNotes);
-const relatedMedia = await getEntries(entry.data.relatedMedia);
+const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(isEditorialNote);
+const relatedMedia = (await getEntries(entry.data.relatedMedia)).filter(isEditorialMedia);
 const hasConnections = relatedNotes.length > 0 || relatedMedia.length > 0 || entry.data.projectLinks.length > 0;
 const showConnections = hasConnections || entry.data.placeholder;
 const updatedLabel = new Intl.DateTimeFormat("es-ES", {
@@ -26,20 +27,22 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
 }).format(entry.data.updatedAt);
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.summary}>
-  <PageShell pageClass="portfolio-page" mainClass="project-main">
-      <a class="project-back" href="/portafolio">← Volver a Portafolio</a>
+<EditorialDetailLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  pageClass="portfolio-page"
+  backlinkHref="/portafolio"
+  backlinkLabel="Volver a Portafolio"
+  hasConnections={showConnections}
+>
+  <p slot="header-meta">{entry.data.archiveNumber} / {entry.data.projectStatus}</p>
+  <p slot="header-summary">{entry.data.summary}</p>
 
-      <header class="project-header">
-        <p>{entry.data.archiveNumber} / {entry.data.projectStatus}</p>
-        <h1>{entry.data.title}</h1>
-        <p>{entry.data.summary}</p>
-      </header>
-
-      <div class:list={["project-layout", { "project-layout--without-connections": !showConnections }]}>
+  <Fragment slot="metadata">
         <ProjectMeta entry={entry} />
+  </Fragment>
 
-        <article class="project-reading">
+  <Fragment>
           {
             entry.data.placeholder && (
               <p class="project-provisional-notice">
@@ -51,7 +54,7 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
 
           <PortfolioArtwork entry={entry} />
 
-          <div class="project-body">
+          <div class="rich-content">
             <Content />
           </div>
 
@@ -79,11 +82,11 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
             <p>ÚLTIMA ACTUALIZACIÓN · {updatedLabel}</p>
             <span>{entry.data.projectStatus}</span>
           </footer>
-        </article>
+  </Fragment>
 
-        {
+  {
           showConnections && (
-            <aside class="project-connections" aria-labelledby="project-connections-title">
+            <aside slot="connections" class="project-connections" aria-labelledby="project-connections-title">
               <div class="project-connections__notation" aria-hidden="true">
                 <span></span><span></span><span></span><i></i><i></i>
               </div>
@@ -117,10 +120,11 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
               {!hasConnections && <p class="project-connections__pending">CONEXIONES PENDIENTES DE VERIFICACIÓN</p>}
             </aside>
           )
-        }
-      </div>
+  }
 
-      <nav class="project-sequence" aria-label="Navegación entre proyectos">
+  {
+    !entry.data.fixture && (
+      <nav slot="sequence" class="project-sequence" aria-label="Navegación entre proyectos">
         {
           previousProject && (
             <a class="project-sequence__previous" href={`/portafolio/${previousProject.id}`}>
@@ -137,5 +141,6 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
         }
         <a class="project-sequence__all" href="/portafolio">Volver a todos los proyectos</a>
       </nav>
-  </PageShell>
-</BaseLayout>
+    )
+  }
+</EditorialDetailLayout>

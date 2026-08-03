@@ -28,13 +28,14 @@ no presupone un despliegue externo.
 | Portada | `/` | Baseline revisado | JSON validado y previews de los anclajes no draft | Se genera; indexación bloqueada |
 | Yo | `/yo` | Prototipo codificado, retrato aprobado | Biografía parcial; cuatro etapas y un párrafo pendientes | Se genera con avisos provisionales |
 | Notas | `/notas` | Índice revisado | 27 notas ordinarias en desarrollo; la fixture técnica queda aislada | Se genera con 3 entradas |
-| Lectura de nota | `/notas/[slug]` | Todas usan `NoteArticle.astro` | 27 rutas editoriales Markdown/MDX en desarrollo | Solo `umbral`, `margen` y `archivo` |
-| Referencia MDX | `/notas/ejemplo-mdx` | Misma plantilla de lectura, sin navegación circular | Fixture técnica directa con vídeos externos y código | Solo desarrollo; no genera artefactos |
-| Mediateca | `/mediateca` | Catálogo revisado | 3 anclajes y 10 fixtures draft | Se genera con 3 referencias |
-| Referencia | `/mediateca/modulor` | Plantilla revisada | Comentario editorial provisional | Se genera |
-| Otras referencias | `/mediateca/[slug]` | Renderizador codificado | `cosas` y `orden` no draft; 10 fixtures draft | Solo `cosas` y `orden` |
-| Portafolio | `/portafolio` | Prototipo codificado | 3 fixtures draft con búsqueda y etiquetas | Se genera vacío con estado de preparación |
-| Caso de estudio | `/portafolio/[slug]` | Prototipo codificado | 3 casos ficticios y provisionales | No se generan detalles |
+| Lectura de nota | `/notas/[slug]` | `NoteArticle.astro` sobre el scaffold editorial compartido | 27 rutas editoriales Markdown/MDX en desarrollo | Solo `umbral`, `margen` y `archivo` |
+| Referencia MDX | `/notas/ejemplo-mdx` | Misma geometría y cuerpo enriquecido, sin navegación circular | Fixture técnica directa | Solo desarrollo; no genera artefactos |
+| Mediateca | `/mediateca` | Catálogo revisado | 3 anclajes y 10 entradas draft de diseño | Se genera con 3 referencias |
+| Referencias | `/mediateca/[slug]` | `MediaReference.astro` sobre el scaffold editorial compartido | 13 referencias y estado editorial validado | Solo `modulor`, `cosas` y `orden` |
+| Referencia MDX | `/mediateca/ejemplo-mdx` | Misma geometría y cuerpo enriquecido | Fixture técnica directa; no es una recomendación | Solo desarrollo; no genera artefactos |
+| Portafolio | `/portafolio` | Prototipo codificado | 3 placeholders draft con búsqueda y etiquetas | Se genera vacío con estado de preparación |
+| Caso de estudio | `/portafolio/[slug]` | `PortfolioProject.astro` sobre el scaffold editorial compartido | 3 casos ficticios y provisionales | No se generan detalles |
+| Referencia MDX | `/portafolio/ejemplo-mdx` | Misma geometría y cuerpo enriquecido | Fixture técnica directa; no es trabajo real | Solo desarrollo; no genera artefactos |
 | Experimentos | `/experimentos` | Scaffold semántico | Solo existe `_template.md`, excluido | Se genera sin entradas |
 | Contacto | `/contacto` | Scaffold semántico | Copia Markdown provisional | Se genera |
 
@@ -49,14 +50,18 @@ hosting sigue pendiente.
 | Notas ordinarias | 27 | 3 | `umbral`, `margen`, `archivo` |
 | Fixture técnica de Notas | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, aislada mediante `fixture: true` |
 | Mediateca | 13 | 3 | `modulor`, `cosas`, `orden` |
-| Portafolio | 3 | 0 | Ninguno; `_template.md` también queda excluido |
+| Fixture técnica de Mediateca | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, número reservado `M.999` |
+| Portafolio | 3 | 0 | Ninguno |
+| Fixture técnica de Portafolio | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, número reservado `P.999` |
 | Experimentos | 0 | 0 | Ninguno; solo existe el template draft excluido |
 
 Los conteos ordinarios de desarrollo incluyen únicamente entradas editoriales
-que aparecen en sus índices y secuencias. `ejemplo-mdx` genera una ruta directa
-adicional para revisión técnica, pero no entra en el índice, los filtros, los
-conteos, la navegación circular ni los previews de portada. Los templates de
-edición tampoco generan rutas. Los tres anclajes de Notas y los tres de
+que aparecen en sus índices y secuencias. Cada `ejemplo-mdx` genera una ruta
+directa adicional para revisión técnica, pero no entra en índices, búsquedas,
+filtros, conteos, conexiones, secuencias ni previews de portada. Los templates
+de edición viven fuera de las colecciones y tampoco generan rutas. En total hay
+53 rutas canónicas de desarrollo y 13 de producción, sin contar aliases de
+redirect. Los tres anclajes de Notas y los tres de
 Mediateca atraviesan el límite técnico de producción, pero su copia aún no debe
 considerarse aprobación editorial final.
 
@@ -80,6 +85,14 @@ considerarse aprobación editorial final.
   desplazamiento interno para líneas largas.
 - Fixture MDX tipada y excluida explícitamente de listas editoriales, previews,
   secuencias y producción.
+- Scaffold `EditorialDetailLayout.astro` compartido por Notas, Portafolio y
+  Mediateca, con geometría 170/720/210 y colapso lógico responsive.
+- Sistema `.rich-content` común para Markdown/MDX, imágenes, figuras, notas al
+  pie, tablas, código Shiki y vídeos permitidos en las tres colecciones.
+- Generación canónica de todas las referencias mediante `/mediateca/[slug]` y
+  `editorialState` separado del límite `draft`.
+- Plantillas y guías de autoría externas a las colecciones para Notas,
+  Portafolio y Mediateca.
 - Búsqueda, filtros por etiqueta, conteos, estado vacío y orden editorial estable
   en Portafolio.
 - Generación estática y carga local de las familias tipográficas.

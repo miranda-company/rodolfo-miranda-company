@@ -1,20 +1,28 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import MediaReference from "../../components/MediaReference.astro";
+import {
+  getDevelopmentSpanishMediaFixtures,
+  getVisibleSpanishMedia,
+} from "../../lib/media";
 
 export async function getStaticPaths() {
-  const includeDrafts = import.meta.env.DEV;
-  const entries = (await getCollection("mediateca")).filter(
-    (entry) =>
-      entry.id !== "modulor" &&
-      (includeDrafts || !entry.data.draft) &&
-      entry.data.language === "es",
-  );
-
-  return entries.map((entry) => ({
+  const entries = await getVisibleSpanishMedia(import.meta.env.DEV);
+  const editorialPaths = entries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
+
+  if (!import.meta.env.DEV) return editorialPaths;
+
+  const fixtures = await getDevelopmentSpanishMediaFixtures();
+  return [
+    ...editorialPaths,
+    ...fixtures.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry },
+    })),
+  ];
 }
 
 interface Props {

@@ -18,7 +18,20 @@ o presentar el jardín como una publicación terminada.
       casos de estudio verificados.
 - [ ] Aprobar o reemplazar cada URL externa provisional antes de publicar su
       entrada.
+- [ ] Confirmar que cada referencia aprobada usa `editorialState: revisado` y
+      que ningún aviso provisional se ha retirado antes de la aprobación.
 - [ ] Completar el contenido y el diseño de Experimentos y Contacto.
+
+## Imágenes y contenido enriquecido
+
+- [ ] Confirmar derechos, procedencia y aprobación de cada imagen editorial,
+      portada y galería.
+- [ ] Revisar que toda imagen significativa tenga texto alternativo útil y que
+      las leyendas no dupliquen información innecesariamente.
+- [ ] Mantener activos locales en las carpetas por colección y evitar imágenes
+      remotas no controladas.
+- [ ] Verificar los cuerpos `.rich-content` de Notas, Portafolio y Mediateca en
+      escritorio y móvil, incluidos tablas, notas al pie, citas y enlaces.
 
 ## Idiomas y metadatos
 
@@ -44,7 +57,8 @@ o presentar el jardín como una publicación terminada.
 - [ ] Evaluar el comportamiento final de cookies y el contexto legal aplicable
       antes de decidir si hace falta un mecanismo de consentimiento.
 - [ ] Confirmar que ninguna entrada con `fixture: true`, incluidos su HTML,
-      metadatos y muestras, aparece en producción.
+      metadatos, imágenes técnicas, IDs de vídeo y muestras, aparece en
+      producción.
 - [ ] Rechazar componentes que acepten iframes arbitrarios o scripts pegados;
       cada futuro proveedor necesita un componente revisado y permitido.
 - [ ] Comprobar en móvil que las líneas largas de los bloques de código se

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/editorial-detail.css";
+import "../styles/rich-content.css";
+import PageShell from "./PageShell.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  pageClass: string;
+  backlinkHref: string;
+  backlinkLabel: string;
+  hasConnections?: boolean;
+}
+
+const {
+  title,
+  description,
+  pageClass,
+  backlinkHref,
+  backlinkLabel,
+  hasConnections = true,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <PageShell pageClass={pageClass} mainClass="entry-detail-main">
+    <a class="entry-detail-back" href={backlinkHref}>← {backlinkLabel}</a>
+
+    <header class="entry-detail-header">
+      <div class="entry-detail-header__meta"><slot name="header-meta" /></div>
+      <h1>{title}</h1>
+      <div class="entry-detail-header__summary"><slot name="header-summary" /></div>
+    </header>
+
+    <div class:list={["entry-detail-layout", { "entry-detail-layout--without-connections": !hasConnections }]}>
+      <div class="entry-detail-meta"><slot name="metadata" /></div>
+      <article class="entry-detail-reading"><slot /></article>
+      {hasConnections && <div class="entry-detail-connections"><slot name="connections" /></div>}
+    </div>
+
+    <slot name="sequence" />
+  </PageShell>
+</BaseLayout>

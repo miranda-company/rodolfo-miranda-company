@@ -82,6 +82,7 @@ const mediateca = defineCollection({
         "other",
       ]),
       engagementMode: z.enum(["read", "watch", "listen"]),
+      editorialState: z.enum(["provisional", "revisado"]),
       summary: z.string().min(1),
       commentary: z.string().min(1),
       whyHere: z.string().min(1),
@@ -102,8 +103,35 @@ const mediateca = defineCollection({
       relatedMedia: z.array(reference("mediateca")).default([]),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
+      fixture: z.boolean().default(false),
       language,
       translationKey,
+    }).superRefine((entry, context) => {
+      if (entry.fixture && !entry.draft) {
+        context.addIssue({
+          code: "custom",
+          message:
+            "Una fixture técnica de Mediateca siempre debe ser borrador.",
+          path: ["draft"],
+        })
+      }
+
+      if (entry.fixture && entry.archiveNumber !== "M.999") {
+        context.addIssue({
+          code: "custom",
+          message:
+            "La fixture técnica de Mediateca debe usar el número reservado M.999.",
+          path: ["archiveNumber"],
+        })
+      }
+
+      if (!entry.fixture && entry.archiveNumber === "M.999") {
+        context.addIssue({
+          code: "custom",
+          message: "M.999 está reservado para la fixture técnica de MDX.",
+          path: ["archiveNumber"],
+        })
+      }
     }),
 })
 
@@ -145,6 +173,7 @@ const portafolio = defineCollection({
       relatedNotes: z.array(reference("notas")).default([]),
       relatedMedia: z.array(reference("mediateca")).default([]),
       draft: z.boolean().default(false),
+      fixture: z.boolean().default(false),
       language,
       translationKey,
     }).superRefine((entry, context) => {
@@ -187,6 +216,32 @@ const portafolio = defineCollection({
           message:
             "Los proyectos provisionales no pueden publicar enlaces externos.",
           path: ["projectLinks"],
+        })
+      }
+
+      if (entry.fixture && !entry.draft) {
+        context.addIssue({
+          code: "custom",
+          message:
+            "Una fixture técnica de Portafolio siempre debe ser borrador.",
+          path: ["draft"],
+        })
+      }
+
+      if (entry.fixture && entry.archiveNumber !== "P.999") {
+        context.addIssue({
+          code: "custom",
+          message:
+            "La fixture técnica de Portafolio debe usar el número reservado P.999.",
+          path: ["archiveNumber"],
+        })
+      }
+
+      if (!entry.fixture && entry.archiveNumber === "P.999") {
+        context.addIssue({
+          code: "custom",
+          message: "P.999 está reservado para la fixture técnica de MDX.",
+          path: ["archiveNumber"],
         })
       }
     }),

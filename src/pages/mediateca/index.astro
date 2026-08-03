@@ -1,16 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import CurrentShelf from "../../components/CurrentShelf.astro";
 import MediaCard from "../../components/MediaCard.astro";
 import PageShell from "../../components/PageShell.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getVisibleSpanishMedia } from "../../lib/media";
 import "../../styles/media.css";
 
 const includeDrafts = import.meta.env.DEV;
 const shelfOrder = ["modulor", "cosas", "orden"];
-const entries = (await getCollection("mediateca"))
-  .filter((entry) => (includeDrafts || !entry.data.draft) && entry.data.language === "es")
-  .sort((a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime());
+const entries = await getVisibleSpanishMedia(includeDrafts);
 const currentShelf = entries
   .filter((entry) => shelfOrder.includes(entry.id))
   .sort((a, b) => shelfOrder.indexOf(a.id) - shelfOrder.indexOf(b.id));

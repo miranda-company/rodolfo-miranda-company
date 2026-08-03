@@ -1,19 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import PageShell from "../../components/PageShell.astro";
 import PortfolioCard from "../../components/PortfolioCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getVisibleSpanishProjects } from "../../lib/portfolio";
 import "../../styles/portfolio.css";
 
 const includeDrafts = import.meta.env.DEV;
-const projects = (await getCollection("portafolio"))
-  .filter(
-    (entry) =>
-      entry.id !== "_template" &&
-      (includeDrafts || !entry.data.draft) &&
-      entry.data.language === "es",
-  )
-  .sort((first, second) => first.data.displayOrder - second.data.displayOrder);
+const projects = await getVisibleSpanishProjects(includeDrafts);
 const lastUpdated = projects.reduce<Date | undefined>(
   (latest, project) =>
     !latest || project.data.updatedAt.getTime() > latest.getTime() ? project.data.updatedAt : latest,

@@ -1,10 +1,11 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 import ArchiveCard from "../components/ArchiveCard.astro";
 import LatestMedia from "../components/LatestMedia.astro";
 import LatestNotes from "../components/LatestNotes.astro";
 import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getVisibleSpanishMedia } from "../lib/media";
 import { getVisibleSpanishNotes } from "../lib/notes";
 
 const home = await getEntry("homepage", "homepage");
@@ -20,8 +21,8 @@ const notes = (await getVisibleSpanishNotes(false))
   .slice(0, 3);
 
 const bookOrder = ["modulor", "cosas", "orden"];
-const mediaShelf = (await getCollection("mediateca"))
-  .filter((entry) => !entry.data.draft && entry.data.language === "es" && entry.data.featured)
+const mediaShelf = (await getVisibleSpanishMedia(false))
+  .filter((entry) => entry.data.featured)
   .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id))
   .slice(0, 3);
 ---

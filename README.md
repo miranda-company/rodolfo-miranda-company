@@ -36,7 +36,7 @@ own editorial fields and publication boundaries.
 - `/mediateca` — books and other references to read, watch, or listen to.
   Reviewed catalogue and reference template.
 - `/portafolio` — selected projects and case studies. Implemented prototype
-  using development fixtures.
+  using provisional development placeholders.
 - `/experimentos` — current or recently released experiments. Provisional
   semantic structure with no published entries.
 - `/contacto` — contact route. Provisional semantic structure.
@@ -50,10 +50,12 @@ own editorial fields and publication boundaries.
 - Notas displays 27 ordinary entries in development, plus one isolated technical
   MDX reference at `/notas/ejemplo-mdx`. Production generates only `umbral`,
   `margen`, and `archivo`; their copy still requires editorial approval.
-- Mediateca displays 13 references in development. Production generates only
-  `modulor`, `cosas`, and `orden`; their commentary remains provisional.
-- Portafolio includes search, tag filters, and three fictional cases for design
-  review. None are included in the production build.
+- Mediateca displays 13 references plus one isolated technical MDX route in
+  development. Production generates only `modulor`, `cosas`, and `orden`; their
+  commentary remains provisional.
+- Portafolio includes search, tag filters, three fictional cases for design
+  review, and one isolated technical MDX route. None are included in the
+  production build.
 - Experimentos and Contacto remain provisional scaffolding.
 - The first release is in Spanish. The structure allows for a future English
   version, but translated routes do not exist yet.
@@ -69,18 +71,21 @@ The detailed and current source of truth is
 ## How content grows
 
 Content is edited through Astro content collections and Markdown, MDX, or JSON
-files inside `src/content/`. Notes remain Markdown by default and use MDX only
-when an approved Astro content component is required. Approved MDX notes can use
-the allowlisted YouTube/Vimeo video component. Development fixtures make it
-possible to review layouts, filters, and routes without presenting them as
-published work. Entries with `draft: true` are excluded from normal production
-builds.
+files inside `src/content/`. Notas, Portafolio, and Mediateca share one detail-page
+scaffold and one rich-content presentation while retaining their own metadata and
+editorial semantics. Markdown is the default; MDX is used only when an approved
+Astro component is required. The allowlisted video component supports YouTube and
+Vimeo. Development fixtures make it possible to verify images, videos, code,
+filters, and routes without presenting them as published work. Entries with
+`draft: true` are excluded from normal production builds.
 
 Notes and references can link to related material. Portfolio projects and
 experiments use their own content models. Complete schemas and editorial
 instructions are documented in
-[docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). The practical Notas workflow is
-in [docs/WRITING_NOTES.md](docs/WRITING_NOTES.md).
+[docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). Practical workflows live in
+[Writing Notas](docs/WRITING_NOTES.md),
+[Writing Portafolio](docs/WRITING_PORTFOLIO.md), and
+[Writing Mediateca](docs/WRITING_MEDIATECA.md).
 
 ## Technology
 
@@ -125,6 +130,8 @@ Main documentation:
 - [Architecture](docs/ARCHITECTURE.md)
 - [Content model](docs/CONTENT_MODEL.md)
 - [Writing notes](docs/WRITING_NOTES.md)
+- [Writing portfolio projects](docs/WRITING_PORTFOLIO.md)
+- [Writing Mediateca references](docs/WRITING_MEDIATECA.md)
 - [Typography system](docs/TYPOGRAPHY_SYSTEM.md)
 - [Project status](docs/PROJECT_STATUS.md)
 - [Launch checklist](docs/LAUNCH_CHECKLIST.md)

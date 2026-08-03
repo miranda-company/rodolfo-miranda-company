@@ -1,0 +1,90 @@
+---
+title: "Referencia técnica de Mediateca en MDX"
+creator: "Demostraciones externas verificadas"
+format: "video"
+engagementMode: "watch"
+editorialState: "provisional"
+summary: "Ruta aislada para comprobar imágenes, vídeos y código dentro del sistema compartido de referencias."
+commentary: "Contenido exclusivamente técnico para verificar la composición; no es una recomendación editorial."
+whyHere: "Permite revisar el mismo contenido enriquecido que usan Notas y Portafolio sin incorporarlo al catálogo."
+recurringIdeas:
+  - "Contenido local"
+  - "Vídeo permitido"
+  - "Código estático"
+status: "por-explorar"
+archiveNumber: "M.999"
+updatedAt: 2026-08-03
+tags:
+  - "MDX"
+  - "Referencia"
+relatedNotes: []
+relatedMedia: []
+featured: false
+draft: true
+fixture: true
+language: "es"
+---
+
+import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import technicalImage from "../../assets/images/simbolo-lobo.png"
+
+Esta ruta existe solo para verificar el sistema de contenido enriquecido. No representa una recomendación de Rodolfo ni una pieza creada por él.
+
+## Imagen editorial local
+
+<figure>
+  <img
+    src={technicalImage.src}
+    width={technicalImage.width}
+    height={technicalImage.height}
+    alt="Silueta geométrica de un lobo caminando, símbolo gráfico de Rodolfo Miranda Company"
+  />
+  <figcaption>Símbolo gráfico existente reutilizado únicamente como ejemplo técnico de imagen local.</figcaption>
+</figure>
+
+## Vídeos externos permitidos
+
+<VideoEmbed
+  provider="youtube"
+  videoId="M7lc1UVf-VE"
+  title="YouTube Developers Live: Embedded Web Player Customization, demostración técnica externa de Google for Developers"
+  caption="Demostración externa de Google for Developers; no implica autoría ni respaldo de Rodolfo."
+/>
+
+<VideoEmbed
+  provider="vimeo"
+  videoId="280815263"
+  title="Volumetric Filmmakers NYC, demostración técnica externa publicada por Vimeo"
+  caption="Demostración externa publicada por Vimeo; no implica autoría ni respaldo de Rodolfo."
+/>
+
+## Código estático
+
+```js
+const reference = {
+  editorialState: "provisional",
+  fixture: true,
+}
+```
+
+```html
+<figure aria-labelledby="caption"></figure>
+```
+
+```css
+.reference-example {
+  max-width: 70ch;
+}
+```
+
+```json
+{ "archiveNumber": "M.999", "fixture": true }
+```
+
+```bash
+pnpm run build
+```
+
+```text
+Esta línea técnica deliberadamente larga demuestra que el bloque conserva la indentación y permite desplazamiento horizontal interno sin ensanchar la página completa ni alterar la columna editorial compartida.
+```

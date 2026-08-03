@@ -1,0 +1,133 @@
+.entry-detail-main {
+  padding: 54px 0 78px;
+}
+
+.entry-detail-back,
+.entry-detail-header__meta {
+  font-family: var(--font-mono);
+  letter-spacing: 0.045em;
+}
+
+.entry-detail-back {
+  color: var(--ink);
+  font-size: 11px;
+  text-underline-offset: 4px;
+}
+
+.entry-detail-back:hover,
+.entry-detail-back:focus-visible {
+  color: var(--blue);
+}
+
+.entry-detail-back:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.entry-detail-header {
+  max-width: 1050px;
+  margin-top: 54px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 48px;
+}
+
+.entry-detail-header__meta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color: var(--graphite);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.entry-detail-header__meta > :first-child,
+.entry-detail-header__summary > :first-child {
+  margin: 0;
+}
+
+.entry-detail-header h1 {
+  max-width: 910px;
+  margin: 27px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.entry-detail-header__summary {
+  max-width: 720px;
+  margin-top: 31px;
+  font-family: var(--font-sans);
+  font-size: var(--type-introduction-size);
+  line-height: var(--type-introduction-line-height);
+  letter-spacing: -0.025em;
+}
+
+.entry-detail-layout {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 720px) 210px;
+  gap: clamp(30px, 4vw, 66px);
+  align-items: start;
+  margin-top: 52px;
+}
+
+.entry-detail-layout--without-connections {
+  grid-template-columns: 170px minmax(0, 720px);
+}
+
+.entry-detail-meta,
+.entry-detail-connections {
+  position: sticky;
+  top: 28px;
+  min-width: 0;
+}
+
+.entry-detail-reading {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .entry-detail-layout,
+  .entry-detail-layout--without-connections {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+
+  .entry-detail-connections {
+    position: static;
+    grid-column: 2;
+    max-width: 520px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .entry-detail-main {
+    padding: 43px 0 55px;
+  }
+
+  .entry-detail-header {
+    margin-top: 40px;
+    padding-bottom: 35px;
+  }
+
+  .entry-detail-header__summary {
+    margin-top: 24px;
+  }
+
+  .entry-detail-layout,
+  .entry-detail-layout--without-connections {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    margin-top: 36px;
+  }
+
+  .entry-detail-meta,
+  .entry-detail-connections {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .entry-detail-reading {
+    width: 100%;
+  }
+}

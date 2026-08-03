@@ -85,6 +85,20 @@ interface Note {
 Los identificadores habituales incluyen `js`, `ts`, `html`, `css`, `json`, `bash` y `text`. Los
 bloques son estáticos, no ejecutan código y no incluyen botón de copia.
 
+### Añadir imágenes locales
+
+Guarda las imágenes editoriales en `src/assets/images/notas/<slug>/`. Cada imagen significativa
+necesita un texto alternativo que describa lo visible; la leyenda es opcional. En MDX puedes
+importar el activo desde un archivo situado directamente en `src/content/notas/`:
+
+```mdx
+import inlineImage from "../../assets/images/notas/mi-slug/imagen.jpg"
+```
+
+Después usa `<figure>`, un `<img>` con `src`, `width`, `height` y `alt`, y un `<figcaption>` cuando
+aporte contexto. El sistema compartido `.rich-content` mantiene la imagen dentro de la columna de
+lectura. No uses una URL remota como sustituto de un activo editorial aprobado.
+
 ## Política de componentes y widgets
 
 - YouTube y Vimeo son los únicos embeds permitidos en este momento.

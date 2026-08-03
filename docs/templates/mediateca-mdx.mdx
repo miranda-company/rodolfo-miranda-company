@@ -1,0 +1,50 @@
+---
+title: "Título de la referencia"
+creator: "Autoría o creador"
+format: "video"
+engagementMode: "watch"
+editorialState: "provisional"
+summary: "Resumen breve de la referencia."
+commentary: "Comentario personal pendiente de revisión editorial."
+whyHere: "Por qué forma parte de la Mediateca."
+recurringIdeas:
+  - "Idea que vuelve"
+publicationYear: 2026
+status: "por-explorar"
+archiveNumber: "M.014"
+updatedAt: 2026-08-03
+externalUrl: "https://example.com/referencia"
+tags:
+  - "Cultura digital"
+relatedNotes: []
+relatedMedia: []
+featured: false
+draft: true
+language: "es"
+---
+
+import VideoEmbed from "../../components/content/VideoEmbed.astro"
+import inlineImage from "../../assets/images/mediateca/slug/imagen-editorial.jpg"
+
+## Apuntes
+
+<figure>
+  <img
+    src={inlineImage.src}
+    width={inlineImage.width}
+    height={inlineImage.height}
+    alt="Descripción concreta de la imagen editorial"
+  />
+  <figcaption>Leyenda editorial opcional.</figcaption>
+</figure>
+
+<VideoEmbed
+  provider="vimeo"
+  videoId="VIDEO_ID"
+  title="Descripción accesible y específica del vídeo"
+  caption="Comentario editorial opcional."
+/>
+
+```json
+{ "estado": "en revisión" }
+```

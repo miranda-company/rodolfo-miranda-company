@@ -14,8 +14,6 @@
 .engagement-mode__label,
 .media-card__metadata,
 .media-visual__code,
-.reference-back,
-.reference-header > p,
 .reference-meta,
 .reference-section-index,
 .reference-provisional,
@@ -183,7 +181,6 @@
 
 .current-shelf__item > a:focus-visible,
 .media-card > a:focus-visible,
-.reference-back:focus-visible,
 .reference-external:focus-visible,
 .reference-connections a:focus-visible {
   outline: 2px solid var(--blue);
@@ -957,61 +954,11 @@
   font: 11px var(--font-mono);
 }
 
-.reference-main {
-  padding: var(--backlink-block-offset) 0 20px;
-}
-
-.reference-back {
-  color: var(--ink);
-  font-size: 10px;
-  text-underline-offset: 4px;
-}
-
-.reference-back:hover,
-.reference-back:focus-visible,
 .reference-external:hover,
 .reference-external:focus-visible,
 .reference-connections a:hover,
 .reference-connections a:focus-visible {
   color: var(--blue);
-}
-
-.reference-header {
-  max-width: 1050px;
-  margin-top: 48px;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 42px;
-}
-
-.reference-header > p {
-  margin: 0;
-  color: var(--graphite);
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.reference-header h1 {
-  margin: 21px 0 13px;
-}
-
-.reference-header h1 + p {
-  font: 500 clamp(20px, 2vw, 27px) / 1.2 var(--font-sans);
-  letter-spacing: -0.025em;
-  text-transform: none;
-}
-
-.reference-layout {
-  display: grid;
-  grid-template-columns: 210px minmax(0, 720px) 220px;
-  gap: clamp(30px, 4vw, 60px);
-  align-items: start;
-  margin-top: 46px;
-}
-
-.reference-meta,
-.reference-connections {
-  position: sticky;
-  top: 28px;
 }
 
 .media-visual--compact {
@@ -1086,7 +1033,7 @@
   color: var(--ochre);
 }
 
-.reference-reading section + section {
+.reference-reading > section + section {
   margin-top: 68px;
 }
 
@@ -1096,12 +1043,11 @@
   font-size: 8px;
 }
 
-.reference-reading h2 {
+.reference-reading > section > h2 {
   margin: 0 0 24px;
 }
 
-.reference-reading p,
-.reference-body {
+.reference-reading > section > p:not(.reference-section-index) {
   max-width: 67ch;
   font-size: var(--type-body-size);
   line-height: var(--type-body-line-height);
@@ -1198,13 +1144,10 @@
     min-height: 205px;
   }
 
-  .reference-layout {
-    grid-template-columns: 180px minmax(0, 1fr);
-  }
+}
 
+@media (max-width: 1100px) {
   .reference-connections {
-    position: static;
-    grid-column: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
@@ -1472,36 +1415,6 @@
     font-size: 6.5px;
   }
 
-  .reference-main {
-    padding-top: var(--backlink-block-offset);
-  }
-
-  .reference-header {
-    margin-top: 35px;
-    padding-bottom: 29px;
-  }
-
-  .reference-header h1 {
-    margin-top: 17px;
-  }
-
-  .reference-header h1 + p {
-    font-size: 18px;
-  }
-
-  .reference-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 38px;
-    margin-top: 31px;
-  }
-
-  .reference-meta,
-  .reference-connections {
-    position: static;
-    width: 100%;
-  }
-
   .reference-meta {
     display: grid;
     grid-template-columns: 125px minmax(0, 1fr);
@@ -1541,11 +1454,11 @@
     margin-bottom: 38px;
   }
 
-  .reference-reading section + section {
+  .reference-reading > section + section {
     margin-top: 52px;
   }
 
-  .reference-reading h2 {
+  .reference-reading > section > h2 {
     margin-bottom: 18px;
   }
 

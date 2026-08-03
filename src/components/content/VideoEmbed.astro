@@ -49,8 +49,8 @@ const accessibleTitle = title.trim();
 const editorialCaption = caption?.trim();
 ---
 
-<figure class="note-video">
-  <div class="note-video__frame">
+<figure class="content-video">
+  <div class="content-video__frame">
     <iframe
       src={embedUrl}
       title={accessibleTitle}
@@ -61,7 +61,7 @@ const editorialCaption = caption?.trim();
     ></iframe>
   </div>
   {editorialCaption && <figcaption>{editorialCaption}</figcaption>}
-  <p class="note-video__fallback">
+  <p class="content-video__fallback">
     <a href={fallbackUrl} rel="external noreferrer">Ver vídeo en {providerLabel} ↗</a>
   </p>
 </figure>
