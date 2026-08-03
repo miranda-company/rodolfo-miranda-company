@@ -3,8 +3,10 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
 
 export async function getStaticPaths() {
+  const includeDrafts = import.meta.env.DEV;
   const entries = (await getCollection("notas")).filter(
-    (entry) => !entry.data.draft && entry.data.language === "es",
+    (entry) =>
+      (includeDrafts || !entry.data.draft) && entry.data.language === "es" && entry.id !== "umbral",
   );
 
   return entries.map((entry) => ({

@@ -1,7 +1,17 @@
+---
+import wolfSymbol from "../assets/images/simbolo-lobo.png";
+---
+
 <header class="site-header">
   <a class="brand" href="/" aria-label="Rodolfo Miranda Company, inicio">
-    <span class="rm-mark" aria-hidden="true"><i></i><b>R</b><em>M</em></span>
-    <span>Rodolfo Miranda Company</span>
+    <img
+      class="brand-symbol"
+      src={wolfSymbol.src}
+      width={wolfSymbol.width}
+      height={wolfSymbol.height}
+      alt=""
+      aria-hidden="true"
+    />
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">
@@ -25,14 +35,13 @@
     <button type="button" class="menu-close">Cerrar menú</button>
     <a href="/yo">Yo</a>
     <a href="/notas">Notas</a>
-    <a href="/biblioteca">Biblioteca</a>
+    <a href="/mediateca">Mediateca</a>
     <a href="/experimentos">Experimentos</a>
     <a href="/#ahora">Ahora</a>
     <a href="/contacto">Contacto</a>
   </nav>
-</header>
 
-<script>
+  <script>
   document.querySelectorAll<HTMLElement>(".site-header").forEach((header) => {
     if (header.dataset.menuReady === "true") return;
     header.dataset.menuReady = "true";
@@ -64,4 +73,5 @@
       }
     });
   });
-</script>
+  </script>
+</header>

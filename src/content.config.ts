@@ -4,6 +4,12 @@ import { z } from "astro/zod";
 
 const language = z.enum(["es", "en"]).default("es");
 const translationKey = z.string().min(1).optional();
+const internalUrl = z.string().startsWith("/");
+const linkedSegment = z.object({
+  text: z.string().min(1),
+  href: internalUrl.optional(),
+});
+const linkedParagraph = z.array(linkedSegment).min(1);
 
 const notas = defineCollection({
   loader: glob({ base: "./src/content/notas", pattern: "**/*.{md,mdx}" }),
@@ -13,6 +19,8 @@ const notas = defineCollection({
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
     state: z.enum(["semilla", "en-crecimiento", "perenne"]),
+    archiveNumber: z.string().regex(/^N\.\d{3}$/),
+    cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
     tags: z.array(z.string().min(1)).default([]),
     relatedNotes: z.array(reference("notas")).default([]),
     featured: z.boolean().default(false),
@@ -22,18 +30,27 @@ const notas = defineCollection({
   }),
 });
 
-const biblioteca = defineCollection({
-  loader: glob({ base: "./src/content/biblioteca", pattern: "**/*.{md,mdx}" }),
+const mediateca = defineCollection({
+  loader: glob({ base: "./src/content/mediateca", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string().min(1),
       creator: z.string().min(1),
-      type: z.enum(["book", "article", "website", "tool", "video", "podcast", "other"]),
+      format: z.enum(["book", "article", "website", "tool", "video", "podcast", "other"]),
+      engagementMode: z.enum(["read", "watch", "listen"]),
       summary: z.string().min(1),
-      commentary: z.string(),
-      externalUrl: z.url(),
+      commentary: z.string().min(1),
+      whyHere: z.string().min(1),
+      recurringIdeas: z.array(z.string().min(1)).default([]),
+      publicationYear: z.number().int().min(1400).max(2100).optional(),
+      status: z.enum(["en-curso", "consultado", "de-referencia", "por-explorar"]),
+      archiveNumber: z.string().regex(/^M\.\d{3}$/),
+      updatedAt: z.coerce.date(),
+      externalUrl: z.url().optional(),
       coverImage: image().optional(),
       tags: z.array(z.string().min(1)).default([]),
+      relatedNotes: z.array(reference("notas")).default([]),
+      relatedMedia: z.array(reference("mediateca")).default([]),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
       language,
@@ -50,10 +67,21 @@ const portafolio = defineCollection({
       year: z.number().int().min(1900),
       role: z.string().min(1),
       disciplines: z.array(z.string().min(1)).min(1),
+      tags: z.array(z.string().min(1)).default([]),
       client: z.string().min(1).optional(),
       projectStatus: z.string().min(1),
+      archiveNumber: z.string().regex(/^P\.\d{3}$/),
       coverImage: image().optional(),
-      gallery: z.array(image()).default([]),
+      coverAlt: z.string().min(1).optional(),
+      gallery: z
+        .array(
+          z.object({
+            image: image(),
+            alt: z.string().min(1),
+            caption: z.string().min(1).optional(),
+          }),
+        )
+        .default([]),
       projectLinks: z
         .array(
           z.object({
@@ -62,8 +90,11 @@ const portafolio = defineCollection({
           }),
         )
         .default([]),
-      featured: z.boolean().default(false),
       displayOrder: z.number().int().nonnegative(),
+      updatedAt: z.coerce.date(),
+      placeholder: z.boolean().default(false),
+      relatedNotes: z.array(reference("notas")).default([]),
+      relatedMedia: z.array(reference("mediateca")).default([]),
       draft: z.boolean().default(false),
       language,
       translationKey,
@@ -74,6 +105,38 @@ const portafolio = defineCollection({
           code: "custom",
           message: "Los proyectos publicados requieren una imagen de portada.",
           path: ["coverImage"],
+        });
+      }
+
+      if (entry.coverImage && !entry.coverAlt) {
+        context.addIssue({
+          code: "custom",
+          message: "Toda imagen de portada requiere texto alternativo.",
+          path: ["coverAlt"],
+        });
+      }
+
+      if (!entry.draft && !entry.coverAlt) {
+        context.addIssue({
+          code: "custom",
+          message: "Los proyectos publicados requieren texto alternativo para su portada.",
+          path: ["coverAlt"],
+        });
+      }
+
+      if (entry.placeholder && !entry.draft) {
+        context.addIssue({
+          code: "custom",
+          message: "Un proyecto provisional siempre debe ser borrador.",
+          path: ["draft"],
+        });
+      }
+
+      if (entry.placeholder && entry.projectLinks.length > 0) {
+        context.addIssue({
+          code: "custom",
+          message: "Los proyectos provisionales no pueden publicar enlaces externos.",
+          path: ["projectLinks"],
         });
       }
     }),
@@ -110,6 +173,104 @@ const pages = defineCollection({
   }),
 });
 
+const timelineEntry = z
+  .object({
+    role: z.string().min(1),
+    organization: z.string().min(1),
+    period: z.string().min(1),
+    description: z.string().min(1),
+    organizationUrl: z.url().optional(),
+    caseStudyLabel: z.string().min(1).optional(),
+    caseStudyUrl: internalUrl.optional(),
+    current: z.boolean().default(false),
+    placeholder: z.boolean().default(false),
+  })
+  .superRefine((entry, context) => {
+    if (entry.caseStudyUrl && !entry.caseStudyLabel) {
+      context.addIssue({
+        code: "custom",
+        message: "Un enlace de caso requiere una etiqueta visible.",
+        path: ["caseStudyLabel"],
+      });
+    }
+
+    if (entry.placeholder && (entry.organizationUrl || entry.caseStudyUrl)) {
+      context.addIssue({
+        code: "custom",
+        message: "Las etapas provisionales no pueden publicar enlaces.",
+      });
+    }
+  });
+
+const profile = defineCollection({
+  loader: file("./src/content/site/yo.json"),
+  schema: z
+    .object({
+      hero: z.object({
+        label: z.string().min(1),
+        name: z.string().min(1),
+        positioning: z.string().min(1),
+        disciplines: z.string().min(1),
+      }),
+      portrait: z.object({
+        alt: z.string().min(1),
+        annotation: z.string().min(1),
+      }),
+      context: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+      }),
+      currentContext: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+      }),
+      timeline: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        entries: z.array(timelineEntry).length(5),
+      }),
+      history: z.object({
+        index: z.string().min(1),
+        title: z.string().min(1),
+        paragraphs: z.array(linkedParagraph).min(1),
+        pendingParagraph: z.string().min(1),
+        pendingLabel: z.string().min(1),
+      }),
+      closing: z.object({
+        index: z.string().min(1),
+        label: z.string().min(1),
+        links: z
+          .array(
+            z.object({
+              label: z.string().min(1),
+              href: internalUrl,
+            }),
+          )
+          .length(3),
+      }),
+      language,
+    })
+    .superRefine((entry, context) => {
+      if (entry.timeline.entries.filter((timelineItem) => timelineItem.current).length !== 1) {
+        context.addIssue({
+          code: "custom",
+          message: "La trayectoria requiere exactamente una etapa actual.",
+          path: ["timeline", "entries"],
+        });
+      }
+
+      if (entry.timeline.entries.filter((timelineItem) => timelineItem.placeholder).length !== 4) {
+        context.addIssue({
+          code: "custom",
+          message: "La trayectoria requiere cuatro etapas provisionales.",
+          path: ["timeline", "entries"],
+        });
+      }
+    }),
+});
+
 const homepage = defineCollection({
   loader: file("./src/content/site/homepage.json"),
   schema: z.object({
@@ -126,7 +287,7 @@ const homepage = defineCollection({
           metadata: z.string().min(1),
           reveal: z.string().min(1),
           href: z.string().startsWith("/"),
-          kind: z.enum(["yo", "notas", "biblioteca", "contacto"]),
+          kind: z.enum(["yo", "notas", "mediateca", "contacto"]),
         }),
       )
       .length(4),
@@ -141,8 +302,8 @@ const ahora = defineCollection({
     title: z.string().min(1),
     notesHeading: z.string().min(1),
     notesLinkLabel: z.string().min(1),
-    libraryHeading: z.string().min(1),
-    libraryLinkLabel: z.string().min(1),
+    mediatecaHeading: z.string().min(1),
+    mediatecaLinkLabel: z.string().min(1),
     processHeading: z.string().min(1),
     processIndex: z.string().min(1),
     processTitle: z.tuple([z.string().min(1), z.string().min(1)]),
@@ -153,10 +314,11 @@ const ahora = defineCollection({
 
 export const collections = {
   notas,
-  biblioteca,
+  mediateca,
   portafolio,
   experimentos,
   pages,
+  profile,
   homepage,
   ahora,
 };

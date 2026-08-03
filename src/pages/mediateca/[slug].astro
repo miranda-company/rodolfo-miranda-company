@@ -1,0 +1,27 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MediaReference from "../../components/MediaReference.astro";
+
+export async function getStaticPaths() {
+  const includeDrafts = import.meta.env.DEV;
+  const entries = (await getCollection("mediateca")).filter(
+    (entry) =>
+      entry.id !== "modulor" &&
+      (includeDrafts || !entry.data.draft) &&
+      entry.data.language === "es",
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"mediateca">;
+}
+
+const { entry } = Astro.props;
+---
+
+<MediaReference entry={entry} />

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  entries: CollectionEntry<"biblioteca">[];
+  entries: CollectionEntry<"mediateca">[];
   fragmentTargets?: boolean;
   detailLinks?: boolean;
 }
@@ -10,7 +10,7 @@ interface Props {
 const { entries, fragmentTargets = false, detailLinks = false } = Astro.props;
 ---
 
-<ol class="latest-books" aria-label="Últimos tres libros leídos">
+<ol class="latest-media" aria-label="Tres referencias destacadas">
   {
     entries.map((entry) => (
       <li
@@ -18,7 +18,7 @@ const { entries, fragmentTargets = false, detailLinks = false } = Astro.props;
         class={fragmentTargets ? "fragment-target" : undefined}
         tabindex={fragmentTargets ? "-1" : undefined}
       >
-        <a href={detailLinks ? "/biblioteca/" + entry.id : "/biblioteca#" + entry.id}>
+        <a href={detailLinks ? "/mediateca/" + entry.id : "/mediateca#" + entry.id}>
           <span class:list={["book-cover", "cover-" + entry.id]} aria-hidden="true">
             {entry.id === "modulor" && <i>LE<br />MODULOR</i>}
             {entry.id === "cosas" && <i>LAS<br />COSAS</i>}

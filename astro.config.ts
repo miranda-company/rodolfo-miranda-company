@@ -4,6 +4,20 @@ const port = Number.parseInt(process.env.PORT ?? "8443", 10);
 
 export default defineConfig({
   output: "static",
+  redirects: {
+    "/biblioteca": {
+      status: 301,
+      destination: "/mediateca",
+    },
+    "/biblioteca/modulor": {
+      status: 301,
+      destination: "/mediateca/modulor",
+    },
+    "/biblioteca/[slug]": {
+      status: 301,
+      destination: "/mediateca/[slug]",
+    },
+  },
   devToolbar: {
     enabled: false,
   },

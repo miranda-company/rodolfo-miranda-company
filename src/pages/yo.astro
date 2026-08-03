@@ -1,12 +1,102 @@
 ---
-import { getEntry, render } from "astro:content";
-import ProvisionalLayout from "../layouts/ProvisionalLayout.astro";
+import { getEntry } from "astro:content";
+import CareerTimeline from "../components/CareerTimeline.astro";
+import LinkedParagraph from "../components/LinkedParagraph.astro";
+import PageShell from "../components/PageShell.astro";
+import YoPortrait from "../components/YoPortrait.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/yo.css";
 
-const entry = await getEntry("pages", "yo");
-if (!entry) throw new Error("Falta src/content/pages/yo.md");
-const { Content } = await render(entry);
+const profile = await getEntry("profile", "yo");
+if (!profile) throw new Error("Falta src/content/site/yo.json");
 ---
 
-<ProvisionalLayout title={entry.data.title} summary={entry.data.summary}>
-  <Content />
-</ProvisionalLayout>
+<BaseLayout
+  title={profile.data.hero.name}
+  description="Perfil, contexto y trayectoria profesional de Rodolfo Miranda."
+>
+  <PageShell pageClass="yo-page" mainClass="yo-main archive-index-main">
+      <a class="index-back" href="/#indice">← Volver al índice</a>
+      <header class="yo-hero" aria-labelledby="yo-title">
+        <div class="yo-hero__lead">
+          <p class="yo-kicker">{profile.data.hero.label}</p>
+          <h1 id="yo-title">{profile.data.hero.name}</h1>
+          <p class="yo-hero__positioning">{profile.data.hero.positioning}</p>
+        </div>
+        
+      </header>
+
+      <section class="yo-section yo-context" aria-labelledby="context-title">
+        <div class="yo-section__heading">
+          <p>{profile.data.context.index}</p>
+          <h2 id="context-title">{profile.data.context.title}</h2>
+        </div>
+        <div class="yo-context__grid">
+          <div class="yo-prose yo-prose--lead">
+            {
+              profile.data.context.paragraphs.map((paragraph) => (
+                <LinkedParagraph segments={paragraph} />
+              ))
+            }
+          </div>
+          <YoPortrait alt={profile.data.portrait.alt} annotation={profile.data.portrait.annotation} />
+        </div>
+      </section>
+
+      <section class="yo-section yo-now" aria-labelledby="now-title">
+        <div class="yo-section__heading">
+          <p>{profile.data.currentContext.index}</p>
+          <h2 id="now-title">{profile.data.currentContext.title}</h2>
+        </div>
+        <div class="yo-prose">
+          {
+            profile.data.currentContext.paragraphs.map((paragraph) => (
+              <LinkedParagraph segments={paragraph} />
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="yo-section yo-career" aria-labelledby="career-title">
+        <div class="yo-section__heading">
+          <p>{profile.data.timeline.index}</p>
+          <h2 id="career-title">{profile.data.timeline.title}</h2>
+        </div>
+        <CareerTimeline entries={profile.data.timeline.entries} />
+      </section>
+
+      <section class="yo-section yo-history" aria-labelledby="history-title">
+        <div class="yo-section__heading">
+          <p>{profile.data.history.index}</p>
+          <h2 id="history-title">{profile.data.history.title}</h2>
+        </div>
+        <div class="yo-history__body">
+          <div class="yo-prose">
+            {
+              profile.data.history.paragraphs.map((paragraph) => (
+                <LinkedParagraph segments={paragraph} />
+              ))
+            }
+          </div>
+          <aside class="yo-history__pending" aria-label="Contenido editorial pendiente">
+            <span>{profile.data.history.pendingLabel}</span>
+            <p>{profile.data.history.pendingParagraph}</p>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="yo-connections" aria-label="Siguientes rutas del archivo">
+        <div>
+          <span>{profile.data.closing.index}</span>
+          <p>{profile.data.closing.label}</p>
+        </div>
+        <ul>
+          {
+            profile.data.closing.links.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))
+          }
+        </ul>
+      </nav>
+  </PageShell>
+</BaseLayout>

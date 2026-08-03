@@ -4,13 +4,28 @@
   --ink: #1d1e19;
   --graphite: #6e6b62;
   --line: #cfc7b8;
-  --blue: #244c88;
+  --blue: #1559be;
   --red: #b63e2c;
   --plum: #5d2b4c;
-  --ochre: #d1a139;
+  --ochre: #D0A065;
   --font-serif: "Spectral", serif;
   --font-sans: "Instrument Sans Variable", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
+  --heading-h1-size: clamp(68px, 5.65vw, 80px);
+  --heading-h2-size: clamp(35px, 3.5vw, 39px);
+  --heading-h3-size: clamp(27px, 2.35vw, 30px);
+  --heading-h4-size: 23px;
+  --heading-h5-size: 20px;
+  --heading-h6-size: 17px;
+  --type-introduction-size: clamp(19px, 2vw, 27px);
+  --type-introduction-line-height: 1.2;
+  --type-body-size: 17px;
+  --type-body-line-height: 1.62;
+  --type-supporting-size: 13px;
+  --type-supporting-line-height: 1.4;
+  --type-metadata-size: 10px;
+  --type-metadata-line-height: 1.4;
+  --backlink-block-offset: 36px;
   --page-gutter: 32px;
   --content-width: 1360px;
 }
@@ -35,6 +50,52 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: var(--heading-h1-size);
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+}
+
+h2 {
+  font-size: var(--heading-h2-size);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+h3 {
+  font-size: var(--heading-h3-size);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+h4 {
+  font-size: var(--heading-h4-size);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+h5 {
+  font-size: var(--heading-h5-size);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h6 {
+  font-size: var(--heading-h6-size);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
 }
 
 button,
@@ -82,33 +143,43 @@ a {
   outline-offset: 4px;
 }
 
-.page-shell,
-.provisional-page {
+.page-shell {
+  --page-shell-bottom: 40px;
+
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
+  isolation: isolate;
   overflow: hidden;
-  padding: 0 var(--page-gutter) 40px;
+  padding: 0 var(--page-gutter) var(--page-shell-bottom);
   background-color: var(--paper);
   background-image: radial-gradient(rgba(68, 62, 51, 0.12) 0.55px, transparent 0.7px);
   background-size: 10px 10px;
 }
 
-.page-shell::before,
-.provisional-page::before {
+.page-shell::before {
   position: absolute;
+  z-index: 0;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 8.3%,
-    rgba(29, 30, 25, 0.12) 8.38%,
-    transparent 8.45%,
-    transparent 91.5%,
-    rgba(29, 30, 25, 0.1) 91.58%,
-    transparent 91.65%
-  );
+  background-color: #f7f3ea;
+  opacity: 1;
+  background-image:  repeating-linear-gradient(to right, transparent 0, transparent 1.6666666666666667px, #f7f3ea 1.6666666666666667px, #f7f3ea 5px, transparent 5px, transparent 6.666666666666667px), repeating-linear-gradient(to bottom, transparent 0, transparent 1.6666666666666667px, #f7f3ea 1.6666666666666667px, #f7f3ea 5px, transparent 5px, transparent 6.666666666666667px), linear-gradient(to bottom, #d7d4ce 0.6px, transparent 0.6px), linear-gradient(to right, #d7d4ce 0.6px, transparent 0.6px) ;
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+  background-position: 0 0, 0 0, 0 -0.2px, -0.2px 0;
   content: "";
-  opacity: 0.22;
   pointer-events: none;
+}
+
+.page-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+.home-main {
+  max-width: none;
 }
 
 .site-header,
@@ -140,40 +211,10 @@ a {
   text-decoration: none;
 }
 
-.rm-mark {
-  position: relative;
+.brand-symbol {
   display: block;
-  width: 29px;
-  height: 19px;
-  overflow: hidden;
-  border: 1px solid var(--ink);
-  font-family: var(--font-mono);
-  font-size: 8px;
-  line-height: 1;
-}
-
-.rm-mark i {
-  position: absolute;
-  inset: 0 45% 0 0;
-  background: var(--blue);
-}
-
-.rm-mark b,
-.rm-mark em {
-  position: absolute;
-  z-index: 1;
-  top: 5px;
-  font-style: normal;
-  font-weight: 500;
-}
-
-.rm-mark b {
-  left: 5px;
-  color: var(--paper);
-}
-
-.rm-mark em {
-  right: 4px;
+  width: 72px;
+  height: auto;
 }
 
 .site-header nav {
@@ -222,11 +263,6 @@ a {
 
 .hero h1 {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: clamp(68px, 5.65vw, 80px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 0.86;
 }
 
 .positioning {
@@ -367,11 +403,6 @@ a {
 
 .panel-copy h2 {
   margin: 0 0 9px;
-  font-family: var(--font-serif);
-  font-size: 39px;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1;
   transition: transform 0.22s ease-out;
 }
 
@@ -533,7 +564,7 @@ a {
   font-style: normal;
 }
 
-.art-library {
+.art-media {
   display: flex;
   align-items: end;
   gap: 3px;
@@ -541,32 +572,32 @@ a {
   background: linear-gradient(90deg, rgba(209, 161, 57, 0.35) 0 46%, transparent 46%);
 }
 
-.art-library span {
+.art-media span {
   display: block;
   width: 18px;
   height: 88px;
   background: var(--blue);
 }
 
-.art-library span:nth-child(2) {
+.art-media span:nth-child(2) {
   width: 24px;
   height: 72px;
   background: var(--ochre);
 }
 
-.art-library span:nth-child(3) {
+.art-media span:nth-child(3) {
   width: 15px;
   height: 96px;
   background: var(--ink);
 }
 
-.art-library span:nth-child(4) {
+.art-media span:nth-child(4) {
   width: 29px;
   height: 57px;
   background: var(--red);
 }
 
-.art-library i {
+.art-media i {
   position: absolute;
   top: 10px;
   right: 13px;
@@ -645,8 +676,6 @@ a {
 
 .growing-section > h2 {
   margin: 22px 0 30px;
-  font: 500 clamp(42px, 4.1vw, 61px) / 0.93 var(--font-serif);
-  letter-spacing: -0.055em;
 }
 
 .growing-grid {
@@ -669,13 +698,10 @@ a {
 .preview-column h3 {
   margin: 0 0 18px;
   color: var(--graphite);
-  font: 500 11px var(--font-mono);
-  letter-spacing: 0.055em;
-  text-transform: uppercase;
 }
 
 .latest-notes,
-.latest-books {
+.latest-media {
   display: grid;
   gap: 0;
   margin: 0;
@@ -686,14 +712,14 @@ a {
 .latest-notes li {
   display: grid;
   grid-template-columns: 68px 1fr;
-  gap: 3px;
+  gap: 16px;
   align-items: baseline;
   padding: 10px 0;
   border-top: 1px solid var(--line);
 }
 
 .latest-notes li:first-child,
-.latest-books li:first-child {
+.latest-media li:first-child {
   padding-top: 0;
   border-top: 0;
 }
@@ -729,13 +755,13 @@ a {
   text-decoration-color: var(--blue);
 }
 
-.latest-books li {
+.latest-media li {
   min-width: 0;
   padding: 9px 0;
   border-top: 1px solid var(--line);
 }
 
-.latest-books a {
+.latest-media a {
   display: grid;
   grid-template-columns: 42px 1fr;
   align-items: center;
@@ -760,8 +786,8 @@ a {
     box-shadow 0.18s ease-out;
 }
 
-.latest-books a:hover .book-cover,
-.latest-books a:focus-visible .book-cover {
+.latest-media a:hover .book-cover,
+.latest-media a:focus-visible .book-cover {
   box-shadow: 4px 5px 0 rgba(29, 30, 25, 0.15);
   transform: translateY(-3px);
 }
@@ -890,11 +916,31 @@ a {
   outline-offset: 3px;
 }
 
+.archive-index-main {
+  padding-top: var(--backlink-block-offset);
+}
+
+.index-back {
+  display: inline-block;
+  margin-top: 0;
+  color: var(--ink);
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-underline-offset: 4px;
+}
+
+.index-back:hover,
+.index-back:focus-visible {
+  color: var(--blue);
+}
+
+.index-back:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
 .provisional-main {
-  position: relative;
-  z-index: 1;
-  width: min(760px, 100%);
-  margin: 0 auto;
+  max-width: 760px;
   padding: 88px 0;
 }
 
@@ -907,16 +953,15 @@ a {
 
 .provisional-main h1 {
   margin: 18px 0 22px;
-  font: 500 clamp(54px, 8vw, 92px) / 0.9 var(--font-serif);
-  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
 }
 
 .provisional-summary {
   max-width: 600px;
   margin: 0;
   color: #3d3c35;
-  font-size: 20px;
-  line-height: 1.4;
+  font-size: var(--type-introduction-size);
+  line-height: var(--type-introduction-line-height);
 }
 
 .provisional-content {
@@ -928,12 +973,12 @@ a {
 .provisional-content > p,
 .provisional-entry {
   max-width: 620px;
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
 }
 
 .provisional-content .latest-notes,
-.provisional-content .latest-books {
+.provisional-content .latest-media {
   max-width: 620px;
 }
 
@@ -970,6 +1015,12 @@ a {
 }
 
 @media (max-width: 767px) {
+  :root {
+    --heading-h1-size: 64px;
+    --type-introduction-size: 18px;
+    --backlink-block-offset: 30px;
+  }
+
   :root {
     --page-gutter: 20px;
   }
@@ -1058,7 +1109,6 @@ a {
 
   .hero h1 {
     width: auto;
-    font-size: 64px;
   }
 
   .hero .positioning {

@@ -1,9 +1,9 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import ArchiveCard from "../components/ArchiveCard.astro";
-import Header from "../components/Header.astro";
-import LatestBooks from "../components/LatestBooks.astro";
+import LatestMedia from "../components/LatestMedia.astro";
 import LatestNotes from "../components/LatestNotes.astro";
+import PageShell from "../components/PageShell.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const home = await getEntry("homepage", "homepage");
@@ -19,28 +19,25 @@ const notes = (await getCollection("notas"))
   .slice(0, 3);
 
 const bookOrder = ["modulor", "cosas", "orden"];
-const books = (await getCollection("biblioteca"))
+const mediaShelf = (await getCollection("mediateca"))
   .filter((entry) => !entry.data.draft && entry.data.language === "es" && entry.data.featured)
   .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id))
   .slice(0, 3);
 ---
 
 <BaseLayout>
-  <main class="page-shell">
-    <Header />
-
+  <PageShell pageClass="home-page" mainClass="home-main">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
         <h1 id="hero-title">{home.data.heroTitle[0]}<br />{home.data.heroTitle[1]}</h1>
         <p class="positioning">{home.data.positioning}</p>
       </div>
-      <div class="connection"><span>{home.data.connectionLabel}</span><i></i></div>
+      <div class="connection"><span>{home.data.connectionLabel}</span></div>
     </section>
 
     <section class="panel-section" id="indice" aria-label="Archivo principal">
       <div class="section-label">
         <span>{home.data.indexLabel}</span>
-        <span>04 / 04</span>
       </div>
       <div class="panels">
         {home.data.panels.map((panel) => <ArchiveCard panel={panel} />)}
@@ -60,9 +57,9 @@ const books = (await getCollection("biblioteca"))
           <a class="archive-link" href="/notas">{ahora.data.notesLinkLabel}</a>
         </div>
         <div class="preview-column">
-          <h3>{ahora.data.libraryHeading}</h3>
-          <LatestBooks entries={books} />
-          <a class="archive-link" href="/biblioteca">{ahora.data.libraryLinkLabel}</a>
+          <h3>{ahora.data.mediatecaHeading}</h3>
+          <LatestMedia entries={mediaShelf} />
+          <a class="archive-link" href="/mediateca">{ahora.data.mediatecaLinkLabel}</a>
         </div>
         <div class="preview-column process-preview">
           <h3>{ahora.data.processHeading}</h3>
@@ -76,5 +73,5 @@ const books = (await getCollection("biblioteca"))
         </div>
       </div>
     </section>
-  </main>
+  </PageShell>
 </BaseLayout>

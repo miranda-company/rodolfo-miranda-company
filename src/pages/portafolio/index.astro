@@ -1,25 +1,139 @@
 ---
 import { getCollection } from "astro:content";
-import ProvisionalLayout from "../../layouts/ProvisionalLayout.astro";
+import PageShell from "../../components/PageShell.astro";
+import PortfolioCard from "../../components/PortfolioCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/portfolio.css";
 
+const includeDrafts = import.meta.env.DEV;
 const projects = (await getCollection("portafolio"))
-  .filter((entry) => !entry.data.draft && entry.data.language === "es")
-  .sort((a, b) => a.data.displayOrder - b.data.displayOrder);
+  .filter(
+    (entry) =>
+      entry.id !== "_template" &&
+      (includeDrafts || !entry.data.draft) &&
+      entry.data.language === "es",
+  )
+  .sort((first, second) => first.data.displayOrder - second.data.displayOrder);
+const lastUpdated = projects.reduce<Date | undefined>(
+  (latest, project) =>
+    !latest || project.data.updatedAt.getTime() > latest.getTime() ? project.data.updatedAt : latest,
+  undefined,
+);
+const lastUpdatedLabel = lastUpdated
+  ? new Intl.DateTimeFormat("es-ES", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }).format(lastUpdated)
+  : undefined;
+const projectCount = String(projects.length).padStart(2, "0");
+const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags))).sort((first, second) =>
+  first.localeCompare(second, "es"),
+);
 ---
 
-<ProvisionalLayout
-  title="Portafolio"
-  summary="Selección curada pendiente de contenido y diseño."
->
-  {
-    projects.length > 0 ? (
-      <ol class="provisional-list">
-        {projects.map((project) => (
-          <li><a href={"/portafolio/" + project.id}>{project.data.title}</a></li>
-        ))}
-      </ol>
-    ) : (
-      <p>No hay proyectos publicados todavía.</p>
-    )
-  }
-</ProvisionalLayout>
+<BaseLayout title="Portafolio" description="Selección curada de proyectos de Rodolfo Miranda Company.">
+  <PageShell pageClass="portfolio-page" mainClass="portfolio-main archive-index-main">
+      <a class="index-back" href="/#indice">← Volver al índice</a>
+
+      <header class="portfolio-header" aria-labelledby="portfolio-title">
+        <p class="portfolio-kicker">04 / Trabajo seleccionado</p>
+        <h1 id="portfolio-title">Portafolio</h1>
+        <p class="portfolio-header__meta">
+          {projectCount} {includeDrafts ? "PROYECTOS DE DESARROLLO" : "PROYECTOS PUBLICADOS"}
+          {lastUpdatedLabel && <> · ACTUALIZADO {lastUpdatedLabel}</>}
+        </p>
+      </header>
+
+      <section class="portfolio-selection" aria-labelledby="portfolio-selection-title">
+        <h2 class="portfolio-controls__title" id="portfolio-selection-title">Buscar y filtrar proyectos</h2>
+
+        {
+          projects.length > 0 ? (
+            <>
+              <div class="portfolio-controls" data-portfolio-controls>
+                <label class="portfolio-search">
+                  <span>Buscar</span>
+                  <input
+                    type="search"
+                    placeholder="Buscar proyectos"
+                    autocomplete="off"
+                    aria-controls="portfolio-list"
+                    data-portfolio-search
+                  />
+                </label>
+
+                <fieldset class="portfolio-tag-filter">
+                  <legend>Etiquetas</legend>
+                  <div>
+                    <button type="button" aria-pressed="true" data-portfolio-tag="all">Todas</button>
+                    {tags.map((tag) => <button type="button" aria-pressed="false" data-portfolio-tag={tag}>{tag}</button>)}
+                  </div>
+                </fieldset>
+
+                <p data-portfolio-count aria-live="polite">{projects.length} proyectos</p>
+              </div>
+
+              <ol class="portfolio-list" id="portfolio-list">
+                {projects.map((project) => <PortfolioCard entry={project} />)}
+              </ol>
+              <p class="portfolio-filter-empty" data-portfolio-empty hidden>
+                No hay proyectos que coincidan con esta búsqueda.
+              </p>
+            </>
+          ) : (
+            <p class="portfolio-empty">La selección de proyectos está en preparación.</p>
+          )
+        }
+      </section>
+  </PageShell>
+
+  <script>
+    const controls = document.querySelector<HTMLElement>("[data-portfolio-controls]");
+
+    if (controls && controls.dataset.ready !== "true") {
+      controls.dataset.ready = "true";
+      const search = controls.querySelector<HTMLInputElement>("[data-portfolio-search]");
+      const tagButtons = Array.from(
+        controls.querySelectorAll<HTMLButtonElement>("[data-portfolio-tag]"),
+      );
+      const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-portfolio-card]"));
+      const count = controls.querySelector<HTMLElement>("[data-portfolio-count]");
+      const empty = document.querySelector<HTMLElement>("[data-portfolio-empty]");
+      let activeTag = "all";
+
+      const normalize = (value: string) =>
+        value
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLocaleLowerCase("es");
+
+      const applyFilters = () => {
+        const query = normalize(search?.value.trim() ?? "");
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const matchesSearch = !query || normalize(card.dataset.search ?? "").includes(query);
+          const matchesTag =
+            activeTag === "all" || (card.dataset.tags ?? "").split("|").includes(activeTag);
+          card.hidden = !(matchesSearch && matchesTag);
+          if (!card.hidden) visible += 1;
+        });
+
+        if (count) count.textContent = `${visible} ${visible === 1 ? "proyecto" : "proyectos"}`;
+        if (empty) empty.hidden = visible !== 0;
+      };
+
+      search?.addEventListener("input", applyFilters);
+      tagButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeTag = button.dataset.portfolioTag ?? "all";
+          tagButtons.forEach((candidate) => {
+            candidate.setAttribute("aria-pressed", String(candidate === button));
+          });
+          applyFilters();
+        });
+      });
+    }
+  </script>
+</BaseLayout>

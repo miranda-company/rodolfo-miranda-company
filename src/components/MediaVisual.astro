@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"mediateca">;
+  compact?: boolean;
+}
+
+const { entry, compact = false } = Astro.props;
+const host = entry.data.externalUrl ? new URL(entry.data.externalUrl).hostname.replace(/^www\./, "") : "ARCHIVO LOCAL";
+---
+
+<div
+  class:list={[
+    "media-visual",
+    `media-visual--${entry.data.format}`,
+    `media-visual--${entry.id}`,
+    { "media-visual--compact": compact },
+  ]}
+  aria-hidden="true"
+>
+  {
+    entry.data.format === "book" && (
+      <>
+        <span class="media-visual__code">{entry.data.archiveNumber}</span>
+        <strong>{entry.data.title}</strong>
+        <i>{entry.data.creator}</i>
+      </>
+    )
+  }
+  {
+    entry.data.format === "article" && (
+      <>
+        <span class="media-visual__code">ARTÍCULO / {entry.data.archiveNumber}</span>
+        <i class="media-rule media-rule--one"></i>
+        <i class="media-rule media-rule--two"></i>
+        <i class="media-rule media-rule--three"></i>
+        <strong>Aa</strong>
+      </>
+    )
+  }
+  {
+    entry.data.format === "website" && (
+      <>
+        <span class="media-visual__code">WWW / {entry.data.archiveNumber}</span>
+        <div class="media-window"><i></i><i></i><i></i></div>
+        <strong>{host}</strong>
+      </>
+    )
+  }
+  {
+    entry.data.format === "tool" && (
+      <>
+        <span class="media-visual__code">HERRAMIENTA / {entry.data.archiveNumber}</span>
+        <div class="media-tool-map"><i></i><i></i><i></i><b></b><b></b></div>
+        <strong>{entry.data.title}</strong>
+      </>
+    )
+  }
+  {
+    entry.data.format === "video" && (
+      <>
+        <span class="media-visual__code">VIDEO / {entry.data.archiveNumber}</span>
+        <div class="media-frame"><i></i><b>00:{entry.data.archiveNumber.slice(-2)}</b></div>
+      </>
+    )
+  }
+  {
+    entry.data.format === "podcast" && (
+      <>
+        <span class="media-visual__code">PODCAST / {entry.data.archiveNumber}</span>
+        <div class="media-wave">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <strong>{entry.data.title}</strong>
+      </>
+    )
+  }
+  {
+    entry.data.format === "other" && (
+      <>
+        <span class="media-visual__code">REFERENCIA / {entry.data.archiveNumber}</span>
+        <strong>{entry.data.title}</strong>
+      </>
+    )
+  }
+</div>

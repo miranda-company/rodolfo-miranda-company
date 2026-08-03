@@ -1,0 +1,111 @@
+---
+import { getEntry, render } from "astro:content";
+import MaturityMarker from "../../components/MaturityMarker.astro";
+import PageShell from "../../components/PageShell.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/notes.css";
+
+const entry = await getEntry("notas", "umbral");
+
+if (!entry) {
+  throw new Error("No se encontró la nota Umbral.");
+}
+
+const { Content } = await render(entry);
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").reverse().join(".");
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <PageShell pageClass="note-page" mainClass="note-main">
+      <a class="note-back" href="/notas">← Volver a Notas</a>
+
+      <header class="note-article-header">
+        <div class="note-article-header__meta">
+          <span>{entry.data.archiveNumber}</span>
+          <MaturityMarker state={entry.data.state} />
+        </div>
+        <h1>{entry.data.title}</h1>
+        <p>{entry.data.summary}</p>
+      </header>
+
+      <div class="note-article-layout">
+        <aside class="note-meta-rail" aria-label="Metadatos de la nota">
+          <dl>
+            <div>
+              <dt>Creada</dt>
+              <dd>
+                <time datetime={entry.data.publishedAt.toISOString().slice(0, 10)}>
+                  {formatDate(entry.data.publishedAt)}
+                </time>
+              </dd>
+            </div>
+            <div>
+              <dt>Actualizada</dt>
+              <dd><time datetime={entry.data.updatedAt.toISOString().slice(0, 10)}>{formatDate(entry.data.updatedAt)}</time></dd>
+            </div>
+            <div>
+              <dt>Estado</dt>
+              <dd>En crecimiento</dd>
+            </div>
+            <div>
+              <dt>Etiquetas</dt>
+              <dd class="note-meta-tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</dd>
+            </div>
+          </dl>
+        </aside>
+
+        <article class="note-reading">
+          <p class="note-growth-notice">
+            <span aria-hidden="true">●—●</span>
+            Esta nota está en crecimiento. Puede cambiar a medida que aparecen nuevas conexiones.
+          </p>
+
+          <div class="note-body">
+            <Content />
+          </div>
+
+          <figure class="note-inline-diagram" aria-labelledby="diagram-caption">
+            <div class="note-inline-diagram__field" aria-hidden="true">
+              <span class="diagram-node diagram-node--idea"></span>
+              <span class="diagram-node diagram-node--rule"></span>
+              <span class="diagram-node diagram-node--system"></span>
+              <i class="diagram-line diagram-line--first"></i>
+              <i class="diagram-line diagram-line--second"></i>
+              <b class="diagram-label diagram-label--idea">IDEA</b>
+              <b class="diagram-label diagram-label--rule">REGLA</b>
+              <b class="diagram-label diagram-label--system">SISTEMA</b>
+              <em>REPETICIÓN / AJUSTE / MEMORIA</em>
+            </div>
+            <figcaption id="diagram-caption">
+              Una posible transición: la idea se vuelve regla cuando puede observarse; la regla se
+              vuelve sistema cuando puede repetirse y revisarse.
+            </figcaption>
+          </figure>
+
+          <footer class="note-article-footer">
+            <p>ÚLTIMA ACTUALIZACIÓN · {formatDate(entry.data.updatedAt)}</p>
+            <MaturityMarker state={entry.data.state} />
+            <div class="note-footer-tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>
+          </footer>
+        </article>
+
+        <aside class="note-connections" aria-labelledby="connections-title">
+          <div class="connections-notation" aria-hidden="true">
+            <span></span><span></span><span></span><i></i><i></i>
+          </div>
+          <h2 id="connections-title">Conexiones</h2>
+          <ul>
+            <li><a href="/notas/margen">Diseñar el margen: lo que una interfaz deja fuera</a></li>
+            <li><a href="/notas/archivo">El archivo no es una estantería</a></li>
+            <li><a href="/experimentos">Cartografía de ideas</a></li>
+          </ul>
+        </aside>
+      </div>
+
+      <nav class="note-sequence" aria-label="Navegación entre notas">
+        <a href="/notas/archivo"><span>← Nota anterior</span>El archivo no es una estantería</a>
+        <a href="/notas/margen"><span>Nota siguiente →</span>Diseñar el margen</a>
+        <a class="note-sequence__all" href="/notas">Volver a todas las notas</a>
+      </nav>
+  </PageShell>
+</BaseLayout>

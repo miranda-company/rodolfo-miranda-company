@@ -1,6 +1,6 @@
 ---
 interface Props {
-  kind: "yo" | "notas" | "biblioteca" | "contacto";
+  kind: "yo" | "notas" | "mediateca" | "contacto";
 }
 
 const { kind } = Astro.props;
@@ -29,8 +29,8 @@ const { kind } = Astro.props;
   )
 }
 {
-  kind === "biblioteca" && (
-    <div class="art art-library" aria-hidden="true">
+  kind === "mediateca" && (
+    <div class="art art-media" aria-hidden="true">
       <span></span><span></span><span></span><span></span><i>R.M.</i>
     </div>
   )
