@@ -9,60 +9,47 @@
       "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
     },
     "portrait": {
-      "alt": "Retrato de Rodolfo Miranda sonriendo, con camiseta negra y un paisaje urbano junto al agua al fondo.",
+      "alt": "Retrato de Rodolfo Miranda Company en el puerto de Barcelona. Julio de 2026.",
       "annotation": "Barcelona, 2026"
     },
     "context": {
-      "index": "01.01 / CONTEXTO",
-      "title": "Un poco de contexto",
+      "index": "01.01 / Introducción",
+      "title": "Sobre el trabajo",
       "paragraphs": [
         [
           {
-            "text": "Soy estratega digital y diseñador. Trabajo con organizaciones y equipos multidisciplinares para convertir problemas complejos de comunicación, experiencia y procesos en "
-          },
-          {
-            "text": "estrategias, productos y sistemas más claros",
-            "href": "/portafolio"
-          },
-          {
-            "text": "."
+            "text": "Trabajo donde se cruzan la comunicación, el diseño y la tecnología. Esas tres perspectivas aparecen, de una forma u otra, en casi todo lo que hago."
           }
         ],
         [
           {
-            "text": "Me interesa cómo el diseño, la comunicación y la tecnología pueden ayudar a las organizaciones a pensar con mayor claridad, tomar mejores decisiones y trabajar de forma más coherente."
+            "text": "Según el proyecto, puedo estar investigando un problema, definiendo una estrategia, diseñando una marca o una experiencia digital, coordinando un equipo o construyendo una herramienta. Soy curioso por naturaleza."
+          }
+        ],
+        [
+          {
+            "text": "Actualmente dirijo Eloquent, una consultoría desde la que ayudo a organizaciones de España y Latinoamérica a mejorar su comunicación y su experiencia digital. Trabajo con ellas desde el diagnóstico y el posicionamiento hasta los contenidos, las plataformas web, la analítica y los sistemas necesarios para que todo siga funcionando después de la entrega."
           }
         ]
       ]
     },
     "currentContext": {
-      "index": "01.02 / AHORA",
+      "index": "01.02 / Ahora",
       "title": "En este momento",
       "paragraphs": [
         [
           {
-            "text": "Actualmente dirijo Eloquent, donde ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios."
-          }
-        ],
-        [
-          {
-            "text": "En estos momentos exploro cómo la "
-          },
-          {
-            "text": "inteligencia artificial"
-          },
-          {
-            "text": " está transformando la comunicación, la creatividad y nuestra capacidad para tomar decisiones."
+            "text": "Dedico bastante tiempo a entender cómo la inteligencia artificial está cambiando la comunicación, la creatividad y la forma en la que trabajamos. Para aprender más sobre IA, diseño pequeños productos, prototipos y metodologías propias... incluso este sitio web es un experimento de IA. También escribo notas sobre lo que voy aprendiendo y comparto mis reflexiones en LinkedIn."
           }
         ]
       ]
     },
     "timeline": {
-      "index": "01.03 / ARCHIVO PROFESIONAL",
+      "index": "01.03 / CV",
       "title": "Trayectoria",
       "entries": [
         {
-          "role": "Director",
+          "role": "Fundador y Director de Estrategia Digital",
           "organization": "Eloquent",
           "period": "Actualidad",
           "description": "Ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios.",
@@ -72,37 +59,37 @@
           "placeholder": false
         },
         {
-          "role": "[Cargo / etapa pendiente]",
-          "organization": "[Organización pendiente]",
-          "period": "[Año–Año]",
-          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "role": "Fundador y Director de Crecimiento Digital",
+          "organization": "Modulab Barcelona",
+          "period": "2021-2025",
+          "description": "Fundé y dirigí un estudio de fotografía y vídeo, ocupándome del modelo de negocio, la marca, el marketing, la infraestructura digital y las operaciones; aprendí a convertir una idea creativa en un negocio viable y conseguí procesar más de 400 reservas anuales, obtener 96 reseñas de cinco estrellas y traspasar el proyecto a Pixel Estudis en 2025.",
           "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": true
         },
         {
-          "role": "[Cargo / etapa pendiente]",
-          "organization": "[Organización pendiente]",
-          "period": "[Año–Año]",
-          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "role": "Creative Technology Lead",
+          "organization": "Elespacio",
+          "period": "[2013–2017]",
+          "description": "Lideré el área de publicidad y marketing digital, coordinando equipos, clientes y campañas internacionales, aprendí a conectar creatividad, tecnología y negocio mediante procesos escalables y desarrollé un sistema de DCO desplegado en más de 15 mercados y 11 idiomas que contribuyó a captar clientes como Nespresso y Victorinox.",
           "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": true
         },
         {
-          "role": "[Cargo / etapa pendiente]",
-          "organization": "[Organización pendiente]",
-          "period": "[Año–Año]",
-          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "role": "Sr. Digital Strategist",
+          "organization": "ThisPage Amsterdam",
+          "period": "[2017–2020]",
+          "description": "Trabajé como Senior Digital Strategist, liderando equipos, coordinando proyectos y diseñando procesos internos; aprendí a convertir una producción digital compleja en sistemas modulares y escalables, y desarrollé el AO System, un framework de DCO que generaba más de 900 variantes mensuales en siete formatos y tres idiomas, ahorró cientos de horas facturables y contribuyó a captar nuevos clientes y mejorar el retorno de las campañas.",
           "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": true
         },
         {
-          "role": "[Cargo / etapa pendiente]",
-          "organization": "[Organización pendiente]",
-          "period": "[Año–Año]",
-          "description": "[Descripción breve de responsabilidades, aprendizajes y resultados.]",
+          "role": "Content Specialist",
+          "organization": "CNN Expansión",
+          "period": "[2011]",
+          "description": "En CNN Grupo Expansión trabajé como Especialista en Contenidos, creando infografías interactivas y gestionando su archivo digital. Aprendí a transformar información editorial en experiencias visuales claras y contribuí a enriquecer sus publicaciones digitales y a organizar sus activos multimedia.",
           "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": true
@@ -110,24 +97,32 @@
       ]
     },
     "history": {
-      "index": "01.04 / HISTORIA",
-      "title": "Un poco de historia",
+      "index": "01.04 / Bio",
+      "title": "¿Cómo llegué hasta aquí?",
       "paragraphs": [
         [
           {
-            "text": "Me formé en diseño interactivo, pero mi trayectoria me ha llevado a moverme entre la comunicación, la tecnología y negocio. He trabajado en Ciudad de México, Nueva York, Madrid, Ámsterdam y Barcelona, colaborando con agencias internacionales, instituciones públicas, centros de investigación y "
-          },
+            "text": "Me formé en diseño interactivo en Ciudad de México y más tarde estudié fotografía, medios documentales y nuevas narrativas en Nueva York y Madrid. Mi carrera me ha llevado a trabajar en Ciudad de México, Nueva York, Madrid, Ámsterdam y Barcelona."
+          }
+        ],
+        [
           {
-            "text": "proyectos propios",
-            "href": "/portafolio"
-          },
+            "text": "Durante estos años he trabajado con agencias internacionales, instituciones científicas y culturales, empresas grandes, negocios pequeños y proyectos propios. He diseñado estrategias, marcas, campañas, plataformas, contenidos y sistemas de trabajo. Algunas cosas funcionaron muy bien, otras se quedaron en prototipos y unas cuantas me enseñaron principalmente qué no volver a hacer."
+          }
+        ],
+        [
           {
-            "text": "."
+            "text": "También fundé Modulab Barcelona, un estudio de fotografía y vídeo que dirigí durante cuatro años y traspasé en 2025. El proyecto me enseñó que diseñar un negocio tiene tanto que ver con la marca y la experiencia como con las reservas, las cuentas y todos los pequeños problemas que aparecen cuando una idea entra en contacto con la realidad."
+          }
+        ],
+        [
+          {
+            "text": "Hoy vivo en Barcelona. Sigo asesorando a organizaciones, construyendo cosas digitales e intentando entender cómo podemos trabajar con un poco más de claridad entre personas, negocios y tecnología."
           }
         ]
       ],
-      "pendingParagraph": "[Completar con formación, transiciones profesionales y contexto personal que Rodolfo quiera hacer público.]",
-      "pendingLabel": "PENDIENTE / EDICIÓN BIOGRÁFICA"
+      "pendingParagraph": "Crecí en Cuernavaca, la ciudad de La Eterna Primavera. Mi madre es española y padre mexicano. Mi cultura siempre ha sido una mezcla de ambas y mi visión de la vida se ha enriquecido gracias a esta diversidad. Me gusta viajar, leer, escribir, escuchar música y aprender cosas nuevas. También me gusta la fotografía y el vídeo.",
+      "pendingLabel": "Más personal..."
     },
     "closing": {
       "index": "01.05 / SIGUIENTES RUTAS",
