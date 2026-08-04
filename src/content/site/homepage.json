@@ -8,7 +8,7 @@
     "panels": [
       {
         "index": "01",
-        "title": "Yo",
+        "title": "Bio",
         "description": "Conoce un poco más sobre mí y mi forma de trabajar.",
         "metadata": "Currículo · Experiencia",
         "reveal": "Información personal",
@@ -18,7 +18,7 @@
       {
         "index": "02",
         "title": "Portafolio",
-        "description": "Mi portafolio de proyectos y trabajo.",
+        "description": "Mi portafolio de proyectos y trabajos.",
         "metadata": "Trabajo seleccionado",
         "reveal": "0 proyectos publicados",
         "href": "/portafolio",
@@ -27,7 +27,7 @@
       {
         "index": "03",
         "title": "Notas",
-        "description": "Estas son mis ideas y apuntes sobre todo lo que me genera curiosidad.",
+        "description": "Ideas y apuntes sobre lo que me genera curiosidad.",
         "metadata": "Última nota · 31.07.2026",
         "reveal": "27 notas publicadas",
         "href": "/notas",
