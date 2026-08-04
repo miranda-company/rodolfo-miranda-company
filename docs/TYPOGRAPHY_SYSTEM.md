@@ -53,7 +53,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 - H1: “Rodolfo Miranda”.
 - H2: the four archive-card titles and “Lo último”.
 - H3 beneath “Lo último”: “Notas recientes”, “En la mediateca” and
-  “Experimentos”.
+  “Portafolio”.
 - Archive numbers, dates and section labels are mono non-headings.
 
 ### Yo

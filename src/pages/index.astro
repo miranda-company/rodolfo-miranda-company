@@ -19,8 +19,14 @@ if (!home || !ahora) {
 const publishedNotes = await getVisibleSpanishNotes(false);
 const publishedMedia = await getVisibleSpanishMedia(false);
 const publishedProjects = await getVisibleSpanishProjects(false);
+const visibleProjects = import.meta.env.DEV
+  ? await getVisibleSpanishProjects(true)
+  : publishedProjects;
 const latestPublishedNote = [...publishedNotes].sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+)[0];
+const latestPortfolioProject = [...visibleProjects].sort(
+  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime(),
 )[0];
 
 const panels = home.data.panels.map((panel) => {
@@ -97,15 +103,32 @@ const mediaShelf = publishedMedia
           <LatestMedia entries={mediaShelf} />
           <a class="archive-link" href="/mediateca">{ahora.data.mediatecaLinkLabel}</a>
         </div>
-        <div class="preview-column process-preview">
-          <h3>{ahora.data.processHeading}</h3>
-          <div class="process-field">
-            <span>{ahora.data.processIndex}</span>
-            <i></i>
-            <b>{ahora.data.processTitle[0]}<br />{ahora.data.processTitle[1]}</b>
-            <em>{ahora.data.processStatus}</em>
-          </div>
-          <a class="archive-link" href="/experimentos">{ahora.data.processLinkLabel}</a>
+        <div class="preview-column portfolio-preview">
+          <h3>{ahora.data.portfolioHeading}</h3>
+          {
+            latestPortfolioProject ? (
+              <a
+                class="portfolio-latest"
+                href={`/portafolio/${latestPortfolioProject.id}`}
+                aria-label={`Abrir proyecto: ${latestPortfolioProject.data.title}`}
+              >
+                <span>{latestPortfolioProject.data.archiveNumber}</span>
+                <b>{latestPortfolioProject.data.title}</b>
+                <em>
+                  {latestPortfolioProject.data.projectStatus} · ACT. {formatNoteDate(
+                    latestPortfolioProject.data.updatedAt,
+                  )}
+                </em>
+              </a>
+            ) : (
+              <div class="portfolio-latest portfolio-latest--empty">
+                <span>P.—</span>
+                <b>{ahora.data.portfolioEmptyTitle}</b>
+                <em>{ahora.data.portfolioEmptyStatus}</em>
+              </div>
+            )
+          }
+          <a class="archive-link" href="/portafolio">{ahora.data.portfolioLinkLabel}</a>
         </div>
       </div>
     </section>

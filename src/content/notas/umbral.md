@@ -12,9 +12,7 @@ tags:
 relatedNotes:
   - "margen"
   - "archivo"
-relatedLinks:
-  - label: "Cartografía de ideas"
-    href: "/experimentos"
+relatedLinks: []
 featured: true
 draft: false
 language: "es"

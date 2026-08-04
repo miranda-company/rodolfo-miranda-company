@@ -49,8 +49,7 @@
             "text": "En estos momentos exploro cómo la "
           },
           {
-            "text": "inteligencia artificial",
-            "href": "/experimentos"
+            "text": "inteligencia artificial"
           },
           {
             "text": " está transformando la comunicación, la creatividad y nuestra capacidad para tomar decisiones."
@@ -120,7 +119,7 @@
           },
           {
             "text": "proyectos propios",
-            "href": "/experimentos"
+            "href": "/portafolio"
           },
           {
             "text": "."
@@ -139,8 +138,8 @@
           "href": "/portafolio"
         },
         {
-          "label": "Explorar experimentos ↗",
-          "href": "/experimentos"
+          "label": "Leer notas ↗",
+          "href": "/notas"
         }
       ]
     },

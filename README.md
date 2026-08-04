@@ -3,15 +3,14 @@
 This repository contains the source code and editable content for Rodolfo
 Miranda's personal digital garden. It brings together personal context and
 professional experience, notes at different stages of maturity, a mixed-media
-collection, selected projects, and a space for current or recently released
-experiments.
+collection, and selected projects.
 
 The site is designed as a growing, interconnected body of work rather than a
 chronological blog or a conventional portfolio.
 
 ## The garden
 
-The garden gives ideas, references, projects, and experiments a shared place to
+The garden gives ideas, references, and projects a shared place to
 evolve and connect. An entry can begin incomplete, gain context, and link to
 other parts of the archive as it develops. The content architecture
 intentionally allows unfinished material and makes its status visible without
@@ -23,8 +22,8 @@ Notes use three maturity states:
 - **En crecimiento (Growing):** a developed note that can still change.
 - **Perenne (Perennial):** a stable piece that remains open to revision.
 
-These states belong to Notas. Mediateca, Portafolio, and Experimentos use their
-own editorial fields and publication boundaries.
+These states belong to Notas. Mediateca and Portafolio use their own editorial
+fields and publication boundaries.
 
 ## Routes
 
@@ -37,8 +36,6 @@ own editorial fields and publication boundaries.
   Reviewed catalogue and reference template.
 - `/portafolio` — selected projects and case studies. Implemented prototype
   using provisional development placeholders.
-- `/experimentos` — current or recently released experiments. Provisional
-  semantic structure with no published entries.
 
 ## Current status
 
@@ -48,6 +45,9 @@ own editorial fields and publication boundaries.
 - Homepage panel statistics are derived from published collection entries: the
   latest Nota publication date, the number of published Notas, the number of
   published Mediateca items, and the number of published Portfolio projects.
+- The homepage Ahora section links its Portafolio preview to the most recently
+  updated visible project. Development can show draft projects for review;
+  production never exposes them.
 - Yo includes a biography, local portrait, and professional timeline; four
   career stages and one biographical passage still require editing.
 - Notas displays 27 ordinary entries in development, plus one isolated technical
@@ -59,7 +59,6 @@ own editorial fields and publication boundaries.
 - Portafolio includes search, tag filters, three fictional cases for design
   review, and one isolated technical MDX route. None are included in the
   production build.
-- Experimentos remains provisional scaffolding.
 - The first release is in Spanish. The structure allows for a future English
   version, but translated routes do not exist yet.
 - Search-engine indexing remains disabled through `noindex` and `robots.txt`
@@ -85,9 +84,8 @@ possible to verify images, carousels, videos, code, filters, and routes without
 presenting them as published work. Entries with `draft: true` are excluded from
 normal production builds.
 
-Notes and references can link to related material. Portfolio projects and
-experiments use their own content models. Complete schemas and editorial
-instructions are documented in
+Notes and references can link to related material. Portfolio projects use their
+own content model. Complete schemas and editorial instructions are documented in
 [docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). Practical workflows live in
 [Writing Notas](docs/WRITING_NOTES.md),
 [Writing Portafolio](docs/WRITING_PORTFOLIO.md), and

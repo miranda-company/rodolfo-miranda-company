@@ -247,29 +247,6 @@ const portafolio = defineCollection({
     }),
 })
 
-const experimentos = defineCollection({
-  loader: glob({
-    base: "./src/content/experimentos",
-    pattern: "**/*.{md,mdx}",
-  }),
-  schema: z.object({
-    title: z.string().min(1),
-    shortDescription: z.string().min(1),
-    status: z.enum(["en-curso", "publicado", "pausado"]),
-    startedAt: z.coerce.date(),
-    releasedAt: z.coerce.date().optional(),
-    updatedAt: z.coerce.date(),
-    githubUrl: z.url().optional(),
-    liveUrl: z.url().optional(),
-    tags: z.array(z.string().min(1)).default([]),
-    featured: z.boolean().default(false),
-    displayOrder: z.number().int().nonnegative(),
-    draft: z.boolean().default(false),
-    language,
-    translationKey,
-  }),
-})
-
 const timelineEntry = z
   .object({
     role: z.string().min(1),
@@ -408,11 +385,10 @@ const ahora = defineCollection({
     notesLinkLabel: z.string().min(1),
     mediatecaHeading: z.string().min(1),
     mediatecaLinkLabel: z.string().min(1),
-    processHeading: z.string().min(1),
-    processIndex: z.string().min(1),
-    processTitle: z.tuple([z.string().min(1), z.string().min(1)]),
-    processStatus: z.string().min(1),
-    processLinkLabel: z.string().min(1),
+    portfolioHeading: z.string().min(1),
+    portfolioLinkLabel: z.string().min(1),
+    portfolioEmptyTitle: z.string().min(1),
+    portfolioEmptyStatus: z.string().min(1),
   }),
 })
 
@@ -420,7 +396,6 @@ export const collections = {
   notas,
   mediateca,
   portafolio,
-  experimentos,
   profile,
   homepage,
   ahora,

@@ -85,10 +85,9 @@ On the left, create a compact identity consisting of:
 
 The symbol must work in one color first. An optional colored version may divide the rectangle into ultramarine and paprika fields.
 
-On the right, add three understated navigation links:
+On the right, add two understated navigation links:
 
 - Índice
-- Experimentos
 - Ahora
 
 Use Instrument Sans or IBM Plex Mono. Add a fine underline or small directional mark on hover. Separate the header from the page using a subtle 1 px archive rule rather than a heavy colored bar.

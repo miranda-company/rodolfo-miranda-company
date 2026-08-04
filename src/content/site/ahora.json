@@ -8,10 +8,9 @@
     "notesLinkLabel": "Ver todas las notas ↗",
     "mediatecaHeading": "En la mediateca",
     "mediatecaLinkLabel": "Abrir mediateca ↗",
-    "processHeading": "Experimentos",
-    "processIndex": "07",
-    "processTitle": ["Cartografía", "de ideas"],
-    "processStatus": "Experimento en crecimiento · Julio 2026",
-    "processLinkLabel": "Ver experimentos ↗"
+    "portfolioHeading": "Portafolio",
+    "portfolioLinkLabel": "Ver portafolio ↗",
+    "portfolioEmptyTitle": "Portafolio en preparación",
+    "portfolioEmptyStatus": "Sin proyectos publicados"
   }
 ]

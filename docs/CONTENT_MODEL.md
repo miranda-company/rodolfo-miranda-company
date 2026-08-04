@@ -287,17 +287,6 @@ See [WRITING_PORTFOLIO.md](WRITING_PORTFOLIO.md),
 [templates/portafolio-mdx.mdx](templates/portafolio-mdx.mdx) for the complete
 workflow. Templates omit the internal `fixture` field.
 
-## Experimentos
-
-Markdown entries model a current or recently released experiment: title, short
-description, status (`en-curso`, `publicado`, or `pausado`), start,
-release, and update dates, optional GitHub and live URLs, tags, featured and
-draft flags, display order, language, and optional translation key.
-
-The draft `_template.md` entry documents the editable shape without generating
-a public experiment in development or production. The index route is semantic
-scaffolding only; card design and outbound-link behavior are deferred.
-
 ## Site copy
 
 Homepage and Ahora copy use validated JSON collections. Yo uses its own
@@ -313,6 +302,11 @@ build time:
 - Notas: latest `publishedAt` date and total published-note count;
 - Mediateca: total published-reference count;
 - Portafolio: total published-project count.
+
+The Ahora section uses the most recently updated visible Portafolio entry for
+its third preview. Development includes ordinary project drafts for design
+review. Production uses only published projects and shows the validated empty
+copy from `ahora.json` when none are available.
 
 The derived statistics use `getVisibleSpanishNotes(false)`,
 `getVisibleSpanishMedia(false)`, and `getVisibleSpanishProjects(false)`. Drafts
