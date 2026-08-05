@@ -17,7 +17,7 @@ projectStatus: "Contenido pendiente"
 archiveNumber: "P.001"
 gallery: []
 projectLinks: []
-displayOrder: 9
+displayOrder: 11
 updatedAt: 2026-07-31
 placeholder: true
 relatedNotes:
