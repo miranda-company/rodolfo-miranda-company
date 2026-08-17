@@ -11,7 +11,7 @@
   --font-serif: "Spectral", serif;
   --font-sans: "Instrument Sans Variable", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
-  --heading-h1-size: clamp(68px, 5.65vw, 80px);
+  --heading-h1-size: clamp(64px, 5vw, 72px);
   --heading-h2-size: clamp(35px, 3.5vw, 39px);
   --heading-h3-size: clamp(27px, 2.35vw, 30px);
   --heading-h4-size: 23px;
@@ -19,7 +19,7 @@
   --heading-h6-size: 17px;
   --type-introduction-size: clamp(19px, 2vw, 27px);
   --type-introduction-line-height: 1.2;
-  --type-body-size: 17px;
+  --type-body-size: 18px;
   --type-body-line-height: 1.62;
   --type-supporting-size: 13px;
   --type-supporting-line-height: 1.4;
