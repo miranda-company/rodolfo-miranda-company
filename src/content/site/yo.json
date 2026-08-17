@@ -18,17 +18,22 @@
       "paragraphs": [
         [
           {
-            "text": "Trabajo donde se cruzan la comunicación, el diseño y la tecnología. Esas tres perspectivas aparecen, de una forma u otra, en casi todo lo que hago."
+            "text": "Mi trabajo se centra en la intersección de la comunicación, el diseño y la tecnología. Esas tres perspectivas constituyen todo lo que hago."
           }
         ],
         [
           {
-            "text": "Según el proyecto, puedo estar investigando un problema, definiendo una estrategia, diseñando una marca o una experiencia digital, coordinando un equipo o construyendo una herramienta. Soy curioso por naturaleza."
+            "text": "Me defino como un generalista que puede profundizar en diferentes disciplinas y conectar ideas, procesos y personas para crear soluciones más completas."
           }
         ],
         [
           {
-            "text": "Actualmente dirijo Eloquent, una consultoría desde la que ayudo a organizaciones de España y Latinoamérica a mejorar su comunicación y su experiencia digital. Trabajo con ellas desde el diagnóstico y el posicionamiento hasta los contenidos, las plataformas web, la analítica y los sistemas necesarios para que todo siga funcionando después de la entrega."
+            "text": "Según el proyecto, puedo estar investigando un problema, definiendo una estrategia, diseñando una marca o una experiencia digital, coordinando un equipo o construyendo una herramienta."
+          }
+        ],
+        [
+          {
+            "text": "Actualmente dirijo Eloquent, una consultoría desde la que ayudo a organizaciones de España y Latinoamérica a mejorar su comunicación y su experiencia digital. Las acompaño desde el diagnóstico y el posicionamiento hasta los contenidos, el desarrollo web y los sistemas necesarios para que todo siga funcionando tras la entrega."
           }
         ]
       ]
@@ -39,7 +44,7 @@
       "paragraphs": [
         [
           {
-            "text": "Dedico bastante tiempo a entender cómo la inteligencia artificial está cambiando la comunicación, la creatividad y la forma en la que trabajamos. Para aprender más sobre IA, diseño pequeños productos, prototipos y metodologías propias... incluso este sitio web es un experimento de IA. También escribo notas sobre lo que voy aprendiendo y comparto mis reflexiones en LinkedIn."
+            "text": "Actualmente, investigo a fondo cómo la inteligencia artificial está redefiniendo la comunicación, la creatividad y nuestras metodologías de trabajo. Mi forma de aprender es práctica. Diseño productos, desarrollo prototipos y creo metodologías propias. De hecho, este mismo sitio web es un experimento construido con IA. Todo lo que descubro en este proceso de exploración lo documento en mis notas y lo comparto en LinkedIn."
           }
         ]
       ]
@@ -53,7 +58,7 @@
           "organization": "Eloquent",
           "period": "Actualidad",
           "description": "Ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios.",
-          "caseStudyLabel": "Ver proyectos relacionados ↗",
+          "caseStudyLabel": "Visita eloquent.es ↗",
           "caseStudyUrl": "/portafolio",
           "current": true,
           "placeholder": false
@@ -117,11 +122,11 @@
         ],
         [
           {
-            "text": "Hoy vivo en Barcelona. Sigo asesorando a organizaciones, construyendo cosas digitales e intentando entender cómo podemos trabajar con un poco más de claridad entre personas, negocios y tecnología."
+            "text": "Hoy vivo en Barcelona. Sigo asesorando a organizaciones, desarrollando productos digitales e intentando aportar claridad al complejo cruce entre personas, tecnología y negocios."
           }
         ]
       ],
-      "pendingParagraph": "Crecí en Cuernavaca, la ciudad de La Eterna Primavera. Mi madre es española y padre mexicano. Mi cultura siempre ha sido una mezcla de ambas y mi visión de la vida se ha enriquecido gracias a esta diversidad. Me gusta viajar, leer, escribir, escuchar música y aprender cosas nuevas. También me gusta la fotografía y el vídeo.",
+      "pendingParagraph": "Crecí en Cuernavaca, la ciudad de la eterna primavera, con madre española y padre mexicano. Esta herencia bicultural me enseñó desde muy temprano a mezclar perspectivas y a entender el mundo desde la diversidad; algo que hoy aplico en cada proyecto. Cuando no estoy frente a una pantalla, mi curiosidad toma otras formas. Me dedico a viajar, a devorar libros y a escribir. Además, la fotografía y el vídeo (que durante años fueron parte de mis negocios) siguen siendo mi forma favorita de documentar y expresar mi realidad.",
       "pendingLabel": "Más personal..."
     },
     "closing": {
