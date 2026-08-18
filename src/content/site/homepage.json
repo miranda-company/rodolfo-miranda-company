@@ -1,10 +1,9 @@
 [
   {
     "id": "homepage",
-    "heroTitle": ["Rodolfo", "Miranda"],
-    "positioning": "Comunicación, diseño y tecnología.",
-    "connectionLabel": "Mi jardín digital",
-    "indexLabel": "Índice",
+    "heroTitle": "Hola mundo!",
+    "connectionLabel": "Jardín digital de Rodolfo Miranda",
+    "indexLabel": "Archivos",
     "panels": [
       {
         "index": "01",

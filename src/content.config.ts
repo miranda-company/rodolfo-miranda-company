@@ -355,8 +355,7 @@ const profile = defineCollection({
 const homepage = defineCollection({
   loader: file("./src/content/site/homepage.json"),
   schema: z.object({
-    heroTitle: z.tuple([z.string().min(1), z.string().min(1)]),
-    positioning: z.string().min(1),
+    heroTitle: z.string().min(1),
     connectionLabel: z.string().min(1),
     indexLabel: z.string().min(1),
     panels: z

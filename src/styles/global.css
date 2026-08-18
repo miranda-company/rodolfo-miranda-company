@@ -17,7 +17,7 @@
   --heading-h4-size: 23px;
   --heading-h5-size: 20px;
   --heading-h6-size: 17px;
-  --type-introduction-size: clamp(19px, 2vw, 27px);
+  --type-introduction-size: clamp(19px, 2vw, 24px);
   --type-introduction-line-height: 1.2;
   --type-body-size: 18px;
   --type-body-line-height: 1.62;
@@ -28,6 +28,12 @@
   --backlink-block-offset: 36px;
   --page-gutter: 32px;
   --content-width: 1360px;
+  --wire: 0px solid red;
+}
+
+.hero-image {
+  max-width: 380px;
+  height: auto;
 }
 
 *,
@@ -256,8 +262,7 @@ a {
 
 .hero-grid {
   display: grid;
-  max-width: 1140px;
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: end;
 }
 
@@ -265,11 +270,17 @@ a {
   margin: 0;
 }
 
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  border: var(--wire);
+}
+
 .positioning {
   max-width: 500px;
-  margin: 0 0 8px 50px;
-  align-self: end;
-  font-size: clamp(23px, 2.25vw, 32px);
+  font-size: var(--type-introduction-size);
   letter-spacing: -0.035em;
   line-height: 1.14;
 }
@@ -286,7 +297,8 @@ a {
 
 .connection {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items:flex-start;
   gap: 17px;
   margin-top: 44px;
   color: var(--graphite);
@@ -822,10 +834,7 @@ a.portfolio-latest:focus-visible {
   }
 
   .hero .positioning {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    margin: 30px 0 0;
+    
   }
 
   .connection {

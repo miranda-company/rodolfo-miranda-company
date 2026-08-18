@@ -2,9 +2,9 @@
   {
     "id": "yo",
     "hero": {
-      "label": "01 / Sobre mi",
-      "name": "Rodolfo Miranda",
-      "positioning": "Estratega digital y diseñador.",
+      "label": "Sobre mi",
+      "name": "Rodolfo Miranda Company",
+      "positioning": "Estratega digital y diseñador interactivo.",
       "profileMeta": "PERFIL / EN EVOLUCIÓN",
       "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
     },
@@ -13,7 +13,7 @@
       "annotation": "Barcelona, 2026"
     },
     "context": {
-      "index": "01.01 / Introducción",
+      "index": "Introducción",
       "title": "Sobre el trabajo",
       "paragraphs": [
         [
@@ -39,7 +39,7 @@
       ]
     },
     "currentContext": {
-      "index": "01.02 / Ahora",
+      "index": "Ahora",
       "title": "En este momento",
       "paragraphs": [
         [
@@ -50,7 +50,7 @@
       ]
     },
     "timeline": {
-      "index": "01.03 / CV",
+      "index": "CV",
       "title": "Trayectoria",
       "entries": [
         {
@@ -102,7 +102,7 @@
       ]
     },
     "history": {
-      "index": "01.04 / Bio",
+      "index": "Bio",
       "title": "¿Cómo llegué hasta aquí?",
       "paragraphs": [
         [

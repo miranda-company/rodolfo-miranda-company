@@ -9,6 +9,9 @@ import { getVisibleSpanishMedia } from "../lib/media";
 import { formatNoteDate, getVisibleSpanishNotes } from "../lib/notes";
 import { getVisibleSpanishProjects } from "../lib/portfolio";
 
+import { Image } from "astro:assets";
+import helloComputer from "../assets/images/hello-computer.png";
+
 const home = await getEntry("homepage", "homepage");
 const ahora = await getEntry("ahora", "ahora");
 
@@ -69,12 +72,20 @@ const mediaShelf = publishedMedia
 
 <BaseLayout>
   <PageShell pageClass="home-page" mainClass="home-main">
+    
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
-        <h1 id="hero-title">{home.data.heroTitle[0]}<br />{home.data.heroTitle[1]}</h1>
-        <p class="positioning">{home.data.positioning}</p>
+        
+        <div class="img-container">
+          <Image src={helloComputer} class="hero-image" alt="Ilustración de un ordenador cubierto de plantas con el mensaje «Hello World!»"/>
+        </div>
+
+        <div class="text-container">
+          <h1 id="hero-title">{home.data.heroTitle}</h1>
+          <p>{home.data.connectionLabel}</p>
+        </div>
+
       </div>
-      <div class="connection"><span>{home.data.connectionLabel}</span></div>
     </section>
 
     <section class="panel-section" id="indice" aria-label="Archivo principal">
