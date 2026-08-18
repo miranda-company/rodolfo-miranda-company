@@ -14,8 +14,13 @@ o presentar el jardín como una publicación terminada.
       `cosas` y `orden`.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.
-- [ ] Añadir proyectos reales a Portafolio con imágenes, textos alternativos y
-      casos de estudio verificados.
+- [ ] Normalizar los `archiveNumber` y `displayOrder` duplicados de Portafolio.
+- [ ] Revisar `syra-coffee`: sustituir “Contenido pendiente”, retirar el
+      carrusel descrito como prueba técnica y aprobar su caso completo.
+- [ ] Sustituir en `we-jam` los metadatos, activos y cuerpo copiados de Syra
+      Coffee antes de considerar su publicación.
+- [ ] Revisar los diez placeholders restantes de Portafolio y mantenerlos como
+      drafts hasta disponer de imágenes, textos alternativos y casos verificados.
 - [ ] Aprobar o reemplazar cada URL externa provisional antes de publicar su
       entrada.
 - [ ] Confirmar que cada referencia aprobada usa `editorialState: revisado` y
@@ -58,6 +63,9 @@ o presentar el jardín como una publicación terminada.
 - [ ] Confirmar que ninguna entrada con `fixture: true`, incluidos su HTML,
       metadatos, imágenes técnicas, IDs de vídeo y muestras, aparece en
       producción.
+- [ ] Confirmar que ningún proyecto publicado contiene etiquetas, captions,
+      vídeos o imágenes descritos como pruebas técnicas aunque no use
+      `fixture: true`.
 - [ ] Rechazar componentes que acepten iframes arbitrarios o scripts pegados;
       cada futuro proveedor necesita un componente revisado y permitido.
 - [ ] Comprobar en móvil que las líneas largas de los bloques de código se
@@ -68,8 +76,18 @@ o presentar el jardín como una publicación terminada.
 - [ ] Elegir y configurar un proveedor de hosting.
 - [ ] Configurar redirects permanentes de `/biblioteca` a `/mediateca` y de
       `/biblioteca/*` a `/mediateca/*` en el hosting.
+- [ ] Eliminar el solapamiento entre `/biblioteca/modulor` y
+      `/biblioteca/[slug]` para que el build termine sin avisos de rutas.
 - [ ] Verificar rutas directas, fragments y páginas de error en el entorno
       desplegado.
 - [ ] Conectar `www.rodolfomiranda.company` y verificar DNS, HTTPS y redirección
       del dominio raíz si se utiliza.
 - [ ] Ejecutar la comprobación, la compilación y la revisión responsive final.
+
+## Higiene del repositorio
+
+- [ ] Eliminar archivos `.DS_Store` versionados y añadir una regla de exclusión.
+- [ ] Retirar recursos duplicados o sin uso después de confirmar cuál es la
+      copia canónica de cada imagen.
+- [ ] Decidir y documentar el alcance mínimo de pruebas automatizadas antes del
+      lanzamiento.

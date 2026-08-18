@@ -6,12 +6,12 @@ no presupone un despliegue externo.
 
 ## Snapshot
 
-- **Fecha:** 4 de agosto de 2026.
+- **Fecha:** 18 de agosto de 2026.
 - **Rama:** `main`.
 - **Framework:** Astro 7 con salida HTML estática, colecciones Markdown/MDX y
   resaltado de código Shiki generado durante la compilación.
-- **Git:** estos cambios se realizan sobre el `HEAD` local
-  `30b7d0a5cb323e51155cc34228520d171d75484a` y permanecen sin commit.
+- **Git:** la rama local `main` y `origin/main` apuntan al mismo commit revisado.
+  Las actualizaciones de esta documentación se dejan sin commit para revisión.
 - **Idioma de la primera versión:** español en rutas raíz.
 - **Inglés:** previsto en el modelo de contenido, sin rutas ni traducciones
   implementadas.
@@ -32,8 +32,8 @@ no presupone un despliegue externo.
 | Mediateca | `/mediateca` | Catálogo revisado | 3 anclajes y 10 entradas draft de diseño | Se genera con 3 referencias |
 | Referencias | `/mediateca/[slug]` | `MediaReference.astro` sobre el scaffold editorial compartido | 13 referencias y estado editorial validado | Solo `modulor`, `cosas` y `orden` |
 | Referencia MDX | `/mediateca/ejemplo-mdx` | Misma geometría y cuerpo enriquecido | Fixture técnica directa; no es una recomendación | Solo desarrollo; no genera artefactos |
-| Portafolio | `/portafolio` | Prototipo codificado | 3 placeholders draft con búsqueda y etiquetas | Se genera vacío con estado de preparación |
-| Caso de estudio | `/portafolio/[slug]` | `PortfolioProject.astro` sobre el scaffold editorial compartido | 3 casos ficticios y provisionales | No se generan detalles |
+| Portafolio | `/portafolio` | Índice codificado con búsqueda y etiquetas | 12 entradas ordinarias: 1 publicada, 1 borrador real en edición y 10 placeholders draft | Se genera con 1 proyecto publicado |
+| Caso de estudio | `/portafolio/[slug]` | `PortfolioProject.astro` sobre el scaffold editorial compartido | 12 rutas editoriales en desarrollo | Solo `syra-coffee`; requiere limpieza editorial antes del lanzamiento |
 | Referencia MDX | `/portafolio/ejemplo-mdx` | Misma geometría y cuerpo enriquecido | Fixture técnica directa; no es trabajo real | Solo desarrollo; no genera artefactos |
 
 Los redirects de `/biblioteca` y `/biblioteca/*` hacia `/mediateca` y sus rutas
@@ -48,7 +48,7 @@ hosting sigue pendiente.
 | Fixture técnica de Notas | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, aislada mediante `fixture: true` |
 | Mediateca | 13 | 3 | `modulor`, `cosas`, `orden` |
 | Fixture técnica de Mediateca | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, número reservado `M.999` |
-| Portafolio | 3 | 0 | Ninguno |
+| Portafolio | 12 | 1 | `syra-coffee` |
 | Fixture técnica de Portafolio | 1 ruta directa; 0 tarjetas | 0 | `ejemplo-mdx`, número reservado `P.999` |
 
 Los conteos ordinarios de desarrollo incluyen únicamente entradas editoriales
@@ -56,10 +56,18 @@ que aparecen en sus índices y secuencias. Cada `ejemplo-mdx` genera una ruta
 directa adicional para revisión técnica, pero no entra en índices, búsquedas,
 filtros, conteos, conexiones, secuencias ni previews de portada. Los templates
 de edición viven fuera de las colecciones y tampoco generan rutas. En total hay
-51 rutas canónicas de desarrollo y 11 de producción, sin contar aliases de
-redirect. Los tres anclajes de Notas y los tres de
-Mediateca atraviesan el límite técnico de producción, pero su copia aún no debe
-considerarse aprobación editorial final.
+60 rutas canónicas de desarrollo y 12 de producción, sin contar aliases de
+redirect. Los tres anclajes de Notas, los tres de Mediateca y `syra-coffee`
+atraviesan el límite técnico de producción, pero ese límite técnico no implica
+aprobación editorial final.
+
+Portafolio contiene actualmente diez placeholders draft, el borrador real
+`we-jam` y el proyecto publicado `syra-coffee`. La fixture `ejemplo-mdx` es una
+ruta técnica adicional. `syra-coffee` todavía muestra el estado “Contenido
+pendiente” e incluye texto e imágenes descritos como pruebas técnicas. `we-jam`
+conserva metadatos, recursos y cuerpo copiados de Syra Coffee. Además, varios
+proyectos comparten `archiveNumber` y `displayOrder`; estos valores deben
+normalizarse antes de publicar otra entrada.
 
 ## Sistemas implementados
 
@@ -103,13 +111,30 @@ considerarse aprobación editorial final.
 - Generación estática y carga local de las familias tipográficas.
 - Retrato local optimizado mediante la canalización de imágenes de Astro.
 
+## Verificación actual
+
+- `git diff --check`: correcto.
+- `pnpm run check`: 40 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run build`: correcto; genera 12 rutas canónicas de producción.
+- Las tres fixtures `ejemplo-mdx` quedan fuera de `dist`.
+- Permanece un aviso de build por el solapamiento entre el redirect explícito
+  `/biblioteca/modulor` y el redirect dinámico `/biblioteca/[slug]`.
+- No existe todavía una suite automatizada de pruebas unitarias, end-to-end,
+  accesibilidad o regresión visual.
+
 ## Trabajo pendiente
 
 - Sustituir las cuatro etapas provisionales de la trayectoria y completar la
   edición biográfica de Yo.
-- Añadir proyectos profesionales reales, portadas aprobadas y contenido de caso
-  de estudio.
+- Normalizar los `archiveNumber` y `displayOrder` duplicados de Portafolio.
+- Sustituir los datos copiados de Syra Coffee dentro de `we-jam` por contenido
+  verificado antes de publicarlo.
+- Retirar de `syra-coffee` las pruebas técnicas del carrusel, revisar su estado
+  “Contenido pendiente” y completar su aprobación editorial.
+- Revisar los otros diez proyectos provisionales y mantenerlos como drafts hasta
+  contar con contenido, imágenes y alternativas aprobadas.
 - Revisar o reemplazar la copia provisional de Notas y Mediateca.
+- Resolver el solapamiento de redirects de `/biblioteca/modulor`.
 - Añadir la futura versión en inglés.
 - Elegir y configurar el hosting.
 - Conectar `www.rodolfomiranda.company`.

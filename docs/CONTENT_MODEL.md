@@ -227,14 +227,15 @@ and tags without changing route generation or editorial order.
 
 ### Publication boundary
 
-- Development includes three equal placeholders (`proyecto-seleccionado-01` through
-  `proyecto-seleccionado-03`) so cards and detail routes can be reviewed.
-- All three placeholders use `draft: true` and `placeholder: true`. Their copy,
-  organizations, roles and disciplines are visibly pending, and they contain no
+- Development includes 12 ordinary projects: the published `syra-coffee`, the
+  genuine draft `we-jam`, and ten provisional placeholders.
+- All ten placeholders use `draft: true` and `placeholder: true`. Their copy,
+  organizations, roles and disciplines remain pending, and they contain no
   external project URLs.
 - A placeholder must be a draft and cannot contain project links. Schema
   validation rejects either violation.
-- Production excludes every draft and placeholder card and detail route.
+- Production excludes every draft and placeholder card and detail route. It
+  currently generates only `syra-coffee`.
 - A genuine non-draft project requires `coverImage` and `coverAlt` and must use
   `placeholder: false`.
 - `ejemplo-mdx` is a separate technical fixture. It must remain a draft, uses
@@ -242,7 +243,21 @@ and tags without changing route generation or editorial order.
   filters, counts, connections, previous/next navigation and production.
 
 When no genuine project is published, the production index remains valid and
-shows “La selección de proyectos está en preparación.”
+shows “La selección de proyectos está en preparación.” That fallback is not
+currently visible because `syra-coffee` crosses the production boundary.
+
+The current Portfolio data still requires normalization. Several entries reuse
+`P.001`; `syra-coffee` and `we-jam` both use `P.004` and `displayOrder: 1`.
+`we-jam` also retains copied Syra Coffee metadata, assets, and body content.
+These issues are safe from production while `we-jam` and the placeholders remain
+drafts, but must be resolved before publication. The schema validates the
+`P.###` shape and individual field rules; uniqueness across entries is currently
+an editorial requirement rather than a schema-enforced invariant.
+
+Although `syra-coffee` is the only non-draft project, its current
+`projectStatus`, carousel label, captions, and technical test imagery still
+require editorial cleanup. `draft: false` controls route generation; it does not
+constitute editorial approval by itself.
 
 ### Adding a genuine project
 

@@ -34,8 +34,9 @@ fields and publication boundaries.
   template.
 - `/mediateca` — books and other references to read, watch, or listen to.
   Reviewed catalogue and reference template.
-- `/portafolio` — selected projects and case studies. Implemented prototype
-  using provisional development placeholders.
+- `/portafolio` — selected projects and case studies, with search and tag
+  filtering. Development includes published work, drafts, and provisional
+  placeholders; production currently generates one case study.
 
 ## Current status
 
@@ -56,9 +57,14 @@ fields and publication boundaries.
 - Mediateca displays 13 references plus one isolated technical MDX route in
   development. Production generates only `modulor`, `cosas`, and `orden`; their
   commentary remains provisional.
-- Portafolio includes search, tag filters, three fictional cases for design
-  review, and one isolated technical MDX route. None are included in the
-  production build.
+- Portafolio includes search and tag filters, 12 ordinary development entries,
+  and one isolated technical MDX route. Production currently generates only
+  `syra-coffee`; its remaining technical carousel copy and pending project
+  status must be resolved before launch. The draft `we-jam` entry and ten
+  provisional placeholders remain development-only.
+- Excluding legacy redirect aliases, development exposes 60 canonical routes
+  and a normal production build exposes 12. The three technical `ejemplo-mdx`
+  fixtures remain development-only.
 - The first release is in Spanish. The structure allows for a future English
   version, but translated routes do not exist yet.
 - Search-engine indexing remains disabled through `noindex` and `robots.txt`
@@ -84,9 +90,9 @@ possible to verify images, carousels, videos, code, filters, and routes without
 presenting them as published work. Entries with `draft: true` are excluded from
 normal production builds.
 
-Notes and references can link to related material. Portfolio projects use their
-own content model. Complete schemas and editorial instructions are documented in
-[docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). Practical workflows live in
+Notes, references, and Portfolio projects can link to related material while
+retaining their own content models. Complete schemas and editorial instructions
+are documented in [docs/CONTENT_MODEL.md](docs/CONTENT_MODEL.md). Practical workflows live in
 [Writing Notas](docs/WRITING_NOTES.md),
 [Writing Portafolio](docs/WRITING_PORTFOLIO.md), and
 [Writing Mediateca](docs/WRITING_MEDIATECA.md).

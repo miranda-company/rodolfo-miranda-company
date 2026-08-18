@@ -8,14 +8,14 @@ disciplines:
   - "Estrategia"
 tags:
   - "Sistemas"
-projectStatus: "Publicado"
-archiveNumber: "P.004"
+projectStatus: "En preparación"
+archiveNumber: "P.000"
 coverImage: "../../assets/images/portafolio/slug/portada.jpg"
 coverAlt: "Descripción concreta de lo que muestra la portada"
 gallery: []
 projectLinks: []
-displayOrder: 4
-updatedAt: 2026-08-03
+displayOrder: 0
+updatedAt: 2026-01-01
 placeholder: false
 relatedNotes: []
 relatedMedia: []

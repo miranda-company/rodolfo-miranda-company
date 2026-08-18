@@ -12,7 +12,7 @@ This document defines the semantic typography contract for Rodolfo Miranda Compa
 
 | Level | Semantic role | Size | Line height | Letter spacing |
 | --- | --- | --- | --- | --- |
-| H1 | Page title | `clamp(68px, 5.65vw, 80px)`; `64px` below 768px | `0.86` | `-0.06em` |
+| H1 | Page title | `clamp(64px, 5vw, 72px)`; `64px` below 768px | `0.86` | `-0.06em` |
 | H2 | Primary page section or top-level content card | `clamp(35px, 3.5vw, 39px)` | `1` | `-0.045em` |
 | H3 | Subsection or content item nested beneath an H2 | `clamp(27px, 2.35vw, 30px)` | `1.05` | `-0.035em` |
 | H4 | Nested item | `23px` | `1.1` | `-0.025em` |
@@ -39,8 +39,8 @@ The shared roles below are tokens in `src/styles/global.css`. Elements may have 
 
 | Role | Font | Size | Line height | Typical use |
 | --- | --- | --- | --- | --- |
-| Introduction / lead | Instrument Sans Variable | `clamp(19px, 2vw, 27px)`; `18px` below 768px | `1.2` | Archive introductions, article summaries and editorial leads |
-| Standard body | Instrument Sans Variable | `17px` | `1.62` | Biography, note prose, reference commentary and provisional body copy |
+| Introduction / lead | Instrument Sans Variable | `clamp(19px, 2vw, 24px)`; `18px` below 768px | `1.2` | Archive introductions, article summaries and editorial leads |
+| Standard body | Instrument Sans Variable | `18px`; `17px` below 768px | `1.62` | Biography, note prose, reference commentary and provisional body copy |
 | Small / supporting | Instrument Sans Variable | `13px` | `1.4` | Section explanations and supporting descriptions |
 | Mono metadata | IBM Plex Mono | `10px` | `1.4` | Shared hero and record metadata |
 
@@ -50,7 +50,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 
 ### Homepage
 
-- H1: “Rodolfo Miranda”.
+- H1: “Hola mundo!”.
 - H2: the four archive-card titles and “Lo último”.
 - H3 beneath “Lo último”: “Notas recientes”, “En la mediateca” and
   “Portafolio”.
@@ -59,7 +59,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 ### Yo
 
 - H1: “Rodolfo Miranda”.
-- H2: “Un poco de contexto”, “En este momento”, “Trayectoria” and “Un poco de historia”.
+- H2: “Sobre el trabajo”, “En este momento”, “Trayectoria” and “¿Cómo llegué hasta aquí?”.
 - H3 beneath “Trayectoria”: each career role.
 - Organization names are subordinate paragraphs, not part of the H3.
 

@@ -9,13 +9,15 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
 
 1. Elige un *slug* breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
    `sistema-editorial.md`. El archivo genera `/portafolio/sistema-editorial`.
-2. Copia una plantilla fuera de la colección y asigna un `archiveNumber` único `P.###`. El
-   siguiente número editorial disponible es `P.004`; `P.999` está reservado para la fixture
-   técnica y no puede usarse en un proyecto real.
+2. Copia una plantilla fuera de la colección y asigna un `archiveNumber` único `P.###` después de
+   revisar todos los números existentes. La validación comprueba el formato, pero no detecta
+   duplicados entre archivos. `P.999` está reservado para la fixture técnica y no puede usarse en
+   un proyecto real. Los valores `P.000`, `displayOrder: 0` y la fecha de las plantillas son
+   marcadores: sustitúyelos antes de guardar la nueva entrada en la colección.
 3. Mantén `draft: true` mientras se redacta y revisa. Un proyecto real usa `placeholder: false`.
    No añadas `fixture`: su valor normal es `false`.
 4. Completa `displayOrder` con un entero único, ya que controla tanto el índice como la navegación
-   anterior/siguiente.
+   anterior/siguiente. La unicidad también debe comprobarse editorialmente antes de publicar.
 5. Escribe solo cliente, rol, disciplinas, resultados y enlaces que hayan sido verificados.
 6. Usa los IDs de archivo, sin extensión, en `relatedNotes` y `relatedMedia`. Cada elemento de
    `projectLinks` requiere una etiqueta clara y una URL externa completa y aprobada.
@@ -109,9 +111,10 @@ pnpm run build
 ```
 
 Antes de publicar, comprueba enlaces, derechos de imágenes, textos alternativos, contenido,
-conexiones, `displayOrder` y metadatos. Cambia a `draft: false` solo con portada, alternativa y caso
-aprobados. Revisa el diff, usa `git add` únicamente sobre los archivos previstos, crea un commit
-descriptivo y haz `git push` a la rama correspondiente.
+conexiones, `archiveNumber`, `displayOrder`, `projectStatus` y metadatos. Elimina también cualquier
+etiqueta, caption, imagen o vídeo usado únicamente como prueba técnica. Cambia a `draft: false` solo
+con portada, alternativa y caso aprobados. Revisa el diff, usa `git add` únicamente sobre los
+archivos previstos, crea un commit descriptivo y haz `git push` a la rama correspondiente.
 
 `src/content/portafolio/ejemplo-mdx.mdx` es una fixture técnica, no una plantilla editorial. Incluye
 un carrusel narrativo sin modificar su galería estructurada. Se abre

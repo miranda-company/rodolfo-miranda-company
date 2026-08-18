@@ -107,7 +107,9 @@ than expanding the page.
 The Notas index includes 27 ordinary entries in development and three in a
 normal production build. Mediateca includes 13 ordinary references in
 development and three (`modulor`, `cosas`, `orden`) in production. Portafolio
-includes three draft placeholders in development and no production details.
+includes 12 ordinary development entries: `syra-coffee`, the draft `we-jam`
+case, and ten draft placeholders. Production currently includes only
+`syra-coffee`.
 Each collection also has an isolated `ejemplo-mdx` technical route in
 development where applicable: one for Notas, one for Mediateca and one for
 Portafolio.
@@ -137,8 +139,8 @@ entry counts. These statistics use the same centralized helpers and production
 boundary as route generation, so drafts and technical fixtures are excluded.
 The Ahora section also presents the most recently updated visible Portafolio
 entry. Development includes ordinary drafts for design review; production uses
-the published collection boundary and renders an explicit empty state when no
-project is published.
+the published collection boundary. It currently resolves to `syra-coffee` and
+retains an explicit empty state for any future build with no published project.
 
 Spanish remains at root URLs. Schemas include language and optional translation
 keys so English can be added later without activating `/en/` routes now.
@@ -150,8 +152,13 @@ circular previous/next props. Portfolio sequence follows `displayOrder`.
 Development appends explicitly typed fixture routes without inserting fixtures
 into editorial navigation; production never appends them.
 
-Excluding redirect aliases, development exposes 51 canonical routes: five
+Excluding redirect aliases, development exposes 60 canonical routes: five
 indexes or standalone pages, 27 ordinary Notas plus one note fixture, 13
-Mediateca references plus one media fixture, and three Portfolio placeholders
-plus one project fixture. A normal production build exposes 11 canonical routes:
-the five standalone routes, three Notas and three Mediateca references.
+Mediateca references plus one media fixture, and 12 ordinary Portfolio entries
+plus one project fixture. A normal production build exposes 12 canonical routes:
+the five standalone routes, three Notas, three Mediateca references, and
+`/portafolio/syra-coffee`.
+
+Astro also writes four legacy `/biblioteca` redirect artifacts. The current
+configuration emits a non-blocking build warning because the explicit
+`/biblioteca/modulor` redirect overlaps the dynamic `/biblioteca/[slug]` route.
