@@ -77,12 +77,12 @@ const mediaShelf = publishedMedia
       <div class="hero-grid">
         
         <div class="img-container">
-          <Image src={helloComputer} class="hero-image" alt="Ilustración de un ordenador cubierto de plantas con el mensaje «Hello World!»"/>
+          <h1 id="hero-title">{home.data.heroTitle}</h1>
+          <p>{home.data.connectionLabel}</p>
         </div>
 
         <div class="text-container">
-          <h1 id="hero-title">{home.data.heroTitle}</h1>
-          <p>{home.data.connectionLabel}</p>
+          <Image src={helloComputer} class="hero-image" alt="Ilustración de un ordenador cubierto de plantas con el mensaje «Hello World!»"/>
         </div>
 
       </div>

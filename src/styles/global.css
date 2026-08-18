@@ -338,18 +338,21 @@ a {
 }
 
 .panels {
-  display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  columns: 4;
+  column-gap: 18px;
+  column-fill: balance;
   padding-top: 20px;
 }
 
 .archive-panel {
   position: relative;
   display: flex;
-  min-height: 340px;
+  width: 100%;
+  min-height: 0;
+  margin: 0 0 18px;
   overflow: hidden;
+  break-inside: avoid;
   border: 1px solid var(--line);
   background: rgba(247, 243, 234, 0.82);
   cursor: pointer;
@@ -373,7 +376,6 @@ a {
   min-height: inherit;
   flex: 1;
   flex-direction: column;
-  padding: 14px;
   color: inherit;
   text-decoration: none;
 }
@@ -402,7 +404,7 @@ a {
 
 .panel-image-placeholder {
   display: grid;
-  height: 126px;
+  height: auto;
   margin: 16px 0 10px;
   place-items: center;
   border: 1px solid rgba(29, 30, 25, 0.28);
@@ -410,6 +412,17 @@ a {
   color: var(--graphite);
   font: 500 12px/1.4 var(--font-mono);
   letter-spacing: 0.05em;
+}
+
+.panel-image-placeholder.has-image {
+
+}
+
+.panel-image-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .panel-copy {
@@ -716,8 +729,12 @@ a.portfolio-latest:focus-visible {
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .panels {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    columns: 2;
+    column-gap: 20px;
+  }
+
+  .archive-panel {
+    margin-bottom: 20px;
   }
 }
 
@@ -842,8 +859,8 @@ a.portfolio-latest:focus-visible {
   }
 
   .panels {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
+    columns: 1;
+    column-gap: 0;
   }
 
   .growing-section {

@@ -354,24 +354,38 @@ const profile = defineCollection({
 
 const homepage = defineCollection({
   loader: file("./src/content/site/homepage.json"),
-  schema: z.object({
-    heroTitle: z.string().min(1),
-    connectionLabel: z.string().min(1),
-    indexLabel: z.string().min(1),
-    panels: z
-      .array(
-        z.object({
-          index: z.string().regex(/^\d{2}$/),
-          title: z.string().min(1),
-          description: z.string().min(1),
-          metadata: z.string().min(1),
-          reveal: z.string().min(1),
-          href: z.string().startsWith("/"),
-          kind: z.enum(["yo", "notas", "mediateca", "portafolio"]),
-        }),
-      )
-      .length(4),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      heroTitle: z.string().min(1),
+      connectionLabel: z.string().min(1),
+      indexLabel: z.string().min(1),
+      panels: z
+        .array(
+          z
+            .object({
+              index: z.string().regex(/^\d{2}$/),
+              title: z.string().min(1),
+              description: z.string().min(1),
+              metadata: z.string().min(1),
+              reveal: z.string().min(1),
+              href: z.string().startsWith("/"),
+              kind: z.enum(["yo", "notas", "mediateca", "portafolio"]),
+              image: image().nullable().default(null),
+              imageAlt: z.string().trim().min(1).nullable().default(null),
+            })
+            .superRefine((panel, context) => {
+              if (Boolean(panel.image) === Boolean(panel.imageAlt)) return
+
+              context.addIssue({
+                code: "custom",
+                message:
+                  "Cada imagen de panel requiere un texto alternativo y cada texto alternativo requiere una imagen.",
+                path: [panel.image ? "imageAlt" : "image"],
+              })
+            }),
+        )
+        .length(4),
+    }),
 })
 
 const ahora = defineCollection({

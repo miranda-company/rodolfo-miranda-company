@@ -1,7 +1,7 @@
 [
   {
     "id": "homepage",
-    "heroTitle": "Hola mundo!",
+    "heroTitle": "Bienvenidos al jardín digital de Rodolfo — comunicación, diseño y tecnología",
     "connectionLabel": "Jardín digital de Rodolfo Miranda",
     "indexLabel": "Archivos",
     "panels": [
@@ -12,7 +12,9 @@
         "metadata": "Currículo · Experiencia",
         "reveal": "Información personal",
         "href": "/yo",
-        "kind": "yo"
+        "kind": "yo",
+        "image": "../../assets/images/homepage/folder-001.png",
+        "imageAlt": "Conoce más sobre Rodolfo"
       },
       {
         "index": "02",
@@ -21,7 +23,9 @@
         "metadata": "Trabajo seleccionado",
         "reveal": "0 proyectos publicados",
         "href": "/portafolio",
-        "kind": "portafolio"
+        "kind": "portafolio",
+        "image": "../../assets/images/homepage/archive-002.png",
+        "imageAlt": "Portafolio de proyectos y trabajos"
       },
       {
         "index": "03",
@@ -30,7 +34,9 @@
         "metadata": "Última nota · 31.07.2026",
         "reveal": "27 notas publicadas",
         "href": "/notas",
-        "kind": "notas"
+        "kind": "notas",
+        "image": "../../assets/images/homepage/floppy-002.png",
+        "imageAlt": "Conoce más sobre Rodolfo"
       },
       {
         "index": "04",
@@ -39,7 +45,9 @@
         "metadata": "Inspiración · Referencias",
         "reveal": "144 medios guardados",
         "href": "/mediateca",
-        "kind": "mediateca"
+        "kind": "mediateca",
+        "image": "../../assets/images/homepage/folder-001.png",
+        "imageAlt": "Conoce más sobre Rodolfo"
       }
     ]
   }
