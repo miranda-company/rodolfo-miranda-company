@@ -1,6 +1,5 @@
 .rich-content {
   min-width: 0;
-  max-width: 70ch;
   color: #34352f;
   font-family: var(--font-sans);
   font-size: var(--type-body-size);

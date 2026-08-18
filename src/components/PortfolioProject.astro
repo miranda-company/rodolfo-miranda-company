@@ -1,8 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { getEntries, render, type CollectionEntry } from "astro:content";
-import { isEditorialMedia } from "../lib/media";
-import { isEditorialNote } from "../lib/notes";
+import { render, type CollectionEntry } from "astro:content";
 import "../styles/portfolio.css";
 import EditorialDetailLayout from "./EditorialDetailLayout.astro";
 import PortfolioArtwork from "./PortfolioArtwork.astro";
@@ -16,10 +14,6 @@ interface Props {
 
 const { entry, previousProject, nextProject } = Astro.props;
 const { Content } = await render(entry);
-const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(isEditorialNote);
-const relatedMedia = (await getEntries(entry.data.relatedMedia)).filter(isEditorialMedia);
-const hasConnections = relatedNotes.length > 0 || relatedMedia.length > 0 || entry.data.projectLinks.length > 0;
-const showConnections = hasConnections || entry.data.placeholder;
 const updatedLabel = new Intl.DateTimeFormat("es-ES", {
   day: "2-digit",
   month: "2-digit",
@@ -33,7 +27,7 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
   pageClass="portfolio-page"
   backlinkHref="/portafolio"
   backlinkLabel="Volver a Portafolio"
-  hasConnections={showConnections}
+  hasConnections={false}
 >
   <p slot="header-meta">{entry.data.archiveNumber} / {entry.data.projectStatus}</p>
   <p slot="header-summary">{entry.data.summary}</p>
@@ -83,44 +77,6 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
             <span>{entry.data.projectStatus}</span>
           </footer>
   </Fragment>
-
-  {
-          showConnections && (
-            <aside slot="connections" class="project-connections" aria-labelledby="project-connections-title">
-              <div class="project-connections__notation" aria-hidden="true">
-                <span></span><span></span><span></span><i></i><i></i>
-              </div>
-              <h2 id="project-connections-title">Conexiones</h2>
-              {
-                relatedNotes.length > 0 && (
-                  <section aria-labelledby="project-notes-title">
-                    <h3 id="project-notes-title">Notas relacionadas</h3>
-                    <ul>{relatedNotes.map((note) => <li><a href={`/notas/${note.id}`}>{note.data.title}</a></li>)}</ul>
-                  </section>
-                )
-              }
-              {
-                relatedMedia.length > 0 && (
-                  <section aria-labelledby="project-media-title">
-                    <h3 id="project-media-title">En la Mediateca</h3>
-                    <ul>{relatedMedia.map((item) => <li><a href={`/mediateca/${item.id}`}>{item.data.title}</a></li>)}</ul>
-                  </section>
-                )
-              }
-              {
-                entry.data.projectLinks.length > 0 && (
-                  <section aria-labelledby="project-links-title">
-                    <h3 id="project-links-title">Enlaces verificados</h3>
-                    <ul>
-                      {entry.data.projectLinks.map((link) => <li><a href={link.url} rel="external noreferrer">{link.label} ↗</a></li>)}
-                    </ul>
-                  </section>
-                )
-              }
-              {!hasConnections && <p class="project-connections__pending">CONEXIONES PENDIENTES DE VERIFICACIÓN</p>}
-            </aside>
-          )
-  }
 
   {
     !entry.data.fixture && (

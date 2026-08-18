@@ -426,7 +426,7 @@ a {
 }
 
 .panel-copy {
-  margin-top: auto;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .panel-copy h2 {
@@ -439,8 +439,6 @@ a {
 }
 
 .panel-copy p {
-  min-height: 40px;
-  margin: 0 0 17px;
   color: #3d3c35;
   font-size: 16px;
   line-height: 1.25;

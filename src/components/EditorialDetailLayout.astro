@@ -27,17 +27,17 @@ const {
   <PageShell pageClass={pageClass} mainClass="entry-detail-main">
     <a class="entry-detail-back" href={backlinkHref}>← {backlinkLabel}</a>
 
-    <header class="entry-detail-header">
+    <section class="entry-detail-header">
       <div class="entry-detail-header__meta"><slot name="header-meta" /></div>
       <h1>{title}</h1>
       <div class="entry-detail-header__summary"><slot name="header-summary" /></div>
-    </header>
+    </section>
 
-    <div class:list={["entry-detail-layout", { "entry-detail-layout--without-connections": !hasConnections }]}>
-      <div class="entry-detail-meta"><slot name="metadata" /></div>
+    <section class:list={["entry-detail-layout", { "entry-detail-layout--without-connections": !hasConnections }]}>
+      <aside class="entry-detail-meta"><slot name="metadata" /></aside>
       <article class="entry-detail-reading"><slot /></article>
       {hasConnections && <div class="entry-detail-connections"><slot name="connections" /></div>}
-    </div>
+    </section>
 
     <slot name="sequence" />
   </PageShell>
