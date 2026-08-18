@@ -24,8 +24,8 @@
         "reveal": "0 proyectos publicados",
         "href": "/portafolio",
         "kind": "portafolio",
-        "image": "../../assets/images/homepage/archive-002.png",
-        "imageAlt": "Portafolio de proyectos y trabajos"
+       "image": "../../assets/images/homepage/floppy-002.png",
+        "imageAlt": "Conoce más sobre Rodolfo"
       },
       {
         "index": "03",
@@ -35,7 +35,7 @@
         "reveal": "27 notas publicadas",
         "href": "/notas",
         "kind": "notas",
-        "image": "../../assets/images/homepage/floppy-002.png",
+        "image": "../../assets/images/homepage/flower-002.jpg",
         "imageAlt": "Conoce más sobre Rodolfo"
       },
       {
