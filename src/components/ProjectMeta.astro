@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
+const yearLabel = entry.data.endYear ? `${entry.data.year}–${entry.data.endYear}` : String(entry.data.year);
 const updatedLabel = new Intl.DateTimeFormat("es-ES", {
   day: "2-digit",
   month: "2-digit",
@@ -15,7 +16,7 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
 
 <aside class="project-meta" aria-label="Metadatos del proyecto">
   <dl>
-    <div><dt>Año</dt><dd>{entry.data.year}</dd></div>
+    <div><dt>{entry.data.endYear ? "Años" : "Año"}</dt><dd>{yearLabel}</dd></div>
     <div><dt>Rol</dt><dd>{entry.data.role}</dd></div>
     {
       entry.data.client && (

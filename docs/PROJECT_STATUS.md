@@ -6,7 +6,7 @@ no presupone un despliegue externo.
 
 ## Snapshot
 
-- **Fecha:** 18 de agosto de 2026.
+- **Fecha:** 19 de agosto de 2026.
 - **Rama:** `main`.
 - **Framework:** Astro 7 con salida HTML estática, colecciones Markdown/MDX y
   resaltado de código Shiki generado durante la compilación.
@@ -99,7 +99,9 @@ normalizarse antes de publicar otra entrada.
 - Fixture MDX tipada y excluida explícitamente de listas editoriales, previews,
   secuencias y producción.
 - Scaffold `EditorialDetailLayout.astro` compartido por Notas, Portafolio y
-  Mediateca, con geometría 170/720/210 y colapso lógico responsive.
+  Mediateca, con geometría compartida y colapso lógico responsive. Los casos de
+  Portafolio eliminan intencionadamente la barra derecha de conexiones y
+  expanden su columna de lectura mediante una regla exclusiva de Portafolio.
 - Sistema `.rich-content` común para Markdown/MDX, imágenes, figuras, carruseles,
   notas al pie, tablas, código Shiki y vídeos permitidos en las tres colecciones.
 - Generación canónica de todas las referencias mediante `/mediateca/[slug]` y

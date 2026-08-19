@@ -210,8 +210,12 @@ placeholder entries and rejects a case-study URL without visible link text.
 
 ## Portafolio
 
+La referencia práctica y campo por campo está en
+[PORTFOLIO_PROJECT_GUIDE.md](PORTFOLIO_PROJECT_GUIDE.md).
+
 Markdown entries model a deliberately curated project rather than a complete
-chronological archive. Fields include title, summary, year, role, one or more
+chronological archive. Fields include title, summary, start year (`year`), optional
+end year (`endYear`), role, one or more
 disciplines, optional client or organization, project status, `P.###` archive
 number, tags, optional cover image and required companion alternative text, update
 date, structured gallery, verified project links, related Notas and Mediateca
@@ -292,12 +296,13 @@ H3 is reserved for genuine subsections within an H2. Paragraphs, ordered and
 unordered lists, links and editorial figures inherit the shared reading
 typography.
 
-`relatedNotes` and `relatedMedia` contain content-entry IDs and render only when
-populated. `projectLinks` contains labeled, verified external URLs. Empty groups
-are omitted for genuine projects; a connection-free development placeholder
-shows one restrained pending state instead.
+`relatedNotes` and `relatedMedia` contain validated content-entry IDs, and
+`projectLinks` contains labeled, verified external URLs. Portafolio no longer
+renders a right-hand connections rail, so these three relationship fields are
+currently stored for future cross-linking but are not visible on project pages.
 
-See [WRITING_PORTFOLIO.md](WRITING_PORTFOLIO.md),
+See [PORTFOLIO_PROJECT_GUIDE.md](PORTFOLIO_PROJECT_GUIDE.md),
+[WRITING_PORTFOLIO.md](WRITING_PORTFOLIO.md),
 [templates/portafolio.md](templates/portafolio.md), and
 [templates/portafolio-mdx.mdx](templates/portafolio-mdx.mdx) for the complete
 workflow. Templates omit the internal `fixture` field.

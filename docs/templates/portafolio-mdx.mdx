@@ -2,6 +2,7 @@
 title: "Título del proyecto"
 summary: "Resumen breve y verificable del proyecto."
 year: 2026
+# endYear: 2028
 role: "Rol desempeñado"
 client: "Organización o cliente"
 disciplines:

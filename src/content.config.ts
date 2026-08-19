@@ -142,6 +142,7 @@ const portafolio = defineCollection({
       title: z.string().min(1),
       summary: z.string().min(1),
       year: z.number().int().min(1900),
+      endYear: z.number().int().min(1900).optional(),
       role: z.string().min(1),
       disciplines: z.array(z.string().min(1)).min(1),
       tags: z.array(z.string().min(1)).default([]),
@@ -177,6 +178,15 @@ const portafolio = defineCollection({
       language,
       translationKey,
     }).superRefine((entry, context) => {
+      if (entry.endYear !== undefined && entry.endYear <= entry.year) {
+        context.addIssue({
+          code: "custom",
+          message:
+            "El año final debe ser posterior al año inicial. Para un proyecto de un solo año, omite endYear.",
+          path: ["endYear"],
+        })
+      }
+
       if (!entry.draft && !entry.coverImage) {
         context.addIssue({
           code: "custom",

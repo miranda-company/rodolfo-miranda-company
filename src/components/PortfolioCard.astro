@@ -8,6 +8,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const coverImage = entry.data.coverImage;
+const yearLabel = entry.data.endYear ? `${entry.data.year}–${entry.data.endYear}` : String(entry.data.year);
 ---
 
 <li
@@ -36,7 +37,7 @@ const coverImage = entry.data.coverImage;
     <div class="portfolio-card__information">
       <p class="portfolio-card__archive">
         <span>{entry.data.archiveNumber}</span>
-        <span>{entry.data.year}</span>
+        <span>{yearLabel}</span>
       </p>
       <h3>{entry.data.title}</h3>
       <p class="portfolio-card__summary">{entry.data.summary}</p>

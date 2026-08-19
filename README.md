@@ -139,6 +139,7 @@ Main documentation:
 
 - [Architecture](docs/ARCHITECTURE.md)
 - [Content model](docs/CONTENT_MODEL.md)
+- [Portfolio project guide](docs/PORTFOLIO_PROJECT_GUIDE.md)
 - [Writing notes](docs/WRITING_NOTES.md)
 - [Writing portfolio projects](docs/WRITING_PORTFOLIO.md)
 - [Writing Mediateca references](docs/WRITING_MEDIATECA.md)

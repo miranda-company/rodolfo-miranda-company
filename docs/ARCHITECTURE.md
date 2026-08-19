@@ -66,6 +66,11 @@ labels live in the shared component.
 - mobile: one column in logical metadata, article and connections DOM order;
 - sticky side rails only when the viewport supports them.
 
+Portfolio intentionally passes `hasConnections={false}` and applies a
+Portfolio-scoped two-column desktop override: the metadata rail remains on the
+left and the reading article occupies the remaining space. Notas and Mediateca
+retain their own shared connection behavior.
+
 `src/styles/rich-content.css` owns the route-independent `.rich-content`
 presentation used around the rendered Markdown or MDX body in all three
 collections. It covers body text, semantic H2/H3 spacing, lists, links and focus,

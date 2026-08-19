@@ -1,5 +1,9 @@
 # Escribir proyectos de Portafolio
 
+La referencia completa de creación, metadatos y archivos técnicos está en
+[PORTFOLIO_PROJECT_GUIDE.md](PORTFOLIO_PROJECT_GUIDE.md). Este documento se
+centra en la escritura y el contenido enriquecido del cuerpo editorial.
+
 Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`. Usa
 `docs/templates/portafolio.md` para texto y contenido estándar, o
 `docs/templates/portafolio-mdx.mdx` cuando el cuerpo necesite un componente aprobado como
@@ -21,6 +25,25 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
 5. Escribe solo cliente, rol, disciplinas, resultados y enlaces que hayan sido verificados.
 6. Usa los IDs de archivo, sin extensión, en `relatedNotes` y `relatedMedia`. Cada elemento de
    `projectLinks` requiere una etiqueta clara y una URL externa completa y aprobada.
+
+## Año o periodo del proyecto
+
+`year` es el año inicial o el único año del proyecto. Para un trabajo realizado durante un solo
+año, usa únicamente:
+
+```yaml
+year: 2024
+```
+
+Si el proyecto abarcó varios años, añade `endYear`:
+
+```yaml
+year: 2021
+endYear: 2023
+```
+
+La ficha mostrará `2021–2023` y cambiará la etiqueta de `Año` a `Años`. `endYear` debe ser
+posterior a `year`; para un proyecto de un solo año debe omitirse.
 
 ## Portada, galería e imágenes editoriales
 
