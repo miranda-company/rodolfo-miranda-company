@@ -1,32 +1,35 @@
 ---
 title: "Barcelona Supercomputing Center"
-summary: "Cómo traducir información meteorológica compleja en sistemas útiles."
-year: 2026
-role: "Dirección, producción y diseño"
-disciplines:
-  - "UX"
-  - "Diseño web"
-  - "Desarrollo web"
-
-tags:
-  - "Diseño web"
-  - "UX"
-projectStatus: "Contenido pendiente"
+summary: "Cómo transformar datos científicos complejos en productos digitales accesibles y escalables."
 archiveNumber: "P.002"
+updatedAt: 2026-08-18
+year: 2020
+endYear: 2022
+displayOrder: 2
+role: "Director de Producto Digital"
+client: "BSC"
+disciplines:
+  - "Arquitectura de la Información"
+  - "Estrategia de Producto y UX"
+  - "Transformación Digital"
+tags:
+  - "Producto"
+  - "Sistemas"
+projectStatus: "Finalizado"
+coverImage: "../../assets/images/portafolio/bsc/portada-bsc.jpg"
+coverAlt: "Barcelona Supercomputing Center"
 gallery: []
 projectLinks: []
-displayOrder: 2
-updatedAt: 2026-07-30
-placeholder: true
 relatedNotes: []
 relatedMedia: []
-draft: true
+placeholder: false
+draft: false
 language: "es"
 ---
 
 ## El proyecto
 
-El reto de este proyecto podía resumirse en una pregunta bastante delicada: ¿cómo hacer comprensible información científica compleja sin despojarla de su rigor?
+El reto de este proyecto podría resumirse en una pregunta: ¿cómo hacer comprensible información científica compleja sin despojarla de su rigor?
 
 El [Barcelona Supercomputing Center](https://www.bsc.es/) trabaja con modelos predictivos sobre fenómenos climáticos que tienen consecuencias muy reales, desde la formación de huracanes hasta el desplazamiento de partículas de polvo procedentes del Sáhara.
 
@@ -34,7 +37,7 @@ El conocimiento estaba ahí. El problema era cómo organizarlo, publicarlo y pre
 
 Desde [Eloquent](https://www.eloquent.es/) trabajamos con el equipo del BSC en el diseño y desarrollo de dos plataformas: [WMO Barcelona Dust Regional Center](https://dust.aemet.es/) y [Seasonal Hurricane Predictions](https://seasonalhurricanepredictions.bsc.es/).
 
-## El problema no era solamente visual
+## El problema
 
 El ecosistema reunía más de 40 tipos de visualización, modelos predictivos y archivos actualizados en tiempo real. Una interfaz más limpia podía ayudar, pero no resolvería por sí sola el problema.
 
@@ -48,15 +51,21 @@ Esto introducía tres retos conectados:
 
 La verdadera tarea no era reducir la cantidad de información. Era darle una forma que permitiera orientarse dentro de ella.
 
+![alt text](../../assets/images/portafolio/bsc/img-bsc-001.jpg "Base de datos sobre predicción de huracanes desde 2016 a 2025")
+
 ## Mi papel
 
-Me encargué de la dirección del proyecto, la coordinación de la producción y el diseño.
+Mi rol principal en este proyecto fue de diseñar la estrategia de producto digital para las dos plataformas que se crearon.
 
 Mi posición estaba entre el conocimiento científico, las necesidades de los usuarios y las posibilidades técnicas de la plataforma. Una parte importante del trabajo consistió en traducir entre esos tres ámbitos: entender qué no podíamos perder, decidir qué debía tener prioridad y convertirlo en una experiencia digital viable.
 
 También coordiné el proceso con el equipo del BSC y participé directamente en la definición de la arquitectura, la navegación y las interfaces.
 
-## Entender antes de diseñar
+![alt text](../../assets/images/portafolio/bsc/img-bsc-003.jpg "Visualización de la plataforma Seasonal Hurricane Predictions")
+
+![alt text](../../assets/images/portafolio/bsc/img-bsc-004.jpg "Visualización de la plataforma Seasonal Hurricane Predictions")
+
+## Auditar antes de construir
 
 Comenzamos auditando el contenido y la estructura de las plataformas. Necesitábamos saber qué información existía, cómo se actualizaba y qué relaciones había entre modelos, predicciones, visualizaciones y archivos.
 
@@ -66,7 +75,9 @@ El objetivo no era convertir las plataformas en simples repositorios de datos. Q
 
 También establecimos criterios comunes para que centros meteorológicos de diferentes países pudieran publicar y comparar sus estimaciones dentro de un mismo marco.
 
-## Diseñar para desaparecer
+![alt text](../../assets/images/portafolio/bsc/img-bsc-006.jpg "Visualización de la plataforma Barcelona Dust Regional Center")
+
+## Sistematizar para dar autonomía
 
 Una plataforma científica no debería depender permanentemente del equipo que la diseñó. Por eso, la entrega no terminaba con las interfaces.
 
@@ -78,12 +89,9 @@ Puede parecer una parte poco visible del diseño, pero era una de las más impor
 
 El proyecto dio lugar a:
 
-* Dos plataformas digitales para consultar información sobre huracanes y partículas de polvo del Sáhara.
-* Una nueva arquitectura para organizar visualizaciones, predicciones y archivos.
-* Patrones comunes de navegación, interacción y presentación de datos.
-* Criterios estandarizados para la publicación de información por parte de organizaciones internacionales.
-* Un sistema integrado en Plone y gestionable por el equipo interno del BSC.
-* Una estructura preparada para incorporar nuevos indicadores y módulos.
+* **Producto Digital**: Dos plataformas integradas en la infraestructura Plone del BSC.
+* **Gobernanza de Datos**: Criterios estandarizados para organizaciones internacionales.
+* **Escalabilidad**: Sistema modular preparado para nuevos indicadores predictivos.
 
 ## Resultado y aprendizajes
 

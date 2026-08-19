@@ -1,37 +1,39 @@
 ---
 title: "Club Natació Sant Andreu"
-summary: "Auditoría y estrategia para un club de natación con atletas olímpicos."
+summary: "Cómo sistematizar la experiencia digital de una institución deportiva de alto rendimiento."
+archiveNumber: "P.004"
+updatedAt: 2026-08-19
 year: 2026
-role: "Rol pendiente"
+displayOrder: 4
+role: "Operaciones creativas y estrategia de contenidos"
+client: "CN Sant Andreu"
 disciplines:
-  - "Auditoría"
-  - "Estrategia"
+  - "Dirección creativa"
+  - "Fotografía de producto"
+  - "Producción de vídeo"
 tags:
-  - "Auditoría"
-  - "Estrategia"
-projectStatus: "Contenido pendiente"
-archiveNumber: "P.003"
+  - "Sistemas"
+  - "Marca"
+projectStatus: "Finalizado"
+coverImage: "../../assets/images/portafolio/cn-sant-andreu/portada-cn-sant-andreu.jpg"
+coverAlt: "Club Natació Sant Andreu"
 gallery: []
 projectLinks: []
-displayOrder: 3
-updatedAt: 2026-07-29
-placeholder: true
-relatedNotes:
-  - "archivo"
+relatedNotes: []
 relatedMedia: []
-draft: true
+placeholder: false
+draft: false
 language: "es"
 ---
 
 ## El proyecto
 
-El [Club Natació Sant Andreu](https://www.cnsantandreu.com/) no tenía un problema de identidad. Tenía, en realidad, varias identidades verdaderas al mismo tiempo.
 
-Es un club histórico de barrio, un punto de encuentro para miles de socios y familias, una escuela deportiva y una organización de alto rendimiento con atletas olímpicos y presencia internacional.
+El [Club Natació Sant Andreu](https://www.cnsantandreu.com/) es un club histórico de barrio, un punto de encuentro para miles de socios y familias, una escuela deportiva y una organización de alto rendimiento con atletas olímpicos y presencia internacional.
 
 Esa riqueza es uno de sus principales activos, pero también hace que comunicar resulte bastante más complicado. Cada público necesita cosas distintas y se relaciona con el Club desde una perspectiva diferente.
 
-Cuando empezamos a trabajar juntos en [Eloquent](https://www.eloquent.es/), su valor no siempre se traducía en una comunicación clara, útil y reconocible. El problema no era la falta de actividad. Era la dificultad de ordenar todo lo que ya estaba ocurriendo.
+Cuando empezamos a trabajar juntos en [Eloquent](https://www.eloquent.es/), su valor no siempre se traducía en una comunicación clara, útil y reconocible. El problema no era la falta de actividad. Era la dificultad de ordenar todo lo que ya estaba ocurriendo. Tenían un problema de arquitectura de la información y fragmentación de canales.
 
 ## Comunicar no es decir lo mismo a todo el mundo
 
@@ -47,7 +49,7 @@ El reto no consistía en producir más contenido. Consistía en construir un sis
 
 Mi trabajo se centró en la estrategia digital.
 
-Participé en el análisis del ecosistema de comunicación, la definición de públicos y necesidades, la identificación de fricciones entre canales y la construcción de una hoja de ruta que conectara la presencia digital con la experiencia de los socios y las prioridades institucionales.
+Lideré el análisis del ecosistema de comunicación, la definición de públicos y necesidades, la identificación de fricciones entre canales y la construcción de una hoja de ruta que conectara la presencia digital con la experiencia de los socios y las prioridades institucionales.
 
 Una parte importante del trabajo consistió en traducir una realidad bastante compleja en decisiones utilizables. No bastaba con identificar que algo no funcionaba: había que entender por qué ocurría, a quién afectaba y qué debía cambiar primero.
 
@@ -75,12 +77,6 @@ La hoja de ruta permitió ordenar las prioridades y ofrecer al equipo una base p
 
 El objetivo era que la estrategia no se quedara en una presentación. Debía convertirse en una herramienta de trabajo que ayudara al Club a ganar autonomía y tomar decisiones con criterios compartidos.
 
-## Una colaboración más amplia
-
-El trabajo de Eloquent no terminó con la auditoría. El equipo también apoyó al Club en la gestión de su comunicación, las relaciones con medios y la coordinación de eventos como la Supercopa de Europa de waterpolo de 2025.
-
-Esta colaboración permitió contrastar el diagnóstico con situaciones reales y entender mejor la presión cotidiana bajo la que funciona la comunicación de una institución deportiva.
-
 ## Resultados
 
 El Club recibió:
@@ -93,6 +89,6 @@ El Club recibió:
 
 El resultado más importante no fue una nueva campaña o un cambio aislado de canal. Fue una forma más clara de comprender el problema y decidir qué hacer a continuación.
 
-## Resultado y aprendizajes
+## Aprendizajes
 
-Este proyecto me recordó que las organizaciones complejas no necesitan reducir su identidad a una sola idea. El Club puede ser, al mismo tiempo, una institución de barrio, una comunidad social y un referente deportivo. La tarea de la estrategia no es escoger una de esas realidades y esconder las demás, sino construir un sistema capaz de explicarlas con orden, a las personas adecuadas y en el momento en que resultan útiles.
+Este proyecto me recordó que las organizaciones complejas no necesitan reducir su identidad a una sola idea. El Club puede ser, al mismo tiempo, una institución de barrio, una comunidad social y un referente deportivo. La tarea de la estrategia no es escoger una de esas realidades y esconder las demás, sino construir un sistema capaz de explicarlas con orden, a las personas adecuadas y en el momento en que resultan útiles. Así como también alinear los flujos de información dentro y fuera del equipo.

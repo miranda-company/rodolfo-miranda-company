@@ -9,13 +9,12 @@ disciplines:
   - "Desarrollo web"
 
 tags:
-  - "Diseño web"
-  - "UX"
+  - "NA"
 projectStatus: "Contenido pendiente"
 archiveNumber: "P.005"
 gallery: []
 projectLinks: []
-displayOrder: 5
+displayOrder: 9
 updatedAt: 2026-07-30
 placeholder: true
 relatedNotes: []

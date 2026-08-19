@@ -277,6 +277,13 @@ a {
   height: 100%;
   border: var(--wire);
 }
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border: var(--wire);
+}
 
 .positioning {
   max-width: 500px;

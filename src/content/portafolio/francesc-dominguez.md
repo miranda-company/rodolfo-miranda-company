@@ -8,11 +8,8 @@ disciplines:
   - "Branding"
   - "Diseño web"
   - "SEO"
-
 tags:
-  - "Estrategia"
-  - "Branding"
-  - "Diseño"
+  - "NA"
 projectStatus: "Contenido pendiente"
 archiveNumber: "P.001"
 gallery: []
