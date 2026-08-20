@@ -10,8 +10,7 @@ role: "Operaciones creativas y estrategia de contenidos"
 client: "Negocio propio"
 disciplines:
   - "Fundador"
-  - "Dirección"
-  - "Gestión de operaciones"
+  - "Dirección y operativa"
 tags:
   - "Sistemas"
   - "Marca"
@@ -33,7 +32,7 @@ language: "es"
 
 Modulab nació de un problema operativo.
 
-En 2021, la producción audiovisual que realizábamos para los clientes de Eloquent había crecido hasta un punto en el que trabajar desde nuestro piso dejó de ser viable. Necesitábamos más capacidad, mejores condiciones técnicas y un entorno que pudiéramos adaptar a proyectos diferentes.
+En 2021, la producción audiovisual que realizábamos para los clientes de [Eloquent](/portafolio/eloquent) había crecido hasta un punto en el que trabajar desde nuestro piso dejó de ser viable. Necesitábamos más capacidad, mejores condiciones técnicas y un entorno que pudiéramos adaptar a proyectos diferentes.
 
 Decidimos convertir esa necesidad interna en un negocio independiente: un estudio de fotografía y vídeo que pudiera utilizar nuestro equipo, pero también otros fotógrafos, productoras, marcas y creadores de Barcelona.
 
