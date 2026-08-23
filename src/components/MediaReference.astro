@@ -43,7 +43,7 @@ const statusLabels = {
   <p slot="header-summary">{entry.data.creator}</p>
 
   <aside slot="metadata" class="reference-meta" aria-label="Ficha de la referencia">
-          <MediaVisual entry={entry} compact />
+          <MediaVisual entry={entry} />
           <dl>
             <div><dt>Año</dt><dd>{entry.data.publicationYear ?? "—"}</dd></div>
             <div><dt>Formato</dt><dd>{formatLabels[entry.data.format]}</dd></div>

@@ -4,10 +4,9 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   entry: CollectionEntry<"mediateca">;
-  compact?: boolean;
 }
 
-const { entry, compact = false } = Astro.props;
+const { entry } = Astro.props;
 const host = entry.data.externalUrl
   ? new URL(entry.data.externalUrl).hostname.replace(/^www\./, "")
   : "ARCHIVO LOCAL";
@@ -17,7 +16,7 @@ const coverCaption = entry.data.coverCaption?.trim();
 
 {
   coverImage ? (
-    <figure class:list={["media-cover", { "media-cover--compact": compact }]}>
+    <figure class="media-cover">
       <Image
         class="media-cover__image"
         src={coverImage}
@@ -35,7 +34,6 @@ const coverCaption = entry.data.coverCaption?.trim();
         "media-visual",
         `media-visual--${entry.data.format}`,
         `media-visual--${entry.id}`,
-        { "media-visual--compact": compact },
       ]}
       aria-hidden="true"
     >

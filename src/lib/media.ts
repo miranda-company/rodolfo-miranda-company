@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 
-export function compareMediaByRecent(
+function compareMediaByRecent(
   first: CollectionEntry<"mediateca">,
   second: CollectionEntry<"mediateca">,
 ) {
@@ -14,7 +14,7 @@ export function isEditorialMedia(entry: CollectionEntry<"mediateca">) {
   return !entry.data.fixture
 }
 
-export function isTechnicalMediaFixture(entry: CollectionEntry<"mediateca">) {
+function isTechnicalMediaFixture(entry: CollectionEntry<"mediateca">) {
   return entry.data.fixture
 }
 

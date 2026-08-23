@@ -18,7 +18,7 @@ export const NOTE_MATURITY = {
   },
 } as const
 
-export function compareNotesByRecent(
+function compareNotesByRecent(
   first: CollectionEntry<"notas">,
   second: CollectionEntry<"notas">,
 ) {
@@ -34,7 +34,7 @@ export function isEditorialNote(entry: CollectionEntry<"notas">) {
   return !entry.data.fixture
 }
 
-export function isTechnicalNoteFixture(entry: CollectionEntry<"notas">) {
+function isTechnicalNoteFixture(entry: CollectionEntry<"notas">) {
   return entry.data.fixture
 }
 

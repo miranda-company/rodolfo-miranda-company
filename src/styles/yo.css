@@ -3,7 +3,6 @@
 }
 
 .yo-kicker,
-.yo-hero__meta,
 .yo-section__heading > p,
 .yo-portrait figcaption,
 .career-timeline__period,
@@ -44,37 +43,6 @@
   line-height: var(--type-introduction-line-height);
   letter-spacing: -0.025em;
   text-wrap: balance;
-}
-
-.yo-hero__meta {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: auto minmax(60px, 1fr) auto;
-  gap: 18px;
-  align-items: center;
-  border-top: 1px solid var(--line);
-  padding-top: 17px;
-  color: var(--graphite);
-  font-size: var(--type-metadata-size);
-  line-height: var(--type-metadata-line-height);
-}
-
-.yo-hero__meta i {
-  position: relative;
-  display: block;
-  height: 1px;
-  background: var(--line);
-}
-
-.yo-hero__meta i::after {
-  position: absolute;
-  top: -3px;
-  left: 62%;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--blue);
-  background: var(--paper);
-  content: "";
 }
 
 .yo-section {
@@ -471,16 +439,6 @@
   .yo-hero__positioning {
     max-width: none;
     margin: 16px 0 27px;
-  }
-
-  .yo-hero__meta {
-    grid-template-columns: 1fr;
-    gap: 9px;
-    padding-top: 13px;
-  }
-
-  .yo-hero__meta i {
-    display: none;
   }
 
   .yo-section {
