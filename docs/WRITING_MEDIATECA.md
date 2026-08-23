@@ -26,9 +26,11 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
 ## Cubierta e imágenes editoriales
 
 Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y referenciarse con
-`coverImage`. Las imágenes incluidas en el cuerpo son independientes de la cubierta. Cada imagen
-significativa necesita texto alternativo útil. Una imagen Markdown normal no convierte su título
-en una leyenda visible. Para añadir una leyenda usa MDX e importa el activo local así:
+`coverImage`. Cuando exista, `coverAlt` es obligatorio y debe describir lo visible. `coverCaption`
+es opcional y añade una leyenda o crédito visible bajo la cubierta del detalle. Las imágenes incluidas
+en el cuerpo son independientes de la cubierta. Cada imagen significativa necesita texto alternativo
+útil. Una imagen Markdown normal no convierte su título en una leyenda visible. Para añadir una
+leyenda usa MDX e importa el activo local así:
 
 ```mdx
 import ContentImage from "../../components/content/ContentImage.astro"

@@ -13,6 +13,7 @@ projectStatus: "En preparación"
 archiveNumber: "P.000"
 coverImage: "../../assets/images/portafolio/slug/portada.jpg"
 coverAlt: "Descripción concreta de lo que muestra la portada"
+coverCaption: "Leyenda editorial opcional de la portada."
 gallery: []
 projectLinks: []
 displayOrder: 0

@@ -93,6 +93,8 @@ normalizarse antes de publicar otra entrada.
 - `ContentImage.astro` compartido por Notas, Mediateca y Portafolio: imágenes
   editoriales locales optimizadas, texto alternativo obligatorio y leyenda opcional
   con el mismo estilo mono de los vídeos.
+- Portadas estructuradas de Portafolio y Mediateca con `coverAlt` obligatorio y
+  `coverCaption` opcional visible en el detalle, sin añadir leyendas a las tarjetas.
 - `ImageCarousel.astro` compartido por Notas, Mediateca y Portafolio: imágenes
   locales optimizadas, etiqueta y alternativas validadas, scroll-snap, controles
   en español, contador accesible, movimiento reducido y mejora progresiva sin

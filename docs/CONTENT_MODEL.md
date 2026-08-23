@@ -146,7 +146,8 @@ requires `.mdx`; normal uncaptioned Markdown images remain supported in `.md`.
 Markdown and MDX entries contain a title, author or creator, format, engagement
 mode, editorial state, summary, personal commentary, reason for inclusion,
 recurring ideas, optional publication year, catalogue status, archival number,
-update date, optional canonical external URL and local cover image, tags,
+update date, optional canonical external URL and local cover image with required
+alternative text and optional visible caption, tags,
 related notes, related Mediateca entries, featured, draft and technical-fixture
 flags, language, an optional translation key, and an optional editorial body.
 
@@ -175,6 +176,10 @@ requires `fixture: true` entries to remain drafts, reserves `M.999` for that
 fixture, and rejects the number on genuine references. Central collection
 helpers keep it out of catalogue cards, counts, filters, homepage previews,
 related entries and production. It is not a recommendation.
+
+When a Mediateca entry supplies `coverImage`, validation also requires
+`coverAlt`; optional `coverCaption` appears below the cover on the detail page.
+The caption provides context or credit and never replaces alternative text.
 
 The annotations and commentary for all three anchors, including the El Modulor
 reading page, are provisional editorial copy. They must be reviewed and
@@ -226,7 +231,7 @@ Markdown entries model a deliberately curated project rather than a complete
 chronological archive. Fields include title, summary, start year (`year`), optional
 end year (`endYear`), role, one or more
 disciplines, optional client or organization, project status, `P.###` archive
-number, tags, optional cover image and required companion alternative text, update
+number, tags, optional cover image, required companion alternative text, optional cover caption, update
 date, structured gallery, verified project links, related Notas and Mediateca
 references, display order, placeholder and draft flags, language, optional
 translation key, and the case-study body.
@@ -283,7 +288,9 @@ approved cover and alternative text.
 
 Project images should live under `src/assets/images/portafolio/<slug>/` and be
 referenced as local assets. A cover requires `coverAlt` that describes the
-visible image rather than repeating the project title. Do not use remote images,
+visible image rather than repeating the project title. Optional `coverCaption`
+renders below the detail-page cover for context or credits and is intentionally
+omitted from compact index cards. Do not use remote images,
 stock imagery, generic mockups or unverified client material.
 
 Gallery entries are objects with:

@@ -45,6 +45,7 @@ projectStatus: "Finalizado"
 archiveNumber: "P.013"
 coverImage: "../../assets/images/portafolio/nombre-del-proyecto/portada.jpg"
 coverAlt: "Descripción concreta de lo que muestra la portada"
+coverCaption: "Leyenda editorial opcional de la portada."
 gallery:
   - image: "../../assets/images/portafolio/nombre-del-proyecto/imagen-01.jpg"
     alt: "Descripción accesible de la imagen"
@@ -64,7 +65,7 @@ language: "es"
 ---
 ```
 
-`endYear`, `client`, `coverImage`, `coverAlt`, `translationKey`, las leyendas y
+`endYear`, `client`, `coverImage`, `coverAlt`, `coverCaption`, `translationKey`, las leyendas y
 los elementos de los arrays son opcionales según el estado de la entrada. Una
 publicación real tiene requisitos adicionales indicados más abajo.
 
@@ -84,6 +85,7 @@ publicación real tiene requisitos adicionales indicados más abajo.
 | `archiveNumber` | Texto obligatorio con formato `P.###` | Identificador de archivo mostrado en la tarjeta, el encabezado y la ficha. Debe ser único. `P.999` está reservado para la fixture MDX. |
 | `coverImage` | Imagen local opcional durante borrador; obligatoria al publicar | Portada optimizada por Astro para la tarjeta y el caso. Debe vivir en la carpeta de recursos del proyecto. |
 | `coverAlt` | Texto opcional sin portada; obligatorio con portada y al publicar | Alternativa accesible que describe lo visible sin repetir el título. |
+| `coverCaption` | Texto opcional; requiere `coverImage` | Leyenda visible bajo la portada del caso. No aparece en la tarjeta compacta del índice. |
 | `gallery` | Lista opcional; por defecto `[]` | Galería estática estructurada renderizada después del cuerpo. Cada elemento requiere `image` y `alt`; `caption` es opcional. No es el carrusel narrativo. |
 | `projectLinks` | Lista opcional; por defecto `[]` | Enlaces externos verificados con `label` y `url`. El modelo los conserva, pero actualmente no se muestran porque la barra de conexiones de Portafolio fue retirada. Un placeholder no puede incluirlos. |
 | `displayOrder` | Entero obligatorio igual o mayor que 0 | Orden de las tarjetas y de la navegación anterior/siguiente. Debe revisarse manualmente para evitar duplicados. |
@@ -159,6 +161,8 @@ src/assets/images/portafolio/<slug>/
 ```
 
 - `coverImage` es la portada de la tarjeta y del detalle.
+- `coverAlt` describe lo visible para tecnologías de asistencia y nunca se sustituye por la leyenda.
+- `coverCaption` añade contexto o crédito visible bajo la portada del detalle; se omite cuando no aporta información.
 - `gallery` es la galería estática estructurada después del cuerpo.
 - Una imagen Markdown/MDX forma parte de la narración. Usa `ContentImage` en MDX cuando necesite
   una leyenda visible.
@@ -252,8 +256,8 @@ borradores, placeholders y fixtures no entran en los datos de producción.
   clases `.portfolio-card*` de `portfolio.css`.
 - Para cambiar únicamente la ficha izquierda, modifica `ProjectMeta.astro` y
   las clases `.project-meta*` de `portfolio.css`.
-- Para cambiar la portada del detalle, modifica `PortfolioArtwork.astro` y
-  `.portfolio-artwork*`.
+- Para cambiar la portada o su leyenda en el detalle, modifica `PortfolioArtwork.astro` y
+  `.portfolio-artwork*` / `.portfolio-cover*`.
 - Para cambiar la composición completa del caso, empieza en
   `PortfolioProject.astro` y usa selectores bajo `.portfolio-page`.
 - Evita modificar `EditorialDetailLayout.astro`, `editorial-detail.css` o

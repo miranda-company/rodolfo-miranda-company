@@ -49,8 +49,9 @@ posterior a `year`; para un proyecto de un solo año debe omitirse.
 
 Guarda los recursos locales en `src/assets/images/portafolio/<slug>/`. Una publicación real
 necesita `coverImage` y `coverAlt`; el texto alternativo debe describir lo visible y no repetir el
-título. `gallery` conserva imágenes estructuradas después del cuerpo, cada una con `image`, `alt` y
-una `caption` opcional.
+título. Añade `coverCaption` cuando la portada necesite una leyenda o crédito visible en el detalle;
+es opcional y no aparece en la tarjeta del índice. `gallery` conserva imágenes estructuradas después
+del cuerpo, cada una con `image`, `alt` y una `caption` opcional.
 
 Las imágenes insertadas dentro del Markdown o MDX son contenido editorial adicional: no sustituyen
 la portada ni la galería. Una imagen Markdown normal no genera una leyenda visible a partir de su

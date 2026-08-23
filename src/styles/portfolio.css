@@ -14,6 +14,7 @@
 .project-meta,
 .project-provisional-notice,
 .project-gallery figcaption,
+.portfolio-cover figcaption,
 .project-article-footer,
 .project-sequence span,
 .portfolio-artwork__field > em {
@@ -532,11 +533,27 @@ img.portfolio-artwork {
   line-height: 1.5;
 }
 
-.portfolio-page .entry-detail-reading > .portfolio-artwork {
+.portfolio-page .entry-detail-reading > .portfolio-artwork,
+.portfolio-page .entry-detail-reading > .portfolio-cover > .portfolio-artwork {
   width: 100%;
   min-height: 330px;
-  margin-bottom: 50px;
   border: 1px solid var(--line);
+}
+
+.portfolio-page .entry-detail-reading > .portfolio-artwork {
+  margin-bottom: 50px;
+}
+
+.portfolio-cover {
+  width: 100%;
+  margin: 0 0 50px;
+}
+
+.portfolio-cover figcaption {
+  margin-top: 10px;
+  color: var(--graphite);
+  font-size: 9px;
+  line-height: 1.55;
 }
 
 .project-gallery figure {
@@ -728,6 +745,7 @@ img.portfolio-artwork {
 
   .project-provisional-notice,
   .portfolio-page .entry-detail-reading > .portfolio-artwork,
+  .portfolio-page .entry-detail-reading > .portfolio-cover,
   .project-gallery,
   .project-article-footer {
     width: 100%;
@@ -737,9 +755,14 @@ img.portfolio-artwork {
     margin: 0;
   }
 
-  .portfolio-page .entry-detail-reading > .portfolio-artwork {
+  .portfolio-page .entry-detail-reading > .portfolio-artwork,
+  .portfolio-page .entry-detail-reading > .portfolio-cover > .portfolio-artwork {
     min-height: 0;
     aspect-ratio: 16 / 9;
+    margin: 0;
+  }
+
+  .portfolio-page .entry-detail-reading > .portfolio-cover {
     margin: 0;
   }
 

@@ -98,6 +98,8 @@ const mediateca = defineCollection({
       updatedAt: z.coerce.date(),
       externalUrl: z.url().optional(),
       coverImage: image().optional(),
+      coverAlt: z.string().min(1).optional(),
+      coverCaption: z.string().min(1).optional(),
       tags: z.array(z.string().min(1)).default([]),
       relatedNotes: z.array(reference("notas")).default([]),
       relatedMedia: z.array(reference("mediateca")).default([]),
@@ -107,6 +109,23 @@ const mediateca = defineCollection({
       language,
       translationKey,
     }).superRefine((entry, context) => {
+      if (entry.coverImage && !entry.coverAlt) {
+        context.addIssue({
+          code: "custom",
+          message: "Toda cubierta de Mediateca requiere texto alternativo.",
+          path: ["coverAlt"],
+        })
+      }
+
+      if (entry.coverCaption && !entry.coverImage) {
+        context.addIssue({
+          code: "custom",
+          message:
+            "La leyenda de cubierta de Mediateca requiere una imagen de cubierta.",
+          path: ["coverCaption"],
+        })
+      }
+
       if (entry.fixture && !entry.draft) {
         context.addIssue({
           code: "custom",
@@ -151,6 +170,7 @@ const portafolio = defineCollection({
       archiveNumber: z.string().regex(/^P\.\d{3}$/),
       coverImage: image().optional(),
       coverAlt: z.string().min(1).optional(),
+      coverCaption: z.string().min(1).optional(),
       gallery: z
         .array(
           z.object({
@@ -209,6 +229,14 @@ const portafolio = defineCollection({
           message:
             "Los proyectos publicados requieren texto alternativo para su portada.",
           path: ["coverAlt"],
+        })
+      }
+
+      if (entry.coverCaption && !entry.coverImage) {
+        context.addIssue({
+          code: "custom",
+          message: "La leyenda de portada requiere una imagen de portada.",
+          path: ["coverCaption"],
         })
       }
 

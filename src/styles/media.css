@@ -14,6 +14,7 @@
 .engagement-mode__label,
 .media-card__metadata,
 .media-visual__code,
+.media-cover figcaption,
 .reference-meta,
 .reference-section-index,
 .reference-provisional,
@@ -559,6 +560,26 @@
   color: var(--ink);
 }
 
+.media-cover {
+  margin: 0;
+}
+
+.media-cover__image {
+  display: block;
+  width: 100%;
+  height: 192px;
+  object-fit: cover;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.media-cover figcaption {
+  margin-top: 10px;
+  color: var(--graphite);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
 .media-visual__code {
   position: absolute;
   z-index: 3;
@@ -962,6 +983,10 @@
 }
 
 .media-visual--compact {
+  height: 300px;
+}
+
+.media-cover--compact .media-cover__image {
   height: 300px;
 }
 
@@ -1421,8 +1446,13 @@
     gap: 15px;
   }
 
-  .reference-meta .media-visual--compact {
+  .reference-meta .media-visual--compact,
+  .reference-meta .media-cover--compact {
     grid-row: 1 / span 3;
+  }
+
+  .reference-meta .media-visual--compact,
+  .reference-meta .media-cover--compact .media-cover__image {
     height: 188px;
   }
 

@@ -103,8 +103,10 @@ Presentation stays in `rich-content.css`; one scoped framework-free script
 initializes every instance, advances exactly one scroll-snap slide, updates the
 polite status after native scrolling, recalculates after resizing, and respects
 reduced motion. The no-JavaScript path remains a readable native horizontal
-scroller. Structured Portafolio covers and galleries stay outside this inline
-narrative component.
+scroller. Structured Portafolio and Mediateca covers stay outside this inline
+narrative component: their schemas pair a local `coverImage` with required
+`coverAlt` and optional `coverCaption`, rendered only on detail pages. Portafolio
+galleries also remain a separate structured field.
 
 Astro generates fenced-code highlighting statically with Shiki and the
 `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash and plain
