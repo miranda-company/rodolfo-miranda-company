@@ -42,6 +42,7 @@
 .entry-detail-header__meta > :first-child,
 .entry-detail-header__summary > :first-child {
   margin: 0;
+  line-height: 1.4;
 }
 
 .entry-detail-header h1 {

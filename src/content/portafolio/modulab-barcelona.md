@@ -150,7 +150,7 @@ En octubre de 2025, la productora audiovisual Pixel Estudio adquirió Modulab en
 
 La operación fue nuestro *exit*: transferimos un producto operativo, con clientes, reputación, activos y procesos documentados. El comprador podía continuar el negocio sin tener que reconstruir desde cero el conocimiento que habíamos acumulado durante años.
 
-## Resultado y aprendizajes
+## Aprendizajes
 
 Modulab me permitió diseñar y operar un negocio físico-digital completo.
 
