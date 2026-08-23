@@ -25,6 +25,7 @@ language: "es"
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import ContentImage from "../../components/content/ContentImage.astro"
 import technicalImage from "../../assets/images/simbolo-lobo.png"
 import technicalPortrait from "../../assets/images/retrato-rodolfo-miranda.jpg"
 
@@ -32,15 +33,11 @@ Esta ruta existe solo para revisar el sistema de contenido enriquecido. No descr
 
 ## Imagen editorial local
 
-<figure>
-  <img
-    src={technicalImage.src}
-    width={technicalImage.width}
-    height={technicalImage.height}
-    alt="Silueta geométrica de un lobo caminando, símbolo gráfico de Rodolfo Miranda Company"
-  />
-  <figcaption>Símbolo gráfico existente reutilizado únicamente como ejemplo técnico de imagen local.</figcaption>
-</figure>
+<ContentImage
+  src={technicalImage}
+  alt="Silueta geométrica de un lobo caminando, símbolo gráfico de Rodolfo Miranda Company"
+  caption="Símbolo gráfico existente reutilizado únicamente como ejemplo técnico de imagen local."
+/>
 
 ## Carrusel narrativo de imágenes locales
 

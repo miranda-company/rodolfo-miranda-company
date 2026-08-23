@@ -17,11 +17,19 @@ language: "es"
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import ContentImage from "../../components/content/ContentImage.astro"
+import inlineImage from "../../assets/images/notas/slug/imagen-editorial.jpg"
 import imageOne from "../../assets/images/notas/slug/imagen-01.jpg"
 import imageTwo from "../../assets/images/notas/slug/imagen-02.jpg"
 import imageThree from "../../assets/images/notas/slug/imagen-03.jpg"
 
 Los componentes pueden aparecer entre dos fragmentos del texto.
+
+<ContentImage
+  src={inlineImage}
+  alt="Descripción accesible de la imagen editorial"
+  caption="Leyenda editorial opcional."
+/>
 
 <ImageCarousel
   label="Exploraciones iniciales del sistema"

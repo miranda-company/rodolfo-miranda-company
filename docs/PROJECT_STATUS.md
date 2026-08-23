@@ -90,6 +90,9 @@ normalizarse antes de publicar otra entrada.
   notas y rutas internas, y navegación anterior/siguiente circular.
 - Componentes MDX aprobados con `VideoEmbed.astro`: proveedores YouTube y Vimeo
   permitidos explícitamente, títulos accesibles, captions y enlaces de respaldo.
+- `ContentImage.astro` compartido por Notas, Mediateca y Portafolio: imágenes
+  editoriales locales optimizadas, texto alternativo obligatorio y leyenda opcional
+  con el mismo estilo mono de los vídeos.
 - `ImageCarousel.astro` compartido por Notas, Mediateca y Portafolio: imágenes
   locales optimizadas, etiqueta y alternativas validadas, scroll-snap, controles
   en español, contador accesible, movimiento reducido y mejora progresiva sin

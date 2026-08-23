@@ -75,7 +75,7 @@ retain their own shared connection behavior.
 presentation used around the rendered Markdown or MDX body in all three
 collections. It covers body text, semantic H2/H3 spacing, lists, links and focus,
 blockquotes, code, horizontal rules, images, figures, captions, footnotes,
-tables, videos, and image carousels at approximately 70ch. Collection stylesheets retain index
+tables, captioned standalone images, videos, and image carousels at approximately 70ch. Collection stylesheets retain index
 interfaces and structured elements such as maturity notices, project galleries,
 recurring ideas and metadata rails.
 
@@ -87,7 +87,9 @@ renderer. The schemas remain distinct: a note's maturity, a project's client and
 disciplines, and a reference's consultation metadata keep their own meanings.
 
 `@astrojs/mdx` enables reviewed Astro components in Notas, Portafolio and
-Mediateca. `VideoEmbed.astro` is collection-neutral and allowlists YouTube and
+Mediateca. `ContentImage.astro` is the shared component for one locally imported,
+responsive editorial image with required alternative text and an optional semantic
+caption. `VideoEmbed.astro` is collection-neutral and allowlists YouTube and
 Vimeo only. It validates IDs, builds `youtube-nocookie.com` or Vimeo `dnt=1`
 URLs, requires a meaningful accessible title, lazy-loads without autoplay, and
 shows a visible fallback link. Arbitrary iframe URLs and pasted scripts are not

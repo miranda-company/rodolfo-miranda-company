@@ -14,7 +14,7 @@ código de la colección.
    `mi-proyecto.md` genera `/portafolio/mi-proyecto`.
 2. Usa `.md` para texto, imágenes estáticas, listas, tablas, citas, notas al pie
    y bloques de código. Usa `.mdx` únicamente cuando necesites componentes como
-   `ImageCarousel` o `VideoEmbed`.
+   `ContentImage`, `ImageCarousel` o `VideoEmbed`.
 3. Copia `docs/templates/portafolio.md` o
    `docs/templates/portafolio-mdx.mdx`.
 4. Crea la carpeta de recursos
@@ -160,7 +160,8 @@ src/assets/images/portafolio/<slug>/
 
 - `coverImage` es la portada de la tarjeta y del detalle.
 - `gallery` es la galería estática estructurada después del cuerpo.
-- Una imagen Markdown/MDX forma parte de la narración.
+- Una imagen Markdown/MDX forma parte de la narración. Usa `ContentImage` en MDX cuando necesite
+  una leyenda visible.
 - `ImageCarousel` es un componente narrativo insertado entre párrafos y no
   sustituye la portada ni la galería.
 
@@ -177,9 +178,25 @@ Desde un archivo situado directamente en `src/content/portafolio/`, los
 componentes compartidos se importan así:
 
 ```mdx
+import ContentImage from "../../components/content/ContentImage.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 ```
+
+Una imagen estática con leyenda usa un activo local importado:
+
+```mdx
+import image from "../../assets/images/portafolio/mi-proyecto/imagen.jpg"
+
+<ContentImage
+  src={image}
+  alt="Descripción accesible de lo que se ve en la imagen"
+  caption="Leyenda editorial opcional."
+/>
+```
+
+`ContentImage` valida `src: ImageMetadata`, un `alt` obligatorio y una `caption` opcional. Una
+imagen escrita con la sintaxis normal de Markdown puede seguir usándose sin leyenda.
 
 Consulta `docs/WRITING_PORTFOLIO.md` para ejemplos completos de imágenes,
 carruseles, vídeo, código y contenido enriquecido. `ejemplo-mdx.mdx` es una

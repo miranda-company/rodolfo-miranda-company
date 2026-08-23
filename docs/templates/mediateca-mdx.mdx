@@ -25,21 +25,18 @@ language: "es"
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import ContentImage from "../../components/content/ContentImage.astro"
 import inlineImage from "../../assets/images/mediateca/slug/imagen-editorial.jpg"
 import carouselImageOne from "../../assets/images/mediateca/slug/carrusel-01.jpg"
 import carouselImageTwo from "../../assets/images/mediateca/slug/carrusel-02.jpg"
 
 ## Apuntes
 
-<figure>
-  <img
-    src={inlineImage.src}
-    width={inlineImage.width}
-    height={inlineImage.height}
-    alt="Descripción concreta de la imagen editorial"
-  />
-  <figcaption>Leyenda editorial opcional.</figcaption>
-</figure>
+<ContentImage
+  src={inlineImage}
+  alt="Descripción concreta de la imagen editorial"
+  caption="Leyenda editorial opcional."
+/>
 
 <ImageCarousel
   label="Detalles visuales de la referencia"

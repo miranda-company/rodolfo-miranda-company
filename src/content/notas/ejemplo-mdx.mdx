@@ -19,10 +19,19 @@ language: "es"
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import ContentImage from "../../components/content/ContentImage.astro"
 import technicalSymbol from "../../assets/images/simbolo-lobo.png"
 import technicalPortrait from "../../assets/images/retrato-rodolfo-miranda.jpg"
 
 Esta nota es una referencia técnica de desarrollo. No contiene afirmaciones sobre el trabajo de Rodolfo, no implica su respaldo a los vídeos externos y no forma parte del contenido aprobado para producción.
+
+## Imagen editorial local con leyenda
+
+<ContentImage
+  src={technicalSymbol}
+  alt="Silueta geométrica rojiza de un lobo caminando sobre fondo transparente"
+  caption="Símbolo local reutilizado únicamente para comprobar una imagen estática con leyenda."
+/>
 
 ## Carrusel de imágenes locales
 

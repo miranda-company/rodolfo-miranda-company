@@ -36,9 +36,10 @@ through `render(entry)` and the same `NoteArticle.astro` component.
 Ordinary notes should remain `.md`; MDX is reserved for approved Astro content
 components. `VideoEmbed.astro` allowlists YouTube and Vimeo. It validates IDs,
 constructs player and fallback URLs internally, exposes a required accessible
-title, and never accepts arbitrary iframe URLs or scripts. `ImageCarousel.astro`
-accepts only locally imported Astro image metadata and provides the shared
-image-carousel behavior described below. Future providers or component types
+title, and never accepts arbitrary iframe URLs or scripts. `ContentImage.astro`
+provides semantic, captioned standalone images from locally imported Astro image
+metadata. `ImageCarousel.astro` accepts the same kind of local assets and provides
+the shared image-carousel behavior described below. Future providers or component types
 require their own reviewed implementation, an explicit allowlist decision,
 meaningful fallback content, and the minimum client-side JavaScript necessary.
 
@@ -131,6 +132,14 @@ Structured Portfolio covers and galleries remain separate from inline editorial
 images and continue through Astro's image pipeline. Normal static images work in
 `.md`; `ImageCarousel` requires `.mdx`. Authors should strip unnecessary personal,
 EXIF/GPS, and location metadata before committing image files.
+
+`src/components/content/ContentImage.astro` is the collection-neutral component
+for one inline editorial image. Its typed API is `src: ImageMetadata`, `alt: string`,
+and `caption?: string`. It rejects remote or malformed sources, requires meaningful
+non-empty alternative text, preserves intrinsic dimensions, and delegates responsive
+source generation to Astro. It renders a semantic figure and uses the same shared
+mono caption treatment as videos and carousel slides. A captioned static image therefore
+requires `.mdx`; normal uncaptioned Markdown images remain supported in `.md`.
 
 ## Mediateca
 

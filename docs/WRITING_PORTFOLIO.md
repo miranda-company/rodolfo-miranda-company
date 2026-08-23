@@ -7,7 +7,7 @@ centra en la escritura y el contenido enriquecido del cuerpo editorial.
 Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`. Usa
 `docs/templates/portafolio.md` para texto y contenido estándar, o
 `docs/templates/portafolio-mdx.mdx` cuando el cuerpo necesite un componente aprobado como
-`VideoEmbed` o `ImageCarousel`.
+`ContentImage`, `VideoEmbed` o `ImageCarousel`.
 
 ## Crear una entrada segura
 
@@ -53,21 +53,24 @@ título. `gallery` conserva imágenes estructuradas después del cuerpo, cada un
 una `caption` opcional.
 
 Las imágenes insertadas dentro del Markdown o MDX son contenido editorial adicional: no sustituyen
-la portada ni la galería. En MDX importa el activo local y conserva sus dimensiones intrínsecas:
+la portada ni la galería. Una imagen Markdown normal no genera una leyenda visible a partir de su
+título. Cuando necesites una leyenda, usa MDX, importa el activo local y pásalo a `ContentImage`:
 
 ```mdx
+import ContentImage from "../../components/content/ContentImage.astro"
 import inlineImage from "../../assets/images/portafolio/mi-slug/imagen.jpg"
 
-<figure>
-  <img
-    src={inlineImage.src}
-    width={inlineImage.width}
-    height={inlineImage.height}
-    alt="Descripción útil de la imagen"
-  />
-  <figcaption>Leyenda opcional.</figcaption>
-</figure>
+<ContentImage
+  src={inlineImage}
+  alt="Descripción útil de lo que se ve en la imagen"
+  caption="Leyenda editorial opcional."
+/>
 ```
+
+La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. `src` debe ser una imagen local
+importada, `alt` es obligatorio y `caption` es opcional. Astro conserva las dimensiones
+intrínsecas, genera variantes responsivas y el componente usa las mismas figuras y leyendas mono
+que los vídeos y carruseles.
 
 No uses imágenes remotas, stock genérico ni material de cliente sin permiso. Elimina metadatos
 personales, EXIF/GPS o datos de localización innecesarios antes de añadir un activo.
@@ -107,9 +110,9 @@ añade botones, contador y sincronización con gestos táctiles o trackpad.
 
 ## Markdown, MDX, vídeo y código
 
-Markdown admite encabezados, párrafos, listas, enlaces, citas, imágenes estáticas, notas al pie,
+Markdown admite encabezados, párrafos, listas, enlaces, citas, imágenes estáticas sin leyenda, notas al pie,
 tablas y bloques de código. Usa MDX únicamente para componentes Astro revisados como vídeo o
-carrusel. Desde un archivo situado
+carrusel, o para una imagen estática con `ContentImage`. Desde un archivo situado
 directamente en `src/content/portafolio/`, la importación correcta es:
 
 ```mdx

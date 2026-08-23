@@ -108,7 +108,6 @@
 
 .rich-content img {
   display: block;
-  width: auto;
   max-width: 100%;
   height: auto;
   border: 1px solid var(--line);
@@ -117,6 +116,10 @@
 .rich-content figure {
   max-width: 100%;
   margin: 2.4em 0;
+}
+
+.rich-content .content-image {
+  width: 100%;
 }
 
 .rich-content figcaption {

@@ -30,6 +30,7 @@ language: "es"
 
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 import ImageCarousel from "../../components/content/ImageCarousel.astro"
+import ContentImage from "../../components/content/ContentImage.astro"
 
 import carruselimg01 from "../../assets/images/portafolio/syra-coffee/carrusel-img-seasonal-wolichu-wachu.jpg"
 import carruselimg02 from "../../assets/images/portafolio/syra-coffee/carrusel-img-seasonal-aurora.jpg"
@@ -39,7 +40,12 @@ import carruselimg05 from "../../assets/images/portafolio/syra-coffee/carrusel-i
 import carruselimg06 from "../../assets/images/portafolio/syra-coffee/carrusel-img-seasonal-casa-negra.jpg"
 import carruselimg07 from "../../assets/images/portafolio/syra-coffee/carrusel-img-seasonal-el-cuzuco.jpg"
 import carruselimg08 from "../../assets/images/portafolio/syra-coffee/carrusel-img-seasonal-ferreira.jpg"
-import technicalPortrait from "../../assets/images/retrato-rodolfo-miranda.jpg"
+import atHomeBreakfast from "../../assets/images/portafolio/syra-coffee/img-syra-003.jpg"
+import subscriptionWebsite from "../../assets/images/portafolio/syra-coffee/img-syra-001.jpg"
+import anniversaryCampaign from "../../assets/images/portafolio/syra-coffee/img-syra-005.jpg"
+import christmasCampaign from "../../assets/images/portafolio/syra-coffee/img-syra-006.jpg"
+import summerRecipe from "../../assets/images/portafolio/syra-coffee/img-syra-007.webp"
+import summerCampaign from "../../assets/images/portafolio/syra-coffee/img-syra-004.jpg"
 
 ## El proyecto
 
@@ -49,7 +55,11 @@ La parte difícil no fue hacer una fotografía bonita de café. Fue conseguir qu
 
 Entre 2021 y 2023 ayudé al equipo de Syra a diseñar un motor de producción de contenido para sus lanzamientos de producto, canales digitales y campañas publicitarias. Syra era cliente de [Eloquent](eloquent) y la mayor parte de los contenidos realizados fueron hechos dentro de nuestro estudio de foto y video [Modulab Barcelona](modulab-barcelona).
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-003.jpg "At Home photoshoot de café de especialidad Syra Coffee")
+<ContentImage
+  src={atHomeBreakfast}
+  alt="Desayuno servido con café de Syra Coffee, cafetera italiana, fruta y cuencos de cereales"
+  caption="Campaña: At Home 2022 / Syra Coffee — ©Eloquent"
+/>
 
 <ImageCarousel
   label="Product Launches v01"
@@ -62,12 +72,12 @@ Entre 2021 y 2023 ayudé al equipo de Syra a diseñar un motor de producción de
     {
       src: carruselimg02,
       alt: "Café de especialidad Aurora de Syra Coffee",
-      caption: "Café de especialida Aurora de Syra Coffee.",
+      caption: "Café de especialidad Aurora de Syra Coffee.",
     },
     {
       src: carruselimg03,
       alt: "Café de especialidad Inza de Syra Coffee",
-      caption: "Café de especialida Inza de Syra Coffee.",
+      caption: "Café de especialidad Inza de Syra Coffee.",
     }
   ]}
 />
@@ -79,13 +89,17 @@ Además, el café de especialidad suele tener códigos que pueden hacerlo parece
 
 Nuestro trabajo consistía en encontrar ese equilibrio. Las imágenes debían mostrar la calidad y las particularidades de cada café, sus notas de sabor, sin alejarlo de las personas. Queríamos hablar del producto, pero también del momento que lo rodea como comenzar el día, hacer una pausa, compartir una conversación o preparar café tranquilamente en casa.
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-001.jpg "Visualización de product shot de café de especialidad Syra Coffee en sitio web")
+<ContentImage
+  src={subscriptionWebsite}
+  alt="Página de suscripción de Syra Coffee con dos bolsas de café fotografiadas en un interior doméstico"
+  caption="Product shot de café de especialidad Syra Coffee en sitio web"
+/>
 
 <VideoEmbed
   provider="vimeo"
   videoId="826143363"
   title="Syra Coffee / Good coffee for everyone, everywhere, everyday - Rodri"
-  caption="Campaña Good coffee for everyone, everywhere, everyday — ©Eloquent."
+  caption="Campaña: Good coffee for everyone, everywhere, everyday / Syra Coffee — ©Eloquent"
 />
 
 ## Mi papel
@@ -102,23 +116,31 @@ Estos criterios nos daban una base común sin obligarnos a reproducir una fórmu
 
 Además de la fotografía de producto, desarrollamos campañas de temporada y campañas audiovisuales. Varias de ellas giraban alrededor de la experiencia de tomar café en casa.
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-005.jpg "At Home photoshoot campaña de invierno 2022 de café de especialidad Syra Coffee")
+<ContentImage
+  src={anniversaryCampaign}
+  alt="Composición de dos escenas domésticas con personas preparando y compartiendo café de Syra Coffee"
+  caption="Campaña: At Home 2023 / Syra Coffee — ©Eloquent"
+/>
 
 <VideoEmbed
   provider="vimeo"
   videoId="835366876"
   title="Syra Coffee / Recetas de verano - Lemon Pet-Nat"
-  caption="Campaña Recetas de verano para Syra Coffee — ©Eloquent."
+  caption="Campaña: Recetas de Verano 2023 / Syra Coffee — ©Eloquent."
 />
 
 <VideoEmbed
   provider="vimeo"
   videoId="887696780"
   title="Syra Coffee / Recetas de invierno - Nougat Latte Machiato"
-  caption="Campaña Recetas de invierno para Syra Coffee — ©Eloquent."
+  caption="Campaña: Recetas de Invierno 2023 / Syra Coffee — ©Eloquent."
 />
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-006.jpg "Christmas 22 campaña de café de especialidad Syra Coffee")
+<ContentImage
+  src={christmasCampaign}
+  alt="Composición navideña con bolsas de café Syra, tazas y un paquete envuelto con lazo rojo"
+  caption="Campaña: Christmas 2022 / Syra Coffee — ©Eloquent."
+/>
 
 ## Lo que produjimos
 
@@ -143,30 +165,38 @@ El trabajo continuado dio lugar a una biblioteca amplia de imágenes y vídeos q
     {
       src: carruselimg05,
       alt: "Café de especialidad Beshasha de Syra Coffee",
-      caption: "Café de especialida Beshasha de Syra Coffee.",
+      caption: "Café de especialidad Beshasha de Syra Coffee.",
     },
     {
       src: carruselimg06,
       alt: "Café de especialidad Casa Negra de Syra Coffee",
-      caption: "Café de especialida Casa Negra de Syra Coffee.",
+      caption: "Café de especialidad Casa Negra de Syra Coffee.",
     },
     {
       src: carruselimg07,
       alt: "Café de especialidad El Cuzuco de Syra Coffee",
-      caption: "Café de especialida El Cuzuco de Syra Coffee.",
+      caption: "Café de especialidad El Cuzuco de Syra Coffee.",
     },
     {
       src: carruselimg08,
       alt: "Café de especialidad Ferreira de Syra Coffee",
-      caption: "Café de especialida Ferreira de Syra Coffee.",
+      caption: "Café de especialidad Ferreira de Syra Coffee.",
     }
   ]}
 />
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-007.webp "Infográfico Summer Recipes 2023 café de especialidad Syra Coffee en sitio web")
+<ContentImage
+  src={summerRecipe}
+  alt="Infografía de una receta de café frío con piel de naranja, sirope de romero, hielo y granos de café"
+  caption="Infográfico Summer Recipes 2023 de Syra Coffee para su sitio web."
+/>
 
 ## Aprendizajes
 
 Una marca no se vuelve reconocible porque repita siempre la misma imagen, sino porque tiene criterios suficientemente claros para probar cosas nuevas sin perderse por el camino. Con Syra aprendí a convertir esos criterios en un sistema de producción flexible para responder a la rotativa de lanzamientos y suficientemente sólido para que cada pieza siguiera perteneciendo a la misma historia.
 
-![alt text](../../assets/images/portafolio/syra-coffee/img-syra-004.jpg "Summer-22 campaña de café de especialidad Syra Coffee")
+<ContentImage
+  src={summerCampaign}
+  alt="Una mano sostiene una bolsa de café Nemba de Syra Coffee sobre un fondo difuminado azul y rosa"
+  caption="Campaña: Summer 2022 / Syra Coffee — ©Eloquent."
+/>

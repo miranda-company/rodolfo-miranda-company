@@ -34,7 +34,7 @@ forma alternativa de mantener un borrador: sirve únicamente para aislar verific
 Usa `.md` para texto, encabezados, listas, citas, enlaces, imágenes, notas al pie y bloques de
 código. Es la opción predeterminada y no requiere importar componentes.
 
-Usa `.mdx` únicamente cuando la nota necesite `VideoEmbed`, `ImageCarousel` u otro componente Astro
+Usa `.mdx` únicamente cuando la nota necesite `ContentImage`, `VideoEmbed`, `ImageCarousel` u otro componente Astro
 de contenido que haya sido revisado y aprobado. Cambiar `mi-nota.md` por `mi-nota.mdx` conserva el
 ID `mi-nota`, la ruta `/notas/mi-nota`, sus metadatos y todas sus referencias. No hace falta
 modificar `NoteArticle.astro`.
@@ -123,18 +123,26 @@ bloques son estáticos, no ejecutan código y no incluyen botón de copia.
 ### Añadir imágenes locales
 
 Guarda las imágenes editoriales en `src/assets/images/notas/<slug>/`. Cada imagen significativa
-necesita un texto alternativo que describa lo visible; la leyenda es opcional. En MDX puedes
-importar el activo desde un archivo situado directamente en `src/content/notas/`:
+necesita un texto alternativo que describa lo visible. Una imagen Markdown normal no convierte su
+título entre comillas en una leyenda visible. Para añadir una leyenda usa MDX, importa el activo
+desde un archivo situado directamente en `src/content/notas/` y utiliza `ContentImage`:
 
 ```mdx
+import ContentImage from "../../components/content/ContentImage.astro"
 import inlineImage from "../../assets/images/notas/mi-slug/imagen.jpg"
+
+<ContentImage
+  src={inlineImage}
+  alt="Descripción accesible de lo que se ve en la imagen"
+  caption="Leyenda editorial opcional."
+/>
 ```
 
-Después usa `<figure>`, un `<img>` con `src`, `width`, `height` y `alt`, y un `<figcaption>` cuando
-aporte contexto. El sistema compartido `.rich-content` mantiene la imagen dentro de la columna de
-lectura. No uses una URL remota como sustituto de un activo editorial aprobado. Antes de incorporar
-cualquier archivo, elimina metadatos personales, EXIF/GPS o información de ubicación que no sea
-necesaria para publicarlo.
+La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. El componente valida la imagen
+local y el texto alternativo, usa el optimizador de Astro y presenta la leyenda con el mismo estilo
+mono que vídeos y carruseles. No uses una URL remota como sustituto de un activo editorial aprobado.
+Antes de incorporar cualquier archivo, elimina metadatos personales, EXIF/GPS o información de
+ubicación que no sea necesaria para publicarlo.
 
 ## Política de componentes y widgets
 
@@ -155,7 +163,7 @@ conexiones estén aprobados para publicación.
 ## Referencia técnica MDX
 
 `src/content/notas/ejemplo-mdx.mdx` conserva una referencia directamente visible de
-`ImageCarousel`, `VideoEmbed` y los lenguajes de código admitidos. Incluye dos carruseles para
+`ContentImage`, `ImageCarousel`, `VideoEmbed` y los lenguajes de código admitidos. Incluye dos carruseles para
 comprobar que las instancias funcionan de manera independiente. No es una plantilla para copiar
 sus metadatos: usa
 deliberadamente `fixture: true`, `draft: true` y el número reservado `N.999`. Las notas genuinas

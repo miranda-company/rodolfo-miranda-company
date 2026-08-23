@@ -2,7 +2,7 @@
 
 Las referencias se guardan como Markdown o MDX en `src/content/mediateca/`. Usa
 `docs/templates/mediateca.md` para contenido estándar y `docs/templates/mediateca-mdx.mdx` cuando
-la nota editorial necesite un componente aprobado como `VideoEmbed` o `ImageCarousel`.
+la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmbed` o `ImageCarousel`.
 
 ## Crear una referencia segura
 
@@ -27,17 +27,24 @@ la nota editorial necesite un componente aprobado como `VideoEmbed` o `ImageCaro
 
 Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y referenciarse con
 `coverImage`. Las imágenes incluidas en el cuerpo son independientes de la cubierta. Cada imagen
-significativa necesita texto alternativo útil; una leyenda es opcional. En MDX, desde un archivo
-directamente bajo la colección, importa el activo así:
+significativa necesita texto alternativo útil. Una imagen Markdown normal no convierte su título
+en una leyenda visible. Para añadir una leyenda usa MDX e importa el activo local así:
 
 ```mdx
+import ContentImage from "../../components/content/ContentImage.astro"
 import inlineImage from "../../assets/images/mediateca/mi-slug/imagen.jpg"
+
+<ContentImage
+  src={inlineImage}
+  alt="Descripción accesible de lo que se ve en la imagen"
+  caption="Leyenda editorial opcional."
+/>
 ```
 
-Usa el patrón semántico `<figure>`, `<img>` y `<figcaption>` de la plantilla MDX, preservando
-`width` y `height`. No uses URLs remotas como sustituto del repositorio de activos aprobado.
-Elimina EXIF/GPS, datos personales y metadatos de localización innecesarios antes de incorporar un
-archivo.
+La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. `ContentImage` genera el patrón
+semántico de figura y leyenda, conserva las dimensiones intrínsecas y procesa la imagen mediante
+Astro. No uses URLs remotas como sustituto del repositorio de activos aprobado. Elimina EXIF/GPS,
+datos personales y metadatos de localización innecesarios antes de incorporar un archivo.
 
 ### Carrusel de imágenes
 
