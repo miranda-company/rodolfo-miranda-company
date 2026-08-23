@@ -72,13 +72,13 @@ Planificábamos previamente los productos, las escenas y los formatos que necesi
 
 El proyecto incluyó:
 
-* Una auditoría inicial de los canales digitales.
-* La definición del posicionamiento y la estrategia de comunicación.
-* Cinco pilares para organizar los contenidos.
-* La gestión de Instagram y del perfil de empresa en Google.
-* Una línea editorial centrada en Sant Andreu y desarrollada en catalán.
-* Sesiones periódicas de fotografía y vídeo.
-* Una biblioteca de contenidos reutilizables para distintos formatos y momentos del año.
+- Una auditoría inicial de los canales digitales.
+- La definición del posicionamiento y la estrategia de comunicación.
+- Cinco pilares para organizar los contenidos.
+- La gestión de Instagram y del perfil de empresa en Google.
+- Una línea editorial centrada en Sant Andreu y desarrollada en catalán.
+- Sesiones periódicas de fotografía y vídeo.
+- Una biblioteca de contenidos reutilizables para distintos formatos y momentos del año.
 
 ## Resultados
 
@@ -86,7 +86,7 @@ Desde 2023, los canales del Llevatapes han mantenido un crecimiento interanual d
 
 Para un bar de barrio, el valor no estaba en acumular una audiencia enorme. Estaba en llegar a personas que realmente podían entrar por la puerta.
 
-Enric nos confirmó que el trabajo también se tradujo en nuevas ventas. El Lleva consiguió, además, llamar la atención de *Time Out Barcelona*, que lo presentó como una de esas pequeñas joyas escondidas de la ciudad.
+Enric nos confirmó que el trabajo también se tradujo en nuevas ventas. El Lleva consiguió, además, llamar la atención de _Time Out Barcelona_, que lo presentó como una de esas pequeñas joyas escondidas de la ciudad.
 
 ## Resultado y aprendizajes
 

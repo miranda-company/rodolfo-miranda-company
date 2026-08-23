@@ -45,9 +45,9 @@ Primero había que entender cómo se relacionaban los datos, qué necesitaba con
 
 Esto introducía tres retos conectados:
 
-* Facilitar la exploración de los datos sin eliminar información relevante.
-* Mantener criterios comunes entre proyectos y organizaciones diferentes.
-* Diseñar un sistema que el equipo del BSC pudiera actualizar y ampliar de manera autónoma.
+- Facilitar la exploración de los datos sin eliminar información relevante.
+- Mantener criterios comunes entre proyectos y organizaciones diferentes.
+- Diseñar un sistema que el equipo del BSC pudiera actualizar y ampliar de manera autónoma.
 
 La verdadera tarea no era reducir la cantidad de información. Era darle una forma que permitiera orientarse dentro de ella.
 
@@ -89,9 +89,9 @@ Puede parecer una parte poco visible del diseño, pero era una de las más impor
 
 El proyecto dio lugar a:
 
-* **Producto Digital**: Dos plataformas integradas en la infraestructura Plone del BSC.
-* **Gobernanza de Datos**: Criterios estandarizados para organizaciones internacionales.
-* **Escalabilidad**: Sistema modular preparado para nuevos indicadores predictivos.
+- **Producto Digital**: Dos plataformas integradas en la infraestructura Plone del BSC.
+- **Gobernanza de Datos**: Criterios estandarizados para organizaciones internacionales.
+- **Escalabilidad**: Sistema modular preparado para nuevos indicadores predictivos.
 
 ## Resultado y aprendizajes
 

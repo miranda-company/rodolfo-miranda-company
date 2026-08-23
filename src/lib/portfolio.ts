@@ -30,9 +30,7 @@ export async function getDevelopmentSpanishProjectFixtures() {
   return (await getCollection("portafolio"))
     .filter(
       (entry) =>
-        isTechnicalProjectFixture(entry) &&
-        entry.data.draft &&
-        entry.data.language === "es",
+        isTechnicalProjectFixture(entry) && entry.data.draft && entry.data.language === "es",
     )
     .sort(compareProjectsByOrder)
 }

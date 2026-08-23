@@ -60,9 +60,9 @@ Definí el modelo operativo, la propuesta de valor, los servicios, las tarifas, 
 
 En términos de producto, Modulab combinaba tres capas:
 
-* Un espacio físico modular para producir fotografía y vídeo.
-* Una capa digital para descubrir, evaluar y reservar el estudio.
-* Un sistema operativo para mantener la calidad del servicio independientemente de quién estuviera a cargo.
+- Un espacio físico modular para producir fotografía y vídeo.
+- Una capa digital para descubrir, evaluar y reservar el estudio.
+- Un sistema operativo para mantener la calidad del servicio independientemente de quién estuviera a cargo.
 
 Mi responsabilidad era hacer que esas tres capas se comportaran como una sola experiencia.
 
@@ -88,7 +88,7 @@ Para lanzar Modulab necesitábamos construir demanda desde cero.
 
 Empecé investigando cómo buscaban un estudio audiovisual los fotógrafos, productoras, marcas y creadores de Barcelona. A partir de ese análisis definí la arquitectura y los contenidos de una web orientada al posicionamiento orgánico.
 
-El SEO, la ficha de Google Business e Instagram se convirtieron en nuestros principales canales de captación *inbound*. También distribuimos la oferta a través de plataformas especializadas, como Spathios y Kuarere, que nos permitían llegar a personas con una intención de reserva clara.
+El SEO, la ficha de Google Business e Instagram se convirtieron en nuestros principales canales de captación _inbound_. También distribuimos la oferta a través de plataformas especializadas, como Spathios y Kuarere, que nos permitían llegar a personas con una intención de reserva clara.
 
 No queríamos depender de responder manualmente a cada consulta. Por eso diseñamos un sistema de reservas online que mostraba la disponibilidad y reducía los intercambios necesarios para confirmar una sesión.
 
@@ -98,7 +98,7 @@ Automatizar esa parte del recorrido disminuyó la fricción para el cliente y li
 
 Complementamos el posicionamiento orgánico con una estrategia de colaboraciones.
 
-Identificábamos fotógrafos, artistas, creadores e *influencers* con comunidades de más de 2.000 seguidores en Instagram y les ofrecíamos dos horas gratuitas para conocer el estudio.
+Identificábamos fotógrafos, artistas, creadores e _influencers_ con comunidades de más de 2.000 seguidores en Instagram y les ofrecíamos dos horas gratuitas para conocer el estudio.
 
 La intención no era pagar por publicaciones aisladas. Queríamos que personas relevantes dentro de distintas comunidades creativas probaran el producto, produjeran en él y pudieran recomendarlo desde una experiencia real.
 
@@ -148,7 +148,7 @@ No pusimos en el mercado solamente un local con mobiliario. Preparamos un sistem
 
 En octubre de 2025, la productora audiovisual Pixel Estudio adquirió Modulab en su totalidad.
 
-La operación fue nuestro *exit*: transferimos un producto operativo, con clientes, reputación, activos y procesos documentados. El comprador podía continuar el negocio sin tener que reconstruir desde cero el conocimiento que habíamos acumulado durante años.
+La operación fue nuestro _exit_: transferimos un producto operativo, con clientes, reputación, activos y procesos documentados. El comprador podía continuar el negocio sin tener que reconstruir desde cero el conocimiento que habíamos acumulado durante años.
 
 ## Aprendizajes
 

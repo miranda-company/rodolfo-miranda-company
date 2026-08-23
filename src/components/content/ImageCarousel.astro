@@ -39,10 +39,7 @@ images.forEach((image, index) => {
     )
   }
 
-  if (
-    image.caption !== undefined &&
-    (typeof image.caption !== "string" || !image.caption.trim())
-  ) {
+  if (image.caption !== undefined && (typeof image.caption !== "string" || !image.caption.trim())) {
     throw new Error(
       `ImageCarousel: la leyenda de la imagen ${position} debe contener texto o eliminarse.`,
     )
@@ -53,12 +50,8 @@ const accessibleLabel = label.trim()
 const total = images.length
 const formatNumber = (value: number) => String(value).padStart(2, "0")
 const responsiveWidths = (image: ImageMetadata) => {
-  const candidates = [360, 540, 720, 1080, 1440].filter(
-    (width) => width <= image.width,
-  )
-  return [...new Set([...candidates, Math.min(image.width, 1440)])].sort(
-    (a, b) => a - b,
-  )
+  const candidates = [360, 540, 720, 1080, 1440].filter((width) => width <= image.width)
+  return [...new Set([...candidates, Math.min(image.width, 1440)])].sort((a, b) => a - b)
 }
 ---
 
@@ -106,16 +99,12 @@ const responsiveWidths = (image: ImageMetadata) => {
   </div>
 
   <div class="content-carousel__controls" data-carousel-controls hidden>
-    <button
-      type="button"
-      aria-label="Mostrar imagen anterior"
-      data-carousel-previous
-      disabled
-    >
+    <button type="button" aria-label="Mostrar imagen anterior" data-carousel-previous disabled>
       ← Anterior
     </button>
     <p class="content-carousel__status" aria-live="polite" aria-atomic="true">
-      <span aria-hidden="true" data-carousel-counter>{formatNumber(1)} / {formatNumber(total)}</span>
+      <span aria-hidden="true" data-carousel-counter>{formatNumber(1)} / {formatNumber(total)}</span
+      >
       <span class="content-carousel__sr" data-carousel-announcement>Imagen 1 de {total}</span>
     </p>
     <button type="button" aria-label="Mostrar imagen siguiente" data-carousel-next>
@@ -130,16 +119,12 @@ const responsiveWidths = (image: ImageMetadata) => {
       .querySelectorAll<HTMLElement>("[data-image-carousel]:not([data-carousel-ready])")
       .forEach((carousel) => {
         const viewport = carousel.querySelector<HTMLElement>("[data-carousel-viewport]")
-        const slides = Array.from(
-          carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
-        )
+        const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"))
         const controls = carousel.querySelector<HTMLElement>("[data-carousel-controls]")
         const previous = carousel.querySelector<HTMLButtonElement>("[data-carousel-previous]")
         const next = carousel.querySelector<HTMLButtonElement>("[data-carousel-next]")
         const counter = carousel.querySelector<HTMLElement>("[data-carousel-counter]")
-        const announcement = carousel.querySelector<HTMLElement>(
-          "[data-carousel-announcement]",
-        )
+        const announcement = carousel.querySelector<HTMLElement>("[data-carousel-announcement]")
 
         if (
           !viewport ||
@@ -161,14 +146,11 @@ const responsiveWidths = (image: ImageMetadata) => {
         let resizeFrame = 0
 
         const formatNumber = (value: number) => String(value).padStart(2, "0")
-        const slidePosition = (slide: HTMLElement) =>
-          slide.offsetLeft - slides[0]!.offsetLeft
+        const slidePosition = (slide: HTMLElement) => slide.offsetLeft - slides[0]!.offsetLeft
         const nearestSlideIndex = () => {
           const left = viewport.scrollLeft
           return slides.reduce((nearest, slide, index) => {
-            const nearestDistance = Math.abs(
-              slidePosition(slides[nearest]!) - left,
-            )
+            const nearestDistance = Math.abs(slidePosition(slides[nearest]!) - left)
             const distance = Math.abs(slidePosition(slide) - left)
             return distance < nearestDistance ? index : nearest
           }, 0)
@@ -186,9 +168,7 @@ const responsiveWidths = (image: ImageMetadata) => {
         const moveTo = (index: number, smooth = true) => {
           const targetIndex = Math.max(0, Math.min(index, slides.length - 1))
           updateInterface(targetIndex)
-          const reducedMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)",
-          ).matches
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
           viewport.scrollTo({
             left: slidePosition(slides[targetIndex]!),
             behavior: smooth && !reducedMotion ? "smooth" : "auto",

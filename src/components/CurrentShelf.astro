@@ -1,17 +1,12 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content"
+import { MEDIA_STATUS_LABELS } from "../lib/media"
 
 interface Props {
-  entries: CollectionEntry<"mediateca">[];
+  entries: CollectionEntry<"mediateca">[]
 }
 
-const { entries } = Astro.props;
-const statusLabels = {
-  "en-curso": "En curso",
-  consultado: "Consultado",
-  "de-referencia": "De referencia",
-  "por-explorar": "Por explorar",
-};
+const { entries } = Astro.props
 ---
 
 <ol class="current-shelf__items">
@@ -21,9 +16,31 @@ const statusLabels = {
         <a href={`/mediateca/${entry.id}`}>
           <span class:list={["shelf-cover", `shelf-cover--${entry.id}`]} aria-hidden="true">
             <i>{entry.data.archiveNumber}</i>
-            {entry.id === "modulor" && <b>LE<br />MODULOR</b>}
-            {entry.id === "cosas" && <b>LAS<br />COSAS</b>}
-            {entry.id === "orden" && <b>EL<br />ORDEN<br />DEL<br />TIEMPO</b>}
+            {entry.id === "modulor" && (
+              <b>
+                LE
+                <br />
+                MODULOR
+              </b>
+            )}
+            {entry.id === "cosas" && (
+              <b>
+                LAS
+                <br />
+                COSAS
+              </b>
+            )}
+            {entry.id === "orden" && (
+              <b>
+                EL
+                <br />
+                ORDEN
+                <br />
+                DEL
+                <br />
+                TIEMPO
+              </b>
+            )}
             <em>{entry.data.creator}</em>
           </span>
           <span class="current-shelf__copy">
@@ -31,7 +48,7 @@ const statusLabels = {
             <h3>{entry.data.title}</h3>
             <small>{entry.data.creator}</small>
             <p>{entry.data.summary}</p>
-            <span>{statusLabels[entry.data.status]} · ABRIR ↗</span>
+            <span>{MEDIA_STATUS_LABELS[entry.data.status]} · ABRIR ↗</span>
           </span>
         </a>
       </li>

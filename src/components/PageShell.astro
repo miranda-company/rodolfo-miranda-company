@@ -1,13 +1,13 @@
 ---
-import Header from "./Header.astro";
+import Header from "./Header.astro"
 
 interface Props {
-  pageClass?: string;
-  mainClass?: string;
-  mainId?: string;
+  pageClass?: string
+  mainClass?: string
+  mainId?: string
 }
 
-const { pageClass, mainClass, mainId = "contenido" } = Astro.props;
+const { pageClass, mainClass, mainId = "contenido" } = Astro.props
 ---
 
 <div class:list={["page-shell", pageClass]}>

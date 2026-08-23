@@ -28,7 +28,6 @@ language: "es"
 
 ## El proyecto
 
-
 El [Club Natació Sant Andreu](https://www.cnsantandreu.com/) es un club histórico de barrio, un punto de encuentro para miles de socios y familias, una escuela deportiva y una organización de alto rendimiento con atletas olímpicos y presencia internacional.
 
 Esa riqueza es uno de sus principales activos, pero también hace que comunicar resulte bastante más complicado. Cada público necesita cosas distintas y se relaciona con el Club desde una perspectiva diferente.
@@ -67,11 +66,11 @@ La investigación confirmó que el reto no era simplemente conseguir más visibi
 
 Organizamos las conclusiones alrededor de cinco ámbitos conectados:
 
-* La comunicación interna.
-* La experiencia informativa de socios y familias.
-* La presencia digital y los contenidos.
-* La coherencia de marca.
-* Los procesos de planificación y medición.
+- La comunicación interna.
+- La experiencia informativa de socios y familias.
+- La presencia digital y los contenidos.
+- La coherencia de marca.
+- Los procesos de planificación y medición.
 
 La hoja de ruta permitió ordenar las prioridades y ofrecer al equipo una base para futuras decisiones: qué necesitaba entender cada público, qué función debía cumplir cada canal, dónde se concentraban las principales fricciones y qué procesos podían reducir la improvisación.
 
@@ -81,11 +80,11 @@ El objetivo era que la estrategia no se quedara en una presentación. Debía con
 
 El Club recibió:
 
-* Un diagnóstico de las causas que estaban fragmentando mensajes, canales y procesos.
-* Una comprensión más precisa de las necesidades de sus diferentes públicos.
-* Una base estratégica para mejorar la comunicación interna y la experiencia de los socios.
-* Criterios para ordenar su presencia digital, sus contenidos y su comunicación de marca.
-* Una hoja de ruta para orientar futuras decisiones y reducir el trabajo reactivo.
+- Un diagnóstico de las causas que estaban fragmentando mensajes, canales y procesos.
+- Una comprensión más precisa de las necesidades de sus diferentes públicos.
+- Una base estratégica para mejorar la comunicación interna y la experiencia de los socios.
+- Criterios para ordenar su presencia digital, sus contenidos y su comunicación de marca.
+- Una hoja de ruta para orientar futuras decisiones y reducir el trabajo reactivo.
 
 El resultado más importante no fue una nueva campaña o un cambio aislado de canal. Fue una forma más clara de comprender el problema y decidir qué hacer a continuación.
 

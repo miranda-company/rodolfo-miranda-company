@@ -11,13 +11,13 @@ requires editorial review.
 
 ## Main sections
 
-| Route | Purpose |
-| --- | --- |
-| `/` | Entrance to the garden and overview of its four sections. |
-| `/yo` | Biography, current work, portrait, and professional timeline. |
-| `/notas` | Notes organized by maturity, theme, and update date. |
-| `/mediateca` | Books, articles, websites, videos, podcasts, and tools. |
-| `/portafolio` | Selected projects with search and tag filtering. |
+| Route         | Purpose                                                       |
+| ------------- | ------------------------------------------------------------- |
+| `/`           | Entrance to the garden and overview of its four sections.     |
+| `/yo`         | Biography, current work, portrait, and professional timeline. |
+| `/notas`      | Notes organized by maturity, theme, and update date.          |
+| `/mediateca`  | Books, articles, websites, videos, podcasts, and tools.       |
+| `/portafolio` | Selected projects with search and tag filtering.              |
 
 Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
@@ -55,15 +55,17 @@ reload automatically.
 Useful commands:
 
 ```sh
-pnpm run format   # format TypeScript and project configuration
-pnpm run check    # run Astro and TypeScript diagnostics
-pnpm run build    # check and generate the production site
-pnpm run preview  # serve the latest production build
+pnpm run format        # format supported project files
+pnpm run format:check  # verify formatting without changing files
+pnpm run check         # run Astro and TypeScript diagnostics
+pnpm run build         # check and generate the production site
+pnpm run preview       # serve the latest production build
 ```
 
-`pnpm run build` runs the project check before generating static HTML. Run
-`pnpm run format`, `git diff --check`, `pnpm run check`, and `pnpm run build`
-before handing off a complete implementation change.
+`pnpm run format` covers Astro, TypeScript, CSS, JSON, Markdown, and MDX. `pnpm run build`
+runs the project check before generating static HTML. Run `pnpm run format:check`,
+`git diff --check`, `pnpm run check`, and `pnpm run build` before handing off a complete
+implementation change.
 
 If Astro reports that another development server is running, open the URL and
 PID shown in the message or stop it with `pnpm exec astro dev stop` before
@@ -73,13 +75,13 @@ starting a replacement.
 
 Editable content lives in `src/content/`:
 
-| Content | Location | Guide |
-| --- | --- | --- |
-| Homepage and Ahora | `src/content/site/homepage.json`, `ahora.json` | [Content model](docs/CONTENT_MODEL.md) |
-| Yo | `src/content/site/yo.json` | [Content model](docs/CONTENT_MODEL.md) |
-| Notas | `src/content/notas/` | [Writing Notas](docs/WRITING_NOTES.md) |
-| Mediateca | `src/content/mediateca/` | [Writing Mediateca](docs/WRITING_MEDIATECA.md) |
-| Portafolio | `src/content/portafolio/` | [Portfolio project guide](docs/PORTFOLIO_PROJECT_GUIDE.md) |
+| Content            | Location                                       | Guide                                                      |
+| ------------------ | ---------------------------------------------- | ---------------------------------------------------------- |
+| Homepage and Ahora | `src/content/site/homepage.json`, `ahora.json` | [Content model](docs/CONTENT_MODEL.md)                     |
+| Yo                 | `src/content/site/yo.json`                     | [Content model](docs/CONTENT_MODEL.md)                     |
+| Notas              | `src/content/notas/`                           | [Writing Notas](docs/WRITING_NOTES.md)                     |
+| Mediateca          | `src/content/mediateca/`                       | [Writing Mediateca](docs/WRITING_MEDIATECA.md)             |
+| Portafolio         | `src/content/portafolio/`                      | [Portfolio project guide](docs/PORTFOLIO_PROJECT_GUIDE.md) |
 
 Use Markdown for normal editorial content. Use MDX only when a page needs an
 approved component such as `ContentImage`, `ImageCarousel`, or `VideoEmbed`.
@@ -92,15 +94,16 @@ are technical examples and must remain isolated from published content.
 
 ## Changing the implementation
 
-| Area | Start with |
-| --- | --- |
-| Page structure and shared layouts | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro` |
-| Site tokens and semantic typography | `src/styles/global.css` |
-| Rendered Markdown and MDX | `src/styles/rich-content.css` |
-| Collection indexes and controls | `src/styles/notes.css`, `media.css`, `portfolio.css` |
-| Yo page | `src/pages/yo.astro`, `src/styles/yo.css` |
-| Content validation | `src/content.config.ts` |
-| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts` |
+| Area                                        | Start with                                                                     |
+| ------------------------------------------- | ------------------------------------------------------------------------------ |
+| Page structure and shared layouts           | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro` |
+| Site tokens and semantic typography         | `src/styles/global.css`                                                        |
+| Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                  |
+| Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`         |
+| Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                           |
+| Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                      |
+| Content validation                          | `src/content.config.ts`                                                        |
+| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                 |
 
 The [architecture guide](docs/ARCHITECTURE.md) explains the shared DOM contract,
 editorial detail layout, content components, redirects, and route generation in

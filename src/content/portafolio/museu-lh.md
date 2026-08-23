@@ -78,7 +78,7 @@ El sistema se concibió, además, para extenderse a la futura web del museo y da
 
 Una vez definida la estructura, activamos el plan de contenidos y reorganizamos la presencia digital del museo.
 
-La comunicación empezó a prestar más atención a los proyectos que explicaban su papel dentro y fuera de L’Hospitalet. Entre ellos estuvo la instalación de las primeras *Stolpersteine* de la ciudad, una iniciativa vinculada con la memoria histórica que documentamos mediante contenidos fotográficos y audiovisuales.
+La comunicación empezó a prestar más atención a los proyectos que explicaban su papel dentro y fuera de L’Hospitalet. Entre ellos estuvo la instalación de las primeras _Stolpersteine_ de la ciudad, una iniciativa vinculada con la memoria histórica que documentamos mediante contenidos fotográficos y audiovisuales.
 
 También comunicamos otras colaboraciones y líneas de trabajo que ayudaban a mostrar al museo no solamente como un espacio expositivo, sino como una institución dedicada a investigar, conservar y activar el patrimonio de la ciudad.
 
@@ -96,14 +96,14 @@ El objetivo final no era que el museo necesitara comunicarse siempre con nosotro
 
 El proyecto dio lugar a:
 
-* Una auditoría de la comunicación interna y externa.
-* Una estrategia digital organizada por fases.
-* Una definición más clara de públicos, objetivos y prioridades.
-* Una metodología para planificar, producir y publicar contenidos.
-* Un manual de marca y una guía de estilo.
-* Un sistema visual para diferenciar las líneas de actuación.
-* Un plan de contenidos multicanal.
-* Una estructura de trabajo adaptable al equipo interno y a proveedores externos.
+- Una auditoría de la comunicación interna y externa.
+- Una estrategia digital organizada por fases.
+- Una definición más clara de públicos, objetivos y prioridades.
+- Una metodología para planificar, producir y publicar contenidos.
+- Un manual de marca y una guía de estilo.
+- Un sistema visual para diferenciar las líneas de actuación.
+- Un plan de contenidos multicanal.
+- Una estructura de trabajo adaptable al equipo interno y a proveedores externos.
 
 ## Resultado y aprendizajes
 

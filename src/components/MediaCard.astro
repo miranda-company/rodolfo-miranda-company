@@ -1,32 +1,15 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import EngagementMode from "./EngagementMode.astro";
+import type { CollectionEntry } from "astro:content"
+import { formatNumericDate } from "../lib/dates"
+import { MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
+import EngagementMode from "./EngagementMode.astro"
 
 interface Props {
-  entry: CollectionEntry<"mediateca">;
+  entry: CollectionEntry<"mediateca">
 }
 
-const { entry } = Astro.props;
-const formatLabels = {
-  book: "Libro",
-  article: "Artículo",
-  website: "Sitio",
-  tool: "Herramienta",
-  video: "Video",
-  podcast: "Podcast",
-  other: "Referencia",
-};
-const statusLabels = {
-  "en-curso": "En curso",
-  consultado: "Consultado",
-  "de-referencia": "De referencia",
-  "por-explorar": "Por explorar",
-};
-const updatedLabel = new Intl.DateTimeFormat("es-ES", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-}).format(entry.data.updatedAt);
+const { entry } = Astro.props
+const updatedLabel = formatNumericDate(entry.data.updatedAt)
 ---
 
 <article
@@ -48,8 +31,8 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
       <p class="media-card__creator">{entry.data.creator}</p>
       <p class="media-card__summary">{entry.data.summary}</p>
       <footer class="media-card__metadata">
-        <span>{formatLabels[entry.data.format]}</span>
-        <span>{statusLabels[entry.data.status]}</span>
+        <span>{MEDIA_FORMAT_LABELS[entry.data.format]}</span>
+        <span>{MEDIA_STATUS_LABELS[entry.data.status]}</span>
         <span class="media-card__tags">
           {entry.data.tags.map((tag) => <i>{tag}</i>)}
         </span>

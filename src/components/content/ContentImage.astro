@@ -12,32 +12,21 @@ interface Props {
 const { src, alt, caption } = Astro.props
 
 if (!isLocalImageMetadata(src)) {
-  throw new Error(
-    "ContentImage requiere una imagen local importada mediante Astro.",
-  )
+  throw new Error("ContentImage requiere una imagen local importada mediante Astro.")
 }
 
 if (typeof alt !== "string" || !alt.trim()) {
-  throw new Error(
-    "ContentImage requiere un texto alternativo significativo y no vacío.",
-  )
+  throw new Error("ContentImage requiere un texto alternativo significativo y no vacío.")
 }
 
-if (
-  caption !== undefined &&
-  (typeof caption !== "string" || !caption.trim())
-) {
-  throw new Error(
-    "ContentImage: la leyenda debe contener texto o eliminarse.",
-  )
+if (caption !== undefined && (typeof caption !== "string" || !caption.trim())) {
+  throw new Error("ContentImage: la leyenda debe contener texto o eliminarse.")
 }
 
 const responsiveWidths = [360, 540, 720, 900, 1080, 1440, 1800].filter(
   (width) => width <= src.width,
 )
-const widths = [...new Set([...responsiveWidths, Math.min(src.width, 1800)])].sort(
-  (a, b) => a - b,
-)
+const widths = [...new Set([...responsiveWidths, Math.min(src.width, 1800)])].sort((a, b) => a - b)
 const editorialCaption = caption?.trim()
 ---
 

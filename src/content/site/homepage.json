@@ -13,41 +13,37 @@
         "reveal": "Información personal",
         "href": "/yo",
         "kind": "yo",
-        "image": "../../assets/images/homepage/folder-001.png",
-        "imageAlt": "Conoce más sobre Rodolfo"
+        "image": "../../assets/images/homepage/folder-001.webp",
+        "imageAlt": "Expediente retrofuturista con una fotografía de Rodolfo Miranda, engranajes y un disco óptico."
       },
       {
         "index": "02",
         "title": "Portafolio",
         "description": "Mi portafolio de proyectos y trabajos.",
         "metadata": "Trabajo seleccionado",
-        "reveal": "0 proyectos publicados",
         "href": "/portafolio",
         "kind": "portafolio",
-       "image": "../../assets/images/homepage/floppy-002.png",
-        "imageAlt": "Conoce más sobre Rodolfo"
+        "image": "../../assets/images/homepage/floppy-002.webp",
+        "imageAlt": "Disquete negro transparente con engranajes, circuitos y un disco óptico."
       },
       {
         "index": "03",
         "title": "Notas",
         "description": "Ideas y apuntes sobre lo que me genera curiosidad.",
-        "metadata": "Última nota · 31.07.2026",
-        "reveal": "27 notas publicadas",
         "href": "/notas",
         "kind": "notas",
         "image": "../../assets/images/homepage/flower-002.jpg",
-        "imageAlt": "Conoce más sobre Rodolfo"
+        "imageAlt": "Ilustración botánica fantástica con flores rosadas, hojas translúcidas y raíces expuestas."
       },
       {
         "index": "04",
         "title": "Mediateca",
         "description": "Libros, artículos, podcasts y videos que me sirven de referencia y aprendizaje.",
         "metadata": "Inspiración · Referencias",
-        "reveal": "144 medios guardados",
         "href": "/mediateca",
         "kind": "mediateca",
-        "image": "../../assets/images/homepage/mediateca-device-001.png",
-        "imageAlt": "Conoce más sobre Rodolfo"
+        "image": "../../assets/images/homepage/mediateca-device-001.webp",
+        "imageAlt": "Ordenador retro con pantalla, magnetófonos y una consola de controles multimedia."
       }
     ]
   }

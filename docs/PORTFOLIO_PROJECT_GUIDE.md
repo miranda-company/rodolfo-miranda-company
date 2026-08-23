@@ -10,7 +10,7 @@ código de la colección.
 
 ## Crear un proyecto
 
-1. Elige un *slug* breve, en minúsculas y separado por guiones. Por ejemplo,
+1. Elige un _slug_ breve, en minúsculas y separado por guiones. Por ejemplo,
    `mi-proyecto.md` genera `/portafolio/mi-proyecto`.
 2. Usa `.md` para texto, imágenes estáticas, listas, tablas, citas, notas al pie
    y bloques de código. Usa `.mdx` únicamente cuando necesites componentes como
@@ -20,7 +20,7 @@ código de la colección.
 4. Crea la carpeta de recursos
    `src/assets/images/portafolio/<slug>/`.
 5. Completa los metadatos y mantén `draft: true` durante la edición.
-6. Escribe el caso debajo del segundo separador `---` del *frontmatter*.
+6. Escribe el caso debajo del segundo separador `---` del _frontmatter_.
 7. Comprueba la ruta directa y el índice en desarrollo.
 8. Antes de publicar, valida contenido, imágenes, enlaces y accesibilidad; luego
    cambia `draft` a `false`.
@@ -71,32 +71,32 @@ publicación real tiene requisitos adicionales indicados más abajo.
 
 ## Referencia de metadatos
 
-| Campo | Tipo y requisito | Propósito y presentación |
-| --- | --- | --- |
-| `title` | Texto obligatorio | H1 del caso, título de la tarjeta, navegación anterior/siguiente y búsqueda. |
-| `summary` | Texto obligatorio | Introducción del caso, resumen de la tarjeta y contenido buscable. |
-| `year` | Entero obligatorio, mínimo 1900 | Año inicial o único año del proyecto. Aparece en la ficha lateral y en la tarjeta del índice. |
-| `endYear` | Entero opcional | Año final de un proyecto plurianual. Debe ser posterior a `year`. La ficha y la tarjeta muestran, por ejemplo, `2021–2023`; omítelo para un solo año. |
-| `role` | Texto obligatorio | Responsabilidad principal de Rodolfo. Aparece como `Rol` en la ficha lateral. |
-| `client` | Texto opcional | Cliente u organización. Aparece en la ficha lateral y en la tarjeta; también participa en la búsqueda. |
-| `disciplines` | Lista obligatoria con al menos un texto | Trabajo concreto realizado. Aparece en la ficha y la tarjeta, y participa en la búsqueda. Puede ser más específico que una etiqueta. |
-| `tags` | Lista opcional; por defecto `[]` | Vocabulario breve y consistente usado por los filtros y la búsqueda del índice. No se muestra en la ficha lateral. |
-| `projectStatus` | Texto obligatorio | Estado real del proyecto, no estado editorial de la página. Se muestra en el encabezado, la ficha y el pie del caso. Usa normalmente `En curso`, `Finalizado` o `En pausa`. |
-| `archiveNumber` | Texto obligatorio con formato `P.###` | Identificador de archivo mostrado en la tarjeta, el encabezado y la ficha. Debe ser único. `P.999` está reservado para la fixture MDX. |
-| `coverImage` | Imagen local opcional durante borrador; obligatoria al publicar | Portada optimizada por Astro para la tarjeta y el caso. Debe vivir en la carpeta de recursos del proyecto. |
-| `coverAlt` | Texto opcional sin portada; obligatorio con portada y al publicar | Alternativa accesible que describe lo visible sin repetir el título. |
-| `coverCaption` | Texto opcional; requiere `coverImage` | Leyenda visible bajo la portada del caso. No aparece en la tarjeta compacta del índice. |
-| `gallery` | Lista opcional; por defecto `[]` | Galería estática estructurada renderizada después del cuerpo. Cada elemento requiere `image` y `alt`; `caption` es opcional. No es el carrusel narrativo. |
-| `projectLinks` | Lista opcional; por defecto `[]` | Enlaces externos verificados con `label` y `url`. El modelo los conserva, pero actualmente no se muestran porque la barra de conexiones de Portafolio fue retirada. Un placeholder no puede incluirlos. |
-| `displayOrder` | Entero obligatorio igual o mayor que 0 | Orden de las tarjetas y de la navegación anterior/siguiente. Debe revisarse manualmente para evitar duplicados. |
-| `updatedAt` | Fecha obligatoria | Fecha de actualización mostrada en la ficha y el pie. También interviene en la selección del proyecto reciente de la portada. Formato recomendado: `YYYY-MM-DD`. |
-| `placeholder` | Booleano; por defecto `false` | Marca contenido provisional creado para probar el diseño. Muestra el aviso provisional, exige `draft: true` y prohíbe `projectLinks`. |
-| `relatedNotes` | Lista opcional de IDs; por defecto `[]` | Relaciones validadas con Notas. Usa nombres de archivo sin extensión. Actualmente se almacenan, pero no se muestran en el caso tras retirar la barra de conexiones. |
-| `relatedMedia` | Lista opcional de IDs; por defecto `[]` | Relaciones validadas con Mediateca. Usa nombres de archivo sin extensión. Actualmente se almacenan, pero no se muestran en el caso. |
-| `draft` | Booleano; por defecto `false` | Controla publicación. Los borradores aparecen en desarrollo y se excluyen del build normal de producción. |
-| `fixture` | Booleano; por defecto `false` | Solo para la referencia técnica `ejemplo-mdx`. Una fixture debe ser borrador, usar `P.999` y queda fuera del índice, filtros, conteos, portada, navegación y producción. No debe usarse en proyectos reales. |
-| `language` | `es` o `en`; por defecto `es` | Idioma editorial. Las rutas actuales de Portafolio seleccionan contenido en español. No existen rutas inglesas todavía. |
-| `translationKey` | Texto opcional | Clave futura para relacionar traducciones. No genera una ruta ni se muestra actualmente. |
+| Campo            | Tipo y requisito                                                  | Propósito y presentación                                                                                                                                                                                     |
+| ---------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `title`          | Texto obligatorio                                                 | H1 del caso, título de la tarjeta, navegación anterior/siguiente y búsqueda.                                                                                                                                 |
+| `summary`        | Texto obligatorio                                                 | Introducción del caso, resumen de la tarjeta y contenido buscable.                                                                                                                                           |
+| `year`           | Entero obligatorio, mínimo 1900                                   | Año inicial o único año del proyecto. Aparece en la ficha lateral y en la tarjeta del índice.                                                                                                                |
+| `endYear`        | Entero opcional                                                   | Año final de un proyecto plurianual. Debe ser posterior a `year`. La ficha y la tarjeta muestran, por ejemplo, `2021–2023`; omítelo para un solo año.                                                        |
+| `role`           | Texto obligatorio                                                 | Responsabilidad principal de Rodolfo. Aparece como `Rol` en la ficha lateral.                                                                                                                                |
+| `client`         | Texto opcional                                                    | Cliente u organización. Aparece en la ficha lateral y en la tarjeta; también participa en la búsqueda.                                                                                                       |
+| `disciplines`    | Lista obligatoria con al menos un texto                           | Trabajo concreto realizado. Aparece en la ficha y la tarjeta, y participa en la búsqueda. Puede ser más específico que una etiqueta.                                                                         |
+| `tags`           | Lista opcional; por defecto `[]`                                  | Vocabulario breve y consistente usado por los filtros y la búsqueda del índice. No se muestra en la ficha lateral.                                                                                           |
+| `projectStatus`  | Texto obligatorio                                                 | Estado real del proyecto, no estado editorial de la página. Se muestra en el encabezado, la ficha y el pie del caso. Usa normalmente `En curso`, `Finalizado` o `En pausa`.                                  |
+| `archiveNumber`  | Texto obligatorio con formato `P.###`                             | Identificador de archivo mostrado en la tarjeta, el encabezado y la ficha. Debe ser único. `P.999` está reservado para la fixture MDX.                                                                       |
+| `coverImage`     | Imagen local opcional durante borrador; obligatoria al publicar   | Portada optimizada por Astro para la tarjeta y el caso. Debe vivir en la carpeta de recursos del proyecto.                                                                                                   |
+| `coverAlt`       | Texto opcional sin portada; obligatorio con portada y al publicar | Alternativa accesible que describe lo visible sin repetir el título.                                                                                                                                         |
+| `coverCaption`   | Texto opcional; requiere `coverImage`                             | Leyenda visible bajo la portada del caso. No aparece en la tarjeta compacta del índice.                                                                                                                      |
+| `gallery`        | Lista opcional; por defecto `[]`                                  | Galería estática estructurada renderizada después del cuerpo. Cada elemento requiere `image` y `alt`; `caption` es opcional. No es el carrusel narrativo.                                                    |
+| `projectLinks`   | Lista opcional; por defecto `[]`                                  | Enlaces externos verificados con `label` y `url`. El modelo los conserva, pero actualmente no se muestran porque la barra de conexiones de Portafolio fue retirada. Un placeholder no puede incluirlos.      |
+| `displayOrder`   | Entero obligatorio igual o mayor que 0                            | Orden de las tarjetas y de la navegación anterior/siguiente. Debe revisarse manualmente para evitar duplicados.                                                                                              |
+| `updatedAt`      | Fecha obligatoria                                                 | Fecha de actualización mostrada en la ficha y el pie. También interviene en la selección del proyecto reciente de la portada. Formato recomendado: `YYYY-MM-DD`.                                             |
+| `placeholder`    | Booleano; por defecto `false`                                     | Marca contenido provisional creado para probar el diseño. Muestra el aviso provisional, exige `draft: true` y prohíbe `projectLinks`.                                                                        |
+| `relatedNotes`   | Lista opcional de IDs; por defecto `[]`                           | Relaciones validadas con Notas. Usa nombres de archivo sin extensión. Actualmente se almacenan, pero no se muestran en el caso tras retirar la barra de conexiones.                                          |
+| `relatedMedia`   | Lista opcional de IDs; por defecto `[]`                           | Relaciones validadas con Mediateca. Usa nombres de archivo sin extensión. Actualmente se almacenan, pero no se muestran en el caso.                                                                          |
+| `draft`          | Booleano; por defecto `false`                                     | Controla publicación. Los borradores aparecen en desarrollo y se excluyen del build normal de producción.                                                                                                    |
+| `fixture`        | Booleano; por defecto `false`                                     | Solo para la referencia técnica `ejemplo-mdx`. Una fixture debe ser borrador, usar `P.999` y queda fuera del índice, filtros, conteos, portada, navegación y producción. No debe usarse en proyectos reales. |
+| `language`       | `es` o `en`; por defecto `es`                                     | Idioma editorial. Las rutas actuales de Portafolio seleccionan contenido en español. No existen rutas inglesas todavía.                                                                                      |
+| `translationKey` | Texto opcional                                                    | Clave futura para relacionar traducciones. No genera una ruta ni se muestra actualmente.                                                                                                                     |
 
 ## Año único y periodo de actividad
 
@@ -138,12 +138,12 @@ etiqueta. Añade solo etiquetas que resulten útiles para navegar el índice.
 
 `projectStatus`, `placeholder` y `draft` responden a preguntas distintas:
 
-| Situación | `projectStatus` | `placeholder` | `draft` |
-| --- | --- | --- | --- |
-| Proyecto real en edición | Estado real, por ejemplo `Finalizado` | `false` | `true` |
-| Proyecto real publicado | Estado real | `false` | `false` |
-| Tarjeta provisional de diseño | `Contenido pendiente` u otra etiqueta provisional | `true` | `true` |
-| Fixture técnica MDX | `Fixture técnica` | `false` | `true`, además de `fixture: true` |
+| Situación                     | `projectStatus`                                   | `placeholder` | `draft`                           |
+| ----------------------------- | ------------------------------------------------- | ------------- | --------------------------------- |
+| Proyecto real en edición      | Estado real, por ejemplo `Finalizado`             | `false`       | `true`                            |
+| Proyecto real publicado       | Estado real                                       | `false`       | `false`                           |
+| Tarjeta provisional de diseño | `Contenido pendiente` u otra etiqueta provisional | `true`        | `true`                            |
+| Fixture técnica MDX           | `Fixture técnica`                                 | `false`       | `true`, además de `fixture: true` |
 
 No uses `projectStatus: "Contenido pendiente"` para indicar simplemente que un
 caso real todavía no está publicado. En ese caso conserva el estado real del
@@ -176,7 +176,7 @@ necesita un texto alternativo preciso.
 ## Markdown o MDX
 
 Un archivo `.md` cubre la mayoría de casos. Cambiar una entrada de `.md` a
-`.mdx` conservando el mismo nombre base mantiene el *slug* y la ruta.
+`.mdx` conservando el mismo nombre base mantiene el _slug_ y la ruta.
 
 Desde un archivo situado directamente en `src/content/portafolio/`, los
 componentes compartidos se importan así:
@@ -230,34 +230,37 @@ borradores, placeholders y fixtures no entran en los datos de producción.
 
 ## Mapa técnico
 
-| Necesidad | Archivo principal | Responsabilidad |
-| --- | --- | --- |
-| Definir o validar metadatos | `src/content.config.ts` | Schema de la colección y reglas cruzadas. Es la fuente de verdad. |
-| Añadir o editar un proyecto | `src/content/portafolio/<slug>.md` o `.mdx` | Frontmatter y cuerpo editorial. |
-| Plantillas de autoría | `docs/templates/portafolio.md` y `portafolio-mdx.mdx` | Puntos de partida seguros. |
-| Selección de borradores, idioma y fixtures | `src/lib/portfolio.ts` | Límites editoriales compartidos por rutas, conteos y portada. |
-| Índice, búsqueda y filtros | `src/pages/portafolio/index.astro` | Carga proyectos, crea tags y controla la interfaz del índice. |
-| Tarjeta del índice | `src/components/PortfolioCard.astro` | DOM y campos visibles de cada tarjeta. |
-| Ruta de cada caso | `src/pages/portafolio/[slug].astro` | Genera rutas y navegación anterior/siguiente. |
-| Composición del caso | `src/components/PortfolioProject.astro` | Une encabezado, metadatos, portada, cuerpo, galería, pie y secuencia. |
-| Ficha lateral | `src/components/ProjectMeta.astro` | Decide qué metadatos se muestran y cómo se formatean. |
-| Portada o fallback visual | `src/components/PortfolioArtwork.astro` | Renderiza la imagen optimizada o la geometría provisional. |
-| Scaffold compartido del detalle | `src/components/EditorialDetailLayout.astro` | Estructura común con Notas y Mediateca. Modificarlo puede afectar las tres colecciones. |
-| CSS exclusivo de Portafolio | `src/styles/portfolio.css` | Índice, tarjetas, metadatos, portada, galería, pie y navegación. |
-| Geometría compartida del detalle | `src/styles/editorial-detail.css` | Columnas, cabecera y responsive compartidos. Cambios aquí pueden afectar Notas y Mediateca. |
-| Tipografía del cuerpo enriquecido | `src/styles/rich-content.css` | Párrafos, headings, imágenes, vídeo, código y carrusel compartidos. |
-| Tokens y tipografía global | `src/styles/global.css` | Colores, líneas, fuentes, escalas y reglas globales. |
-| Carrusel y vídeo MDX | `src/components/content/` | Componentes compartidos de contenido enriquecido. |
-| Integración con homepage | `src/pages/index.astro` y `src/content/site/ahora.json` | Conteo publicado, proyecto reciente y etiquetas visibles de la sección Ahora. |
+| Necesidad                                  | Archivo principal                                       | Responsabilidad                                                                             |
+| ------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Definir o validar metadatos                | `src/content.config.ts`                                 | Schema de la colección y reglas cruzadas. Es la fuente de verdad.                           |
+| Añadir o editar un proyecto                | `src/content/portafolio/<slug>.md` o `.mdx`             | Frontmatter y cuerpo editorial.                                                             |
+| Plantillas de autoría                      | `docs/templates/portafolio.md` y `portafolio-mdx.mdx`   | Puntos de partida seguros.                                                                  |
+| Selección de borradores, idioma y fixtures | `src/lib/portfolio.ts`                                  | Límites editoriales compartidos por rutas, conteos y portada.                               |
+| Índice, búsqueda y filtros                 | `src/pages/portafolio/index.astro`                      | Carga proyectos, crea tags y controla la interfaz del índice.                               |
+| Tarjeta del índice                         | `src/components/PortfolioCard.astro`                    | DOM y campos visibles de cada tarjeta.                                                      |
+| Ruta de cada caso                          | `src/pages/portafolio/[slug].astro`                     | Genera rutas y navegación anterior/siguiente.                                               |
+| Composición del caso                       | `src/components/PortfolioProject.astro`                 | Une encabezado, metadatos, portada, cuerpo, galería, pie y secuencia.                       |
+| Ficha lateral                              | `src/components/ProjectMeta.astro`                      | Decide qué metadatos se muestran y cómo se formatean.                                       |
+| Portada o fallback visual                  | `src/components/PortfolioArtwork.astro`                 | Renderiza la imagen optimizada o la geometría provisional.                                  |
+| Scaffold compartido del detalle            | `src/components/EditorialDetailLayout.astro`            | Estructura común con Notas y Mediateca. Modificarlo puede afectar las tres colecciones.     |
+| CSS del índice de Portafolio               | `src/styles/portfolio-index.css`                        | Índice, controles y tarjetas.                                                               |
+| CSS del detalle de Portafolio              | `src/styles/portfolio-detail.css`                       | Metadatos, portada, galería, pie y navegación.                                              |
+| Visual compartido del proyecto             | `src/styles/portfolio-shared.css`                       | Fallback gráfico usado tanto por el índice como por el detalle.                             |
+| Geometría compartida del detalle           | `src/styles/editorial-detail.css`                       | Columnas, cabecera y responsive compartidos. Cambios aquí pueden afectar Notas y Mediateca. |
+| Tipografía del cuerpo enriquecido          | `src/styles/rich-content.css`                           | Párrafos, headings, imágenes, vídeo, código y carrusel compartidos.                         |
+| Tokens y tipografía global                 | `src/styles/global.css`                                 | Colores, líneas, fuentes, escalas y reglas globales.                                        |
+| Carrusel y vídeo MDX                       | `src/components/content/`                               | Componentes compartidos de contenido enriquecido.                                           |
+| Integración con homepage                   | `src/pages/index.astro` y `src/content/site/ahora.json` | Conteo publicado, proyecto reciente y etiquetas visibles de la sección Ahora.               |
 
 ## Cómo hacer cambios técnicos sin afectar otras páginas
 
 - Para cambiar únicamente las tarjetas, modifica `PortfolioCard.astro` y las
-  clases `.portfolio-card*` de `portfolio.css`.
+  clases `.portfolio-card*` de `portfolio-index.css`.
 - Para cambiar únicamente la ficha izquierda, modifica `ProjectMeta.astro` y
-  las clases `.project-meta*` de `portfolio.css`.
+  las clases `.project-meta*` de `portfolio-detail.css`.
 - Para cambiar la portada o su leyenda en el detalle, modifica `PortfolioArtwork.astro` y
-  `.portfolio-artwork*` / `.portfolio-cover*`.
+  `.portfolio-artwork*` en `portfolio-shared.css` / `.portfolio-cover*` en
+  `portfolio-detail.css`.
 - Para cambiar la composición completa del caso, empieza en
   `PortfolioProject.astro` y usa selectores bajo `.portfolio-page`.
 - Evita modificar `EditorialDetailLayout.astro`, `editorial-detail.css` o

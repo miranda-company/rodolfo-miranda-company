@@ -55,16 +55,21 @@ labels live in the shared component.
 
 `src/styles/editorial-detail.css` owns the outer layout:
 
-- desktop: `170px / minmax(0, 720px) / 210px` for metadata, article and
-  connections;
+- desktop with connections: `1fr / 2fr / 1fr` for metadata, article and
+  connections, spanning the full width of `.page-main`;
+- desktop and tablet without connections: `1fr / 2fr` for metadata and article,
+  also spanning the full width of `.page-main`;
 - tablet: metadata plus article, with connections under the article;
 - mobile: one column in logical metadata, article and connections DOM order;
 - sticky side rails only when the viewport supports them.
 
-Portfolio intentionally passes `hasConnections={false}` and applies a
-Portfolio-scoped two-column desktop override: the metadata rail remains on the
-left and the reading article occupies the remaining space. Notas and Mediateca
-retain their own shared connection behavior.
+Portfolio intentionally passes `hasConnections={false}` and therefore uses the
+shared two-column modifier: the metadata rail occupies one third of the grid
+tracks and the reading article occupies the remaining two thirds. Notas and
+Mediateca use the shared three-column layout at desktop widths and retain their
+right-hand connections rail. At tablet widths those connection layouts reduce
+to metadata plus article, with connections placed beneath the article; all
+three collections stack in logical DOM order on mobile.
 
 `src/styles/rich-content.css` owns the route-independent `.rich-content`
 presentation used around the rendered Markdown or MDX body in all three
@@ -73,6 +78,11 @@ blockquotes, code, horizontal rules, images, figures, captions, footnotes,
 tables, captioned standalone images, videos, and image carousels at approximately 70ch. Collection stylesheets retain index
 interfaces and structured elements such as maturity notices, project galleries,
 recurring ideas and metadata rails.
+
+Collection presentation is split by route responsibility. `*-index.css` is
+loaded only by the collection index, `*-detail.css` only by individual entries,
+and `*-shared.css` contains the small visual primitives reused by both. This
+keeps index controls out of article CSS and article metadata out of index CSS.
 
 ## Content and MDX
 
@@ -135,8 +145,9 @@ Editable site copy remains separate from templates:
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
 
-The homepage panel titles, descriptions, metadata labels, routes, and kinds are
-validated in `homepage.json`. `src/pages/index.astro` replaces collection-driven
+The homepage panel titles, descriptions, routes, kinds, local images and image
+alternatives are validated in `homepage.json`. Only genuinely static metadata
+and reveal labels live there. `src/pages/index.astro` supplies collection-driven
 values at build time: the Notas panel receives the latest published-note date
 and published-note count, while Mediateca and Portafolio receive their published
 entry counts. These statistics use the same centralized helpers and production
@@ -163,6 +174,6 @@ plus one project fixture. A normal production build exposes 17 canonical routes:
 the five standalone routes, three Notas, three Mediateca references, and six
 Portfolio cases.
 
-Astro also writes four legacy `/biblioteca` redirect artifacts. The current
-configuration emits a non-blocking build warning because the explicit
-`/biblioteca/modulor` redirect overlaps the dynamic `/biblioteca/[slug]` route.
+Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
+`/biblioteca/[slug]` route covers `modulor`, `cosas`, and `orden`; no overlapping
+explicit redirect is required.

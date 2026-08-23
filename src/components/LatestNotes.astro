@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content"
+import { formatDottedDate, toDateValue } from "../lib/dates"
 
 interface Props {
-  entries: CollectionEntry<"notas">[];
-  fragmentTargets?: boolean;
-  detailLinks?: boolean;
+  entries: CollectionEntry<"notas">[]
+  fragmentTargets?: boolean
+  detailLinks?: boolean
 }
 
-const { entries, fragmentTargets = false, detailLinks = false } = Astro.props;
-const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").reverse().join(".");
+const { entries, fragmentTargets = false, detailLinks = false } = Astro.props
 ---
 
 <ol class="latest-notes" aria-label="Últimas tres notas">
@@ -19,8 +19,8 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10).split("-").re
         class={fragmentTargets ? "fragment-target" : undefined}
         tabindex={fragmentTargets ? "-1" : undefined}
       >
-        <time datetime={entry.data.publishedAt.toISOString().slice(0, 10)}>
-          {formatDate(entry.data.publishedAt)}
+        <time datetime={toDateValue(entry.data.publishedAt)}>
+          {formatDottedDate(entry.data.publishedAt)}
         </time>
         <a href={detailLinks ? "/notas/" + entry.id : "/notas#" + entry.id}>{entry.data.title}</a>
       </li>

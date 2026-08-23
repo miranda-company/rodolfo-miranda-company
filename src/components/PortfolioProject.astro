@@ -1,24 +1,22 @@
 ---
-import { Image } from "astro:assets";
-import { render, type CollectionEntry } from "astro:content";
-import "../styles/portfolio.css";
-import EditorialDetailLayout from "./EditorialDetailLayout.astro";
-import PortfolioArtwork from "./PortfolioArtwork.astro";
-import ProjectMeta from "./ProjectMeta.astro";
+import { Image } from "astro:assets"
+import { render, type CollectionEntry } from "astro:content"
+import { formatNumericDate } from "../lib/dates"
+import "../styles/portfolio-detail.css"
+import "../styles/portfolio-shared.css"
+import EditorialDetailLayout from "./EditorialDetailLayout.astro"
+import PortfolioArtwork from "./PortfolioArtwork.astro"
+import ProjectMeta from "./ProjectMeta.astro"
 
 interface Props {
-  entry: CollectionEntry<"portafolio">;
-  previousProject?: CollectionEntry<"portafolio">;
-  nextProject?: CollectionEntry<"portafolio">;
+  entry: CollectionEntry<"portafolio">
+  previousProject?: CollectionEntry<"portafolio">
+  nextProject?: CollectionEntry<"portafolio">
 }
 
-const { entry, previousProject, nextProject } = Astro.props;
-const { Content } = await render(entry);
-const updatedLabel = new Intl.DateTimeFormat("es-ES", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-}).format(entry.data.updatedAt);
+const { entry, previousProject, nextProject } = Astro.props
+const { Content } = await render(entry)
+const updatedLabel = formatNumericDate(entry.data.updatedAt)
 ---
 
 <EditorialDetailLayout
@@ -33,69 +31,69 @@ const updatedLabel = new Intl.DateTimeFormat("es-ES", {
   <p slot="header-summary">{entry.data.summary}</p>
 
   <Fragment slot="metadata">
-        <ProjectMeta entry={entry} />
+    <ProjectMeta entry={entry} />
   </Fragment>
 
   <Fragment>
-          {
-            entry.data.placeholder && (
-              <p class="project-provisional-notice">
-                <span aria-hidden="true">●—●</span>
-                PROTOTIPO DE CONTENIDO · INFORMACIÓN DE PROYECTO PENDIENTE
-              </p>
-            )
-          }
+    {
+      entry.data.placeholder && (
+        <p class="project-provisional-notice">
+          <span aria-hidden="true">●—●</span>
+          PROTOTIPO DE CONTENIDO · INFORMACIÓN DE PROYECTO PENDIENTE
+        </p>
+      )
+    }
 
-          <PortfolioArtwork entry={entry} />
+    <PortfolioArtwork entry={entry} />
 
-          <div class="rich-content">
-            <Content />
-          </div>
+    <div class="rich-content">
+      <Content />
+    </div>
 
-          {
-            entry.data.gallery.length > 0 && (
-              <div class="project-gallery" aria-label="Imágenes adicionales del proyecto">
-                {entry.data.gallery.map((item) => (
-                  <figure>
-                    <Image
-                      src={item.image}
-                      alt={item.alt}
-                      widths={[480, 720, 960, 1280]}
-                      sizes="(max-width: 767px) calc(100vw - 40px), 720px"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    {item.caption && <figcaption>{item.caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-            )
-          }
+    {
+      entry.data.gallery.length > 0 && (
+        <div class="project-gallery" aria-label="Imágenes adicionales del proyecto">
+          {entry.data.gallery.map((item) => (
+            <figure>
+              <Image
+                src={item.image}
+                alt={item.alt}
+                widths={[480, 720, 960, 1280]}
+                sizes="(max-width: 767px) calc(100vw - 40px), 720px"
+                loading="lazy"
+                decoding="async"
+              />
+              {item.caption && <figcaption>{item.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )
+    }
 
-          <footer class="project-article-footer">
-            <p>ÚLTIMA ACTUALIZACIÓN · {updatedLabel}</p>
-            <span>{entry.data.projectStatus}</span>
-          </footer>
+    <footer class="project-article-footer">
+      <p>ÚLTIMA ACTUALIZACIÓN · {updatedLabel}</p>
+      <span>{entry.data.projectStatus}</span>
+    </footer>
   </Fragment>
 
   {
     !entry.data.fixture && (
       <nav slot="sequence" class="project-sequence" aria-label="Navegación entre proyectos">
-        {
-          previousProject && (
-            <a class="project-sequence__previous" href={`/portafolio/${previousProject.id}`}>
-              <span>← Proyecto anterior</span>{previousProject.data.title}
-            </a>
-          )
-        }
-        {
-          nextProject && (
-            <a class="project-sequence__next" href={`/portafolio/${nextProject.id}`}>
-              <span>Proyecto siguiente →</span>{nextProject.data.title}
-            </a>
-          )
-        }
-        <a class="project-sequence__all" href="/portafolio">Volver a todos los proyectos</a>
+        {previousProject && (
+          <a class="project-sequence__previous" href={`/portafolio/${previousProject.id}`}>
+            <span>← Proyecto anterior</span>
+            {previousProject.data.title}
+          </a>
+        )}
+        {nextProject && (
+          <a class="project-sequence__next" href={`/portafolio/${nextProject.id}`}>
+            <span>Proyecto siguiente →</span>
+            {nextProject.data.title}
+          </a>
+        )}
+        <a class="project-sequence__all" href="/portafolio">
+          Volver a todos los proyectos
+        </a>
       </nav>
     )
   }

@@ -55,8 +55,9 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/styles/global.css` — design tokens, shared typography, and global rules.
 - `src/styles/editorial-detail.css` — shared editorial detail layout.
 - `src/styles/rich-content.css` — shared rendered Markdown/MDX presentation.
-- `src/styles/notes.css`, `media.css`, `portfolio.css`, `yo.css` —
-  section-specific presentation.
+- `src/styles/*-index.css`, `*-detail.css`, `*-shared.css` — route-scoped
+  Notas, Mediateca, and Portafolio presentation.
+- `src/styles/yo.css` — Yo-specific presentation.
 - `src/assets/images/` — local images processed by Astro.
 - `public/` — files copied directly to the static output.
 - `docs/` — active editorial and technical documentation.
@@ -134,11 +135,14 @@ scope. Before handoff, the normal full sequence is:
 
 ```sh
 pnpm run format
+pnpm run format:check
 git diff --check
 pnpm run check
 pnpm run build
 ```
 
+`pnpm run format` writes consistent Astro, TypeScript, CSS, JSON, Markdown, and
+MDX formatting; use `pnpm run format:check` for non-mutating verification.
 `pnpm run build` runs `pnpm run check` before `astro build`. When behavior or
 layout changes, also verify the affected routes at desktop, tablet, and mobile
 sizes, including keyboard navigation, horizontal overflow, and browser-console

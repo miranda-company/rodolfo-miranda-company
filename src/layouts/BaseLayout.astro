@@ -1,22 +1,22 @@
 ---
-import "@fontsource-variable/instrument-sans";
-import "@fontsource/ibm-plex-mono/latin-400.css";
-import "@fontsource/ibm-plex-mono/latin-500.css";
-import "@fontsource/spectral/latin-400.css";
-import "@fontsource/spectral/latin-500.css";
-import "@fontsource/spectral/latin-600.css";
-import "../styles/global.css";
+import "@fontsource-variable/instrument-sans"
+import "@fontsource/ibm-plex-mono/latin-400.css"
+import "@fontsource/ibm-plex-mono/latin-500.css"
+import "@fontsource/spectral/latin-400.css"
+import "@fontsource/spectral/latin-500.css"
+import "@fontsource/spectral/latin-600.css"
+import "../styles/global.css"
 
 interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
-const siteTitle = "Rodolfo Miranda Company";
+const siteTitle = "Rodolfo Miranda Company"
 const siteDescription =
-  "Rodolfo Miranda es estratega digital, diseñador y creador de sistemas útiles. Un jardín digital de notas, referencias y proyectos.";
-const { title = siteTitle, description = siteDescription } = Astro.props;
-const documentTitle = title === siteTitle ? title : title + " — " + siteTitle;
+  "Rodolfo Miranda es estratega digital, diseñador y creador de sistemas útiles. Un jardín digital de notas, referencias y proyectos."
+const { title = siteTitle, description = siteDescription } = Astro.props
+const documentTitle = title === siteTitle ? title : title + " — " + siteTitle
 ---
 
 <!doctype html>
@@ -33,66 +33,66 @@ const documentTitle = title === siteTitle ? title : title + " — " + siteTitle;
     <slot />
     <script>
       const getHashTarget = () => {
-        if (!window.location.hash) return null;
+        if (!window.location.hash) return null
 
         try {
-          return document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+          return document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
         } catch {
-          return null;
+          return null
         }
-      };
+      }
 
       const scrollToCurrentHash = () => {
-        const target = getHashTarget();
-        if (!target) return;
+        const target = getHashTarget()
+        if (!target) return
 
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
         target.scrollIntoView({
           behavior: reduceMotion ? "auto" : "smooth",
           block: "start",
-        });
+        })
 
         if (target.classList.contains("fragment-target") && target instanceof HTMLElement) {
-          target.focus({ preventScroll: true });
+          target.focus({ preventScroll: true })
         }
-      };
-
-      const queueHashScroll = () => window.requestAnimationFrame(scrollToCurrentHash);
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", queueHashScroll, { once: true });
-      } else {
-        queueHashScroll();
       }
 
-      window.addEventListener("hashchange", queueHashScroll);
+      const queueHashScroll = () => window.requestAnimationFrame(scrollToCurrentHash)
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", queueHashScroll, { once: true })
+      } else {
+        queueHashScroll()
+      }
+
+      window.addEventListener("hashchange", queueHashScroll)
 
       document.addEventListener("click", (event) => {
-        if (!(event.target instanceof Element)) return;
-        const link = event.target.closest<HTMLAnchorElement>("a[href*='#']");
-        if (!link) return;
+        if (!(event.target instanceof Element)) return
+        const link = event.target.closest<HTMLAnchorElement>("a[href*='#']")
+        if (!link) return
 
-        const destination = new URL(link.href, window.location.href);
+        const destination = new URL(link.href, window.location.href)
         if (
           destination.origin !== window.location.origin ||
           destination.pathname !== window.location.pathname ||
           !destination.hash
         ) {
-          return;
+          return
         }
 
-        let targetId: string;
+        let targetId: string
         try {
-          targetId = decodeURIComponent(destination.hash.slice(1));
+          targetId = decodeURIComponent(destination.hash.slice(1))
         } catch {
-          return;
+          return
         }
 
-        if (!document.getElementById(targetId)) return;
-        event.preventDefault();
-        window.history.pushState(null, "", destination.hash);
-        queueHashScroll();
-      });
+        if (!document.getElementById(targetId)) return
+        event.preventDefault()
+        window.history.pushState(null, "", destination.hash)
+        queueHashScroll()
+      })
     </script>
   </body>
 </html>

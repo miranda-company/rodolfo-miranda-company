@@ -18,10 +18,6 @@ export default defineConfig({
       status: 301,
       destination: "/mediateca",
     },
-    "/biblioteca/modulor": {
-      status: 301,
-      destination: "/mediateca/modulor",
-    },
     "/biblioteca/[slug]": {
       status: 301,
       destination: "/mediateca/[slug]",

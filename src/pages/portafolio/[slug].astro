@@ -1,13 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import PortfolioProject from "../../components/PortfolioProject.astro";
+import type { CollectionEntry } from "astro:content"
+import PortfolioProject from "../../components/PortfolioProject.astro"
 import {
   getDevelopmentSpanishProjectFixtures,
   getVisibleSpanishProjects,
-} from "../../lib/portfolio";
+} from "../../lib/portfolio"
 
 export async function getStaticPaths() {
-  const entries = await getVisibleSpanishProjects(import.meta.env.DEV);
+  const entries = await getVisibleSpanishProjects(import.meta.env.DEV)
 
   const editorialPaths = entries.map((entry, index) => ({
     params: { slug: entry.id },
@@ -16,27 +16,27 @@ export async function getStaticPaths() {
       previousProject: entries[index - 1],
       nextProject: entries[index + 1],
     },
-  }));
+  }))
 
-  if (!import.meta.env.DEV) return editorialPaths;
+  if (!import.meta.env.DEV) return editorialPaths
 
-  const fixtures = await getDevelopmentSpanishProjectFixtures();
+  const fixtures = await getDevelopmentSpanishProjectFixtures()
   return [
     ...editorialPaths,
     ...fixtures.map((entry) => ({
       params: { slug: entry.id },
       props: { entry },
     })),
-  ];
+  ]
 }
 
 interface Props {
-  entry: CollectionEntry<"portafolio">;
-  previousProject?: CollectionEntry<"portafolio">;
-  nextProject?: CollectionEntry<"portafolio">;
+  entry: CollectionEntry<"portafolio">
+  previousProject?: CollectionEntry<"portafolio">
+  nextProject?: CollectionEntry<"portafolio">
 }
 
-const { entry, previousProject, nextProject } = Astro.props;
+const { entry, previousProject, nextProject } = Astro.props
 ---
 
 <PortfolioProject entry={entry} previousProject={previousProject} nextProject={nextProject} />

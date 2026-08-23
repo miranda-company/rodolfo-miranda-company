@@ -1,5 +1,5 @@
 ---
-import wolfSymbol from "../assets/images/simbolo-lobo.png";
+import wolfSymbol from "../assets/images/simbolo-lobo.png"
 ---
 
 <header class="site-header">
@@ -39,36 +39,38 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png";
   </nav>
 
   <script>
-  document.querySelectorAll<HTMLElement>(".site-header").forEach((header) => {
-    if (header.dataset.menuReady === "true") return;
-    header.dataset.menuReady = "true";
+    document.querySelectorAll<HTMLElement>(".site-header").forEach((header) => {
+      if (header.dataset.menuReady === "true") return
+      header.dataset.menuReady = "true"
 
-    const trigger = header.querySelector<HTMLButtonElement>(".mobile-index-button");
-    const menu = header.querySelector<HTMLElement>(".mobile-menu");
-    const closeButton = header.querySelector<HTMLButtonElement>(".menu-close");
-    if (!trigger || !menu || !closeButton) return;
+      const trigger = header.querySelector<HTMLButtonElement>(".mobile-index-button")
+      const menu = header.querySelector<HTMLElement>(".mobile-menu")
+      const closeButton = header.querySelector<HTMLButtonElement>(".menu-close")
+      if (!trigger || !menu || !closeButton) return
 
-    const setOpen = (open: boolean, restoreFocus = false) => {
-      menu.hidden = !open;
-      trigger.setAttribute("aria-expanded", String(open));
-      trigger.textContent = open ? trigger.dataset.openLabel ?? "Cerrar" : trigger.dataset.closedLabel ?? "Índice";
-      header.classList.toggle("menu-open", open);
-      if (restoreFocus) window.requestAnimationFrame(() => trigger.focus());
-    };
-
-    trigger.addEventListener("click", () => {
-      setOpen(trigger.getAttribute("aria-expanded") !== "true");
-    });
-    closeButton.addEventListener("click", () => setOpen(false, true));
-    menu.addEventListener("click", (event) => {
-      if (event.target instanceof Element && event.target.closest("a")) setOpen(false);
-    });
-    header.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") {
-        event.preventDefault();
-        setOpen(false, true);
+      const setOpen = (open: boolean, restoreFocus = false) => {
+        menu.hidden = !open
+        trigger.setAttribute("aria-expanded", String(open))
+        trigger.textContent = open
+          ? (trigger.dataset.openLabel ?? "Cerrar")
+          : (trigger.dataset.closedLabel ?? "Índice")
+        header.classList.toggle("menu-open", open)
+        if (restoreFocus) window.requestAnimationFrame(() => trigger.focus())
       }
-    });
-  });
+
+      trigger.addEventListener("click", () => {
+        setOpen(trigger.getAttribute("aria-expanded") !== "true")
+      })
+      closeButton.addEventListener("click", () => setOpen(false, true))
+      menu.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) setOpen(false)
+      })
+      header.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") {
+          event.preventDefault()
+          setOpen(false, true)
+        }
+      })
+    })
   </script>
 </header>

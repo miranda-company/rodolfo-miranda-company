@@ -7,7 +7,7 @@ Usa `docs/templates/nota.md` para una nota normal y `docs/templates/nota-mdx.mdx
 un componente aprobado. Ambas plantillas están pensadas para notas genuinas y omiten `fixture`,
 que vale `false` por defecto. Sigue estas pautas:
 
-1. Nombra el archivo con un *slug* breve y seguro para URL, en minúsculas, sin acentos y con
+1. Nombra el archivo con un _slug_ breve y seguro para URL, en minúsculas, sin acentos y con
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
    `/notas/sistemas-que-respiran`.
 2. Asigna un `archiveNumber` único con el formato `N.000`. El próximo número disponible para una

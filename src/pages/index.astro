@@ -1,90 +1,104 @@
 ---
-import { getEntry } from "astro:content";
-import ArchiveCard from "../components/ArchiveCard.astro";
-import LatestMedia from "../components/LatestMedia.astro";
-import LatestNotes from "../components/LatestNotes.astro";
-import PageShell from "../components/PageShell.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getVisibleSpanishMedia } from "../lib/media";
-import { formatNoteDate, getVisibleSpanishNotes } from "../lib/notes";
-import { getVisibleSpanishProjects } from "../lib/portfolio";
+import { getEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content"
+import ArchiveCard from "../components/ArchiveCard.astro"
+import LatestMedia from "../components/LatestMedia.astro"
+import LatestNotes from "../components/LatestNotes.astro"
+import PageShell from "../components/PageShell.astro"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { formatDottedDate } from "../lib/dates"
+import { getVisibleSpanishMedia } from "../lib/media"
+import { getVisibleSpanishNotes } from "../lib/notes"
+import { getVisibleSpanishProjects } from "../lib/portfolio"
 
-import { Image } from "astro:assets";
-import helloComputer from "../assets/images/homepage/hello-computer-002.png";
+import { Image } from "astro:assets"
+import helloComputer from "../assets/images/homepage/hello-computer-002.webp"
 
-const home = await getEntry("homepage", "homepage");
-const ahora = await getEntry("ahora", "ahora");
+const home = await getEntry("homepage", "homepage")
+const ahora = await getEntry("ahora", "ahora")
 
 if (!home || !ahora) {
-  throw new Error("Falta el contenido validado de la portada.");
+  throw new Error("Falta el contenido validado de la portada.")
 }
 
-const publishedNotes = await getVisibleSpanishNotes(false);
-const publishedMedia = await getVisibleSpanishMedia(false);
-const publishedProjects = await getVisibleSpanishProjects(false);
+const publishedNotes = await getVisibleSpanishNotes(false)
+const publishedMedia = await getVisibleSpanishMedia(false)
+const publishedProjects = await getVisibleSpanishProjects(false)
 const visibleProjects = import.meta.env.DEV
   ? await getVisibleSpanishProjects(true)
-  : publishedProjects;
+  : publishedProjects
 const latestPublishedNote = [...publishedNotes].sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-)[0];
+)[0]
 const latestPortfolioProject = [...visibleProjects].sort(
   (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime(),
-)[0];
+)[0]
 
-const panels = home.data.panels.map((panel) => {
+type HomepagePanel = CollectionEntry<"homepage">["data"]["panels"][number]
+type RenderedHomepagePanel = HomepagePanel & {
+  metadata: string
+  reveal: string
+}
+
+const panels: RenderedHomepagePanel[] = home.data.panels.map((panel) => {
   if (panel.kind === "notas") {
     return {
       ...panel,
-      metadata: `Última nota · ${latestPublishedNote ? formatNoteDate(latestPublishedNote.data.publishedAt) : "—"}`,
+      metadata: `Última nota · ${latestPublishedNote ? formatDottedDate(latestPublishedNote.data.publishedAt) : "—"}`,
       reveal: `${publishedNotes.length} ${publishedNotes.length === 1 ? "nota publicada" : "notas publicadas"}`,
-    };
+    }
   }
 
   if (panel.kind === "mediateca") {
     return {
       ...panel,
       reveal: `${publishedMedia.length} ${publishedMedia.length === 1 ? "medio guardado" : "medios guardados"}`,
-    };
+    }
   }
 
   if (panel.kind === "portafolio") {
     return {
       ...panel,
       reveal: `${publishedProjects.length} ${publishedProjects.length === 1 ? "proyecto publicado" : "proyectos publicados"}`,
-    };
+    }
   }
 
-  return panel;
-});
+  return panel
+})
 
 const notes = publishedNotes
   .filter((entry) => entry.data.featured)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3);
+  .slice(0, 3)
 
-const bookOrder = ["modulor", "cosas", "orden"];
+const bookOrder = ["modulor", "cosas", "orden"]
 const mediaShelf = publishedMedia
   .filter((entry) => entry.data.featured)
   .sort((a, b) => bookOrder.indexOf(a.id) - bookOrder.indexOf(b.id))
-  .slice(0, 3);
+  .slice(0, 3)
 ---
 
 <BaseLayout>
   <PageShell pageClass="home-page" mainClass="home-main">
-    
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
-        
         <div class="text-container">
           <h1 id="hero-title">{home.data.heroTitle}</h1>
           <p>{home.data.connectionLabel}</p>
         </div>
 
         <div class="img-container">
-          <Image src={helloComputer} class="hero-image" alt="Ilustración de un ordenador cubierto de plantas con el mensaje «Hello World!»"/>
+          <Image
+            src={helloComputer}
+            class="hero-image"
+            alt="Ilustración de un ordenador cubierto de plantas con el mensaje «Hello World!»"
+            widths={[360, 560, 800]}
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1000px) calc(100vw - 80px), 45vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
-
       </div>
     </section>
 
@@ -126,9 +140,8 @@ const mediaShelf = publishedMedia
                 <span>{latestPortfolioProject.data.archiveNumber}</span>
                 <b>{latestPortfolioProject.data.title}</b>
                 <em>
-                  {latestPortfolioProject.data.projectStatus} · ACT. {formatNoteDate(
-                    latestPortfolioProject.data.updatedAt,
-                  )}
+                  {latestPortfolioProject.data.projectStatus} · ACT.{" "}
+                  {formatDottedDate(latestPortfolioProject.data.updatedAt)}
                 </em>
               </a>
             ) : (

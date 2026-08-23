@@ -1,14 +1,16 @@
 ---
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
 
 interface Props {
-  entry: CollectionEntry<"portafolio">;
+  entry: CollectionEntry<"portafolio">
 }
 
-const { entry } = Astro.props;
-const coverImage = entry.data.coverImage;
-const yearLabel = entry.data.endYear ? `${entry.data.year}–${entry.data.endYear}` : String(entry.data.year);
+const { entry } = Astro.props
+const coverImage = entry.data.coverImage
+const yearLabel = entry.data.endYear
+  ? `${entry.data.year}–${entry.data.endYear}`
+  : String(entry.data.year)
 ---
 
 <li
@@ -24,8 +26,8 @@ const yearLabel = entry.data.endYear ? `${entry.data.year}–${entry.data.endYea
           <Image
             src={coverImage}
             alt={entry.data.coverAlt ?? ""}
-            width={coverImage.width}
-            height={coverImage.height}
+            widths={[320, 480, 720, 960]}
+            sizes="(max-width: 767px) calc(100vw - 40px), 320px"
             loading="lazy"
             decoding="async"
           />
@@ -44,7 +46,12 @@ const yearLabel = entry.data.endYear ? `${entry.data.year}–${entry.data.endYea
       <dl class="portfolio-card__meta">
         {
           entry.data.client && (
-            <div><dt>Organización</dt><dd>{entry.data.client}</dd></div>
+            <div>
+              <>
+                <dt>Organización</dt>
+                <dd>{entry.data.client}</dd>
+              </>
+            </div>
           )
         }
         <div><dt>Disciplinas</dt><dd>{entry.data.disciplines.join(" · ")}</dd></div>

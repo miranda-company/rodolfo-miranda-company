@@ -1,16 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/editorial-detail.css";
-import "../styles/rich-content.css";
-import PageShell from "./PageShell.astro";
+import BaseLayout from "../layouts/BaseLayout.astro"
+import "../styles/editorial-detail.css"
+import "../styles/rich-content.css"
+import PageShell from "./PageShell.astro"
 
 interface Props {
-  title: string;
-  description: string;
-  pageClass: string;
-  backlinkHref: string;
-  backlinkLabel: string;
-  hasConnections?: boolean;
+  title: string
+  description: string
+  pageClass: string
+  backlinkHref: string
+  backlinkLabel: string
+  hasConnections?: boolean
 }
 
 const {
@@ -20,7 +20,7 @@ const {
   backlinkHref,
   backlinkLabel,
   hasConnections = true,
-} = Astro.props;
+} = Astro.props
 ---
 
 <BaseLayout title={title} description={description}>
@@ -33,10 +33,21 @@ const {
       <div class="entry-detail-header__summary"><slot name="header-summary" /></div>
     </section>
 
-    <section class:list={["entry-detail-layout", { "entry-detail-layout--without-connections": !hasConnections }]}>
+    <section
+      class:list={[
+        "entry-detail-layout",
+        { "entry-detail-layout--without-connections": !hasConnections },
+      ]}
+    >
       <aside class="entry-detail-meta"><slot name="metadata" /></aside>
       <article class="entry-detail-reading"><slot /></article>
-      {hasConnections && <div class="entry-detail-connections"><slot name="connections" /></div>}
+      {
+        hasConnections && (
+          <div class="entry-detail-connections">
+            <slot name="connections" />
+          </div>
+        )
+      }
     </section>
 
     <slot name="sequence" />

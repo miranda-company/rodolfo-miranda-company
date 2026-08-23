@@ -1,11 +1,11 @@
 ---
 interface Props {
-  variant: string;
+  variant: string
 }
 
-const { variant } = Astro.props;
-const variantNumber = Number.parseInt(variant.replace(/\D/g, ""), 10) || 1;
-const composition = (variantNumber % 4) + 1;
+const { variant } = Astro.props
+const variantNumber = Number.parseInt(variant.replace(/\D/g, ""), 10) || 1
+const composition = (variantNumber % 4) + 1
 ---
 
 <div class:list={["note-artwork", `composition-${composition}`]} aria-hidden="true">

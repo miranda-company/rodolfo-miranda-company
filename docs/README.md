@@ -34,16 +34,16 @@ en el uso de imágenes, carruseles, vídeo y código.
 
 ## Qué documento usar
 
-| Necesidad | Documento |
-| --- | --- |
-| Conocer el estado actual | `PROJECT_STATUS.md` |
-| Crear una Nota | `WRITING_NOTES.md` |
-| Crear una referencia | `WRITING_MEDIATECA.md` |
-| Crear o modificar un proyecto | `PORTFOLIO_PROJECT_GUIDE.md` |
-| Consultar todos los campos de contenido | `CONTENT_MODEL.md` |
-| Cambiar layouts o componentes compartidos | `ARCHITECTURE.md` |
-| Cambiar tipografía | `TYPOGRAPHY_SYSTEM.md` |
-| Preparar publicación o dominio | `LAUNCH_CHECKLIST.md` |
+| Necesidad                                 | Documento                    |
+| ----------------------------------------- | ---------------------------- |
+| Conocer el estado actual                  | `PROJECT_STATUS.md`          |
+| Crear una Nota                            | `WRITING_NOTES.md`           |
+| Crear una referencia                      | `WRITING_MEDIATECA.md`       |
+| Crear o modificar un proyecto             | `PORTFOLIO_PROJECT_GUIDE.md` |
+| Consultar todos los campos de contenido   | `CONTENT_MODEL.md`           |
+| Cambiar layouts o componentes compartidos | `ARCHITECTURE.md`            |
+| Cambiar tipografía                        | `TYPOGRAPHY_SYSTEM.md`       |
+| Preparar publicación o dominio            | `LAUNCH_CHECKLIST.md`        |
 
 `src/content.config.ts` es la fuente de verdad para la validación. Si una guía y
 el schema no coinciden, debe corregirse la documentación antes de publicar.

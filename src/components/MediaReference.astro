@@ -1,35 +1,21 @@
 ---
-import { getEntries, render, type CollectionEntry } from "astro:content";
-import { isEditorialMedia } from "../lib/media";
-import { isEditorialNote } from "../lib/notes";
-import "../styles/media.css";
-import EditorialDetailLayout from "./EditorialDetailLayout.astro";
-import MediaVisual from "./MediaVisual.astro";
+import { getEntries, render, type CollectionEntry } from "astro:content"
+import { isEditorialMedia, MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
+import { isEditorialNote } from "../lib/notes"
+import "../styles/media-detail.css"
+import "../styles/media-shared.css"
+import EditorialDetailLayout from "./EditorialDetailLayout.astro"
+import MediaVisual from "./MediaVisual.astro"
 
 interface Props {
-  entry: CollectionEntry<"mediateca">;
+  entry: CollectionEntry<"mediateca">
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
-const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(isEditorialNote);
-const relatedMedia = (await getEntries(entry.data.relatedMedia)).filter(isEditorialMedia);
-const isProvisional = entry.data.editorialState === "provisional";
-const formatLabels = {
-  book: "Libro",
-  article: "Artículo",
-  website: "Sitio",
-  tool: "Herramienta",
-  video: "Video",
-  podcast: "Podcast",
-  other: "Referencia",
-};
-const statusLabels = {
-  "en-curso": "En curso",
-  consultado: "Consultado",
-  "de-referencia": "De referencia",
-  "por-explorar": "Por explorar",
-};
+const { entry } = Astro.props
+const { Content } = await render(entry)
+const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(isEditorialNote)
+const relatedMedia = (await getEntries(entry.data.relatedMedia)).filter(isEditorialMedia)
+const isProvisional = entry.data.editorialState === "provisional"
 ---
 
 <EditorialDetailLayout
@@ -39,83 +25,110 @@ const statusLabels = {
   backlinkHref="/mediateca"
   backlinkLabel="Volver a Mediateca"
 >
-  <p slot="header-meta">{entry.data.archiveNumber} / {formatLabels[entry.data.format].toUpperCase()}</p>
+  <p slot="header-meta">
+    {entry.data.archiveNumber} / {MEDIA_FORMAT_LABELS[entry.data.format].toUpperCase()}
+  </p>
   <p slot="header-summary">{entry.data.creator}</p>
 
   <aside slot="metadata" class="reference-meta" aria-label="Ficha de la referencia">
-          <MediaVisual entry={entry} />
-          <dl>
-            <div><dt>Año</dt><dd>{entry.data.publicationYear ?? "—"}</dd></div>
-            <div><dt>Formato</dt><dd>{formatLabels[entry.data.format]}</dd></div>
-            <div><dt>Estado</dt><dd>{statusLabels[entry.data.status]}</dd></div>
-            <div><dt>Archivo</dt><dd>{entry.data.archiveNumber}</dd></div>
-          </dl>
-          <div class="reference-tags">
-            {entry.data.tags.map((tag) => <span>{tag}</span>)}
-          </div>
-          {
-            entry.data.externalUrl && (
-              <a class="reference-external" href={entry.data.externalUrl} rel="external noreferrer">
-                Referencia externa ↗
-              </a>
-            )
-          }
+    <MediaVisual entry={entry} />
+    <dl>
+      <div><dt>Año</dt><dd>{entry.data.publicationYear ?? "—"}</dd></div>
+      <div><dt>Formato</dt><dd>{MEDIA_FORMAT_LABELS[entry.data.format]}</dd></div>
+      <div><dt>Estado</dt><dd>{MEDIA_STATUS_LABELS[entry.data.status]}</dd></div>
+      <div><dt>Archivo</dt><dd>{entry.data.archiveNumber}</dd></div>
+    </dl>
+    <div class="reference-tags">
+      {entry.data.tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    {
+      entry.data.externalUrl && (
+        <a class="reference-external" href={entry.data.externalUrl} rel="external noreferrer">
+          Referencia externa ↗
+        </a>
+      )
+    }
   </aside>
 
   <div class="reference-reading">
-          {
-            isProvisional && (
-              <p class="reference-provisional">
-                <span aria-hidden="true">●</span>
-                COPIA EDITORIAL PROVISIONAL · REQUIERE APROBACIÓN
-              </p>
-            )
-          }
-          <section aria-labelledby="comentario-title">
-            <p class="reference-section-index">01 / COMENTARIO</p>
-            <h2 id="comentario-title">{isProvisional ? "Comentario provisional" : "Comentario"}</h2>
-            <p class="reference-lead">{entry.data.commentary}</p>
-          </section>
-          <section aria-labelledby="porque-title">
-            <p class="reference-section-index">02 / CONTEXTO</p>
-            <h2 id="porque-title">Por qué está aquí</h2>
-            <p>{entry.data.whyHere}</p>
-          </section>
-          <section aria-labelledby="ideas-title">
-            <p class="reference-section-index">03 / RECURRENCIAS</p>
-            <h2 id="ideas-title">Ideas que vuelven</h2>
-            <ol class="reference-ideas">
-              {entry.data.recurringIdeas.map((idea, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{idea}</li>)}
-            </ol>
-          </section>
-          <section class="reference-body" aria-labelledby="nota-editorial-title">
-            <h2 id="nota-editorial-title">Nota editorial</h2>
-            <div class="rich-content"><Content /></div>
-          </section>
+    {
+      isProvisional && (
+        <p class="reference-provisional">
+          <span aria-hidden="true">●</span>
+          COPIA EDITORIAL PROVISIONAL · REQUIERE APROBACIÓN
+        </p>
+      )
+    }
+    <section aria-labelledby="comentario-title">
+      <p class="reference-section-index">01 / COMENTARIO</p>
+      <h2 id="comentario-title">{isProvisional ? "Comentario provisional" : "Comentario"}</h2>
+      <p class="reference-lead">{entry.data.commentary}</p>
+    </section>
+    <section aria-labelledby="porque-title">
+      <p class="reference-section-index">02 / CONTEXTO</p>
+      <h2 id="porque-title">Por qué está aquí</h2>
+      <p>{entry.data.whyHere}</p>
+    </section>
+    <section aria-labelledby="ideas-title">
+      <p class="reference-section-index">03 / RECURRENCIAS</p>
+      <h2 id="ideas-title">Ideas que vuelven</h2>
+      <ol class="reference-ideas">
+        {
+          entry.data.recurringIdeas.map((idea, index) => (
+            <li>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {idea}
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+    <section class="reference-body" aria-labelledby="nota-editorial-title">
+      <h2 id="nota-editorial-title">Nota editorial</h2>
+      <div class="rich-content"><Content /></div>
+    </section>
   </div>
 
-  <aside slot="connections" class="reference-connections" aria-labelledby="reference-connections-title">
-          <h2 id="reference-connections-title">Conexiones</h2>
-          <section aria-labelledby="reference-notes-title">
-            <h3 id="reference-notes-title">Notas relacionadas</h3>
-            {
-              relatedNotes.length > 0 ? (
-                <ol>{relatedNotes.map((note) => <li><a href={`/notas/${note.id}`}>{note.data.title}</a></li>)}</ol>
-              ) : (
-                <p>Conexiones pendientes.</p>
-              )
-            }
-          </section>
-          <section aria-labelledby="reference-media-title">
-            <h3 id="reference-media-title">En la Mediateca</h3>
-            {
-              relatedMedia.length > 0 ? (
-                <ol>{relatedMedia.map((item) => <li><a href={`/mediateca/${item.id}`}>{item.data.title}</a></li>)}</ol>
-              ) : (
-                <p>Relaciones pendientes.</p>
-              )
-            }
-          </section>
-          <p class="reference-notation">CONEXIONES / {String(relatedNotes.length + relatedMedia.length).padStart(2, "0")}</p>
+  <aside
+    slot="connections"
+    class="reference-connections"
+    aria-labelledby="reference-connections-title"
+  >
+    <h2 id="reference-connections-title">Conexiones</h2>
+    <section aria-labelledby="reference-notes-title">
+      <h3 id="reference-notes-title">Notas relacionadas</h3>
+      {
+        relatedNotes.length > 0 ? (
+          <ol>
+            {relatedNotes.map((note) => (
+              <li>
+                <a href={`/notas/${note.id}`}>{note.data.title}</a>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p>Conexiones pendientes.</p>
+        )
+      }
+    </section>
+    <section aria-labelledby="reference-media-title">
+      <h3 id="reference-media-title">En la Mediateca</h3>
+      {
+        relatedMedia.length > 0 ? (
+          <ol>
+            {relatedMedia.map((item) => (
+              <li>
+                <a href={`/mediateca/${item.id}`}>{item.data.title}</a>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p>Relaciones pendientes.</p>
+        )
+      }
+    </section>
+    <p class="reference-notation">
+      CONEXIONES / {String(relatedNotes.length + relatedMedia.length).padStart(2, "0")}
+    </p>
   </aside>
 </EditorialDetailLayout>

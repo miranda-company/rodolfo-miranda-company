@@ -95,12 +95,12 @@ De esta forma, la identidad, la arquitectura y los textos trabajaban como un ún
 
 El proyecto dio lugar a:
 
-* Una estrategia digital para ordenar su presencia y posicionamiento.
-* Un nombre y una descripción vinculados con su especialidad y ubicación.
-* Una identidad visual completa y sus principales aplicaciones.
-* Una sesión de fotografía profesional.
-* Un sitio web diseñado a medida y adaptado a dispositivos móviles.
-* Una estructura de contenidos y textos orientados al posicionamiento orgánico.
+- Una estrategia digital para ordenar su presencia y posicionamiento.
+- Un nombre y una descripción vinculados con su especialidad y ubicación.
+- Una identidad visual completa y sus principales aplicaciones.
+- Una sesión de fotografía profesional.
+- Un sitio web diseñado a medida y adaptado a dispositivos móviles.
+- Una estructura de contenidos y textos orientados al posicionamiento orgánico.
 
 ## Resultado y aprendizajes
 

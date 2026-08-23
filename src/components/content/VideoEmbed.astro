@@ -1,52 +1,52 @@
 ---
 interface Props {
-  provider: "youtube" | "vimeo";
-  videoId: string;
-  title: string;
-  caption?: string;
+  provider: "youtube" | "vimeo"
+  videoId: string
+  title: string
+  caption?: string
 }
 
-const { provider, videoId, title, caption } = Astro.props;
+const { provider, videoId, title, caption } = Astro.props
 
 if (provider !== "youtube" && provider !== "vimeo") {
-  throw new Error('VideoEmbed solo admite los proveedores "youtube" y "vimeo".');
+  throw new Error('VideoEmbed solo admite los proveedores "youtube" y "vimeo".')
 }
 
 if (typeof title !== "string" || !title.trim()) {
-  throw new Error("VideoEmbed requiere un título accesible no vacío.");
+  throw new Error("VideoEmbed requiere un título accesible no vacío.")
 }
 
 if (typeof videoId !== "string" || !videoId.trim()) {
-  throw new Error("VideoEmbed requiere un identificador de vídeo no vacío.");
+  throw new Error("VideoEmbed requiere un identificador de vídeo no vacío.")
 }
 
-const normalizedVideoId = videoId.trim();
-const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/;
-const vimeoIdPattern = /^\d+$/;
+const normalizedVideoId = videoId.trim()
+const youtubeIdPattern = /^[A-Za-z0-9_-]{11}$/
+const vimeoIdPattern = /^\d+$/
 const validVideoId =
   provider === "youtube"
     ? youtubeIdPattern.test(normalizedVideoId)
-    : vimeoIdPattern.test(normalizedVideoId);
+    : vimeoIdPattern.test(normalizedVideoId)
 
 if (!validVideoId) {
   const expectedFormat =
     provider === "youtube"
       ? "11 caracteres seguros: letras, números, guion o guion bajo"
-      : "solo dígitos";
-  throw new Error(`Identificador de ${provider} no válido; se esperaba ${expectedFormat}.`);
+      : "solo dígitos"
+  throw new Error(`Identificador de ${provider} no válido; se esperaba ${expectedFormat}.`)
 }
 
-const providerLabel = provider === "youtube" ? "YouTube" : "Vimeo";
+const providerLabel = provider === "youtube" ? "YouTube" : "Vimeo"
 const embedUrl =
   provider === "youtube"
     ? `https://www.youtube-nocookie.com/embed/${normalizedVideoId}`
-    : `https://player.vimeo.com/video/${normalizedVideoId}?dnt=1`;
+    : `https://player.vimeo.com/video/${normalizedVideoId}?dnt=1`
 const fallbackUrl =
   provider === "youtube"
     ? `https://www.youtube.com/watch?v=${normalizedVideoId}`
-    : `https://vimeo.com/${normalizedVideoId}`;
-const accessibleTitle = title.trim();
-const editorialCaption = caption?.trim();
+    : `https://vimeo.com/${normalizedVideoId}`
+const accessibleTitle = title.trim()
+const editorialCaption = caption?.trim()
 ---
 
 <figure class="content-video">
@@ -57,8 +57,7 @@ const editorialCaption = caption?.trim();
       loading="lazy"
       allow="encrypted-media; picture-in-picture; fullscreen"
       referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
+      allowfullscreen></iframe>
   </div>
   {editorialCaption && <figcaption>{editorialCaption}</figcaption>}
   <p class="content-video__fallback">

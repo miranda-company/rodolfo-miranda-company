@@ -327,10 +327,13 @@ Homepage and Ahora copy use validated JSON collections. Yo uses its own
 validated JSON profile collection. These files are intentionally editable
 without changing Astro components.
 
-`homepage.json` requires exactly four archive panels with the validated kinds
-`yo`, `notas`, `mediateca`, and `portafolio`. Static panel copy remains in JSON, while
-`src/pages/index.astro` derives these values from published Spanish entries at
-build time:
+`homepage.json` requires exactly one archive panel for each validated kind:
+`yo`, `notas`, `mediateca`, and `portafolio`. Static titles, descriptions,
+routes, images and accessible image descriptions remain in JSON. Static
+metadata stays with Yo, Mediateca and Portafolio; Yo also keeps its static
+reveal label. Collection-driven values are intentionally absent from JSON and
+`src/pages/index.astro` derives them from published Spanish entries at build
+time:
 
 - Notas: latest `publishedAt` date and total published-note count;
 - Mediateca: total published-reference count;

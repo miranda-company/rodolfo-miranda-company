@@ -11,7 +11,7 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
 
 ## Crear una entrada segura
 
-1. Elige un *slug* breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
+1. Elige un _slug_ breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
    `sistema-editorial.md`. El archivo genera `/portafolio/sistema-editorial`.
 2. Copia una plantilla fuera de la colección y asigna un `archiveNumber` único `P.###` después de
    revisar todos los números existentes. La validación comprueba el formato, pero no detecta

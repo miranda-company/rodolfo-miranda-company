@@ -3,13 +3,11 @@ import { getCollection, type CollectionEntry } from "astro:content"
 export const NOTE_MATURITY = {
   semilla: {
     label: "Semilla",
-    notice:
-      "Esta nota es una semilla. Es un apunte inicial que todavía puede cambiar de forma.",
+    notice: "Esta nota es una semilla. Es un apunte inicial que todavía puede cambiar de forma.",
   },
   "en-crecimiento": {
     label: "En crecimiento",
-    notice:
-      "Esta nota está en crecimiento. Puede cambiar a medida que aparecen nuevas conexiones.",
+    notice: "Esta nota está en crecimiento. Puede cambiar a medida que aparecen nuevas conexiones.",
   },
   perenne: {
     label: "Perenne",
@@ -18,16 +16,9 @@ export const NOTE_MATURITY = {
   },
 } as const
 
-function compareNotesByRecent(
-  first: CollectionEntry<"notas">,
-  second: CollectionEntry<"notas">,
-) {
-  const dateDifference =
-    second.data.updatedAt.getTime() - first.data.updatedAt.getTime()
-  return (
-    dateDifference ||
-    first.data.archiveNumber.localeCompare(second.data.archiveNumber, "es")
-  )
+function compareNotesByRecent(first: CollectionEntry<"notas">, second: CollectionEntry<"notas">) {
+  const dateDifference = second.data.updatedAt.getTime() - first.data.updatedAt.getTime()
+  return dateDifference || first.data.archiveNumber.localeCompare(second.data.archiveNumber, "es")
 }
 
 export function isEditorialNote(entry: CollectionEntry<"notas">) {
@@ -52,16 +43,9 @@ export async function getVisibleSpanishNotes(includeDrafts: boolean) {
 export async function getDevelopmentSpanishNoteFixtures() {
   return (await getCollection("notas"))
     .filter(
-      (entry) =>
-        isTechnicalNoteFixture(entry) &&
-        entry.data.draft &&
-        entry.data.language === "es",
+      (entry) => isTechnicalNoteFixture(entry) && entry.data.draft && entry.data.language === "es",
     )
     .sort(compareNotesByRecent)
-}
-
-export function formatNoteDate(date: Date) {
-  return date.toISOString().slice(0, 10).split("-").reverse().join(".")
 }
 
 export function hasEditorialNoteBody(entry: CollectionEntry<"notas">) {

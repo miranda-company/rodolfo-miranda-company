@@ -6,7 +6,7 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
 
 ## Crear una referencia segura
 
-1. Elige un *slug* breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
+1. Elige un _slug_ breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
    `manual-de-sistemas.md`. El archivo genera `/mediateca/manual-de-sistemas`.
 2. Asigna un número único `M.###`. El siguiente número editorial disponible es `M.014`; `M.999`
    está reservado para la fixture técnica y se rechaza en una referencia normal.

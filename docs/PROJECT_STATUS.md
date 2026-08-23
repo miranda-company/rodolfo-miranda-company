@@ -16,16 +16,16 @@ aprobación editorial.
 
 ## Rutas y contenido
 
-| Sección | Ruta | Desarrollo | Producción |
-| --- | --- | --- | --- |
-| Portada | `/` | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
-| Yo | `/yo` | Biografía, retrato y trayectoria | Se genera; parte de la copia sigue pendiente de aprobación |
-| Notas | `/notas` | 27 entradas ordinarias | 3 entradas: `umbral`, `margen`, `archivo` |
-| Detalle de Nota | `/notas/[slug]` | 27 rutas editoriales y una fixture directa | Solo las 3 entradas publicadas |
-| Mediateca | `/mediateca` | 13 referencias ordinarias | 3 referencias: `modulor`, `cosas`, `orden` |
-| Detalle de Mediateca | `/mediateca/[slug]` | 13 rutas editoriales y una fixture directa | Solo las 3 referencias publicadas |
-| Portafolio | `/portafolio` | 14 proyectos ordinarios | 6 proyectos publicados |
-| Caso de Portafolio | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa | Los 6 casos publicados |
+| Sección              | Ruta                 | Desarrollo                                               | Producción                                                 |
+| -------------------- | -------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
+| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas          |
+| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; parte de la copia sigue pendiente de aprobación |
+| Notas                | `/notas`             | 27 entradas ordinarias                                   | 3 entradas: `umbral`, `margen`, `archivo`                  |
+| Detalle de Nota      | `/notas/[slug]`      | 27 rutas editoriales y una fixture directa               | Solo las 3 entradas publicadas                             |
+| Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `modulor`, `cosas`, `orden`                 |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                          |
+| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                                     |
+| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                                     |
 
 Los seis casos de Portafolio incluidos en producción son:
 
@@ -42,11 +42,11 @@ contenido pendiente, asignar valores únicos y completar su revisión editorial.
 
 ## Límites de publicación
 
-| Colección | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica |
-| --- | ---: | ---: | --- |
-| Notas | 27 | 3 | `N.999`, solo ruta directa en desarrollo |
-| Mediateca | 13 | 3 | `M.999`, solo ruta directa en desarrollo |
-| Portafolio | 14 | 6 | `P.999`, solo ruta directa en desarrollo |
+| Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
+| ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
+| Notas      |                                27 |                      3 | `N.999`, solo ruta directa en desarrollo |
+| Mediateca  |                                13 |                      3 | `M.999`, solo ruta directa en desarrollo |
+| Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
 En total hay 62 rutas canónicas en desarrollo y 17 en un build normal de
 producción, sin contar los aliases de `/biblioteca`. Las tres rutas

@@ -1,14 +1,17 @@
 ---
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
 
-type Panel = CollectionEntry<"homepage">["data"]["panels"][number];
-
-interface Props {
-  panel: Panel;
+type Panel = CollectionEntry<"homepage">["data"]["panels"][number] & {
+  metadata: string
+  reveal: string
 }
 
-const { panel } = Astro.props;
+interface Props {
+  panel: Panel
+}
+
+const { panel } = Astro.props
 ---
 
 <article class:list={["archive-panel", panel.kind]}>
