@@ -14,13 +14,15 @@ o presentar el jardín como una publicación terminada.
       `cosas` y `orden`.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.
-- [ ] Normalizar los `archiveNumber` y `displayOrder` duplicados de Portafolio.
-- [ ] Revisar `syra-coffee`: sustituir “Contenido pendiente”, retirar el
-      carrusel descrito como prueba técnica y aprobar su caso completo.
-- [ ] Sustituir en `we-jam` los metadatos, activos y cuerpo copiados de Syra
-      Coffee antes de considerar su publicación.
-- [ ] Revisar los diez placeholders restantes de Portafolio y mantenerlos como
-      drafts hasta disponer de imágenes, textos alternativos y casos verificados.
+- [ ] Revisar y aprobar los seis casos de Portafolio que entran en producción:
+      `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
+      `modulab-barcelona` y `eloquent`.
+- [ ] Confirmar en cada caso publicado el periodo, rol, organización, resultados,
+      derechos, créditos, enlaces, alternativas y leyendas.
+- [ ] Mantener los ocho placeholders restantes de Portafolio como drafts hasta
+      sustituir todo el contenido pendiente.
+- [ ] Normalizar `archiveNumber` y `displayOrder` antes de publicar cualquiera
+      de esos placeholders.
 - [ ] Aprobar o reemplazar cada URL externa provisional antes de publicar su
       entrada.
 - [ ] Confirmar que cada referencia aprobada usa `editorialState: revisado` y
@@ -86,7 +88,7 @@ o presentar el jardín como una publicación terminada.
 
 ## Higiene del repositorio
 
-- [ ] Eliminar archivos `.DS_Store` versionados y añadir una regla de exclusión.
+- [x] Excluir archivos `.DS_Store` del repositorio.
 - [ ] Retirar recursos duplicados o sin uso después de confirmar cuál es la
       copia canónica de cada imagen.
 - [ ] Decidir y documentar el alcance mínimo de pruebas automatizadas antes del

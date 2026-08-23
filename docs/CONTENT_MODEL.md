@@ -245,15 +245,16 @@ and tags without changing route generation or editorial order.
 
 ### Publication boundary
 
-- Development includes 12 ordinary projects: the published `syra-coffee`, the
-  genuine draft `we-jam`, and ten provisional placeholders.
-- All ten placeholders use `draft: true` and `placeholder: true`. Their copy,
+- Development includes 14 ordinary projects: six published case studies and
+  eight provisional placeholders.
+- All eight placeholders use `draft: true` and `placeholder: true`. Their copy,
   organizations, roles and disciplines remain pending, and they contain no
   external project URLs.
 - A placeholder must be a draft and cannot contain project links. Schema
   validation rejects either violation.
 - Production excludes every draft and placeholder card and detail route. It
-  currently generates only `syra-coffee`.
+  currently generates `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
+  `modulab-barcelona`, and `eloquent`.
 - A genuine non-draft project requires `coverImage` and `coverAlt` and must use
   `placeholder: false`.
 - `ejemplo-mdx` is a separate technical fixture. It must remain a draft, uses
@@ -261,21 +262,18 @@ and tags without changing route generation or editorial order.
   filters, counts, connections, previous/next navigation and production.
 
 When no genuine project is published, the production index remains valid and
-shows “La selección de proyectos está en preparación.” That fallback is not
-currently visible because `syra-coffee` crosses the production boundary.
+shows “La selección de proyectos está en preparación.”
 
-The current Portfolio data still requires normalization. Several entries reuse
-`P.001`; `syra-coffee` and `we-jam` both use `P.004` and `displayOrder: 1`.
-`we-jam` also retains copied Syra Coffee metadata, assets, and body content.
-These issues are safe from production while `we-jam` and the placeholders remain
-drafts, but must be resolved before publication. The schema validates the
-`P.###` shape and individual field rules; uniqueness across entries is currently
-an editorial requirement rather than a schema-enforced invariant.
+The six published projects currently use the ordered identifiers `P.001` to
+`P.006` and matching `displayOrder` values. Several draft placeholders still
+reuse identifiers or ordering values. Those fields must be made unique before a
+placeholder becomes a genuine project. The schema validates the `P.###` shape
+and individual field rules; uniqueness across entries is currently an editorial
+requirement rather than a schema-enforced invariant.
 
-Although `syra-coffee` is the only non-draft project, its current
-`projectStatus`, carousel label, captions, and technical test imagery still
-require editorial cleanup. `draft: false` controls route generation; it does not
-constitute editorial approval by itself.
+`draft: false` controls route generation; it does not constitute editorial
+approval by itself. Every published case still requires verified text, results,
+rights, credits, links, alternative text, and captions before launch.
 
 ### Adding a genuine project
 
@@ -330,8 +328,7 @@ validated JSON profile collection. These files are intentionally editable
 without changing Astro components.
 
 `homepage.json` requires exactly four archive panels with the validated kinds
-`yo`, `notas`, `mediateca`, and `portafolio`. Contacto is no longer a homepage
-panel or a content route. Static panel copy remains in JSON, while
+`yo`, `notas`, `mediateca`, and `portafolio`. Static panel copy remains in JSON, while
 `src/pages/index.astro` derives these values from published Spanish entries at
 build time:
 

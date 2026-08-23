@@ -16,20 +16,15 @@ of author-inserted image carousels.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
-- `src/pages/index.astro` retains the established homepage composition while
-  intentionally replacing the historical Contacto panel with Portafolio. The
-  current four-panel index links to Yo, Notas, Mediateca, and Portafolio.
-- `/notas` and `NoteArticle.astro` preserve the approved Notas garden and reading
-  baseline.
-- `/mediateca` and `/mediateca/modulor` preserve the approved catalogue and
-  reference baseline; all references now use the canonical dynamic route.
+- `src/pages/index.astro` renders the four-panel homepage index for Yo, Notas,
+  Mediateca, and Portafolio.
+- `/notas` and `NoteArticle.astro` implement the reviewed Notas index and
+  reading layout.
+- `/mediateca` and `/mediateca/[slug]` implement the reviewed catalogue and
+  reference layout.
 - `/yo` is a coded editorial prototype driven by validated profile content.
 - `/portafolio` is a curated case-file index with framework-free search and tag
   filtering; each case uses the shared detail geometry.
-
-Historical screenshots under `docs/figma-baseline/`, `docs/notas-baseline/`,
-`docs/mediateca-baseline/`, and `docs/integrated-baseline/` remain historical
-visual references and are not rewritten to describe later implementation work.
 
 ## Page DOM contract
 
@@ -116,9 +111,9 @@ than expanding the page.
 The Notas index includes 27 ordinary entries in development and three in a
 normal production build. Mediateca includes 13 ordinary references in
 development and three (`modulor`, `cosas`, `orden`) in production. Portafolio
-includes 12 ordinary development entries: `syra-coffee`, the draft `we-jam`
-case, and ten draft placeholders. Production currently includes only
-`syra-coffee`.
+includes 14 ordinary development entries: six published case studies and eight
+draft placeholders. Production includes `syra-coffee`, `bsc`, `minka-icm`,
+`cn-sant-andreu`, `modulab-barcelona`, and `eloquent`.
 Each collection also has an isolated `ejemplo-mdx` technical route in
 development where applicable: one for Notas, one for Mediateca and one for
 Portafolio.
@@ -148,8 +143,8 @@ entry counts. These statistics use the same centralized helpers and production
 boundary as route generation, so drafts and technical fixtures are excluded.
 The Ahora section also presents the most recently updated visible Portafolio
 entry. Development includes ordinary drafts for design review; production uses
-the published collection boundary. It currently resolves to `syra-coffee` and
-retains an explicit empty state for any future build with no published project.
+the published collection boundary and retains an explicit empty state for any
+future build with no published project.
 
 Spanish remains at root URLs. Schemas include language and optional translation
 keys so English can be added later without activating `/en/` routes now.
@@ -161,12 +156,12 @@ circular previous/next props. Portfolio sequence follows `displayOrder`.
 Development appends explicitly typed fixture routes without inserting fixtures
 into editorial navigation; production never appends them.
 
-Excluding redirect aliases, development exposes 60 canonical routes: five
+Excluding redirect aliases, development exposes 62 canonical routes: five
 indexes or standalone pages, 27 ordinary Notas plus one note fixture, 13
-Mediateca references plus one media fixture, and 12 ordinary Portfolio entries
-plus one project fixture. A normal production build exposes 12 canonical routes:
-the five standalone routes, three Notas, three Mediateca references, and
-`/portafolio/syra-coffee`.
+Mediateca references plus one media fixture, and 14 ordinary Portfolio entries
+plus one project fixture. A normal production build exposes 17 canonical routes:
+the five standalone routes, three Notas, three Mediateca references, and six
+Portfolio cases.
 
 Astro also writes four legacy `/biblioteca` redirect artifacts. The current
 configuration emits a non-blocking build warning because the explicit
