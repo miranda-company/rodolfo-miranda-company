@@ -1,42 +1,146 @@
 # rodolfo-miranda-company
 
-Static Astro website for Rodolfo Miranda Company.
+Static Astro website and Spanish-language digital garden for Rodolfo Miranda
+Company. The site is still in development: indexing remains disabled and some
+content is intentionally provisional.
 
-## Development Server
+## Start here
 
-Use `pnpm run dev`. Astro listens on `$PORT` (default 8443).
+Use the smallest relevant source of truth before editing:
 
-- Preview URL: The user can access the running app through the preview panel
-- Hot reload: Changes to source files are reflected immediately
+- `README.md` — project overview and local setup.
+- `docs/README.md` — task-based documentation index.
+- `docs/PROJECT_STATUS.md` — current routes, publication boundaries, known
+  issues, and launch work.
+- `docs/ARCHITECTURE.md` — layouts, shared components, routes, and browser
+  behavior.
+- `docs/CONTENT_MODEL.md` — collections and validated fields.
+- `src/content.config.ts` — authoritative content schemas.
 
-## Project Structure
+Do not rely on historical baseline documentation; deleted captures remain
+available through Git history and tags.
 
-This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
+## Development server
 
-- `src/pages/` - Astro routes
-- `src/components/` - Reusable Astro components
-- `src/layouts/` - Shared page layouts
-- `src/styles/global.css` - Design tokens and global custom CSS
-- `src/content.config.ts` - Validated content collection schemas
-- `src/content/` - Markdown and JSON content
-- `astro.config.ts` - Static-output and local-server configuration
-- `package.json` - Astro development, check, build, preview, and formatting scripts
-- `.mise.toml` - Toolchain versions for Node.js and pnpm
+Use:
 
-## Dependencies
+```sh
+pnpm run dev
+```
 
-- Runtime: Astro with static HTML output and minimal framework-free JavaScript
-- Styling: Custom CSS
-- Build tooling: Astro and strict TypeScript
-- Formatting: oxfmt
+Astro listens on `$PORT`, defaulting to `8443`. To choose another port, set the
+environment variable rather than appending CLI arguments:
 
-## Styling
+```sh
+PORT=8444 pnpm run dev
+```
 
-Keep global design tokens and reusable rules in `src/styles/global.css`. Fonts
-are bundled locally through Fontsource imports in the base layout.
+The preview URL is available in the app's preview panel and source changes hot
+reload. If Astro reports an existing server, use the URL it prints or stop that
+process with `pnpm exec astro dev stop` before starting another one.
 
-## Code quality
+## Project structure
 
-- Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
+- `src/pages/` — Astro routes.
+- `src/layouts/BaseLayout.astro` — document metadata, local fonts, `noindex`,
+  and global browser behavior.
+- `src/components/PageShell.astro` — canonical visible page structure.
+- `src/components/EditorialDetailLayout.astro` — shared detail-page geometry
+  for Notas, Mediateca, and Portafolio.
+- `src/components/content/` — approved MDX components for images, carousels,
+  and YouTube/Vimeo embeds.
+- `src/content.config.ts` — validated content collection schemas.
+- `src/content/` — Markdown, MDX, and JSON content.
+- `src/lib/` — collection visibility, sorting, and publication helpers.
+- `src/styles/global.css` — design tokens, shared typography, and global rules.
+- `src/styles/editorial-detail.css` — shared editorial detail layout.
+- `src/styles/rich-content.css` — shared rendered Markdown/MDX presentation.
+- `src/styles/notes.css`, `media.css`, `portfolio.css`, `yo.css` —
+  section-specific presentation.
+- `src/assets/images/` — local images processed by Astro.
+- `public/` — files copied directly to the static output.
+- `docs/` — active editorial and technical documentation.
+- `astro.config.ts` — MDX, static output, redirects, highlighting, and server
+  configuration.
+- `package.json` — development, formatting, checking, build, and preview
+  scripts.
+- `.mise.toml` — Node.js and pnpm versions.
+
+## Architecture boundaries
+
+- Keep `BaseLayout -> PageShell -> Header + main` as the page-level DOM
+  contract. Content routes should have one header and one `main` landmark.
+- Reuse `EditorialDetailLayout.astro` for editorial detail pages. Portafolio
+  intentionally disables the right connections rail; Notas and Mediateca keep
+  it.
+- Keep route-independent Markdown/MDX styling in `rich-content.css`. Do not
+  duplicate those rules in collection stylesheets.
+- Keep tokens and site-wide semantic typography in `global.css`. Use
+  collection styles only for genuinely section-specific layouts and controls.
+- Preserve static HTML output and framework-free browser JavaScript. Do not add
+  a client framework or dependency unless the task requires it.
+- Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy
+  redirect source.
+
+## Content authoring
+
+Editable site copy lives in:
+
+- `src/content/site/homepage.json`
+- `src/content/site/ahora.json`
+- `src/content/site/yo.json`
+- `src/content/notas/`
+- `src/content/mediateca/`
+- `src/content/portafolio/`
+
+Follow the collection guides in `docs/WRITING_NOTES.md`,
+`docs/WRITING_MEDIATECA.md`, and `docs/PORTFOLIO_PROJECT_GUIDE.md`.
+
+- Use `.md` for normal editorial prose.
+- Use `.mdx` only when importing an approved component such as `ContentImage`,
+  `ImageCarousel`, or `VideoEmbed`.
+- Keep editorial images local under `src/assets/images/<collection>/<slug>/` so
+  Astro can validate and optimize them.
+- Every meaningful image needs accurate, non-empty alternative text. Captions
+  are optional unless the surrounding prose does not provide enough context.
+- `draft: false` controls production eligibility; it does not imply editorial
+  approval.
+- `fixture: true` entries are technical demonstrations. They must remain
+  drafts, use their reserved `*.999` archive numbers, and stay out of indexes,
+  counts, homepage previews, relationships, sequence navigation, and
+  production.
+- Do not publish placeholder entries by only changing `draft`. Replace all
+  provisional fields and complete editorial review first.
+
+## Code conventions
+
 - Keep Astro component frontmatter strictly typed.
-- Run `pnpm run check` and `pnpm run build` before handoff.
+- Use double quotes for strings containing apostrophes
+  (`"We're here to help"`), or escape the apostrophe. An unescaped apostrophe in
+  a single-quoted string breaks the build.
+- Prefer existing helpers and components over route-specific copies.
+- Use `var(--line)` for standard borders unless the design intentionally calls
+  for another token.
+- Preserve accessibility semantics, visible focus states, reduced-motion
+  behavior, keyboard operation, and local responsive image processing.
+- Preserve unrelated user changes in a dirty worktree. Do not stage, commit,
+  tag, push, deploy, or modify the domain unless the user explicitly requests
+  it.
+
+## Verification
+
+For implementation or documentation changes, run the checks appropriate to the
+scope. Before handoff, the normal full sequence is:
+
+```sh
+pnpm run format
+git diff --check
+pnpm run check
+pnpm run build
+```
+
+`pnpm run build` runs `pnpm run check` before `astro build`. When behavior or
+layout changes, also verify the affected routes at desktop, tablet, and mobile
+sizes, including keyboard navigation, horizontal overflow, and browser-console
+errors. Use `docs/PROJECT_STATUS.md` for the current expected production route
+and content counts rather than copying counts into this file.
