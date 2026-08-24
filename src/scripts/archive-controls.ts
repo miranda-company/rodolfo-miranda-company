@@ -95,6 +95,7 @@ export const initArchiveControls = (config: ArchiveControlsConfig) => {
       summary.textContent = `${visible} ${noun} · ${filtersActive ? "filtros activos" : "sin filtros"}`
     }
     if (empty) empty.hidden = visible !== 0
+    container.dispatchEvent(new CustomEvent("archive:layout-updated"))
   }
 
   primaryButtons.forEach((button) => {

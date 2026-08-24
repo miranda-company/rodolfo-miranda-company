@@ -140,6 +140,7 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
 
   <script>
     import { initArchiveControls } from "../../scripts/archive-controls"
+    import { initMasonryGrid } from "../../scripts/masonry-grid"
 
     initArchiveControls({
       disclosureSelector: "[data-note-disclosure]",
@@ -178,6 +179,11 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
           (first.dataset.archive ?? "").localeCompare(second.dataset.archive ?? "", "es")
         )
       },
+    })
+
+    initMasonryGrid({
+      containerSelector: "[data-note-garden]",
+      itemSelector: "[data-note-card]",
     })
   </script>
 </BaseLayout>

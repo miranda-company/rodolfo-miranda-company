@@ -84,6 +84,13 @@ framework-free controller in `src/scripts/archive-controls.ts`. Their route
 scripts provide only collection selectors and sorting rules, so labels and
 content-specific behavior remain local without duplicating interaction state.
 
+The Notas garden keeps cards in DOM and editorial order while
+`src/scripts/masonry-grid.ts` measures their rendered height and assigns CSS Grid
+row spans. This produces masonry packing without changing screen-reader or
+keyboard order. The layout recalculates after filtering, sorting, font loading,
+image loading and responsive resizing; without JavaScript it falls back to the
+regular CSS Grid layout.
+
 The root token layer keeps the original palette names for authored artwork and
 decorative compositions, then maps interface meaning onto semantic roles:
 `--surface`, `--surface-container`, `--on-surface`,

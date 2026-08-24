@@ -272,6 +272,11 @@
   padding-top: 18px;
 }
 
+.note-garden[data-masonry-ready="true"] {
+  grid-auto-rows: 1px;
+  align-items: start;
+}
+
 .note-card {
   position: relative;
   display: block;
