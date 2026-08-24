@@ -31,6 +31,8 @@ en el uso de imágenes, carruseles, vídeo y código.
   componentes compartidos.
 - [Sistema tipográfico](TYPOGRAPHY_SYSTEM.md) — fuentes, escala semántica y
   reglas para H1–H6 y texto editorial.
+- [Verificación y calidad](QUALITY_ASSURANCE.md) — pruebas de navegador,
+  accesibilidad, límites de producción, presupuestos y CI.
 
 ## Qué documento usar
 
@@ -43,6 +45,7 @@ en el uso de imágenes, carruseles, vídeo y código.
 | Consultar todos los campos de contenido   | `CONTENT_MODEL.md`           |
 | Cambiar layouts o componentes compartidos | `ARCHITECTURE.md`            |
 | Cambiar tipografía                        | `TYPOGRAPHY_SYSTEM.md`       |
+| Ejecutar o mantener pruebas               | `QUALITY_ASSURANCE.md`       |
 | Preparar publicación o dominio            | `LAUNCH_CHECKLIST.md`        |
 
 `src/content.config.ts` es la fuente de verdad para la validación. Si una guía y

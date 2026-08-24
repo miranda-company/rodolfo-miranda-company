@@ -61,9 +61,13 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/assets/images/` — local images processed by Astro.
 - `public/` — files copied directly to the static output.
 - `docs/` — active editorial and technical documentation.
+- `tests/e2e/` — Playwright route, interaction, responsive, and accessibility
+  checks.
+- `scripts/` — production-boundary and output-budget checks.
 - `astro.config.ts` — MDX, static output, redirects, highlighting, and server
   configuration.
-- `package.json` — development, formatting, checking, build, and preview
+- `playwright.config.ts` — isolated browser-test server and Chromium settings.
+- `package.json` — development, formatting, checking, build, test, and preview
   scripts.
 - `.mise.toml` — Node.js and pnpm versions.
 
@@ -135,16 +139,15 @@ scope. Before handoff, the normal full sequence is:
 
 ```sh
 pnpm run format
-pnpm run format:check
 git diff --check
-pnpm run check
-pnpm run build
+pnpm run verify
 ```
 
 `pnpm run format` writes consistent Astro, TypeScript, CSS, JSON, Markdown, and
-MDX formatting; use `pnpm run format:check` for non-mutating verification.
-`pnpm run build` runs `pnpm run check` before `astro build`. When behavior or
-layout changes, also verify the affected routes at desktop, tablet, and mobile
-sizes, including keyboard navigation, horizontal overflow, and browser-console
-errors. Use `docs/PROJECT_STATUS.md` for the current expected production route
-and content counts rather than copying counts into this file.
+MDX formatting. `pnpm run verify` checks formatting, builds the static site,
+verifies production boundaries and output budgets, and runs Playwright plus
+axe-core. Install its pinned local browser once with
+`pnpm exec playwright install chromium`. When behavior or layout changes, also
+perform a focused visual review of the affected routes. Use
+`docs/PROJECT_STATUS.md` for the current expected production route and content
+counts rather than copying counts into this file.

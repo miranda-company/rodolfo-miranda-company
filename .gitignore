@@ -11,6 +11,8 @@ vite.config.*.timestamp-*
 *-debug.log*
 logs/
 *.log
+playwright-report/
+test-results/
 .DS_Store
 .claude-replay.*
 .tmp-*

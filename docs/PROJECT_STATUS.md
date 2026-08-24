@@ -76,17 +76,24 @@ revisarse antes del lanzamiento.
 - Imágenes locales optimizadas con Astro y texto alternativo validado.
 - Redirects de compatibilidad desde `/biblioteca` hacia `/mediateca`.
 - Fuentes locales y generación estática sin framework cliente.
+- Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
+  contratos de producción, presupuestos de salida y workflow de GitHub Actions.
 
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 43 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 48 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
-- Las fixtures técnicas quedan fuera de `dist`.
-- La verificación de navegador no detecta errores, avisos ni desbordamiento
-  horizontal en los índices y detalles principales, en escritorio o móvil.
-- No existe todavía una suite automatizada de pruebas unitarias, end-to-end,
-  accesibilidad o regresión visual.
+- `pnpm run test:production`: confirma 17 rutas canónicas, cuatro redirects y
+  los límites editoriales 3 Notas / 3 referencias / 6 proyectos.
+- `pnpm run test:budgets`: correcto; `dist` ocupa 12,74 MiB, el HTML 264,9 KiB,
+  el CSS 65,4 KiB y las fuentes 213,8 KiB; la imagen mayor pesa 422,9 KiB.
+- `pnpm run test:e2e:dist`: 31 pruebas correctas en Chromium, incluidos los
+  escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
+  carruseles, movimiento reducido, consola, imágenes y overflow.
+- Las fixtures técnicas quedan fuera de `dist` y de la suite de producción.
+- La automatización no sustituye una auditoría manual completa de accesibilidad
+  ni una revisión visual antes de publicar.
 
 ## Trabajo pendiente
 
@@ -98,7 +105,6 @@ revisarse antes del lanzamiento.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo
   el contenido pendiente y normalizar `archiveNumber` y `displayOrder`.
 - Resolver el solapamiento de redirects de `/biblioteca/modulor`.
-- Definir el alcance mínimo de pruebas automatizadas.
 - Elegir hosting, configurar redirects permanentes y conectar el dominio.
 - Revisar SEO y retirar `noindex` únicamente después de completar la
   [lista de lanzamiento](LAUNCH_CHECKLIST.md).

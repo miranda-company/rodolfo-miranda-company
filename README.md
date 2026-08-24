@@ -60,12 +60,16 @@ pnpm run format:check  # verify formatting without changing files
 pnpm run check         # run Astro and TypeScript diagnostics
 pnpm run build         # check and generate the production site
 pnpm run preview       # serve the latest production build
+pnpm run test:e2e      # build, then run browser and accessibility checks
+pnpm run verify        # format check, build, boundaries, budgets, and browser tests
 ```
 
 `pnpm run format` covers Astro, TypeScript, CSS, JSON, Markdown, and MDX. `pnpm run build`
-runs the project check before generating static HTML. Run `pnpm run format:check`,
-`git diff --check`, `pnpm run check`, and `pnpm run build` before handing off a complete
-implementation change.
+runs the project check before generating static HTML. Install the local test
+browser once with `pnpm exec playwright install chromium`. Run `pnpm run verify`
+and `git diff --check` before handing off a complete implementation change.
+The detailed test scope and current output budgets live in
+[Verification and quality](docs/QUALITY_ASSURANCE.md).
 
 If Astro reports that another development server is running, open the URL and
 PID shown in the message or stop it with `pnpm exec astro dev stop` before
@@ -118,6 +122,8 @@ more detail.
 - `src/assets/images/` — local source images processed by Astro.
 - `public/` — static public files such as `robots.txt`.
 - `docs/` — editorial and technical documentation.
+- `tests/e2e/` — Playwright interaction and accessibility checks.
+- `scripts/` — production-boundary and performance-budget verification.
 
 Start with the [documentation guide](docs/README.md) to find the active source of
 truth for a writing, design, development, or launch task. Historical visual
@@ -131,6 +137,7 @@ through Git history and tags.
 - Markdown and MDX with build-time Shiki highlighting.
 - Custom CSS with semantic color, focus, motion, and responsive contracts; locally bundled fonts.
 - Minimal JavaScript for navigation, filters, search, and image carousels.
+- Playwright, axe-core, and GitHub Actions quality safeguards.
 - pnpm for dependency and task management.
 
 ## Inspiration and authorship

@@ -226,6 +226,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.content-carousel__viewport:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+}
+
 .rich-content .content-carousel__track {
   display: flex;
   gap: 12px;

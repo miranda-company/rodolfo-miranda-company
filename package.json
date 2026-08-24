@@ -3,13 +3,20 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "pnpm@10.34.3",
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
     "build": "pnpm run check && astro build",
     "preview": "astro preview",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "test:e2e": "pnpm run build && playwright test",
+    "test:e2e:dist": "playwright test",
+    "test:production": "node scripts/verify-production.mjs",
+    "test:budgets": "node scripts/check-performance-budgets.mjs",
+    "test": "pnpm run test:production && pnpm run test:budgets && pnpm run test:e2e:dist",
+    "verify": "pnpm run format:check && pnpm run build && pnpm run test"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
@@ -21,6 +28,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.62.1",
     "@types/node": "^22.0.0",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",

@@ -220,3 +220,17 @@ Portfolio cases.
 Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
 `/biblioteca/[slug]` route covers `modulor`, `cosas`, and `orden`; no overlapping
 explicit redirect is required.
+
+## Automated quality safeguards
+
+Playwright exercises primary routes, responsive layouts and shared interactions
+against an isolated Astro preview of the generated production build. axe-core
+scans the same rendered DOM for automatically detectable WCAG A/AA failures.
+Framework-free Node scripts verify the exact production route set, collection
+counts, fixture exclusion and conservative output-size budgets after Astro
+builds `dist/`.
+
+The canonical workflow is `pnpm run verify`. GitHub Actions runs it on pull
+requests and pushes to `main`; browser artifacts are uploaded only after a
+failure. See `docs/QUALITY_ASSURANCE.md` for the test scope, budget values and
+maintenance rules.
