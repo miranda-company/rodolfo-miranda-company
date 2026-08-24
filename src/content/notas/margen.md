@@ -9,8 +9,7 @@ cardFormat: "visual"
 # coverImage: "../../assets/images/notas/margen/portada.jpg"
 # coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "Diseño"
-  - "Cultura digital"
+  - "NA"
 relatedNotes: []
 featured: true
 draft: false

@@ -9,8 +9,7 @@ cardFormat: "featured"
 coverImage: "../../assets/images/notas/flower-002.jpg"
 coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "Sistemas"
-  - "Diseño"
+  - "NA"
 relatedNotes:
   - "margen"
   - "archivo"

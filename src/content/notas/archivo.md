@@ -9,8 +9,7 @@ cardFormat: "standard"
 # coverImage: "../../assets/images/notas/archivo/portada.jpg"
 # coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "Sistemas"
-  - "Cultura digital"
+  - "NA"
 relatedNotes: []
 featured: true
 draft: false
