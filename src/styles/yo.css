@@ -40,7 +40,7 @@
 
 .yo-section {
   border-bottom: 1px solid var(--line);
-  padding: 78px 0 84px;
+  padding: var(--section-space) 0;
 }
 
 .yo-section__heading {
@@ -164,7 +164,7 @@
 }
 
 .yo-career {
-  padding-bottom: 50px;
+  padding-bottom: var(--section-space);
 }
 
 .career-timeline {
@@ -316,7 +316,7 @@
   grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
   gap: clamp(45px, 7vw, 110px);
   border-bottom: 1px solid var(--line);
-  padding: 30px 0 34px;
+  padding: var(--section-space-compact) 0;
 }
 
 .yo-connections > div > span {
@@ -433,10 +433,6 @@
     margin: 16px 0 27px;
   }
 
-  .yo-section {
-    padding: 52px 0 57px;
-  }
-
   .yo-section__heading {
     display: block;
     margin-bottom: 31px;
@@ -534,7 +530,6 @@
 
   .yo-connections {
     display: block;
-    padding: 25px 0 29px;
   }
 
   .yo-connections > div > p {

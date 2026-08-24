@@ -12,7 +12,7 @@ This document defines the semantic typography contract for Rodolfo Miranda Compa
 
 | Level | Semantic role                                   | Size                                         | Line height | Letter spacing |
 | ----- | ----------------------------------------------- | -------------------------------------------- | ----------- | -------------- |
-| H1    | Page title                                      | `clamp(64px, 5vw, 72px)`; `64px` below 768px | `0.86`      | `-0.06em`      |
+| H1    | Page title                                      | `clamp(64px, 5vw, 72px)`; `64px` below 768px | `1`         | `-0.06em`      |
 | H2    | Primary page section or top-level content card  | `clamp(35px, 3.5vw, 39px)`                   | `1`         | `-0.045em`     |
 | H3    | Subsection or content item nested beneath an H2 | `clamp(27px, 2.35vw, 30px)`                  | `1.05`      | `-0.035em`     |
 | H4    | Nested item                                     | `23px`                                       | `1.1`       | `-0.025em`     |
@@ -40,7 +40,7 @@ The shared roles below are tokens in `src/styles/global.css`. Elements may have 
 | Role                | Font                     | Size                                         | Line height | Typical use                                                           |
 | ------------------- | ------------------------ | -------------------------------------------- | ----------- | --------------------------------------------------------------------- |
 | Introduction / lead | Instrument Sans Variable | `clamp(19px, 2vw, 24px)`; `18px` below 768px | `1.2`       | Archive introductions, article summaries and editorial leads          |
-| Standard body       | Instrument Sans Variable | `18px`; `17px` below 768px                   | `1.62`      | Biography, note prose, reference commentary and provisional body copy |
+| Standard body       | Instrument Sans Variable | `18px`                                       | `1.62`      | Biography, note prose, reference commentary and provisional body copy |
 | Small / supporting  | Instrument Sans Variable | `13px`                                       | `1.4`       | Section explanations and supporting descriptions                      |
 | Mono metadata       | IBM Plex Mono            | `10px`                                       | `1.4`       | Shared hero and record metadata                                       |
 | Kicker              | IBM Plex Mono            | `12px`                                       | `normal`    | Page eyebrow above an archive-index H1                                |

@@ -60,6 +60,18 @@ the main modifier owns the shared block offset, while `.page-back` owns the mono
 type, underline, color and focus treatment. Index and editorial detail routes
 must not introduce separate backlink classes or spacing overrides.
 
+Archive indexes use the shared `.archive-control` class on filter buttons,
+search fields and sorting selects. The global rule owns their square geometry,
+type and `34px` minimum height; mobile viewports and coarse pointers increase
+the minimum target to `48px`. `--outline-interactive` separates essential
+control boundaries from the quieter decorative `--line`, and shared pressed
+states combine a surface change with a cobalt boundary. Empty filtered results
+provide a keyboard-accessible `.filter-reset` recovery action. Collection
+styles continue to own grouping, selected states and collection-specific
+symbols. General Yo sections use the shared section rhythm tokens from
+`global.css`, while genuinely compact or composition-specific sections retain
+an explicit variant.
+
 ## Shared editorial detail system
 
 `src/components/EditorialDetailLayout.astro` composes `BaseLayout` and

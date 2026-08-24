@@ -56,17 +56,32 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
         <fieldset class="note-filter-group">
           <legend>Madurez</legend>
           <div class="note-filter-options">
-            <button type="button" aria-pressed="true" data-maturity="all">
+            <button class="archive-control" type="button" aria-pressed="true" data-maturity="all">
               <span aria-hidden="true">×</span>Todas
             </button>
-            <button type="button" aria-pressed="false" data-maturity="semilla">
+            <button
+              class="archive-control"
+              type="button"
+              aria-pressed="false"
+              data-maturity="semilla"
+            >
               <span class="control-symbol control-symbol--seed" aria-hidden="true"></span>Semilla
             </button>
-            <button type="button" aria-pressed="false" data-maturity="en-crecimiento">
+            <button
+              class="archive-control"
+              type="button"
+              aria-pressed="false"
+              data-maturity="en-crecimiento"
+            >
               <span class="control-symbol control-symbol--growth" aria-hidden="true"></span>En
               crecimiento
             </button>
-            <button type="button" aria-pressed="false" data-maturity="perenne">
+            <button
+              class="archive-control"
+              type="button"
+              aria-pressed="false"
+              data-maturity="perenne"
+            >
               <span class="control-symbol control-symbol--perennial" aria-hidden="true"
                 ><i></i></span
               >
@@ -81,7 +96,12 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
             {
               ["Estrategia", "Diseño", "Sistemas", "Cultura digital", "Herramientas"].map(
                 (theme) => (
-                  <button type="button" aria-pressed="false" data-theme={theme}>
+                  <button
+                    class="archive-control"
+                    type="button"
+                    aria-pressed="false"
+                    data-theme={theme}
+                  >
                     <span aria-hidden="true">+</span>
                     {theme}
                   </button>
@@ -93,7 +113,7 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
 
         <label class="note-sort">
           <span>Orden</span>
-          <select data-note-sort>
+          <select class="archive-control" data-note-sort>
             <option value="recent">Actualizadas recientemente</option>
             <option value="oldest">Más antiguas</option>
             <option value="alpha">Alfabético</option>
@@ -110,9 +130,10 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
       {notes.map((entry) => <NoteCard entry={entry} />)}
     </section>
 
-    <p class="note-empty" data-note-empty hidden>
-      No hay notas que coincidan con esta combinación. Prueba otro cruce.
-    </p>
+    <div class="note-empty" data-note-empty hidden>
+      <p>No hay notas que coincidan con esta combinación. Prueba otro cruce.</p>
+      <button class="filter-reset" type="button" data-note-reset>Restablecer filtros</button>
+    </div>
   </PageShell>
 
   <script>
@@ -143,6 +164,7 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
       const count = document.querySelector<HTMLElement>("[data-result-count]")
       const filterSummary = document.querySelector<HTMLElement>("[data-filter-summary]")
       const empty = document.querySelector<HTMLElement>("[data-note-empty]")
+      const reset = document.querySelector<HTMLButtonElement>("[data-note-reset]")
       const cards = Array.from(garden.querySelectorAll<HTMLElement>("[data-note-card]"))
 
       let maturity = "all"
@@ -202,6 +224,16 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
           })
           applyGardenState()
         })
+      })
+
+      reset?.addEventListener("click", () => {
+        maturity = "all"
+        theme = ""
+        maturityButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.maturity === "all"))
+        })
+        themeButtons.forEach((button) => button.setAttribute("aria-pressed", "false"))
+        applyGardenState()
       })
 
       sortControl?.addEventListener("change", applyGardenState)

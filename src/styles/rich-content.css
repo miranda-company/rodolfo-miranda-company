@@ -299,7 +299,7 @@
 
 .content-carousel__controls button {
   min-height: 42px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--outline-interactive);
   border-radius: 0;
   background: transparent;
   padding: 9px 12px;
@@ -318,6 +318,13 @@
 
 .content-carousel__controls button:hover:not(:disabled) {
   border-color: var(--blue);
+  color: var(--blue);
+}
+
+.content-carousel__controls button:active:not(:disabled) {
+  border-color: var(--blue);
+  background: var(--paper-alt);
+  box-shadow: inset 0 0 0 1px var(--blue);
   color: var(--blue);
 }
 
@@ -375,7 +382,7 @@
   }
 
   .content-carousel__controls button {
-    min-height: 44px;
+    min-height: var(--touch-target);
     padding: 9px;
     font-size: 11px;
   }
@@ -383,5 +390,11 @@
   .content-carousel__status {
     min-width: 58px;
     font-size: 9px;
+  }
+}
+
+@media (pointer: coarse) {
+  .content-carousel__controls button {
+    min-height: var(--touch-target);
   }
 }
