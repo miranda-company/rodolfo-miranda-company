@@ -17,6 +17,8 @@ of author-inserted image carousels.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
+- `src/styles/home.css` contains the homepage hero, panels, and Ahora previews;
+  it is imported only by `src/pages/index.astro`.
 - `src/pages/index.astro` renders the four-panel homepage index for Yo, Notas,
   Mediateca, and Portafolio.
 - `/notas` and `NoteArticle.astro` implement the reviewed Notas index and
@@ -73,11 +75,17 @@ symbols. General Yo sections use the shared section rhythm tokens from
 `global.css`, while genuinely compact or composition-specific sections retain
 an explicit variant.
 
+Notas and Mediateca initialize their disclosure, primary filter, optional theme
+filter, result count, reset behavior, and DOM ordering through the typed
+framework-free controller in `src/scripts/archive-controls.ts`. Their route
+scripts provide only collection selectors and sorting rules, so labels and
+content-specific behavior remain local without duplicating interaction state.
+
 The root token layer keeps the original palette names for authored artwork and
 decorative compositions, then maps interface meaning onto semantic roles:
 `--surface`, `--surface-container`, `--on-surface`,
-`--on-surface-variant`, `--primary`, `--on-primary`, `--error`, `--outline`
-and `--outline-strong`. Interactive focus uses the shared
+`--on-surface-variant`, `--primary`, `--on-primary` and `--outline-strong`.
+Interactive focus uses the shared
 `--focus-ring-*` contract. Short, standard and medium interaction timings use
 `--motion-duration-*` with `--motion-easing-standard`; the global reduced-motion
 query disables non-essential animation without hiding content.

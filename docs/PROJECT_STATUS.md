@@ -67,11 +67,14 @@ revisarse antes del lanzamiento.
 - Jerarquía tipográfica semántica compartida para H1–H6, cuerpo y metadatos.
 - Tokens semánticos compartidos para superficies, color de interfaz, foco y
   movimiento, con rangos responsivos compact, medium y expanded documentados.
+- CSS específico de la portada aislado en `src/styles/home.css`; las demás
+  rutas no cargan su composición de paneles y previews.
 - Colecciones Astro validadas y helpers centrales para separar drafts y
   fixtures.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Menú móvil accesible con cierre por `Escape` y restauración de foco.
-- Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales.
+- Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
+  Notas y Mediateca comparten el controlador tipado de disclosure y filtros.
 - Layout de detalle compartido por Notas, Mediateca y Portafolio, con una
   variante de Portafolio sin barra derecha.
 - Cuerpo `.rich-content` común para Markdown, MDX, imágenes con leyenda,
@@ -89,19 +92,21 @@ revisarse antes del lanzamiento.
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 52 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 53 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
 - `pnpm run test:production`: confirma 17 rutas canónicas, cuatro redirects y
   los límites editoriales 3 Notas / 3 referencias / 6 proyectos, además de
   canonical, tarjetas sociales, JSON-LD, sitemap y bloqueo de indexación.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 14,10 MiB, el HTML 312,5 KiB,
-  el CSS 65,4 KiB y las fuentes 213,8 KiB; la imagen mayor pesa 422,9 KiB.
+- `pnpm run test:budgets`: correcto; `dist` ocupa 8,66 MiB, el HTML 307,1 KiB,
+  el CSS 64,8 KiB, el JavaScript emitido 3,7 KiB y las fuentes 213,8 KiB; la
+  imagen mayor pesa 422,9 KiB.
 - `pnpm run test:e2e:dist`: 31 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, movimiento reducido, consola, imágenes y overflow.
-- `pnpm run audit:lighthouse`: rendimiento y accesibilidad 100 en las cuatro
-  rutas; buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de
-  Vimeo); SEO 66–69 con `noindex` activo.
+- `pnpm run audit:lighthouse:dist`: rendimiento 95 en portada, 100 en Umbral y
+  Modulor y 99 en Syra Coffee; accesibilidad 100 en las cuatro rutas; buenas
+  prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo); SEO
+  66–69 con `noindex` activo.
 - Las fixtures técnicas quedan fuera de `dist` y de la suite de producción.
 - La automatización no sustituye una auditoría manual completa de accesibilidad
   ni una revisión visual antes de publicar.

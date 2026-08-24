@@ -143,101 +143,41 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
   </PageShell>
 
   <script>
-    const disclosure = document.querySelector<HTMLDetailsElement>("[data-media-disclosure]")
-    const mobileDisclosure = window.matchMedia("(max-width: 767px)")
+    import { initArchiveControls } from "../../scripts/archive-controls"
 
-    if (disclosure && disclosure.dataset.viewportReady !== "true") {
-      disclosure.dataset.viewportReady = "true"
-      const syncDisclosure = () => disclosure.toggleAttribute("open", !mobileDisclosure.matches)
-      syncDisclosure()
-      mobileDisclosure.addEventListener("change", syncDisclosure)
-    }
-
-    const controls = document.querySelector<HTMLElement>("[data-media-controls]")
-    const grid = document.querySelector<HTMLElement>("[data-media-grid]")
-
-    if (controls && grid && controls.dataset.ready !== "true") {
-      controls.dataset.ready = "true"
-      const formatButtons = Array.from(
-        controls.querySelectorAll<HTMLButtonElement>("[data-format-filter]"),
-      )
-      const themeButtons = Array.from(
-        controls.querySelectorAll<HTMLButtonElement>("[data-theme-filter]"),
-      )
-      const sortControl = controls.querySelector<HTMLSelectElement>("[data-media-sort]")
-      const count = document.querySelector<HTMLElement>("[data-result-count]")
-      const filterSummary = document.querySelector<HTMLElement>("[data-filter-summary]")
-      const empty = document.querySelector<HTMLElement>("[data-media-empty]")
-      const reset = document.querySelector<HTMLButtonElement>("[data-media-reset]")
-      const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-media-card]"))
-
-      let format = "all"
-      let theme = ""
-
-      const applyCatalogueState = () => {
-        const sortedCards = [...cards].sort((first, second) => {
-          if (sortControl?.value === "title") {
-            return (first.dataset.title ?? "").localeCompare(second.dataset.title ?? "", "es")
-          }
-          if (sortControl?.value === "creator") {
-            return (first.dataset.creator ?? "").localeCompare(second.dataset.creator ?? "", "es")
-          }
-          return (second.dataset.updated ?? "").localeCompare(first.dataset.updated ?? "")
-        })
-
-        let visible = 0
-        sortedCards.forEach((card) => {
-          const matchesFormat = format === "all" || card.dataset.format === format
-          const matchesTheme = !theme || (card.dataset.tags ?? "").split("|").includes(theme)
-          card.hidden = !(matchesFormat && matchesTheme)
-          if (!card.hidden) visible += 1
-          grid.append(card)
-        })
-
-        const filtersActive = format !== "all" || Boolean(theme)
-        if (count)
-          count.textContent = `${visible} ${visible === 1 ? "referencia visible" : "referencias visibles"}`
-        if (filterSummary) {
-          filterSummary.textContent = `${visible} ${visible === 1 ? "referencia" : "referencias"} · ${
-            filtersActive ? "filtros activos" : "sin filtros"
-          }`
+    initArchiveControls({
+      disclosureSelector: "[data-media-disclosure]",
+      controlsSelector: "[data-media-controls]",
+      containerSelector: "[data-media-grid]",
+      cardSelector: "[data-media-card]",
+      sortSelector: "[data-media-sort]",
+      countSelector: "[data-result-count]",
+      summarySelector: "[data-filter-summary]",
+      emptySelector: "[data-media-empty]",
+      resetSelector: "[data-media-reset]",
+      primary: {
+        buttonSelector: "[data-format-filter]",
+        buttonDataKey: "formatFilter",
+        cardDataKey: "format",
+        defaultValue: "all",
+      },
+      secondary: {
+        buttonSelector: "[data-theme-filter]",
+        buttonDataKey: "themeFilter",
+        cardDataKey: "tags",
+        defaultValue: "",
+      },
+      singular: "referencia",
+      plural: "referencias",
+      compareCards: (first, second, sortValue) => {
+        if (sortValue === "title") {
+          return (first.dataset.title ?? "").localeCompare(second.dataset.title ?? "", "es")
         }
-        if (empty) empty.hidden = visible !== 0
-      }
-
-      formatButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          format = button.dataset.formatFilter ?? "all"
-          formatButtons.forEach((candidate) => {
-            candidate.setAttribute("aria-pressed", String(candidate === button))
-          })
-          applyCatalogueState()
-        })
-      })
-
-      themeButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const nextTheme = button.dataset.themeFilter ?? ""
-          theme = theme === nextTheme ? "" : nextTheme
-          themeButtons.forEach((candidate) => {
-            candidate.setAttribute("aria-pressed", String(candidate.dataset.themeFilter === theme))
-          })
-          applyCatalogueState()
-        })
-      })
-
-      reset?.addEventListener("click", () => {
-        format = "all"
-        theme = ""
-        formatButtons.forEach((button) => {
-          button.setAttribute("aria-pressed", String(button.dataset.formatFilter === "all"))
-        })
-        themeButtons.forEach((button) => button.setAttribute("aria-pressed", "false"))
-        applyCatalogueState()
-      })
-
-      sortControl?.addEventListener("change", applyCatalogueState)
-      applyCatalogueState()
-    }
+        if (sortValue === "creator") {
+          return (first.dataset.creator ?? "").localeCompare(second.dataset.creator ?? "", "es")
+        }
+        return (second.dataset.updated ?? "").localeCompare(first.dataset.updated ?? "")
+      },
+    })
   </script>
 </BaseLayout>

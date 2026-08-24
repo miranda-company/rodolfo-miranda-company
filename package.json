@@ -18,7 +18,8 @@
     "test": "pnpm run test:production && pnpm run test:budgets && pnpm run test:e2e:dist",
     "verify": "pnpm run format:check && pnpm run build && pnpm run test",
     "audit:lighthouse": "pnpm run build && node scripts/run-lighthouse.mjs",
-    "verify:launch": "pnpm run verify && pnpm run audit:lighthouse"
+    "audit:lighthouse:dist": "node scripts/run-lighthouse.mjs",
+    "verify:launch": "pnpm run verify && pnpm run audit:lighthouse:dist"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",

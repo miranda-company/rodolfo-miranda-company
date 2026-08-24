@@ -27,7 +27,8 @@ pnpm run test:budgets    # límites de peso para la salida ya construida
 pnpm run test            # las tres comprobaciones anteriores
 pnpm run verify          # formato, build y todas las pruebas
 pnpm run audit:lighthouse # build y auditoría de cuatro rutas representativas
-pnpm run verify:launch   # suite normal más Lighthouse
+pnpm run audit:lighthouse:dist # audita el dist existente sin reconstruirlo
+pnpm run verify:launch   # suite normal y Lighthouse, con un único build
 ```
 
 `test:production` y `test:budgets` requieren un `dist/` reciente. El comando
@@ -37,8 +38,10 @@ antes de entregar o integrar cambios.
 `audit:lighthouse` sirve el build en `127.0.0.1:4321` y audita la portada,
 `/notas/umbral`, `/mediateca/modulor` y `/portafolio/syra-coffee`. Guarda
 informes JSON ignorados por Git en `.lighthouse/`. Usa `verify:launch` para una
-revisión previa a publicación; Lighthouse no se ejecuta en cada push porque es
-más lento y sensible al entorno local que la suite determinista de CI.
+revisión previa a publicación: reutiliza el `dist/` generado por `verify` para
+no construir dos veces. `audit:lighthouse:dist` debe ejecutarse solo después de
+generar un build reciente. Lighthouse no se ejecuta en cada push porque es más
+lento y sensible al entorno local que la suite determinista de CI.
 
 ## Cobertura de navegador
 
@@ -115,9 +118,10 @@ equivalen al peso transferido de una página concreta. Si una decisión editoria
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
 
-Actualmente Astro no genera un bundle JavaScript externo: la interacción mínima
-se entrega inline y queda cubierta por el presupuesto HTML. El límite de
-JavaScript emitido protege el proyecto si en el futuro aparece un bundle.
+Astro agrupa el controlador compartido de filtros de Notas y Mediateca en un
+módulo JavaScript pequeño; el resto de la interacción mínima puede permanecer
+inline o producir módulos específicos durante el build. El presupuesto de
+JavaScript emitido protege el total de esos archivos.
 
 ## Integración continua
 

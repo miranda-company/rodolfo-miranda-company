@@ -108,6 +108,7 @@ are technical examples and must remain isolated from published content.
 | ------------------------------------------- | ------------------------------------------------------------------------------ |
 | Page structure and shared layouts           | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro` |
 | Site tokens and semantic typography         | `src/styles/global.css`                                                        |
+| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                 |
 | Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                  |
 | Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`         |
 | Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                           |
@@ -127,6 +128,7 @@ more detail.
 - `src/components/` — shared page and content components.
 - `src/content/` — validated editorial content and development fixtures.
 - `src/styles/` — design tokens, shared editorial rules, and section styles.
+- `src/scripts/` — small shared framework-free browser controllers.
 - `src/assets/images/` — local source images processed by Astro.
 - `public/` — static public files that do not require build-time generation.
 - `docs/` — editorial and technical documentation.

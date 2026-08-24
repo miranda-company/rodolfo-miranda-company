@@ -53,11 +53,13 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/content/` — Markdown, MDX, and JSON content.
 - `src/lib/` — collection visibility, sorting, and publication helpers.
 - `src/styles/global.css` — design tokens, shared typography, and global rules.
+- `src/styles/home.css` — homepage-only hero, panel, and preview presentation.
 - `src/styles/editorial-detail.css` — shared editorial detail layout.
 - `src/styles/rich-content.css` — shared rendered Markdown/MDX presentation.
 - `src/styles/*-index.css`, `*-detail.css`, `*-shared.css` — route-scoped
   Notas, Mediateca, and Portafolio presentation.
 - `src/styles/yo.css` — Yo-specific presentation.
+- `src/scripts/archive-controls.ts` — shared Notas and Mediateca index behavior.
 - `src/assets/images/` — local images processed by Astro.
 - `public/` — files copied directly to the static output.
 - `docs/` — active editorial and technical documentation.

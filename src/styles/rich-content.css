@@ -227,8 +227,8 @@
 }
 
 .content-carousel__viewport:focus-visible {
-  outline: 2px solid var(--cobalt);
-  outline-offset: 3px;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .rich-content .content-carousel__track {
