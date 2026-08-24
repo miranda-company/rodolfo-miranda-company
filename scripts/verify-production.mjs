@@ -131,6 +131,17 @@ for (const route of canonicalRoutes) {
   assert.ok(Array.isArray(parsed["@graph"]), `${route} debe publicar un grafo JSON-LD.`)
 }
 
+const notFoundHtml = await readFile(resolve(dist, "404.html"), "utf8")
+assert.match(
+  notFoundHtml,
+  /<meta name="robots" content="noindex, nofollow">/,
+  "La página 404 debe permanecer fuera del índice en cualquier build.",
+)
+assert.ok(
+  notFoundHtml.includes(`<link rel="canonical" href="${new URL("/404", siteOrigin).href}">`),
+  "La página 404 debe declarar una URL estable.",
+)
+
 const robots = await readFile(resolve(dist, "robots.txt"), "utf8")
 assert.match(
   robots,
@@ -151,5 +162,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas, 3 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas, 3 referencias y 6 proyectos.`,
 )

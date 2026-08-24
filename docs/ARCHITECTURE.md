@@ -28,6 +28,8 @@ of author-inserted image carousels.
 - `/yo` is a coded editorial prototype driven by validated profile content.
 - `/portafolio` is a curated case-file index with framework-free search and tag
   filtering; each case uses the shared detail geometry.
+- `/404` uses the same page shell and introduction hierarchy, stays outside the
+  sitemap and always forces `noindex, nofollow`.
 
 ## Page DOM contract
 
@@ -51,7 +53,8 @@ responsive gutters, background, technical pattern, overflow and isolation;
 Page introductions use a shared semantic and styling contract. Each is a
 labelled `<section>` with the shared `.page-intro` class plus a route-specific
 `*-intro` class: `.notes-intro`, `.mediateca-intro`, `.portfolio-intro`, or
-`.yo-intro`. The shared class owns the `40px 0` vertical padding;
+`.yo-intro`; the error route uses `.not-found-intro` under the same contract.
+The shared class owns the `40px 0` vertical padding;
 route-specific classes only define the internal composition and visual elements
 unique to that page. Editorial detail pages add `.entry-detail-intro` for their
 shared title, summary and metadata arrangement while retaining their collection

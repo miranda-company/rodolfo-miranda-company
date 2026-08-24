@@ -51,6 +51,12 @@ fechas de modificación cuando existen y no publica aliases de `/biblioteca`.
 `src/pages/robots.txt.ts` enlaza ese sitemap incluso mientras mantiene el
 bloqueo de rastreo.
 
+`src/pages/404.astro` genera `404.html` con el mismo shell, jerarquía tipográfica
+y tratamiento de foco que el resto del sitio. La ruta queda fuera del sitemap y
+fuerza `noindex, nofollow` incluso cuando se habilite la indexación general. El
+hosting debe servir este archivo para rutas inexistentes y conservar el estado
+HTTP 404; mostrar el diseño con una respuesta 200 no es correcto.
+
 Cuando cambie el dominio previsto, actualiza `SITE_ORIGIN` en `src/lib/site.ts`
 y construye con el mismo valor en `SITE_URL`. Verifica después el HTML, el
 sitemap y `robots.txt` con `pnpm run test:production`.
@@ -127,7 +133,7 @@ Las pruebas no pueden aprobar por sí solas:
 - derechos, créditos, captions, alternativas y enlaces externos;
 - recortes y contenido de las imágenes sociales;
 - lectura con teclado y lector de pantalla real;
-- DNS, HTTPS, redirects, cabeceras y páginas de error del hosting;
+- DNS, HTTPS, redirects, cabeceras y la respuesta HTTP real de la página 404;
 - consentimiento o requisitos legales de proveedores de vídeo;
 - retirada de avisos editoriales provisionales.
 

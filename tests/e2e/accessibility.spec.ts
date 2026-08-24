@@ -10,6 +10,7 @@ const routes = [
   "/notas/umbral",
   "/mediateca/modulor",
   "/portafolio/syra-coffee",
+  "/ruta-que-no-existe",
 ] as const
 
 for (const route of routes) {

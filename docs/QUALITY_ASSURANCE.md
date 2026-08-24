@@ -47,7 +47,8 @@ lento y sensible al entorno local que la suite determinista de CI.
 
 `tests/e2e/site.spec.ts` comprueba:
 
-- rutas principales y detalles representativos a 1440 × 900 y 390 × 844;
+- rutas principales, página 404 y detalles representativos a 1440 × 900 y
+  390 × 844;
 - respuesta correcta, un único `main`, un único H1 e idioma español;
 - ausencia de imágenes visibles rotas, errores propios de consola y overflow
   horizontal; el ruido interno de iframes externos se excluye porque no pertenece
@@ -69,8 +70,8 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 17 rutas canónicas y cuatro redirects de
-`/biblioteca`, además de estos conteos:
+contrato explícito. Verifica 17 rutas canónicas, cuatro redirects de
+`/biblioteca` y el archivo `404.html`, además de estos conteos:
 
 - 3 Notas;
 - 3 referencias de Mediateca;
@@ -81,7 +82,8 @@ También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
 producción, hay que actualizar el contenido y este contrato en el mismo cambio.
 El mismo script comprueba que cada ruta canónica tenga `noindex`, canonical,
 Open Graph, tarjeta social y JSON-LD, y que `robots.txt` y el sitemap contengan
-exactamente el contrato previsto.
+exactamente el contrato previsto. La página 404 debe conservar `noindex,
+nofollow` aunque una futura build habilite la indexación del contenido.
 
 ## Lighthouse
 

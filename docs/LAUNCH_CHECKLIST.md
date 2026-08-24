@@ -89,6 +89,7 @@ seguir desactivada hasta que se revisen de forma explícita.
       `/biblioteca/*` a `/mediateca/*` en el hosting.
 - [x] Mantener un único redirect dinámico para `/biblioteca/[slug]`, sin
       solapamientos en el build.
+- [x] Generar una página `404.html` propia, accesible y siempre no indexable.
 - [ ] Verificar rutas directas, fragments y páginas de error en el entorno
       desplegado.
 - [ ] Conectar `www.rodolfomiranda.company` y verificar DNS, HTTPS y redirección
@@ -98,8 +99,8 @@ seguir desactivada hasta que se revisen de forma explícita.
       revisión de lanzamiento.
 - [ ] Verificar canonical, JSON-LD, sitemap, `robots.txt` y tarjetas sociales en
       el dominio público.
-- [ ] Configurar y comprobar HTTPS, cabeceras de seguridad y página 404 en el
-      proveedor de hosting.
+- [ ] Configurar y comprobar HTTPS, cabeceras de seguridad y que el proveedor
+      sirva `404.html` con estado HTTP 404.
 
 ## Higiene del repositorio
 

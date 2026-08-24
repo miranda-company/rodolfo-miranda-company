@@ -68,6 +68,29 @@ for (const viewport of viewports) {
   }
 }
 
+for (const viewport of viewports) {
+  test(`${viewport.name}: an unknown route renders the custom 404`, async ({ page }) => {
+    await page.setViewportSize(viewport)
+    const problems = collectBrowserProblems(page)
+    const response = await page.goto("/ruta-que-no-existe")
+
+    expect(response?.status()).toBe(404)
+    await expect(page.locator("html")).toHaveAttribute("lang", "es")
+    await expect(page.locator("main")).toHaveCount(1)
+    await expect(page.locator("h1")).toHaveText("Esta página no existe.")
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, nofollow",
+    )
+
+    const overflow = await page.evaluate(
+      () => Math.max(document.body.scrollWidth, document.documentElement.scrollWidth) - innerWidth,
+    )
+    expect(overflow).toBeLessThanOrEqual(1)
+    expect(problems).toEqual([])
+  })
+}
+
 test("hash navigation works directly and from another route", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto("/yo")

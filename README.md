@@ -18,6 +18,7 @@ requires editorial review.
 | `/notas`      | Notes organized by maturity, theme, and update date.          |
 | `/mediateca`  | Books, articles, websites, videos, podcasts, and tools.       |
 | `/portafolio` | Selected projects with search and tag filtering.              |
+| `/404`        | Custom not-found page, permanently excluded from indexing.    |
 
 Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
@@ -117,6 +118,7 @@ are technical examples and must remain isolated from published content.
 | Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                 |
 | Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                              |
 | Sitemap and crawler policy                  | `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts`                          |
+| Not-found page                              | `src/pages/404.astro`, `src/styles/not-found.css`                              |
 
 The [architecture guide](docs/ARCHITECTURE.md) explains the shared DOM contract,
 editorial detail layout, content components, redirects, and route generation in

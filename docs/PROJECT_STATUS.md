@@ -29,6 +29,7 @@ aprobación editorial.
 | Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                          |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                                     |
 | Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                                     |
+| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`                  |
 
 Los seis casos de Portafolio incluidos en producción son:
 
@@ -52,7 +53,7 @@ contenido pendiente, asignar valores únicos y completar su revisión editorial.
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
 En total hay 62 rutas canónicas en desarrollo y 17 en un build normal de
-producción, sin contar los aliases de `/biblioteca`. Las tres rutas
+producción, sin contar los aliases de `/biblioteca` ni la página 404. Las tres rutas
 `ejemplo-mdx` se usan para revisar componentes técnicos y no aparecen en
 índices, filtros, conteos, conexiones, navegación anterior/siguiente, portada o
 producción.
@@ -84,6 +85,8 @@ revisarse antes del lanzamiento.
 - Redirects de compatibilidad desde `/biblioteca` hacia `/mediateca`.
 - Metadatos canónicos y sociales, favicon, JSON-LD, sitemap derivado del
   contenido y switch seguro de indexación.
+- Página 404 propia, integrada en el layout común y bloqueada para indexación
+  incluso si el resto del sitio se habilita más adelante.
 - Fuentes locales y generación estática sin framework cliente.
 - Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
   contratos de producción, presupuestos de salida y workflow de GitHub Actions.

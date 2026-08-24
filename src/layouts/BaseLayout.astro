@@ -25,6 +25,7 @@ interface Props {
   publishedAt?: Date
   updatedAt?: Date
   keywords?: string[]
+  forceNoIndex?: boolean
 }
 
 const {
@@ -38,12 +39,13 @@ const {
   publishedAt,
   updatedAt,
   keywords = [],
+  forceNoIndex = false,
 } = Astro.props
 const documentTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`
 const siteUrl = Astro.site ?? new URL(SITE_ORIGIN)
 const canonicalUrl = new URL(canonicalPath, siteUrl)
 const indexingEnabled = import.meta.env.PUBLIC_INDEXING_ENABLED === "true"
-const robotsDirective = indexingEnabled ? "index, follow" : "noindex, nofollow"
+const robotsDirective = indexingEnabled && !forceNoIndex ? "index, follow" : "noindex, nofollow"
 const openGraphType =
   schemaType === "Article" || schemaType === "CreativeWork"
     ? "article"
