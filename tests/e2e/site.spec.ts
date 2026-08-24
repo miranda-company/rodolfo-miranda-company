@@ -150,6 +150,25 @@ test("Notas disclosure and filters retain their accessible state", async ({ page
   await expect(page.locator("[data-filter-summary]")).toContainText("filtros activos")
 })
 
+test("external Notas use compact links and filtering", async ({ page }) => {
+  await page.goto("/notas")
+
+  const externalCards = page.locator('[data-note-kind="external"]')
+  await expect(externalCards).toHaveCount(4)
+  await expect(externalCards.locator("h3")).toHaveCount(4)
+
+  const externalLinks = externalCards.locator("a")
+  await expect(externalLinks.first()).toHaveAttribute("target", "_blank")
+  await expect(externalLinks.first()).toHaveAttribute("rel", "noopener noreferrer")
+  await expect(externalLinks.first()).toHaveAttribute("href", /^https:\/\/eloquent\.es\//)
+
+  const strategy = page.getByRole("button", { name: "Estrategia" })
+  await strategy.click()
+  await expect(strategy).toHaveAttribute("aria-pressed", "true")
+  await expect(page.locator("[data-note-card]:visible")).toHaveCount(4)
+  await expect(page.locator('[data-note-kind="external"]:visible')).toHaveCount(4)
+})
+
 test("Mediateca format filtering handles empty and populated results", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 })
   await page.goto("/mediateca")

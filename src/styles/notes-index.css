@@ -346,7 +346,7 @@
   font-size: 9px;
 }
 
-.note-card h2 {
+.note-card :is(h2, h3) {
   margin: 34px 0 0;
   transition: color var(--motion-duration-short) var(--motion-easing-standard);
 }
@@ -356,8 +356,7 @@
 }
 
 .note-card--external h3 {
-  margin: 26px 0 0;
-  transition: color var(--motion-duration-short) var(--motion-easing-standard);
+  margin-top: 26px;
 }
 
 .note-card__external-label {
@@ -367,10 +366,8 @@
   text-transform: uppercase;
 }
 
-.note-card:hover h2,
-.note-card:focus-within h2,
-.note-card--external:hover h3,
-.note-card--external:focus-within h3 {
+.note-card:hover :is(h2, h3),
+.note-card:focus-within :is(h2, h3) {
   color: var(--blue);
 }
 

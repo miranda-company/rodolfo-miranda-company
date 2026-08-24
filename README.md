@@ -24,11 +24,11 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
 ## Current state
 
-- Production includes 3 Notas, 3 Mediateca references, and 6 Portafolio case
-  studies.
-- Notas contains the same three example entries in development and production.
-  Mediateca and Portafolio additionally expose drafts and isolated MDX fixtures
-  during local development.
+- Production includes 3 local Notas, 4 external-article cards, 3 Mediateca
+  references, and 6 Portafolio case studies.
+- Notas contains the same three local examples and four external Eloquent
+  articles in development and production. Mediateca and Portafolio additionally
+  expose drafts and isolated MDX fixtures during local development.
 - Drafts and technical fixtures are excluded from production routes, homepage
   statistics, filters, connections, and sequence navigation.
 - Homepage publication counts and recent-content previews are derived from the

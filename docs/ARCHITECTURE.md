@@ -95,8 +95,10 @@ Notas supports two validated destinations. Ordinary `kind: note` entries use
 `NoteCard.astro` and generate local detail routes. `kind: external` entries use
 the compact `ExternalNoteCard.astro`, open their HTTPS source in a new tab, and
 never generate local detail or sitemap URLs. Shared helpers in `src/lib/notes.ts`
-keep index visibility separate from local-route eligibility so external cards
-can still participate in sorting, filtering, counts and homepage previews.
+provide one destination contract for cards, homepage previews and related-note
+links while keeping index visibility separate from local-route eligibility.
+External-card titles use `h3`; local note-card titles remain `h2`. Both types
+participate in sorting, filtering and counts.
 
 The root token layer keeps the original palette names for authored artwork and
 decorative compositions, then maps interface meaning onto semantic roles:

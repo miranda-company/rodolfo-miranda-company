@@ -2,10 +2,9 @@
 import { getEntries, render, type CollectionEntry } from "astro:content"
 import { formatDottedDate, toDateValue } from "../lib/dates"
 import {
-  getNoteHref,
+  getNoteDestination,
   hasEditorialNoteBody,
   isEditorialNote,
-  isExternalNote,
   NOTE_MATURITY,
 } from "../lib/notes"
 import "../styles/notes-detail.css"
@@ -108,23 +107,23 @@ const updatedDate = toDateValue(entry.data.updatedAt)
     {
       hasConnections ? (
         <ul>
-          {relatedNotes.map((note) => (
-            <li>
-              <a
-                href={getNoteHref(note)}
-                target={isExternalNote(note) ? "_blank" : undefined}
-                rel={isExternalNote(note) ? "noopener noreferrer" : undefined}
-                aria-label={
-                  isExternalNote(note)
-                    ? `${note.data.title} — artículo externo, se abre en una pestaña nueva`
-                    : undefined
-                }
-              >
-                {note.data.title}
-                {isExternalNote(note) && <span aria-hidden="true"> ↗</span>}
-              </a>
-            </li>
-          ))}
+          {relatedNotes.map((note) => {
+            const destination = getNoteDestination(note)
+
+            return (
+              <li>
+                <a
+                  href={destination.href}
+                  target={destination.target}
+                  rel={destination.rel}
+                  aria-label={destination.ariaLabel}
+                >
+                  {note.data.title}
+                  {destination.external && <span aria-hidden="true"> ↗</span>}
+                </a>
+              </li>
+            )
+          })}
           {relatedLinks.map((link) => (
             <li>
               <a href={link.href}>{link.label}</a>

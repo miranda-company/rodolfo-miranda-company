@@ -17,7 +17,7 @@ anteriores siguen disponibles en el historial y las etiquetas de Git.
 
 ## Crear y editar contenido
 
-- [Escribir Notas](WRITING_NOTES.md)
+- [Escribir Notas](WRITING_NOTES.md), incluidas tarjetas para artículos externos
 - [Escribir referencias de Mediateca](WRITING_MEDIATECA.md)
 - [Guía completa de proyectos de Portafolio](PORTFOLIO_PROJECT_GUIDE.md)
 - [Referencia breve para escribir Portafolio](WRITING_PORTFOLIO.md)

@@ -73,7 +73,7 @@ manual.
 contrato explícito. Verifica 17 rutas canónicas, cuatro redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
-- 3 Notas;
+- 3 Notas locales y 4 artículos externos;
 - 3 referencias de Mediateca;
 - 6 proyectos de Portafolio.
 

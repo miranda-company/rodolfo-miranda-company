@@ -82,6 +82,11 @@ assert.equal(
   "Producción debe conservar las tres Notas locales.",
 )
 assert.equal(
+  countAttributeValue(notesHtml, "data-note-kind", "external"),
+  4,
+  "Producción debe contener los cuatro artículos externos de Notas.",
+)
+assert.equal(
   countCards(mediaHtml, "data-media-card"),
   3,
   "Producción debe contener tres referencias de Mediateca.",
@@ -168,5 +173,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas, 3 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 3 referencias y 6 proyectos.`,
 )

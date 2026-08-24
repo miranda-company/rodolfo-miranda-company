@@ -71,11 +71,12 @@ omit `fixture`; its default is `false`. Validation requires every
 `fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
 technical fixture and rejects `N.999` on an ordinary note.
 
-Development and production both contain exactly three Notas entries: `umbral`,
-`margen`, and `archivo`. They are dummy examples used by the index, homepage,
-detail layout, filters, connections, and circular navigation. No additional
-draft note or Notas MDX fixture is active. `N.004` is the next available archive
-number if another note is created.
+Development and production both contain three local Notas entries—`umbral`,
+`margen`, and `archivo`—plus four external Eloquent articles. The local entries
+are dummy examples used by the index, homepage, detail layout, filters,
+connections, and circular navigation. The external entries are link cards only
+and use `N.004`–`N.007`; `N.008` is the next available archive number. No draft
+note or Notas MDX fixture is active.
 
 The summaries and any article bodies in these three examples are provisional
 editorial copy, not approved writing. Currently only `umbral` contains a
@@ -83,7 +84,8 @@ demonstration body. Reusable Markdown and MDX authoring remains documented in
 the templates without requiring a technical fixture route in the collection.
 
 See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
-and [templates/nota-mdx.mdx](templates/nota-mdx.mdx) for the authoring workflow
+[templates/nota-mdx.mdx](templates/nota-mdx.mdx), and
+[templates/nota-externa.md](templates/nota-externa.md) for the authoring workflow
 and safe starter files outside the content collection.
 
 ## Shared editorial body

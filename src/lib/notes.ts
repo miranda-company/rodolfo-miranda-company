@@ -1,5 +1,30 @@
 import { getCollection, type CollectionEntry } from "astro:content"
 
+type NoteEntry = CollectionEntry<"notas">
+type ExternalNoteEntry = NoteEntry & {
+  data: NoteEntry["data"] & {
+    kind: "external"
+    externalSource: string
+    externalUrl: string
+  }
+}
+
+type NoteDestination =
+  | {
+      external: false
+      href: string
+      target?: undefined
+      rel?: undefined
+      ariaLabel?: undefined
+    }
+  | {
+      external: true
+      href: string
+      target: "_blank"
+      rel: "noopener noreferrer"
+      ariaLabel: string
+    }
+
 export const NOTE_MATURITY = {
   semilla: {
     label: "Semilla",
@@ -16,21 +41,32 @@ export const NOTE_MATURITY = {
   },
 } as const
 
-function compareNotesByRecent(first: CollectionEntry<"notas">, second: CollectionEntry<"notas">) {
+function compareNotesByRecent(first: NoteEntry, second: NoteEntry) {
   const dateDifference = second.data.updatedAt.getTime() - first.data.updatedAt.getTime()
   return dateDifference || first.data.archiveNumber.localeCompare(second.data.archiveNumber, "es")
 }
 
-export function isEditorialNote(entry: CollectionEntry<"notas">) {
+export function isEditorialNote(entry: NoteEntry) {
   return !entry.data.fixture
 }
 
-export function isExternalNote(entry: CollectionEntry<"notas">) {
+export function isExternalNote(entry: NoteEntry): entry is ExternalNoteEntry {
   return entry.data.kind === "external"
 }
 
-export function getNoteHref(entry: CollectionEntry<"notas">) {
-  return entry.data.externalUrl ?? `/notas/${entry.id}`
+export function getNoteDestination(
+  entry: NoteEntry,
+  localHref = `/notas/${entry.id}`,
+): NoteDestination {
+  if (!isExternalNote(entry)) return { external: false, href: localHref }
+
+  return {
+    external: true,
+    href: entry.data.externalUrl,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    ariaLabel: `${entry.data.title} — artículo externo, se abre en una pestaña nueva`,
+  }
 }
 
 export async function getVisibleSpanishNotes(includeDrafts: boolean) {
@@ -48,7 +84,7 @@ export async function getRoutableSpanishNotes(includeDrafts: boolean) {
   return (await getVisibleSpanishNotes(includeDrafts)).filter((entry) => !isExternalNote(entry))
 }
 
-export function hasEditorialNoteBody(entry: CollectionEntry<"notas">) {
+export function hasEditorialNoteBody(entry: NoteEntry) {
   const body = entry.body?.trim()
   if (!body) return false
   if (!entry.filePath?.endsWith(".mdx")) return true

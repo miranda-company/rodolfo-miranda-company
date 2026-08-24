@@ -1,17 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import { formatDottedDate, toDateValue } from "../lib/dates"
+import { getNoteDestination, isExternalNote } from "../lib/notes"
 
 interface Props {
   entry: CollectionEntry<"notas">
 }
 
 const { entry } = Astro.props
-const { externalSource, externalUrl } = entry.data
 
-if (entry.data.kind !== "external" || !externalSource || !externalUrl) {
+if (!isExternalNote(entry)) {
   throw new Error("Una tarjeta externa de Notas requiere fuente y URL validadas.")
 }
+
+const { externalSource } = entry.data
+const destination = getNoteDestination(entry)
 ---
 
 <article
@@ -28,10 +31,10 @@ if (entry.data.kind !== "external" || !externalSource || !externalUrl) {
 >
   <a
     class="note-card__link"
-    href={externalUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={`Abrir artículo externo: ${entry.data.title} — se abre en una pestaña nueva`}
+    href={destination.href}
+    target={destination.target}
+    rel={destination.rel}
+    aria-label={destination.ariaLabel}
   >
     <div class="note-card__topline">
       <span>{entry.data.archiveNumber}</span>

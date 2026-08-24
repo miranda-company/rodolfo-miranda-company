@@ -1,7 +1,7 @@
 ---
 import { getEntries, render, type CollectionEntry } from "astro:content"
 import { isEditorialMedia, MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
-import { getNoteHref, isEditorialNote, isExternalNote } from "../lib/notes"
+import { getNoteDestination, isEditorialNote } from "../lib/notes"
 import "../styles/media-detail.css"
 import "../styles/media-shared.css"
 import EditorialDetailLayout from "./EditorialDetailLayout.astro"
@@ -112,23 +112,23 @@ const isProvisional = entry.data.editorialState === "provisional"
       {
         relatedNotes.length > 0 ? (
           <ol>
-            {relatedNotes.map((note) => (
-              <li>
-                <a
-                  href={getNoteHref(note)}
-                  target={isExternalNote(note) ? "_blank" : undefined}
-                  rel={isExternalNote(note) ? "noopener noreferrer" : undefined}
-                  aria-label={
-                    isExternalNote(note)
-                      ? `${note.data.title} — artículo externo, se abre en una pestaña nueva`
-                      : undefined
-                  }
-                >
-                  {note.data.title}
-                  {isExternalNote(note) && <span aria-hidden="true"> ↗</span>}
-                </a>
-              </li>
-            ))}
+            {relatedNotes.map((note) => {
+              const destination = getNoteDestination(note)
+
+              return (
+                <li>
+                  <a
+                    href={destination.href}
+                    target={destination.target}
+                    rel={destination.rel}
+                    aria-label={destination.ariaLabel}
+                  >
+                    {note.data.title}
+                    {destination.external && <span aria-hidden="true"> ↗</span>}
+                  </a>
+                </li>
+              )
+            })}
           </ol>
         ) : (
           <p>Conexiones pendientes.</p>

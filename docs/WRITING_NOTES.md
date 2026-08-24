@@ -12,7 +12,7 @@ otro sitio. Las plantillas omiten `fixture`, que vale `false` por defecto. Sigue
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
    `/notas/sistemas-que-respiran`.
 2. Asigna un `archiveNumber` único con el formato `N.000`. El próximo número disponible para una
-   nota nueva es `N.004`; `N.999` permanece reservado para posibles verificaciones técnicas y no
+   nota nueva es `N.008`; `N.999` permanece reservado para posibles verificaciones técnicas y no
    debe usarse en contenido editorial.
 3. Elige el estado de madurez que describe honestamente el texto:
    - `semilla`: apunte inicial que todavía puede cambiar de forma;
@@ -91,7 +91,7 @@ summary: "Descripción breve para la tarjeta."
 publishedAt: 2026-08-24
 updatedAt: 2026-08-24
 state: "perenne"
-archiveNumber: "N.004"
+archiveNumber: "N.008"
 kind: "external"
 cardFormat: "compact"
 externalSource: "Nombre de la publicación"
@@ -112,6 +112,8 @@ Reglas importantes:
 - `externalSource` es el nombre visible del medio, revista, blog o plataforma de origen.
 - `cardFormat` debe ser `compact`. La tarjeta externa es deliberadamente sencilla y no acepta
   `coverImage` ni `coverAlt`.
+- El título de una tarjeta externa usa un `h3`; las tarjetas de notas locales conservan su `h2`.
+  Esta diferencia pertenece al componente y no requiere metadata adicional.
 - Conserva `relatedNotes` y `relatedLinks` vacíos porque la entrada no tiene una página local donde
   mostrar esas conexiones.
 - `state` y `tags` siguen alimentando los filtros de `/notas`. `perenne` es un valor razonable para
@@ -124,6 +126,10 @@ Reglas importantes:
 
 Los artículos externos cuentan como publicaciones visibles en `/notas` y en las cifras de la
 portada, pero su URL externa no se incorpora al sitemap del sitio.
+
+La colección publicada contiene actualmente cuatro artículos externos de Eloquent, identificados
+como `N.004`–`N.007`. Por eso, `N.008` es el siguiente número libre tanto para una nota local como
+para otro artículo externo.
 
 ## Markdown o MDX
 
