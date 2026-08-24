@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import { formatDottedDate, toDateValue } from "../lib/dates"
+import { getNoteHref, isExternalNote } from "../lib/notes"
 
 interface Props {
   entries: CollectionEntry<"notas">[]
@@ -13,17 +14,38 @@ const { entries, fragmentTargets = false, detailLinks = false } = Astro.props
 
 <ol class="latest-notes" aria-label="Últimas tres notas">
   {
-    entries.map((entry) => (
-      <li
-        id={fragmentTargets ? entry.id : undefined}
-        class={fragmentTargets ? "fragment-target" : undefined}
-        tabindex={fragmentTargets ? "-1" : undefined}
-      >
-        <time datetime={toDateValue(entry.data.publishedAt)}>
-          {formatDottedDate(entry.data.publishedAt)}
-        </time>
-        <a href={detailLinks ? "/notas/" + entry.id : "/notas#" + entry.id}>{entry.data.title}</a>
-      </li>
-    ))
+    entries.map((entry) => {
+      const external = isExternalNote(entry)
+      const href = external
+        ? getNoteHref(entry)
+        : detailLinks
+          ? `/notas/${entry.id}`
+          : `/notas#${entry.id}`
+
+      return (
+        <li
+          id={fragmentTargets ? entry.id : undefined}
+          class={fragmentTargets ? "fragment-target" : undefined}
+          tabindex={fragmentTargets ? "-1" : undefined}
+        >
+          <time datetime={toDateValue(entry.data.publishedAt)}>
+            {formatDottedDate(entry.data.publishedAt)}
+          </time>
+          <a
+            href={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            aria-label={
+              external
+                ? `${entry.data.title} — artículo externo, se abre en una pestaña nueva`
+                : undefined
+            }
+          >
+            {entry.data.title}
+            {external && <span aria-hidden="true"> ↗</span>}
+          </a>
+        </li>
+      )
+    })
   }
 </ol>

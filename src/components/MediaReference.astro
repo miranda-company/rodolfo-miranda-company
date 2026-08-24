@@ -1,7 +1,7 @@
 ---
 import { getEntries, render, type CollectionEntry } from "astro:content"
 import { isEditorialMedia, MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
-import { isEditorialNote } from "../lib/notes"
+import { getNoteHref, isEditorialNote, isExternalNote } from "../lib/notes"
 import "../styles/media-detail.css"
 import "../styles/media-shared.css"
 import EditorialDetailLayout from "./EditorialDetailLayout.astro"
@@ -114,7 +114,19 @@ const isProvisional = entry.data.editorialState === "provisional"
           <ol>
             {relatedNotes.map((note) => (
               <li>
-                <a href={`/notas/${note.id}`}>{note.data.title}</a>
+                <a
+                  href={getNoteHref(note)}
+                  target={isExternalNote(note) ? "_blank" : undefined}
+                  rel={isExternalNote(note) ? "noopener noreferrer" : undefined}
+                  aria-label={
+                    isExternalNote(note)
+                      ? `${note.data.title} — artículo externo, se abre en una pestaña nueva`
+                      : undefined
+                  }
+                >
+                  {note.data.title}
+                  {isExternalNote(note) && <span aria-hidden="true"> ↗</span>}
+                </a>
               </li>
             ))}
           </ol>

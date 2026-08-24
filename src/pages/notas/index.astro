@@ -1,5 +1,6 @@
 ---
 import NoteCard from "../../components/NoteCard.astro"
+import ExternalNoteCard from "../../components/ExternalNoteCard.astro"
 import PageShell from "../../components/PageShell.astro"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { formatDottedDate } from "../../lib/dates"
@@ -129,7 +130,15 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
     </div>
 
     <section class="note-garden" aria-label="Jardín de notas" data-note-garden>
-      {notes.map((entry) => <NoteCard entry={entry} />)}
+      {
+        notes.map((entry) =>
+          entry.data.kind === "external" ? (
+            <ExternalNoteCard entry={entry} />
+          ) : (
+            <NoteCard entry={entry} />
+          ),
+        )
+      }
     </section>
 
     <div class="note-empty" data-note-empty hidden>

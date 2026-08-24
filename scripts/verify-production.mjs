@@ -69,12 +69,18 @@ const readRoute = (route) =>
   readFile(resolve(dist, route === "/" ? "index.html" : `.${route}/index.html`), "utf8")
 const countCards = (html, marker) =>
   html.match(new RegExp(`<[a-z][^>]*\\b${marker}\\b`, "g"))?.length ?? 0
+const countAttributeValue = (html, attribute, value) =>
+  html.match(new RegExp(`<[a-z][^>]*\\b${attribute}="${value}"`, "g"))?.length ?? 0
 
 const notesHtml = await readRoute("/notas")
 const mediaHtml = await readRoute("/mediateca")
 const portfolioHtml = await readRoute("/portafolio")
 
-assert.equal(countCards(notesHtml, "data-note-card"), 3, "Producción debe contener tres Notas.")
+assert.equal(
+  countAttributeValue(notesHtml, "data-note-kind", "note"),
+  3,
+  "Producción debe conservar las tres Notas locales.",
+)
 assert.equal(
   countCards(mediaHtml, "data-media-card"),
   3,

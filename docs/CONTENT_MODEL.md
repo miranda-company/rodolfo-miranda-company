@@ -11,7 +11,9 @@ Markdown and MDX entries share one validated schema:
 - `publishedAt` and `updatedAt`: coerced dates;
 - `state`: `semilla`, `en-crecimiento`, or `perenne`;
 - `archiveNumber`: a stable `N.###` identifier;
+- `kind`: `note` (default) or `external`;
 - `cardFormat`: `compact`, `standard`, `visual`, or `featured`;
+- `externalUrl` and `externalSource`: required together for `kind: external`;
 - `coverImage`: an optional local image for the index card;
 - `coverAlt`: required meaningful alternative text whenever `coverImage` is set;
 - `tags`: an optional array that defaults to empty;
@@ -31,7 +33,7 @@ retained as future-facing metadata but currently uses the same presentation as
 a regular non-compact card. Renaming an entry from `.md` to `.mdx` preserves its
 content ID, slug, and public route.
 
-Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
+Every visible local Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use
 `updatedAt` descending, with `archiveNumber` as the deterministic tie-breaker.
 `relatedNotes` stores note IDs and resolves their current titles and routes;
@@ -39,6 +41,14 @@ The default index order and circular previous/next navigation both use
 begins with `/`. Empty Markdown bodies render an interface-only editorial state
 without storing fabricated prose in the content file. Both formats render
 through `render(entry)` and the same `NoteArticle.astro` component.
+
+`kind: external` is the intentional exception to the local reading layout. It
+requires an HTTPS `externalUrl`, a visible `externalSource`, and
+`cardFormat: compact`; it rejects cover images and outgoing connection metadata.
+`ExternalNoteCard.astro` opens the source URL in a new tab with an explicit
+accessible label and `noopener noreferrer`. External entries remain available
+to index filters, sorting, counts and optional homepage previews, but are
+excluded from `/notas/[slug]`, previous/next navigation and the sitemap.
 
 Ordinary notes should remain `.md`; MDX is reserved for approved Astro content
 components. `VideoEmbed.astro` allowlists YouTube and Vimeo. It validates IDs,

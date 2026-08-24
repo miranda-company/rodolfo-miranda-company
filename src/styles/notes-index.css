@@ -355,6 +355,17 @@
   margin-top: 26px;
 }
 
+.note-card--external h2 {
+  margin-top: 26px;
+}
+
+.note-card__external-label {
+  color: var(--blue);
+  font: 9px/1 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
 .note-card:hover h2,
 .note-card:focus-within h2 {
   color: var(--blue);
@@ -394,6 +405,16 @@
 .note-card__date {
   color: var(--graphite);
   font-size: 8px;
+  white-space: nowrap;
+}
+
+.note-card__external-source {
+  overflow: hidden;
+  color: var(--graphite);
+  font: 8px/1.2 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 

@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro"
 import { getVisibleSpanishMedia } from "../lib/media"
-import { getVisibleSpanishNotes } from "../lib/notes"
+import { getVisibleSpanishNotes, isExternalNote } from "../lib/notes"
 import { getVisibleSpanishProjects } from "../lib/portfolio"
 import { SITE_ORIGIN } from "../lib/site"
 
@@ -36,6 +36,7 @@ export const GET: APIRoute = async ({ site }) => {
       (current, date) => (!current || date.getTime() > current.getTime() ? date : current),
       undefined,
     )
+  const localNotes = notes.filter((entry) => !isExternalNote(entry))
 
   const entries: SitemapEntry[] = [
     {
@@ -48,7 +49,7 @@ export const GET: APIRoute = async ({ site }) => {
     },
     { path: "/yo" },
     { path: "/notas", updatedAt: latest(notes.map((entry) => entry.data.updatedAt)) },
-    ...notes.map((entry) => ({ path: `/notas/${entry.id}`, updatedAt: entry.data.updatedAt })),
+    ...localNotes.map((entry) => ({ path: `/notas/${entry.id}`, updatedAt: entry.data.updatedAt })),
     { path: "/mediateca", updatedAt: latest(media.map((entry) => entry.data.updatedAt)) },
     ...media.map((entry) => ({ path: `/mediateca/${entry.id}`, updatedAt: entry.data.updatedAt })),
     { path: "/portafolio", updatedAt: latest(projects.map((entry) => entry.data.updatedAt)) },

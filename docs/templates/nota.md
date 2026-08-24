@@ -5,6 +5,7 @@ publishedAt: YYYY-MM-DD
 updatedAt: YYYY-MM-DD
 state: "semilla"
 archiveNumber: "N.000"
+kind: "note"
 cardFormat: "standard"
 # coverImage: "../../assets/images/notas/slug/portada.jpg"
 # coverAlt: "Descripción accesible de la imagen de tarjeta"

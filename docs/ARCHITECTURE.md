@@ -91,6 +91,13 @@ keyboard order. The layout recalculates after filtering, sorting, font loading,
 image loading and responsive resizing; without JavaScript it falls back to the
 regular CSS Grid layout.
 
+Notas supports two validated destinations. Ordinary `kind: note` entries use
+`NoteCard.astro` and generate local detail routes. `kind: external` entries use
+the compact `ExternalNoteCard.astro`, open their HTTPS source in a new tab, and
+never generate local detail or sitemap URLs. Shared helpers in `src/lib/notes.ts`
+keep index visibility separate from local-route eligibility so external cards
+can still participate in sorting, filtering, counts and homepage previews.
+
 The root token layer keeps the original palette names for authored artwork and
 decorative compositions, then maps interface meaning onto semantic roles:
 `--surface`, `--surface-container`, `--on-surface`,

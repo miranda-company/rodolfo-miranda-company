@@ -25,6 +25,14 @@ export function isEditorialNote(entry: CollectionEntry<"notas">) {
   return !entry.data.fixture
 }
 
+export function isExternalNote(entry: CollectionEntry<"notas">) {
+  return entry.data.kind === "external"
+}
+
+export function getNoteHref(entry: CollectionEntry<"notas">) {
+  return entry.data.externalUrl ?? `/notas/${entry.id}`
+}
+
 export async function getVisibleSpanishNotes(includeDrafts: boolean) {
   return (await getCollection("notas"))
     .filter(
@@ -34,6 +42,10 @@ export async function getVisibleSpanishNotes(includeDrafts: boolean) {
         entry.data.language === "es",
     )
     .sort(compareNotesByRecent)
+}
+
+export async function getRoutableSpanishNotes(includeDrafts: boolean) {
+  return (await getVisibleSpanishNotes(includeDrafts)).filter((entry) => !isExternalNote(entry))
 }
 
 export function hasEditorialNoteBody(entry: CollectionEntry<"notas">) {

@@ -1,11 +1,12 @@
 # Escribir notas
 
-Las notas se guardan como archivos Markdown o MDX dentro de `src/content/notas/`. Ambos formatos
-utilizan la misma plantilla de lectura; `cardFormat` solo cambia su presentación en el índice.
+Las notas se guardan como archivos Markdown o MDX dentro de `src/content/notas/`. Las entradas
+locales de ambos formatos utilizan la misma plantilla de lectura; las publicaciones externas son
+tarjetas de enlace sin ruta de detalle. `cardFormat` solo cambia la presentación en el índice.
 
-Usa `docs/templates/nota.md` para una nota normal y `docs/templates/nota-mdx.mdx` cuando necesites
-un componente aprobado. Ambas plantillas están pensadas para notas genuinas y omiten `fixture`,
-que vale `false` por defecto. Sigue estas pautas:
+Usa `docs/templates/nota.md` para una nota normal, `docs/templates/nota-mdx.mdx` cuando necesites
+un componente aprobado y `docs/templates/nota-externa.md` para enlazar un artículo publicado en
+otro sitio. Las plantillas omiten `fixture`, que vale `false` por defecto. Sigue estas pautas:
 
 1. Nombra el archivo con un _slug_ breve y seguro para URL, en minúsculas, sin acentos y con
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
@@ -77,6 +78,52 @@ Una etiqueta que exista en el contenido pero no en ese array sigue siendo metada
 pero no tendrá un botón propio en la barra. Si renombras un tema, actualiza tanto el array como
 todas las entradas que lo utilizan; de lo contrario, el botón devolverá cero resultados para esas
 notas.
+
+## Artículos publicados en otros sitios
+
+Una publicación externa vive dentro de `src/content/notas/` para poder aparecer, ordenarse y
+filtrarse en el jardín, pero no genera una página `/notas/<slug>`. Su tarjeta abre directamente la
+URL original en una pestaña nueva. Usa `docs/templates/nota-externa.md` y configura:
+
+```yaml
+title: "Título del artículo"
+summary: "Descripción breve para la tarjeta."
+publishedAt: 2026-08-24
+updatedAt: 2026-08-24
+state: "perenne"
+archiveNumber: "N.004"
+kind: "external"
+cardFormat: "compact"
+externalSource: "Nombre de la publicación"
+externalUrl: "https://publicacion.example/articulo"
+tags:
+  - "Diseño"
+relatedNotes: []
+relatedLinks: []
+featured: false
+draft: true
+language: "es"
+```
+
+Reglas importantes:
+
+- `kind: "external"` activa la tarjeta externa y evita que Astro genere una ruta de detalle local.
+- `externalUrl` es obligatoria, debe ser una URL completa y usar HTTPS.
+- `externalSource` es el nombre visible del medio, revista, blog o plataforma de origen.
+- `cardFormat` debe ser `compact`. La tarjeta externa es deliberadamente sencilla y no acepta
+  `coverImage` ni `coverAlt`.
+- Conserva `relatedNotes` y `relatedLinks` vacíos porque la entrada no tiene una página local donde
+  mostrar esas conexiones.
+- `state` y `tags` siguen alimentando los filtros de `/notas`. `perenne` es un valor razonable para
+  un artículo ya publicado, pero puedes elegir el estado editorial que corresponda.
+- `featured: true` permite que el artículo aparezca entre las últimas notas de la portada; también
+  allí se abrirá en una pestaña nueva.
+- Mientras preparas la tarjeta, usa `draft: true`. Cambia a `false` cuando el título, el resumen, la
+  fuente y la URL estén revisados.
+- No escribas cuerpo Markdown debajo del frontmatter: no se publica una página de lectura local.
+
+Los artículos externos cuentan como publicaciones visibles en `/notas` y en las cifras de la
+portada, pero su URL externa no se incorpora al sitemap del sitio.
 
 ## Markdown o MDX
 

@@ -22,7 +22,10 @@ const notas = defineCollection({
         updatedAt: z.coerce.date(),
         state: z.enum(["semilla", "en-crecimiento", "perenne"]),
         archiveNumber: z.string().regex(/^N\.\d{3}$/),
+        kind: z.enum(["note", "external"]).default("note"),
         cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
+        externalUrl: z.url().optional(),
+        externalSource: z.string().min(1).optional(),
         coverImage: image().optional(),
         coverAlt: z.string().min(1).optional(),
         tags: z.array(z.string().min(1)).default([]),
@@ -42,6 +45,64 @@ const notas = defineCollection({
         translationKey,
       })
       .superRefine((entry, context) => {
+        if (entry.kind === "external") {
+          if (!entry.externalUrl) {
+            context.addIssue({
+              code: "custom",
+              message: "Un artículo externo de Notas requiere externalUrl.",
+              path: ["externalUrl"],
+            })
+          }
+
+          if (!entry.externalSource) {
+            context.addIssue({
+              code: "custom",
+              message: "Un artículo externo de Notas requiere externalSource.",
+              path: ["externalSource"],
+            })
+          }
+
+          if (entry.externalUrl && !entry.externalUrl.startsWith("https://")) {
+            context.addIssue({
+              code: "custom",
+              message: "La URL de un artículo externo debe usar HTTPS.",
+              path: ["externalUrl"],
+            })
+          }
+
+          if (entry.cardFormat !== "compact") {
+            context.addIssue({
+              code: "custom",
+              message: "Un artículo externo de Notas debe usar cardFormat: compact.",
+              path: ["cardFormat"],
+            })
+          }
+
+          if (entry.coverImage || entry.coverAlt) {
+            context.addIssue({
+              code: "custom",
+              message: "Las tarjetas de artículos externos no utilizan imagen de portada.",
+              path: [entry.coverImage ? "coverImage" : "coverAlt"],
+            })
+          }
+
+          if (entry.relatedNotes.length > 0 || entry.relatedLinks.length > 0) {
+            context.addIssue({
+              code: "custom",
+              message: "Un artículo externo no tiene página de detalle para mostrar conexiones.",
+              path: [entry.relatedNotes.length > 0 ? "relatedNotes" : "relatedLinks"],
+            })
+          }
+        }
+
+        if (entry.kind === "note" && (entry.externalUrl || entry.externalSource)) {
+          context.addIssue({
+            code: "custom",
+            message: "externalUrl y externalSource solo pertenecen a entradas kind: external.",
+            path: [entry.externalUrl ? "externalUrl" : "externalSource"],
+          })
+        }
+
         if (entry.coverImage && !entry.coverAlt) {
           context.addIssue({
             code: "custom",
