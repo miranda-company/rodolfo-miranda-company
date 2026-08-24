@@ -18,12 +18,17 @@ que vale `false` por defecto. Sigue estas pautas:
    - `en-crecimiento`: nota desarrollada que sigue incorporando conexiones;
    - `perenne`: estructura estable que permanece abierta a ajustes.
 4. Elige un formato para la tarjeta del índice: `compact`, `standard`, `visual` o `featured`.
-   Este valor no modifica la página de lectura. Todas las tarjetas salvo `compact` muestran un
-   placeholder neutro mientras no tengan imagen. `featured` se conserva para una futura variante
-   visual, pero por ahora se presenta igual que una tarjeta normal no compacta.
-5. Para sustituir el placeholder, guarda la imagen en `src/assets/images/notas/<slug>/` y añade
-   `coverImage` con la ruta local y un `coverAlt` descriptivo. Si se define una imagen sin texto
+   Este valor no modifica la página de lectura ni decide si aparece una imagen. `featured` se
+   conserva para una futura variante visual, pero por ahora se presenta igual que una tarjeta
+   normal no compacta.
+5. La imagen de tarjeta es opcional. Para añadirla, guarda el archivo en
+   `src/assets/images/notas/<slug>/` y configura `coverImage` con la ruta local y un `coverAlt`
+   descriptivo. Las entradas de ejemplo incluyen ambos campos comentados: elimina `#` al principio
+   de las dos líneas y sustituye la ruta y la descripción. Sin `coverImage`, la tarjeta se presenta
+   como una tarjeta de texto sin reservar un espacio vacío. Si se define una imagen sin texto
    alternativo, la validación falla.
+   La portada ocupa todo el ancho disponible de la tarjeta y conserva su proporción natural; no se
+   recorta ni se fuerza a una altura fija.
 6. Añade etiquetas breves y consistentes en `tags`. Alimentan los filtros del jardín.
 7. Usa en `relatedNotes` los IDs de otras notas, es decir, sus nombres de archivo sin `.md` o
    `.mdx`.

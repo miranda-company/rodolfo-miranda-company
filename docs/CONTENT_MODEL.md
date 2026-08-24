@@ -23,11 +23,13 @@ Markdown and MDX entries share one validated schema:
 - the Markdown or MDX body.
 
 `cardFormat` controls presentation in the garden without changing hierarchy,
-editorial meaning, or URL. Every non-compact card shows a neutral image
-placeholder until `coverImage` is supplied; any card format displays the local
-cover when one is configured. `featured` is retained as future-facing metadata
-but currently uses the same presentation as a regular non-compact card. Renaming
-an entry from `.md` to `.mdx` preserves its content ID, slug, and public route.
+editorial meaning, URL, or whether an image appears. A card displays a local
+cover only when `coverImage` is configured; otherwise it renders as text without
+reserving an empty image area. Configured covers fill the card width and retain
+their natural aspect ratio rather than using a fixed-height crop. `featured` is
+retained as future-facing metadata but currently uses the same presentation as
+a regular non-compact card. Renaming an entry from `.md` to `.mdx` preserves its
+content ID, slug, and public route.
 
 Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use

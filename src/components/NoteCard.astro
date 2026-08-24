@@ -10,7 +10,6 @@ interface Props {
 const { entry } = Astro.props
 const tags = entry.data.tags.slice(0, 2)
 const coverImage = entry.data.coverImage
-const hasImageArea = Boolean(coverImage) || entry.data.cardFormat !== "compact"
 ---
 
 <article
@@ -30,20 +29,16 @@ const hasImageArea = Boolean(coverImage) || entry.data.cardFormat !== "compact"
     aria-label={`Abrir nota: ${entry.data.title}`}
   >
     {
-      hasImageArea && (
-        <div class:list={["note-card__image", !coverImage && "is-placeholder"]}>
-          {coverImage ? (
-            <img
-              src={coverImage.src}
-              width={coverImage.width}
-              height={coverImage.height}
-              alt={entry.data.coverAlt ?? ""}
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <span aria-hidden="true">IMAGEN / {entry.data.archiveNumber}</span>
-          )}
+      coverImage && (
+        <div class="note-card__image">
+          <img
+            src={coverImage.src}
+            width={coverImage.width}
+            height={coverImage.height}
+            alt={entry.data.coverAlt ?? ""}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       )
     }

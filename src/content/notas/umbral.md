@@ -6,6 +6,8 @@ updatedAt: 2026-07-31
 state: "en-crecimiento"
 archiveNumber: "N.001"
 cardFormat: "featured"
+coverImage: "../../assets/images/notas/flower-002.jpg"
+coverAlt: "Descripción accesible de la imagen de portada"
 tags:
   - "Sistemas"
   - "Diseño"

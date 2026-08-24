@@ -6,6 +6,8 @@ updatedAt: 2026-07-18
 state: "en-crecimiento"
 archiveNumber: "N.002"
 cardFormat: "visual"
+# coverImage: "../../assets/images/notas/margen/portada.jpg"
+# coverAlt: "Descripción accesible de la imagen de portada"
 tags:
   - "Diseño"
   - "Cultura digital"

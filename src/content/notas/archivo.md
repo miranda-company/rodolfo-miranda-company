@@ -6,6 +6,8 @@ updatedAt: 2026-06-29
 state: "en-crecimiento"
 archiveNumber: "N.003"
 cardFormat: "standard"
+# coverImage: "../../assets/images/notas/archivo/portada.jpg"
+# coverAlt: "Descripción accesible de la imagen de portada"
 tags:
   - "Sistemas"
   - "Cultura digital"
