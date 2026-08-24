@@ -125,6 +125,17 @@ a {
   color: var(--ink);
 }
 
+.kicker {
+  margin: 0 0 17px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.045em;
+}
+
+.page-intro {
+  padding: 40px 0;
+}
+
 #indice,
 #ahora,
 .fragment-target {
@@ -724,25 +735,25 @@ a.portfolio-latest:focus-visible {
   outline-offset: 3px;
 }
 
-.archive-index-main {
+.page-main--with-back {
   padding-top: var(--backlink-block-offset);
 }
 
-.index-back {
+.page-back {
   display: inline-block;
-  margin-top: 0;
+  margin: 0;
   color: var(--ink);
   font: 10px/1.4 var(--font-mono);
   letter-spacing: 0.045em;
   text-underline-offset: 4px;
 }
 
-.index-back:hover,
-.index-back:focus-visible {
+.page-back:hover,
+.page-back:focus-visible {
   color: var(--blue);
 }
 
-.index-back:focus-visible {
+.page-back:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
 }

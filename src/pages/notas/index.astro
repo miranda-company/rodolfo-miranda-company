@@ -17,11 +17,11 @@ const noteCountLabel = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}
   title="Notas"
   description="Ideas en proceso, conexiones y apuntes que cambian con el tiempo."
 >
-  <PageShell pageClass="notes-page" mainClass="notes-main archive-index-main">
-    <a class="index-back" href="/#indice">← Volver al índice</a>
-    <section class="notes-intro" aria-labelledby="notes-title">
+  <PageShell pageClass="notes-page" mainClass="notes-main page-main--with-back">
+    <a class="page-back" href="/#indice">← Volver al índice</a>
+    <section class="page-intro notes-intro" aria-labelledby="notes-title">
       <div class="notes-intro__copy">
-        <p class="notes-kicker">Ideas y pensamientos</p>
+        <p class="kicker notes-kicker">Ideas y pensamientos</p>
         <h1 id="notes-title">Notas</h1>
         <p class="notes-intro__description">
           Ideas en proceso, conexiones y apuntes que cambian con el tiempo.

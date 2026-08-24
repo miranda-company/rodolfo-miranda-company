@@ -2,8 +2,7 @@
   padding-bottom: 76px;
 }
 
-.portfolio-kicker,
-.portfolio-header__meta,
+.portfolio-intro__meta,
 .portfolio-card__archive,
 .portfolio-card__meta,
 .portfolio-card__action,
@@ -15,23 +14,15 @@
   letter-spacing: 0.045em;
 }
 
-.portfolio-header {
-  padding: 46px 0 43px;
+.portfolio-intro {
   border-bottom: 1px solid var(--line);
 }
 
-.portfolio-kicker {
-  margin: 0 0 17px;
-  color: var(--blue);
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.portfolio-header h1 {
+.portfolio-intro h1 {
   margin: 0;
 }
 
-.portfolio-header__meta {
+.portfolio-intro__meta {
   margin: 24px 0 0;
   color: var(--graphite);
   font-size: var(--type-metadata-size);
@@ -314,11 +305,7 @@
     padding-bottom: 50px;
   }
 
-  .portfolio-header {
-    padding: 31px 0 29px;
-  }
-
-  .portfolio-header__meta {
+  .portfolio-intro__meta {
     margin-top: 17px;
   }
 

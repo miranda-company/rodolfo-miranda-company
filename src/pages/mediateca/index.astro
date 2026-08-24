@@ -32,20 +32,20 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
   title="Mediateca"
   description="Libros, artículos, herramientas y referencias que acompañan el trabajo."
 >
-  <PageShell pageClass="media-page" mainClass="media-main archive-index-main">
-    <a class="index-back" href="/#indice">← Volver al índice</a>
-    <section class="media-intro" aria-labelledby="media-title">
+  <PageShell pageClass="media-page" mainClass="media-main page-main--with-back">
+    <a class="page-back" href="/#indice">← Volver al índice</a>
+    <section class="page-intro mediateca-intro" aria-labelledby="media-title">
       <div>
-        <p class="media-kicker">03 / Inspiración y cosicas buenas</p>
+        <p class="kicker media-kicker">03 / Inspiración y cosicas buenas</p>
         <h1 id="media-title">Mediateca</h1>
-        <p class="media-intro__description">
+        <p class="mediateca-intro__description">
           Libros, artículos, herramientas y referencias que acompañan el trabajo.
         </p>
-        <p class="media-intro__meta">
+        <p class="mediateca-intro__meta">
           {String(entries.length).padStart(2, "0")} REFERENCIAS · ACTUALIZADO {lastUpdatedLabel}
         </p>
       </div>
-      <div class="media-intro__spines" aria-hidden="true">
+      <div class="mediateca-intro__spines" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span>
         <i>03.{String(entries.length).padStart(2, "0")} / MEDIOS EN RELACIÓN</i>
       </div>

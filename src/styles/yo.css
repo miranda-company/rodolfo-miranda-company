@@ -2,7 +2,6 @@
   --page-shell-bottom: 72px;
 }
 
-.yo-kicker,
 .yo-section__heading > p,
 .yo-portrait figcaption,
 .career-timeline__period,
@@ -14,27 +13,21 @@
   letter-spacing: 0.045em;
 }
 
-.yo-hero {
+.yo-intro {
   display: grid;
   min-height: 286px;
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
   gap: 24px 64px;
   align-items: end;
   border-bottom: 1px solid var(--line);
-  padding: 62px 0 44px;
 }
 
-.yo-kicker {
-  margin: 0 0 17px;
-  font-size: 12px;
-}
-
-.yo-hero h1 {
+.yo-intro h1 {
   max-width: 980px;
   margin: 0;
 }
 
-.yo-hero__positioning {
+.yo-intro__positioning {
   max-width: 660px;
   margin: 29px 0 0;
   font-family: var(--font-sans);
@@ -358,7 +351,7 @@
 }
 
 @media (max-width: 1199px) {
-  .yo-hero {
+  .yo-intro {
     grid-template-columns: minmax(0, 1fr) 330px;
     gap: 24px 35px;
   }
@@ -426,17 +419,16 @@
     --page-shell-bottom: 50px;
   }
 
-  .yo-hero {
+  .yo-intro {
     display: block;
     min-height: 0;
-    padding: 30px 0 23px;
   }
 
-  .yo-hero h1 {
+  .yo-intro h1 {
     max-width: 340px;
   }
 
-  .yo-hero__positioning {
+  .yo-intro__positioning {
     max-width: none;
     margin: 16px 0 27px;
   }

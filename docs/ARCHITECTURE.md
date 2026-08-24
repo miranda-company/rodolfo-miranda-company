@@ -45,6 +45,21 @@ Redirect-only URLs do not render this structure. `.page-shell` owns the viewport
 responsive gutters, background, technical pattern, overflow and isolation;
 `.page-main` supplies common width and stacking behavior.
 
+Page introductions use a shared semantic and styling contract. Each is a
+labelled `<section>` with the shared `.page-intro` class plus a route-specific
+`*-intro` class: `.notes-intro`, `.mediateca-intro`, `.portfolio-intro`, or
+`.yo-intro`. The shared class owns the `40px 0` vertical padding;
+route-specific classes only define the internal composition and visual elements
+unique to that page. Editorial detail pages add `.entry-detail-intro` for their
+shared title, summary and metadata arrangement while retaining their collection
+class.
+
+Pages with a return link use `.page-main--with-back` on the main landmark and
+the semantic `.page-back` class on the link itself. Both are global contracts:
+the main modifier owns the shared block offset, while `.page-back` owns the mono
+type, underline, color and focus treatment. Index and editorial detail routes
+must not introduce separate backlink classes or spacing overrides.
+
 ## Shared editorial detail system
 
 `src/components/EditorialDetailLayout.astro` composes `BaseLayout` and

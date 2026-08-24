@@ -27,18 +27,18 @@ const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags)
   title="Portafolio"
   description="Selección curada de proyectos de Rodolfo Miranda Company."
 >
-  <PageShell pageClass="portfolio-page" mainClass="portfolio-main archive-index-main">
-    <a class="index-back" href="/#indice">← Volver al índice</a>
+  <PageShell pageClass="portfolio-page" mainClass="portfolio-main page-main--with-back">
+    <a class="page-back" href="/#indice">← Volver al índice</a>
 
-    <header class="portfolio-header" aria-labelledby="portfolio-title">
-      <p class="portfolio-kicker">Trabajo seleccionado de Rodolfo Miranda</p>
+    <section class="page-intro portfolio-intro" aria-labelledby="portfolio-title">
+      <p class="kicker portfolio-kicker">Trabajo seleccionado de Rodolfo Miranda</p>
       <h1 id="portfolio-title">Portafolio</h1>
-      <p class="portfolio-header__meta">
+      <p class="portfolio-intro__meta">
         {projectCount}
         {includeDrafts ? "PROYECTOS DE DESARROLLO" : "PROYECTOS PUBLICADOS"}
         {lastUpdatedLabel && <> · ACTUALIZADO {lastUpdatedLabel}</>}
       </p>
-    </header>
+    </section>
 
     <section class="portfolio-selection" aria-labelledby="portfolio-selection-title">
       <h2 class="portfolio-controls__title" id="portfolio-selection-title">

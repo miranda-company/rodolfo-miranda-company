@@ -43,6 +43,9 @@ The shared roles below are tokens in `src/styles/global.css`. Elements may have 
 | Standard body       | Instrument Sans Variable | `18px`; `17px` below 768px                   | `1.62`      | Biography, note prose, reference commentary and provisional body copy |
 | Small / supporting  | Instrument Sans Variable | `13px`                                       | `1.4`       | Section explanations and supporting descriptions                      |
 | Mono metadata       | IBM Plex Mono            | `10px`                                       | `1.4`       | Shared hero and record metadata                                       |
+| Kicker              | IBM Plex Mono            | `12px`                                       | `normal`    | Page eyebrow above an archive-index H1                                |
+
+The shared `.kicker` utility in `src/styles/global.css` is the source of truth for page kickers. It sets the mono family, `12px` size, `0.045em` letter spacing and `17px` bottom margin. Use it alongside the route-specific hook when one is useful, for example `class="kicker notes-kicker"`, `class="kicker media-kicker"`, `class="kicker portfolio-kicker"` or `class="kicker yo-kicker"`. The route-specific classes should not duplicate or override the shared typography and spacing unless a documented design requirement calls for a genuine exception.
 
 Dense card copy, display positioning statements, bylines and micro-annotations are distinct roles because their available space or purpose differs. They must have dedicated selectors and must not be implemented with semantic heading elements.
 

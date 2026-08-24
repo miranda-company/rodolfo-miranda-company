@@ -15,15 +15,15 @@ if (!profile) throw new Error("Falta src/content/site/yo.json")
   title={profile.data.hero.name}
   description="Perfil, contexto y trayectoria profesional de Rodolfo Miranda."
 >
-  <PageShell pageClass="yo-page" mainClass="yo-main archive-index-main">
-    <a class="index-back" href="/#indice">← Volver al índice</a>
-    <header class="yo-hero" aria-labelledby="yo-title">
-      <div class="yo-hero__lead">
-        <p class="yo-kicker">{profile.data.hero.label}</p>
+  <PageShell pageClass="yo-page" mainClass="yo-main page-main--with-back">
+    <a class="page-back" href="/#indice">← Volver al índice</a>
+    <section class="page-intro yo-intro" aria-labelledby="yo-title">
+      <div class="yo-intro__lead">
+        <p class="kicker yo-kicker">{profile.data.hero.label}</p>
         <h1 id="yo-title">{profile.data.hero.name}</h1>
-        <p class="yo-hero__positioning">{profile.data.hero.positioning}</p>
+        <p class="yo-intro__positioning">{profile.data.hero.positioning}</p>
       </div>
-    </header>
+    </section>
 
     <section class="yo-section yo-context" aria-labelledby="context-title">
       <div class="yo-section__heading">
