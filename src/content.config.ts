@@ -13,56 +13,67 @@ const linkedParagraph = z.array(linkedSegment).min(1)
 
 const notas = defineCollection({
   loader: glob({ base: "./src/content/notas", pattern: "**/*.{md,mdx}" }),
-  schema: z
-    .object({
-      title: z.string().min(1),
-      summary: z.string().min(1),
-      publishedAt: z.coerce.date(),
-      updatedAt: z.coerce.date(),
-      state: z.enum(["semilla", "en-crecimiento", "perenne"]),
-      archiveNumber: z.string().regex(/^N\.\d{3}$/),
-      cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
-      tags: z.array(z.string().min(1)).default([]),
-      relatedNotes: z.array(reference("notas")).default([]),
-      relatedLinks: z
-        .array(
-          z.object({
-            label: z.string().min(1),
-            href: internalUrl,
-          }),
-        )
-        .default([]),
-      featured: z.boolean().default(false),
-      draft: z.boolean().default(false),
-      fixture: z.boolean().default(false),
-      language,
-      translationKey,
-    })
-    .superRefine((entry, context) => {
-      if (entry.fixture && !entry.draft) {
-        context.addIssue({
-          code: "custom",
-          message: "Una fixture técnica de Notas siempre debe ser borrador.",
-          path: ["draft"],
-        })
-      }
+  schema: ({ image }) =>
+    z
+      .object({
+        title: z.string().min(1),
+        summary: z.string().min(1),
+        publishedAt: z.coerce.date(),
+        updatedAt: z.coerce.date(),
+        state: z.enum(["semilla", "en-crecimiento", "perenne"]),
+        archiveNumber: z.string().regex(/^N\.\d{3}$/),
+        cardFormat: z.enum(["compact", "standard", "visual", "featured"]),
+        coverImage: image().optional(),
+        coverAlt: z.string().min(1).optional(),
+        tags: z.array(z.string().min(1)).default([]),
+        relatedNotes: z.array(reference("notas")).default([]),
+        relatedLinks: z
+          .array(
+            z.object({
+              label: z.string().min(1),
+              href: internalUrl,
+            }),
+          )
+          .default([]),
+        featured: z.boolean().default(false),
+        draft: z.boolean().default(false),
+        fixture: z.boolean().default(false),
+        language,
+        translationKey,
+      })
+      .superRefine((entry, context) => {
+        if (entry.coverImage && !entry.coverAlt) {
+          context.addIssue({
+            code: "custom",
+            message: "Toda imagen de tarjeta de Notas requiere texto alternativo.",
+            path: ["coverAlt"],
+          })
+        }
 
-      if (entry.fixture && entry.archiveNumber !== "N.999") {
-        context.addIssue({
-          code: "custom",
-          message: "La fixture técnica de Notas debe usar el número reservado N.999.",
-          path: ["archiveNumber"],
-        })
-      }
+        if (entry.fixture && !entry.draft) {
+          context.addIssue({
+            code: "custom",
+            message: "Una fixture técnica de Notas siempre debe ser borrador.",
+            path: ["draft"],
+          })
+        }
 
-      if (!entry.fixture && entry.archiveNumber === "N.999") {
-        context.addIssue({
-          code: "custom",
-          message: "N.999 está reservado para la fixture técnica de MDX.",
-          path: ["archiveNumber"],
-        })
-      }
-    }),
+        if (entry.fixture && entry.archiveNumber !== "N.999") {
+          context.addIssue({
+            code: "custom",
+            message: "La fixture técnica de Notas debe usar el número reservado N.999.",
+            path: ["archiveNumber"],
+          })
+        }
+
+        if (!entry.fixture && entry.archiveNumber === "N.999") {
+          context.addIssue({
+            code: "custom",
+            message: "N.999 está reservado para la fixture técnica de MDX.",
+            path: ["archiveNumber"],
+          })
+        }
+      }),
 })
 
 const mediateca = defineCollection({

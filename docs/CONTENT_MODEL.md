@@ -12,6 +12,8 @@ Markdown and MDX entries share one validated schema:
 - `state`: `semilla`, `en-crecimiento`, or `perenne`;
 - `archiveNumber`: a stable `N.###` identifier;
 - `cardFormat`: `compact`, `standard`, `visual`, or `featured`;
+- `coverImage`: an optional local image for the index card;
+- `coverAlt`: required meaningful alternative text whenever `coverImage` is set;
 - `tags`: an optional array that defaults to empty;
 - `relatedNotes`: validated references to other Notas entries;
 - `relatedLinks`: optional labeled internal URLs beginning with `/`;
@@ -21,8 +23,11 @@ Markdown and MDX entries share one validated schema:
 - the Markdown or MDX body.
 
 `cardFormat` controls presentation in the garden without changing hierarchy,
-editorial meaning, or URL. Renaming an entry from `.md` to `.mdx` preserves its
-content ID, slug, and public route.
+editorial meaning, or URL. Every non-compact card shows a neutral image
+placeholder until `coverImage` is supplied; any card format displays the local
+cover when one is configured. `featured` is retained as future-facing metadata
+but currently uses the same presentation as a regular non-compact card. Renaming
+an entry from `.md` to `.mdx` preserves its content ID, slug, and public route.
 
 Every visible Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use

@@ -6,6 +6,8 @@ updatedAt: YYYY-MM-DD
 state: "semilla"
 archiveNumber: "N.000"
 cardFormat: "standard"
+# coverImage: "../../assets/images/notas/slug/portada.jpg"
+# coverAlt: "Descripción accesible de la imagen de tarjeta"
 tags:
   - "Tema"
 relatedNotes: []

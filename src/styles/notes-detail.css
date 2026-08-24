@@ -6,24 +6,6 @@
   letter-spacing: 0.045em;
 }
 
-.connections-notation span {
-  position: absolute;
-  z-index: 2;
-  width: 9px;
-  height: 9px;
-  border: 1px solid var(--blue);
-  border-radius: 50%;
-  background: var(--paper);
-}
-
-.connections-notation i {
-  position: absolute;
-  z-index: 1;
-  height: 1px;
-  background: var(--blue);
-  transform-origin: left;
-}
-
 .note-footer-tags > span,
 .note-meta-tags > span {
   border: 1px solid var(--line);
@@ -87,45 +69,6 @@
 .note-connections {
   border-top: 1px solid var(--line);
   padding-top: 17px;
-}
-
-.connections-notation {
-  position: relative;
-  height: 70px;
-  margin-bottom: 17px;
-}
-
-.connections-notation span:nth-child(1) {
-  top: 8px;
-  left: 3px;
-  background: var(--ochre);
-}
-
-.connections-notation span:nth-child(2) {
-  top: 44px;
-  left: 48%;
-}
-
-.connections-notation span:nth-child(3) {
-  top: 13px;
-  right: 4px;
-  border-color: var(--plum);
-  background: var(--plum);
-}
-
-.connections-notation i:nth-of-type(1) {
-  top: 13px;
-  left: 10px;
-  width: 51%;
-  transform: rotate(25deg);
-}
-
-.connections-notation i:nth-of-type(2) {
-  top: 49px;
-  left: 51%;
-  width: 47%;
-  transform: rotate(-22deg);
-  background: var(--plum);
 }
 
 .note-connections h2 {

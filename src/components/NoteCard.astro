@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content"
 import { formatDottedDate } from "../lib/dates"
 import MaturityMarker from "./MaturityMarker.astro"
-import NoteArtwork from "./NoteArtwork.astro"
 
 interface Props {
   entry: CollectionEntry<"notas">
@@ -10,7 +9,8 @@ interface Props {
 
 const { entry } = Astro.props
 const tags = entry.data.tags.slice(0, 2)
-const artworkVariant = entry.data.archiveNumber.replace("N.", "")
+const coverImage = entry.data.coverImage
+const hasImageArea = Boolean(coverImage) || entry.data.cardFormat !== "compact"
 ---
 
 <article
@@ -30,8 +30,21 @@ const artworkVariant = entry.data.archiveNumber.replace("N.", "")
     aria-label={`Abrir nota: ${entry.data.title}`}
   >
     {
-      (entry.data.cardFormat === "visual" || entry.data.cardFormat === "featured") && (
-        <NoteArtwork variant={artworkVariant} />
+      hasImageArea && (
+        <div class:list={["note-card__image", !coverImage && "is-placeholder"]}>
+          {coverImage ? (
+            <img
+              src={coverImage.src}
+              width={coverImage.width}
+              height={coverImage.height}
+              alt={entry.data.coverAlt ?? ""}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <span aria-hidden="true">IMAGEN / {entry.data.archiveNumber}</span>
+          )}
+        </div>
       )
     }
 

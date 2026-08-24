@@ -18,13 +18,18 @@ que vale `false` por defecto. Sigue estas pautas:
    - `en-crecimiento`: nota desarrollada que sigue incorporando conexiones;
    - `perenne`: estructura estable que permanece abierta a ajustes.
 4. Elige un formato para la tarjeta del índice: `compact`, `standard`, `visual` o `featured`.
-   Este valor no modifica la página de lectura.
-5. Añade etiquetas breves y consistentes en `tags`. Alimentan los filtros del jardín.
-6. Usa en `relatedNotes` los IDs de otras notas, es decir, sus nombres de archivo sin `.md` o
+   Este valor no modifica la página de lectura. Todas las tarjetas salvo `compact` muestran un
+   placeholder neutro mientras no tengan imagen. `featured` se conserva para una futura variante
+   visual, pero por ahora se presenta igual que una tarjeta normal no compacta.
+5. Para sustituir el placeholder, guarda la imagen en `src/assets/images/notas/<slug>/` y añade
+   `coverImage` con la ruta local y un `coverAlt` descriptivo. Si se define una imagen sin texto
+   alternativo, la validación falla.
+6. Añade etiquetas breves y consistentes en `tags`. Alimentan los filtros del jardín.
+7. Usa en `relatedNotes` los IDs de otras notas, es decir, sus nombres de archivo sin `.md` o
    `.mdx`.
-7. Usa `relatedLinks` solo para conexiones internas adicionales. Cada elemento necesita un
+8. Usa `relatedLinks` solo para conexiones internas adicionales. Cada elemento necesita un
    `label` visible y un `href` que empiece por `/`.
-8. Escribe el cuerpo debajo del frontmatter usando Markdown: párrafos, H2, H3, listas, citas,
+9. Escribe el cuerpo debajo del frontmatter usando Markdown: párrafos, H2, H3, listas, citas,
    enlaces, énfasis, código, imágenes, figuras y notas al pie cuando aporten a la lectura.
 
 Una nota genuina no debe usar `fixture: true`. Ese campo no es una categoría editorial ni una
