@@ -11,7 +11,8 @@ que vale `false` por defecto. Sigue estas pautas:
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
    `/notas/sistemas-que-respiran`.
 2. Asigna un `archiveNumber` único con el formato `N.000`. El próximo número disponible para una
-   nota genuina es `N.028`; `N.999` está reservado exclusivamente para la referencia técnica MDX.
+   nota nueva es `N.004`; `N.999` permanece reservado para posibles verificaciones técnicas y no
+   debe usarse en contenido editorial.
 3. Elige el estado de madurez que describe honestamente el texto:
    - `semilla`: apunte inicial que todavía puede cambiar de forma;
    - `en-crecimiento`: nota desarrollada que sigue incorporando conexiones;
@@ -161,24 +162,16 @@ comprobar su tarjeta y su ruta, pero la producción los excluye. Actualiza `upda
 haya un cambio editorial relevante. Cambia a `draft: false` únicamente cuando el contenido y sus
 conexiones estén aprobados para publicación.
 
-## Referencia técnica MDX
+## Ejemplos y plantillas
 
-`src/content/notas/ejemplo-mdx.mdx` conserva una referencia directamente visible de
-`ContentImage`, `ImageCarousel`, `VideoEmbed` y los lenguajes de código admitidos. Incluye dos carruseles para
-comprobar que las instancias funcionan de manera independiente. No es una plantilla para copiar
-sus metadatos: usa
-deliberadamente `fixture: true`, `draft: true` y el número reservado `N.999`. Las notas genuinas
-deben partir de las plantillas de `docs/templates/` y el próximo número editorial continúa siendo
-`N.028`.
+La colección contiene únicamente `umbral`, `margen` y `archivo`. Son ejemplos de contenido y no
+deben confundirse con textos editoriales aprobados. No existe una ruta técnica
+`/notas/ejemplo-mdx`.
 
-En desarrollo, la referencia se abre directamente en `/notas/ejemplo-mdx`, pero no aparece en el
-jardín, los filtros, los conteos, las conexiones editoriales ni la navegación anterior/siguiente.
-Tampoco genera una ruta o artefacto de producción.
-
-Sus vídeos son demostraciones técnicas externas: uno publicado por Google for Developers y otro
-publicado por Vimeo y usado en la documentación de su Player SDK. No pertenecen a Rodolfo ni
-implican su respaldo. Antes de publicar una nota real, sustituye el identificador, el título
-accesible y la leyenda por información editorial verificada.
+Usa `docs/templates/nota.md` y `docs/templates/nota-mdx.mdx` como referencias para crear contenido.
+La plantilla MDX documenta `ContentImage`, `ImageCarousel` y `VideoEmbed` sin añadir una fixture al
+jardín. Antes de publicar una nota real, sustituye todo texto, identificador, imagen, alternativa,
+leyenda y enlace de demostración por información editorial verificada.
 
 ## Revisión local
 

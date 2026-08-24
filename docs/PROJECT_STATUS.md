@@ -23,8 +23,8 @@ aprobación editorial.
 | -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
 | Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 27 entradas ordinarias                                   | 3 entradas: `umbral`, `margen`, `archivo`         |
-| Detalle de Nota      | `/notas/[slug]`      | 27 rutas editoriales y una fixture directa               | Solo las 3 entradas publicadas                    |
+| Notas                | `/notas`             | 3 ejemplos: `umbral`, `margen`, `archivo`                | Los mismos 3 ejemplos                             |
+| Detalle de Nota      | `/notas/[slug]`      | 3 rutas de ejemplo                                       | Las mismas 3 rutas                                |
 | Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `modulor`, `cosas`, `orden`        |
 | Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                 |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
@@ -48,13 +48,13 @@ contenido pendiente, asignar valores únicos y completar su revisión editorial.
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
-| Notas      |                                27 |                      3 | `N.999`, solo ruta directa en desarrollo |
+| Notas      |                                 3 |                      3 | Ninguna                                  |
 | Mediateca  |                                13 |                      3 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 62 rutas canónicas en desarrollo y 17 en un build normal de
-producción, sin contar los aliases de `/biblioteca` ni la página 404. Las tres rutas
-`ejemplo-mdx` se usan para revisar componentes técnicos y no aparecen en
+En total hay 37 rutas canónicas en desarrollo y 17 en un build normal de
+producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos rutas
+`ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes técnicos y no aparecen en
 índices, filtros, conteos, conexiones, navegación anterior/siguiente, portada o
 producción.
 
@@ -116,8 +116,8 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
-- Aprobar la copia de las tres Notas y las tres referencias de Mediateca que se
-  generan en producción.
+- Sustituir o aprobar la copia de los tres ejemplos de Notas y aprobar las tres
+  referencias de Mediateca que se generan en producción.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo

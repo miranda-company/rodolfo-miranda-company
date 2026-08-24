@@ -54,23 +54,16 @@ omit `fixture`; its default is `false`. Validation requires every
 `fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
 technical fixture and rejects `N.999` on an ordinary note.
 
-Development contains 27 ordinary entries: the three non-draft anchors and 24
-draft design entries. `ejemplo-mdx` is one additional, directly reviewable
-technical route. It uses `fixture: true`, `draft: true`, and `N.999`, so it is
-absent from the garden, counts, filters, related-note lists, homepage previews,
-and genuine circular navigation. Production contains only `umbral`, `margen`,
-and `archivo`; it generates no fixture route or artifact. `N.028` remains
-available for the next genuine note.
+Development and production both contain exactly three Notas entries: `umbral`,
+`margen`, and `archivo`. They are dummy examples used by the index, homepage,
+detail layout, filters, connections, and circular navigation. No additional
+draft note or Notas MDX fixture is active. `N.004` is the next available archive
+number if another note is created.
 
-The 24 generated demonstration entries are drafts and must not be treated as
-Rodolfo's approved writing. The external videos inside `ejemplo-mdx` are
-platform-owned technical demonstrations and do not imply Rodolfo's authorship
-or endorsement.
-
-`umbral`, `margen`, and `archivo` remain the three non-draft design anchors used
-by the approved homepage. Their summaries and any article bodies are
-provisional editorial copy that requires Rodolfo's review and approval before
-launch; currently only `umbral` contains a demonstration body.
+The summaries and any article bodies in these three examples are provisional
+editorial copy, not approved writing. Currently only `umbral` contains a
+demonstration body. Reusable Markdown and MDX authoring remains documented in
+the templates without requiring a technical fixture route in the collection.
 
 See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
 and [templates/nota-mdx.mdx](templates/nota-mdx.mdx) for the authoring workflow

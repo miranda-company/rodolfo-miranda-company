@@ -13,8 +13,8 @@ seguir desactivada hasta que se revisen de forma explícita.
 - [x] Aprobar la biografía y la trayectoria de Yo.
 - [x] Integrar el párrafo personal aprobado y retirar su aviso editorial.
 - [x] Retirar las etiquetas de casos pendientes que no publican un enlace.
-- [ ] Revisar y aprobar los resúmenes y cuerpos de `umbral`, `margen` y
-      `archivo`.
+- [ ] Sustituir o aprobar los resúmenes y cuerpos de los tres ejemplos de Notas:
+      `umbral`, `margen` y `archivo`.
 - [ ] Revisar y aprobar los resúmenes, comentarios y cuerpos de `modulor`,
       `cosas` y `orden`.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente

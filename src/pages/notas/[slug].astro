@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import NoteArticle from "../../components/NoteArticle.astro"
-import { getDevelopmentSpanishNoteFixtures, getVisibleSpanishNotes } from "../../lib/notes"
+import { getVisibleSpanishNotes } from "../../lib/notes"
 
 export async function getStaticPaths() {
   const entries = await getVisibleSpanishNotes(import.meta.env.DEV)
 
-  const editorialPaths = entries.map((entry, index) => ({
+  return entries.map((entry, index) => ({
     params: { slug: entry.id },
     props: {
       entry,
@@ -14,16 +14,6 @@ export async function getStaticPaths() {
       nextNote: entries[(index + 1) % entries.length]!,
     },
   }))
-
-  if (!import.meta.env.DEV) return editorialPaths
-
-  const fixtures = await getDevelopmentSpanishNoteFixtures()
-  const fixturePaths = fixtures.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }))
-
-  return [...editorialPaths, ...fixturePaths]
 }
 
 interface Props {

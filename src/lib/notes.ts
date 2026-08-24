@@ -25,10 +25,6 @@ export function isEditorialNote(entry: CollectionEntry<"notas">) {
   return !entry.data.fixture
 }
 
-function isTechnicalNoteFixture(entry: CollectionEntry<"notas">) {
-  return entry.data.fixture
-}
-
 export async function getVisibleSpanishNotes(includeDrafts: boolean) {
   return (await getCollection("notas"))
     .filter(
@@ -36,14 +32,6 @@ export async function getVisibleSpanishNotes(includeDrafts: boolean) {
         isEditorialNote(entry) &&
         (includeDrafts || !entry.data.draft) &&
         entry.data.language === "es",
-    )
-    .sort(compareNotesByRecent)
-}
-
-export async function getDevelopmentSpanishNoteFixtures() {
-  return (await getCollection("notas"))
-    .filter(
-      (entry) => isTechnicalNoteFixture(entry) && entry.data.draft && entry.data.language === "es",
     )
     .sort(compareNotesByRecent)
 }

@@ -175,20 +175,22 @@ Astro generates fenced-code highlighting statically with Shiki and the
 text require no client runtime. Long lines scroll inside the code block rather
 than expanding the page.
 
-The Notas index includes 27 ordinary entries in development and three in a
+The Notas index includes the same three example entries in development and a
 normal production build. Mediateca includes 13 ordinary references in
 development and three (`modulor`, `cosas`, `orden`) in production. Portafolio
 includes 14 ordinary development entries: six published case studies and eight
 draft placeholders. Production includes `syra-coffee`, `bsc`, `minka-icm`,
 `cn-sant-andreu`, `modulab-barcelona`, and `eloquent`.
-Each collection also has an isolated `ejemplo-mdx` technical route in
-development where applicable: one for Notas, one for Mediateca and one for
-Portafolio.
+Mediateca and Portafolio each have an isolated `ejemplo-mdx` technical route in
+development. Notas keeps its reusable MDX components and templates but no
+technical fixture entry.
 
 Central collection helpers separate `fixture: true` entries from genuine
 editorial content. Fixtures stay out of indexes, search, filters, counts,
 homepage previews, related suggestions, previous/next navigation and production.
-Schemas require them to remain drafts and reserve `N.999`, `M.999` and `P.999`.
+Schemas require fixtures to remain drafts and reserve `N.999`, `M.999` and
+`P.999`; the Notas reservation is a validation safeguard rather than an active
+route.
 
 Mediateca uses `editorialState` independently of `draft`. `provisional` controls
 the warning and “Comentario provisional” label; `revisado` removes the warning
@@ -221,15 +223,15 @@ keys so English can be added later without activating `/en/` routes now.
 
 Static paths come from centralized visible-entry helpers. Genuine Notas receive
 circular previous/next props. Portfolio sequence follows `displayOrder`.
-Development appends explicitly typed fixture routes without inserting fixtures
-into editorial navigation; production never appends them.
+Mediateca and Portafolio append explicitly typed fixture routes in development
+without inserting fixtures into editorial navigation; production never appends
+them.
 
-Excluding redirect aliases, development exposes 62 canonical routes: five
-indexes or standalone pages, 27 ordinary Notas plus one note fixture, 13
-Mediateca references plus one media fixture, and 14 ordinary Portfolio entries
-plus one project fixture. A normal production build exposes 17 canonical routes:
-the five standalone routes, three Notas, three Mediateca references, and six
-Portfolio cases.
+Excluding redirect aliases, development exposes 37 canonical routes: five
+indexes or standalone pages, three Notas examples, 13 Mediateca references plus
+one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
+A normal production build exposes 17 canonical routes: the five standalone
+routes, three Notas, three Mediateca references, and six Portfolio cases.
 
 Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
 `/biblioteca/[slug]` route covers `modulor`, `cosas`, and `orden`; no overlapping
