@@ -84,7 +84,7 @@ img.portfolio-artwork {
   display: block;
   border: 1px solid currentColor;
   background: transparent;
-  transition: transform 0.18s ease-out;
+  transition: transform var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .portfolio-artwork__plane--a {

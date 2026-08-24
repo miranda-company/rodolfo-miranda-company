@@ -63,7 +63,7 @@ must not introduce separate backlink classes or spacing overrides.
 Archive indexes use the shared `.archive-control` class on filter buttons,
 search fields and sorting selects. The global rule owns their square geometry,
 type and `34px` minimum height; mobile viewports and coarse pointers increase
-the minimum target to `48px`. `--outline-interactive` separates essential
+the minimum target to `48px`. `--outline-strong` separates essential
 control boundaries from the quieter decorative `--line`, and shared pressed
 states combine a surface change with a cobalt boundary. Empty filtered results
 provide a keyboard-accessible `.filter-reset` recovery action. Collection
@@ -71,6 +71,22 @@ styles continue to own grouping, selected states and collection-specific
 symbols. General Yo sections use the shared section rhythm tokens from
 `global.css`, while genuinely compact or composition-specific sections retain
 an explicit variant.
+
+The root token layer keeps the original palette names for authored artwork and
+decorative compositions, then maps interface meaning onto semantic roles:
+`--surface`, `--surface-container`, `--on-surface`,
+`--on-surface-variant`, `--primary`, `--on-primary`, `--error`, `--outline`
+and `--outline-strong`. Interactive focus uses the shared
+`--focus-ring-*` contract. Short, standard and medium interaction timings use
+`--motion-duration-*` with `--motion-easing-standard`; the global reduced-motion
+query disables non-essential animation without hiding content.
+
+Responsive CSS follows three named ranges even though native media queries must
+repeat their literal values: compact is `<= 767px`, medium is `768px–1100px`,
+and expanded is `>= 1101px`. A small number of documented component-specific
+thresholds remain where a composition needs to change before or after those
+ranges, such as the homepage panel grid and wide archive controls. These are
+layout decisions, not additional global breakpoint tiers.
 
 ## Shared editorial detail system
 

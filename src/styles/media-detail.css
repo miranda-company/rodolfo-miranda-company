@@ -9,7 +9,7 @@
 
 .reference-external:focus-visible,
 .reference-connections a:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 3px;
 }
 

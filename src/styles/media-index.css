@@ -164,7 +164,7 @@
 
 .current-shelf__item > a:focus-visible,
 .media-card > a:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 3px;
 }
 
@@ -357,21 +357,21 @@
 .media-filter-options button:hover,
 .media-filter-options button:focus-visible,
 .media-sort select:focus-visible {
-  border-color: var(--blue);
-  color: var(--blue);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .media-filter-options button:focus-visible,
 .media-sort select:focus-visible,
 .media-controls-disclosure > summary:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 2px;
 }
 
 .media-filter-options button[aria-pressed="true"] {
-  border-color: var(--blue);
-  background: var(--blue);
-  color: var(--paper);
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
 }
 
 .media-filter-options button[aria-pressed="true"] > span {
@@ -760,8 +760,8 @@
   }
 
   .media-controls-disclosure {
-    border-top: 1px solid var(--outline-interactive);
-    border-bottom: 1px solid var(--outline-interactive);
+    border-top: 1px solid var(--outline-strong);
+    border-bottom: 1px solid var(--outline-strong);
   }
 
   .media-controls-disclosure > summary {

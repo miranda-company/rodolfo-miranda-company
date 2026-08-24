@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 23 de agosto de 2026.
+- **Fecha de revisión:** 24 de agosto de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -62,6 +62,8 @@ revisarse antes del lanzamiento.
 
 - Estructura común `BaseLayout → PageShell → Header + main`.
 - Jerarquía tipográfica semántica compartida para H1–H6, cuerpo y metadatos.
+- Tokens semánticos compartidos para superficies, color de interfaz, foco y
+  movimiento, con rangos responsivos compact, medium y expanded documentados.
 - Colecciones Astro validadas y helpers centrales para separar drafts y
   fixtures.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
@@ -78,11 +80,11 @@ revisarse antes del lanzamiento.
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 42 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 43 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
 - Las fixtures técnicas quedan fuera de `dist`.
-- El build mantiene un aviso no bloqueante por el solapamiento entre
-  `/biblioteca/modulor` y `/biblioteca/[slug]`.
+- La verificación de navegador no detecta errores, avisos ni desbordamiento
+  horizontal en los índices y detalles principales, en escritorio o móvil.
 - No existe todavía una suite automatizada de pruebas unitarias, end-to-end,
   accesibilidad o regresión visual.
 

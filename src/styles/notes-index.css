@@ -174,20 +174,20 @@
 
 .note-filter-options button:hover,
 .note-filter-options button:focus-visible {
-  border-color: var(--blue);
-  color: var(--blue);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .note-filter-options button:focus-visible,
 .note-sort select:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 2px;
 }
 
 .note-filter-options button[aria-pressed="true"] {
-  border-color: var(--blue);
-  background: var(--blue);
-  color: var(--paper);
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
 }
 
 .note-filter-options button[aria-pressed="true"] > span:first-child {
@@ -283,8 +283,8 @@
   background: rgba(247, 243, 234, 0.88);
   vertical-align: top;
   transition:
-    border-color 0.18s ease-out,
-    background-color 0.18s ease-out;
+    border-color var(--motion-duration-short) var(--motion-easing-standard),
+    background-color var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .note-card[hidden] {
@@ -317,7 +317,7 @@
   height: 1px;
   background: var(--blue);
   content: "";
-  transition: width 0.18s ease-out;
+  transition: width var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .note-card:hover,
@@ -326,7 +326,7 @@
 }
 
 .note-card__link:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: -5px;
 }
 
@@ -352,7 +352,7 @@
 
 .note-card h2 {
   margin: 34px 0 0;
-  transition: color 0.18s ease-out;
+  transition: color var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .note-card--compact h2 {
@@ -409,7 +409,7 @@
   color: var(--blue);
   font-size: 16px;
   line-height: 1;
-  transition: transform 0.18s ease-out;
+  transition: transform var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .note-card:hover .note-card__arrow,
@@ -482,7 +482,7 @@
   border: 1px solid var(--red);
   background: rgba(182, 62, 44, 0.12);
   transform: rotate(-13deg);
-  transition: transform 0.18s ease-out;
+  transition: transform var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .composition-2 .node-a {
@@ -618,8 +618,8 @@
   }
 
   .note-controls-disclosure {
-    border-top: 1px solid var(--outline-interactive);
-    border-bottom: 1px solid var(--outline-interactive);
+    border-top: 1px solid var(--outline-strong);
+    border-bottom: 1px solid var(--outline-strong);
   }
 
   .note-controls-disclosure > summary {
@@ -664,7 +664,7 @@
   }
 
   .note-controls-disclosure > summary:focus-visible {
-    outline: 2px solid var(--blue);
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: 3px;
   }
 

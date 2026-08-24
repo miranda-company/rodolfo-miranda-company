@@ -129,7 +129,7 @@ through Git history and tags.
 - Astro 7 with static output.
 - Strict TypeScript and validated content collections.
 - Markdown and MDX with build-time Shiki highlighting.
-- Custom CSS and locally bundled fonts.
+- Custom CSS with semantic color, focus, motion, and responsive contracts; locally bundled fonts.
 - Minimal JavaScript for navigation, filters, search, and image carousels.
 - pnpm for dependency and task management.
 
