@@ -40,6 +40,44 @@ que vale `false` por defecto. Sigue estas pautas:
 Una nota genuina no debe usar `fixture: true`. Ese campo no es una categoría editorial ni una
 forma alternativa de mantener un borrador: sirve únicamente para aislar verificaciones técnicas.
 
+## Temas del filtro
+
+Cada nota guarda sus temas en el array `tags` del frontmatter:
+
+```yaml
+tags:
+  - "Sistemas"
+  - "Diseño"
+```
+
+Los botones de **Tema** de `/notas` no se generan automáticamente a partir de todas las etiquetas
+publicadas. La lista visible se define explícitamente en
+`src/pages/notas/index.astro`, dentro del array que crea los botones del grupo **Tema**. Los valores
+actuales son:
+
+```text
+Estrategia
+Diseño
+Sistemas
+Cultura digital
+Herramientas
+```
+
+La comparación es exacta: mayúsculas, minúsculas, espacios y acentos deben coincidir entre el
+botón y el valor escrito en `tags`. Una nota puede tener varios tags y aparecerá al seleccionar
+cualquiera de los temas coincidentes.
+
+Para añadir un tema nuevo al filtro:
+
+1. Añade el mismo valor a `tags` en las notas correspondientes.
+2. Añade ese valor al array de temas en `src/pages/notas/index.astro`.
+3. Colócalo en la posición en la que deba aparecer dentro de la barra de filtros.
+
+Una etiqueta que exista en el contenido pero no en ese array sigue siendo metadata de la nota,
+pero no tendrá un botón propio en la barra. Si renombras un tema, actualiza tanto el array como
+todas las entradas que lo utilizan; de lo contrario, el botón devolverá cero resultados para esas
+notas.
+
 ## Markdown o MDX
 
 Usa `.md` para texto, encabezados, listas, citas, enlaces, imágenes, notas al pie y bloques de
