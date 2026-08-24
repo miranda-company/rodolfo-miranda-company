@@ -3,6 +3,11 @@
 Estas tareas deben completarse antes de retirar `noindex`, conectar el dominio
 o presentar el jardín como una publicación terminada.
 
+La revisión editorial consolidada prevista como Fase 5 se ha pospuesto por
+decisión del responsable del proyecto. Esto no aprueba automáticamente ninguna
+de las tareas editoriales siguientes: permanecen abiertas y la indexación debe
+seguir desactivada hasta que se revisen de forma explícita.
+
 ## Edición
 
 - [ ] Aprobar la biografía de Yo y reemplazar las cuatro etapas provisionales de

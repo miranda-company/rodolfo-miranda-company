@@ -18,6 +18,7 @@ tags:
 projectStatus: "Finalizado"
 coverImage: "../../assets/images/portafolio/bsc/portada-bsc.jpg"
 coverAlt: "Barcelona Supercomputing Center"
+coverCaption: "©Centro Nacional de Supercomputación (BSC-CNS)"
 gallery: []
 projectLinks: []
 relatedNotes: []
@@ -26,6 +27,12 @@ placeholder: false
 draft: false
 language: "es"
 ---
+import ContentImage from "../../components/content/ContentImage.astro"
+
+import img001 from "../../assets/images/portafolio/bsc/img-bsc-001.jpg"
+import img003 from "../../assets/images/portafolio/bsc/img-bsc-003.jpg"
+import img004 from "../../assets/images/portafolio/bsc/img-bsc-004.jpg"
+import img006 from "../../assets/images/portafolio/bsc/img-bsc-006.jpg"
 
 ## El proyecto
 
@@ -51,7 +58,11 @@ Esto introducía tres retos conectados:
 
 La verdadera tarea no era reducir la cantidad de información. Era darle una forma que permitiera orientarse dentro de ella.
 
-![alt text](../../assets/images/portafolio/bsc/img-bsc-001.jpg "Base de datos sobre predicción de huracanes desde 2016 a 2025")
+<ContentImage
+  src={img001}
+  alt="Datos sobre predicción de huracanes desde 2016 a 2025"
+  caption="Datos sobre predicción de huracanes desde 2016 a 2025"
+/>
 
 ## Mi papel
 
@@ -61,9 +72,17 @@ Mi posición estaba entre el conocimiento científico, las necesidades de los us
 
 También coordiné el proceso con el equipo del BSC y participé directamente en la definición de la arquitectura, la navegación y las interfaces.
 
-![alt text](../../assets/images/portafolio/bsc/img-bsc-003.jpg "Visualización de la plataforma Seasonal Hurricane Predictions")
+<ContentImage
+  src={img003}
+  alt="Visualización de la plataforma Seasonal Hurricane Predictions"
+  caption="Visualización de la plataforma Seasonal Hurricane Predictions"
+/>
 
-![alt text](../../assets/images/portafolio/bsc/img-bsc-004.jpg "Visualización de la plataforma Seasonal Hurricane Predictions")
+<ContentImage
+  src={img004}
+  alt="Visualización de la plataforma Seasonal Hurricane Predictions"
+  caption="Visualización de la plataforma Seasonal Hurricane Predictions"
+/>
 
 ## Auditar antes de construir
 
@@ -75,7 +94,11 @@ El objetivo no era convertir las plataformas en simples repositorios de datos. Q
 
 También establecimos criterios comunes para que centros meteorológicos de diferentes países pudieran publicar y comparar sus estimaciones dentro de un mismo marco.
 
-![alt text](../../assets/images/portafolio/bsc/img-bsc-006.jpg "Visualización de la plataforma Barcelona Dust Regional Center")
+<ContentImage
+  src={img006}
+  alt="Visualización de la plataforma Barcelona Dust Regional Center"
+  caption="Visualización de la plataforma Barcelona Dust Regional Center"
+/>
 
 ## Sistematizar para dar autonomía
 
