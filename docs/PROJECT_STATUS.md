@@ -19,17 +19,17 @@ aprobación editorial.
 
 ## Rutas y contenido
 
-| Sección              | Ruta                 | Desarrollo                                               | Producción                                                 |
-| -------------------- | -------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas          |
-| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; parte de la copia sigue pendiente de aprobación |
-| Notas                | `/notas`             | 27 entradas ordinarias                                   | 3 entradas: `umbral`, `margen`, `archivo`                  |
-| Detalle de Nota      | `/notas/[slug]`      | 27 rutas editoriales y una fixture directa               | Solo las 3 entradas publicadas                             |
-| Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `modulor`, `cosas`, `orden`                 |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                          |
-| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                                     |
-| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                                     |
-| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`                  |
+| Sección              | Ruta                 | Desarrollo                                               | Producción                                        |
+| -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
+| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
+| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
+| Notas                | `/notas`             | 27 entradas ordinarias                                   | 3 entradas: `umbral`, `margen`, `archivo`         |
+| Detalle de Nota      | `/notas/[slug]`      | 27 rutas editoriales y una fixture directa               | Solo las 3 entradas publicadas                    |
+| Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `modulor`, `cosas`, `orden`        |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                 |
+| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
+| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
+| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`         |
 
 Los seis casos de Portafolio incluidos en producción son:
 
@@ -116,8 +116,6 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
-- Completar la revisión editorial de la biografía, la trayectoria y los enlaces
-  pendientes de Yo.
 - Aprobar la copia de las tres Notas y las tres referencias de Mediateca que se
   generan en producción.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,

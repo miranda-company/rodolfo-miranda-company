@@ -4,7 +4,7 @@
     "hero": {
       "label": "Sobre mi",
       "name": "Rodolfo Miranda Company",
-      "positioning": "Digital Production | Creative Operations | Workflow Design · AI Automation",
+      "positioning": "Producción y Operaciones Digitales",
       "profileMeta": "PERFIL / EN EVOLUCIÓN",
       "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
     },
@@ -51,7 +51,7 @@
         {
           "role": "Fundador | Responsable de Operaciones Digitales",
           "organization": "Eloquent",
-          "period": "2018-presente",
+          "period": "2018-2026",
           "description": "Ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios.",
           "caseStudyLabel": "Ver portafolio ↗",
           "caseStudyUrl": "/portafolio/eloquent",
@@ -73,7 +73,6 @@
           "organization": "Elespacio",
           "period": "2013–2017",
           "description": "Lideré el área de publicidad y marketing digital, coordinando equipos, clientes y campañas internacionales, aprendí a conectar creatividad, tecnología y negocio mediante procesos escalables y desarrollé un sistema de DCO desplegado en más de 15 mercados y 11 idiomas que contribuyó a captar clientes como Nespresso y Victorinox.",
-          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": false
         },
@@ -82,7 +81,6 @@
           "organization": "ThisPage Amsterdam",
           "period": "2017–2020",
           "description": "Trabajé como Sr. Digital Advertising Specialist, liderando equipos, coordinando proyectos y diseñando procesos internos; aprendí a convertir una producción digital compleja en sistemas modulares y escalables, y desarrollé el AO System, un framework de DCO que generaba más de 900 variantes mensuales en siete formatos y tres idiomas, ahorró cientos de horas facturables y contribuyó a captar nuevos clientes y mejorar el retorno de las campañas.",
-          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": false
         },
@@ -91,7 +89,6 @@
           "organization": "CNN Expansión",
           "period": "2011",
           "description": "En CNN Grupo Expansión trabajé como Especialista en Contenidos, creando infografías interactivas y gestionando su archivo digital. Aprendí a transformar información editorial en experiencias visuales claras y contribuí a enriquecer sus publicaciones digitales y a organizar sus activos multimedia.",
-          "caseStudyLabel": "CASO DE ESTUDIO / PENDIENTE",
           "current": false,
           "placeholder": false
         }
@@ -113,7 +110,7 @@
         ],
         [
           {
-            "text": "Soy fundador de dos proyectos: Eloquent y Modulab Barcelona. proyectos me enseñaron que sacar adelante un negocio tiene tanto que ver con la marca y la experiencia del cliente como con las cuentas y los pequeños problemas que aparecen cuando una idea se encuentra con la realidad. Emprender es una gran responsabilidad."
+            "text": "Soy fundador Eloquent y Modulab Barcelona. Estos proyectos me enseñaron que sacar adelante un negocio tiene tanto que ver con la marca y la experiencia del cliente como con las cuentas y los pequeños problemas que aparecen cuando una idea se encuentra con la realidad. Emprender es una gran responsabilidad."
           }
         ],
         [
@@ -122,8 +119,10 @@
           }
         ]
       ],
-      "pendingParagraph": "Crecí en Cuernavaca, la ciudad de la eterna primavera, con madre española y padre mexicano. Esta herencia bicultural me enseñó desde muy temprano a mezclar perspectivas y a entender el mundo desde la diversidad; algo que hoy aplico en cada proyecto. Cuando no estoy frente a una pantalla, mi curiosidad toma otras formas. Me dedico a viajar, a devorar libros y a escribir. Además, la fotografía y el vídeo (que durante años fueron parte de mis negocios) siguen siendo mi forma favorita de documentar y expresar mi realidad.",
-      "pendingLabel": "Más personal..."
+      "personalNote": {
+        "label": "Más personal...",
+        "paragraph": "Crecí en Cuernavaca, la ciudad de la eterna primavera, con madre española y padre mexicano. Esta herencia bicultural me enseñó desde muy temprano a mezclar perspectivas y a entender el mundo desde la diversidad; algo que hoy aplico en cada proyecto. Cuando no estoy frente a una pantalla, mi curiosidad toma otras formas. Me dedico a viajar, a devorar libros y a escribir. Además, la fotografía y el vídeo (que durante años fueron parte de mis negocios) siguen siendo mi forma favorita de documentar y expresar mi realidad."
+      }
     },
     "closing": {
       "index": "01.05 / SIGUIENTES RUTAS",

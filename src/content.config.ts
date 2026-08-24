@@ -338,8 +338,10 @@ const profile = defineCollection({
         index: z.string().min(1),
         title: z.string().min(1),
         paragraphs: z.array(linkedParagraph).min(1),
-        pendingParagraph: z.string().min(1),
-        pendingLabel: z.string().min(1),
+        personalNote: z.object({
+          label: z.string().min(1),
+          paragraph: z.string().min(1),
+        }),
       }),
       closing: z.object({
         index: z.string().min(1),

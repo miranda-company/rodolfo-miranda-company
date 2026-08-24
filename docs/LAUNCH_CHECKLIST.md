@@ -10,9 +10,9 @@ seguir desactivada hasta que se revisen de forma explícita.
 
 ## Edición
 
-- [ ] Aprobar la revisión final de la biografía, la trayectoria y los enlaces
-      pendientes de Yo.
-- [ ] Sustituir el párrafo biográfico pendiente y retirar su aviso editorial.
+- [x] Aprobar la biografía y la trayectoria de Yo.
+- [x] Integrar el párrafo personal aprobado y retirar su aviso editorial.
+- [x] Retirar las etiquetas de casos pendientes que no publican un enlace.
 - [ ] Revisar y aprobar los resúmenes y cuerpos de `umbral`, `margen` y
       `archivo`.
 - [ ] Revisar y aprobar los resúmenes, comentarios y cuerpos de `modulor`,

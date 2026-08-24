@@ -82,9 +82,9 @@ if (!profile) throw new Error("Falta src/content/site/yo.json")
             ))
           }
         </div>
-        <aside class="yo-history__pending" aria-label="Contenido editorial pendiente">
-          <span>{profile.data.history.pendingLabel}</span>
-          <p>{profile.data.history.pendingParagraph}</p>
+        <aside class="yo-history__note" aria-labelledby="personal-note-title">
+          <span id="personal-note-title">{profile.data.history.personalNote.label}</span>
+          <p>{profile.data.history.personalNote.paragraph}</p>
         </aside>
       </div>
     </section>

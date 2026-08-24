@@ -7,7 +7,7 @@
 .career-timeline__period,
 .career-timeline__annotations,
 .career-timeline__case,
-.yo-history__pending,
+.yo-history__note,
 .yo-connections > div > span {
   font-family: var(--font-mono);
   letter-spacing: 0.045em;
@@ -293,19 +293,19 @@
   margin-left: 220px;
 }
 
-.yo-history__pending {
+.yo-history__note {
   align-self: start;
-  border-top: 1px solid var(--red);
-  border-bottom: 1px solid var(--red);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   padding: 14px 0 16px;
-  color: var(--red);
+  color: var(--graphite);
   font-size: 8px;
   line-height: 1.5;
 }
 
-.yo-history__pending p {
+.yo-history__note p {
   margin: 16px 0 0;
-  color: var(--graphite);
+  color: var(--on-surface);
   font: 13px/1.5 var(--font-sans);
   letter-spacing: 0;
 }
@@ -519,11 +519,11 @@
     font-size: 8px;
   }
 
-  .yo-history__pending {
+  .yo-history__note {
     font-size: 7.5px;
   }
 
-  .yo-history__pending p {
+  .yo-history__note p {
     font-size: 12px;
   }
 
