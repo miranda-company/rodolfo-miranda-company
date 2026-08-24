@@ -355,8 +355,9 @@
   margin-top: 26px;
 }
 
-.note-card--external h2 {
-  margin-top: 26px;
+.note-card--external h3 {
+  margin: 26px 0 0;
+  transition: color var(--motion-duration-short) var(--motion-easing-standard);
 }
 
 .note-card__external-label {
@@ -367,7 +368,9 @@
 }
 
 .note-card:hover h2,
-.note-card:focus-within h2 {
+.note-card:focus-within h2,
+.note-card--external:hover h3,
+.note-card--external:focus-within h3 {
   color: var(--blue);
 }
 
