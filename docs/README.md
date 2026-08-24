@@ -12,6 +12,8 @@ anteriores siguen disponibles en el historial y las etiquetas de Git.
   límites entre desarrollo y producción.
 - [Lista de lanzamiento](LAUNCH_CHECKLIST.md) — revisión editorial, técnica y de
   hosting antes de retirar `noindex`.
+- [Preparación técnica para lanzamiento](LAUNCH_READINESS.md) — metadatos,
+  sitemap, indexación, redirects y auditoría Lighthouse.
 
 ## Crear y editar contenido
 
@@ -33,20 +35,23 @@ en el uso de imágenes, carruseles, vídeo y código.
   reglas para H1–H6 y texto editorial.
 - [Verificación y calidad](QUALITY_ASSURANCE.md) — pruebas de navegador,
   accesibilidad, límites de producción, presupuestos y CI.
+- [Preparación técnica para lanzamiento](LAUNCH_READINESS.md) — configuración
+  segura del dominio, indexación y hosting.
 
 ## Qué documento usar
 
-| Necesidad                                 | Documento                    |
-| ----------------------------------------- | ---------------------------- |
-| Conocer el estado actual                  | `PROJECT_STATUS.md`          |
-| Crear una Nota                            | `WRITING_NOTES.md`           |
-| Crear una referencia                      | `WRITING_MEDIATECA.md`       |
-| Crear o modificar un proyecto             | `PORTFOLIO_PROJECT_GUIDE.md` |
-| Consultar todos los campos de contenido   | `CONTENT_MODEL.md`           |
-| Cambiar layouts o componentes compartidos | `ARCHITECTURE.md`            |
-| Cambiar tipografía                        | `TYPOGRAPHY_SYSTEM.md`       |
-| Ejecutar o mantener pruebas               | `QUALITY_ASSURANCE.md`       |
-| Preparar publicación o dominio            | `LAUNCH_CHECKLIST.md`        |
+| Necesidad                                  | Documento                    |
+| ------------------------------------------ | ---------------------------- |
+| Conocer el estado actual                   | `PROJECT_STATUS.md`          |
+| Crear una Nota                             | `WRITING_NOTES.md`           |
+| Crear una referencia                       | `WRITING_MEDIATECA.md`       |
+| Crear o modificar un proyecto              | `PORTFOLIO_PROJECT_GUIDE.md` |
+| Consultar todos los campos de contenido    | `CONTENT_MODEL.md`           |
+| Cambiar layouts o componentes compartidos  | `ARCHITECTURE.md`            |
+| Cambiar tipografía                         | `TYPOGRAPHY_SYSTEM.md`       |
+| Ejecutar o mantener pruebas                | `QUALITY_ASSURANCE.md`       |
+| Entender la infraestructura de publicación | `LAUNCH_READINESS.md`        |
+| Aprobar publicación o dominio              | `LAUNCH_CHECKLIST.md`        |
 
 `src/content.config.ts` es la fuente de verdad para la validación. Si una guía y
 el schema no coinciden, debe corregirse la documentación antes de publicar.

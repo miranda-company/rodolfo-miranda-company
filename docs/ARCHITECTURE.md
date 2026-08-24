@@ -11,8 +11,9 @@ of author-inserted image carousels.
 
 ## Presentation
 
-- `src/layouts/BaseLayout.astro` owns Spanish metadata, the current site-wide
-  `noindex` directive, locally bundled fonts, and global page behavior.
+- `src/layouts/BaseLayout.astro` owns Spanish metadata, canonical and social
+  URLs, JSON-LD, the safe-by-default indexing directive, locally bundled fonts,
+  and global page behavior.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
@@ -221,6 +222,23 @@ Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
 `/biblioteca/[slug]` route covers `modulor`, `cosas`, and `orden`; no overlapping
 explicit redirect is required.
 
+## Metadata, sitemap and indexing
+
+`src/lib/site.ts` is the canonical source for the site name, description,
+language, locale and intended origin. `astro.config.ts` uses that origin unless
+`SITE_URL` is supplied to the build. `BaseLayout.astro` turns page props into
+canonical links, Open Graph metadata, Twitter cards and a Schema.org graph.
+Collection details pass their validated dates, tags, covers and entity type
+through `EditorialDetailLayout.astro`; index routes use `CollectionPage` and
+`/yo` uses `ProfilePage`.
+
+`src/pages/sitemap.xml.ts` derives its 17 production URLs from the same visible
+collection helpers as route generation. `src/pages/robots.txt.ts` and the HTML
+metadata share the build-time `PUBLIC_INDEXING_ENABLED` switch, which is false
+unless explicitly set to `true`. This keeps both surfaces blocked during
+development and review. Deployment behavior and the permanent redirect
+contract are documented in `docs/LAUNCH_READINESS.md`.
+
 ## Automated quality safeguards
 
 Playwright exercises primary routes, responsive layouts and shared interactions
@@ -233,4 +251,5 @@ builds `dist/`.
 The canonical workflow is `pnpm run verify`. GitHub Actions runs it on pull
 requests and pushes to `main`; browser artifacts are uploaded only after a
 failure. See `docs/QUALITY_ASSURANCE.md` for the test scope, budget values and
-maintenance rules.
+maintenance rules. `pnpm run verify:launch` adds repeatable Lighthouse audits
+for the final pre-deployment review.

@@ -38,6 +38,12 @@ const updatedDate = toDateValue(entry.data.updatedAt)
   introClass="notes-intro"
   backlinkHref="/notas"
   backlinkLabel="Volver a Notas"
+  canonicalPath={`/notas/${entry.id}`}
+  schemaType="Article"
+  publishedAt={entry.data.publishedAt}
+  updatedAt={entry.data.updatedAt}
+  keywords={entry.data.tags}
+  schemaData={{ articleSection: "Notas" }}
 >
   <Fragment slot="header-meta">
     <span>{entry.data.archiveNumber}</span>

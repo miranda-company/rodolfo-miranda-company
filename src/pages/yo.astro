@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content"
+import portrait from "../assets/images/retrato-rodolfo-miranda.jpg"
 import CareerTimeline from "../components/CareerTimeline.astro"
 import LinkedParagraph from "../components/LinkedParagraph.astro"
 import PageShell from "../components/PageShell.astro"
@@ -14,6 +15,10 @@ if (!profile) throw new Error("Falta src/content/site/yo.json")
 <BaseLayout
   title={profile.data.hero.name}
   description="Perfil, contexto y trayectoria profesional de Rodolfo Miranda."
+  canonicalPath="/yo"
+  socialImage={portrait}
+  socialImageAlt={profile.data.portrait.alt}
+  schemaType="ProfilePage"
 >
   <PageShell pageClass="yo-page" mainClass="yo-main page-main--with-back">
     <a class="page-back" href="/#indice">← Volver al índice</a>

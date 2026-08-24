@@ -13,6 +13,7 @@ logs/
 *.log
 playwright-report/
 test-results/
+.lighthouse/
 .DS_Store
 .claude-replay.*
 .tmp-*

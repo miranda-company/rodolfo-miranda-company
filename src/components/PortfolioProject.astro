@@ -27,6 +27,19 @@ const updatedLabel = formatNumericDate(entry.data.updatedAt)
   backlinkHref="/portafolio"
   backlinkLabel="Volver a Portafolio"
   hasConnections={false}
+  canonicalPath={`/portafolio/${entry.id}`}
+  socialImage={entry.data.coverImage}
+  socialImageAlt={entry.data.coverAlt}
+  schemaType="CreativeWork"
+  updatedAt={entry.data.updatedAt}
+  keywords={[...entry.data.disciplines, ...entry.data.tags]}
+  schemaData={{
+    dateCreated: String(entry.data.year),
+    ...(entry.data.endYear ? { temporalCoverage: `${entry.data.year}/${entry.data.endYear}` } : {}),
+    ...(entry.data.client
+      ? { contributor: { "@type": "Organization", name: entry.data.client } }
+      : {}),
+  }}
 >
   <p slot="header-meta">{entry.data.archiveNumber} / {entry.data.projectStatus}</p>
   <p slot="header-summary">{entry.data.summary}</p>

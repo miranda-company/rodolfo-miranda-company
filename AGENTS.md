@@ -86,6 +86,12 @@ process with `pnpm exec astro dev stop` before starting another one.
   a client framework or dependency unless the task requires it.
 - Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy
   redirect source.
+- Keep site identity and intended origin in `src/lib/site.ts`. Canonical links,
+  social metadata and JSON-LD belong in `BaseLayout.astro`; sitemap and crawler
+  policy belong in their generated routes.
+- Keep `PUBLIC_INDEXING_ENABLED` unset unless the user explicitly authorizes a
+  public launch. A normal build must remain `noindex, nofollow` with a blocking
+  `robots.txt`.
 
 ## Content authoring
 
@@ -141,6 +147,7 @@ scope. Before handoff, the normal full sequence is:
 pnpm run format
 git diff --check
 pnpm run verify
+pnpm run verify:launch # only for launch-readiness work
 ```
 
 `pnpm run format` writes consistent Astro, TypeScript, CSS, JSON, Markdown, and

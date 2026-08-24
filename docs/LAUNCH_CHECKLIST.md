@@ -43,8 +43,12 @@ o presentar el jardín como una publicación terminada.
 
 - [ ] Confirmar el alcance editorial de la primera versión en español.
 - [ ] Preparar la versión inglesa antes de activar cualquier ruta de traducción.
-- [ ] Revisar títulos, descripciones, URL canónicas y metadatos sociales.
-- [ ] Mantener `noindex` y el bloqueo de `robots.txt` hasta la aprobación final.
+- [x] Implementar títulos, descripciones, URLs canónicas, JSON-LD, sitemap y
+      metadatos sociales en el build.
+- [ ] Revisar manualmente títulos, descripciones, imágenes y previews sociales
+      con el contenido editorial definitivo.
+- [x] Mantener `noindex` y el bloqueo de `robots.txt` por defecto hasta la
+      aprobación final.
 - [ ] Retirar el bloqueo de indexación solo después de verificar el entorno de
       producción.
 
@@ -78,18 +82,24 @@ o presentar el jardín como una publicación terminada.
 - [ ] Elegir y configurar un proveedor de hosting.
 - [ ] Configurar redirects permanentes de `/biblioteca` a `/mediateca` y de
       `/biblioteca/*` a `/mediateca/*` en el hosting.
-- [ ] Eliminar el solapamiento entre `/biblioteca/modulor` y
-      `/biblioteca/[slug]` para que el build termine sin avisos de rutas.
+- [x] Mantener un único redirect dinámico para `/biblioteca/[slug]`, sin
+      solapamientos en el build.
 - [ ] Verificar rutas directas, fragments y páginas de error en el entorno
       desplegado.
 - [ ] Conectar `www.rodolfomiranda.company` y verificar DNS, HTTPS y redirección
       del dominio raíz si se utiliza.
 - [ ] Ejecutar la comprobación, la compilación y la revisión responsive final.
+- [ ] Ejecutar `pnpm run verify:launch` y conservar los resultados finales en la
+      revisión de lanzamiento.
+- [ ] Verificar canonical, JSON-LD, sitemap, `robots.txt` y tarjetas sociales en
+      el dominio público.
+- [ ] Configurar y comprobar HTTPS, cabeceras de seguridad y página 404 en el
+      proveedor de hosting.
 
 ## Higiene del repositorio
 
 - [x] Excluir archivos `.DS_Store` del repositorio.
 - [ ] Retirar recursos duplicados o sin uso después de confirmar cuál es la
       copia canónica de cada imagen.
-- [ ] Decidir y documentar el alcance mínimo de pruebas automatizadas antes del
-      lanzamiento.
+- [x] Documentar y automatizar el alcance mínimo de pruebas y Lighthouse antes
+      del lanzamiento.

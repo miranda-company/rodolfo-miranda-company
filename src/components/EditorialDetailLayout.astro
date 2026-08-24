@@ -12,6 +12,14 @@ interface Props {
   backlinkHref: string
   backlinkLabel: string
   hasConnections?: boolean
+  canonicalPath: string
+  socialImage?: ImageMetadata
+  socialImageAlt?: string
+  schemaType: "Article" | "CreativeWork"
+  schemaData?: Record<string, unknown>
+  publishedAt?: Date
+  updatedAt?: Date
+  keywords?: string[]
 }
 
 const {
@@ -22,10 +30,29 @@ const {
   backlinkHref,
   backlinkLabel,
   hasConnections = true,
+  canonicalPath,
+  socialImage,
+  socialImageAlt,
+  schemaType,
+  schemaData,
+  publishedAt,
+  updatedAt,
+  keywords,
 } = Astro.props
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  socialImage={socialImage}
+  socialImageAlt={socialImageAlt}
+  schemaType={schemaType}
+  schemaData={schemaData}
+  publishedAt={publishedAt}
+  updatedAt={updatedAt}
+  keywords={keywords}
+>
   <PageShell pageClass={pageClass} mainClass="entry-detail-main page-main--with-back">
     <a class="page-back" href={backlinkHref}>← {backlinkLabel}</a>
 

@@ -26,11 +26,19 @@ pnpm run test:production # rutas, conteos y exclusión de fixtures en dist
 pnpm run test:budgets    # límites de peso para la salida ya construida
 pnpm run test            # las tres comprobaciones anteriores
 pnpm run verify          # formato, build y todas las pruebas
+pnpm run audit:lighthouse # build y auditoría de cuatro rutas representativas
+pnpm run verify:launch   # suite normal más Lighthouse
 ```
 
 `test:production` y `test:budgets` requieren un `dist/` reciente. El comando
 `verify` siempre ejecuta el build antes de ellos y es la opción recomendada
 antes de entregar o integrar cambios.
+
+`audit:lighthouse` sirve el build en `127.0.0.1:4321` y audita la portada,
+`/notas/umbral`, `/mediateca/modulor` y `/portafolio/syra-coffee`. Guarda
+informes JSON ignorados por Git en `.lighthouse/`. Usa `verify:launch` para una
+revisión previa a publicación; Lighthouse no se ejecuta en cada push porque es
+más lento y sensible al entorno local que la suite determinista de CI.
 
 ## Cobertura de navegador
 
@@ -68,6 +76,24 @@ contrato explícito. Verifica 17 rutas canónicas y cuatro redirects de
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
 `P.999` aparezcan en `dist`. Cuando se apruebe una entrada nueva para
 producción, hay que actualizar el contenido y este contrato en el mismo cambio.
+El mismo script comprueba que cada ruta canónica tenga `noindex`, canonical,
+Open Graph, tarjeta social y JSON-LD, y que `robots.txt` y el sitemap contengan
+exactamente el contrato previsto.
+
+## Lighthouse
+
+`scripts/run-lighthouse.mjs` aplica mínimos de 75 en rendimiento, 95 en
+accesibilidad, 95 en buenas prácticas y 65 en SEO previo al lanzamiento. El
+score SEO esperado es 69 porque `is-crawlable` falla mientras `noindex` siga
+activo; el resto de las auditorías SEO debe permanecer correcto. No se debe
+retirar el bloqueo para mejorar el informe. Consulta
+`LAUNCH_READINESS.md` antes de cambiar la configuración de indexación.
+
+Las rutas sin reproductores externos mantienen el mínimo 95 de buenas
+prácticas. `/portafolio/syra-coffee` admite únicamente los fallos
+`third-party-cookies` e `inspector-issues` producidos por la cookie `__cf_bm` de
+Vimeo, con un mínimo específico de 75. El script compara los IDs exactos para
+que una regresión propia o una nueva incidencia de terceros no quede oculta.
 
 ## Presupuestos de salida
 

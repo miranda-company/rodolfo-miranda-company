@@ -26,6 +26,10 @@ const tags = Array.from(new Set(projects.flatMap((project) => project.data.tags)
 <BaseLayout
   title="Portafolio"
   description="Selección curada de proyectos de Rodolfo Miranda Company."
+  canonicalPath="/portafolio"
+  socialImage={projects[0]?.data.coverImage}
+  socialImageAlt={projects[0]?.data.coverAlt}
+  schemaType="CollectionPage"
 >
   <PageShell pageClass="portfolio-page" mainClass="portfolio-main page-main--with-back">
     <a class="page-back" href="/#indice">← Volver al índice</a>

@@ -25,6 +25,17 @@ const isProvisional = entry.data.editorialState === "provisional"
   introClass="mediateca-intro"
   backlinkHref="/mediateca"
   backlinkLabel="Volver a Mediateca"
+  canonicalPath={`/mediateca/${entry.id}`}
+  socialImage={entry.data.coverImage}
+  socialImageAlt={entry.data.coverAlt}
+  schemaType="CreativeWork"
+  updatedAt={entry.data.updatedAt}
+  keywords={entry.data.tags}
+  schemaData={{
+    creator: { "@type": "Person", name: entry.data.creator },
+    ...(entry.data.publicationYear ? { datePublished: String(entry.data.publicationYear) } : {}),
+    ...(entry.data.externalUrl ? { sameAs: entry.data.externalUrl } : {}),
+  }}
 >
   <p slot="header-meta">
     {entry.data.archiveNumber} / {MEDIA_FORMAT_LABELS[entry.data.format].toUpperCase()}

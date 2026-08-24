@@ -16,7 +16,9 @@
     "test:production": "node scripts/verify-production.mjs",
     "test:budgets": "node scripts/check-performance-budgets.mjs",
     "test": "pnpm run test:production && pnpm run test:budgets && pnpm run test:e2e:dist",
-    "verify": "pnpm run format:check && pnpm run build && pnpm run test"
+    "verify": "pnpm run format:check && pnpm run build && pnpm run test",
+    "audit:lighthouse": "pnpm run build && node scripts/run-lighthouse.mjs",
+    "verify:launch": "pnpm run verify && pnpm run audit:lighthouse"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
@@ -31,6 +33,7 @@
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.62.1",
     "@types/node": "^22.0.0",
+    "lighthouse": "13.4.1",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "^5.9.3"

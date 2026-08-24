@@ -4,6 +4,9 @@ import { relative, resolve, sep } from "node:path"
 
 const root = process.cwd()
 const dist = resolve(root, "dist")
+const siteOrigin = process.env.SITE_URL ?? "https://www.rodolfomiranda.company"
+const indexingEnabled = process.env.PUBLIC_INDEXING_ENABLED === "true"
+const robotsDirective = indexingEnabled ? "index, follow" : "noindex, nofollow"
 
 const canonicalRoutes = [
   "/",
@@ -97,6 +100,56 @@ for (const marker of forbiddenFixtureMarkers) {
   )
 }
 
+for (const route of canonicalRoutes) {
+  const html = await readRoute(route)
+  const canonicalUrl = new URL(route, siteOrigin).href
+
+  assert.match(
+    html,
+    new RegExp(`<meta name="robots" content="${robotsDirective}">`),
+    `${route} debe respetar la configuración de indexación del build.`,
+  )
+  assert.ok(
+    html.includes(`<link rel="canonical" href="${canonicalUrl}">`),
+    `${route} debe declarar su URL canónica.`,
+  )
+  assert.ok(
+    html.includes(`<meta property="og:url" content="${canonicalUrl}">`),
+    `${route} debe declarar una URL Open Graph canónica.`,
+  )
+  assert.match(html, /<meta property="og:image" content="https:\/\//, `${route} requiere og:image.`)
+  assert.match(
+    html,
+    /<meta name="twitter:card" content="summary_large_image">/,
+    `${route} requiere una tarjeta social grande.`,
+  )
+
+  const jsonLd = html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)?.[1]
+  assert.ok(jsonLd, `${route} debe incluir datos estructurados JSON-LD.`)
+  const parsed = JSON.parse(jsonLd)
+  assert.equal(parsed["@context"], "https://schema.org", `${route} debe usar Schema.org.`)
+  assert.ok(Array.isArray(parsed["@graph"]), `${route} debe publicar un grafo JSON-LD.`)
+}
+
+const robots = await readFile(resolve(dist, "robots.txt"), "utf8")
+assert.match(
+  robots,
+  indexingEnabled ? /^User-agent: \*\nAllow: \/$/m : /^User-agent: \*\nDisallow: \/$/m,
+  "robots.txt debe respetar la configuración de indexación del build.",
+)
+assert.ok(
+  robots.includes(`Sitemap: ${new URL("/sitemap.xml", siteOrigin).href}`),
+  "robots.txt debe señalar el sitemap canónico.",
+)
+
+const sitemap = await readFile(resolve(dist, "sitemap.xml"), "utf8")
+const sitemapLocations = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1])
+assert.deepEqual(
+  sitemapLocations,
+  canonicalRoutes.map((route) => new URL(route, siteOrigin).href),
+  "El sitemap debe contener exactamente las rutas canónicas de producción.",
+)
+
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas, ${redirectRoutes.length} redirects, 3 Notas, 3 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas, 3 referencias y 6 proyectos.`,
 )

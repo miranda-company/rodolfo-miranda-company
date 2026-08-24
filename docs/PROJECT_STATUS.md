@@ -10,7 +10,10 @@ aprobación editorial.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
-- **Indexación:** bloqueada mediante `noindex, nofollow` y `public/robots.txt`.
+- **Indexación:** bloqueada mediante `noindex, nofollow` y el endpoint generado
+  `src/pages/robots.txt.ts`.
+- **Metadatos:** canonical, tarjetas sociales, JSON-LD y sitemap implementados;
+  la indexación continúa bloqueada por defecto.
 - **Hosting y dominio:** no configurados ni verificados en el repositorio.
 - **Dominio previsto:** `www.rodolfomiranda.company`.
 
@@ -75,22 +78,29 @@ revisarse antes del lanzamiento.
   carruseles, vídeo, código, tablas y notas al pie.
 - Imágenes locales optimizadas con Astro y texto alternativo validado.
 - Redirects de compatibilidad desde `/biblioteca` hacia `/mediateca`.
+- Metadatos canónicos y sociales, favicon, JSON-LD, sitemap derivado del
+  contenido y switch seguro de indexación.
 - Fuentes locales y generación estática sin framework cliente.
 - Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
   contratos de producción, presupuestos de salida y workflow de GitHub Actions.
+- Auditoría Lighthouse reproducible sobre cuatro rutas representativas.
 
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 48 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 52 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
 - `pnpm run test:production`: confirma 17 rutas canónicas, cuatro redirects y
-  los límites editoriales 3 Notas / 3 referencias / 6 proyectos.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 12,74 MiB, el HTML 264,9 KiB,
+  los límites editoriales 3 Notas / 3 referencias / 6 proyectos, además de
+  canonical, tarjetas sociales, JSON-LD, sitemap y bloqueo de indexación.
+- `pnpm run test:budgets`: correcto; `dist` ocupa 14,10 MiB, el HTML 312,5 KiB,
   el CSS 65,4 KiB y las fuentes 213,8 KiB; la imagen mayor pesa 422,9 KiB.
 - `pnpm run test:e2e:dist`: 31 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, movimiento reducido, consola, imágenes y overflow.
+- `pnpm run audit:lighthouse`: rendimiento y accesibilidad 100 en las cuatro
+  rutas; buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de
+  Vimeo); SEO 66–69 con `noindex` activo.
 - Las fixtures técnicas quedan fuera de `dist` y de la suite de producción.
 - La automatización no sustituye una auditoría manual completa de accesibilidad
   ni una revisión visual antes de publicar.
@@ -104,7 +114,7 @@ revisarse antes del lanzamiento.
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo
   el contenido pendiente y normalizar `archiveNumber` y `displayOrder`.
-- Resolver el solapamiento de redirects de `/biblioteca/modulor`.
 - Elegir hosting, configurar redirects permanentes y conectar el dominio.
-- Revisar SEO y retirar `noindex` únicamente después de completar la
+- Revisar previews sociales y datos estructurados con las URLs públicas.
+- Retirar `noindex` únicamente después de completar la
   [lista de lanzamiento](LAUNCH_CHECKLIST.md).

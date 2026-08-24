@@ -32,6 +32,8 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 - Homepage publication counts and recent-content previews are derived from the
   validated content collections.
 - The project builds to static HTML with minimal framework-free JavaScript.
+- Canonical URLs, social cards, structured data, and a production-only sitemap
+  are generated, while indexing remains blocked by default.
 
 See [Project status](docs/PROJECT_STATUS.md) for exact counts, editorial limits,
 known issues, and launch work.
@@ -62,6 +64,7 @@ pnpm run build         # check and generate the production site
 pnpm run preview       # serve the latest production build
 pnpm run test:e2e      # build, then run browser and accessibility checks
 pnpm run verify        # format check, build, boundaries, budgets, and browser tests
+pnpm run verify:launch # full verification plus Lighthouse launch audit
 ```
 
 `pnpm run format` covers Astro, TypeScript, CSS, JSON, Markdown, and MDX. `pnpm run build`
@@ -70,6 +73,8 @@ browser once with `pnpm exec playwright install chromium`. Run `pnpm run verify`
 and `git diff --check` before handing off a complete implementation change.
 The detailed test scope and current output budgets live in
 [Verification and quality](docs/QUALITY_ASSURANCE.md).
+The safe indexing switch, canonical origin, sitemap, redirects, and hosting
+review are documented in [Launch readiness](docs/LAUNCH_READINESS.md).
 
 If Astro reports that another development server is running, open the URL and
 PID shown in the message or stop it with `pnpm exec astro dev stop` before
@@ -108,6 +113,8 @@ are technical examples and must remain isolated from published content.
 | Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                      |
 | Content validation                          | `src/content.config.ts`                                                        |
 | Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                 |
+| Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                              |
+| Sitemap and crawler policy                  | `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts`                          |
 
 The [architecture guide](docs/ARCHITECTURE.md) explains the shared DOM contract,
 editorial detail layout, content components, redirects, and route generation in
@@ -120,7 +127,7 @@ more detail.
 - `src/content/` — validated editorial content and development fixtures.
 - `src/styles/` — design tokens, shared editorial rules, and section styles.
 - `src/assets/images/` — local source images processed by Astro.
-- `public/` — static public files such as `robots.txt`.
+- `public/` — static public files that do not require build-time generation.
 - `docs/` — editorial and technical documentation.
 - `tests/e2e/` — Playwright interaction and accessibility checks.
 - `scripts/` — production-boundary and performance-budget verification.
