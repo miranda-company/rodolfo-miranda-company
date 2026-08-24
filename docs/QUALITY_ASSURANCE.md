@@ -100,15 +100,15 @@ que una regresión propia o una nueva incidencia de terceros no quede oculta.
 `scripts/check-performance-budgets.mjs` aplica límites deliberadamente
 conservadores sobre el build actual:
 
-| Medida                |  Límite |
-| --------------------- | ------: |
-| `dist` completo       |  16 MiB |
-| HTML total            | 350 KiB |
-| Un archivo HTML       |  40 KiB |
-| CSS total             |  90 KiB |
-| JavaScript emitido    |  25 KiB |
-| Fuentes totales       | 240 KiB |
-| Una imagen optimizada | 500 KiB |
+| Medida               |  Límite |
+| -------------------- | ------: |
+| `dist` completo      |  16 MiB |
+| HTML total           | 350 KiB |
+| Un archivo HTML      |  40 KiB |
+| CSS total            |  90 KiB |
+| JavaScript emitido   |  25 KiB |
+| Fuentes totales      | 240 KiB |
+| Un archivo de imagen | 500 KiB |
 
 Estos límites detectan aumentos accidentales; no son objetivos de Lighthouse ni
 equivalen al peso transferido de una página concreta. Si una decisión editorial

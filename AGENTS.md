@@ -111,7 +111,7 @@ Follow the collection guides in `docs/WRITING_NOTES.md`,
 - Use `.mdx` only when importing an approved component such as `ContentImage`,
   `ImageCarousel`, or `VideoEmbed`.
 - Keep editorial images local under `src/assets/images/<collection>/<slug>/` so
-  Astro can validate and optimize them.
+  Astro can validate their metadata and emit the imported file safely.
 - Every meaningful image needs accurate, non-empty alternative text. Captions
   are optional unless the surrounding prose does not provide enough context.
 - `draft: false` controls production eligibility; it does not imply editorial
@@ -133,7 +133,10 @@ Follow the collection guides in `docs/WRITING_NOTES.md`,
 - Use `var(--line)` for standard borders unless the design intentionally calls
   for another token.
 - Preserve accessibility semantics, visible focus states, reduced-motion
-  behavior, keyboard operation, and local responsive image processing.
+  behavior, keyboard operation, and local image metadata. Displayed editorial
+  images use the single imported source file, without generated responsive
+  variants; authors size it appropriately and keep it below 200 KB whenever
+  practical.
 - Preserve unrelated user changes in a dirty worktree. Do not stage, commit,
   tag, push, deploy, or modify the domain unless the user explicitly requests
   it.

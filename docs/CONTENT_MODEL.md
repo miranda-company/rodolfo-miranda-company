@@ -110,8 +110,8 @@ interface Props {
 The component requires a non-empty accessible `label`, at least two locally
 imported images, and meaningful non-empty alternative text for every image.
 Optional captions must contain text when supplied. Remote strings and malformed
-image objects fail rendering with a Spanish error. Astro generates responsive
-image sources without exceeding each local source's useful dimensions.
+image objects fail rendering with a Spanish error. Each slide uses its single
+imported source file and preserves that file's intrinsic dimensions.
 
 The carousel uses a stable 16:10 contained-image stage, ordered-list and figure
 semantics, visible Spanish previous/next controls, an independently updated live
@@ -129,15 +129,16 @@ Preferred local-image folders are:
 
 Every meaningful image needs useful alternative text. Captions are optional.
 Structured Portfolio covers and galleries remain separate from inline editorial
-images and continue through Astro's image pipeline. Normal static images work in
-`.md`; `ImageCarousel` requires `.mdx`. Authors should strip unnecessary personal,
+images and use the same single-source policy. Normal static images work in `.md`;
+`ImageCarousel` requires `.mdx`. Authors should prepare assets at their final useful
+dimensions, keep them below 200 KB when practical, and strip unnecessary personal,
 EXIF/GPS, and location metadata before committing image files.
 
 `src/components/content/ContentImage.astro` is the collection-neutral component
 for one inline editorial image. Its typed API is `src: ImageMetadata`, `alt: string`,
 and `caption?: string`. It rejects remote or malformed sources, requires meaningful
-non-empty alternative text, preserves intrinsic dimensions, and delegates responsive
-source generation to Astro. It renders a semantic figure and uses the same shared
+non-empty alternative text, preserves intrinsic dimensions, and delegates single-image
+metadata validation to Astro without generating a `srcset` or transformed copy. It renders a semantic figure and uses the same shared
 mono caption treatment as videos and carousel slides. A captioned static image therefore
 requires `.mdx`; normal uncaptioned Markdown images remain supported in `.md`.
 
@@ -208,9 +209,7 @@ as text rather than anchors.
 
 The approved portrait lives at
 `src/assets/images/retrato-rodolfo-miranda.jpg`. `YoPortrait.astro` imports this
-local source and uses Astro's image pipeline to generate responsive AVIF and
-WebP variants with a JPEG fallback, capped at the source's intrinsic 2267 ×
-2267 dimensions.
+local source and renders that single file at its intrinsic dimensions.
 
 For a future approved replacement, overwrite that repository asset with a
 sanitized local image, preserve the outer `figure`, field dimensions, border

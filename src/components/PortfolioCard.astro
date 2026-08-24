@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
 interface Props {
@@ -23,11 +22,11 @@ const yearLabel = entry.data.endYear
     <div class="portfolio-card__image">
       {
         coverImage ? (
-          <Image
-            src={coverImage}
+          <img
+            src={coverImage.src}
+            width={coverImage.width}
+            height={coverImage.height}
             alt={entry.data.coverAlt ?? ""}
-            widths={[320, 480, 720, 960]}
-            sizes="(max-width: 767px) calc(100vw - 40px), 320px"
             loading="lazy"
             decoding="async"
           />

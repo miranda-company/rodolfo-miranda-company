@@ -136,9 +136,11 @@ renderer. The schemas remain distinct: a note's maturity, a project's client and
 disciplines, and a reference's consultation metadata keep their own meanings.
 
 `@astrojs/mdx` enables reviewed Astro components in Notas, Portafolio and
-Mediateca. `ContentImage.astro` is the shared component for one locally imported,
-responsive editorial image with required alternative text and an optional semantic
-caption. `VideoEmbed.astro` is collection-neutral and allowlists YouTube and
+Mediateca. `ContentImage.astro` is the shared component for one locally imported
+editorial image with required alternative text and an optional semantic caption.
+It emits the single imported source file with its intrinsic dimensions rather
+than generating a responsive source set.
+`VideoEmbed.astro` is collection-neutral and allowlists YouTube and
 Vimeo only. It validates IDs, builds `youtube-nocookie.com` or Vimeo `dnt=1`
 URLs, requires a meaningful accessible title, lazy-loads without autoplay, and
 shows a visible fallback link. Arbitrary iframe URLs and pasted scripts are not
@@ -147,7 +149,7 @@ supported.
 `ImageCarousel.astro` is the shared MDX component for local editorial image
 sequences. It accepts typed Astro `ImageMetadata`, validates its accessible label,
 image count, local sources, alternative text, and optional captions during
-rendering, and delegates responsive optimization to Astro's `Image` component.
+rendering, and emits each imported source file once with intrinsic dimensions.
 Presentation stays in `rich-content.css`; one scoped framework-free script
 initializes every instance, advances exactly one scroll-snap slide, updates the
 polite status after native scrolling, recalculates after resizing, and respects

@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import { render, type CollectionEntry } from "astro:content"
 import { formatNumericDate } from "../lib/dates"
 import "../styles/portfolio-detail.css"
@@ -69,11 +68,11 @@ const updatedLabel = formatNumericDate(entry.data.updatedAt)
         <div class="project-gallery" aria-label="Imágenes adicionales del proyecto">
           {entry.data.gallery.map((item) => (
             <figure>
-              <Image
-                src={item.image}
+              <img
+                src={item.image.src}
+                width={item.image.width}
+                height={item.image.height}
                 alt={item.alt}
-                widths={[480, 720, 960, 1280]}
-                sizes="(max-width: 767px) calc(100vw - 40px), 720px"
                 loading="lazy"
                 decoding="async"
               />

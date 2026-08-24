@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
 interface Props {
@@ -17,12 +16,12 @@ const coverCaption = entry.data.coverCaption?.trim()
 {
   coverImage ? (
     <figure class="media-cover">
-      <Image
+      <img
         class="media-cover__image"
-        src={coverImage}
+        src={coverImage.src}
+        width={coverImage.width}
+        height={coverImage.height}
         alt={entry.data.coverAlt ?? ""}
-        widths={[160, 320, 480, 640]}
-        sizes="(max-width: 767px) 125px, 320px"
         loading="lazy"
         decoding="async"
       />

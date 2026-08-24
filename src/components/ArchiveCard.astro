@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
 type Panel = CollectionEntry<"homepage">["data"]["panels"][number] & {
@@ -26,11 +25,11 @@ const { panel } = Astro.props
     >
       {
         panel.image ? (
-          <Image
-            src={panel.image}
+          <img
+            src={panel.image.src}
+            width={panel.image.width}
+            height={panel.image.height}
             alt={panel.imageAlt ?? ""}
-            widths={[280, 400, 560, 720]}
-            sizes="(max-width: 767px) calc(100vw - 68px), 25vw"
             loading="lazy"
             decoding="async"
           />

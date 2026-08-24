@@ -69,9 +69,10 @@ import inlineImage from "../../assets/images/portafolio/mi-slug/imagen.jpg"
 ```
 
 La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. `src` debe ser una imagen local
-importada, `alt` es obligatorio y `caption` es opcional. Astro conserva las dimensiones
-intrínsecas, genera variantes responsivas y el componente usa las mismas figuras y leyendas mono
-que los vídeos y carruseles.
+importada, `alt` es obligatorio y `caption` es opcional. El componente conserva las dimensiones
+intrínsecas y sirve directamente el único archivo importado; usa las mismas figuras y leyendas mono
+que los vídeos y carruseles. Prepara el archivo con el tamaño final necesario y procura mantenerlo
+por debajo de 200 KB.
 
 No uses imágenes remotas, stock genérico ni material de cliente sin permiso. Elimina metadatos
 personales, EXIF/GPS o datos de localización innecesarios antes de añadir un activo.

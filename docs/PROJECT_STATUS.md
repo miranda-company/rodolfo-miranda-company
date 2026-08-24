@@ -76,7 +76,8 @@ revisarse antes del lanzamiento.
   variante de Portafolio sin barra derecha.
 - Cuerpo `.rich-content` común para Markdown, MDX, imágenes con leyenda,
   carruseles, vídeo, código, tablas y notas al pie.
-- Imágenes locales optimizadas con Astro y texto alternativo validado.
+- Imágenes locales servidas desde un único archivo importado, con dimensiones
+  intrínsecas y texto alternativo validado; no se generan variantes responsivas.
 - Redirects de compatibilidad desde `/biblioteca` hacia `/mediateca`.
 - Metadatos canónicos y sociales, favicon, JSON-LD, sitemap derivado del
   contenido y switch seguro de indexación.

@@ -1,5 +1,4 @@
 ---
-import { Picture } from "astro:assets"
 import portrait from "../assets/images/retrato-rodolfo-miranda.jpg"
 
 interface Props {
@@ -12,19 +11,14 @@ const { alt, annotation } = Astro.props
 
 <figure class="yo-portrait">
   <div class="yo-portrait__field">
-    <Picture
-      src={portrait}
-      formats={["avif", "webp"]}
-      fallbackFormat="jpg"
-      widths={[350, 430, 500, 700, 960, 1280]}
-      sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 980px) 38vw, 500px"
-      width={1280}
-      height={1280}
+    <img
+      src={portrait.src}
+      width={portrait.width}
+      height={portrait.height}
       alt={alt}
       loading="lazy"
       decoding="async"
       class="yo-portrait__image"
-      pictureAttributes={{ class: "yo-portrait__picture" }}
     />
   </div>
   <figcaption>{annotation}</figcaption>

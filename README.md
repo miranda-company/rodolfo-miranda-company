@@ -94,7 +94,8 @@ Editable content lives in `src/content/`:
 
 Use Markdown for normal editorial content. Use MDX only when a page needs an
 approved component such as `ContentImage`, `ImageCarousel`, or `VideoEmbed`.
-Images remain local and pass through Astro’s image pipeline.
+Images remain local and are served as the single author-supplied file. Prepare
+them at the final useful dimensions and keep each file below 200 KB when practical.
 
 Changing `draft` to `false` only makes an entry eligible for a production build.
 Before publishing it, replace placeholder content and review its copy, credits,

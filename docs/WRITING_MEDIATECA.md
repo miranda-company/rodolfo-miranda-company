@@ -44,8 +44,9 @@ import inlineImage from "../../assets/images/mediateca/mi-slug/imagen.jpg"
 ```
 
 La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. `ContentImage` genera el patrón
-semántico de figura y leyenda, conserva las dimensiones intrínsecas y procesa la imagen mediante
-Astro. No uses URLs remotas como sustituto del repositorio de activos aprobado. Elimina EXIF/GPS,
+semántico de figura y leyenda, conserva las dimensiones intrínsecas y sirve directamente el único
+archivo importado. Prepara cada imagen con sus dimensiones finales y procura mantenerla por debajo
+de 200 KB. No uses URLs remotas como sustituto del repositorio de activos aprobado. Elimina EXIF/GPS,
 datos personales y metadatos de localización innecesarios antes de incorporar un archivo.
 
 ### Carrusel de imágenes

@@ -139,8 +139,9 @@ import inlineImage from "../../assets/images/notas/mi-slug/imagen.jpg"
 ```
 
 La API es `src: ImageMetadata`, `alt: string` y `caption?: string`. El componente valida la imagen
-local y el texto alternativo, usa el optimizador de Astro y presenta la leyenda con el mismo estilo
-mono que vídeos y carruseles. No uses una URL remota como sustituto de un activo editorial aprobado.
+local y el texto alternativo, sirve directamente el único archivo importado y presenta la leyenda
+con el mismo estilo mono que vídeos y carruseles. Prepara cada imagen con sus dimensiones finales y
+procura mantenerla por debajo de 200 KB. No uses una URL remota como sustituto de un activo editorial aprobado.
 Antes de incorporar cualquier archivo, elimina metadatos personales, EXIF/GPS o información de
 ubicación que no sea necesaria para publicarlo.
 
