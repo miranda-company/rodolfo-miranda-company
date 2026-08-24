@@ -95,15 +95,15 @@ revisarse antes del lanzamiento.
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 53 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 54 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
 - `pnpm run test:production`: confirma 17 rutas canónicas, cuatro redirects y
   los límites editoriales 3 Notas / 3 referencias / 6 proyectos, además de
   canonical, tarjetas sociales, JSON-LD, sitemap y bloqueo de indexación.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 8,66 MiB, el HTML 307,1 KiB,
+- `pnpm run test:budgets`: correcto; `dist` ocupa 8,66 MiB, el HTML 313,6 KiB,
   el CSS 64,8 KiB, el JavaScript emitido 3,7 KiB y las fuentes 213,8 KiB; la
   imagen mayor pesa 422,9 KiB.
-- `pnpm run test:e2e:dist`: 31 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 34 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, movimiento reducido, consola, imágenes y overflow.
 - `pnpm run audit:lighthouse:dist`: rendimiento 95 en portada, 100 en Umbral y
@@ -116,7 +116,8 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
-- Completar y aprobar la biografía y las cuatro etapas provisionales de Yo.
+- Completar la revisión editorial de la biografía, la trayectoria y los enlaces
+  pendientes de Yo.
 - Aprobar la copia de las tres Notas y las tres referencias de Mediateca que se
   generan en producción.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,

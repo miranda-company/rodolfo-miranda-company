@@ -10,8 +10,8 @@ seguir desactivada hasta que se revisen de forma explícita.
 
 ## Edición
 
-- [ ] Aprobar la biografía de Yo y reemplazar las cuatro etapas provisionales de
-      la trayectoria.
+- [ ] Aprobar la revisión final de la biografía, la trayectoria y los enlaces
+      pendientes de Yo.
 - [ ] Sustituir el párrafo biográfico pendiente y retirar su aviso editorial.
 - [ ] Revisar y aprobar los resúmenes y cuerpos de `umbral`, `margen` y
       `archivo`.

@@ -295,6 +295,14 @@ const timelineEntry = z
         message: "Las etapas provisionales no pueden publicar enlaces.",
       })
     }
+
+    if (entry.current && entry.placeholder) {
+      context.addIssue({
+        code: "custom",
+        message: "La etapa actual no puede marcarse como provisional.",
+        path: ["placeholder"],
+      })
+    }
   })
 
 const profile = defineCollection({
@@ -352,14 +360,6 @@ const profile = defineCollection({
         context.addIssue({
           code: "custom",
           message: "La trayectoria requiere exactamente una etapa actual.",
-          path: ["timeline", "entries"],
-        })
-      }
-
-      if (entry.timeline.entries.filter((timelineItem) => timelineItem.placeholder).length !== 4) {
-        context.addIssue({
-          code: "custom",
-          message: "La trayectoria requiere cuatro etapas provisionales.",
           path: ["timeline", "entries"],
         })
       }

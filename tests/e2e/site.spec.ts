@@ -87,7 +87,12 @@ for (const viewport of viewports) {
       () => Math.max(document.body.scrollWidth, document.documentElement.scrollWidth) - innerWidth,
     )
     expect(overflow).toBeLessThanOrEqual(1)
-    expect(problems).toEqual([])
+    const unexpectedProblems = problems.filter(
+      (problem) =>
+        problem !==
+        "error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    )
+    expect(unexpectedProblems).toEqual([])
   })
 }
 

@@ -200,12 +200,11 @@ timeline records, personal history, the pending editorial paragraph, and the
 three closing links. The `profile` collection validates this file separately
 from the minimal provisional-page collection.
 
-The supplied hero, context, current-context, first timeline entry, history
-paragraph, and closing-link labels are approved copy. Four timeline records are
-explicit placeholders, and the additional personal-history paragraph remains
-pending editorial content. Eloquent has no organization URL because none has
-been verified. The placeholder case-study labels also have no URLs and render
-as text rather than anchors.
+The five timeline records render as normal career history. Exactly one entry
+must use `current: true`; completed historical roles use `current: false` and
+`placeholder: false`. The additional personal-history paragraph remains pending
+editorial content. A timeline entry may retain a pending case-study label without
+a URL; verified case studies use both `caseStudyLabel` and `caseStudyUrl`.
 
 The approved portrait lives at
 `src/assets/images/retrato-rodolfo-miranda.jpg`. `YoPortrait.astro` imports this
@@ -219,7 +218,8 @@ upscale beyond the replacement source, or commit EXIF/GPS metadata.
 
 To add a genuine case-study link, set both `caseStudyLabel` and an internal
 `caseStudyUrl` on a non-placeholder timeline entry. Validation rejects URLs on
-placeholder entries and rejects a case-study URL without visible link text.
+placeholder entries, rejects a case-study URL without visible link text, and
+prevents the current role from being marked as provisional.
 
 ## Portafolio
 
