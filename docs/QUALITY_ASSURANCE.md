@@ -114,7 +114,7 @@ conservadores sobre el build actual:
 | -------------------- | ------: |
 | `dist` completo      |  16 MiB |
 | HTML total           | 350 KiB |
-| Un archivo HTML      |  40 KiB |
+| Un archivo HTML      |  42 KiB |
 | CSS total            |  90 KiB |
 | JavaScript emitido   |  25 KiB |
 | Fuentes totales      | 240 KiB |
