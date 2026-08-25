@@ -1,14 +1,11 @@
 .reference-meta,
 .reference-section-index,
-.reference-provisional,
-.reference-connections,
-.reference-notation {
+.reference-provisional {
   font-family: var(--font-mono);
   letter-spacing: 0.045em;
 }
 
-.reference-external:focus-visible,
-.reference-connections a:focus-visible {
+.reference-external:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 3px;
 }
@@ -20,9 +17,7 @@
 }
 
 .reference-external:hover,
-.reference-external:focus-visible,
-.reference-connections a:hover,
-.reference-connections a:focus-visible {
+.reference-external:focus-visible {
   color: var(--blue);
 }
 
@@ -155,63 +150,6 @@
   padding-top: 27px;
 }
 
-.reference-connections > h2 {
-  margin: 0 0 24px;
-}
-
-.reference-connections section {
-  border-top: 1px solid var(--line);
-  padding: 13px 0 24px;
-}
-
-.reference-connections h3 {
-  margin: 0 0 12px;
-}
-
-.reference-connections ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.reference-connections li {
-  border-top: 1px solid var(--line);
-  padding: 9px 0;
-}
-
-.reference-connections a {
-  color: var(--ink);
-  font: 11px/1.35 var(--font-sans);
-  text-decoration-color: var(--line);
-  text-underline-offset: 3px;
-}
-
-.reference-connections p {
-  margin: 0;
-  color: var(--graphite);
-  font-size: 9px;
-  line-height: 1.45;
-}
-
-.reference-notation {
-  border-top: 1px solid var(--blue);
-  padding-top: 12px;
-  color: var(--blue) !important;
-  font-size: 8px !important;
-}
-
-@media (max-width: 1100px) {
-  .reference-connections {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .reference-notation {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 767px) {
   .reference-meta {
     display: grid;
@@ -268,9 +206,5 @@
   .reference-ideas li {
     grid-template-columns: 38px minmax(0, 1fr);
     font-size: 19px;
-  }
-
-  .reference-connections {
-    display: block;
   }
 }

@@ -30,6 +30,8 @@ const notas = defineCollection({
         coverAlt: z.string().min(1).optional(),
         tags: z.array(z.string().min(1)).default([]),
         relatedNotes: z.array(reference("notas")).default([]),
+        relatedMedia: z.array(reference("mediateca")).default([]),
+        relatedProjects: z.array(reference("portafolio")).default([]),
         relatedLinks: z
           .array(
             z.object({
@@ -86,11 +88,22 @@ const notas = defineCollection({
             })
           }
 
-          if (entry.relatedNotes.length > 0 || entry.relatedLinks.length > 0) {
+          const externalRelationshipPath =
+            entry.relatedNotes.length > 0
+              ? "relatedNotes"
+              : entry.relatedMedia.length > 0
+                ? "relatedMedia"
+                : entry.relatedProjects.length > 0
+                  ? "relatedProjects"
+                  : entry.relatedLinks.length > 0
+                    ? "relatedLinks"
+                    : undefined
+
+          if (externalRelationshipPath) {
             context.addIssue({
               code: "custom",
               message: "Un artículo externo no tiene página de detalle para mostrar conexiones.",
-              path: [entry.relatedNotes.length > 0 ? "relatedNotes" : "relatedLinks"],
+              path: [externalRelationshipPath],
             })
           }
         }
@@ -162,6 +175,7 @@ const mediateca = defineCollection({
         tags: z.array(z.string().min(1)).default([]),
         relatedNotes: z.array(reference("notas")).default([]),
         relatedMedia: z.array(reference("mediateca")).default([]),
+        relatedProjects: z.array(reference("portafolio")).default([]),
         featured: z.boolean().default(false),
         draft: z.boolean().default(false),
         fixture: z.boolean().default(false),
@@ -251,6 +265,7 @@ const portafolio = defineCollection({
         placeholder: z.boolean().default(false),
         relatedNotes: z.array(reference("notas")).default([]),
         relatedMedia: z.array(reference("mediateca")).default([]),
+        relatedProjects: z.array(reference("portafolio")).default([]),
         draft: z.boolean().default(false),
         fixture: z.boolean().default(false),
         language,

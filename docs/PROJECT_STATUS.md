@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 24 de agosto de 2026.
+- **Fecha de revisión:** 25 de agosto de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -72,6 +72,9 @@ revisarse antes del lanzamiento.
   rutas no cargan su composición de paneles y previews.
 - Colecciones Astro validadas y helpers centrales para separar drafts y
   fixtures.
+- Grafo editorial bidireccional generado durante el build: las relaciones
+  declaradas en Notas, Mediateca y Portafolio producen enlaces directos,
+  recíprocos y backlinks automáticos sin JavaScript cliente.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Menú móvil accesible con cierre por `Escape` y restauración de foco.
 - Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
@@ -95,18 +98,19 @@ revisarse antes del lanzamiento.
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 55 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 58 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run build`: correcto; genera 17 páginas canónicas de producción.
 - `pnpm run test:production`: confirma 17 rutas canónicas, cuatro redirects y
   los límites editoriales 3 Notas locales / 4 artículos externos / 3
   referencias / 6 proyectos, además de canonical, tarjetas sociales, JSON-LD,
   sitemap y bloqueo de indexación.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 8,66 MiB, el HTML 314,6 KiB,
-  el CSS 64,1 KiB, el JavaScript emitido 4,6 KiB y las fuentes 213,8 KiB; la
+- `pnpm run test:budgets`: correcto; `dist` ocupa 9,62 MiB, el HTML 315,5 KiB,
+  el CSS 66,1 KiB, el JavaScript emitido 4,6 KiB y las fuentes 213,8 KiB; la
   imagen mayor pesa 422,9 KiB.
-- `pnpm run test:e2e:dist`: 35 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 37 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
-  carruseles, movimiento reducido, consola, imágenes y overflow.
+  carruseles, conexiones bidireccionales, movimiento reducido, consola,
+  imágenes y overflow.
 - `pnpm run audit:lighthouse:dist`: rendimiento 95 en portada, 100 en Umbral y
   Modulor y 99 en Syra Coffee; accesibilidad 100 en las cuatro rutas; buenas
   prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo); SEO

@@ -66,53 +66,6 @@
   color: var(--graphite) !important;
 }
 
-.note-connections {
-  border-top: 1px solid var(--line);
-  padding-top: 17px;
-}
-
-.note-connections h2 {
-  margin: 0 0 15px;
-}
-
-.note-connections ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.note-connections li {
-  border-top: 1px solid var(--line);
-}
-
-.note-connections a {
-  display: block;
-  padding: 12px 0;
-  color: var(--ink);
-  font-size: 12px;
-  line-height: 1.35;
-  text-decoration: none;
-}
-
-.note-connections a:hover,
-.note-connections a:focus-visible {
-  color: var(--blue);
-}
-
-.note-connections a:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: 3px;
-}
-
-.note-connections__empty {
-  margin: 0;
-  border-top: 1px solid var(--line);
-  padding: 12px 0;
-  color: var(--graphite);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
 .note-article-footer {
   display: flex;
   flex-wrap: wrap;

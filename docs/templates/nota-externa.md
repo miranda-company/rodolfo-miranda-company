@@ -12,6 +12,8 @@ externalUrl: "https://publicacion.example/articulo"
 tags:
   - "Tema"
 relatedNotes: []
+relatedMedia: []
+relatedProjects: []
 relatedLinks: []
 featured: false
 draft: true

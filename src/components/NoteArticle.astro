@@ -1,35 +1,38 @@
 ---
-import { getEntries, render, type CollectionEntry } from "astro:content"
+import { render, type CollectionEntry } from "astro:content"
 import { formatDottedDate, toDateValue } from "../lib/dates"
-import {
-  getNoteDestination,
-  hasEditorialNoteBody,
-  isEditorialNote,
-  NOTE_MATURITY,
-} from "../lib/notes"
+import type { ConnectionGroups, SupplementalConnectionLink } from "../lib/connection-graph"
+import { getExternalNoteConnectionLinks } from "../lib/content-connections"
+import { hasEditorialNoteBody, NOTE_MATURITY } from "../lib/notes"
 import "../styles/notes-detail.css"
 import "../styles/notes-shared.css"
 import EditorialDetailLayout from "./EditorialDetailLayout.astro"
+import EditorialConnections from "./EditorialConnections.astro"
 import MaturityMarker from "./MaturityMarker.astro"
 
 interface Props {
   entry: CollectionEntry<"notas">
+  connections: ConnectionGroups
   previousNote?: CollectionEntry<"notas">
   nextNote?: CollectionEntry<"notas">
 }
 
-const { entry, previousNote, nextNote } = Astro.props
+const { entry, connections, previousNote, nextNote } = Astro.props
 const { Content } = await render(entry)
 const includeDrafts = import.meta.env.DEV
-const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(
-  (note) =>
-    isEditorialNote(note) &&
-    (includeDrafts || !note.data.draft) &&
-    note.data.language === "es" &&
-    note.id !== entry.id,
+const externalNoteLinks = await getExternalNoteConnectionLinks(
+  entry.data.relatedNotes,
+  includeDrafts,
 )
 const relatedLinks = entry.data.relatedLinks
-const hasConnections = relatedNotes.length > 0 || relatedLinks.length > 0
+const supplementalLinks: SupplementalConnectionLink[] = [
+  ...externalNoteLinks,
+  ...relatedLinks.map((link) => ({
+    title: link.label,
+    href: link.href,
+    label: "Enlace interno",
+  })),
+]
 const hasBody = hasEditorialNoteBody(entry)
 const maturity = NOTE_MATURITY[entry.data.state]
 const publishedDate = toDateValue(entry.data.publishedAt)
@@ -102,39 +105,13 @@ const updatedDate = toDateValue(entry.data.updatedAt)
     </footer>
   </Fragment>
 
-  <aside slot="connections" class="note-connections" aria-labelledby="connections-title">
-    <h2 id="connections-title">Conexiones</h2>
-    {
-      hasConnections ? (
-        <ul>
-          {relatedNotes.map((note) => {
-            const destination = getNoteDestination(note)
-
-            return (
-              <li>
-                <a
-                  href={destination.href}
-                  target={destination.target}
-                  rel={destination.rel}
-                  aria-label={destination.ariaLabel}
-                >
-                  {note.data.title}
-                  {destination.external && <span aria-hidden="true"> ↗</span>}
-                </a>
-              </li>
-            )
-          })}
-          {relatedLinks.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="note-connections__empty">Esta nota todavía no tiene conexiones.</p>
-      )
-    }
-  </aside>
+  <EditorialConnections
+    slot="connections"
+    connections={connections}
+    supplementalLinks={supplementalLinks}
+    headingId="note-connections-title"
+    emptyMessage="Esta nota todavía no tiene conexiones."
+  />
 
   {
     previousNote && nextNote && (

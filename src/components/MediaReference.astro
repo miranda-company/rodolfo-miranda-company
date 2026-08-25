@@ -1,21 +1,26 @@
 ---
-import { getEntries, render, type CollectionEntry } from "astro:content"
-import { isEditorialMedia, MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
-import { getNoteDestination, isEditorialNote } from "../lib/notes"
+import { render, type CollectionEntry } from "astro:content"
+import type { ConnectionGroups } from "../lib/connection-graph"
+import { getExternalNoteConnectionLinks } from "../lib/content-connections"
+import { MEDIA_FORMAT_LABELS, MEDIA_STATUS_LABELS } from "../lib/media"
 import "../styles/media-detail.css"
 import "../styles/media-shared.css"
 import EditorialDetailLayout from "./EditorialDetailLayout.astro"
+import EditorialConnections from "./EditorialConnections.astro"
 import MediaVisual from "./MediaVisual.astro"
 
 interface Props {
   entry: CollectionEntry<"mediateca">
+  connections: ConnectionGroups
 }
 
-const { entry } = Astro.props
+const { entry, connections } = Astro.props
 const { Content } = await render(entry)
-const relatedNotes = (await getEntries(entry.data.relatedNotes)).filter(isEditorialNote)
-const relatedMedia = (await getEntries(entry.data.relatedMedia)).filter(isEditorialMedia)
 const isProvisional = entry.data.editorialState === "provisional"
+const supplementalLinks = await getExternalNoteConnectionLinks(
+  entry.data.relatedNotes,
+  import.meta.env.DEV,
+)
 ---
 
 <EditorialDetailLayout
@@ -101,58 +106,11 @@ const isProvisional = entry.data.editorialState === "provisional"
     </section>
   </div>
 
-  <aside
+  <EditorialConnections
     slot="connections"
-    class="reference-connections"
-    aria-labelledby="reference-connections-title"
-  >
-    <h2 id="reference-connections-title">Conexiones</h2>
-    <section aria-labelledby="reference-notes-title">
-      <h3 id="reference-notes-title">Notas relacionadas</h3>
-      {
-        relatedNotes.length > 0 ? (
-          <ol>
-            {relatedNotes.map((note) => {
-              const destination = getNoteDestination(note)
-
-              return (
-                <li>
-                  <a
-                    href={destination.href}
-                    target={destination.target}
-                    rel={destination.rel}
-                    aria-label={destination.ariaLabel}
-                  >
-                    {note.data.title}
-                    {destination.external && <span aria-hidden="true"> ↗</span>}
-                  </a>
-                </li>
-              )
-            })}
-          </ol>
-        ) : (
-          <p>Conexiones pendientes.</p>
-        )
-      }
-    </section>
-    <section aria-labelledby="reference-media-title">
-      <h3 id="reference-media-title">En la Mediateca</h3>
-      {
-        relatedMedia.length > 0 ? (
-          <ol>
-            {relatedMedia.map((item) => (
-              <li>
-                <a href={`/mediateca/${item.id}`}>{item.data.title}</a>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p>Relaciones pendientes.</p>
-        )
-      }
-    </section>
-    <p class="reference-notation">
-      CONEXIONES / {String(relatedNotes.length + relatedMedia.length).padStart(2, "0")}
-    </p>
-  </aside>
+    connections={connections}
+    supplementalLinks={supplementalLinks}
+    headingId="reference-connections-title"
+    emptyMessage="Esta referencia todavía no tiene conexiones."
+  />
 </EditorialDetailLayout>

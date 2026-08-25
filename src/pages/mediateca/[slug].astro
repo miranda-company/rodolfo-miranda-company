@@ -1,13 +1,22 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import MediaReference from "../../components/MediaReference.astro"
+import { getEditorialConnectionGraph } from "../../lib/content-connections"
+import { createConnectionNodeKey, type ConnectionGroups } from "../../lib/connection-graph"
 import { getDevelopmentSpanishMediaFixtures, getVisibleSpanishMedia } from "../../lib/media"
 
 export async function getStaticPaths() {
-  const entries = await getVisibleSpanishMedia(import.meta.env.DEV)
+  const includeDrafts = import.meta.env.DEV
+  const [entries, connectionGraph] = await Promise.all([
+    getVisibleSpanishMedia(includeDrafts),
+    getEditorialConnectionGraph(includeDrafts),
+  ])
   const editorialPaths = entries.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      connections: connectionGraph.get(createConnectionNodeKey("mediateca", entry.id)),
+    },
   }))
 
   if (!import.meta.env.DEV) return editorialPaths
@@ -17,16 +26,20 @@ export async function getStaticPaths() {
     ...editorialPaths,
     ...fixtures.map((entry) => ({
       params: { slug: entry.id },
-      props: { entry },
+      props: {
+        entry,
+        connections: connectionGraph.get(createConnectionNodeKey("mediateca", entry.id)),
+      },
     })),
   ]
 }
 
 interface Props {
   entry: CollectionEntry<"mediateca">
+  connections: ConnectionGroups
 }
 
-const { entry } = Astro.props
+const { entry, connections } = Astro.props
 ---
 
-<MediaReference entry={entry} />
+<MediaReference entry={entry} connections={connections} />

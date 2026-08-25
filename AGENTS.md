@@ -52,6 +52,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/content.config.ts` — validated content collection schemas.
 - `src/content/` — Markdown, MDX, and JSON content.
 - `src/lib/` — collection visibility, sorting, and publication helpers.
+- `src/lib/connection-graph.ts` and `src/lib/content-connections.ts` — pure
+  editorial graph logic and its Astro collection adapter.
 - `src/styles/global.css` — design tokens, shared typography, and global rules.
 - `src/styles/home.css` — homepage-only hero, panel, and preview presentation.
 - `src/styles/editorial-detail.css` — shared editorial detail layout.
@@ -84,6 +86,10 @@ process with `pnpm exec astro dev stop` before starting another one.
   duplicate those rules in collection stylesheets.
 - Keep tokens and site-wide semantic typography in `global.css`. Use
   collection styles only for genuinely section-specific layouts and controls.
+- Treat `relatedNotes`, `relatedMedia`, and `relatedProjects` as the authored
+  source of truth for editorial connections. Incoming backlinks are derived at
+  build time; do not duplicate a reverse edge unless the relationship is meant
+  to be explicitly mutual.
 - Preserve static HTML output and framework-free browser JavaScript. Do not add
   a client framework or dependency unless the task requires it.
 - Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy
@@ -118,6 +124,10 @@ Follow the collection guides in `docs/WRITING_NOTES.md`,
   are optional unless the surrounding prose does not provide enough context.
 - `draft: false` controls production eligibility; it does not imply editorial
   approval.
+- Use validated local entry IDs in `relatedNotes`, `relatedMedia`, and
+  `relatedProjects`. Do not add wiki-link parsing, ghost pages, or manual
+  backlink fields; the build-time graph derives incoming links from visible
+  content.
 - `fixture: true` entries are technical demonstrations. They must remain
   drafts, use their reserved `*.999` archive numbers, and stay out of indexes,
   counts, homepage previews, relationships, sequence navigation, and

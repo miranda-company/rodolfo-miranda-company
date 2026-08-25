@@ -1,21 +1,30 @@
 ---
 import { render, type CollectionEntry } from "astro:content"
+import { countConnections, type ConnectionGroups } from "../lib/connection-graph"
+import { getExternalNoteConnectionLinks } from "../lib/content-connections"
 import { formatNumericDate } from "../lib/dates"
 import "../styles/portfolio-detail.css"
 import "../styles/portfolio-shared.css"
 import EditorialDetailLayout from "./EditorialDetailLayout.astro"
+import EditorialConnections from "./EditorialConnections.astro"
 import PortfolioArtwork from "./PortfolioArtwork.astro"
 import ProjectMeta from "./ProjectMeta.astro"
 
 interface Props {
   entry: CollectionEntry<"portafolio">
+  connections: ConnectionGroups
   previousProject?: CollectionEntry<"portafolio">
   nextProject?: CollectionEntry<"portafolio">
 }
 
-const { entry, previousProject, nextProject } = Astro.props
+const { entry, connections, previousProject, nextProject } = Astro.props
 const { Content } = await render(entry)
 const updatedLabel = formatNumericDate(entry.data.updatedAt)
+const supplementalLinks = await getExternalNoteConnectionLinks(
+  entry.data.relatedNotes,
+  import.meta.env.DEV,
+)
+const connectionCount = countConnections(connections, supplementalLinks.length)
 ---
 
 <EditorialDetailLayout
@@ -80,6 +89,17 @@ const updatedLabel = formatNumericDate(entry.data.updatedAt)
             </figure>
           ))}
         </div>
+      )
+    }
+
+    {
+      connectionCount > 0 && (
+        <EditorialConnections
+          connections={connections}
+          supplementalLinks={supplementalLinks}
+          presentation="inline"
+          headingId="project-connections-title"
+        />
       )
     }
 

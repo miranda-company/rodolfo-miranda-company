@@ -20,8 +20,10 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
    encabezado pasa a “Comentario”. `editorialState` no sustituye a `draft`.
 7. Elige el `status` editorial (`en-curso`, `consultado`, `de-referencia` o `por-explorar`). Sigue
    apareciendo como metadata aunque no sea un filtro del catálogo.
-8. Usa IDs de archivo sin extensión en `relatedNotes` y `relatedMedia`. Verifica `externalUrl`
-   contra la fuente canónica antes de publicar.
+8. Usa IDs de archivo sin extensión en `relatedNotes`, `relatedMedia` y `relatedProjects`. Cada
+   relación genera automáticamente un backlink en la entrada enlazada; añade la relación inversa
+   solo cuando quieras declarar una relación mutua. Verifica `externalUrl` contra la fuente
+   canónica antes de publicar.
 
 ## Cubierta e imágenes editoriales
 

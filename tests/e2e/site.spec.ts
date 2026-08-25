@@ -1,4 +1,9 @@
 import { expect, test, type Page } from "@playwright/test"
+import {
+  buildConnectionGraph,
+  createConnectionNodeKey,
+  type ConnectionNode,
+} from "../../src/lib/connection-graph"
 
 const primaryRoutes = [
   "/",
@@ -31,6 +36,58 @@ const collectBrowserProblems = (page: Page) => {
   page.on("pageerror", (error) => problems.push(`pageerror: ${error.message}`))
   return problems
 }
+
+test("connection graph derives backlinks, mutual links, and stable deduplication", () => {
+  const nodes: ConnectionNode[] = [
+    {
+      key: createConnectionNodeKey("notas", "a"),
+      collection: "notas",
+      id: "a",
+      title: "Nota A",
+      href: "/notas/a",
+      archiveNumber: "N.001",
+    },
+    {
+      key: createConnectionNodeKey("mediateca", "b"),
+      collection: "mediateca",
+      id: "b",
+      title: "Referencia B",
+      href: "/mediateca/b",
+      archiveNumber: "M.001",
+    },
+    {
+      key: createConnectionNodeKey("portafolio", "c"),
+      collection: "portafolio",
+      id: "c",
+      title: "Proyecto C",
+      href: "/portafolio/c",
+      archiveNumber: "P.001",
+    },
+  ]
+  const noteKey = createConnectionNodeKey("notas", "a")
+  const mediaKey = createConnectionNodeKey("mediateca", "b")
+  const projectKey = createConnectionNodeKey("portafolio", "c")
+  const graph = buildConnectionGraph(nodes, [
+    { source: noteKey, target: mediaKey },
+    { source: noteKey, target: mediaKey },
+    { source: mediaKey, target: noteKey },
+    { source: projectKey, target: noteKey },
+    { source: projectKey, target: projectKey },
+    { source: projectKey, target: createConnectionNodeKey("notas", "missing") },
+  ])
+
+  expect(graph.get(noteKey).mutual.map((connection) => connection.key)).toEqual([mediaKey])
+  expect(graph.get(noteKey).incoming.map((connection) => connection.key)).toEqual([projectKey])
+  expect(graph.get(noteKey).outgoing).toEqual([])
+  expect(graph.get(projectKey).outgoing.map((connection) => connection.key)).toEqual([noteKey])
+  expect(graph.get(projectKey).incoming).toEqual([])
+  expect(graph.get(projectKey).mutual).toEqual([])
+  expect(graph.get(createConnectionNodeKey("notas", "missing"))).toEqual({
+    outgoing: [],
+    incoming: [],
+    mutual: [],
+  })
+})
 
 for (const viewport of viewports) {
   for (const route of primaryRoutes) {
@@ -167,6 +224,30 @@ test("external Notas use compact links and filtering", async ({ page }) => {
   await expect(strategy).toHaveAttribute("aria-pressed", "true")
   await expect(page.locator("[data-note-card]:visible")).toHaveCount(4)
   await expect(page.locator('[data-note-kind="external"]:visible')).toHaveCount(4)
+})
+
+test("editorial connections derive backlinks and deduplicate mutual relationships", async ({
+  page,
+}) => {
+  await page.goto("/notas/margen")
+
+  const noteConnections = page.locator("[data-editorial-connections]")
+  await expect(noteConnections).toHaveAttribute("data-connection-count", "3")
+  await expect(
+    noteConnections.locator('[data-connection-direction="incoming"] a[href="/notas/umbral"]'),
+  ).toHaveCount(1)
+  await expect(
+    noteConnections.locator('[data-connection-direction="incoming"] a[href="/mediateca/modulor"]'),
+  ).toHaveCount(1)
+
+  await page.goto("/mediateca/modulor")
+  const mediaConnections = page.locator("[data-editorial-connections]")
+  await expect(
+    mediaConnections.locator('[data-connection-direction="mutual"] a[href="/mediateca/cosas"]'),
+  ).toHaveCount(1)
+  await expect(
+    mediaConnections.locator('[data-connection-direction="mutual"] a[href="/mediateca/orden"]'),
+  ).toHaveCount(1)
 })
 
 test("Mediateca format filtering handles empty and populated results", async ({ page }) => {

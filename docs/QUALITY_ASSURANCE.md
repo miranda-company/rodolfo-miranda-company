@@ -58,6 +58,8 @@ lento y sensible al entorno local que la suite determinista de CI.
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
 - búsqueda, estado vacío y recuperación de Portafolio;
+- deduplicación del grafo editorial, relaciones mutuas, backlinks derivados y
+  exclusión de conexiones procedentes de drafts en producción;
 - estados inicial y final del carrusel, controles móviles y movimiento reducido.
 
 `tests/e2e/accessibility.spec.ts` usa axe-core con reglas WCAG 2 A/AA y WCAG
@@ -80,6 +82,9 @@ contrato explícito. Verifica 17 rutas canónicas, cuatro redirects de
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
 `P.999` aparezcan en `dist`. Cuando se apruebe una entrada nueva para
 producción, hay que actualizar el contenido y este contrato en el mismo cambio.
+El contrato también comprueba que las relaciones publicadas generen backlinks,
+que una relación mutua aparezca una sola vez y que un proyecto draft no pueda
+filtrarse dentro del grafo de producción.
 El mismo script comprueba que cada ruta canónica tenga `noindex`, canonical,
 Open Graph, tarjeta social y JSON-LD, y que `robots.txt` y el sitemap contengan
 exactamente el contrato previsto. La página 404 debe conservar `noindex,

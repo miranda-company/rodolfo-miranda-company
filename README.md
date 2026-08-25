@@ -33,6 +33,9 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
   statistics, filters, connections, and sequence navigation.
 - Homepage publication counts and recent-content previews are derived from the
   validated content collections.
+- Validated relationships across Notas, Mediateca, and Portafolio become
+  bidirectional connections at build time, including automatically derived
+  backlinks.
 - The project builds to static HTML with minimal framework-free JavaScript.
 - Canonical URLs, social cards, structured data, and a production-only sitemap
   are generated, while indexing remains blocked by default.
@@ -106,20 +109,21 @@ are technical examples and must remain isolated from published content.
 
 ## Changing the implementation
 
-| Area                                        | Start with                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------ |
-| Page structure and shared layouts           | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro` |
-| Site tokens and semantic typography         | `src/styles/global.css`                                                        |
-| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                 |
-| Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                  |
-| Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`         |
-| Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                           |
-| Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                      |
-| Content validation                          | `src/content.config.ts`                                                        |
-| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                 |
-| Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                              |
-| Sitemap and crawler policy                  | `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts`                          |
-| Not-found page                              | `src/pages/404.astro`, `src/styles/not-found.css`                              |
+| Area                                        | Start with                                                                            |
+| ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Page structure and shared layouts           | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro`        |
+| Site tokens and semantic typography         | `src/styles/global.css`                                                               |
+| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                        |
+| Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                         |
+| Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`                |
+| Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                                  |
+| Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                             |
+| Content validation                          | `src/content.config.ts`                                                               |
+| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                        |
+| Bidirectional editorial connections         | `src/lib/connection-graph.ts`, `content-connections.ts`, `EditorialConnections.astro` |
+| Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                                     |
+| Sitemap and crawler policy                  | `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts`                                 |
+| Not-found page                              | `src/pages/404.astro`, `src/styles/not-found.css`                                     |
 
 The [architecture guide](docs/ARCHITECTURE.md) explains the shared DOM contract,
 editorial detail layout, content components, redirects, and route generation in
@@ -149,6 +153,7 @@ through Git history and tags.
 - Strict TypeScript and validated content collections.
 - Markdown and MDX with build-time Shiki highlighting.
 - Custom CSS with semantic color, focus, motion, and responsive contracts; locally bundled fonts.
+- Build-time bidirectional editorial connections with no client runtime.
 - Minimal JavaScript for navigation, filters, search, and image carousels.
 - Playwright, axe-core, and GitHub Actions quality safeguards.
 - pnpm for dependency and task management.

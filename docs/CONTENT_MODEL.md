@@ -18,6 +18,8 @@ Markdown and MDX entries share one validated schema:
 - `coverAlt`: required meaningful alternative text whenever `coverImage` is set;
 - `tags`: an optional array that defaults to empty;
 - `relatedNotes`: validated references to other Notas entries;
+- `relatedMedia`: validated references to Mediateca entries;
+- `relatedProjects`: validated references to Portafolio entries;
 - `relatedLinks`: optional labeled internal URLs beginning with `/`;
 - `featured`, `draft`, and `fixture`: booleans that default to `false`;
 - `language`: `es` or `en`, defaulting to `es`;
@@ -36,11 +38,15 @@ content ID, slug, and public route.
 Every visible local Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use
 `updatedAt` descending, with `archiveNumber` as the deterministic tie-breaker.
-`relatedNotes` stores note IDs and resolves their current titles and routes;
-`relatedLinks` stores an optional visible `label` and an internal `href` that
-begins with `/`. Empty Markdown bodies render an interface-only editorial state
-without storing fabricated prose in the content file. Both formats render
-through `render(entry)` and the same `NoteArticle.astro` component.
+`relatedNotes`, `relatedMedia`, and `relatedProjects` store validated entry IDs.
+The author writes only the relationship from the current entry to its target;
+the build-time connection graph automatically creates the backlink on the
+target. `relatedLinks` stores an optional visible `label` and an internal `href`
+that begins with `/`, but it is not part of the backlink graph because an
+arbitrary URL does not identify a validated collection entry. Empty Markdown
+bodies render an interface-only editorial state without storing fabricated
+prose in the content file. Both formats render through `render(entry)` and the
+same `NoteArticle.astro` component.
 
 `kind: external` is the intentional exception to the local reading layout. It
 requires an HTTPS `externalUrl`, a visible `externalSource`, and
@@ -161,8 +167,9 @@ mode, editorial state, summary, personal commentary, reason for inclusion,
 recurring ideas, optional publication year, catalogue status, archival number,
 update date, optional canonical external URL and local cover image with required
 alternative text and optional visible caption, tags,
-related notes, related Mediateca entries, featured, draft and technical-fixture
-flags, language, an optional translation key, and an optional editorial body.
+related notes, related Mediateca entries, related Portafolio projects, featured,
+draft and technical-fixture flags, language, an optional translation key, and
+an optional editorial body.
 
 Formats cover books, articles, websites, tools, videos, podcasts, and other
 useful references. Status values are `en-curso`, `consultado`,
@@ -245,9 +252,9 @@ chronological archive. Fields include title, summary, start year (`year`), optio
 end year (`endYear`), role, one or more
 disciplines, optional client or organization, project status, `P.###` archive
 number, tags, optional cover image, required companion alternative text, optional cover caption, update
-date, structured gallery, verified project links, related Notas and Mediateca
-references, display order, placeholder and draft flags, language, optional
-translation key, and the case-study body.
+date, structured gallery, verified project links, related Notas, Mediateca and
+Portafolio references, display order, placeholder and draft flags, language,
+optional translation key, and the case-study body.
 
 Portfolio has no `featured` field or visual state. Every selected project uses
 the same index proportions, hierarchy and interaction. `displayOrder` is the
@@ -323,10 +330,36 @@ H3 is reserved for genuine subsections within an H2. Paragraphs, ordered and
 unordered lists, links and editorial figures inherit the shared reading
 typography.
 
-`relatedNotes` and `relatedMedia` contain validated content-entry IDs, and
-`projectLinks` contains labeled, verified external URLs. Portafolio no longer
-renders a right-hand connections rail, so these three relationship fields are
-currently stored for future cross-linking but are not visible on project pages.
+`relatedNotes`, `relatedMedia`, and `relatedProjects` contain validated
+content-entry IDs, and `projectLinks` contains labeled, verified external URLs.
+Portafolio connections render inline near the end of the reading column rather
+than restoring the intentionally removed right-hand rail.
+
+## Bidirectional connection graph
+
+Notas, Mediateca, and Portafolio form one build-time directed graph. Explicit
+frontmatter relationships are outgoing edges. During route generation,
+`src/lib/content-connections.ts` normalizes those fields and
+`src/lib/connection-graph.ts` inverts each edge to derive incoming backlinks.
+No content file is rewritten and no browser JavaScript, database, or generated
+placeholder page is involved.
+
+The interface distinguishes:
+
+- **Enlaces directos**: targets selected in the current entry's frontmatter;
+- **Menciones**: entries that point to the current entry automatically;
+- **Relaciones mutuas**: two entries that explicitly point to each other,
+  rendered once instead of duplicated in both groups.
+
+Only routable Spanish editorial entries participate. Development includes
+ordinary drafts to match its visible routes; production excludes drafts.
+Fixtures are always excluded, and external Notas cards cannot participate
+as graph nodes because they have no local detail route. A local entry may still
+use `relatedNotes` to expose an external article as a supplemental outgoing
+link, but that destination cannot show a backlink. Unknown IDs continue to fail
+through Astro's validated `reference()` fields. Authors should not add the
+reverse field merely to obtain a backlink; add it only when the editorial
+relationship itself is intentionally mutual.
 
 See [PORTFOLIO_PROJECT_GUIDE.md](PORTFOLIO_PROJECT_GUIDE.md),
 [WRITING_PORTFOLIO.md](WRITING_PORTFOLIO.md),

@@ -75,11 +75,31 @@ const countAttributeValue = (html, attribute, value) =>
 const notesHtml = await readRoute("/notas")
 const mediaHtml = await readRoute("/mediateca")
 const portfolioHtml = await readRoute("/portafolio")
+const marginHtml = await readRoute("/notas/margen")
+const modulorHtml = await readRoute("/mediateca/modulor")
 
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "note"),
   3,
   "Producción debe conservar las tres Notas locales.",
+)
+
+assert.ok(
+  marginHtml.includes('data-connection-direction="incoming"') &&
+    marginHtml.includes('href="/notas/umbral"') &&
+    marginHtml.includes('href="/mediateca/modulor"'),
+  "Las Notas deben incluir backlinks derivados de otras colecciones.",
+)
+assert.equal(
+  marginHtml.includes('href="/portafolio/grupo-hem"'),
+  false,
+  "Los proyectos draft no pueden generar backlinks en producción.",
+)
+assert.ok(
+  modulorHtml.includes('data-connection-direction="mutual"') &&
+    modulorHtml.includes('href="/mediateca/cosas"') &&
+    modulorHtml.includes('href="/mediateca/orden"'),
+  "Las relaciones mutuas de Mediateca deben renderizarse una sola vez.",
 )
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "external"),

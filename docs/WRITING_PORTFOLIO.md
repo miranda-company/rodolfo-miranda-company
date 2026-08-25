@@ -23,8 +23,10 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
 4. Completa `displayOrder` con un entero único, ya que controla tanto el índice como la navegación
    anterior/siguiente. La unicidad también debe comprobarse editorialmente antes de publicar.
 5. Escribe solo cliente, rol, disciplinas, resultados y enlaces que hayan sido verificados.
-6. Usa los IDs de archivo, sin extensión, en `relatedNotes` y `relatedMedia`. Cada elemento de
-   `projectLinks` requiere una etiqueta clara y una URL externa completa y aprobada.
+6. Usa los IDs de archivo, sin extensión, en `relatedNotes`, `relatedMedia` y `relatedProjects`.
+   Estas relaciones aparecen inline al final del caso y generan backlinks automáticos en sus
+   destinos sin restaurar la barra derecha. Cada elemento de `projectLinks` requiere una etiqueta
+   clara y una URL externa completa y aprobada.
 
 ## Año o periodo del proyecto
 

@@ -21,6 +21,7 @@ updatedAt: 2026-01-01
 placeholder: false
 relatedNotes: []
 relatedMedia: []
+relatedProjects: []
 draft: true
 language: "es"
 ---

@@ -142,6 +142,36 @@ right-hand connections rail. At tablet widths those connection layouts reduce
 to metadata plus article, with connections placed beneath the article; all
 three collections stack in logical DOM order on mobile.
 
+### Bidirectional editorial connections
+
+Editorial relationships are declared once in frontmatter and resolved into a
+small graph during the Astro build. `src/lib/connection-graph.ts` is the pure,
+collection-independent layer: it registers visible nodes, removes duplicate and
+self-referential edges, derives incoming edges, and classifies every result as
+mutual, outgoing, or incoming. `src/lib/content-connections.ts` is the Astro
+adapter that loads visible Notas, Mediateca, and Portafolio entries and converts
+their `relatedNotes`, `relatedMedia`, and `relatedProjects` fields into graph
+edges.
+
+The three `[slug].astro` route modules receive the resulting connection groups
+at build time and pass plain data to `EditorialConnections.astro`. Notas and
+Mediateca render the shared component in their right rail; Portafolio keeps its
+approved two-column detail layout and renders connections inline near the end
+of the case study. The component visibly separates reciprocal relationships,
+direct links declared by the current entry, and backlinks derived from other
+entries. Existing free-form `relatedLinks` remain a supplemental group rather
+than graph edges.
+
+The graph uses only validated local references and the existing publication
+helpers. Production excludes drafts and fixtures; development includes ordinary
+drafts but still excludes fixtures and external-note cards without local detail
+routes. A validated outgoing reference to an external Notas card remains a
+supplemental external link but cannot produce a backlink because it has no local
+page. Unknown targets are ignored safely, and changing a relation during local
+development rebuilds the graph instead of serving a cached authoring state. No
+browser JavaScript, database, wiki-link parser, generated graph page, or hidden
+placeholder node is involved.
+
 `src/styles/rich-content.css` owns the route-independent `.rich-content`
 presentation used around the rendered Markdown or MDX body in all three
 collections. It covers body text, semantic H2/H3 spacing, lists, links and focus,

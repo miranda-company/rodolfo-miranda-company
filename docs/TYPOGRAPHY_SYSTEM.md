@@ -80,7 +80,8 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 - H3: each shelf title and catalogue-card title beneath its H2 section.
 - Detail H1: the reference title.
 - H2: commentary, context, recurring ideas, editorial content and the parent “Conexiones” area.
-- H3 beneath “Conexiones”: “Notas relacionadas” and “En la Mediateca”.
+- H3 beneath “Conexiones”: populated groups such as “Relaciones mutuas”, “Enlaces directos”,
+  “Menciones” and “Otros enlaces”.
 
 ### Portafolio
 
@@ -88,7 +89,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 - Index H2: the visually hidden “Buscar y filtrar proyectos” section label.
 - Index H3: each project title within that selection.
 - Detail H1: the project title.
-- Detail H2: Markdown case-study sections and the parent “Conexiones” rail.
+- Detail H2: Markdown case-study sections and the inline parent “Conexiones” area.
 - Detail H3: genuine Markdown subsections and populated connection groups.
 - Archive numbers, years, statuses, roles and dates remain mono non-headings.
 - Portfolio CSS controls layout and spacing only; it does not override the

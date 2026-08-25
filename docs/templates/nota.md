@@ -12,6 +12,8 @@ cardFormat: "standard"
 tags:
   - "Tema"
 relatedNotes: []
+relatedMedia: []
+relatedProjects: []
 relatedLinks: []
 featured: false
 draft: true

@@ -31,15 +31,33 @@ otro sitio. Las plantillas omiten `fixture`, que vale `false` por defecto. Sigue
    La portada ocupa todo el ancho disponible de la tarjeta y conserva su proporción natural; no se
    recorta ni se fuerza a una altura fija.
 6. Añade etiquetas breves y consistentes en `tags`. Alimentan los filtros del jardín.
-7. Usa en `relatedNotes` los IDs de otras notas, es decir, sus nombres de archivo sin `.md` o
-   `.mdx`.
-8. Usa `relatedLinks` solo para conexiones internas adicionales. Cada elemento necesita un
-   `label` visible y un `href` que empiece por `/`.
+7. Usa en `relatedNotes`, `relatedMedia` y `relatedProjects` los IDs de entradas locales, es decir,
+   sus nombres de archivo sin `.md` o `.mdx`. El sistema genera automáticamente el backlink en la
+   entrada enlazada; no añadas el enlace inverso salvo que la relación sea realmente mutua.
+8. Usa `relatedLinks` solo para conexiones internas adicionales que no correspondan a una entrada
+   validada. Cada elemento necesita un `label` visible y un `href` que empiece por `/`.
 9. Escribe el cuerpo debajo del frontmatter usando Markdown: párrafos, H2, H3, listas, citas,
    enlaces, énfasis, código, imágenes, figuras y notas al pie cuando aporten a la lectura.
 
 Una nota genuina no debe usar `fixture: true`. Ese campo no es una categoría editorial ni una
 forma alternativa de mantener un borrador: sirve únicamente para aislar verificaciones técnicas.
+
+### Ejemplo de conexiones
+
+```yaml
+relatedNotes:
+  - "margen"
+relatedMedia:
+  - "modulor"
+relatedProjects:
+  - "syra-coffee"
+relatedLinks: []
+```
+
+En esta nota los tres campos generan enlaces directos. En las páginas de `margen`, `modulor` y
+`syra-coffee` aparecerá automáticamente una **Mención** hacia la nota actual. Los artículos
+externos `kind: external` deben mantener todos los campos de relación vacíos porque no tienen una
+ruta local de lectura.
 
 ## Temas del filtro
 
@@ -99,6 +117,8 @@ externalUrl: "https://publicacion.example/articulo"
 tags:
   - "Diseño"
 relatedNotes: []
+relatedMedia: []
+relatedProjects: []
 relatedLinks: []
 featured: false
 draft: true
@@ -114,8 +134,8 @@ Reglas importantes:
   `coverImage` ni `coverAlt`.
 - El título de una tarjeta externa usa un `h3`; las tarjetas de notas locales conservan su `h2`.
   Esta diferencia pertenece al componente y no requiere metadata adicional.
-- Conserva `relatedNotes` y `relatedLinks` vacíos porque la entrada no tiene una página local donde
-  mostrar esas conexiones.
+- Conserva `relatedNotes`, `relatedMedia`, `relatedProjects` y `relatedLinks` vacíos porque la
+  entrada no tiene una página local donde mostrar esas conexiones.
 - `state` y `tags` siguen alimentando los filtros de `/notas`. `perenne` es un valor razonable para
   un artículo ya publicado, pero puedes elegir el estado editorial que corresponda.
 - `featured: true` permite que el artículo aparezca entre las últimas notas de la portada; también
