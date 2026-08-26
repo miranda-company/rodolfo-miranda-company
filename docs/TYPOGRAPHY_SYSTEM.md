@@ -4,7 +4,7 @@ This document defines the semantic typography contract for Rodolfo Miranda Compa
 
 ## Font responsibilities
 
-- **Spectral, weight 500:** all semantic headings from H1 through H6, plus a small number of explicitly non-heading editorial display treatments.
+- **Prata, weight 400:** all semantic headings from H1 through H6, plus a small number of explicitly non-heading editorial display treatments. The local font file lives at `src/assets/fonts/Prata-Regular.ttf`.
 - **Instrument Sans Variable:** introductions, body copy, supporting copy, controls and interface text.
 - **IBM Plex Mono:** indices, dates, kickers, metadata, status labels, filter labels, eyebrows and technical annotations. These labels remain paragraphs, spans, legends, time elements or other appropriate non-heading elements.
 
@@ -19,7 +19,7 @@ This document defines the semantic typography contract for Rodolfo Miranda Compa
 | H5    | Minor nested heading                            | `20px`                                       | `1.15`      | `-0.02em`      |
 | H6    | Deepest meaningful heading                      | `17px`                                       | `1.2`       | `-0.015em`     |
 
-Every level uses Spectral at weight 500. At any one viewport, every rendered instance of a heading level must have the same computed font family, size, weight, line height and letter spacing.
+Every level uses Prata at weight 400. Prata is supplied only in its native regular weight, so display treatments must not request synthetic heavier weights. At any one viewport, every rendered instance of a heading level must have the same computed font family, size, weight, line height and letter spacing.
 
 Component selectors may change only layout concerns such as margin, width, color, position and wrapping. A component variant must never override a heading's font family, size, weight, line height or letter spacing, and component heading selectors must not use the `font` shorthand.
 
