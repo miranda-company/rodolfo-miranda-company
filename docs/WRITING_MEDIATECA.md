@@ -68,8 +68,10 @@ Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y
 `coverImage`. Cuando exista, `coverAlt` es obligatorio y debe describir lo visible. La misma cubierta
 aparece en la tarjeta de “Libros favoritos” cuando la entrada forma parte de esa selección y en la
 página de detalle. Sin `coverImage`, la tarjeta seleccionada muestra un marcador neutro de imagen;
-no es necesario crear un activo provisional. `coverCaption` es opcional y añade una leyenda o crédito
-visible bajo la cubierta del detalle, pero no aparece en la tarjeta del índice.
+no es necesario crear un activo provisional. En la página de detalle, esa ausencia muestra
+automáticamente el icono y la etiqueta LEER, VER o ESCUCHAR definidos por `engagementMode`, en vez de
+inventar una ilustración editorial. `coverCaption` es opcional y añade una leyenda o crédito visible
+bajo la cubierta del detalle, pero no aparece en la tarjeta del índice.
 
 ```yaml
 coverImage: "../../assets/images/mediateca/mi-slug/cubierta.jpg"

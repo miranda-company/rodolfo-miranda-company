@@ -5,8 +5,8 @@ import PageShell from "../../components/PageShell.astro"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { formatNumericDate } from "../../lib/dates"
 import { getVisibleSpanishMedia } from "../../lib/media"
-import "../../styles/media-index.css"
 import "../../styles/media-shared.css"
+import "../../styles/media-index.css"
 
 const includeDrafts = import.meta.env.DEV
 const entries = await getVisibleSpanishMedia(includeDrafts)

@@ -16,7 +16,7 @@ const canonicalRoutes = [
   "/notas/margen",
   "/notas/archivo",
   "/mediateca",
-  "/mediateca/modulor",
+  "/mediateca/the-age-of-the-image",
   "/mediateca/cosas",
   "/mediateca/orden",
   "/portafolio",
@@ -30,7 +30,7 @@ const canonicalRoutes = [
 
 const redirectRoutes = [
   "/biblioteca",
-  "/biblioteca/modulor",
+  "/biblioteca/the-age-of-the-image",
   "/biblioteca/cosas",
   "/biblioteca/orden",
 ]
@@ -76,7 +76,7 @@ const notesHtml = await readRoute("/notas")
 const mediaHtml = await readRoute("/mediateca")
 const portfolioHtml = await readRoute("/portafolio")
 const marginHtml = await readRoute("/notas/margen")
-const modulorHtml = await readRoute("/mediateca/modulor")
+const imageAgeHtml = await readRoute("/mediateca/the-age-of-the-image")
 
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "note"),
@@ -87,7 +87,7 @@ assert.equal(
 assert.ok(
   marginHtml.includes('data-connection-direction="incoming"') &&
     marginHtml.includes('href="/notas/umbral"') &&
-    marginHtml.includes('href="/mediateca/modulor"'),
+    marginHtml.includes('href="/mediateca/the-age-of-the-image"'),
   "Las Notas deben incluir backlinks derivados de otras colecciones.",
 )
 assert.equal(
@@ -96,9 +96,9 @@ assert.equal(
   "Los proyectos draft no pueden generar backlinks en producción.",
 )
 assert.ok(
-  modulorHtml.includes('data-connection-direction="mutual"') &&
-    modulorHtml.includes('href="/mediateca/cosas"') &&
-    modulorHtml.includes('href="/mediateca/orden"'),
+  imageAgeHtml.includes('data-connection-direction="mutual"') &&
+    imageAgeHtml.includes('href="/mediateca/cosas"') &&
+    imageAgeHtml.includes('href="/mediateca/orden"'),
   "Las relaciones mutuas de Mediateca deben renderizarse una sola vez.",
 )
 assert.equal(

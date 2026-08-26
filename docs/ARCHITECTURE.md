@@ -213,8 +213,11 @@ polite status after native scrolling, recalculates after resizing, and respects
 reduced motion. The no-JavaScript path remains a readable native horizontal
 scroller. Structured Portafolio and Mediateca covers stay outside this inline
 narrative component: their schemas pair a local `coverImage` with required
-`coverAlt` and optional `coverCaption`, rendered only on detail pages. Portafolio
-galleries also remain a separate structured field.
+`coverAlt` and optional `coverCaption`, rendered only on detail pages. A Mediateca
+detail without `coverImage` reuses its accessible `engagementMode` icon and
+LEER, VER or ESCUCHAR label in a square placeholder instead of generating
+format-specific artwork. Portafolio galleries also remain a separate structured
+field.
 
 Astro generates fenced-code highlighting statically with Shiki and the
 `github-light` theme. JavaScript, TypeScript, HTML, CSS, JSON, Bash and plain

@@ -1,14 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content"
+import EngagementMode from "./EngagementMode.astro"
 
 interface Props {
   entry: CollectionEntry<"mediateca">
 }
 
 const { entry } = Astro.props
-const host = entry.data.externalUrl
-  ? new URL(entry.data.externalUrl).hostname.replace(/^www\./, "")
-  : "ARCHIVO LOCAL"
 const coverImage = entry.data.coverImage
 const coverCaption = entry.data.coverCaption?.trim()
 ---
@@ -28,86 +26,8 @@ const coverCaption = entry.data.coverCaption?.trim()
       {coverCaption && <figcaption>{coverCaption}</figcaption>}
     </figure>
   ) : (
-    <div
-      class:list={[
-        "media-visual",
-        `media-visual--${entry.data.format}`,
-        `media-visual--${entry.id}`,
-      ]}
-      aria-hidden="true"
-    >
-      {entry.data.format === "book" && (
-        <>
-          <span class="media-visual__code">{entry.data.archiveNumber}</span>
-          <strong>{entry.data.title}</strong>
-          <i>{entry.data.creator}</i>
-        </>
-      )}
-      {entry.data.format === "article" && (
-        <>
-          <span class="media-visual__code">ARTÍCULO / {entry.data.archiveNumber}</span>
-          <i class="media-rule media-rule--one" />
-          <i class="media-rule media-rule--two" />
-          <i class="media-rule media-rule--three" />
-          <strong>Aa</strong>
-        </>
-      )}
-      {entry.data.format === "website" && (
-        <>
-          <span class="media-visual__code">WWW / {entry.data.archiveNumber}</span>
-          <div class="media-window">
-            <i />
-            <i />
-            <i />
-          </div>
-          <strong>{host}</strong>
-        </>
-      )}
-      {entry.data.format === "tool" && (
-        <>
-          <span class="media-visual__code">HERRAMIENTA / {entry.data.archiveNumber}</span>
-          <div class="media-tool-map">
-            <i />
-            <i />
-            <i />
-            <b />
-            <b />
-          </div>
-          <strong>{entry.data.title}</strong>
-        </>
-      )}
-      {entry.data.format === "video" && (
-        <>
-          <span class="media-visual__code">VIDEO / {entry.data.archiveNumber}</span>
-          <div class="media-frame">
-            <i />
-            <b>00:{entry.data.archiveNumber.slice(-2)}</b>
-          </div>
-        </>
-      )}
-      {entry.data.format === "podcast" && (
-        <>
-          <span class="media-visual__code">PODCAST / {entry.data.archiveNumber}</span>
-          <div class="media-wave">
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
-          <strong>{entry.data.title}</strong>
-        </>
-      )}
-      {entry.data.format === "other" && (
-        <>
-          <span class="media-visual__code">REFERENCIA / {entry.data.archiveNumber}</span>
-          <strong>{entry.data.title}</strong>
-        </>
-      )}
+    <div class="media-engagement-placeholder">
+      <EngagementMode mode={entry.data.engagementMode} />
     </div>
   )
 }

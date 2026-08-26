@@ -207,7 +207,9 @@ separate route-level slug list.
 When a Mediateca entry supplies `coverImage`, validation also requires
 `coverAlt`. The same local cover appears in “Libros favoritos” when
 `displayInShelf` is `true` and on its detail page. A selected entry without
-`coverImage` uses a neutral image marker rather than a generated book drawing.
+`coverImage` uses a neutral image marker on the shelf. Its detail page instead
+uses the semantic `engagementMode` icon and label—LEER, VER, or ESCUCHAR—rather
+than a generated format illustration.
 Optional `coverCaption` appears below the cover on the detail page, not in the
 compact index card. The caption provides context or credit and never replaces
 alternative text.

@@ -20,16 +20,8 @@
   color: var(--blue);
 }
 
-.reference-meta .media-visual {
-  height: 300px;
-}
-
 .reference-meta .media-cover__image {
-  height: 300px;
-}
-
-.reference-meta .media-visual--book strong {
-  font-size: 35px;
+  height: auto;
 }
 
 .reference-meta dl {
@@ -103,22 +95,9 @@
     gap: 15px;
   }
 
-  .reference-meta .media-visual,
+  .reference-meta .media-engagement-placeholder,
   .reference-meta .media-cover {
     grid-row: 1 / span 3;
-  }
-
-  .reference-meta .media-visual,
-  .reference-meta .media-cover__image {
-    height: 188px;
-  }
-
-  .reference-meta .media-visual--book {
-    padding: 11px;
-  }
-
-  .reference-meta .media-visual--book strong {
-    font-size: 22px;
   }
 
   .reference-meta dl {
