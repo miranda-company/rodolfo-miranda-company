@@ -398,10 +398,14 @@ time:
 - Mediateca: total published-reference count;
 - Portafolio: total published-project count.
 
-The Ahora section uses the most recently updated visible Portafolio entry for
-its third preview. Development includes ordinary project drafts for design
-review. Production uses only published projects and shows the validated empty
-copy from `ahora.json` when none are available.
+The Ahora section passes `getVisibleSpanishProjects(false)` to
+`PortfolioWildcard.astro`. This produces the same candidate boundary in
+development and production: Spanish entries with `draft: false`, excluding
+fixtures. The first entry in `displayOrder` is rendered as the static fallback;
+a small browser script may replace it with any candidate on page load. It
+updates the cover, `coverAlt`, archive number, title, `projectStatus`,
+`updatedAt`, destination and accessible label together. With no candidates, it
+uses the validated empty copy from `ahora.json`.
 
 The derived statistics use `getVisibleSpanishNotes(false)`,
 `getVisibleSpanishMedia(false)`, and `getVisibleSpanishProjects(false)`. Drafts

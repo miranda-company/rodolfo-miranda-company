@@ -260,10 +260,12 @@ values at build time: the Notas panel receives the latest published-note date
 and published-note count, while Mediateca and Portafolio receive their published
 entry counts. These statistics use the same centralized helpers and production
 boundary as route generation, so drafts and technical fixtures are excluded.
-The Ahora section also presents the most recently updated visible Portafolio
-entry. Development includes ordinary drafts for design review; production uses
-the published collection boundary and retains an explicit empty state for any
-future build with no published project.
+`PortfolioWildcard.astro` owns the Portafolio preview in the Ahora section.
+Astro serializes only the published Spanish candidates; a framework-free
+browser script selects one on page load and updates the cover, alternative text,
+archive number, title, status, date, destination and accessible label together.
+The first candidate remains in the static HTML as progressive enhancement, and
+the component keeps an explicit state for builds with no published projects.
 
 Spanish remains at root URLs. Schemas include language and optional translation
 keys so English can be added later without activating `/en/` routes now.

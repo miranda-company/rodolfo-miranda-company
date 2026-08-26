@@ -169,6 +169,26 @@ test("hash navigation works directly and from another route", async ({ page }) =
   await expect(page.locator("#indice")).toBeInViewport()
 })
 
+test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
+  await page.goto("/")
+
+  const wildcard = page.locator("[data-portfolio-wildcard]")
+  const selectedProject = await wildcard.getAttribute("data-selected-project")
+  const candidates = await wildcard.getAttribute("data-portfolio-projects")
+  const publishedProjects = JSON.parse(candidates ?? "[]") as Array<{
+    id: string
+    href: string
+    cover: { src: string; alt: string }
+  }>
+  const selectedCandidate = publishedProjects.find((project) => project.id === selectedProject)
+
+  expect(publishedProjects.length).toBeGreaterThan(0)
+  expect(selectedCandidate).toBeDefined()
+  await expect(wildcard).toHaveAttribute("href", selectedCandidate?.href ?? "")
+  await expect(wildcard.locator("img")).toHaveAttribute("src", selectedCandidate?.cover.src ?? "")
+  await expect(wildcard.locator("img")).toHaveAttribute("alt", selectedCandidate?.cover.alt ?? "")
+})
+
 test("mobile menu opens from the keyboard and Escape restores focus", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/")

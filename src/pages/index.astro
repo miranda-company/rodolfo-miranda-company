@@ -5,6 +5,7 @@ import ArchiveCard from "../components/ArchiveCard.astro"
 import LatestMedia from "../components/LatestMedia.astro"
 import LatestNotes from "../components/LatestNotes.astro"
 import PageShell from "../components/PageShell.astro"
+import PortfolioWildcard from "../components/PortfolioWildcard.astro"
 import BaseLayout from "../layouts/BaseLayout.astro"
 import { formatDottedDate } from "../lib/dates"
 import { getVisibleSpanishMedia } from "../lib/media"
@@ -24,14 +25,8 @@ if (!home || !ahora) {
 const publishedNotes = await getVisibleSpanishNotes(false)
 const publishedMedia = await getVisibleSpanishMedia(false)
 const publishedProjects = await getVisibleSpanishProjects(false)
-const visibleProjects = import.meta.env.DEV
-  ? await getVisibleSpanishProjects(true)
-  : publishedProjects
 const latestPublishedNote = [...publishedNotes].sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-)[0]
-const latestPortfolioProject = [...visibleProjects].sort(
-  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime(),
 )[0]
 
 type HomepagePanel = CollectionEntry<"homepage">["data"]["panels"][number]
@@ -126,28 +121,11 @@ const mediaShelf = publishedMedia.filter((entry) => entry.data.featured).slice(0
         </div>
         <div class="preview-column portfolio-preview">
           <h3>{ahora.data.portfolioHeading}</h3>
-          {
-            latestPortfolioProject ? (
-              <a
-                class="portfolio-latest"
-                href={`/portafolio/${latestPortfolioProject.id}`}
-                aria-label={`Abrir proyecto: ${latestPortfolioProject.data.title}`}
-              >
-                <span>{latestPortfolioProject.data.archiveNumber}</span>
-                <b>{latestPortfolioProject.data.title}</b>
-                <em>
-                  {latestPortfolioProject.data.projectStatus} · ACT.{" "}
-                  {formatDottedDate(latestPortfolioProject.data.updatedAt)}
-                </em>
-              </a>
-            ) : (
-              <div class="portfolio-latest portfolio-latest--empty">
-                <span>P.—</span>
-                <b>{ahora.data.portfolioEmptyTitle}</b>
-                <em>{ahora.data.portfolioEmptyStatus}</em>
-              </div>
-            )
-          }
+          <PortfolioWildcard
+            entries={publishedProjects}
+            emptyTitle={ahora.data.portfolioEmptyTitle}
+            emptyStatus={ahora.data.portfolioEmptyStatus}
+          />
           <a class="archive-link" href="/portafolio">{ahora.data.portfolioLinkLabel}</a>
         </div>
       </div>

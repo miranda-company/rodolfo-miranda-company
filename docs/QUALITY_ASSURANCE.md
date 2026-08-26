@@ -54,6 +54,8 @@ lento y sensible al entorno local que la suite determinista de CI.
   horizontal; el ruido interno de iframes externos se excluye porque no pertenece
   al código del sitio;
 - navegación por fragmentos desde otra ruta y mediante URL directa;
+- tarjeta comodín de Portafolio con un candidato publicado, enlace e imagen de
+  portada coherentes;
 - menú móvil con teclado, cierre con Escape y restauración del foco;
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
