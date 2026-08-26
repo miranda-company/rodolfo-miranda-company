@@ -223,7 +223,7 @@ than expanding the page.
 
 The Notas index includes the same three example entries in development and a
 normal production build. Mediateca includes 13 ordinary references in
-development and three (`modulor`, `cosas`, `orden`) in production. Portafolio
+development and three (`the-age-of-the-image`, `cosas`, `orden`) in production. Portafolio
 includes 14 ordinary development entries: six published case studies and eight
 draft placeholders. Production includes `syra-coffee`, `bsc`, `minka-icm`,
 `cn-sant-andreu`, `modulab-barcelona`, and `eloquent`.
@@ -239,9 +239,9 @@ Schemas require fixtures to remain drafts and reserve `N.999`, `M.999` and
 route.
 
 Mediateca uses `editorialState` independently of `draft`. `provisional` controls
-the warning and “Comentario provisional” label; `revisado` removes the warning
-and uses “Comentario”. `/mediateca/[slug].astro` generates all references,
-including `/mediateca/modulor`. Legacy `/biblioteca` routes remain redirect
+the warning and `revisado` removes it; the Markdown or MDX body controls all
+headings and editorial structure. `/mediateca/[slug].astro` generates all references,
+including `/mediateca/the-age-of-the-image`. Legacy `/biblioteca` routes remain redirect
 sources for the canonical `/mediateca` URLs.
 
 Editable site copy remains separate from templates:
@@ -280,7 +280,7 @@ A normal production build exposes 17 canonical routes: the five standalone
 routes, three Notas, three Mediateca references, and six Portfolio cases.
 
 Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
-`/biblioteca/[slug]` route covers `modulor`, `cosas`, and `orden`; no overlapping
+`/biblioteca/[slug]` route covers `the-age-of-the-image`, `cosas`, and `orden`; no overlapping
 explicit redirect is required.
 
 ## Metadata, sitemap and indexing

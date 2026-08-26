@@ -76,34 +76,7 @@ const supplementalLinks = await getExternalNoteConnectionLinks(
         </p>
       )
     }
-    <section aria-labelledby="comentario-title">
-      <p class="reference-section-index">01 / COMENTARIO</p>
-      <h2 id="comentario-title">{isProvisional ? "Comentario provisional" : "Comentario"}</h2>
-      <p class="reference-lead">{entry.data.commentary}</p>
-    </section>
-    <section aria-labelledby="porque-title">
-      <p class="reference-section-index">02 / CONTEXTO</p>
-      <h2 id="porque-title">Por qué está aquí</h2>
-      <p>{entry.data.whyHere}</p>
-    </section>
-    <section aria-labelledby="ideas-title">
-      <p class="reference-section-index">03 / RECURRENCIAS</p>
-      <h2 id="ideas-title">Ideas que vuelven</h2>
-      <ol class="reference-ideas">
-        {
-          entry.data.recurringIdeas.map((idea, index) => (
-            <li>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {idea}
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-    <section class="reference-body" aria-labelledby="nota-editorial-title">
-      <h2 id="nota-editorial-title">Nota editorial</h2>
-      <div class="rich-content"><Content /></div>
-    </section>
+    <div class="rich-content"><Content /></div>
   </div>
 
   <EditorialConnections

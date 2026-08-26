@@ -1,5 +1,4 @@
 .reference-meta,
-.reference-section-index,
 .reference-provisional {
   font-family: var(--font-mono);
   letter-spacing: 0.045em;
@@ -97,59 +96,6 @@
   color: var(--ochre);
 }
 
-.reference-reading > section + section {
-  margin-top: 68px;
-}
-
-.reference-section-index {
-  margin: 0 0 12px;
-  color: var(--graphite);
-  font-size: 8px;
-}
-
-.reference-reading > section > h2 {
-  margin: 0 0 24px;
-}
-
-.reference-reading > section > p:not(.reference-section-index) {
-  max-width: 67ch;
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line-height);
-}
-
-.reference-reading .reference-lead {
-  margin: 0;
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.02em;
-}
-
-.reference-ideas {
-  margin: 0;
-  border-top: 1px solid var(--line);
-  padding: 0;
-  list-style: none;
-}
-
-.reference-ideas li {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
-  gap: 15px;
-  border-bottom: 1px solid var(--line);
-  padding: 17px 0;
-  font: 500 22px/1.15 var(--font-serif);
-}
-
-.reference-ideas li span {
-  color: var(--graphite);
-  font: 9px var(--font-mono);
-}
-
-.reference-body {
-  border-top: 1px solid var(--line);
-  padding-top: 27px;
-}
-
 @media (max-width: 767px) {
   .reference-meta {
     display: grid;
@@ -193,18 +139,5 @@
 
   .reference-provisional {
     margin-bottom: 38px;
-  }
-
-  .reference-reading > section + section {
-    margin-top: 52px;
-  }
-
-  .reference-reading > section > h2 {
-    margin-bottom: 18px;
-  }
-
-  .reference-ideas li {
-    grid-template-columns: 38px minmax(0, 1fr);
-    font-size: 19px;
   }
 }

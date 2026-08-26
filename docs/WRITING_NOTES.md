@@ -48,14 +48,15 @@ forma alternativa de mantener un borrador: sirve únicamente para aislar verific
 relatedNotes:
   - "margen"
 relatedMedia:
-  - "modulor"
+  - "the-age-of-the-image"
 relatedProjects:
   - "syra-coffee"
 relatedLinks: []
 ```
 
-En esta nota los tres campos generan enlaces directos. En las páginas de `margen`, `modulor` y
-`syra-coffee` aparecerá automáticamente una **Mención** hacia la nota actual. Los artículos
+En esta nota los tres campos generan enlaces directos. En las páginas de `margen`,
+`the-age-of-the-image` y `syra-coffee` aparecerá automáticamente una **Mención** hacia la nota
+actual. Los artículos
 externos `kind: external` deben mantener todos los campos de relación vacíos porque no tienen una
 ruta local de lectura.
 

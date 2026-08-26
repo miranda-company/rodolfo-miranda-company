@@ -12,7 +12,7 @@ const primaryRoutes = [
   "/mediateca",
   "/portafolio",
   "/notas/umbral",
-  "/mediateca/modulor",
+  "/mediateca/the-age-of-the-image",
   "/portafolio/syra-coffee",
 ] as const
 
@@ -237,10 +237,12 @@ test("editorial connections derive backlinks and deduplicate mutual relationship
     noteConnections.locator('[data-connection-direction="incoming"] a[href="/notas/umbral"]'),
   ).toHaveCount(1)
   await expect(
-    noteConnections.locator('[data-connection-direction="incoming"] a[href="/mediateca/modulor"]'),
+    noteConnections.locator(
+      '[data-connection-direction="incoming"] a[href="/mediateca/the-age-of-the-image"]',
+    ),
   ).toHaveCount(1)
 
-  await page.goto("/mediateca/modulor")
+  await page.goto("/mediateca/the-age-of-the-image")
   const mediaConnections = page.locator("[data-editorial-connections]")
   await expect(
     mediaConnections.locator('[data-connection-direction="mutual"] a[href="/mediateca/cosas"]'),

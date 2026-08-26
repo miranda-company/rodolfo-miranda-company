@@ -4,7 +4,7 @@
     "hero": {
       "label": "Sobre mi",
       "name": "Rodolfo Miranda Company",
-      "positioning": "Producción y Operaciones Digitales",
+      "positioning": "Claridad, estrategia y creatividad para el trabajo digital.",
       "profileMeta": "PERFIL / EN EVOLUCIÓN",
       "disciplines": "COMUNICACIÓN · DISEÑO · TECNOLOGÍA"
     },
@@ -18,17 +18,32 @@
       "paragraphs": [
         [
           {
-            "text": "Nunca he sabido catalogar mi trabajo con una sola etiqueta. Llevo más de 13 años moviéndome entre proyectos digitales, equipos multidisciplinarios y distintas tecnologías. Según lo que necesite cada proyecto, puedo diseñar un proceso, construir una herramienta, coordinar un equipo o dirigir el trabajo desde las primeras conversaciones hasta la entrega final."
+            "text": "Llevo más de 13 años trabajando en la intersección entre creatividad, tecnología y operaciones."
           }
         ],
         [
           {
-            "text": "Cuando me involucro en un proyecto me interesa entender quién participa, cuál es el valor que se pretende lograr y cómo se puede organizar su producción de la forma más eficiente. Ahí es donde mejor funciono. Conecto disciplinas, pongo orden y acompaño la ejecución para asegurarme de que las soluciones funcionan también fuera del papel."
+            "text": "Ayudo a equipos y empresas a ordenar sus procesos, herramientas y responsabilidades para que su trabajo digital sea claro, útil y bien resuelto."
           }
         ],
         [
           {
-            "text": "Con los años han cambiado los proyectos, los clientes y las herramientas. Lo que no ha cambiado demasiado es mi forma de trabajar. Entender bien el problema, reunir a las personas adecuadas y encontrar una manera clara y práctica de convertir una necesidad en algo útil y bien resuelto."
+            "text": "Según el proyecto, puedo diseñar un proceso, construir una herramienta, coordinar un equipo o acompañar la producción de principio a fin."
+          }
+        ],
+        [
+          {
+            "text": "Me gusta entender qué problema estamos intentando resolver, qué valor queremos crear, quién tiene que participar y qué necesita ocurrir para que el trabajo funcione de verdad."
+          }
+        ],
+        [
+          {
+            "text": "Con los años han cambiado los proyectos, los clientes y las herramientas. Mi forma de trabajar, no tanto. Entender bien el problema, reunir a las personas adecuadas y encontrar una manera clara y práctica de convertir una necesidad en algo útil."
+          }
+        ],
+        [
+          {
+            "text": "Y sí, me apellido es Company :)"
           }
         ]
       ]
@@ -39,7 +54,7 @@
       "paragraphs": [
         [
           {
-            "text": "Estoy explorando cómo la inteligencia artificial está cambiando la comunicación, la creatividad y nuestra forma de trabajar. Aprendo haciendo. Diseño productos, construyo prototipos y desarrollo metodologías propias. Este sitio web también forma parte del experimento. Documento lo que descubro y comparto parte del proceso en mis notas y mi LinkedIn."
+            "text": "Estoy explorando cómo la inteligencia artificial está cambiando la comunicación, la creatividad y nuestra forma de trabajar. Aprendo haciendo. Diseño productos, construyo prototipos y pruebo nuevas formas de trabajar con IA. Este sitio también forma parte del experimento. Documento lo que aprendo y comparto parte del proceso en mis notas y en LinkedIn."
           }
         ]
       ]

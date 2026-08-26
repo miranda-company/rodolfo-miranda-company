@@ -69,20 +69,6 @@
   font-style: normal;
 }
 
-.media-visual--modulor {
-  background: var(--blue);
-  color: var(--paper);
-}
-
-.media-visual--modulor::before {
-  position: absolute;
-  inset: 0 24% 0 auto;
-  width: 20px;
-  border-right: 1px solid var(--ochre);
-  border-left: 1px solid var(--ochre);
-  content: "";
-}
-
 .media-visual--cosas {
   background: var(--ochre);
 }

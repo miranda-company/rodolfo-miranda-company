@@ -19,17 +19,17 @@ aprobación editorial.
 
 ## Rutas y contenido
 
-| Sección              | Ruta                 | Desarrollo                                               | Producción                                        |
-| -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
-| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
-| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 3 ejemplos: `umbral`, `margen`, `archivo`                | Los mismos 3 ejemplos                             |
-| Detalle de Nota      | `/notas/[slug]`      | 3 rutas de ejemplo                                       | Las mismas 3 rutas                                |
-| Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `modulor`, `cosas`, `orden`        |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                 |
-| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
-| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
-| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`         |
+| Sección              | Ruta                 | Desarrollo                                               | Producción                                              |
+| -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------------- |
+| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas       |
+| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas            |
+| Notas                | `/notas`             | 3 ejemplos: `umbral`, `margen`, `archivo`                | Los mismos 3 ejemplos                                   |
+| Detalle de Nota      | `/notas/[slug]`      | 3 rutas de ejemplo                                       | Las mismas 3 rutas                                      |
+| Mediateca            | `/mediateca`         | 13 referencias ordinarias                                | 3 referencias: `the-age-of-the-image`, `cosas`, `orden` |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 13 rutas editoriales y una fixture directa               | Solo las 3 referencias publicadas                       |
+| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                                  |
+| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                                  |
+| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`               |
 
 Los seis casos de Portafolio incluidos en producción son:
 

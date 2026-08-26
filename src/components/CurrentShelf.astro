@@ -14,35 +14,22 @@ const { entries } = Astro.props
     entries.map((entry) => (
       <li id={entry.id} class="current-shelf__item fragment-target" tabindex="-1">
         <a href={`/mediateca/${entry.id}`}>
-          <span class:list={["shelf-cover", `shelf-cover--${entry.id}`]} aria-hidden="true">
-            <i>{entry.data.archiveNumber}</i>
-            {entry.id === "modulor" && (
-              <b>
-                LE
-                <br />
-                MODULOR
-              </b>
-            )}
-            {entry.id === "cosas" && (
-              <b>
-                LAS
-                <br />
-                COSAS
-              </b>
-            )}
-            {entry.id === "orden" && (
-              <b>
-                EL
-                <br />
-                ORDEN
-                <br />
-                DEL
-                <br />
-                TIEMPO
-              </b>
-            )}
-            <em>{entry.data.creator}</em>
-          </span>
+          {entry.data.coverImage ? (
+            <span class="shelf-cover">
+              <img
+                src={entry.data.coverImage.src}
+                width={entry.data.coverImage.width}
+                height={entry.data.coverImage.height}
+                alt={entry.data.coverAlt ?? ""}
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+          ) : (
+            <span class="shelf-cover shelf-cover--placeholder" aria-hidden="true">
+              IMAGEN / {entry.data.archiveNumber}
+            </span>
+          )}
           <span class="current-shelf__copy">
             <span>{entry.data.archiveNumber} · LIBRO</span>
             <h3>{entry.data.title}</h3>

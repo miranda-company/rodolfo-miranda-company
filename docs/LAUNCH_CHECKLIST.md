@@ -15,7 +15,7 @@ seguir desactivada hasta que se revisen de forma explícita.
 - [x] Retirar las etiquetas de casos pendientes que no publican un enlace.
 - [ ] Sustituir o aprobar los resúmenes y cuerpos de los tres ejemplos de Notas:
       `umbral`, `margen` y `archivo`.
-- [ ] Revisar y aprobar los resúmenes, comentarios y cuerpos de `modulor`,
+- [ ] Revisar y aprobar los resúmenes y cuerpos de `the-age-of-the-image`,
       `cosas` y `orden`.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.

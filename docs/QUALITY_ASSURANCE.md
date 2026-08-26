@@ -36,7 +36,7 @@ pnpm run verify:launch   # suite normal y Lighthouse, con un único build
 antes de entregar o integrar cambios.
 
 `audit:lighthouse` sirve el build en `127.0.0.1:4321` y audita la portada,
-`/notas/umbral`, `/mediateca/modulor` y `/portafolio/syra-coffee`. Guarda
+`/notas/umbral`, `/mediateca/the-age-of-the-image` y `/portafolio/syra-coffee`. Guarda
 informes JSON ignorados por Git en `.lighthouse/`. Usa `verify:launch` para una
 revisión previa a publicación: reutiliza el `dist/` generado por `verify` para
 no construir dos veces. `audit:lighthouse:dist` debe ejecutarse solo después de

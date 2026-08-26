@@ -15,24 +15,71 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
 4. Selecciona el `format` real: `book`, `article`, `website`, `tool`, `video`, `podcast` u `other`.
 5. Elige el consumo principal en `engagementMode`: `read`, `watch` o `listen`. La interfaz los
    muestra como LEER, VER o ESCUCHAR; no sustituyen el formato.
-6. Conserva `editorialState: provisional` mientras comentario, contexto o cuerpo necesiten revisión.
-   Usa `revisado` solo después de la aprobación; entonces desaparece el aviso provisional y el
-   encabezado pasa a “Comentario”. `editorialState` no sustituye a `draft`.
+6. Conserva `editorialState: provisional` mientras el cuerpo necesite revisión. Usa `revisado`
+   solo después de la aprobación; entonces desaparece el aviso provisional. Este campo no crea ni
+   renombra secciones del artículo y tampoco sustituye a `draft`.
 7. Elige el `status` editorial (`en-curso`, `consultado`, `de-referencia` o `por-explorar`). Sigue
    apareciendo como metadata aunque no sea un filtro del catálogo.
 8. Usa IDs de archivo sin extensión en `relatedNotes`, `relatedMedia` y `relatedProjects`. Cada
    relación genera automáticamente un backlink en la entrada enlazada; añade la relación inversa
    solo cuando quieras declarar una relación mutua. Verifica `externalUrl` contra la fuente
    canónica antes de publicar.
+9. Usa `displayInShelf: true` para incluir la referencia en “Libros favoritos”. Las referencias
+   seleccionadas se ordenan por `updatedAt`, de la más reciente a la más antigua; si comparten
+   fecha, se usa `archiveNumber`. Déjalo en `false` o elimínalo para mostrar la entrada únicamente
+   en el catálogo general.
+
+## Escribir el contenido principal
+
+El cuerpo Markdown o MDX que aparece después del segundo `---` controla íntegramente el contenido
+principal de la referencia, igual que en Notas. La plantilla no impone secciones ni extrae párrafos
+editoriales del frontmatter. Puedes crear, quitar, renombrar y reordenar encabezados, párrafos,
+listas, citas, enlaces e imágenes según lo necesite cada referencia.
+
+La plantilla propone esta estructura inicial, pero no es obligatoria:
+
+```md
+## Comentario provisional
+
+Tu lectura o comentario personal.
+
+## Por qué está aquí
+
+El motivo por el que forma parte de la Mediateca.
+
+## Ideas que vuelven
+
+- Una idea recurrente
+- Otra conexión
+
+## Nota editorial
+
+El desarrollo libre de la referencia.
+```
+
+Cuando una referencia pase a `editorialState: revisado`, revisa también el cuerpo y cambia
+manualmente “Comentario provisional” por “Comentario” si ese encabezado existe. `title`, `summary`,
+`creator`, fechas, estado, cubierta, relaciones y demás datos de catálogo permanecen en el
+frontmatter.
 
 ## Cubierta e imágenes editoriales
 
 Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y referenciarse con
-`coverImage`. Cuando exista, `coverAlt` es obligatorio y debe describir lo visible. `coverCaption`
-es opcional y añade una leyenda o crédito visible bajo la cubierta del detalle. Las imágenes incluidas
-en el cuerpo son independientes de la cubierta. Cada imagen significativa necesita texto alternativo
-útil. Una imagen Markdown normal no convierte su título en una leyenda visible. Para añadir una
-leyenda usa MDX e importa el activo local así:
+`coverImage`. Cuando exista, `coverAlt` es obligatorio y debe describir lo visible. La misma cubierta
+aparece en la tarjeta de “Libros favoritos” cuando la entrada forma parte de esa selección y en la
+página de detalle. Sin `coverImage`, la tarjeta seleccionada muestra un marcador neutro de imagen;
+no es necesario crear un activo provisional. `coverCaption` es opcional y añade una leyenda o crédito
+visible bajo la cubierta del detalle, pero no aparece en la tarjeta del índice.
+
+```yaml
+coverImage: "../../assets/images/mediateca/mi-slug/cubierta.jpg"
+coverAlt: "Cubierta del libro con una descripción concreta de su diseño"
+coverCaption: "Crédito o procedencia opcional de la cubierta."
+```
+
+Las imágenes incluidas en el cuerpo son independientes de la cubierta. Cada imagen significativa
+necesita texto alternativo útil. Una imagen Markdown normal no convierte su título en una leyenda
+visible. Para añadir una leyenda usa MDX e importa el activo local así:
 
 ```mdx
 import ContentImage from "../../components/content/ContentImage.astro"
@@ -111,7 +158,7 @@ pnpm run check
 pnpm run build
 ```
 
-Confirma autoría, comentario, URL externa, modo de consulta, textos alternativos y relaciones.
+Confirma autoría, contenido editorial, URL externa, modo de consulta, textos alternativos y relaciones.
 Cambia `editorialState` a `revisado` únicamente tras la aprobación editorial y `draft` a `false`
 solo cuando la referencia esté lista para producción. Revisa el diff, añade los archivos previstos,
 crea un commit descriptivo y haz `git push` a la rama correspondiente.

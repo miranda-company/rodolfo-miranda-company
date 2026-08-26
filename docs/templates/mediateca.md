@@ -5,10 +5,6 @@ format: "book"
 engagementMode: "read"
 editorialState: "provisional"
 summary: "Resumen breve de la referencia."
-commentary: "Comentario personal pendiente de revisión editorial."
-whyHere: "Por qué forma parte de la Mediateca."
-recurringIdeas:
-  - "Idea que vuelve"
 publicationYear: 2026
 status: "por-explorar"
 archiveNumber: "M.014"
@@ -22,13 +18,25 @@ tags:
 relatedNotes: []
 relatedMedia: []
 relatedProjects: []
+displayInShelf: false
 featured: false
 draft: true
 language: "es"
 ---
 
-Añade aquí una nota editorial opcional sobre la referencia.
+## Comentario provisional
 
-## Apuntes
+Escribe aquí tu lectura o comentario personal sobre la referencia.
 
-Desarrolla las conexiones que no encajen en los campos estructurados.
+## Por qué está aquí
+
+Explica por qué forma parte de la Mediateca.
+
+## Ideas que vuelven
+
+- Primera idea recurrente
+- Segunda idea recurrente
+
+## Nota editorial
+
+Desarrolla libremente la referencia con los encabezados, párrafos, listas y enlaces que necesites.

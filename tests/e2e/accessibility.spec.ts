@@ -8,7 +8,7 @@ const routes = [
   "/mediateca",
   "/portafolio",
   "/notas/umbral",
-  "/mediateca/modulor",
+  "/mediateca/the-age-of-the-image",
   "/portafolio/syra-coffee",
   "/ruta-que-no-existe",
 ] as const

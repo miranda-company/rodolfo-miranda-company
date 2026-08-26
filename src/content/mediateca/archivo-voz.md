@@ -5,9 +5,6 @@ format: "podcast"
 engagementMode: "listen"
 editorialState: "provisional"
 summary: "Ficha provisional para representar conversación, escucha y memoria dentro de la colección."
-commentary: "Comentario de diseño pendiente de seleccionar y escuchar una referencia real."
-whyHere: "Fixture para ensayar una pieza sonora sin recurrir a carátulas de plataformas."
-recurringIdeas: ["Escucha", "Archivo", "Conversación"]
 status: "en-curso"
 archiveNumber: "M.012"
 updatedAt: "2026-06-28"
@@ -16,5 +13,21 @@ featured: false
 draft: true
 language: "es"
 ---
+
+## Comentario provisional
+
+Comentario de diseño pendiente de seleccionar y escuchar una referencia real.
+
+## Por qué está aquí
+
+Fixture para ensayar una pieza sonora sin recurrir a carátulas de plataformas.
+
+## Ideas que vuelven
+
+- Escucha
+- Archivo
+- Conversación
+
+## Nota editorial
 
 Entrada de desarrollo para demostrar el diseño. No es contenido editorial aprobado.

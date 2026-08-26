@@ -20,7 +20,7 @@ placeholder: true
 relatedNotes:
   - "umbral"
 relatedMedia:
-  - "modulor"
+  - "the-age-of-the-image"
 draft: true
 language: "es"
 ---

@@ -9,11 +9,8 @@ import "../../styles/media-index.css"
 import "../../styles/media-shared.css"
 
 const includeDrafts = import.meta.env.DEV
-const shelfOrder = ["modulor", "cosas", "orden"]
 const entries = await getVisibleSpanishMedia(includeDrafts)
-const currentShelf = entries
-  .filter((entry) => shelfOrder.includes(entry.id))
-  .sort((a, b) => shelfOrder.indexOf(a.id) - shelfOrder.indexOf(b.id))
+const currentShelf = entries.filter((entry) => entry.data.displayInShelf)
 const lastUpdated = entries[0]?.data.updatedAt ?? new Date("2026-07-31")
 const lastUpdatedLabel = formatNumericDate(lastUpdated)
 const formatFilters = [
@@ -60,8 +57,7 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
           <h2 id="shelf-title">Libros favoritos</h2>
         </div>
         <p>
-          Tres referencias que acompañan el trabajo en este momento. Las anotaciones son
-          provisionales.
+          Referencias que acompañan el trabajo en este momento. Las anotaciones son provisionales.
         </p>
       </div>
       <CurrentShelf entries={currentShelf} />
