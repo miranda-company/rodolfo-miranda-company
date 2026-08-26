@@ -30,4 +30,4 @@ Lejos de ofrecer una visión pesimista sobre el declive de la cultura, Stephen A
 
 ## Mis Subrayados
 
-Esta página utiliza texto editorial provisional para validar la experiencia de lectura. No contiene citas atribuidas al libro.
+- Todavía no tengo subrayados.
