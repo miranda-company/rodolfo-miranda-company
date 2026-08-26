@@ -88,31 +88,31 @@ h6 {
 
 h1 {
   font-size: var(--heading-h1-size);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
 h2 {
   font-size: var(--heading-h2-size);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
 h3 {
   font-size: var(--heading-h3-size);
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   line-height: 1.05;
 }
 
 h4 {
   font-size: var(--heading-h4-size);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 h5 {
   font-size: var(--heading-h5-size);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   line-height: 1.15;
 }
 
