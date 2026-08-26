@@ -502,7 +502,6 @@ const homepage = defineCollection({
     return z
       .object({
         heroTitle: z.string().min(1),
-        heroSubTitle: z.string().min(1),
         connectionLabel: z.string().min(1),
         indexLabel: z.string().min(1),
         panels: z.array(panel).length(4),

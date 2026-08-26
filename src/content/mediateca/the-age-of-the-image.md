@@ -1,15 +1,15 @@
 ---
-title: "The Age Of The Image"
+title: "The Age of the Image: Redefining Literacy in a World of Screens"
 creator: "Stephen Apkon"
 format: "book"
 engagementMode: "read"
 editorialState: "provisional"
-summary: "Alabetismo y la gramática de la narración visual en la era digital y de las pantallas."
-publicationYear: 1950
+summary: "Sobre alfabetismo y el lenguaje visual en la era de las pantallas digitales."
+publicationYear: 2013
 status: "de-referencia"
 archiveNumber: "M.001"
 updatedAt: "2026-07-31"
-externalUrl: "https://www.fondationlecorbusier.fr/en/work-book/le-modulor-i-le-corbusier-1950/"
+externalUrl: "https://www.goodreads.com/en/book/show/15793543-the-age-of-the-image"
 tags: ["Diseño", "Sistemas", "Escala"]
 relatedNotes: ["umbral", "margen"]
 relatedMedia: ["cosas", "orden"]
@@ -22,20 +22,12 @@ draft: false
 language: "es"
 ---
 
-## Comentario provisional
+## Abstracto
 
-Comentario provisional de diseño: esta ficha ensaya una lectura sobre la tensión entre medida, cuerpo y sistema. Debe ser revisada y aprobada por Rodolfo antes de publicarse.
+Vivimos inmersos en una revolución de la narrativa visual que es tan transformadora como lo fue la invención de la imprenta. Sin embargo, a pesar de estar rodeados de pantallas, la mayoría somos prácticamente "analfabetos visuales": consumimos contenido sin comprender su gramática, el código detrás de su estilo o cómo se produce.
 
-## Por qué está aquí
+Lejos de ofrecer una visión pesimista sobre el declive de la cultura, Stephen Apkon presenta este libro como una celebración del progreso y un plan de acción. El autor demuestra que las reglas para una comunicación visual efectiva existen y son tan claras como las del lenguaje escrito. Apoyándose en la historia de la alfabetización (desde los primeros pergaminos hasta las redes sociales) y en la neurociencia sobre cómo el cerebro humano procesa las historias, Apkon nos urge a transformar la manera en que enseñamos, creamos y nos comunicamos para aprovechar al máximo el potencial de esta nueva era visual.
 
-Texto provisional: se incluye para probar cómo una referencia histórica puede conectarse con preguntas actuales sobre escala, consistencia y adaptación.
-
-## Ideas que vuelven
-
-- La medida como lenguaje compartido
-- La distancia entre regla y contexto
-- Los sistemas que admiten variación
-
-## Nota editorial
+## Mis Subrayados
 
 Esta página utiliza texto editorial provisional para validar la experiencia de lectura. No contiene citas atribuidas al libro.
