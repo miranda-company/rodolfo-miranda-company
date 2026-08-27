@@ -27,14 +27,6 @@ La humanidad se encuentra en una encrucijada histórica frente a la revolución 
 
 Lejos de rechazar la innovación, el Papa hace un llamado urgente a "desarmar" la IA mediante una gobernanza ética e instituciones globales que protejan a los más vulnerables. Exige proteger la verdad frente a la desinformación (fundamental para la democracia), salvaguardar la dignidad del trabajo frente a la automatización, erradicar las nuevas formas de esclavitud digital y prohibir delegar decisiones de vida o muerte a máquinas en contextos de guerra. El objetivo final es utilizar estas poderosas herramientas para construir una "civilización del amor".
 
-Puntos clave del documento (etiquetas o tags recomendadas):
-
-El enfoque: Ético, humanista, pastoral y de advertencia social.
-
-Idea principal: La IA y la tecnología deben subordinarse incondicionalmente a la dignidad de la persona y al bien común; la solución a los problemas humanos no es el perfeccionamiento tecnológico (transhumanismo), sino la fraternidad.
-
-Temas principales: Ética de la IA, Doctrina Social de la Iglesia, transhumanismo, futuro del empleo, desinformación, esclavitud digital, tecnología militar.
-
 ## Mis subrayados
 
-- Todavía no tengo ningún subrayado
+- Ups... todavía no hay subrayados.

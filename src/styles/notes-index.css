@@ -12,7 +12,6 @@
 
 .notes-intro__meta,
 .notes-results-line,
-.notes-intro__graph b,
 .note-card__topline,
 .note-card__date,
 .note-card__tags,
@@ -39,24 +38,6 @@
   color: var(--graphite);
   font-size: var(--type-metadata-size);
   line-height: var(--type-metadata-line-height);
-}
-
-.notes-intro__graph {
-  position: relative;
-  height: 174px;
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(238, 232, 220, 0.44);
-}
-
-.notes-intro__graph b {
-  position: absolute;
-  right: 12px;
-  bottom: 11px;
-  color: var(--graphite);
-  font-size: 9px;
-  font-weight: 400;
 }
 
 .intro-node {
@@ -512,16 +493,6 @@
     max-width: 300px;
     margin-top: 14px;
     line-height: 1.4;
-  }
-
-  .notes-intro__graph {
-    height: 72px;
-    margin-top: 18px;
-  }
-
-  .notes-intro__graph b {
-    right: 9px;
-    bottom: 7px;
   }
 
   .intro-node--a {

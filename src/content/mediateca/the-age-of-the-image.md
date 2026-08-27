@@ -30,4 +30,4 @@ Lejos de ofrecer una visión pesimista sobre el declive de la cultura, Stephen A
 
 ## Mis subrayados
 
-- Todavía no tengo subrayados.
+- Ups... todavía no hay subrayados.

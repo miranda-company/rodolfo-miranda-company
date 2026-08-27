@@ -33,4 +33,4 @@ Sin embargo, su visión no es fatalista. Gates argumenta que maximizar los benef
 
 ## Mis subrayados
 
-- Todavía no tengo ningún subrayado
+- Ups... todavía no hay subrayados.
