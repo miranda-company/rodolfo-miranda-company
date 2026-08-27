@@ -15,27 +15,29 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png"
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">
-    <a href="/#indice">Índice</a>
-    <a href="/#ahora">Ahora</a>
+    <a href="/yo">Yo</a>
+    <a href="/portafolio">Portafolio</a>
+    <a href="/notas">Notas</a>
+    <a href="/mediateca">Mediateca</a>
   </nav>
 
   <button
-    class="mobile-index-button"
+    class="mobile-menu-button"
     type="button"
     aria-expanded="false"
     aria-controls="mobile-menu"
     data-open-label="Cerrar"
-    data-closed-label="Índice"
+    data-closed-label="Menú"
   >
-    Índice
+    Menú
   </button>
 
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Índice móvil" hidden>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navegación móvil" hidden>
     <button type="button" class="menu-close">Cerrar menú</button>
     <a href="/yo">Yo</a>
+    <a href="/portafolio">Portafolio</a>
     <a href="/notas">Notas</a>
     <a href="/mediateca">Mediateca</a>
-    <a href="/#ahora">Ahora</a>
   </nav>
 
   <script>
@@ -43,7 +45,7 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png"
       if (header.dataset.menuReady === "true") return
       header.dataset.menuReady = "true"
 
-      const trigger = header.querySelector<HTMLButtonElement>(".mobile-index-button")
+      const trigger = header.querySelector<HTMLButtonElement>(".mobile-menu-button")
       const menu = header.querySelector<HTMLElement>(".mobile-menu")
       const closeButton = header.querySelector<HTMLButtonElement>(".menu-close")
       if (!trigger || !menu || !closeButton) return
@@ -53,7 +55,7 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png"
         trigger.setAttribute("aria-expanded", String(open))
         trigger.textContent = open
           ? (trigger.dataset.openLabel ?? "Cerrar")
-          : (trigger.dataset.closedLabel ?? "Índice")
+          : (trigger.dataset.closedLabel ?? "Menú")
         header.classList.toggle("menu-open", open)
         if (restoreFocus) window.requestAnimationFrame(() => trigger.focus())
       }

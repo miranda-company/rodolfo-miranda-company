@@ -153,20 +153,28 @@ for (const viewport of viewports) {
   })
 }
 
-test("hash navigation works directly and from another route", async ({ page }) => {
+test("backlink hash navigation works directly and from another route", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto("/yo")
   await page.locator(".page-back").click()
   await expect(page).toHaveURL(/\/#indice$/)
   await expect(page.locator("#indice")).toBeInViewport()
 
-  await page.goto("/yo")
-  await page.locator(".desktop-nav").getByRole("link", { name: "Ahora" }).click()
-  await expect(page).toHaveURL(/\/#ahora$/)
-  await expect(page.locator("#ahora")).toBeInViewport()
-
   await page.goto("/#indice")
   await expect(page.locator("#indice")).toBeInViewport()
+})
+
+test("desktop header links to the four primary sections", async ({ page }) => {
+  await page.goto("/")
+
+  const links = page.locator(".desktop-nav a")
+  await expect(links).toHaveText(["Yo", "Portafolio", "Notas", "Mediateca"])
+  expect(
+    await links.evaluateAll((items) => items.map((item) => item.getAttribute("href"))),
+  ).toEqual(["/yo", "/portafolio", "/notas", "/mediateca"])
+
+  await page.locator(".desktop-nav").getByRole("link", { name: "Portafolio" }).click()
+  await expect(page).toHaveURL(/\/portafolio$/)
 })
 
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
@@ -193,13 +201,19 @@ test("mobile menu opens from the keyboard and Escape restores focus", async ({ p
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/")
 
-  const trigger = page.locator(".mobile-index-button")
-  await expect(trigger).toHaveAccessibleName("Índice")
+  const trigger = page.locator(".mobile-menu-button")
+  await expect(trigger).toHaveAccessibleName("Menú")
   await trigger.focus()
   await page.keyboard.press("Enter")
   await expect(trigger).toHaveAttribute("aria-expanded", "true")
   await expect(trigger).toHaveAccessibleName("Cerrar")
   await expect(page.locator("#mobile-menu")).toBeVisible()
+  await expect(page.locator("#mobile-menu a")).toHaveText([
+    "Yo",
+    "Portafolio",
+    "Notas",
+    "Mediateca",
+  ])
 
   await page.keyboard.press("Escape")
   await expect(trigger).toHaveAttribute("aria-expanded", "false")

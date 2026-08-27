@@ -351,13 +351,13 @@ a {
   color: var(--primary);
 }
 
-.mobile-index-button,
+.mobile-menu-button,
 .mobile-menu {
   display: none;
 }
 
 .site-header a:focus-visible,
-.mobile-index-button:focus-visible,
+.mobile-menu-button:focus-visible,
 .menu-close:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: 3px;
@@ -388,7 +388,7 @@ a {
   color: var(--primary);
 }
 
-.mobile-index-button:active,
+.mobile-menu-button:active,
 .menu-close:active {
   background: var(--surface-container);
   box-shadow: inset 0 -1px 0 var(--primary);
@@ -436,7 +436,7 @@ a {
     display: none;
   }
 
-  .mobile-index-button {
+  .mobile-menu-button {
     display: block;
     min-height: var(--touch-target);
     border: 0;

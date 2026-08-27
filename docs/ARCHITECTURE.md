@@ -50,6 +50,12 @@ Redirect-only URLs do not render this structure. `.page-shell` owns the viewport
 responsive gutters, background, technical pattern, overflow and isolation;
 `.page-main` supplies common width and stacking behavior.
 
+The shared header links directly to `/yo`, `/portafolio`, `/notas`, and
+`/mediateca` in that order. Expanded and medium layouts expose the links in
+`.desktop-nav`; compact layouts use the “Menú” trigger and the same destinations
+inside `.mobile-menu`. “Índice” and “Ahora” remain homepage section concepts,
+not global navigation items.
+
 Page introductions use a shared semantic and styling contract. Each is a
 labelled `<section>` with the shared `.page-intro` class plus a route-specific
 `*-intro` class: `.notes-intro`, `.mediateca-intro`, `.portfolio-intro`, or

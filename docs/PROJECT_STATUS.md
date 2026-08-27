@@ -76,7 +76,8 @@ revisarse antes del lanzamiento.
   declaradas en Notas, Mediateca y Portafolio producen enlaces directos,
   recíprocos y backlinks automáticos sin JavaScript cliente.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
-- Menú móvil accesible con cierre por `Escape` y restauración de foco.
+- Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
+  cierra con `Escape` y restaura el foco.
 - Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
   Notas y Mediateca comparten el controlador tipado de disclosure y filtros.
 - Layout de detalle compartido por Notas, Mediateca y Portafolio, con una
