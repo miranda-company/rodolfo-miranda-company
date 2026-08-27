@@ -67,6 +67,25 @@ manualmente “Comentario provisional” por “Comentario” si ese encabezado 
 `creator`, fechas, estado, cubierta, relaciones y demás datos de catálogo permanecen en el
 frontmatter.
 
+### Poemas y saltos de verso
+
+Markdown convierte un salto de línea simple dentro de un párrafo en un espacio. Para conservar la
+estructura de un poema, termina cada verso que continúa con una barra invertida (`\`) y separa las
+estrofas con una línea en blanco:
+
+```md
+Primer verso\
+Segundo verso\
+Último verso de la estrofa.
+
+Primer verso de la estrofa siguiente\
+Último verso del poema.
+```
+
+La barra genera un salto `<br>` visible y la línea vacía crea una nueva estrofa. No añadas una regla
+global de `white-space` a `.rich-content`, porque también modificaría el espaciado de artículos,
+notas y casos de estudio normales.
+
 ## Cubierta e imágenes editoriales
 
 Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y referenciarse con

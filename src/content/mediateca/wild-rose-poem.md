@@ -4,7 +4,7 @@ creator: "Wendell Berry"
 format: "article"
 engagementMode: "read"
 editorialState: "provisional"
-summary: "Un libro que nos enseña a escribir y a disfrutar del proceso."
+summary: "Un poema que Wendell Berry escribió a su esposa."
 publicationYear: 1995
 status: "consultado"
 archiveNumber: "M.002"
@@ -24,15 +24,15 @@ language: "es"
 Un poema que [Wendell Berry](https://en.wikipedia.org/wiki/Wendell_Berry) escribió a su esposa. Lo descubrí dentro del libro [Bird by Bird](bird-by-bird).
 
 ## The Wild Rose
-Sometimes hidden from me
-in daily custom and in trust,
-so that I live by you unaware
+
+Sometimes hidden from me\
+in daily custom and in trust,\
+so that I live by you unaware\
 as by the beating of my heart,
 
-
-Suddenly you flare in my sight,
-a wild rose blooming at the edge
-of thicket, grace and light
-where yesterday was only shade,
-and once again I am blessed, choosing
+Suddenly you flare in my sight,\
+a wild rose blooming at the edge\
+of thicket, grace and light\
+where yesterday was only shade,\
+and once again I am blessed, choosing\
 again what I chose before.
