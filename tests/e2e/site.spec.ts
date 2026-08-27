@@ -177,6 +177,15 @@ test("desktop header links to the four primary sections", async ({ page }) => {
   await expect(page).toHaveURL(/\/portafolio$/)
 })
 
+test("header identifies the current section on indexes and detail pages", async ({ page }) => {
+  await page.goto("/notas")
+  await expect(page.locator('.desktop-nav a[aria-current="page"]')).toHaveText("Notas")
+
+  await page.goto("/mediateca/the-age-of-the-image")
+  await expect(page.locator('.desktop-nav a[aria-current="page"]')).toHaveText("Mediateca")
+  await expect(page.locator('#mobile-menu a[aria-current="page"]')).toHaveText("Mediateca")
+})
+
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
   await page.goto("/")
 

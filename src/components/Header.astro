@@ -1,5 +1,16 @@
 ---
 import wolfSymbol from "../assets/images/simbolo-lobo.png"
+
+const navItems = [
+  { href: "/yo", label: "Yo" },
+  { href: "/portafolio", label: "Portafolio" },
+  { href: "/notas", label: "Notas" },
+  { href: "/mediateca", label: "Mediateca" },
+] as const
+
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/"
+const isCurrentSection = (href: (typeof navItems)[number]["href"]) =>
+  pathname === href || pathname.startsWith(`${href}/`)
 ---
 
 <header class="site-header">
@@ -15,10 +26,13 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png"
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">
-    <a href="/yo">Yo</a>
-    <a href="/portafolio">Portafolio</a>
-    <a href="/notas">Notas</a>
-    <a href="/mediateca">Mediateca</a>
+    {
+      navItems.map(({ href, label }) => (
+        <a href={href} aria-current={isCurrentSection(href) ? "page" : undefined}>
+          {label}
+        </a>
+      ))
+    }
   </nav>
 
   <button
@@ -34,10 +48,13 @@ import wolfSymbol from "../assets/images/simbolo-lobo.png"
 
   <nav class="mobile-menu" id="mobile-menu" aria-label="Navegación móvil" hidden>
     <button type="button" class="menu-close">Cerrar menú</button>
-    <a href="/yo">Yo</a>
-    <a href="/portafolio">Portafolio</a>
-    <a href="/notas">Notas</a>
-    <a href="/mediateca">Mediateca</a>
+    {
+      navItems.map(({ href, label }) => (
+        <a href={href} aria-current={isCurrentSection(href) ? "page" : undefined}>
+          {label}
+        </a>
+      ))
+    }
   </nav>
 
   <script>

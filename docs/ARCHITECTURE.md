@@ -54,7 +54,9 @@ The shared header links directly to `/yo`, `/portafolio`, `/notas`, and
 `/mediateca` in that order. Expanded and medium layouts expose the links in
 `.desktop-nav`; compact layouts use the “Menú” trigger and the same destinations
 inside `.mobile-menu`. “Índice” and “Ahora” remain homepage section concepts,
-not global navigation items.
+not global navigation items. Index and detail routes mark their parent section
+with `aria-current="page"`; the shared link underline exposes that state visually
+in both navigation variants.
 
 Page introductions use a shared semantic and styling contract. Each is a
 labelled `<section>` with the shared `.page-intro` class plus a route-specific
