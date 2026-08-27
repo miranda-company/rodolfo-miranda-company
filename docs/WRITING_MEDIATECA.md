@@ -26,8 +26,9 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
    canónica antes de publicar.
 9. Usa `displayInShelf: true` para incluir la referencia en “Libros favoritos”. Las referencias
    seleccionadas se ordenan por `updatedAt`, de la más reciente a la más antigua; si comparten
-   fecha, se usa `archiveNumber`. Déjalo en `false` o elimínalo para mostrar la entrada únicamente
-   en el catálogo general.
+   fecha, se usa `archiveNumber`. Las tres primeras referencias publicadas de esta selección
+   aparecen también en el “Anaquel” de la homepage. Déjalo en `false` o elimínalo para mostrar la
+   entrada únicamente en el catálogo general.
 
 Si borras o renombras una entrada enlazada, las relaciones existentes no se reescriben. Antes de
 publicar, sigue el procedimiento compartido para [interpretar el aviso de Astro y limpiar todas las

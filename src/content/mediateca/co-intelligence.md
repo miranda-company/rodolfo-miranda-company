@@ -28,7 +28,7 @@ La inteligencia artificial (IA) de consumo ya está aquí, trayendo consigo una 
 
 Alejándose del ruido generado tanto por los entusiastas ciegos como por los catastrofistas de la IA, el profesor de Wharton, [Ethan Mollick](https://en.wikipedia.org/wiki/Ethan_Mollick), ofrece una perspectiva provocadora y sumamente práctica. Su enfoque se centra en cómo estas nuevas "herramientas para el pensamiento" pueden transformar nuestro mundo en el día a día. En lugar de temerle, Mollick nos invita a interactuar con la IA asumiendo que es un colaborador: un compañero de trabajo, un co-profesor y un mentor (o coach). Con una visión amplia, estimulante y profundamente optimista, Co-Intelligence nos revela el verdadero poder y las promesas de esta nueva era tecnológica.
 
-## Mis Subrayados
+## Mis subrayados
 
 - There is a sense of poetic irony in the fact that as we move toward a future characterized by greater technological sophistication, we find ourselves contemplating deeply human questions about identity, purpose, and connection.
 - Current systems are not good enough to be deep conversation partners, but we may start to see individuals choosing to interact more with AI than with humans.

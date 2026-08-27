@@ -201,7 +201,9 @@ related entries and production. It is not a recommendation.
 `displayInShelf` defaults to `false`. Set it to `true` to include a visible
 Mediateca entry in “Libros favoritos”; the page orders selected entries by
 `updatedAt` and then `archiveNumber`, using the same deterministic order as the
-catalogue. This keeps shelf membership in the entry metadata rather than in a
+catalogue. The homepage “Anaquel” preview uses the first three published Spanish
+entries from this same ordered selection. Drafts and fixtures never enter that
+preview. This keeps shelf membership in the entry metadata rather than in a
 separate route-level slug list.
 
 When a Mediateca entry supplies `coverImage`, validation also requires

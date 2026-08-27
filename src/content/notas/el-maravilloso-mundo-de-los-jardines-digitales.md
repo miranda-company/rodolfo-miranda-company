@@ -1,6 +1,6 @@
 ---
-title: "El umbral entre una idea y un sistema"
-summary: "Una idea empieza a convertirse en sistema cuando puede repetirse, observarse y cambiar sin perder su intención."
+title: "El maravilloso mundo de los jardínes digitales"
+summary: "Una filosofía refrescante para compartir nuestras ideas y pensamientos en internet."
 publishedAt: 2026-07-31
 updatedAt: 2026-07-31
 state: "en-crecimiento"

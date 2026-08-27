@@ -27,7 +27,7 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
 
 <BaseLayout
   title="Mediateca"
-  description="Libros, artículos, herramientas y referencias que acompañan el trabajo."
+  description="Libros, artículos, videos y audios que acompañan mi trabajo y mi día a día."
   canonicalPath="/mediateca"
   schemaType="CollectionPage"
 >
@@ -38,23 +38,19 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
         <p class="kicker media-kicker">03 / Inspiración y cosicas buenas</p>
         <h1 id="media-title">Mediateca</h1>
         <p class="mediateca-intro__description">
-          Libros, artículos, herramientas y referencias que acompañan el trabajo.
+          Libros, artículos, videos y audios que acompañan mi trabajo y mi día a día.
         </p>
         <p class="mediateca-intro__meta">
           {String(entries.length).padStart(2, "0")} REFERENCIAS · ACTUALIZADO {lastUpdatedLabel}
         </p>
-      </div>
-      <div class="mediateca-intro__spines" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-        <i>03.{String(entries.length).padStart(2, "0")} / MEDIOS EN RELACIÓN</i>
       </div>
     </section>
 
     <section class="current-shelf" aria-labelledby="shelf-title">
       <div class="media-section-heading">
         <div>
-          <p>SELECCIÓN / AHORA</p>
-          <h2 id="shelf-title">Libros favoritos</h2>
+          <p>Seleccionados ahora</p>
+          <h2 id="shelf-title">Anaquel</h2>
         </div>
         <p>
           Referencias que acompañan el trabajo en este momento. Las anotaciones son provisionales.
@@ -66,8 +62,7 @@ const themes = ["Diseño", "Sistemas", "Cultura digital", "Herramientas", "Edici
     <section class="media-catalogue" aria-labelledby="catalogue-title">
       <div class="media-section-heading media-section-heading--catalogue">
         <div>
-          <p>CATÁLOGO / ORDEN DE ARCHIVO</p>
-          <h2 id="catalogue-title">Otras cosicas interesantes</h2>
+          <h2 id="catalogue-title">Repositorio</h2>
         </div>
         <p data-result-count aria-live="polite">{entries.length} referencias visibles</p>
       </div>

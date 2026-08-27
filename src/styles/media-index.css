@@ -1,5 +1,4 @@
 .mediateca-intro__meta,
-.mediateca-intro__spines i,
 .media-section-heading > div > p,
 .media-section-heading--catalogue > p,
 .current-shelf__copy > span,
@@ -36,66 +35,6 @@
   color: var(--graphite);
   font-size: var(--type-metadata-size);
   line-height: var(--type-metadata-line-height);
-}
-
-.mediateca-intro__spines {
-  position: relative;
-  display: flex;
-  height: 168px;
-  align-items: end;
-  gap: 6px;
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 25px 20px 0;
-  background: rgba(238, 232, 220, 0.36);
-}
-
-.mediateca-intro__spines span {
-  display: block;
-  width: 34px;
-  height: 104px;
-  border: 1px solid rgba(29, 30, 25, 0.52);
-  background: var(--blue);
-}
-
-.mediateca-intro__spines span:nth-child(2) {
-  width: 49px;
-  height: 83px;
-  background: var(--ochre);
-}
-
-.mediateca-intro__spines span:nth-child(3) {
-  width: 25px;
-  height: 122px;
-  background: var(--ink);
-}
-
-.mediateca-intro__spines span:nth-child(4) {
-  width: 57px;
-  height: 72px;
-  background: var(--red);
-}
-
-.mediateca-intro__spines span:nth-child(5) {
-  width: 31px;
-  height: 94px;
-  background: var(--plum);
-}
-
-.mediateca-intro__spines span:nth-child(6) {
-  width: 42px;
-  height: 62px;
-  background: var(--paper);
-}
-
-.mediateca-intro__spines i {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: var(--graphite);
-  font-size: 8px;
-  font-style: normal;
 }
 
 .current-shelf,
@@ -494,48 +433,6 @@
 
   .mediateca-intro__meta {
     margin-top: 16px;
-  }
-
-  .mediateca-intro__spines {
-    height: 92px;
-    margin-top: 20px;
-    gap: 4px;
-    padding: 18px 14px 0;
-  }
-
-  .mediateca-intro__spines span {
-    width: 22px;
-    height: 53px;
-  }
-
-  .mediateca-intro__spines span:nth-child(2) {
-    width: 31px;
-    height: 41px;
-  }
-
-  .mediateca-intro__spines span:nth-child(3) {
-    width: 18px;
-    height: 63px;
-  }
-
-  .mediateca-intro__spines span:nth-child(4) {
-    width: 36px;
-    height: 37px;
-  }
-
-  .mediateca-intro__spines span:nth-child(5) {
-    width: 21px;
-    height: 49px;
-  }
-
-  .mediateca-intro__spines span:nth-child(6) {
-    width: 28px;
-    height: 31px;
-  }
-
-  .mediateca-intro__spines i {
-    top: 8px;
-    font-size: 7px;
   }
 
   .media-section-heading {
