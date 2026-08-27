@@ -9,11 +9,10 @@ publicationYear: 1995
 status: "consultado"
 archiveNumber: "M.002"
 updatedAt: "2026-07-24"
-externalUrl: "https://www.goodreads.com/book/show/12543.Bird_by_Bird"
 tags: ["Cultura digital", "Objetos", "Observación"]
 relatedNotes: []
 relatedMedia: ["bird-by-bird"]
-displayInShelf: true
+displayInShelf: false
 featured: true
 draft: false
 language: "es"
