@@ -72,6 +72,10 @@
   min-width: 0;
 }
 
+.reference-reading .rich-content > :first-child {
+  margin-top: 0;
+}
+
 .reference-provisional {
   display: flex;
   gap: 11px;
