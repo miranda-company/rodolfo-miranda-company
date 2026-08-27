@@ -369,10 +369,67 @@ ordinary drafts to match its visible routes; production excludes drafts.
 Fixtures are always excluded, and external Notas cards cannot participate
 as graph nodes because they have no local detail route. A local entry may still
 use `relatedNotes` to expose an external article as a supplemental outgoing
-link, but that destination cannot show a backlink. Unknown IDs continue to fail
-through Astro's validated `reference()` fields. Authors should not add the
+link, but that destination cannot show a backlink. Rendering helpers omit an
+unresolved entry so that a stale relationship does not crash the page, while
+Astro reports the missing target during the build. Authors should not add the
 reverse field merely to obtain a backlink; add it only when the editorial
 relationship itself is intentionally mutual.
+
+### Cleaning connections after renaming or deleting content
+
+Renaming or deleting a content file does not rewrite the frontmatter or Markdown
+of entries that linked to its old ID. An unresolved connection is omitted from
+the rendered page, but it remains an authoring error and must be cleaned up.
+
+For example, a build may print:
+
+```text
+/mediateca/thinking-in-systems
+Entry notas → umbral was not found.
+```
+
+The route identifies the source entry to inspect:
+`src/content/mediateca/thinking-in-systems.md` (or `.mdx`). The collection and ID
+after `Entry` identify the missing destination. In this example, look for
+`umbral` inside `relatedNotes`.
+
+Use this mapping when reading the warning:
+
+| Missing destination | Frontmatter field to inspect |
+| ------------------- | ---------------------------- |
+| `notas → <id>`      | `relatedNotes`               |
+| `mediateca → <id>`  | `relatedMedia`               |
+| `portafolio → <id>` | `relatedProjects`            |
+
+After deleting or renaming an entry:
+
+1. Keep its old filename without `.md` or `.mdx`; that filename is the ID used
+   by relationships and public routes.
+2. Search every authored and maintained use of the old ID. For example:
+
+   ```sh
+   rg -n 'umbral' src/content docs tests
+   ```
+
+3. In frontmatter, replace the old ID with the intended new ID or remove it when
+   the relationship no longer exists. Also update direct Markdown links such as
+   `/notas/umbral`, documentation examples, expected routes, and tests.
+4. Format and validate the result:
+
+   ```sh
+   pnpm run format
+   git diff --check
+   pnpm run check
+   pnpm run build
+   ```
+
+5. Confirm that the build no longer prints `Entry … was not found` and inspect
+   the affected source and destination pages. Run `pnpm run verify` before
+   handing off a complete change.
+
+Do not add a reverse relationship merely to remove a warning. A missing target
+must be replaced or removed at the source; incoming backlinks are still derived
+automatically when the target exists.
 
 See [PORTFOLIO_PROJECT_GUIDE.md](PORTFOLIO_PROJECT_GUIDE.md),
 [WRITING_PORTFOLIO.md](WRITING_PORTFOLIO.md),

@@ -28,6 +28,10 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
    destinos sin restaurar la barra derecha. Cada elemento de `projectLinks` requiere una etiqueta
    clara y una URL externa completa y aprobada.
 
+Si borras o renombras una entrada enlazada, actualiza todos los usos de su ID. Consulta el
+procedimiento compartido para [localizar el documento de origen y limpiar conexiones
+obsoletas](CONTENT_MODEL.md#cleaning-connections-after-renaming-or-deleting-content).
+
 ## Año o periodo del proyecto
 
 `year` es el año inicial o el único año del proyecto. Para un trabajo realizado durante un solo

@@ -60,6 +60,11 @@ actual. Los artículos
 externos `kind: external` deben mantener todos los campos de relación vacíos porque no tienen una
 ruta local de lectura.
 
+Si borras o renombras una nota, referencia o proyecto, sus relaciones no se actualizan solas.
+Sigue el procedimiento compartido para [localizar y limpiar conexiones
+obsoletas](CONTENT_MODEL.md#cleaning-connections-after-renaming-or-deleting-content) antes de
+publicar.
+
 ## Temas del filtro
 
 Cada nota guarda sus temas en el array `tags` del frontmatter:

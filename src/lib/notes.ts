@@ -46,8 +46,8 @@ function compareNotesByRecent(first: NoteEntry, second: NoteEntry) {
   return dateDifference || first.data.archiveNumber.localeCompare(second.data.archiveNumber, "es")
 }
 
-export function isEditorialNote(entry: NoteEntry) {
-  return !entry.data.fixture
+export function isEditorialNote(entry: NoteEntry | undefined): entry is NoteEntry {
+  return entry !== undefined && !entry.data.fixture
 }
 
 export function isExternalNote(entry: NoteEntry): entry is ExternalNoteEntry {

@@ -29,6 +29,10 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
    fecha, se usa `archiveNumber`. Déjalo en `false` o elimínalo para mostrar la entrada únicamente
    en el catálogo general.
 
+Si borras o renombras una entrada enlazada, las relaciones existentes no se reescriben. Antes de
+publicar, sigue el procedimiento compartido para [interpretar el aviso de Astro y limpiar todas las
+conexiones obsoletas](CONTENT_MODEL.md#cleaning-connections-after-renaming-or-deleting-content).
+
 ## Escribir el contenido principal
 
 El cuerpo Markdown o MDX que aparece después del segundo `---` controla íntegramente el contenido

@@ -99,6 +99,12 @@ publicación real tiene requisitos adicionales indicados más abajo.
 | `language`        | `es` o `en`; por defecto `es`                                     | Idioma editorial. Las rutas actuales de Portafolio seleccionan contenido en español. No existen rutas inglesas todavía.                                                                                                            |
 | `translationKey`  | Texto opcional                                                    | Clave futura para relacionar traducciones. No genera una ruta ni se muestra actualmente.                                                                                                                                           |
 
+Al borrar o renombrar una Nota, referencia de Mediateca o proyecto enlazado, actualiza todos los
+usos de su antiguo ID. El procedimiento compartido para [interpretar los avisos del build, encontrar
+el archivo de origen y limpiar conexiones
+obsoletas](CONTENT_MODEL.md#cleaning-connections-after-renaming-or-deleting-content) cubre los tres
+campos de relación y los enlaces Markdown directos.
+
 ## Año único y periodo de actividad
 
 Para un proyecto realizado en un solo año:
