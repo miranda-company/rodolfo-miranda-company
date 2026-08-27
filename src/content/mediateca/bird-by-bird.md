@@ -3,11 +3,11 @@ title: "Bird by Bird"
 creator: "Anne Lamott"
 format: "book"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Un libro que nos enseña a escribir y a disfrutar del proceso."
 publicationYear: 1995
 status: "consultado"
-archiveNumber: "M.002"
+archiveNumber: "M.001"
 updatedAt: "2026-07-24"
 externalUrl: "https://www.goodreads.com/book/show/12543.Bird_by_Bird"
 tags: ["Cultura digital", "Objetos", "Observación"]

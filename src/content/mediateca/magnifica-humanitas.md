@@ -3,16 +3,16 @@ title: "Magnifica Humanitas"
 creator: "Pope Leo XIV"
 format: "article"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "El papa Leo XIV habla sobre la humanidad y la Inteligencia Artificial"
 publicationYear: 2026
 status: "de-referencia"
-archiveNumber: "M.001"
+archiveNumber: "M.003"
 updatedAt: "2026-08-27"
 externalUrl: "https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html"
 tags: ["Inteligencia Artificial"]
-relatedNotes: ["umbral", "margen"]
-relatedMedia: ["cosas", "orden"]
+relatedNotes: []
+relatedMedia: []
 
 displayInShelf: false
 featured: true

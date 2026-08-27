@@ -3,11 +3,11 @@ title: "The turbulent AI era is here. The choices we make now are critical."
 creator: "Bill Gates"
 format: "article"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Bill Gates hace una advertencia sobre los desafíos a los que la humanidad se enfrenta con la llegada de la IA."
 publicationYear: 2026
 status: "de-referencia"
-archiveNumber: "M.001"
+archiveNumber: "M.006"
 updatedAt: "2026-08-27"
 externalUrl: "https://www.linkedin.com/pulse/turbulent-ai-era-here-choices-we-make-now-critical-bill-gates-kkmze/"
 tags: ["Inteligencia Artificial"]
@@ -21,7 +21,7 @@ language: "es"
 ---
 
 ## Abstracto
-En este [artículo publicado en LinkedIn](https://www.linkedin.com/pulse/turbulent-ai-era-here-choices-we-make-now-critical-bill-gates-kkmze/), Bill Gates advierte que la transición hacia la era de la inteligencia artificial será uno de los periodos más turbulentos de la historia humana. Aunque la IA tiene el potencial de ser la mayor herramienta de equidad jamás inventada, Gates señala que el mundo no se está preparando adecuadamente para mitigar sus enormes riesgos, que incluyen la pérdida acelerada y masiva de empleos (tanto de oficina como manuales), la proliferación de ciberataques y el impacto negativo en el desarrollo social y cognitivo de los jóvenes.
+En este [artículo publicado en LinkedIn](https://www.linkedin.com/pulse/turbulent-ai-era-here-choices-we-make-now-critical-bill-gates-kkmze/), [Bill Gates](https://en.wikipedia.org/wiki/Bill_Gates) advierte que la transición hacia la era de la inteligencia artificial será uno de los periodos más turbulentos de la historia humana. Aunque la IA tiene el potencial de ser la mayor herramienta de equidad jamás inventada, Gates señala que el mundo no se está preparando adecuadamente para mitigar sus enormes riesgos, que incluyen la pérdida acelerada y masiva de empleos (tanto de oficina como manuales), la proliferación de ciberataques y el impacto negativo en el desarrollo social y cognitivo de los jóvenes.
 
 Sin embargo, su visión no es fatalista. Gates argumenta que maximizar los beneficios de la IA (especialmente en salud, educación, servicios públicos y agricultura en países en vías de desarrollo) es tan importante como minimizar sus daños. Para asegurar que la IA beneficie a toda la humanidad y no solo a una minoría privilegiada, propone un plan de acción urgente basado en tres pilares:
 

@@ -3,16 +3,16 @@ title: "The Age of the Image: Redefining Literacy in a World of Screens"
 creator: "Stephen Apkon"
 format: "book"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Sobre alfabetismo y el lenguaje visual en la era de las pantallas digitales."
 publicationYear: 2013
 status: "de-referencia"
-archiveNumber: "M.001"
+archiveNumber: "M.005"
 updatedAt: "2026-07-31"
 externalUrl: "https://www.goodreads.com/en/book/show/15793543-the-age-of-the-image"
 tags: ["Diseño", "Sistemas", "Escala"]
-relatedNotes: ["umbral", "margen"]
-relatedMedia: ["cosas", "orden"]
+relatedNotes: []
+relatedMedia: []
 coverImage: "../../assets/images/mediateca/the-age-of-the-image-stephen-apkon.jpg"
 coverAlt: "The Age Of The Image - Stephen Apkon"
 coverCaption: "The Age Of The Image - Stephen Apkon"

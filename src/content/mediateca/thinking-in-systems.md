@@ -3,11 +3,11 @@ title: "Thinking in Systems"
 creator: "Donella Meadow"
 format: "book"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Un libro que nos explica qué son los sistemas, cómo diseñarlos y cómo interpretarlos."
 publicationYear: 2008
 status: "de-referencia"
-archiveNumber: "M.001"
+archiveNumber: "M.007"
 updatedAt: "2026-07-31"
 externalUrl: "https://www.goodreads.com/book/show/3828902-thinking-in-systems"
 tags: ["Diseño", "Sistemas", "Escala"]

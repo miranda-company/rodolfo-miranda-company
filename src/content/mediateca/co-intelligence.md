@@ -3,7 +3,7 @@ title: "Co-Intelligence: Living and Working with AI"
 creator: "Ethan Mollick"
 format: "book"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Cómo podemos utilizar la IA como una herramienta que expanda nuestras capacidades en vez de delegárselas."
 publicationYear: 2024
 status: "consultado"
@@ -11,8 +11,8 @@ archiveNumber: "M.002"
 updatedAt: "2026-07-24"
 externalUrl: "https://www.goodreads.com/book/show/198678736-co-intelligence"
 tags: ["Cultura digital", "Objetos", "Observación"]
-relatedNotes: ["margen"]
-relatedMedia: ["the-age-of-the-image", "orden"]
+relatedNotes: []
+relatedMedia: []
 coverImage: "../../assets/images/mediateca/co-intelligence-ethan-mollick.jpg"
 coverAlt: "Co-intelligence - Ethan Mollick"
 coverCaption: "Co-intelligence - Ethan Mollick"

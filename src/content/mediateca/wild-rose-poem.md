@@ -3,11 +3,11 @@ title: "The Wild Rose"
 creator: "Wendell Berry"
 format: "article"
 engagementMode: "read"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Un poema que Wendell Berry escribió a su esposa."
 publicationYear: 1995
 status: "consultado"
-archiveNumber: "M.002"
+archiveNumber: "M.008"
 updatedAt: "2026-07-24"
 tags: ["Cultura digital", "Objetos", "Observación"]
 relatedNotes: []
