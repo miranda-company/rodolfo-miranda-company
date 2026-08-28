@@ -7,7 +7,7 @@ const routes = [
   "/notas",
   "/mediateca",
   "/portafolio",
-  "/notas/umbral",
+  "/notas/el-magnifico-mundo-de-los-jardines-digitales",
   "/mediateca/the-age-of-the-image",
   "/portafolio/syra-coffee",
   "/ruta-que-no-existe",

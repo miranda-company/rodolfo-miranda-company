@@ -1,15 +1,8 @@
 import type { APIRoute } from "astro"
-import { getVisibleSpanishMedia } from "../lib/media"
-import { getVisibleSpanishNotes, isExternalNote } from "../lib/notes"
-import { getVisibleSpanishProjects } from "../lib/portfolio"
 import { SITE_ORIGIN } from "../lib/site"
+import { getPublishedSiteRoutes } from "../lib/site-routes"
 
 export const prerender = true
-
-interface SitemapEntry {
-  path: string
-  updatedAt?: Date
-}
 
 const escapeXml = (value: string) =>
   value.replace(/[<>&'\"]/g, (character) => {
@@ -25,39 +18,7 @@ const escapeXml = (value: string) =>
 
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site ?? new URL(SITE_ORIGIN)
-  const [notes, media, projects] = await Promise.all([
-    getVisibleSpanishNotes(false),
-    getVisibleSpanishMedia(false),
-    getVisibleSpanishProjects(false),
-  ])
-
-  const latest = (dates: Date[]) =>
-    dates.reduce<Date | undefined>(
-      (current, date) => (!current || date.getTime() > current.getTime() ? date : current),
-      undefined,
-    )
-  const localNotes = notes.filter((entry) => !isExternalNote(entry))
-
-  const entries: SitemapEntry[] = [
-    {
-      path: "/",
-      updatedAt: latest([
-        ...notes.map((entry) => entry.data.updatedAt),
-        ...media.map((entry) => entry.data.updatedAt),
-        ...projects.map((entry) => entry.data.updatedAt),
-      ]),
-    },
-    { path: "/yo" },
-    { path: "/notas", updatedAt: latest(notes.map((entry) => entry.data.updatedAt)) },
-    ...localNotes.map((entry) => ({ path: `/notas/${entry.id}`, updatedAt: entry.data.updatedAt })),
-    { path: "/mediateca", updatedAt: latest(media.map((entry) => entry.data.updatedAt)) },
-    ...media.map((entry) => ({ path: `/mediateca/${entry.id}`, updatedAt: entry.data.updatedAt })),
-    { path: "/portafolio", updatedAt: latest(projects.map((entry) => entry.data.updatedAt)) },
-    ...projects.map((entry) => ({
-      path: `/portafolio/${entry.id}`,
-      updatedAt: entry.data.updatedAt,
-    })),
-  ]
+  const entries = await getPublishedSiteRoutes()
 
   const urls = entries
     .map(({ path, updatedAt }) => {

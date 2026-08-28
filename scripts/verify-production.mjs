@@ -12,13 +12,19 @@ const canonicalRoutes = [
   "/",
   "/yo",
   "/notas",
-  "/notas/umbral",
-  "/notas/margen",
+  "/notas/el-magnifico-mundo-de-los-jardines-digitales",
+  "/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento",
   "/notas/archivo",
   "/mediateca",
+  "/mediateca/magnifica-humanitas",
+  "/mediateca/pulitzer-prize-winner-explains-his-writing-process",
+  "/mediateca/the-turbulent-ai-era-is-here",
+  "/mediateca/the-machine-dream-was-never-real",
   "/mediateca/the-age-of-the-image",
-  "/mediateca/cosas",
-  "/mediateca/orden",
+  "/mediateca/thinking-in-systems",
+  "/mediateca/bird-by-bird",
+  "/mediateca/co-intelligence",
+  "/mediateca/wild-rose-poem",
   "/portafolio",
   "/portafolio/syra-coffee",
   "/portafolio/bsc",
@@ -26,13 +32,20 @@ const canonicalRoutes = [
   "/portafolio/cn-sant-andreu",
   "/portafolio/modulab-barcelona",
   "/portafolio/eloquent",
+  "/registro",
 ]
 
 const redirectRoutes = [
   "/biblioteca",
+  "/biblioteca/bird-by-bird",
+  "/biblioteca/co-intelligence",
+  "/biblioteca/magnifica-humanitas",
+  "/biblioteca/pulitzer-prize-winner-explains-his-writing-process",
   "/biblioteca/the-age-of-the-image",
-  "/biblioteca/cosas",
-  "/biblioteca/orden",
+  "/biblioteca/the-machine-dream-was-never-real",
+  "/biblioteca/the-turbulent-ai-era-is-here",
+  "/biblioteca/thinking-in-systems",
+  "/biblioteca/wild-rose-poem",
 ]
 
 const walk = async (directory) => {
@@ -75,8 +88,8 @@ const countAttributeValue = (html, attribute, value) =>
 const notesHtml = await readRoute("/notas")
 const mediaHtml = await readRoute("/mediateca")
 const portfolioHtml = await readRoute("/portafolio")
-const marginHtml = await readRoute("/notas/margen")
-const imageAgeHtml = await readRoute("/mediateca/the-age-of-the-image")
+const turbulentAiHtml = await readRoute("/mediateca/the-turbulent-ai-era-is-here")
+const birdByBirdHtml = await readRoute("/mediateca/bird-by-bird")
 
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "note"),
@@ -85,21 +98,19 @@ assert.equal(
 )
 
 assert.ok(
-  marginHtml.includes('data-connection-direction="incoming"') &&
-    marginHtml.includes('href="/notas/umbral"') &&
-    marginHtml.includes('href="/mediateca/the-age-of-the-image"'),
-  "Las Notas deben incluir backlinks derivados de otras colecciones.",
+  turbulentAiHtml.includes('data-connection-direction="incoming"') &&
+    turbulentAiHtml.includes('href="/mediateca/magnifica-humanitas"'),
+  "Mediateca debe incluir backlinks derivados de otras referencias.",
 )
 assert.equal(
-  marginHtml.includes('href="/portafolio/grupo-hem"'),
+  turbulentAiHtml.includes('href="/portafolio/grupo-hem"'),
   false,
   "Los proyectos draft no pueden generar backlinks en producción.",
 )
 assert.ok(
-  imageAgeHtml.includes('data-connection-direction="mutual"') &&
-    imageAgeHtml.includes('href="/mediateca/cosas"') &&
-    imageAgeHtml.includes('href="/mediateca/orden"'),
-  "Las relaciones mutuas de Mediateca deben renderizarse una sola vez.",
+  birdByBirdHtml.includes('data-connection-direction="incoming"') &&
+    birdByBirdHtml.includes('href="/mediateca/wild-rose-poem"'),
+  "Los backlinks publicados de Mediateca deben renderizarse una sola vez.",
 )
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "external"),
@@ -108,8 +119,8 @@ assert.equal(
 )
 assert.equal(
   countCards(mediaHtml, "data-media-card"),
-  3,
-  "Producción debe contener tres referencias de Mediateca.",
+  9,
+  "Producción debe contener nueve referencias de Mediateca.",
 )
 assert.equal(
   countCards(portfolioHtml, "data-portfolio-card"),
@@ -193,5 +204,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 3 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 9 referencias y 6 proyectos.`,
 )

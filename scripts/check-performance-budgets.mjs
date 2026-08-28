@@ -5,7 +5,7 @@ import { extname, relative, resolve } from "node:path"
 const dist = resolve(process.cwd(), "dist")
 const budgets = {
   total: 16 * 1024 * 1024,
-  htmlTotal: 350 * 1024,
+  htmlTotal: 525 * 1024,
   htmlSingle: 42 * 1024,
   cssTotal: 90 * 1024,
   jsTotal: 25 * 1024,

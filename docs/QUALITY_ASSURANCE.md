@@ -36,7 +36,8 @@ pnpm run verify:launch   # suite normal y Lighthouse, con un único build
 antes de entregar o integrar cambios.
 
 `audit:lighthouse` sirve el build en `127.0.0.1:4321` y audita la portada,
-`/notas/umbral`, `/mediateca/the-age-of-the-image` y `/portafolio/syra-coffee`. Guarda
+`/notas/el-magnifico-mundo-de-los-jardines-digitales`,
+`/mediateca/the-age-of-the-image` y `/portafolio/syra-coffee`. Guarda
 informes JSON ignorados por Git en `.lighthouse/`. Usa `verify:launch` para una
 revisión previa a publicación: reutiliza el `dist/` generado por `verify` para
 no construir dos veces. `audit:lighthouse:dist` debe ejecutarse solo después de
@@ -74,11 +75,11 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 17 rutas canónicas, cuatro redirects de
+contrato explícito. Verifica 24 rutas canónicas, diez redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
 - 3 Notas locales y 4 artículos externos;
-- 3 referencias de Mediateca;
+- 9 referencias de Mediateca;
 - 6 proyectos de Portafolio.
 
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
@@ -115,7 +116,7 @@ conservadores sobre el build actual:
 | Medida               |  Límite |
 | -------------------- | ------: |
 | `dist` completo      |  16 MiB |
-| HTML total           | 350 KiB |
+| HTML total           | 525 KiB |
 | Un archivo HTML      |  42 KiB |
 | CSS total            |  90 KiB |
 | JavaScript emitido   |  25 KiB |
@@ -126,6 +127,10 @@ Estos límites detectan aumentos accidentales; no son objetivos de Lighthouse ni
 equivalen al peso transferido de una página concreta. Si una decisión editorial
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
+
+El límite agregado de HTML contempla las 24 rutas canónicas actuales, sus
+redirecciones estáticas y la página 404. El límite por archivo sigue siendo la
+referencia principal para evitar que una página concreta crezca sin control.
 
 Astro agrupa el controlador compartido de filtros de Notas y Mediateca en un
 módulo JavaScript pequeño; el resto de la interacción mínima puede permanecer

@@ -45,9 +45,10 @@ Los índices usan `CollectionPage`, `/yo` usa `ProfilePage`, las Notas usan
 portadas disponibles se reutilizan como imágenes sociales; las páginas sin
 cubierta usan la imagen social general.
 
-`src/pages/sitemap.xml.ts` incluye exactamente las 17 rutas canónicas del build
-de producción. Usa las mismas funciones que excluyen drafts y fixtures, añade
-fechas de modificación cuando existen y no publica aliases de `/biblioteca`.
+`src/pages/sitemap.xml.ts` incluye exactamente las 24 rutas canónicas del build
+de producción. Comparte `src/lib/site-routes.ts` con `/registro`, usa las mismas
+funciones que excluyen drafts y fixtures, añade fechas de modificación cuando
+existen y no publica aliases de `/biblioteca`.
 `src/pages/robots.txt.ts` enlaza ese sitemap incluso mientras mantiene el
 bloqueo de rastreo.
 

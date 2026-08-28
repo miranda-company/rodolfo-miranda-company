@@ -15,6 +15,7 @@ of author-inserted image carousels.
   URLs, JSON-LD, the safe-by-default indexing directive, locally bundled fonts,
   and global page behavior.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
+- `src/components/Footer.astro` owns the shared contact and archive links.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
 - `src/styles/home.css` contains the homepage hero, panels, and Ahora previews;
@@ -30,6 +31,7 @@ of author-inserted image carousels.
   filtering; each case uses the shared detail geometry.
 - `/404` uses the same page shell and introduction hierarchy, stays outside the
   sitemap and always forces `noindex, nofollow`.
+- `/registro` lists every published canonical route alphabetically.
 
 ## Page DOM contract
 
@@ -41,11 +43,12 @@ visible canvas:
 <div class="page-shell [route-page-class]">
   <header class="site-header">...</header>
   <main class="page-main [route-main-class]" id="contenido">...</main>
+  <footer class="site-footer">...</footer>
 </div>
 ```
 
-`Header.astro` and the main landmark are direct siblings. A rendered route has
-exactly one `.page-shell`, one `.page-main`, one site header, and one `main`.
+`Header.astro`, the main landmark, and `Footer.astro` are direct siblings. A rendered route has
+exactly one `.page-shell`, one `.page-main`, one site header, one `main`, and one site footer.
 Redirect-only URLs do not render this structure. `.page-shell` owns the viewport,
 responsive gutters, background, technical pattern, overflow and isolation;
 `.page-main` supplies common width and stacking behavior.
@@ -57,6 +60,11 @@ inside `.mobile-menu`. “Índice” and “Ahora” remain homepage section con
 not global navigation items. Index and detail routes mark their parent section
 with `aria-current="page"`; the shared link underline exposes that state visually
 in both navigation variants.
+
+The shared footer exposes LinkedIn, email and `/registro`. “Colofón” remains a
+clearly labelled pending item until its route exists. `src/lib/site-routes.ts`
+derives the published local route set once for both `/registro` and
+`sitemap.xml`, preventing the two indexes from drifting apart.
 
 Page introductions use a shared semantic and styling contract. Each is a
 labelled `<section>` with the shared `.page-intro` class plus a route-specific
@@ -286,15 +294,15 @@ Mediateca and Portafolio append explicitly typed fixture routes in development
 without inserting fixtures into editorial navigation; production never appends
 them.
 
-Excluding redirect aliases, development exposes 37 canonical routes: five
-indexes or standalone pages, three Notas examples, 13 Mediateca references plus
+Excluding redirect aliases, development exposes 35 canonical routes: six
+indexes or standalone pages, three local Notas, ten Mediateca references plus
 one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
-A normal production build exposes 17 canonical routes: the five standalone
-routes, three Notas, three Mediateca references, and six Portfolio cases.
+A normal production build exposes 24 canonical routes: the six standalone
+routes, three local Notas, nine Mediateca references, and six Portfolio cases.
 
-Astro also writes four legacy `/biblioteca` redirect artifacts. The dynamic
-`/biblioteca/[slug]` route covers `the-age-of-the-image`, `cosas`, and `orden`; no overlapping
-explicit redirect is required.
+Astro also writes ten legacy `/biblioteca` redirect artifacts: the index alias
+and one redirect for each published Mediateca detail. No overlapping explicit
+redirects are required.
 
 ## Metadata, sitemap and indexing
 
@@ -306,8 +314,9 @@ Collection details pass their validated dates, tags, covers and entity type
 through `EditorialDetailLayout.astro`; index routes use `CollectionPage` and
 `/yo` uses `ProfilePage`.
 
-`src/pages/sitemap.xml.ts` derives its 17 production URLs from the same visible
-collection helpers as route generation. `src/pages/robots.txt.ts` and the HTML
+`src/pages/sitemap.xml.ts` and `/registro` derive their production URLs from
+`src/lib/site-routes.ts`, which uses the same visible-collection helpers as route
+generation. `src/pages/robots.txt.ts` and the HTML
 metadata share the build-time `PUBLIC_INDEXING_ENABLED` switch, which is false
 unless explicitly set to `true`. This keeps both surfaces blocked during
 development and review. Deployment behavior and the permanent redirect

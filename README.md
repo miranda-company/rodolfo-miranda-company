@@ -18,13 +18,14 @@ requires editorial review.
 | `/notas`      | Notes organized by maturity, theme, and update date.          |
 | `/mediateca`  | Books, articles, websites, videos, podcasts, and tools.       |
 | `/portafolio` | Selected projects with search and tag filtering.              |
+| `/registro`   | Alphabetical index of every published canonical route.        |
 | `/404`        | Custom not-found page, permanently excluded from indexing.    |
 
 Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
 ## Current state
 
-- Production includes 3 local Notas, 4 external-article cards, 3 Mediateca
+- Production includes 3 local Notas, 4 external-article cards, 9 Mediateca
   references, and 6 Portafolio case studies.
 - Notas contains the same three local examples and four external Eloquent
   articles in development and production. Mediateca and Portafolio additionally
@@ -109,21 +110,21 @@ are technical examples and must remain isolated from published content.
 
 ## Changing the implementation
 
-| Area                                        | Start with                                                                            |
-| ------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Page structure and shared layouts           | `src/components/PageShell.astro`, `src/components/EditorialDetailLayout.astro`        |
-| Site tokens and semantic typography         | `src/styles/global.css`                                                               |
-| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                        |
-| Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                         |
-| Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`                |
-| Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                                  |
-| Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                             |
-| Content validation                          | `src/content.config.ts`                                                               |
-| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                        |
-| Bidirectional editorial connections         | `src/lib/connection-graph.ts`, `content-connections.ts`, `EditorialConnections.astro` |
-| Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                                     |
-| Sitemap and crawler policy                  | `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts`                                 |
-| Not-found page                              | `src/pages/404.astro`, `src/styles/not-found.css`                                     |
+| Area                                        | Start with                                                                              |
+| ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Page structure and shared layouts           | `src/components/PageShell.astro`, `Footer.astro`, `EditorialDetailLayout.astro`         |
+| Site tokens and semantic typography         | `src/styles/global.css`                                                                 |
+| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                          |
+| Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                           |
+| Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`                  |
+| Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                                    |
+| Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                               |
+| Content validation                          | `src/content.config.ts`                                                                 |
+| Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                          |
+| Bidirectional editorial connections         | `src/lib/connection-graph.ts`, `content-connections.ts`, `EditorialConnections.astro`   |
+| Canonical/social metadata and JSON-LD       | `src/layouts/BaseLayout.astro`, `src/lib/site.ts`                                       |
+| Registro, sitemap and crawler policy        | `src/lib/site-routes.ts`, `src/pages/registro.astro`, `sitemap.xml.ts`, `robots.txt.ts` |
+| Not-found page                              | `src/pages/404.astro`, `src/styles/not-found.css`                                       |
 
 The [architecture guide](docs/ARCHITECTURE.md) explains the shared DOM contract,
 editorial detail layout, content components, redirects, and route generation in

@@ -224,8 +224,10 @@ a {
   --page-shell-bottom: 40px;
 
   position: relative;
+  display: flex;
   min-height: 100vh;
   min-height: 100svh;
+  flex-direction: column;
   isolation: isolate;
   overflow: hidden;
   padding: 0 var(--page-gutter) var(--page-shell-bottom);
@@ -280,6 +282,7 @@ a {
   z-index: 1;
   width: 100%;
   max-width: var(--content-width);
+  flex: 1 0 auto;
   margin-inline: auto;
 }
 
@@ -297,6 +300,62 @@ a {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: var(--section-space) auto 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  letter-spacing: 0.045em;
+}
+
+.site-footer__links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__links li + li {
+  border-left: 1px solid var(--line);
+}
+
+.site-footer__links a,
+.site-footer__pending {
+  display: flex;
+  min-height: var(--touch-target);
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 10px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.site-footer__links a {
+  color: var(--ink);
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible,
+.site-footer__links a[aria-current="page"] {
+  color: var(--blue);
+}
+
+.site-footer__pending {
+  color: var(--graphite);
+}
+
+.site-footer__pending small {
+  font: inherit;
+  font-size: 7px;
+  text-transform: uppercase;
 }
 
 .brand {
@@ -430,6 +489,26 @@ a {
 
   .site-header {
     height: 56px;
+  }
+
+  .site-footer {
+    margin-top: var(--section-space-compact);
+  }
+
+  .site-footer__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__links li + li {
+    border-left: 0;
+  }
+
+  .site-footer__links li:nth-child(even) {
+    border-left: 1px solid var(--line);
+  }
+
+  .site-footer__links li:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
   }
 
   .brand span:last-child,

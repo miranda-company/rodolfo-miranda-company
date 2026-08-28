@@ -1,8 +1,8 @@
 ---
 title: "El magnífico mundo de los jardínes digitales"
 summary: "Una filosofía refrescante para compartir nuestras ideas y pensamientos en internet."
-publishedAt: 2026-07-31
-updatedAt: 2026-07-31
+publishedAt: 2026-08-25
+updatedAt: 2026-08-28
 state: "semilla"
 archiveNumber: "N.001"
 cardFormat: "featured"
@@ -19,20 +19,19 @@ draft: false
 language: "es"
 ---
 
-Perdido en los pasadisos laberinticos de internet, descubrí el sitio web de [Maggie Appleton](https://maggieappleton.com/). No recuerdo muy bien las migas que tuve que seguir para dar con ella pero estoy muy contento de haberla encontrado. Es de esos momentos que internet recupera su ya casi extinto sentido del asombro.
+Perdido en los pasadizos laberinticos de internet, descubrí a [Maggie Appleton](https://maggieappleton.com/). No recuerdo muy bien las migas que tuve que seguir para dar con ella pero estoy muy contento de haberla encontrado. Es de esos momentos en los que internet recupera su ya casi extinto sentido del asombro.
 
-Maggie es una diseñadora inglesa que forma parte de [GitHub Next](https://githubnext.com/), un equipo de [GitHub](https://github.com/) que se dedica a explorar nuevas formas de interacturar con máquinas. 
-Su trabajo es muy interesante y su sitio tiene contenidos para chuparse los dedos. Es de esos sitios que te puedes tirar un largo rato leyendo sin cansarte.
+Maggie es una diseñadora inglesa que forma parte de [GitHub Next](https://githubnext.com/). Su trabajo se centra en el diseño de la interacción humano-máquina y su sitio tiene contenidos para chuparse los dedos.
 
-Fue a través de Maggie que descubrí el muy interesante concepto de los Jardines Digitales o *Digital Gardens* en inglés.
+Fue a través de Maggie que descubrí el muy interesante concepto de los Jardines Digitales (*Digital Gardens*).
 
-Un jardín digital, es una filosofía que propone una nueva forma para compartir nuestras ideas y conocimientos en internet. Su propósito es recuperar la idea de un internet poblado de personas interesantes, conformando una comunidad y con espacios únicos en los que vuelcan su estilo, sus intereses y sus pensamientos.
+Esta filosofía propone una nueva forma para compartir conocimientos. Su propósito es recuperar un internet poblado de personas interesantes, con espacios únicos en los que vuelcan su estilo, sus intereses y sus pensamientos, y conectadas en comunidades participativas.
 
-Y no es un simple blog personal ya que los artículos no están presentados en orden cronológico. Más bien, los jardines digitales, son tratados como espacios de exploración personal más parecidos a [wikis](https://es.wikipedia.org/wiki/Wiki).
+Un jardín digital no es un simple blog personal ya que los artículos no están presentados en orden cronológico. Más bien, es tratado como un espacio de exploración personal más parecido a una [wiki](https://es.wikipedia.org/wiki/Wiki).
 
-El jardín digital es una colección de ideas en evolución. Las ideas en el jardín pueden publicarse en estados tipo borrador y desarrollarse hasta convertirse en contenidos más completos pero siempre en crecimiento o cuidado.
+El jardín digital es una colección de ideas en evolución. Las ideas en el jardín pueden publicarse en estados tipo borrador y desarrollarse hasta convertirse en contenidos más completos pero siempre en crecimiento y cuidado.
 
-Al igual que un jardín físico, el digital pretende ser un espacio dedicado al ejercicio intelectual y espiritual. La práctica de la jardinería digital, *digital gardening*, nos proporciona el cultivo de ideas en vez de plantas. Siguiendo la analogía de una planta, en un jardín digital las ideas tienen distintas etapas de desarrollo: semilla, vástago, en ciernes y perenne.
+Al igual que un jardín físico, el digital pretende ser un espacio dedicado al ejercicio intelectual y espiritual. La práctica de la jardinería digital, *digital gardening*, nos proporciona el cultivo de ideas en vez de plantas. Siguiendo la analogía de una planta, en un jardín digital las ideas tienen distintas etapas de desarrollo: semilla, en ciernes y perenne.
 
 > Gardens present information in a richly linked landscape that grows slowly over time — Maggie Appleton
 

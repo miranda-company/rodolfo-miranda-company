@@ -11,7 +11,8 @@ const primaryRoutes = [
   "/notas",
   "/mediateca",
   "/portafolio",
-  "/notas/umbral",
+  "/registro",
+  "/notas/el-magnifico-mundo-de-los-jardines-digitales",
   "/mediateca/the-age-of-the-image",
   "/portafolio/syra-coffee",
 ] as const
@@ -99,6 +100,7 @@ for (const viewport of viewports) {
       expect(response?.ok(), `${route} should return a successful response`).toBe(true)
       await expect(page.locator("html")).toHaveAttribute("lang", "es")
       await expect(page.locator("main")).toHaveCount(1)
+      await expect(page.locator(".site-footer")).toHaveCount(1)
       await expect(page.locator("h1")).toHaveCount(1)
 
       const overflow = await page.evaluate(
@@ -175,6 +177,42 @@ test("desktop header links to the four primary sections", async ({ page }) => {
 
   await page.locator(".desktop-nav").getByRole("link", { name: "Portafolio" }).click()
   await expect(page).toHaveURL(/\/portafolio$/)
+})
+
+test("footer exposes contact links, the pending colophon, and Registro", async ({ page }) => {
+  await page.goto("/")
+
+  const footer = page.locator(".site-footer")
+  await expect(footer.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute(
+    "href",
+    "https://www.linkedin.com/in/rodolfo-miranda-company/",
+  )
+  await expect(footer.getByRole("link", { name: "Email" })).toHaveAttribute(
+    "href",
+    "mailto:hi@rodolfomiranda.company",
+  )
+  await expect(footer.getByText("Colofón", { exact: false })).toContainText("Próximamente")
+  await expect(footer.getByRole("link", { name: "Registro" })).toHaveAttribute("href", "/registro")
+})
+
+test("Registro mirrors the sitemap and orders routes alphabetically", async ({ page }) => {
+  await page.goto("/registro")
+
+  const registryPaths = await page.locator(".registry-index code").allTextContents()
+  const alphabeticalPaths = [...registryPaths].sort((first, second) =>
+    first.localeCompare(second, "es"),
+  )
+  const sitemapResponse = await page.request.get("/sitemap.xml")
+  const sitemap = await sitemapResponse.text()
+  const sitemapPaths = Array.from(
+    sitemap.matchAll(/<loc>([^<]+)<\/loc>/g),
+    (match) => new URL(match[1]!).pathname,
+  ).sort((first, second) => first.localeCompare(second, "es"))
+
+  expect(registryPaths).toEqual(alphabeticalPaths)
+  expect(registryPaths).toEqual(sitemapPaths)
+  expect(new Set(registryPaths).size).toBe(registryPaths.length)
+  await expect(page.locator('.site-footer a[aria-current="page"]')).toHaveText("Registro")
 })
 
 test("header identifies the current section on indexes and detail pages", async ({ page }) => {
@@ -272,26 +310,23 @@ test("external Notas use compact links and filtering", async ({ page }) => {
 test("editorial connections derive backlinks and deduplicate mutual relationships", async ({
   page,
 }) => {
-  await page.goto("/notas/margen")
+  await page.goto("/mediateca/the-turbulent-ai-era-is-here")
 
-  const noteConnections = page.locator("[data-editorial-connections]")
-  await expect(noteConnections).toHaveAttribute("data-connection-count", "3")
+  const turbulentConnections = page.locator("[data-editorial-connections]")
+  await expect(turbulentConnections).toHaveAttribute("data-connection-count", "1")
   await expect(
-    noteConnections.locator('[data-connection-direction="incoming"] a[href="/notas/umbral"]'),
-  ).toHaveCount(1)
-  await expect(
-    noteConnections.locator(
-      '[data-connection-direction="incoming"] a[href="/mediateca/the-age-of-the-image"]',
+    turbulentConnections.locator(
+      '[data-connection-direction="incoming"] a[href="/mediateca/magnifica-humanitas"]',
     ),
   ).toHaveCount(1)
 
-  await page.goto("/mediateca/the-age-of-the-image")
-  const mediaConnections = page.locator("[data-editorial-connections]")
+  await page.goto("/mediateca/bird-by-bird")
+  const birdConnections = page.locator("[data-editorial-connections]")
+  await expect(birdConnections).toHaveAttribute("data-connection-count", "1")
   await expect(
-    mediaConnections.locator('[data-connection-direction="mutual"] a[href="/mediateca/cosas"]'),
-  ).toHaveCount(1)
-  await expect(
-    mediaConnections.locator('[data-connection-direction="mutual"] a[href="/mediateca/orden"]'),
+    birdConnections.locator(
+      '[data-connection-direction="incoming"] a[href="/mediateca/wild-rose-poem"]',
+    ),
   ).toHaveCount(1)
 })
 
@@ -299,9 +334,9 @@ test("Mediateca format filtering handles empty and populated results", async ({ 
   await page.setViewportSize({ width: 1024, height: 768 })
   await page.goto("/mediateca")
 
-  const videos = page.getByRole("button", { name: "Videos" })
-  await videos.click()
-  await expect(videos).toHaveAttribute("aria-pressed", "true")
+  const websites = page.getByRole("button", { name: "Sitios" })
+  await websites.click()
+  await expect(websites).toHaveAttribute("aria-pressed", "true")
   await expect(page.locator("[data-media-card]:visible")).toHaveCount(0)
   await expect(page.locator("[data-media-empty]")).toBeVisible()
   await expect(page.locator("[data-result-count]")).toHaveText("0 referencias visibles")
