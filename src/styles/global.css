@@ -455,7 +455,7 @@ a {
  */
 @media (max-width: 767px) {
   :root {
-    --heading-h1-size: 64px;
+    --heading-h1-size: clamp(48px, 14vw, 56px);
     --type-introduction-size: 18px;
     --archive-control-height: var(--touch-target);
     --section-space: 56px;

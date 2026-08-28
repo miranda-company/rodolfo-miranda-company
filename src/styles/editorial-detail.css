@@ -29,7 +29,9 @@
 .entry-detail-intro h1 {
   max-width: 910px;
   margin: 27px 0 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .entry-detail-intro__summary {

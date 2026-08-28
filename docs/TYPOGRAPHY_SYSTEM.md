@@ -10,18 +10,25 @@ This document defines the semantic typography contract for Rodolfo Miranda Compa
 
 ## Heading scale
 
-| Level | Semantic role                                   | Size                                         | Line height | Letter spacing |
-| ----- | ----------------------------------------------- | -------------------------------------------- | ----------- | -------------- |
-| H1    | Page title                                      | `clamp(64px, 5vw, 72px)`; `64px` below 768px | `1`         | `-0.06em`      |
-| H2    | Primary page section or top-level content card  | `clamp(35px, 3.5vw, 39px)`                   | `1`         | `-0.045em`     |
-| H3    | Subsection or content item nested beneath an H2 | `clamp(27px, 2.35vw, 30px)`                  | `1.05`      | `-0.035em`     |
-| H4    | Nested item                                     | `23px`                                       | `1.1`       | `-0.025em`     |
-| H5    | Minor nested heading                            | `20px`                                       | `1.15`      | `-0.02em`      |
-| H6    | Deepest meaningful heading                      | `17px`                                       | `1.2`       | `-0.015em`     |
+| Level | Semantic role                                   | Size                        | Line height | Letter spacing |
+| ----- | ----------------------------------------------- | --------------------------- | ----------- | -------------- |
+| H1    | Page title                                      | `clamp(64px, 5vw, 72px)`    | `1`         | `-0.03em`      |
+| H2    | Primary page section or top-level content card  | `clamp(35px, 3.5vw, 39px)`  | `1`         | `-0.03em`      |
+| H3    | Subsection or content item nested beneath an H2 | `clamp(27px, 2.35vw, 30px)` | `1.05`      | `-0.02em`      |
+| H4    | Nested item                                     | `23px`                      | `1.1`       | `-0.02em`      |
+| H5    | Minor nested heading                            | `20px`                      | `1.15`      | `-0.015em`     |
+| H6    | Deepest meaningful heading                      | `17px`                      | `1.2`       | `-0.015em`     |
 
 Every level uses Prata at weight 400. Prata is supplied only in its native regular weight, so display treatments must not request synthetic heavier weights. At any one viewport, every rendered instance of a heading level must have the same computed font family, size, weight, line height and letter spacing.
 
 Component selectors may change only layout concerns such as margin, width, color, position and wrapping. A component variant must never override a heading's font family, size, weight, line height or letter spacing, and component heading selectors must not use the `font` shorthand.
+
+Below `768px`, the global H1 token changes to `clamp(48px, 14vw, 56px)`. This
+keeps page titles prominent without forcing long words into oversized or
+letter-by-letter breaks. Detail-page titles preserve normal word boundaries,
+use language-aware hyphenation when available, and keep
+`overflow-wrap: break-word` only as a last-resort safeguard for a word wider
+than its container.
 
 ## Choosing a heading level
 
@@ -53,15 +60,14 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 
 ### Homepage
 
-- H1: “Hola mundo!”.
+- H1: “Hola, yo soy R.”.
 - H2: the four archive-card titles and “Lo último”.
-- H3 beneath “Lo último”: “Notas recientes”, “En la mediateca” and
-  “Portafolio”.
+- H3 beneath “Lo último”: “Notas recientes”, “Anaquel” and “Proyectos”.
 - Archive numbers, dates and section labels are mono non-headings.
 
 ### Yo
 
-- H1: “Rodolfo Miranda”.
+- H1: “Rodolfo Miranda Company”.
 - H2: “Sobre el trabajo”, “En este momento”, “Trayectoria” and “¿Cómo llegué hasta aquí?”.
 - H3 beneath “Trayectoria”: each career role.
 - Organization names are subordinate paragraphs, not part of the H3.
@@ -76,7 +82,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 ### Mediateca
 
 - Index H1: “Mediateca”.
-- H2: “Libros favoritos” and “Otras cosicas interesantes”.
+- H2: “Anaquel” and “Repositorio”.
 - H3: each shelf title and catalogue-card title beneath its H2 section.
 - Detail H1: the reference title.
 - H2: commentary, context, recurring ideas, editorial content and the parent “Conexiones” area.
@@ -95,10 +101,11 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 - Portfolio CSS controls layout and spacing only; it does not override the
   global family, size, weight, line height or letter spacing of headings.
 
-### Provisional routes
+### Standalone routes
 
-- The route title is H1.
-- Future sections begin at H2 and nest in order. Provisional kickers, dates and statuses remain non-heading mono labels.
+- Colofón, Registro and the 404 page each use one H1 for the route title.
+- Sections begin at H2 and nest in order. Kickers, counts and status labels
+  remain non-heading mono text.
 
 ## Review checklist
 

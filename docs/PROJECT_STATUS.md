@@ -46,6 +46,12 @@ Las otras ocho entradas de Portafolio son placeholders con `draft: true`. No
 entran en producción. Antes de publicar una de ellas hay que reemplazar el
 contenido pendiente, asignar valores únicos y completar su revisión editorial.
 
+Las tres Notas locales incluidas en desarrollo y producción son:
+
+- `el-magnifico-mundo-de-los-jardines-digitales`
+- `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`
+- `mis-lugares-favoritos-de-internet`
+
 ## Límites de publicación
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
@@ -55,10 +61,10 @@ contenido pendiente, asignar valores únicos y completar su revisión editorial.
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
 En total hay 36 rutas canónicas en desarrollo y 25 en un build normal de
-producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos rutas
-`ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes técnicos y no aparecen en
-índices, filtros, conteos, conexiones, navegación anterior/siguiente, portada o
-producción.
+producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
+rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
+técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
+anterior/siguiente, portada o producción.
 
 `draft: false` permite generar una entrada, pero no equivale a aprobación
 editorial. Los textos, créditos, enlaces, imágenes y alternativas deben
@@ -68,6 +74,8 @@ revisarse antes del lanzamiento.
 
 - Estructura común `BaseLayout → PageShell → Header + main + Footer`.
 - Jerarquía tipográfica semántica compartida para H1–H6, cuerpo y metadatos.
+- H1 compacto fluido entre 48 y 56 px, con límites de palabra, guionado
+  lingüístico y fallback seguro para títulos largos.
 - Tokens semánticos compartidos para superficies, color de interfaz, foco y
   movimiento, con rangos responsivos compact, medium y expanded documentados.
 - CSS específico de la portada aislado en `src/styles/home.css`; las demás
@@ -104,15 +112,17 @@ revisarse antes del lanzamiento.
 
 - `git diff --check`: correcto.
 - `pnpm run check`: 63 archivos, 0 errores, 0 avisos y 0 sugerencias.
-- `pnpm run build`: correcto; genera 25 páginas canónicas de producción.
-- `pnpm run test:production`: confirma 25 rutas canónicas, diez redirects y
-  los límites editoriales 3 Notas locales / 4 artículos externos / 9
-  referencias / 6 proyectos, además de canonical, tarjetas sociales, JSON-LD,
-  sitemap y bloqueo de indexación.
+- `pnpm run build`: genera las 25 páginas canónicas de producción, pero avisa de
+  dos relaciones obsoletas desde `the-turbulent-ai-era-is-here` hacia las Notas
+  eliminadas `umbral` y `margen`.
+- `pnpm run test:production`: pendiente de sincronizar. El contrato todavía
+  espera `/notas/archivo`; debe sustituirse por
+  `/notas/mis-lugares-favoritos-de-internet` antes de volver a considerarlo
+  correcto.
 - `pnpm run test:budgets`: correcto; `dist` ocupa 13,02 MiB, el HTML 486,0 KiB,
   el CSS 57,7 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB; la
   imagen mayor pesa 422,9 KiB.
-- `pnpm run test:e2e:dist`: 47 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 48 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.
@@ -126,8 +136,13 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
-- Sustituir o aprobar la copia de los tres ejemplos de Notas y aprobar las tres
-  referencias de Mediateca que se generan en producción.
+- Completar la revisión editorial de las tres Notas locales y confirmar las
+  nueve referencias de Mediateca incluidas en producción.
+- Limpiar las relaciones `umbral` y `margen` de
+  `the-turbulent-ai-era-is-here` o sustituirlas por los IDs editoriales
+  correctos.
+- Actualizar `scripts/verify-production.mjs` para reemplazar la ruta eliminada
+  `/notas/archivo` por `/notas/mis-lugares-favoritos-de-internet`.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo

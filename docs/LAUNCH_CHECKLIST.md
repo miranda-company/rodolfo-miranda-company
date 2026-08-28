@@ -13,10 +13,12 @@ seguir desactivada hasta que se revisen de forma explícita.
 - [x] Aprobar la biografía y la trayectoria de Yo.
 - [x] Integrar el párrafo personal aprobado y retirar su aviso editorial.
 - [x] Retirar las etiquetas de casos pendientes que no publican un enlace.
-- [ ] Sustituir o aprobar los resúmenes y cuerpos de los tres ejemplos de Notas:
-      `umbral`, `margen` y `archivo`.
-- [ ] Revisar y aprobar los resúmenes y cuerpos de `the-age-of-the-image`,
-      `cosas` y `orden`.
+- [ ] Revisar y aprobar los resúmenes y cuerpos de las tres Notas locales:
+      `el-magnifico-mundo-de-los-jardines-digitales`,
+      `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento` y
+      `mis-lugares-favoritos-de-internet`.
+- [ ] Confirmar la revisión editorial final de las nueve referencias de
+      Mediateca incluidas en producción.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.
 - [ ] Revisar y aprobar los seis casos de Portafolio que entran en producción:

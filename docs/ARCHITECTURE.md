@@ -242,12 +242,12 @@ Astro generates fenced-code highlighting statically with Shiki and the
 text require no client runtime. Long lines scroll inside the code block rather
 than expanding the page.
 
-The Notas index includes the same three example entries in development and a
-normal production build. Mediateca includes 13 ordinary references in
-development and three (`the-age-of-the-image`, `cosas`, `orden`) in production. Portafolio
-includes 14 ordinary development entries: six published case studies and eight
-draft placeholders. Production includes `syra-coffee`, `bsc`, `minka-icm`,
-`cn-sant-andreu`, `modulab-barcelona`, and `eloquent`.
+The Notas index includes the same three local entries in development and a
+normal production build. Mediateca includes ten ordinary references in
+development and nine in production. Portafolio includes 14 ordinary development
+entries: six published case studies and eight draft placeholders. Production
+includes `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
+`modulab-barcelona`, and `eloquent`.
 Mediateca and Portafolio each have an isolated `ejemplo-mdx` technical route in
 development. Notas keeps its reusable MDX components and templates but no
 technical fixture entry.

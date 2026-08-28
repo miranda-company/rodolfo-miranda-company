@@ -77,17 +77,18 @@ omit `fixture`; its default is `false`. Validation requires every
 `fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
 technical fixture and rejects `N.999` on an ordinary note.
 
-Development and production both contain three local Notas entries—`umbral`,
-`margen`, and `archivo`—plus four external Eloquent articles. The local entries
-are dummy examples used by the index, homepage, detail layout, filters,
-connections, and circular navigation. The external entries are link cards only
-and use `N.004`–`N.007`; `N.008` is the next available archive number. No draft
-note or Notas MDX fixture is active.
+Development and production both contain three local Notas entries:
+`el-magnifico-mundo-de-los-jardines-digitales`,
+`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`, and
+`mis-lugares-favoritos-de-internet`. They use `N.001`–`N.003` and participate in
+the index, homepage, detail layout, filters, connections, and circular
+navigation. Four external Eloquent articles use `N.004`–`N.007` and render only
+as link cards; `N.008` is the next available archive number. No draft note or
+Notas MDX fixture is active.
 
-The summaries and any article bodies in these three examples are provisional
-editorial copy, not approved writing. Currently only `umbral` contains a
-demonstration body. Reusable Markdown and MDX authoring remains documented in
-the templates without requiring a technical fixture route in the collection.
+All three local entries own their editorial body in Markdown. Reusable Markdown
+and MDX authoring remains documented in the templates without requiring a
+technical fixture route in the collection.
 
 See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
 [templates/nota-mdx.mdx](templates/nota-mdx.mdx), and
@@ -182,15 +183,13 @@ remains editorial metadata but is not exposed as a catalogue filter.
 copy warning and `revisado` removes it. It does not generate or rename article
 sections. The Markdown or MDX body owns the complete reading structure, including
 headings such as “Comentario”, “Por qué está aquí” or any alternative an author
-chooses. `draft` remains the production boundary in both cases. All current
-references are marked honestly as `provisional`; this changes no editorial claim
-silently.
+chooses. `draft` remains the production boundary in both cases. The nine
+published references currently use `revisado`; the remaining ordinary draft
+retains its provisional warning.
 
-Development includes ten draft design entries so the complete 13-entry
-catalogue demonstrates every requested format, theme, and engagement
-treatment. Normal production builds include only the three non-draft design
-anchors: `the-age-of-the-image`, `cosas`, and `orden`. Draft entries and their detail routes
-are excluded from production.
+Development includes ten ordinary references. A normal production build
+includes the nine entries with `draft: false`; the remaining ordinary draft and
+its detail route are excluded from production.
 
 `ejemplo-mdx` is an additional technical route in development. Validation
 requires `fixture: true` entries to remain drafts, reserves `M.999` for that
@@ -199,7 +198,7 @@ helpers keep it out of catalogue cards, counts, filters, homepage previews,
 related entries and production. It is not a recommendation.
 
 `displayInShelf` defaults to `false`. Set it to `true` to include a visible
-Mediateca entry in “Libros favoritos”; the page orders selected entries by
+Mediateca entry in “Anaquel”; the page orders selected entries by
 `updatedAt` and then `archiveNumber`, using the same deterministic order as the
 catalogue. The homepage “Anaquel” preview uses the first three published Spanish
 entries from this same ordered selection. Drafts and fixtures never enter that
@@ -207,7 +206,7 @@ preview. This keeps shelf membership in the entry metadata rather than in a
 separate route-level slug list.
 
 When a Mediateca entry supplies `coverImage`, validation also requires
-`coverAlt`. The same local cover appears in “Libros favoritos” when
+`coverAlt`. The same local cover appears in “Anaquel” when
 `displayInShelf` is `true` and on its detail page. A selected entry without
 `coverImage` uses a neutral image marker on the shelf. Its detail page instead
 uses the semantic `engagementMode` icon and label—LEER, VER, or ESCUCHAR—rather
@@ -216,9 +215,10 @@ Optional `coverCaption` appears below the cover on the detail page, not in the
 compact index card. The caption provides context or credit and never replaces
 alternative text.
 
-The Markdown bodies for all three anchors contain provisional editorial copy.
-They must be reviewed and
-approved by Rodolfo before launch and do not contain fabricated quotations.
+The Markdown or MDX body remains the source of truth for every reference's
+editorial structure. `VideoEmbed` supports the current video reference, while
+explicit Markdown hard breaks preserve verse structure in poem entries without
+changing whitespace behavior for other articles.
 
 Every canonical reference, including `/mediateca/the-age-of-the-image`, is generated by
 `src/pages/mediateca/[slug].astro`; there is no route-specific renderer. See
@@ -387,13 +387,13 @@ For example, a build may print:
 
 ```text
 /mediateca/thinking-in-systems
-Entry notas → umbral was not found.
+Entry notas → antiguo-slug was not found.
 ```
 
 The route identifies the source entry to inspect:
 `src/content/mediateca/thinking-in-systems.md` (or `.mdx`). The collection and ID
 after `Entry` identify the missing destination. In this example, look for
-`umbral` inside `relatedNotes`.
+`antiguo-slug` inside `relatedNotes`.
 
 Use this mapping when reading the warning:
 
@@ -410,12 +410,12 @@ After deleting or renaming an entry:
 2. Search every authored and maintained use of the old ID. For example:
 
    ```sh
-   rg -n 'umbral' src/content docs tests
+   rg -n 'antiguo-slug' src/content docs tests
    ```
 
 3. In frontmatter, replace the old ID with the intended new ID or remove it when
    the relationship no longer exists. Also update direct Markdown links such as
-   `/notas/umbral`, documentation examples, expected routes, and tests.
+   `/notas/antiguo-slug`, documentation examples, expected routes, and tests.
 4. Format and validate the result:
 
    ```sh

@@ -24,7 +24,7 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
    relación genera automáticamente un backlink en la entrada enlazada; añade la relación inversa
    solo cuando quieras declarar una relación mutua. Verifica `externalUrl` contra la fuente
    canónica antes de publicar.
-9. Usa `displayInShelf: true` para incluir la referencia en “Libros favoritos”. Las referencias
+9. Usa `displayInShelf: true` para incluir la referencia en “Anaquel”. Las referencias
    seleccionadas se ordenan por `updatedAt`, de la más reciente a la más antigua; si comparten
    fecha, se usa `archiveNumber`. Las tres primeras referencias publicadas de esta selección
    aparecen también en el “Anaquel” de la homepage. Déjalo en `false` o elimínalo para mostrar la
@@ -90,7 +90,7 @@ notas y casos de estudio normales.
 
 Una cubierta opcional puede guardarse en `src/assets/images/mediateca/<slug>/` y referenciarse con
 `coverImage`. Cuando exista, `coverAlt` es obligatorio y debe describir lo visible. La misma cubierta
-aparece en la tarjeta de “Libros favoritos” cuando la entrada forma parte de esa selección y en la
+aparece en la tarjeta de “Anaquel” cuando la entrada forma parte de esa selección y en la
 página de detalle. Sin `coverImage`, la tarjeta seleccionada muestra un marcador neutro de imagen;
 no es necesario crear un activo provisional. En la página de detalle, esa ausencia muestra
 automáticamente el icono y la etiqueta LEER, VER o ESCUCHAR definidos por `engagementMode`, en vez de

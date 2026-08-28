@@ -11,8 +11,7 @@ coverAlt: "Descripción accesible de la imagen de portada"
 tags:
   - "NA"
 relatedNotes:
-  - "margen"
-  - "archivo"
+  - "mis-lugares-favoritos-de-internet"
 relatedLinks: []
 featured: true
 draft: false

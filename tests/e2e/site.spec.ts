@@ -228,6 +228,28 @@ test("header identifies the current section on indexes and detail pages", async 
   await expect(page.locator('#mobile-menu a[aria-current="page"]')).toHaveText("Mediateca")
 })
 
+test("mobile detail titles use the compact H1 scale and safe word wrapping", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento")
+
+  const title = page.locator(".entry-detail-intro h1")
+  const typography = await title.evaluate((element) => {
+    const style = getComputedStyle(element)
+    return {
+      fontSize: Number.parseFloat(style.fontSize),
+      overflowWrap: style.overflowWrap,
+      wordBreak: style.wordBreak,
+      overflows: element.scrollWidth > element.clientWidth,
+    }
+  })
+
+  expect(typography.fontSize).toBeGreaterThanOrEqual(48)
+  expect(typography.fontSize).toBeLessThanOrEqual(56)
+  expect(typography.overflowWrap).toBe("break-word")
+  expect(typography.wordBreak).toBe("normal")
+  expect(typography.overflows).toBe(false)
+})
+
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
   await page.goto("/")
 

@@ -24,9 +24,9 @@ otro sitio. Las plantillas omiten `fixture`, que vale `false` por defecto. Sigue
    normal no compacta.
 5. La imagen de tarjeta es opcional. Para añadirla, guarda el archivo en
    `src/assets/images/notas/<slug>/` y configura `coverImage` con la ruta local y un `coverAlt`
-   descriptivo. Las entradas de ejemplo incluyen ambos campos comentados: elimina `#` al principio
-   de las dos líneas y sustituye la ruta y la descripción. Sin `coverImage`, la tarjeta se presenta
-   como una tarjeta de texto sin reservar un espacio vacío. Si se define una imagen sin texto
+   descriptivo. Las plantillas incluyen ambos campos comentados: elimina `#` al principio de las
+   dos líneas y sustituye la ruta y la descripción. Sin `coverImage`, la tarjeta se presenta como
+   una tarjeta de texto sin reservar un espacio vacío. Si se define una imagen sin texto
    alternativo, la validación falla.
    La portada ocupa todo el ancho disponible de la tarjeta y conserva su proporción natural; no se
    recorta ni se fuerza a una altura fija.
@@ -46,7 +46,7 @@ forma alternativa de mantener un borrador: sirve únicamente para aislar verific
 
 ```yaml
 relatedNotes:
-  - "margen"
+  - "mis-lugares-favoritos-de-internet"
 relatedMedia:
   - "the-age-of-the-image"
 relatedProjects:
@@ -54,7 +54,8 @@ relatedProjects:
 relatedLinks: []
 ```
 
-En esta nota los tres campos generan enlaces directos. En las páginas de `margen`,
+En esta nota los tres campos generan enlaces directos. En las páginas de
+`mis-lugares-favoritos-de-internet`,
 `the-age-of-the-image` y `syra-coffee` aparecerá automáticamente una **Mención** hacia la nota
 actual. Los artículos
 externos `kind: external` deben mantener todos los campos de relación vacíos porque no tienen una
@@ -289,10 +290,13 @@ comprobar su tarjeta y su ruta, pero la producción los excluye. Actualiza `upda
 haya un cambio editorial relevante. Cambia a `draft: false` únicamente cuando el contenido y sus
 conexiones estén aprobados para publicación.
 
-## Ejemplos y plantillas
+## Entradas actuales y plantillas
 
-La colección contiene únicamente `umbral`, `margen` y `archivo`. Son ejemplos de contenido y no
-deben confundirse con textos editoriales aprobados. No existe una ruta técnica
+Las tres Notas locales actuales son
+`el-magnifico-mundo-de-los-jardines-digitales`,
+`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento` y
+`mis-lugares-favoritos-de-internet`. Sus números son `N.001`–`N.003`; los
+cuatro enlaces externos ocupan `N.004`–`N.007`. No existe una ruta técnica
 `/notas/ejemplo-mdx`.
 
 Usa `docs/templates/nota.md` y `docs/templates/nota-mdx.mdx` como referencias para crear contenido.
