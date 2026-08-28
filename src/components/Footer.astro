@@ -1,5 +1,5 @@
 ---
-const isRegistro = Astro.url.pathname.replace(/\/+$/, "") === "/registro"
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/"
 ---
 
 <footer class="site-footer">
@@ -15,11 +15,15 @@ const isRegistro = Astro.url.pathname.replace(/\/+$/, "") === "/registro"
       </li>
       <li><a href="mailto:hi@rodolfomiranda.company">Email</a></li>
       <li>
-        <span class="site-footer__pending" aria-label="Colofón, próximamente">
-          Colofón <small>Próximamente</small>
-        </span>
+        <a href="/colofon" aria-current={currentPath === "/colofon" ? "page" : undefined}>
+          Colofón
+        </a>
       </li>
-      <li><a href="/registro" aria-current={isRegistro ? "page" : undefined}>Registro</a></li>
+      <li>
+        <a href="/registro" aria-current={currentPath === "/registro" ? "page" : undefined}>
+          Registro
+        </a>
+      </li>
     </ul>
   </nav>
 </footer>

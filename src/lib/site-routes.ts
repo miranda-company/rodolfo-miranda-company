@@ -32,6 +32,7 @@ export async function getPublishedSiteRoutes(): Promise<SiteRoute[]> {
         ...projects.map((entry) => entry.data.updatedAt),
       ]),
     },
+    { path: "/colofon", title: "Colofón" },
     { path: "/yo", title: "Yo" },
     {
       path: "/notas",

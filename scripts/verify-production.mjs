@@ -10,6 +10,7 @@ const robotsDirective = indexingEnabled ? "index, follow" : "noindex, nofollow"
 
 const canonicalRoutes = [
   "/",
+  "/colofon",
   "/yo",
   "/notas",
   "/notas/el-magnifico-mundo-de-los-jardines-digitales",

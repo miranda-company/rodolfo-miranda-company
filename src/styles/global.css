@@ -325,37 +325,23 @@ a {
   border-left: 1px solid var(--line);
 }
 
-.site-footer__links a,
-.site-footer__pending {
+.site-footer__links a {
   display: flex;
   min-height: var(--touch-target);
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   padding: 12px 16px;
+  color: var(--ink);
   font-size: 10px;
   line-height: 1.4;
   text-decoration: none;
-}
-
-.site-footer__links a {
-  color: var(--ink);
 }
 
 .site-footer__links a:hover,
 .site-footer__links a:focus-visible,
 .site-footer__links a[aria-current="page"] {
   color: var(--blue);
-}
-
-.site-footer__pending {
-  color: var(--graphite);
-}
-
-.site-footer__pending small {
-  font: inherit;
-  font-size: 7px;
-  text-transform: uppercase;
 }
 
 .brand {

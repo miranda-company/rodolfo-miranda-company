@@ -18,6 +18,7 @@ requires editorial review.
 | `/notas`      | Notes organized by maturity, theme, and update date.          |
 | `/mediateca`  | Books, articles, websites, videos, podcasts, and tools.       |
 | `/portafolio` | Selected projects with search and tag filtering.              |
+| `/colofon`    | How the site is designed, written, built, and published.      |
 | `/registro`   | Alphabetical index of every published canonical route.        |
 | `/404`        | Custom not-found page, permanently excluded from indexing.    |
 
@@ -119,6 +120,7 @@ are technical examples and must remain isolated from published content.
 | Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`                  |
 | Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                                    |
 | Yo page                                     | `src/pages/yo.astro`, `src/styles/yo.css`                                               |
+| Colophon page                               | `src/pages/colofon.astro`, `src/styles/colophon.css`                                    |
 | Content validation                          | `src/content.config.ts`                                                                 |
 | Draft, fixture, sorting, and count behavior | `src/lib/notes.ts`, `media.ts`, `portfolio.ts`                                          |
 | Bidirectional editorial connections         | `src/lib/connection-graph.ts`, `content-connections.ts`, `EditorialConnections.astro`   |

@@ -31,6 +31,8 @@ of author-inserted image carousels.
   filtering; each case uses the shared detail geometry.
 - `/404` uses the same page shell and introduction hierarchy, stays outside the
   sitemap and always forces `noindex, nofollow`.
+- `/colofon` documents the technology, content workflow, design system,
+  connections, and static publication process behind the site.
 - `/registro` lists every published canonical route alphabetically.
 
 ## Page DOM contract
@@ -61,10 +63,10 @@ not global navigation items. Index and detail routes mark their parent section
 with `aria-current="page"`; the shared link underline exposes that state visually
 in both navigation variants.
 
-The shared footer exposes LinkedIn, email and `/registro`. “Colofón” remains a
-clearly labelled pending item until its route exists. `src/lib/site-routes.ts`
-derives the published local route set once for both `/registro` and
-`sitemap.xml`, preventing the two indexes from drifting apart.
+The shared footer exposes LinkedIn, email, `/colofon` and `/registro`. Colofón
+and Registro mark their own footer link with `aria-current="page"`.
+`src/lib/site-routes.ts` derives the published local route set once for both
+`/registro` and `sitemap.xml`, preventing the two indexes from drifting apart.
 
 Page introductions use a shared semantic and styling contract. Each is a
 labelled `<section>` with the shared `.page-intro` class plus a route-specific
@@ -294,10 +296,10 @@ Mediateca and Portafolio append explicitly typed fixture routes in development
 without inserting fixtures into editorial navigation; production never appends
 them.
 
-Excluding redirect aliases, development exposes 35 canonical routes: six
+Excluding redirect aliases, development exposes 36 canonical routes: seven
 indexes or standalone pages, three local Notas, ten Mediateca references plus
 one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
-A normal production build exposes 24 canonical routes: the six standalone
+A normal production build exposes 25 canonical routes: the seven standalone
 routes, three local Notas, nine Mediateca references, and six Portfolio cases.
 
 Astro also writes ten legacy `/biblioteca` redirect artifacts: the index alias

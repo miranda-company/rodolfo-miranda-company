@@ -7,6 +7,7 @@ import {
 
 const primaryRoutes = [
   "/",
+  "/colofon",
   "/yo",
   "/notas",
   "/mediateca",
@@ -179,7 +180,7 @@ test("desktop header links to the four primary sections", async ({ page }) => {
   await expect(page).toHaveURL(/\/portafolio$/)
 })
 
-test("footer exposes contact links, the pending colophon, and Registro", async ({ page }) => {
+test("footer exposes contact links, Colofón, and Registro", async ({ page }) => {
   await page.goto("/")
 
   const footer = page.locator(".site-footer")
@@ -191,8 +192,11 @@ test("footer exposes contact links, the pending colophon, and Registro", async (
     "href",
     "mailto:hi@rodolfomiranda.company",
   )
-  await expect(footer.getByText("Colofón", { exact: false })).toContainText("Próximamente")
+  await expect(footer.getByRole("link", { name: "Colofón" })).toHaveAttribute("href", "/colofon")
   await expect(footer.getByRole("link", { name: "Registro" })).toHaveAttribute("href", "/registro")
+
+  await page.goto("/colofon")
+  await expect(page.locator('.site-footer a[aria-current="page"]')).toHaveText("Colofón")
 })
 
 test("Registro mirrors the sitemap and orders routes alphabetically", async ({ page }) => {

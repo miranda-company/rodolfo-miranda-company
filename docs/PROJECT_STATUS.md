@@ -29,6 +29,7 @@ aprobación editorial.
 | Detalle de Mediateca | `/mediateca/[slug]`  | 10 rutas editoriales y una fixture directa               | Las 9 referencias publicadas                      |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
 | Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
+| Colofón              | `/colofon`           | Explicación técnica y editorial del sitio                | Se genera                                         |
 | Registro             | `/registro`          | Índice alfabético derivado de las rutas publicadas       | Se genera y coincide con el sitemap               |
 | Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`         |
 
@@ -53,7 +54,7 @@ contenido pendiente, asignar valores únicos y completar su revisión editorial.
 | Mediateca  |                                10 |                      9 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 35 rutas canónicas en desarrollo y 24 en un build normal de
+En total hay 36 rutas canónicas en desarrollo y 25 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos rutas
 `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes técnicos y no aparecen en
 índices, filtros, conteos, conexiones, navegación anterior/siguiente, portada o
@@ -79,7 +80,7 @@ revisarse antes del lanzamiento.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
   cierra con `Escape` y restaura el foco.
-- Footer global con LinkedIn, email, Colofón pendiente y Registro; Registro y
+- Footer global con LinkedIn, email, Colofón y Registro; Registro y
   el sitemap comparten una única lista de rutas publicadas.
 - Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
   Notas y Mediateca comparten el controlador tipado de disclosure y filtros.
@@ -102,16 +103,16 @@ revisarse antes del lanzamiento.
 ## Verificación actual
 
 - `git diff --check`: correcto.
-- `pnpm run check`: 62 archivos, 0 errores, 0 avisos y 0 sugerencias.
-- `pnpm run build`: correcto; genera 24 páginas canónicas de producción.
-- `pnpm run test:production`: confirma 24 rutas canónicas, diez redirects y
+- `pnpm run check`: 63 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run build`: correcto; genera 25 páginas canónicas de producción.
+- `pnpm run test:production`: confirma 25 rutas canónicas, diez redirects y
   los límites editoriales 3 Notas locales / 4 artículos externos / 9
   referencias / 6 proyectos, además de canonical, tarjetas sociales, JSON-LD,
   sitemap y bloqueo de indexación.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 13,01 MiB, el HTML 474,5 KiB,
-  el CSS 57,9 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB; la
+- `pnpm run test:budgets`: correcto; `dist` ocupa 13,02 MiB, el HTML 486,0 KiB,
+  el CSS 57,7 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB; la
   imagen mayor pesa 422,9 KiB.
-- `pnpm run test:e2e:dist`: 44 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 47 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.

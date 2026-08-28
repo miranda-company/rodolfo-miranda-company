@@ -75,7 +75,7 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 24 rutas canónicas, diez redirects de
+contrato explícito. Verifica 25 rutas canónicas, diez redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
 - 3 Notas locales y 4 artículos externos;
@@ -128,7 +128,7 @@ equivalen al peso transferido de una página concreta. Si una decisión editoria
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
 
-El límite agregado de HTML contempla las 24 rutas canónicas actuales, sus
+El límite agregado de HTML contempla las 25 rutas canónicas actuales, sus
 redirecciones estáticas y la página 404. El límite por archivo sigue siendo la
 referencia principal para evitar que una página concreta crezca sin control.
 
