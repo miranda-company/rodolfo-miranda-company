@@ -14,7 +14,7 @@ draft: false
 language: "es"
 ---
 
-Hace tiempo que pause mis cuentas personales de Instagram y Facebook. La única red que mantengo activa por motivos profesionales es LinkedIn. 
+Hace tiempo que pause mis cuentas personales de Instagram y Facebook. La única red que mantengo activa por motivos profesionales es [LinkedIn](https://www.linkedin.com/in/rodolfo-miranda-company/). 
 
 La razón principal es que las redes sociales me quitan demasiado tiempo, fragmentan mi atención y mis pensamientos.
 Esa parte no me gusta para nada y me genera ansiedad.

@@ -45,6 +45,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/layouts/BaseLayout.astro` — document metadata, local fonts, `noindex`,
   and global browser behavior.
 - `src/components/PageShell.astro` — canonical visible page structure.
+- `src/components/Header.astro` and `src/components/Footer.astro` — shared
+  global navigation and footer links.
 - `src/components/EditorialDetailLayout.astro` — shared detail-page geometry
   for Notas, Mediateca, and Portafolio.
 - `src/components/content/` — approved MDX components for images, carousels,
@@ -54,6 +56,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/lib/` — collection visibility, sorting, and publication helpers.
 - `src/lib/connection-graph.ts` and `src/lib/content-connections.ts` — pure
   editorial graph logic and its Astro collection adapter.
+- `src/lib/site-routes.ts` — published canonical routes shared by Registro and
+  the sitemap.
 - `src/styles/global.css` — design tokens, shared typography, and global rules.
 - `src/styles/home.css` — homepage-only hero, panel, and preview presentation.
 - `src/styles/editorial-detail.css` — shared editorial detail layout.
@@ -77,8 +81,9 @@ process with `pnpm exec astro dev stop` before starting another one.
 
 ## Architecture boundaries
 
-- Keep `BaseLayout -> PageShell -> Header + main` as the page-level DOM
-  contract. Content routes should have one header and one `main` landmark.
+- Keep `BaseLayout -> PageShell -> Header + main + Footer` as the page-level
+  DOM contract. Content routes should have one site header, one `main` landmark,
+  and one site footer.
 - Reuse `EditorialDetailLayout.astro` for editorial detail pages. Portafolio
   intentionally disables the right connections rail; Notas and Mediateca keep
   it.
