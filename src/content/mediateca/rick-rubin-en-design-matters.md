@@ -3,14 +3,14 @@ title: "Rick Rubin | Design Matters"
 creator: "Debbie Millman"
 format: "podcast"
 engagementMode: "listen"
-editorialState: "provisional"
+editorialState: "revisado"
 summary: "Debbie Millman entrevista a Rick Rubin y conversan sobre arte y creatividad."
 status: "en-curso"
 archiveNumber: "M.012"
 updatedAt: "2026-06-28"
 tags: ["Cultura digital", "Edición"]
 featured: false
-draft: true
+draft: false
 language: "es"
 ---
 
