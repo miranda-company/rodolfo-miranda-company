@@ -1,6 +1,6 @@
 ---
 title: "Zettelkasten: un método para organizar nuestro conocimiento"
-summary: "Toda interfaz decide qué mostrar, qué aplazar y qué dejar deliberadamente fuera del encuadre."
+summary: "Mi método preferido para organizar mis ideas de forma útil."
 publishedAt: 2026-07-18
 updatedAt: 2026-07-18
 state: "semilla"
