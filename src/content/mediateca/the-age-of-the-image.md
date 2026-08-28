@@ -17,7 +17,7 @@ coverImage: "../../assets/images/mediateca/the-age-of-the-image-stephen-apkon.jp
 coverAlt: "The Age Of The Image - Stephen Apkon"
 coverCaption: "The Age Of The Image - Stephen Apkon"
 displayInShelf: false
-featured: true
+featured: false
 draft: false
 language: "es"
 ---

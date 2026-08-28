@@ -60,7 +60,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 
 ### Homepage
 
-- H1: “Hola, yo soy R.”.
+- H1: “Me llamo R.”.
 - H2: the four archive-card titles and “Lo último”.
 - H3 beneath “Lo último”: “Notas recientes”, “Anaquel” and “Proyectos”.
 - Archive numbers, dates and section labels are mono non-headings.

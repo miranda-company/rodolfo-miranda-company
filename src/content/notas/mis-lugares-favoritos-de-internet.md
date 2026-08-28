@@ -37,4 +37,5 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [The Art of Photography](https://www.youtube.com/@theartofphotography) - Ted Forbes y su canal de YT sobre fotografía.
 - [Design Matters](https://designmattersmedia.com/) - Un podcast de Debbie Millman sobre diseño.
 - [Gemini Notebook](https://notebook.google.com/) - Una de las herramientas que más uso para investigar.
+- [Joanna Wiebe](https://www.youtube.com/@joanna-wiebe/videos) - YT de copywriting y marketing.
 
