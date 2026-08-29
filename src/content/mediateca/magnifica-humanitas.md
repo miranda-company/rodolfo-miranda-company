@@ -19,7 +19,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 La humanidad se encuentra en una encrucijada histórica frente a la revolución digital, la cual el documento ilustra con dos metáforas bíblicas: podemos construir una nueva Torre de Babel (un proyecto impulsado por la arrogancia, el lucro y el control tecnocrático que deshumaniza) o podemos reconstruir Jerusalén (un esfuerzo comunitario basado en la responsabilidad compartida, la pluralidad y el bien común).
 
 [En este texto](https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html), el [Papa Leo XIV](https://en.wikipedia.org/wiki/Pope_Leo_XIV) actualiza la [Doctrina Social de la Iglesia](https://es.wikipedia.org/wiki/Doctrina_social_de_la_Iglesia) para hacer frente a la era de la inteligencia artificial (IA). Su argumento central es que la tecnología no es moralmente neutra; los algoritmos y plataformas reflejan los sesgos, intereses y visiones de quienes los financian y diseñan. El documento lanza una fuerte crítica al "paradigma tecnocrático" y a las corrientes del transhumanismo y posthumanismo, advirtiendo que tratar de eliminar los límites y vulnerabilidades humanas a través de la tecnología destruye nuestra capacidad para la empatía, el amor y la conexión compasiva.

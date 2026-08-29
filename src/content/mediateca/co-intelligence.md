@@ -22,7 +22,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 
 La inteligencia artificial (IA) de consumo ya está aquí, trayendo consigo una transformación inevitable que nos obliga a replantear su impacto en nuestros empleos, nuestras vidas y el futuro de la humanidad.
 

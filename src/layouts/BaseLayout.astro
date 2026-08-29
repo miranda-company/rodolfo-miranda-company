@@ -3,8 +3,8 @@ import "@fontsource-variable/instrument-sans"
 import "@fontsource/ibm-plex-mono/latin-400.css"
 import "@fontsource/ibm-plex-mono/latin-500.css"
 import { getImage } from "astro:assets"
+import favicon from "../assets/images/favicon.jpg"
 import defaultSocialImage from "../assets/images/homepage/hello-computer-002.webp"
-import wolfSymbol from "../assets/images/simbolo-lobo.png"
 import { SITE_DESCRIPTION, SITE_LANGUAGE, SITE_LOCALE, SITE_NAME, SITE_ORIGIN } from "../lib/site"
 import "../styles/global.css"
 
@@ -114,7 +114,7 @@ const structuredData = {
     <meta name="googlebot" content={robotsDirective} />
     <meta name="theme-color" content="#f7f3ea" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/png" href={wolfSymbol.src} />
+    <link rel="icon" type="image/jpeg" href={favicon.src} />
 
     <meta property="og:type" content={openGraphType} />
     <meta property="og:site_name" content={SITE_NAME} />

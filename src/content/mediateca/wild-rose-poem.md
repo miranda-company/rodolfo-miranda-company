@@ -18,7 +18,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 
 Un poema que [Wendell Berry](https://en.wikipedia.org/wiki/Wendell_Berry) escribió a su esposa. Lo descubrí dentro del libro [Bird by Bird](bird-by-bird).
 

@@ -22,7 +22,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 
 Vivimos inmersos en una revolución de la narrativa visual que es tan transformadora como lo fue la invención de la imprenta. Sin embargo, a pesar de estar rodeados de pantallas, la mayoría somos prácticamente "analfabetos visuales": consumimos contenido sin comprender su gramática, el código detrás de su estilo o cómo se produce.
 

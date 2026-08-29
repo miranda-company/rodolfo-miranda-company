@@ -22,7 +22,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 
 Bird by Bird de [Anne Lamott](https://en.wikipedia.org/wiki/Anne_Lamott) es una guía cálida, generosa y muy divertida sobre el arte de escribir y, en muchos sentidos, sobre cómo enfrentar la vida. Su premisa principal es tan simple como liberadora: para ser un mejor escritor, tienes que escribir más y, sobre todo, darte permiso de hacer "primeros borradores de porquería" (shitty first drafts). Lamott explica que nadie escribe perfecto a la primera; la escritura es un proceso de descubrimiento donde solo al sentarte a teclear logras descifrar de qué trata realmente tu historia.
 

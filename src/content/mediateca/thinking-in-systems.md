@@ -22,7 +22,7 @@ draft: false
 language: "es"
 ---
 
-## Abstracto
+## Síntesis
 
 Thinking in Systems es un libro de [Donella Meadows](https://en.wikipedia.org/wiki/Donella_Meadows) que argumenta que los mayores problemas globales (como la guerra, el hambre, la pobreza y la degradación ambiental) son, en esencia, fallos sistémicos; por lo tanto, no pueden resolverse arreglando partes aisladas. En un sistema interconectado, incluso los detalles aparentemente menores tienen el poder de arruinar las intervenciones si tenemos una visión demasiado estrecha.
 
