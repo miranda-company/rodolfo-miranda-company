@@ -37,10 +37,6 @@
 .entry-detail-intro__summary {
   max-width: 720px;
   margin-top: 31px;
-  font-family: var(--font-sans);
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.025em;
 }
 
 .entry-detail-layout {

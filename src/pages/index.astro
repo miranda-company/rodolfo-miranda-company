@@ -67,6 +67,11 @@ const notes = publishedNotes
   .slice(0, 3)
 
 const mediaShelf = publishedMedia.filter((entry) => entry.data.displayInShelf).slice(0, 3)
+const connectionLinkStart = home.data.connectionLabel.indexOf(home.data.connectionLink.label)
+const connectionLabelBefore = home.data.connectionLabel.slice(0, connectionLinkStart)
+const connectionLabelAfter = home.data.connectionLabel.slice(
+  connectionLinkStart + home.data.connectionLink.label.length,
+)
 ---
 
 <BaseLayout canonicalPath="/">
@@ -75,7 +80,11 @@ const mediaShelf = publishedMedia.filter((entry) => entry.data.displayInShelf).s
       <div class="hero-grid">
         <div class="text-container">
           <h1 id="hero-title">{home.data.heroTitle}</h1>
-          <p class="home-intro__description">{home.data.connectionLabel}</p>
+          <p class="intro-lead home-intro__description">
+            {connectionLabelBefore}<a href={home.data.connectionLink.href}
+              >{home.data.connectionLink.label}</a
+            >{connectionLabelAfter}
+          </p>
         </div>
 
         <div class="img-container">

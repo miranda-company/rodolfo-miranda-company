@@ -11,7 +11,7 @@ anteriores siguen disponibles en el historial y las etiquetas de Git.
 - [Modelo de contenido](CONTENT_MODEL.md) — colecciones, campos compartidos y
   límites entre desarrollo y producción.
 - [Lista de lanzamiento](LAUNCH_CHECKLIST.md) — revisión editorial, técnica y de
-  hosting antes de retirar `noindex`.
+  hosting que sigue pendiente tras habilitar la indexación.
 - [Preparación técnica para lanzamiento](LAUNCH_READINESS.md) — metadatos,
   sitemap, indexación, redirects y auditoría Lighthouse.
 

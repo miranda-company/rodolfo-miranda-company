@@ -1,10 +1,10 @@
 [
   {
     "id": "ahora",
-    "label": "Hola mundo!",
+    "label": "Acceso rápido",
     "period": "2026",
     "title": "Lo último",
-    "notesHeading": "Notas recientes",
+    "notesHeading": "Notas",
     "notesLinkLabel": "Ver todas las notas ↗",
     "mediatecaHeading": "Anaquel",
     "mediatecaLinkLabel": "Abrir mediateca ↗",

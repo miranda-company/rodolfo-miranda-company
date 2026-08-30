@@ -28,9 +28,6 @@
 .notes-intro__description {
   max-width: 660px;
   margin: 29px 0 0;
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.025em;
 }
 
 .notes-intro__meta {

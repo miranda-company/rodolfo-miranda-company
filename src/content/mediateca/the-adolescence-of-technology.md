@@ -25,7 +25,6 @@ En su ensayo [The Adolescence of Technology](https://darioamodei.com/essay/the-a
 
 Identifica cinco pilares de riesgo existencial, incluyendo la desalineación autónoma de la IA, el uso indebido de armas biológicas, la consolidación autoritaria, y una disrupción económica sin precedentes por la sustitución del trabajo humano.
 
-
 ## Mis subrayados
 
 - Ups... todavía no hay subrayados.

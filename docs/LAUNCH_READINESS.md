@@ -4,20 +4,23 @@ Esta guía explica la infraestructura ya preparada para publicar el sitio y los
 pasos que todavía requieren una decisión humana. No confirma que el dominio
 esté conectado ni que el sitio esté desplegado.
 
-## Estado seguro por defecto
+## Estado de indexación
 
-Un build normal mantiene la indexación desactivada:
+La indexación pública fue autorizada el 30 de agosto de 2026. El archivo
+versionado `.env.production` contiene únicamente la configuración pública
+`PUBLIC_INDEXING_ENABLED=true`. Por tanto, un build normal de producción:
 
-- cada página declara `noindex, nofollow` para robots y Googlebot;
-- `/robots.txt` responde con `Disallow: /`;
-- el sitemap existe, pero no autoriza el rastreo;
-- el dominio canónico previsto es `https://www.rodolfomiranda.company`.
+- declara `index, follow` en todas las rutas canónicas;
+- responde con `Allow: /` en `/robots.txt`;
+- publica un sitemap con las rutas aprobadas para producción;
+- usa `https://www.rodolfomiranda.company` como origen canónico.
 
-No actives la indexación en un preview, una rama o un entorno sin aprobación
-editorial. La variable `PUBLIC_INDEXING_ENABLED=true` cambia en el mismo build
-las directivas HTML y `robots.txt` a `index, follow` y `Allow: /`. Solo debe
-configurarse en el entorno público definitivo después de completar
-`LAUNCH_CHECKLIST.md`.
+El servidor de desarrollo no carga `.env.production` y continúa declarando
+`noindex, nofollow` con `Disallow: /`. La página 404 también permanece bloqueada
+en cualquier entorno. No guardes secretos en `.env.production`: todo valor que
+empiece por `PUBLIC_` se considera visible para el build. Para generar un build
+privado de revisión, anula explícitamente la variable con
+`PUBLIC_INDEXING_ENABLED=false`.
 
 `SITE_URL` permite construir una variante con otro origen canónico:
 
@@ -45,12 +48,11 @@ Los índices usan `CollectionPage`, `/yo` usa `ProfilePage`, las Notas usan
 portadas disponibles se reutilizan como imágenes sociales; las páginas sin
 cubierta usan la imagen social general.
 
-`src/pages/sitemap.xml.ts` incluye exactamente las 25 rutas canónicas del build
+`src/pages/sitemap.xml.ts` incluye exactamente las 27 rutas canónicas del build
 de producción. Comparte `src/lib/site-routes.ts` con `/registro`, usa las mismas
 funciones que excluyen drafts y fixtures, añade fechas de modificación cuando
 existen y no publica aliases de `/biblioteca`.
-`src/pages/robots.txt.ts` enlaza ese sitemap incluso mientras mantiene el
-bloqueo de rastreo.
+`src/pages/robots.txt.ts` enlaza ese sitemap y permite su rastreo en producción.
 
 `src/pages/404.astro` genera `404.html` con el mismo shell, jerarquía tipográfica
 y tratamiento de foco que el resto del sitio. La ruta queda fuera del sitemap y
@@ -111,12 +113,11 @@ se guardan en `.lighthouse/`, que Git ignora. Los mínimos automáticos son:
 | Rendimiento      |     75 |
 | Accesibilidad    |     95 |
 | Buenas prácticas |     95 |
-| SEO previo       |     65 |
+| SEO              |     95 |
 
-La puntuación SEO previa al lanzamiento queda en 69 porque Lighthouse marca
-como fallo la falta de rastreabilidad, aunque el resto de sus comprobaciones SEO
-sea correcto. El mínimo previo se fija en 65 para conservar ese bloqueo
-intencional. No rebajes ni elimines `noindex` para mejorar una puntuación.
+La auditoría SEO debe confirmar que el build es rastreable. El mínimo vuelve a
+95 ahora que el bloqueo intencional se ha retirado; una caída por `noindex`, por
+un `robots.txt` restrictivo o por metadatos incompletos debe fallar la revisión.
 Tras desplegar el entorno definitivo, repite Lighthouse contra la URL pública y
 valida las tarjetas sociales con los inspectores de las plataformas relevantes.
 

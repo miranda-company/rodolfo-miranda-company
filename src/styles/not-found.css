@@ -20,9 +20,6 @@
 .not-found-intro__description {
   max-width: 680px;
   margin: 30px 0 0;
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.025em;
 }
 
 .not-found-intro__link {

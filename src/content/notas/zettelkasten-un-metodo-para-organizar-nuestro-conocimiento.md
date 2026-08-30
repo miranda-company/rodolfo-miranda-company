@@ -18,7 +18,7 @@ language: "es"
 
 El método Zettelkasten es un sistema de gestión de conocimiento inventado por el sociólogo alemán [Niklas Luhmann](https://en.wikipedia.org/wiki/Niklas_Luhmann).
 
-Funciona como un segundo cerebro que ayuda a organizar ideas para luego poder crear conexiones con significado entre ellas. 
+Funciona como un segundo cerebro que ayuda a organizar ideas para luego poder crear conexiones con significado entre ellas.
 
 Cada idea se escribe en una sola nota, cada nota contiene una sola idea. Deben de ser concretas y concisas. Estas notas pueden ser referenciadas por otras ideas/notas. Las notas tienen un identificador único que permite archivarlas de forma organizada pero flexible (orgánica) y registrarlas en un índice.
 

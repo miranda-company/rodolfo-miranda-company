@@ -75,11 +75,11 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 25 rutas canónicas, diez redirects de
+contrato explícito. Verifica 27 rutas canónicas, doce redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
 - 3 Notas locales y 4 artículos externos;
-- 9 referencias de Mediateca;
+- 11 referencias de Mediateca;
 - 6 proyectos de Portafolio.
 
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
@@ -88,19 +88,18 @@ producción, hay que actualizar el contenido y este contrato en el mismo cambio.
 El contrato también comprueba que las relaciones publicadas generen backlinks,
 que una relación mutua aparezca una sola vez y que un proyecto draft no pueda
 filtrarse dentro del grafo de producción.
-El mismo script comprueba que cada ruta canónica tenga `noindex`, canonical,
-Open Graph, tarjeta social y JSON-LD, y que `robots.txt` y el sitemap contengan
-exactamente el contrato previsto. La página 404 debe conservar `noindex,
-nofollow` aunque una futura build habilite la indexación del contenido.
+El mismo script comprueba que cada ruta canónica tenga `index, follow`,
+canonical, Open Graph, tarjeta social y JSON-LD, y que `robots.txt` permita el
+rastreo y el sitemap contenga exactamente el contrato previsto. La página 404
+debe conservar `noindex, nofollow` aunque el resto del build permita la
+indexación.
 
 ## Lighthouse
 
-`scripts/run-lighthouse.mjs` aplica mínimos de 75 en rendimiento, 95 en
-accesibilidad, 95 en buenas prácticas y 65 en SEO previo al lanzamiento. El
-score SEO esperado es 69 porque `is-crawlable` falla mientras `noindex` siga
-activo; el resto de las auditorías SEO debe permanecer correcto. No se debe
-retirar el bloqueo para mejorar el informe. Consulta
-`LAUNCH_READINESS.md` antes de cambiar la configuración de indexación.
+`scripts/run-lighthouse.mjs` aplica mínimos de 75 en rendimiento y 95 en
+accesibilidad, buenas prácticas y SEO. La indexación ya está habilitada en el
+build de producción, por lo que `is-crawlable` debe superar la auditoría; una
+regresión de las directivas de robots vuelve a hacer fallar el lanzamiento.
 
 Las rutas sin reproductores externos mantienen el mínimo 95 de buenas
 prácticas. `/portafolio/syra-coffee` admite únicamente los fallos
@@ -128,7 +127,7 @@ equivalen al peso transferido de una página concreta. Si una decisión editoria
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
 
-El límite agregado de HTML contempla las 25 rutas canónicas actuales, sus
+El límite agregado de HTML contempla las 27 rutas canónicas actuales, sus
 redirecciones estáticas y la página 404. El límite por archivo sigue siendo la
 referencia principal para evitar que una página concreta crezca sin control.
 

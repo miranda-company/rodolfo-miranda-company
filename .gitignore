@@ -5,6 +5,7 @@ build/
 .pnpm-store/
 .cache/
 .env*
+!.env.production
 .vite/
 vite.config.*.timestamp-*
 *.tsbuildinfo

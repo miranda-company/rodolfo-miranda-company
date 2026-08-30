@@ -52,6 +52,12 @@ The shared roles below are tokens in `src/styles/global.css`. Elements may have 
 | Mono metadata       | IBM Plex Mono            | `10px`                                       | `1.4`       | Shared hero and record metadata                                       |
 | Kicker              | IBM Plex Mono            | `12px`                                       | `normal`    | Page eyebrow above an archive-index H1                                |
 
+The shared `.intro-lead` utility applies the Introduction / lead role. Use it
+alongside a route-specific layout hook—for example
+`class="intro-lead home-intro__description"`—so page CSS controls only width
+and spacing. The homepage hero, archive introductions, standalone page
+introductions and editorial detail summaries all use this common treatment.
+
 The shared `.kicker` utility in `src/styles/global.css` is the source of truth for page kickers. It sets the mono family, `12px` size, `0.045em` letter spacing and `17px` bottom margin. Use it alongside the route-specific hook when one is useful, for example `class="kicker notes-kicker"`, `class="kicker media-kicker"`, `class="kicker portfolio-kicker"` or `class="kicker yo-kicker"`. The route-specific classes should not duplicate or override the shared typography and spacing unless a documented design requirement calls for a genuine exception.
 
 Dense card copy, display positioning statements, bylines and micro-annotations are distinct roles because their available space or purpose differs. They must have dedicated selectors and must not be implemented with semantic heading elements.

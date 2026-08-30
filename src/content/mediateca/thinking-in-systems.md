@@ -29,6 +29,7 @@ Thinking in Systems es un libro de [Donella Meadows](https://en.wikipedia.org/wi
 Más allá de enseñarnos herramientas y metodologías, el corazón del libro es una invitación a cambiar nuestra mentalidad. Meadows nos recuerda que debemos prestar atención a lo que es verdaderamente importante (y no solo a lo que se puede medir o cuantificar), mantenernos humildes y nunca dejar de aprender. En un mundo cada vez más complejo, abarrotado e interdependiente, este libro es una guía esencial para dejar de sentirnos indefensos y comenzar a diseñar soluciones proactivas y efectivas.
 
 ## Mis subrayados
+
 - Thus though man has never before been so complacent about what he has, or so confident of his ability to do whatever he sets his mind upon, it is at the same time true that he never before accepted so low an estimate of what he is. That same scientific method which enabled him to create his wealth and to unleash the power he wields has, he believes, enabled biology and psychology to explain him away—or at least to explain away whatever used to seem unique or even in any way mysterious.… Truly he is, for all his wealth and power, poor in spirit.
 - The thing to do, when you don’t know, is not to bluff and not to freeze, but to learn. The way you learn is by experiment—or, as Buckminster Fuller put it, by trial and error, error, error.
 - These few examples are enough to get you thinking about how little our current culture has come to look for responsibility within the system that generates an action, and how poorly we design systems to experience the consequences of their actions.
@@ -45,5 +46,3 @@ Más allá de enseñarnos herramientas y metodologías, el corazón del libro es
 - An important function of almost every system is to ensure its own perpetuation.
 - Purposes are deduced from behavior, not from rhetoric or stated goals.
 - Many of the interconnections in systems operate through the flow of information. Information holds systems together and plays a great role in determining how they operate.
-
-

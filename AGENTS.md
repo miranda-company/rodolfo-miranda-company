@@ -1,8 +1,8 @@
 # rodolfo-miranda-company
 
 Static Astro website and Spanish-language digital garden for Rodolfo Miranda
-Company. The site is still in development: indexing remains disabled and some
-content is intentionally provisional.
+Company. Production indexing is enabled after explicit authorization; local
+development remains non-indexable and some content is intentionally provisional.
 
 ## Start here
 
@@ -42,8 +42,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 ## Project structure
 
 - `src/pages/` — Astro routes.
-- `src/layouts/BaseLayout.astro` — document metadata, local fonts, `noindex`,
-  and global browser behavior.
+- `src/layouts/BaseLayout.astro` — document metadata, local fonts, crawler
+  directives, and global browser behavior.
 - `src/components/PageShell.astro` — canonical visible page structure.
 - `src/components/Header.astro` and `src/components/Footer.astro` — shared
   global navigation and footer links.
@@ -102,9 +102,11 @@ process with `pnpm exec astro dev stop` before starting another one.
 - Keep site identity and intended origin in `src/lib/site.ts`. Canonical links,
   social metadata and JSON-LD belong in `BaseLayout.astro`; sitemap and crawler
   policy belong in their generated routes.
-- Keep `PUBLIC_INDEXING_ENABLED` unset unless the user explicitly authorizes a
-  public launch. A normal build must remain `noindex, nofollow` with a blocking
-  `robots.txt`.
+- Public indexing was explicitly authorized on 30 August 2026.
+  `.env.production` therefore keeps `PUBLIC_INDEXING_ENABLED=true` for normal
+  production builds. Local development remains `noindex, nofollow`; never
+  remove the permanent `forceNoIndex` behavior from the 404 page. Use an
+  explicit false override only for a private review build.
 
 ## Content authoring
 

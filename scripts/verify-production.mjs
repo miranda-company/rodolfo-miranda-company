@@ -14,9 +14,10 @@ const canonicalRoutes = [
   "/yo",
   "/notas",
   "/notas/el-magnifico-mundo-de-los-jardines-digitales",
+  "/notas/mis-lugares-favoritos-de-internet",
   "/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento",
-  "/notas/archivo",
   "/mediateca",
+  "/mediateca/the-adolescence-of-technology",
   "/mediateca/magnifica-humanitas",
   "/mediateca/pulitzer-prize-winner-explains-his-writing-process",
   "/mediateca/the-turbulent-ai-era-is-here",
@@ -26,6 +27,7 @@ const canonicalRoutes = [
   "/mediateca/bird-by-bird",
   "/mediateca/co-intelligence",
   "/mediateca/wild-rose-poem",
+  "/mediateca/rick-rubin-en-design-matters",
   "/portafolio",
   "/portafolio/syra-coffee",
   "/portafolio/bsc",
@@ -42,6 +44,8 @@ const redirectRoutes = [
   "/biblioteca/co-intelligence",
   "/biblioteca/magnifica-humanitas",
   "/biblioteca/pulitzer-prize-winner-explains-his-writing-process",
+  "/biblioteca/rick-rubin-en-design-matters",
+  "/biblioteca/the-adolescence-of-technology",
   "/biblioteca/the-age-of-the-image",
   "/biblioteca/the-machine-dream-was-never-real",
   "/biblioteca/the-turbulent-ai-era-is-here",
@@ -120,8 +124,8 @@ assert.equal(
 )
 assert.equal(
   countCards(mediaHtml, "data-media-card"),
-  9,
-  "Producción debe contener nueve referencias de Mediateca.",
+  11,
+  "Producción debe contener once referencias de Mediateca.",
 )
 assert.equal(
   countCards(portfolioHtml, "data-portfolio-card"),
@@ -205,5 +209,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 9 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 11 referencias y 6 proyectos.`,
 )

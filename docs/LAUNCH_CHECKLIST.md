@@ -1,12 +1,14 @@
 # Lista de preparación para lanzamiento
 
-Estas tareas deben completarse antes de retirar `noindex`, conectar el dominio
-o presentar el jardín como una publicación terminada.
+Estas tareas siguen pendientes antes de presentar el jardín como una
+publicación terminada. La indexación técnica se habilitó por autorización
+explícita el 30 de agosto de 2026; esa decisión no sustituye las revisiones
+editoriales, de hosting y de accesibilidad enumeradas aquí.
 
 La revisión editorial consolidada prevista como Fase 5 se ha pospuesto por
 decisión del responsable del proyecto. Esto no aprueba automáticamente ninguna
-de las tareas editoriales siguientes: permanecen abiertas y la indexación debe
-seguir desactivada hasta que se revisen de forma explícita.
+de las tareas editoriales siguientes: permanecen abiertas hasta que se revisen
+de forma explícita.
 
 ## Edición
 
@@ -17,7 +19,7 @@ seguir desactivada hasta que se revisen de forma explícita.
       `el-magnifico-mundo-de-los-jardines-digitales`,
       `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento` y
       `mis-lugares-favoritos-de-internet`.
-- [ ] Confirmar la revisión editorial final de las nueve referencias de
+- [ ] Confirmar la revisión editorial final de las once referencias de
       Mediateca incluidas en producción.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.
@@ -56,8 +58,9 @@ seguir desactivada hasta que se revisen de forma explícita.
       con el contenido editorial definitivo.
 - [x] Mantener `noindex` y el bloqueo de `robots.txt` por defecto hasta la
       aprobación final.
-- [ ] Retirar el bloqueo de indexación solo después de verificar el entorno de
-      producción.
+- [x] Habilitar `index, follow` y `Allow: /` en builds de producción tras la
+      autorización explícita del 30 de agosto de 2026.
+- [ ] Verificar las directivas de indexación en el dominio público.
 
 ## Vídeo, MDX y código
 

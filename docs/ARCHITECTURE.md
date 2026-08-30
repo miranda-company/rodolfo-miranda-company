@@ -12,8 +12,8 @@ of author-inserted image carousels.
 ## Presentation
 
 - `src/layouts/BaseLayout.astro` owns Spanish metadata, canonical and social
-  URLs, JSON-LD, the safe-by-default indexing directive, locally bundled fonts,
-  and global page behavior.
+  URLs, JSON-LD, build-aware indexing directives, locally bundled fonts, and
+  global page behavior.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
 - `src/components/Footer.astro` owns the shared contact and archive links.
 - `src/styles/global.css` contains design tokens and the semantic typography
@@ -77,6 +77,12 @@ route-specific classes only define the internal composition and visual elements
 unique to that page. Editorial detail pages add `.entry-detail-intro` for their
 shared title, summary and metadata arrangement while retaining their collection
 class.
+
+Introductory copy uses the global `.intro-lead` typography utility together
+with its route-specific layout hook. This keeps the homepage hero, collection
+introductions, standalone introductions and editorial summaries on the same
+Instrument Sans size, weight, line-height and tracking while allowing each
+layout to retain its own width and margins.
 
 Pages with a return link use `.page-main--with-back` on the main landmark and
 the semantic `.page-back` class on the link itself. Both are global contracts:
@@ -242,9 +248,9 @@ Astro generates fenced-code highlighting statically with Shiki and the
 text require no client runtime. Long lines scroll inside the code block rather
 than expanding the page.
 
-The Notas index includes the same three local entries in development and a
-normal production build. Mediateca includes ten ordinary references in
-development and nine in production. Portafolio includes 14 ordinary development
+The Notas index includes four local entries in development and three in a
+normal production build. Mediateca includes eleven ordinary references in both
+environments. Portafolio includes 14 ordinary development
 entries: six published case studies and eight draft placeholders. Production
 includes `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
 `modulab-barcelona`, and `eloquent`.
@@ -296,13 +302,13 @@ Mediateca and Portafolio append explicitly typed fixture routes in development
 without inserting fixtures into editorial navigation; production never appends
 them.
 
-Excluding redirect aliases, development exposes 36 canonical routes: seven
-indexes or standalone pages, three local Notas, ten Mediateca references plus
+Excluding redirect aliases, development exposes 38 canonical routes: seven
+indexes or standalone pages, four local Notas, eleven Mediateca references plus
 one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
-A normal production build exposes 25 canonical routes: the seven standalone
-routes, three local Notas, nine Mediateca references, and six Portfolio cases.
+A normal production build exposes 27 canonical routes: the seven standalone
+routes, three local Notas, eleven Mediateca references, and six Portfolio cases.
 
-Astro also writes ten legacy `/biblioteca` redirect artifacts: the index alias
+Astro also writes twelve legacy `/biblioteca` redirect artifacts: the index alias
 and one redirect for each published Mediateca detail. No overlapping explicit
 redirects are required.
 
@@ -318,11 +324,13 @@ through `EditorialDetailLayout.astro`; index routes use `CollectionPage` and
 
 `src/pages/sitemap.xml.ts` and `/registro` derive their production URLs from
 `src/lib/site-routes.ts`, which uses the same visible-collection helpers as route
-generation. `src/pages/robots.txt.ts` and the HTML
-metadata share the build-time `PUBLIC_INDEXING_ENABLED` switch, which is false
-unless explicitly set to `true`. This keeps both surfaces blocked during
-development and review. Deployment behavior and the permanent redirect
-contract are documented in `docs/LAUNCH_READINESS.md`.
+generation. `src/pages/robots.txt.ts` and the HTML metadata share the build-time
+`PUBLIC_INDEXING_ENABLED` switch. The tracked, non-secret `.env.production`
+sets it to `true`, so normal production builds emit `index, follow` and
+`Allow: /`; the development server does not load that file and remains blocked.
+The 404 route overrides the shared switch and is always non-indexable.
+Deployment behavior and the permanent redirect contract are documented in
+`docs/LAUNCH_READINESS.md`.
 
 ## Automated quality safeguards
 

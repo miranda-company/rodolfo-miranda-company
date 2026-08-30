@@ -13,7 +13,7 @@
     "format:check": "prettier . --check",
     "test:e2e": "pnpm run build && playwright test",
     "test:e2e:dist": "playwright test",
-    "test:production": "node scripts/verify-production.mjs",
+    "test:production": "node --env-file=.env.production scripts/verify-production.mjs",
     "test:budgets": "node scripts/check-performance-budgets.mjs",
     "test": "pnpm run test:production && pnpm run test:budgets && pnpm run test:e2e:dist",
     "verify": "pnpm run format:check && pnpm run build && pnpm run test",

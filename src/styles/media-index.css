@@ -25,9 +25,6 @@
 .mediateca-intro__description {
   max-width: 720px;
   margin: 25px 0 0;
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.025em;
 }
 
 .mediateca-intro__meta {

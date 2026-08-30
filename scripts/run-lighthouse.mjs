@@ -18,8 +18,7 @@ const thresholds = {
   performance: 0.75,
   accessibility: 0.95,
   "best-practices": 0.95,
-  // Lighthouse caps the prelaunch SEO score because crawlability is intentionally blocked.
-  seo: 0.65,
+  seo: 0.95,
 }
 const allowedThirdPartyFailures = {
   "/portafolio/syra-coffee": new Set(["third-party-cookies", "inspector-issues"]),

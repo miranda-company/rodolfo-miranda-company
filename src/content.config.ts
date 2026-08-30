@@ -503,17 +503,30 @@ const homepage = defineCollection({
       .object({
         heroTitle: z.string().min(1),
         connectionLabel: z.string().min(1),
+        connectionLink: z.object({
+          label: z.string().trim().min(1),
+          href: internalUrl,
+        }),
         indexLabel: z.string().min(1),
         panels: z.array(panel).length(4),
       })
       .superRefine((entry, context) => {
-        if (new Set(entry.panels.map((item) => item.kind)).size === 4) return
+        if (!entry.connectionLabel.includes(entry.connectionLink.label)) {
+          context.addIssue({
+            code: "custom",
+            message: "El texto de portada debe contener la etiqueta del enlace destacado.",
+            path: ["connectionLink", "label"],
+          })
+        }
 
-        context.addIssue({
-          code: "custom",
-          message: "La portada requiere exactamente un panel de Yo, Notas, Mediateca y Portafolio.",
-          path: ["panels"],
-        })
+        if (new Set(entry.panels.map((item) => item.kind)).size !== 4) {
+          context.addIssue({
+            code: "custom",
+            message:
+              "La portada requiere exactamente un panel de Yo, Notas, Mediateca y Portafolio.",
+            path: ["panels"],
+          })
+        }
       })
   },
 })

@@ -11,8 +11,8 @@ archiveNumber: "M.006"
 updatedAt: "2026-08-27"
 externalUrl: "https://www.linkedin.com/pulse/turbulent-ai-era-here-choices-we-make-now-critical-bill-gates-kkmze/"
 tags: ["Inteligencia Artificial"]
-relatedNotes: ["umbral", "margen"]
-relatedMedia: ["cosas", "orden"]
+relatedNotes: []
+relatedMedia: []
 
 displayInShelf: false
 featured: true
@@ -21,6 +21,7 @@ language: "es"
 ---
 
 ## Síntesis
+
 En este [artículo publicado en LinkedIn](https://www.linkedin.com/pulse/turbulent-ai-era-here-choices-we-make-now-critical-bill-gates-kkmze/), [Bill Gates](https://en.wikipedia.org/wiki/Bill_Gates) advierte que la transición hacia la era de la inteligencia artificial será uno de los periodos más turbulentos de la historia humana. Aunque la IA tiene el potencial de ser la mayor herramienta de equidad jamás inventada, Gates señala que el mundo no se está preparando adecuadamente para mitigar sus enormes riesgos, que incluyen la pérdida acelerada y masiva de empleos (tanto de oficina como manuales), la proliferación de ciberataques y el impacto negativo en el desarrollo social y cognitivo de los jóvenes.
 
 Sin embargo, su visión no es fatalista. Gates argumenta que maximizar los beneficios de la IA (especialmente en salud, educación, servicios públicos y agricultura en países en vías de desarrollo) es tan importante como minimizar sus daños. Para asegurar que la IA beneficie a toda la humanidad y no solo a una minoría privilegiada, propone un plan de acción urgente basado en tres pilares:

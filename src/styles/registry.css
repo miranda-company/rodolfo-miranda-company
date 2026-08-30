@@ -9,9 +9,6 @@
 .registry-intro__description {
   max-width: 700px;
   margin: 28px 0 0;
-  font-size: var(--type-introduction-size);
-  line-height: var(--type-introduction-line-height);
-  letter-spacing: -0.025em;
 }
 
 .registry-index {

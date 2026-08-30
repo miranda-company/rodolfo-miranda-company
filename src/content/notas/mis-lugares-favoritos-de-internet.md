@@ -14,12 +14,12 @@ draft: false
 language: "es"
 ---
 
-Hace tiempo que pause mis cuentas personales de Instagram y Facebook. La única red que mantengo activa por motivos profesionales es [LinkedIn](https://www.linkedin.com/in/rodolfo-miranda-company/). 
+Hace tiempo que pause mis cuentas personales de Instagram y Facebook. La única red que mantengo activa por motivos profesionales es [LinkedIn](https://www.linkedin.com/in/rodolfo-miranda-company/).
 
 La razón principal es que las redes sociales me quitan demasiado tiempo, fragmentan mi atención y mis pensamientos.
 Esa parte no me gusta para nada y me genera ansiedad.
 
-Así que en vez de seguir perdiendo mi tiempo ahí, he decidido darle más importancia a visitar, descubrir y recopilar lugares en la red que en verdad me aportan valor y que sinceramente disfruto. 
+Así que en vez de seguir perdiendo mi tiempo ahí, he decidido darle más importancia a visitar, descubrir y recopilar lugares en la red que en verdad me aportan valor y que sinceramente disfruto.
 
 Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 
@@ -39,4 +39,3 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [Gemini Notebook](https://notebook.google.com/) - Una de las herramientas que más uso para investigar.
 - [Joanna Wiebe](https://www.youtube.com/@joanna-wiebe/videos) - YT de copywriting y marketing.
 - [Animalz](https://www.animalz.co/blog) - Blog y podcast sobre content marketing.
-

@@ -5,9 +5,10 @@ personal digital garden. The site brings together a biography, working notes, a
 media reference library, and selected portfolio case studies in one static Astro
 site.
 
-The first release is written in Spanish. The project is not deployed: search
-engine indexing is disabled, hosting is not configured, and some content still
-requires editorial review.
+The first release is written in Spanish. Production builds are configured for
+search-engine indexing; local development remains blocked from crawlers and
+some content still requires editorial review. Hosting and domain state are not
+verified by the repository.
 
 ## Main sections
 
@@ -26,11 +27,12 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
 ## Current state
 
-- Production includes 3 local Notas, 4 external-article cards, 9 Mediateca
+- Production includes 3 local Notas, 4 external-article cards, 11 Mediateca
   references, and 6 Portafolio case studies.
-- Notas contains the same three local entries and four external Eloquent
-  articles in development and production. Mediateca and Portafolio additionally
-  expose drafts and isolated MDX fixtures during local development.
+- Notas contains four local entries in development and three in production,
+  plus four external Eloquent articles in both environments. Portafolio also
+  exposes ordinary drafts; Mediateca and Portafolio expose isolated MDX fixtures
+  during local development.
 - Drafts and technical fixtures are excluded from production routes, homepage
   statistics, filters, connections, and sequence navigation.
 - Homepage publication counts and recent-content previews are derived from the
@@ -40,7 +42,8 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
   backlinks.
 - The project builds to static HTML with minimal framework-free JavaScript.
 - Canonical URLs, social cards, structured data, and a production-only sitemap
-  are generated, while indexing remains blocked by default.
+  are generated. Production HTML and `robots.txt` allow indexing, while the
+  development server and the 404 page remain excluded.
 
 See [Project status](docs/PROJECT_STATUS.md) for exact counts, editorial limits,
 known issues, and launch work.
@@ -80,7 +83,7 @@ browser once with `pnpm exec playwright install chromium`. Run `pnpm run verify`
 and `git diff --check` before handing off a complete implementation change.
 The detailed test scope and current output budgets live in
 [Verification and quality](docs/QUALITY_ASSURANCE.md).
-The safe indexing switch, canonical origin, sitemap, redirects, and hosting
+The indexing switch, canonical origin, sitemap, redirects, and hosting
 review are documented in [Launch readiness](docs/LAUNCH_READINESS.md).
 
 If Astro reports that another development server is running, open the URL and

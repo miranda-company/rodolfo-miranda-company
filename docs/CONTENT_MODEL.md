@@ -77,18 +77,20 @@ omit `fixture`; its default is `false`. Validation requires every
 `fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
 technical fixture and rejects `N.999` on an ordinary note.
 
-Development and production both contain three local Notas entries:
+Production contains three local Notas entries:
 `el-magnifico-mundo-de-los-jardines-digitales`,
 `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`, and
 `mis-lugares-favoritos-de-internet`. They use `N.001`–`N.003` and participate in
 the index, homepage, detail layout, filters, connections, and circular
 navigation. Four external Eloquent articles use `N.004`–`N.007` and render only
-as link cards; `N.008` is the next available archive number. No draft note or
-Notas MDX fixture is active.
+as link cards. Development also includes the ordinary draft
+`como-crear-un-sistema-de-contenido-para-li`; its provisional `N.001` must be
+replaced with a unique archive number before publication. No Notas MDX fixture
+is active.
 
-All three local entries own their editorial body in Markdown. Reusable Markdown
-and MDX authoring remains documented in the templates without requiring a
-technical fixture route in the collection.
+All local entries own their editorial body in Markdown. Reusable Markdown and
+MDX authoring remains documented in the templates without requiring a technical
+fixture route in the collection.
 
 See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
 [templates/nota-mdx.mdx](templates/nota-mdx.mdx), and
@@ -183,13 +185,12 @@ remains editorial metadata but is not exposed as a catalogue filter.
 copy warning and `revisado` removes it. It does not generate or rename article
 sections. The Markdown or MDX body owns the complete reading structure, including
 headings such as “Comentario”, “Por qué está aquí” or any alternative an author
-chooses. `draft` remains the production boundary in both cases. The nine
-published references currently use `revisado`; the remaining ordinary draft
-retains its provisional warning.
+chooses. `draft` remains the production boundary in both cases. All eleven
+ordinary references currently use `revisado`; the technical fixture retains its
+provisional warning.
 
-Development includes ten ordinary references. A normal production build
-includes the nine entries with `draft: false`; the remaining ordinary draft and
-its detail route are excluded from production.
+Development and a normal production build include eleven ordinary references,
+all with `draft: false`.
 
 `ejemplo-mdx` is an additional technical route in development. Validation
 requires `fixture: true` entries to remain drafts, reserves `M.999` for that
@@ -452,6 +453,13 @@ metadata stays with Yo, Mediateca and Portafolio; Yo also keeps its static
 reveal label. Collection-driven values are intentionally absent from JSON and
 `src/pages/index.astro` derives them from published Spanish entries at build
 time:
+
+The hero introduction remains a single editable `connectionLabel` string.
+`connectionLink.label` identifies the phrase rendered as an inline link and
+must occur inside that string; `connectionLink.href` stores its validated
+internal destination. This keeps the complete sentence readable in the content
+file while allowing the linked phrase and destination to change without
+editing the Astro template.
 
 - Notas: latest `publishedAt` date and total published-note count;
 - Mediateca: total published-reference count;

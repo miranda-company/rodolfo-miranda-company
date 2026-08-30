@@ -6,14 +6,14 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 28 de agosto de 2026.
+- **Fecha de revisión:** 30 de agosto de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
-- **Indexación:** bloqueada mediante `noindex, nofollow` y el endpoint generado
-  `src/pages/robots.txt.ts`.
-- **Metadatos:** canonical, tarjetas sociales, JSON-LD y sitemap implementados;
-  la indexación continúa bloqueada por defecto.
+- **Indexación:** habilitada en builds de producción mediante
+  `.env.production`; desarrollo y la página 404 permanecen bloqueados.
+- **Metadatos:** canonical, tarjetas sociales, JSON-LD, sitemap y directivas de
+  rastreo de producción implementados y sincronizados.
 - **Hosting y dominio:** no configurados ni verificados en el repositorio.
 - **Dominio previsto:** `www.rodolfomiranda.company`.
 
@@ -23,10 +23,10 @@ aprobación editorial.
 | -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
 | Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 3 notas locales y 4 enlaces externos                     | Los mismos 7 elementos                            |
-| Detalle de Nota      | `/notas/[slug]`      | 3 rutas editoriales locales                              | Las mismas 3 rutas                                |
-| Mediateca            | `/mediateca`         | 10 referencias ordinarias                                | 9 referencias publicadas                          |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 10 rutas editoriales y una fixture directa               | Las 9 referencias publicadas                      |
+| Notas                | `/notas`             | 4 notas locales y 4 enlaces externos                     | 3 notas locales y los 4 enlaces externos          |
+| Detalle de Nota      | `/notas/[slug]`      | 4 rutas editoriales locales                              | 3 rutas publicadas                                |
+| Mediateca            | `/mediateca`         | 11 referencias ordinarias                                | Las mismas 11 referencias                         |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 11 rutas editoriales y una fixture directa               | Las 11 referencias publicadas                     |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
 | Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
 | Colofón              | `/colofon`           | Explicación técnica y editorial del sitio                | Se genera                                         |
@@ -46,21 +46,24 @@ Las otras ocho entradas de Portafolio son placeholders con `draft: true`. No
 entran en producción. Antes de publicar una de ellas hay que reemplazar el
 contenido pendiente, asignar valores únicos y completar su revisión editorial.
 
-Las tres Notas locales incluidas en desarrollo y producción son:
+Las tres Notas locales publicadas, incluidas en desarrollo y producción, son:
 
 - `el-magnifico-mundo-de-los-jardines-digitales`
 - `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`
 - `mis-lugares-favoritos-de-internet`
 
+La cuarta Nota local, `como-crear-un-sistema-de-contenido-para-li`, permanece
+como draft visible solo en desarrollo.
+
 ## Límites de publicación
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
-| Notas      |                                 3 |                      3 | Ninguna                                  |
-| Mediateca  |                                10 |                      9 | `M.999`, solo ruta directa en desarrollo |
+| Notas      |                                 4 |                      3 | Ninguna                                  |
+| Mediateca  |                                11 |                     11 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 36 rutas canónicas en desarrollo y 25 en un build normal de
+En total hay 38 rutas canónicas en desarrollo y 27 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
 rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
 técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
@@ -100,9 +103,9 @@ revisarse antes del lanzamiento.
   intrínsecas y texto alternativo validado; no se generan variantes responsivas.
 - Redirects de compatibilidad desde `/biblioteca` hacia `/mediateca`.
 - Metadatos canónicos y sociales, favicon, JSON-LD, sitemap derivado del
-  contenido y switch seguro de indexación.
-- Página 404 propia, integrada en el layout común y bloqueada para indexación
-  incluso si el resto del sitio se habilita más adelante.
+  contenido e indexación habilitada solo en builds de producción.
+- Página 404 propia, integrada en el layout común y siempre bloqueada para
+  indexación aunque el resto del sitio sea rastreable.
 - Fuentes locales y generación estática sin framework cliente.
 - Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
   contratos de producción, presupuestos de salida y workflow de GitHub Actions.
@@ -110,26 +113,25 @@ revisarse antes del lanzamiento.
 
 ## Verificación actual
 
+- `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
 - `pnpm run check`: 63 archivos, 0 errores, 0 avisos y 0 sugerencias.
-- `pnpm run build`: genera las 25 páginas canónicas de producción, pero avisa de
-  dos relaciones obsoletas desde `the-turbulent-ai-era-is-here` hacia las Notas
-  eliminadas `umbral` y `margen`.
-- `pnpm run test:production`: pendiente de sincronizar. El contrato todavía
-  espera `/notas/archivo`; debe sustituirse por
-  `/notas/mis-lugares-favoritos-de-internet` antes de volver a considerarlo
-  correcto.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 13,02 MiB, el HTML 486,0 KiB,
-  el CSS 57,7 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB; la
-  imagen mayor pesa 422,9 KiB.
+- `pnpm run build`: correcto; genera 27 rutas canónicas, 12 redirects y la
+  página 404 sin avisos de relaciones obsoletas.
+- `pnpm run test:production`: correcto; confirma `index, follow`, `Allow: /`,
+  las 27 URLs del sitemap, la exclusión permanente de la 404 y los límites
+  editoriales publicados.
+- `pnpm run test:budgets`: correcto; `dist` ocupa 12.931,9 KiB, el HTML 518,2
+  KiB, el CSS 57,7 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
+  la imagen mayor pesa 253,8 KiB.
 - `pnpm run test:e2e:dist`: 48 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.
-- `pnpm run audit:lighthouse:dist`: rendimiento 95 en portada, 100 en Umbral y
-  Modulor y 99 en Syra Coffee; accesibilidad 100 en las cuatro rutas; buenas
-  prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo); SEO
-  66–69 con `noindex` activo.
+- `pnpm run audit:lighthouse:dist`: rendimiento 97 en portada, 99 en Syra Coffee
+  y 100 en la Nota y Mediateca; accesibilidad 98 en portada y 100 en las demás;
+  buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo);
+  SEO 100 en las cuatro rutas.
 - Las fixtures técnicas quedan fuera de `dist` y de la suite de producción.
 - La automatización no sustituye una auditoría manual completa de accesibilidad
   ni una revisión visual antes de publicar.
@@ -137,17 +139,16 @@ revisarse antes del lanzamiento.
 ## Trabajo pendiente
 
 - Completar la revisión editorial de las tres Notas locales y confirmar las
-  nueve referencias de Mediateca incluidas en producción.
-- Limpiar las relaciones `umbral` y `margen` de
-  `the-turbulent-ai-era-is-here` o sustituirlas por los IDs editoriales
-  correctos.
-- Actualizar `scripts/verify-production.mjs` para reemplazar la ruta eliminada
-  `/notas/archivo` por `/notas/mis-lugares-favoritos-de-internet`.
+  once referencias de Mediateca incluidas en producción.
+- Asignar un `archiveNumber` único a `the-adolescence-of-technology`; ahora
+  comparte `M.005` con `the-age-of-the-image`.
+- Completar y asignar un `archiveNumber` único a la Nota draft
+  `como-crear-un-sistema-de-contenido-para-li`; ahora reutiliza `N.001`.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo
   el contenido pendiente y normalizar `archiveNumber` y `displayOrder`.
 - Elegir hosting, configurar redirects permanentes y conectar el dominio.
 - Revisar previews sociales y datos estructurados con las URLs públicas.
-- Retirar `noindex` únicamente después de completar la
-  [lista de lanzamiento](LAUNCH_CHECKLIST.md).
+- Verificar `index, follow`, `robots.txt`, sitemap y canonical en el dominio
+  público después de desplegar el nuevo `dist/`.

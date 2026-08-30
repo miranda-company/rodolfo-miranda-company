@@ -2,7 +2,11 @@
   {
     "id": "homepage",
     "heroTitle": "Me llamo R.",
-    "connectionLabel": "Bienvenidos a mi jardín digital. Un espacio donde le doy rienda suelta a mi imaginación, escribo, colecciono ideas que me interesan y enseño mi trabajo.",
+    "connectionLabel": "Te doy la bienvenida a mi jardín digital, un espacio donde imagino, colecciono ideas y muestro mi trabajo.",
+    "connectionLink": {
+      "label": "jardín digital",
+      "href": "/notas/el-magnifico-mundo-de-los-jardines-digitales"
+    },
     "indexLabel": "Archivos",
     "panels": [
       {
@@ -13,7 +17,7 @@
         "reveal": "Información personal",
         "href": "/yo",
         "kind": "yo",
-        "image": "../../assets/images/homepage/folder-001.webp",
+        "image": "../../assets/images/homepage/workspace-001.jpg",
         "imageAlt": "Expediente retrofuturista con una fotografía de Rodolfo Miranda, engranajes y un disco óptico."
       },
       {

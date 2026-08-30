@@ -30,6 +30,26 @@
   margin: 12px 0;
 }
 
+.home-intro__description {
+  max-width: 660px;
+  margin: 29px 0 0;
+}
+
+.home-intro__description a {
+  color: var(--ink);
+ 
+  text-underline-offset: 4px;
+  transition:
+    color var(--motion-duration-short) var(--motion-easing-standard),
+    text-decoration-color var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.home-intro__description a:hover,
+.home-intro__description a:focus-visible {
+  color: var(--blue);
+  text-decoration-color: var(--blue);
+}
+
 .text-container {
   display: flex;
   height: 100%;
@@ -468,6 +488,10 @@ a.portfolio-latest:focus-visible {
 
   .hero h1 {
     width: auto;
+  }
+
+  .home-intro__description {
+    margin-top: 16px;
   }
 
   .panels {
