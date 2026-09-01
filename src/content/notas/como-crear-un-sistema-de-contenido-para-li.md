@@ -1,5 +1,5 @@
 ---
-title: "Mi sistema de contenido para LI y cómo crearlo"
+title: "Mi sistema de contenido para LI"
 summary: "Una guía práctica para crear un sistema de contenido para LinkedIn"
 publishedAt: 2026-08-29
 updatedAt: 2026-08-29
