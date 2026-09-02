@@ -180,13 +180,17 @@ test("desktop header links to the four primary sections", async ({ page }) => {
   await expect(page).toHaveURL(/\/portafolio$/)
 })
 
-test("footer exposes contact links, Colofón, and Registro", async ({ page }) => {
+test("footer exposes social, contact, Colofón, and Registro links", async ({ page }) => {
   await page.goto("/")
 
   const footer = page.locator(".site-footer")
   await expect(footer.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute(
     "href",
     "https://www.linkedin.com/in/rodolfo-miranda-company/",
+  )
+  await expect(footer.getByRole("link", { name: /GitHub/ })).toHaveAttribute(
+    "href",
+    "https://github.com/miranda-company",
   )
   await expect(footer.getByRole("link", { name: "Email" })).toHaveAttribute(
     "href",

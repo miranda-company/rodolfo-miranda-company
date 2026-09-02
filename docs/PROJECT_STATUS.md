@@ -91,7 +91,7 @@ revisarse antes del lanzamiento.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
   cierra con `Escape` y restaura el foco.
-- Footer global con LinkedIn, email, Colofón y Registro; Registro y
+- Footer global con LinkedIn, GitHub, email, Colofón y Registro; Registro y
   el sitemap comparten una única lista de rutas publicadas.
 - Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
   Notas y Mediateca comparten el controlador tipado de disclosure y filtros.

@@ -11,7 +11,7 @@ cardFormat: "visual"
 tags:
   - "NA"
 relatedNotes: []
-featured: true
+featured: false
 draft: true
 language: "es"
 ---

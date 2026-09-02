@@ -63,8 +63,9 @@ not global navigation items. Index and detail routes mark their parent section
 with `aria-current="page"`; the shared link underline exposes that state visually
 in both navigation variants.
 
-The shared footer exposes LinkedIn, email, `/colofon` and `/registro`. Colofón
-and Registro mark their own footer link with `aria-current="page"`.
+The shared footer exposes LinkedIn, GitHub, email, `/colofon` and `/registro`.
+The two social links open in a new tab; Colofón and Registro mark their own
+footer link with `aria-current="page"`.
 `src/lib/site-routes.ts` derives the published local route set once for both
 `/registro` and `sitemap.xml`, preventing the two indexes from drifting apart.
 
