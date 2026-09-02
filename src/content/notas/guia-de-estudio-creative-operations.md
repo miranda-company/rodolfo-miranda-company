@@ -48,8 +48,11 @@ language: "es"
 - [Project Governance](https://www.pmi.org/learning/library/project-governance-critical-success-9945) - PMI
 - [Joseph M. Juran](https://en.wikipedia.org/wiki/Joseph_M._Juran)
 - [Change Management](https://en.wikipedia.org/wiki/Change_management)
+- [Máster en Project Management - Universitat de Barcelona](https://www.il3.ub.edu/master-project-management)
 - [Six Sigma Certifications](https://www.sixsigmacouncil.org/six-sigma-certifications/)
 - [Six Sigma Cert Tec de Monterrey](https://www.coursera.org/specializations/lean-six-sigma)
+- [Tec de Monterrey - Internacional en Coaching Ejecutivo y Alineación de Equipos (Programa en Línea)](https://educacioncontinua.tec.mx/programas/certificacion-internacional-en-coaching-ejecutivo-y-alineacion-de-equipos-programa-en-linea)
+- [Master en Project Management](https://www.il3.ub.edu/master-project-management)
 - [Data Analytics fo Six Sigma University of Amsterdam](https://www.coursera.org/learn/data-analytics-for-lean-six-sigma)
 - [Cost forecast, cost engineering](https://en.wikipedia.org/wiki/Cost_engineering)
 - [What is agile?](https://www.atlassian.com/agile)
@@ -60,3 +63,12 @@ language: "es"
 - [SIPOC](https://en.wikipedia.org/wiki/SIPOC) - Wikipedia
 - [Kano Model](https://en.wikipedia.org/wiki/Kano_model) - Wikipedia
 - [Poka-yoke](https://en.wikipedia.org/wiki/Poka-yoke) - Wikipedia
+- [Peter Drucker](https://en.wikipedia.org/wiki/Peter_Drucker) - Wikipedia
+- [American Society for Quality](https://asq.org/?srsltid=AfmBOorZTx2QamDZJ7gi0PWWwJEhQ-UMKM8RbkRqV_E9mHILLJJZv1jO)
+- [Inventory](https://en.wikipedia.org/wiki/Inventory) - Wikipedia
+
+
+
+
+## Temas a aprender
+Tengo que aprender a leer un balance sheet y un Income statement.
