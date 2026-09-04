@@ -296,12 +296,18 @@ conexiones estén aprobados para publicación.
 
 ## Entradas actuales y plantillas
 
-Las tres Notas locales actuales son
+Las cinco Notas locales publicadas son
 `el-magnifico-mundo-de-los-jardines-digitales`,
-`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento` y
-`mis-lugares-favoritos-de-internet`. Sus números son `N.001`–`N.003`; los
-cuatro enlaces externos ocupan `N.004`–`N.007`. No existe una ruta técnica
-`/notas/ejemplo-mdx`.
+`metodos-para-descubrir-el-problema`,
+`mis-lugares-favoritos-de-internet`, `scrum` y
+`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`. Usan los números
+`N.001`–`N.003` y `N.008`–`N.009`; los cuatro enlaces externos ocupan
+`N.004`–`N.007`.
+
+`como-crear-un-sistema-de-contenido-para-li`,
+`guia-de-estudio-creative-operations` y `operational-excellence` siguen como
+borradores. Sus números de archivo son provisionales y deben normalizarse antes
+de publicarlos. No existe una ruta técnica `/notas/ejemplo-mdx`.
 
 Usa `docs/templates/nota.md` y `docs/templates/nota-mdx.mdx` como referencias para crear contenido.
 La plantilla MDX documenta `ContentImage`, `ImageCarousel` y `VideoEmbed` sin añadir una fixture al

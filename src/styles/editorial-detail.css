@@ -31,7 +31,7 @@
   margin: 27px 0 0;
   overflow-wrap: break-word;
   word-break: normal;
-  hyphens: auto;
+  hyphens: none;
 }
 
 .entry-detail-intro__summary {

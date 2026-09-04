@@ -26,9 +26,9 @@ Component selectors may change only layout concerns such as margin, width, color
 Below `768px`, the global H1 token changes to `clamp(48px, 14vw, 56px)`. This
 keeps page titles prominent without forcing long words into oversized or
 letter-by-letter breaks. Detail-page titles preserve normal word boundaries,
-use language-aware hyphenation when available, and keep
-`overflow-wrap: break-word` only as a last-resort safeguard for a word wider
-than its container.
+disable automatic hyphenation so mixed-language titles do not split at
+unnatural points, and keep `overflow-wrap: break-word` only as a last-resort
+safeguard for a word wider than its container.
 
 ## Choosing a heading level
 

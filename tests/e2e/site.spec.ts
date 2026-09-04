@@ -241,6 +241,7 @@ test("mobile detail titles use the compact H1 scale and safe word wrapping", asy
     const style = getComputedStyle(element)
     return {
       fontSize: Number.parseFloat(style.fontSize),
+      hyphens: style.hyphens,
       overflowWrap: style.overflowWrap,
       wordBreak: style.wordBreak,
       overflows: element.scrollWidth > element.clientWidth,
@@ -249,9 +250,39 @@ test("mobile detail titles use the compact H1 scale and safe word wrapping", asy
 
   expect(typography.fontSize).toBeGreaterThanOrEqual(48)
   expect(typography.fontSize).toBeLessThanOrEqual(56)
+  expect(typography.hyphens).toBe("none")
   expect(typography.overflowWrap).toBe("break-word")
   expect(typography.wordBreak).toBe("normal")
   expect(typography.overflows).toBe(false)
+})
+
+test("mobile primary content blocks keep the compact vertical rhythm", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+
+  const verticalGap = async (beforeSelector: string, afterSelector: string) =>
+    page.evaluate(
+      ({ beforeSelector, afterSelector }) => {
+        const before = document.querySelector(beforeSelector)
+        const after = document.querySelector(afterSelector)
+        if (!before || !after) return null
+
+        return after.getBoundingClientRect().top - before.getBoundingClientRect().bottom
+      },
+      { beforeSelector, afterSelector },
+    )
+
+  await page.goto("/")
+  expect(await verticalGap(".home-intro__description", ".hero-image")).toBeGreaterThanOrEqual(28)
+
+  await page.goto("/notas/scrum")
+  expect(
+    await verticalGap(".note-growth-notice", ".entry-detail-reading > .rich-content"),
+  ).toBeGreaterThanOrEqual(28)
+
+  await page.goto("/portafolio/syra-coffee")
+  expect(
+    await verticalGap(".portfolio-cover", ".entry-detail-reading > .rich-content"),
+  ).toBeGreaterThanOrEqual(28)
 })
 
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {

@@ -15,11 +15,12 @@ de forma explícita.
 - [x] Aprobar la biografía y la trayectoria de Yo.
 - [x] Integrar el párrafo personal aprobado y retirar su aviso editorial.
 - [x] Retirar las etiquetas de casos pendientes que no publican un enlace.
-- [ ] Revisar y aprobar los resúmenes y cuerpos de las tres Notas locales:
-      `el-magnifico-mundo-de-los-jardines-digitales`,
-      `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento` y
-      `mis-lugares-favoritos-de-internet`.
-- [ ] Confirmar la revisión editorial final de las once referencias de
+- [ ] Revisar y aprobar los resúmenes y cuerpos de las cinco Notas locales
+      publicadas: `el-magnifico-mundo-de-los-jardines-digitales`,
+      `metodos-para-descubrir-el-problema`,
+      `mis-lugares-favoritos-de-internet`, `scrum` y
+      `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`.
+- [ ] Confirmar la revisión editorial final de las catorce referencias de
       Mediateca incluidas en producción.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.

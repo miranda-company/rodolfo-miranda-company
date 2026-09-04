@@ -190,7 +190,7 @@
   }
 
   .project-provisional-notice {
-    margin: 0;
+    margin: 0 0 var(--section-space-compact);
   }
 
   .portfolio-page .entry-detail-reading > .portfolio-artwork,
@@ -201,7 +201,11 @@
   }
 
   .portfolio-page .entry-detail-reading > .portfolio-cover {
-    margin: 0;
+    margin: 0 0 var(--section-space-compact);
+  }
+
+  .portfolio-page .entry-detail-reading > .portfolio-artwork {
+    margin: 0 0 var(--section-space-compact);
   }
 
   .project-gallery {

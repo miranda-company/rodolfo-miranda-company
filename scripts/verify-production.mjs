@@ -13,10 +13,15 @@ const canonicalRoutes = [
   "/colofon",
   "/yo",
   "/notas",
+  "/notas/scrum",
+  "/notas/metodos-para-descubrir-el-problema",
   "/notas/el-magnifico-mundo-de-los-jardines-digitales",
   "/notas/mis-lugares-favoritos-de-internet",
   "/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento",
   "/mediateca",
+  "/mediateca/string-seed-of-thought",
+  "/mediateca/turn-your-ai-into-a-world-class-designer",
+  "/mediateca/the-hero-with-a-thousand-faces",
   "/mediateca/the-adolescence-of-technology",
   "/mediateca/magnifica-humanitas",
   "/mediateca/pulitzer-prize-winner-explains-his-writing-process",
@@ -45,11 +50,14 @@ const redirectRoutes = [
   "/biblioteca/magnifica-humanitas",
   "/biblioteca/pulitzer-prize-winner-explains-his-writing-process",
   "/biblioteca/rick-rubin-en-design-matters",
+  "/biblioteca/string-seed-of-thought",
   "/biblioteca/the-adolescence-of-technology",
   "/biblioteca/the-age-of-the-image",
+  "/biblioteca/the-hero-with-a-thousand-faces",
   "/biblioteca/the-machine-dream-was-never-real",
   "/biblioteca/the-turbulent-ai-era-is-here",
   "/biblioteca/thinking-in-systems",
+  "/biblioteca/turn-your-ai-into-a-world-class-designer",
   "/biblioteca/wild-rose-poem",
 ]
 
@@ -98,8 +106,8 @@ const birdByBirdHtml = await readRoute("/mediateca/bird-by-bird")
 
 assert.equal(
   countAttributeValue(notesHtml, "data-note-kind", "note"),
-  3,
-  "Producción debe conservar las tres Notas locales.",
+  5,
+  "Producción debe conservar las cinco Notas locales.",
 )
 
 assert.ok(
@@ -124,8 +132,8 @@ assert.equal(
 )
 assert.equal(
   countCards(mediaHtml, "data-media-card"),
-  11,
-  "Producción debe contener once referencias de Mediateca.",
+  14,
+  "Producción debe contener catorce referencias de Mediateca.",
 )
 assert.equal(
   countCards(portfolioHtml, "data-portfolio-card"),
@@ -209,5 +217,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 3 Notas locales, 4 artículos externos, 11 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 5 Notas locales, 4 artículos externos, 14 referencias y 6 proyectos.`,
 )

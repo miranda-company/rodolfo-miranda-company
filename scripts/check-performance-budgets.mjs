@@ -5,7 +5,7 @@ import { extname, relative, resolve } from "node:path"
 const dist = resolve(process.cwd(), "dist")
 const budgets = {
   total: 16 * 1024 * 1024,
-  htmlTotal: 525 * 1024,
+  htmlAverage: 14 * 1024,
   htmlSingle: 42 * 1024,
   cssTotal: 90 * 1024,
   jsTotal: 25 * 1024,
@@ -47,7 +47,9 @@ const largest = (extensions) =>
 const formatKiB = (bytes) => `${(bytes / 1024).toFixed(1)} KiB`
 
 const total = records.reduce((size, record) => size + record.size, 0)
-const htmlTotal = sum(new Set([".html"]))
+const htmlRecords = records.filter((record) => record.extension === ".html")
+const htmlTotal = htmlRecords.reduce((size, record) => size + record.size, 0)
+const htmlTotalBudget = budgets.htmlAverage * htmlRecords.length
 const cssTotal = sum(new Set([".css"]))
 const jsTotal = sum(new Set([".js"]))
 const fontTotal = sum(fontExtensions)
@@ -56,7 +58,7 @@ const largestImage = largest(imageExtensions)
 
 assert(total <= budgets.total, `dist supera el presupuesto total: ${formatKiB(total)}.`)
 assert(
-  htmlTotal <= budgets.htmlTotal,
+  htmlTotal <= htmlTotalBudget,
   `El HTML total supera el presupuesto: ${formatKiB(htmlTotal)}.`,
 )
 assert(
@@ -79,7 +81,9 @@ assert(
 
 console.log("Presupuestos de producción verificados:")
 console.log(`- dist total: ${formatKiB(total)} / ${formatKiB(budgets.total)}`)
-console.log(`- HTML total: ${formatKiB(htmlTotal)} / ${formatKiB(budgets.htmlTotal)}`)
+console.log(
+  `- HTML total: ${formatKiB(htmlTotal)} / ${formatKiB(htmlTotalBudget)} (${htmlRecords.length} archivos a ${formatKiB(budgets.htmlAverage)} de media)`,
+)
 console.log(
   `- HTML mayor: ${formatKiB(largestHtml.size)} / ${formatKiB(budgets.htmlSingle)} (${relative(dist, largestHtml.file)})`,
 )

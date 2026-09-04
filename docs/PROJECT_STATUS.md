@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 30 de agosto de 2026.
+- **Fecha de revisión:** 4 de septiembre de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -23,10 +23,10 @@ aprobación editorial.
 | -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
 | Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 4 notas locales y 4 enlaces externos                     | 3 notas locales y los 4 enlaces externos          |
-| Detalle de Nota      | `/notas/[slug]`      | 4 rutas editoriales locales                              | 3 rutas publicadas                                |
-| Mediateca            | `/mediateca`         | 11 referencias ordinarias                                | Las mismas 11 referencias                         |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 11 rutas editoriales y una fixture directa               | Las 11 referencias publicadas                     |
+| Notas                | `/notas`             | 8 notas locales y 4 enlaces externos                     | 5 notas locales y los 4 enlaces externos          |
+| Detalle de Nota      | `/notas/[slug]`      | 8 rutas editoriales locales                              | 5 rutas publicadas                                |
+| Mediateca            | `/mediateca`         | 15 referencias ordinarias                                | 14 referencias publicadas                         |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 15 rutas editoriales y una fixture directa               | Las 14 referencias publicadas                     |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
 | Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
 | Colofón              | `/colofon`           | Explicación técnica y editorial del sitio                | Se genera                                         |
@@ -46,24 +46,27 @@ Las otras ocho entradas de Portafolio son placeholders con `draft: true`. No
 entran en producción. Antes de publicar una de ellas hay que reemplazar el
 contenido pendiente, asignar valores únicos y completar su revisión editorial.
 
-Las tres Notas locales publicadas, incluidas en desarrollo y producción, son:
+Las cinco Notas locales publicadas, incluidas en desarrollo y producción, son:
 
 - `el-magnifico-mundo-de-los-jardines-digitales`
+- `metodos-para-descubrir-el-problema`
 - `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`
 - `mis-lugares-favoritos-de-internet`
+- `scrum`
 
-La cuarta Nota local, `como-crear-un-sistema-de-contenido-para-li`, permanece
-como draft visible solo en desarrollo.
+Las otras tres Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
+`guia-de-estudio-creative-operations` y `operational-excellence`, permanecen
+como drafts visibles solo en desarrollo.
 
 ## Límites de publicación
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
-| Notas      |                                 4 |                      3 | Ninguna                                  |
-| Mediateca  |                                11 |                     11 | `M.999`, solo ruta directa en desarrollo |
+| Notas      |                                 8 |                      5 | Ninguna                                  |
+| Mediateca  |                                15 |                     14 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 38 rutas canónicas en desarrollo y 27 en un build normal de
+En total hay 46 rutas canónicas en desarrollo y 32 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
 rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
 técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
@@ -77,8 +80,8 @@ revisarse antes del lanzamiento.
 
 - Estructura común `BaseLayout → PageShell → Header + main + Footer`.
 - Jerarquía tipográfica semántica compartida para H1–H6, cuerpo y metadatos.
-- H1 compacto fluido entre 48 y 56 px, con límites de palabra, guionado
-  lingüístico y fallback seguro para títulos largos.
+- H1 compacto fluido entre 48 y 56 px, sin guionado automático y con un
+  fallback seguro para palabras más anchas que su contenedor.
 - Tokens semánticos compartidos para superficies, color de interfaz, foco y
   movimiento, con rangos responsivos compact, medium y expanded documentados.
 - CSS específico de la portada aislado en `src/styles/home.css`; las demás
@@ -115,16 +118,16 @@ revisarse antes del lanzamiento.
 
 - `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
-- `pnpm run check`: 63 archivos, 0 errores, 0 avisos y 0 sugerencias.
-- `pnpm run build`: correcto; genera 27 rutas canónicas, 12 redirects y la
+- `pnpm run check`: 64 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run build`: correcto; genera 32 rutas canónicas, 15 redirects y la
   página 404 sin avisos de relaciones obsoletas.
 - `pnpm run test:production`: correcto; confirma `index, follow`, `Allow: /`,
-  las 27 URLs del sitemap, la exclusión permanente de la 404 y los límites
+  las 32 URLs del sitemap, la exclusión permanente de la 404 y los límites
   editoriales publicados.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 12.931,9 KiB, el HTML 518,2
-  KiB, el CSS 57,7 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
+- `pnpm run test:budgets`: correcto; `dist` ocupa 13.260,1 KiB, el HTML 619,8
+  KiB, el CSS 58,1 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
   la imagen mayor pesa 253,8 KiB.
-- `pnpm run test:e2e:dist`: 48 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 50 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.
@@ -138,8 +141,8 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
-- Completar la revisión editorial de las tres Notas locales y confirmar las
-  once referencias de Mediateca incluidas en producción.
+- Completar la revisión editorial de las cinco Notas locales y confirmar las
+  catorce referencias de Mediateca incluidas en producción.
 - Asignar un `archiveNumber` único a `the-adolescence-of-technology`; ahora
   comparte `M.005` con `the-age-of-the-image`.
 - Completar y asignar un `archiveNumber` único a la Nota draft

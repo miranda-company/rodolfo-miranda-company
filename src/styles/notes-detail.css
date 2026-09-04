@@ -142,7 +142,7 @@
   }
 
   .note-growth-notice {
-    margin: 0;
+    margin: 0 0 var(--section-space-compact);
   }
 
   .note-article-footer {

@@ -494,6 +494,10 @@ a.portfolio-latest:focus-visible {
     margin-top: 16px;
   }
 
+  .img-container {
+    margin-top: var(--section-space-compact);
+  }
+
   .panels {
     columns: 1;
     column-gap: 0;

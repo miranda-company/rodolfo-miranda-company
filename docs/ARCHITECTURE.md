@@ -151,13 +151,19 @@ labels live in the shared component.
 
 `src/styles/editorial-detail.css` owns the outer layout:
 
-- desktop with connections: `1fr / 2fr / 1fr` for metadata, article and
+- desktop with connections: `0.5fr / 2.5fr / 1fr` for metadata, article and
   connections, spanning the full width of `.page-main`;
 - desktop and tablet without connections: `1fr / 2fr` for metadata and article,
   also spanning the full width of `.page-main`;
 - tablet: metadata plus article, with connections under the article;
 - mobile: one column in logical metadata, article and connections DOM order;
 - sticky side rails only when the viewport supports them.
+
+Compact layouts use `--section-space-compact` between adjacent primary content
+blocks that otherwise lose their desktop margins: homepage copy and artwork,
+editorial notices and article bodies, and portfolio covers and case-study copy.
+This shared token keeps those transitions readable without creating
+collection-specific spacing values.
 
 Portfolio intentionally passes `hasConnections={false}` and therefore uses the
 shared two-column modifier: the metadata rail occupies one third of the grid

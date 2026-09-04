@@ -1,6 +1,6 @@
 ---
 title: "Scrum"
-summary: "Todo lo que hay que saber sobre Scrum y más."
+summary: "Una estructura de trabajo que funciona para, casi, cualquier tipo de proyecto."
 publishedAt: 2026-09-03
 updatedAt: 2026-09-03
 state: "semilla"
@@ -15,6 +15,14 @@ featured: false
 draft: false
 language: "es"
 ---
+
+A través de mi experiencia he podido comprobar que hay muchos, pero muchos equipos que no saben trabajar. No es por la falta de competencias, sino por una falta de organización, claridad y enfoque.
+
+Temprano en mi carrera aprendí que los equipos más eficientes son aquellos que están mejor organizados y los que tienen una mejor comuncación. Recuerdo que mi cambio de paradigma vino cuando un colega llamado _K._ me dijo **"Tu forma de trabajar es una mierda"**... y en holandés, que suena más fuerte todavía. Tal cual. Sin pelos en la lengua me lo soltó. Acto seguido me enseñó la forma en la cuál se estructura el trabajo en equipos altamente productivos.
+
+Son filosofías de trabajo que se han estudiado a detalle y que han ido evolucionando con el tiempo, pero que en su _core_ predican lo mismo: equipos competitivos, que producen con más calidad, con más frecuencia, se adaptan a cambios en el camino y en los cuáles, sus miembros están mejor conectados.
+
+De todos estos métodos de trabajo, quizas el más utilizada hoy en día sea Scrum.
 
 ## ¿Qué es Scrum?
 
@@ -160,7 +168,6 @@ Backlog Refinement es la acción de tomar un PBI y convertirlo en unidades más 
 ## Recursos
 
 - [The Manifesto for Agile Software Development](https://agilemanifesto.org/)
-- [Professional Scrum Master™ I Certification](https://www.Scrum.org/assessments/professional-Scrum-master-i-certification)
 - [Scrum Guide](https://www.Scrum.org/resources/Scrum-guide)
 - [Scrum en Wikipedia](<https://en.wikipedia.org/wiki/Scrum_(project_management)>)
 - [The Mythical Man-Month: Essays on Software Engineering - Fred Brooks](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)

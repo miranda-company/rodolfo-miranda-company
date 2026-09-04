@@ -58,6 +58,8 @@ lento y sensible al entorno local que la suite determinista de CI.
 - tarjeta comodín de Portafolio con un candidato publicado, enlace e imagen de
   portada coherentes;
 - menú móvil con teclado, cierre con Escape y restauración del foco;
+- ritmo vertical compacto entre el texto y la imagen de portada, los avisos y
+  el cuerpo editorial, y la portada y el texto de un caso de estudio;
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
 - búsqueda, estado vacío y recuperación de Portafolio;
@@ -75,11 +77,11 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 27 rutas canónicas, doce redirects de
+contrato explícito. Verifica 32 rutas canónicas, quince redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
-- 3 Notas locales y 4 artículos externos;
-- 11 referencias de Mediateca;
+- 5 Notas locales y 4 artículos externos;
+- 14 referencias de Mediateca;
 - 6 proyectos de Portafolio.
 
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
@@ -112,24 +114,26 @@ que una regresión propia o una nueva incidencia de terceros no quede oculta.
 `scripts/check-performance-budgets.mjs` aplica límites deliberadamente
 conservadores sobre el build actual:
 
-| Medida               |  Límite |
-| -------------------- | ------: |
-| `dist` completo      |  16 MiB |
-| HTML total           | 525 KiB |
-| Un archivo HTML      |  42 KiB |
-| CSS total            |  90 KiB |
-| JavaScript emitido   |  25 KiB |
-| Fuentes totales      | 240 KiB |
-| Un archivo de imagen | 500 KiB |
+| Medida               |                           Límite |
+| -------------------- | -------------------------------: |
+| `dist` completo      |                           16 MiB |
+| HTML total           | 14 KiB × número de archivos HTML |
+| Un archivo HTML      |                           42 KiB |
+| CSS total            |                           90 KiB |
+| JavaScript emitido   |                           25 KiB |
+| Fuentes totales      |                          240 KiB |
+| Un archivo de imagen |                          500 KiB |
 
 Estos límites detectan aumentos accidentales; no son objetivos de Lighthouse ni
 equivalen al peso transferido de una página concreta. Si una decisión editorial
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
 
-El límite agregado de HTML contempla las 27 rutas canónicas actuales, sus
-redirecciones estáticas y la página 404. El límite por archivo sigue siendo la
-referencia principal para evitar que una página concreta crezca sin control.
+El límite agregado de HTML crece con el número de archivos generados: las 32
+rutas canónicas actuales, quince redirecciones estáticas y la página 404
+permiten 672 KiB en total. El promedio por archivo evita que publicar una ruta
+legítima rompa el presupuesto por sí solo; el límite de 42 KiB por archivo
+sigue evitando que una página concreta crezca sin control.
 
 Astro agrupa el controlador compartido de filtros de Notas y Mediateca en un
 módulo JavaScript pequeño; el resto de la interacción mínima puede permanecer
