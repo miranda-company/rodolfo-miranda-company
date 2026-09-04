@@ -10,6 +10,12 @@ const linkedSegment = z.object({
   href: internalUrl.optional(),
 })
 const linkedParagraph = z.array(linkedSegment).min(1)
+const contentReference = <Collection extends "notas" | "mediateca" | "portafolio">(
+  collection: Collection,
+) =>
+  reference(collection).refine((entry) => entry.id.trim().length > 0, {
+    message: "Las referencias de contenido no pueden estar vacías.",
+  })
 
 const notas = defineCollection({
   loader: glob({ base: "./src/content/notas", pattern: "**/*.{md,mdx}" }),
@@ -29,9 +35,9 @@ const notas = defineCollection({
         coverImage: image().optional(),
         coverAlt: z.string().min(1).optional(),
         tags: z.array(z.string().min(1)).default([]),
-        relatedNotes: z.array(reference("notas")).default([]),
-        relatedMedia: z.array(reference("mediateca")).default([]),
-        relatedProjects: z.array(reference("portafolio")).default([]),
+        relatedNotes: z.array(contentReference("notas")).default([]),
+        relatedMedia: z.array(contentReference("mediateca")).default([]),
+        relatedProjects: z.array(contentReference("portafolio")).default([]),
         relatedLinks: z
           .array(
             z.object({
@@ -170,9 +176,9 @@ const mediateca = defineCollection({
         coverAlt: z.string().min(1).optional(),
         coverCaption: z.string().min(1).optional(),
         tags: z.array(z.string().min(1)).default([]),
-        relatedNotes: z.array(reference("notas")).default([]),
-        relatedMedia: z.array(reference("mediateca")).default([]),
-        relatedProjects: z.array(reference("portafolio")).default([]),
+        relatedNotes: z.array(contentReference("notas")).default([]),
+        relatedMedia: z.array(contentReference("mediateca")).default([]),
+        relatedProjects: z.array(contentReference("portafolio")).default([]),
         displayInShelf: z.boolean().default(false),
         featured: z.boolean().default(false),
         draft: z.boolean().default(false),
@@ -261,9 +267,9 @@ const portafolio = defineCollection({
         displayOrder: z.number().int().nonnegative(),
         updatedAt: z.coerce.date(),
         placeholder: z.boolean().default(false),
-        relatedNotes: z.array(reference("notas")).default([]),
-        relatedMedia: z.array(reference("mediateca")).default([]),
-        relatedProjects: z.array(reference("portafolio")).default([]),
+        relatedNotes: z.array(contentReference("notas")).default([]),
+        relatedMedia: z.array(contentReference("mediateca")).default([]),
+        relatedProjects: z.array(contentReference("portafolio")).default([]),
         draft: z.boolean().default(false),
         fixture: z.boolean().default(false),
         language,

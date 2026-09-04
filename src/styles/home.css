@@ -37,7 +37,7 @@
 
 .home-intro__description a {
   color: var(--ink);
- 
+
   text-underline-offset: 4px;
   transition:
     color var(--motion-duration-short) var(--motion-easing-standard),

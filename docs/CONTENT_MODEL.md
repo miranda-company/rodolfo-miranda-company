@@ -38,7 +38,9 @@ content ID, slug, and public route.
 Every visible local Spanish entry uses the shared `NoteArticle.astro` reading layout.
 The default index order and circular previous/next navigation both use
 `updatedAt` descending, with `archiveNumber` as the deterministic tie-breaker.
-`relatedNotes`, `relatedMedia`, and `relatedProjects` store validated entry IDs.
+`relatedNotes`, `relatedMedia`, and `relatedProjects` store validated, non-empty
+entry IDs. Use `[]` when there is no authored relationship; never add an empty
+string as a placeholder.
 The author writes only the relationship from the current entry to its target;
 the build-time connection graph automatically creates the backlink on the
 target. `relatedLinks` stores an optional visible `label` and an internal `href`

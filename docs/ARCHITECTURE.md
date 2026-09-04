@@ -342,7 +342,11 @@ Framework-free Node scripts verify the exact production route set, collection
 counts, fixture exclusion and conservative output-size budgets after Astro
 builds `dist/`.
 
-The canonical workflow is `pnpm run verify`. GitHub Actions runs it on pull
+The canonical workflow is `pnpm run verify`. Its static link check resolves
+every generated internal anchor from a trailing-slash URL, verifies that the
+target page or file exists, and validates fragments against rendered IDs. This
+prevents relative Markdown links from silently changing destination on hosts
+that preserve trailing slashes. GitHub Actions runs the workflow on pull
 requests and pushes to `main`; browser artifacts are uploaded only after a
 failure. See `docs/QUALITY_ASSURANCE.md` for the test scope, budget values and
 maintenance rules. `pnpm run verify:launch` adds repeatable Lighthouse audits

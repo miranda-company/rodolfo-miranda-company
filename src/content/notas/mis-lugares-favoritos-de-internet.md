@@ -40,3 +40,4 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [Joanna Wiebe](https://www.youtube.com/@joanna-wiebe/videos) - YT de copywriting y marketing.
 - [Animalz](https://www.animalz.co/blog) - Blog y podcast sobre content marketing.
 - [Interaction Design Foundation](https://ixdf.org/) - Sitio sobre UX, UI y HCI.
+- [Lennys Newsletter](https://www.lennysnewsletter.com/) - Sobre gestión de productos y tecnología.

@@ -163,6 +163,11 @@ Markdown cubre encabezados, párrafos, listas, enlaces, citas, imágenes estáti
 tablas y código. MDX se reserva para componentes Astro aprobados. La importación correcta de vídeo desde
 `src/content/mediateca/` es:
 
+Los enlaces hacia otra página del sitio deben empezar por `/`, por ejemplo
+`[Bird by Bird](/mediateca/bird-by-bird)`. Evita enlaces relativos como
+`(bird-by-bird)`: pueden apuntar a una ruta distinta cuando la página actual
+termina en `/`.
+
 ```mdx
 import VideoEmbed from "../../components/content/VideoEmbed.astro"
 ```

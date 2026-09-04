@@ -402,6 +402,24 @@ test("Portafolio empty search state has a working recovery action", async ({ pag
   await expect(page.locator("[data-portfolio-empty]")).toBeHidden()
 })
 
+test("portfolio case-study links resolve from trailing-slash URLs", async ({ page }) => {
+  await page.goto("/portafolio/syra-coffee/")
+
+  const article = page.locator(".rich-content")
+  const destinations = [
+    { label: "Eloquent", href: "/portafolio/eloquent" },
+    { label: "Modulab Barcelona", href: "/portafolio/modulab-barcelona" },
+  ]
+
+  for (const destination of destinations) {
+    const link = article.getByRole("link", { name: destination.label, exact: true })
+    await expect(link).toHaveAttribute("href", destination.href)
+    await link.click()
+    await expect(page).toHaveURL(new RegExp(`${destination.href}/?$`))
+    await page.goto("/portafolio/syra-coffee/")
+  }
+})
+
 test("carousel controls expose correct disabled states and respect reduced motion", async ({
   page,
 }) => {

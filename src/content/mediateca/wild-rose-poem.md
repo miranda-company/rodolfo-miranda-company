@@ -20,7 +20,7 @@ language: "es"
 
 ## Síntesis
 
-Un poema que [Wendell Berry](https://en.wikipedia.org/wiki/Wendell_Berry) escribió a su esposa. Lo descubrí dentro del libro [Bird by Bird](bird-by-bird).
+Un poema que [Wendell Berry](https://en.wikipedia.org/wiki/Wendell_Berry) escribió a su esposa. Lo descubrí dentro del libro [Bird by Bird](/mediateca/bird-by-bird).
 
 ## The Wild Rose
 

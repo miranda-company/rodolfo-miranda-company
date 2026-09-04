@@ -185,6 +185,10 @@ necesita un texto alternativo preciso.
 Un archivo `.md` cubre la mayoría de casos. Cambiar una entrada de `.md` a
 `.mdx` conservando el mismo nombre base mantiene el _slug_ y la ruta.
 
+Escribe los enlaces internos como rutas absolutas del sitio, siempre empezando
+por `/`: `[Eloquent](/portafolio/eloquent)`. No uses destinos relativos como
+`(eloquent)`, porque cambian de significado cuando la URL actual termina en `/`.
+
 Desde un archivo situado directamente en `src/content/portafolio/`, los
 componentes compartidos se importan así:
 

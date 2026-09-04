@@ -8,8 +8,7 @@ archiveNumber: "N.001"
 cardFormat: "featured"
 tags:
   - "NA"
-relatedNotes:
-  - ""
+relatedNotes: []
 relatedLinks: []
 featured: false
 draft: true

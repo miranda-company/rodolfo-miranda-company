@@ -163,6 +163,10 @@ para otro artículo externo.
 Usa `.md` para texto, encabezados, listas, citas, enlaces, imágenes, notas al pie y bloques de
 código. Es la opción predeterminada y no requiere importar componentes.
 
+Escribe los enlaces internos desde la raíz del sitio, por ejemplo
+`[Mediateca](/mediateca)`. No uses rutas relativas como `(mediateca)`, porque su
+destino depende de si la URL actual termina en `/`.
+
 Usa `.mdx` únicamente cuando la nota necesite `ContentImage`, `VideoEmbed`, `ImageCarousel` u otro componente Astro
 de contenido que haya sido revisado y aprobado. Cambiar `mi-nota.md` por `mi-nota.mdx` conserva el
 ID `mi-nota`, la ruta `/notas/mi-nota`, sus metadatos y todas sus referencias. No hace falta

@@ -8,8 +8,7 @@ archiveNumber: "N.001"
 cardFormat: "featured"
 tags:
   - "NA"
-relatedNotes:
-  - ""
+relatedNotes: []
 relatedLinks: []
 featured: false
 draft: true
@@ -17,6 +16,7 @@ language: "es"
 ---
 
 ## Creative Operations
+
 - [HubSpot CRM tutorials](https://academy.hubspot.com/lessons/setting-up-your-crm)
 - [HubSpot CRM tutorial in YT](https://www.youtube.com/watch?v=t8QM5zunC44)
 - [HubSpot Certification](https://academy.hubspot.com/courses/hubspot-marketing-hub-software)
@@ -25,7 +25,7 @@ language: "es"
 - [Atlassian Agile Tutorials](https://www.atlassian.com/agile/tutorials) - tutoriales sobre metodologías ágiles
 - [What is process mapping?](https://www.ibm.com/think/topics/process-mapping) - artículo de IBM
 - [WIP](https://en.wikipedia.org/wiki/Work_in_process) - Wikipedia
-- [Throughput](https://en.wikipedia.org/wiki/Throughput_(business)) - Wikipedia
+- [Throughput](<https://en.wikipedia.org/wiki/Throughput_(business)>) - Wikipedia
 - [Cycle time](https://en.wikipedia.org/wiki/Cycle_time) - Wikipedia
 - [Lead time](https://en.wikipedia.org/wiki/Lead_time) - Wikipedia
 - [Supply chain management](https://en.wikipedia.org/wiki/Supply_chain_management) - Wikipedia
@@ -37,14 +37,14 @@ language: "es"
 - [SOP Standard Operating Procedures](https://en.wikipedia.org/wiki/Standard_operating_procedure) - Wikipedia
 - [Continual improvement process](https://en.wikipedia.org/wiki/Continual_improvement_process) - Wikipedia
 - [Failure analysis](https://en.wikipedia.org/wiki/Failure_analysis) - Wikipedia
-- [Scope](https://en.wikipedia.org/wiki/Scope_(project_management)) - Wikipedia
+- [Scope](<https://en.wikipedia.org/wiki/Scope_(project_management)>) - Wikipedia
 - [Project Charter](https://en.wikipedia.org/wiki/Project_charter)
 - [Brief](https://en.wikipedia.org/wiki/Design_brief) - Wikipedia
 - [Design specification](https://en.wikipedia.org/wiki/Design_specification) - Wikipedia
 - [OKR](https://en.wikipedia.org/wiki/Objectives_and_key_results) - Wikipedia
 - [RAID logs](https://www.projectmanager.com/blog/raid-log-use-one) - What is a raid log?
 - [Dependency map](https://www.ibm.com/think/topics/dependency-mapping) - IBM
-- [Stakeholder matrix](https://simplystakeholders.com/stakeholder-matrix/) 
+- [Stakeholder matrix](https://simplystakeholders.com/stakeholder-matrix/)
 - [Project Governance](https://www.pmi.org/learning/library/project-governance-critical-success-9945) - PMI
 - [Joseph M. Juran](https://en.wikipedia.org/wiki/Joseph_M._Juran)
 - [Change Management](https://en.wikipedia.org/wiki/Change_management)
@@ -57,7 +57,7 @@ language: "es"
 - [Cost forecast, cost engineering](https://en.wikipedia.org/wiki/Cost_engineering)
 - [What is agile?](https://www.atlassian.com/agile)
 - [Kanban](https://en.wikipedia.org/wiki/Kanban) - Wikipedia
-- [Scrum](https://en.wikipedia.org/wiki/Scrum_(project_management))
+- [Scrum](<https://en.wikipedia.org/wiki/Scrum_(project_management)>)
 - [Prince2 Certification](https://www.prince2.com/eur/training/prince2/foundation-practitioner)
 - [Google Project Management Professional Certificate](https://www.coursera.org/professional-certificates/google-project-management)
 - [SIPOC](https://en.wikipedia.org/wiki/SIPOC) - Wikipedia
@@ -66,9 +66,12 @@ language: "es"
 - [Peter Drucker](https://en.wikipedia.org/wiki/Peter_Drucker) - Wikipedia
 - [American Society for Quality](https://asq.org/?srsltid=AfmBOorZTx2QamDZJ7gi0PWWwJEhQ-UMKM8RbkRqV_E9mHILLJJZv1jO)
 - [Inventory](https://en.wikipedia.org/wiki/Inventory) - Wikipedia
-
-
-
+- [Gantt Chart](https://en.wikipedia.org/wiki/Gantt_chart)
+- [Burndown chart](https://en.wikipedia.org/wiki/Burndown_chart)
+- [Burnup chart](https://www.atlassian.com/agile/project-management/burn-up-chart)
+- [Cumulative Flow Diagram](https://en.wikipedia.org/wiki/Cumulative_flow_diagram)
+- [User stories](https://en.wikipedia.org/wiki/User_story)
 
 ## Temas a aprender
+
 Tengo que aprender a leer un balance sheet y un Income statement.

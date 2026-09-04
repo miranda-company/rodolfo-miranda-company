@@ -73,7 +73,7 @@ pnpm run check         # run Astro and TypeScript diagnostics
 pnpm run build         # check and generate the production site
 pnpm run preview       # serve the latest production build
 pnpm run test:e2e      # build, then run browser and accessibility checks
-pnpm run verify        # format check, build, boundaries, budgets, and browser tests
+pnpm run verify        # format check, build, boundaries, links, budgets, and browser tests
 pnpm run verify:launch # full verification plus Lighthouse launch audit
 ```
 
