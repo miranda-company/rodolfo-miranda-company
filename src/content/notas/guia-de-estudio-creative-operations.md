@@ -71,6 +71,7 @@ language: "es"
 - [Burnup chart](https://www.atlassian.com/agile/project-management/burn-up-chart)
 - [Cumulative Flow Diagram](https://en.wikipedia.org/wiki/Cumulative_flow_diagram)
 - [User stories](https://en.wikipedia.org/wiki/User_story)
+- [Penny game](https://agilealliance.org/agile-games/the-penny-game/)
 
 ## Temas a aprender
 
