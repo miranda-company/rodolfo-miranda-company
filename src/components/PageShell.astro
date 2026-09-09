@@ -10,9 +10,14 @@ interface Props {
 }
 
 const { pageClass, mainClass, mainId = "contenido" } = Astro.props
+const SCROLL_THRESHOLD = 600
 ---
 
-<div class:list={["page-shell", pageClass]}>
+<div
+  class:list={["page-shell", pageClass]}
+  data-scroll-shell
+  data-scroll-threshold={SCROLL_THRESHOLD}
+>
   <Header />
   <main class:list={["page-main", mainClass]} id={mainId}>
     <slot />
@@ -20,3 +25,9 @@ const { pageClass, mainClass, mainId = "contenido" } = Astro.props
   <Footer />
   <ScrollToTop />
 </div>
+
+<script>
+  import { initScrollControls } from "../scripts/scroll-controls"
+
+  initScrollControls()
+</script>

@@ -66,11 +66,14 @@ normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
   horizontal; el ruido interno de iframes externos se excluye porque no pertenece
   al código del sitio;
 - navegación por fragmentos desde otra ruta y mediante URL directa;
-- control global para volver arriba, incluido su umbral, objetivo táctil y
-  comportamiento con movimiento reducido;
+- estado de scroll compartido para la cabecera fija y el control para volver
+  arriba, incluido el umbral exacto, la altura compacta, la ausencia de saltos
+  de contenido, el padding lateral responsive, el objetivo táctil y el
+  movimiento reducido;
 - tarjeta comodín de Portafolio con un candidato publicado, enlace e imagen de
   portada coherentes;
-- menú móvil con teclado, cierre con Escape y restauración del foco;
+- menú móvil normal y fijo con teclado, cierre con Escape y restauración del
+  foco;
 - ritmo vertical compacto entre el texto y la imagen de portada, los avisos y
   el cuerpo editorial, y la portada y el texto de un caso de estudio;
 - disclosure y filtros de Notas;
@@ -146,7 +149,7 @@ El límite agregado de HTML crece con el número de archivos generados: las 34
 rutas canónicas actuales, dieciséis redirecciones estáticas y la página 404
 permiten 714 KiB en total. El promedio por archivo evita que publicar una ruta
 legítima rompa el presupuesto por sí solo; el límite de 43 KiB por archivo
-admite el control global para volver arriba en el caso editorial más extenso y
+admite los controles globales de scroll en el caso editorial más extenso y
 sigue evitando que una página concreta crezca sin control.
 
 Astro agrupa el controlador compartido de filtros de Notas y Mediateca en un

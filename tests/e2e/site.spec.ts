@@ -203,6 +203,41 @@ test("scroll-to-top control uses immediate scrolling when reduced motion is requ
   await expect(scrollToTop).toBeHidden()
 })
 
+test("header becomes compact after the shared scroll threshold without shifting content", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto("/notas/scrum")
+
+  const header = page.locator("[data-site-header]")
+  const main = page.locator("main")
+  const scrollToTop = page.getByRole("button", { name: "Volver arriba", includeHidden: true })
+
+  await page.evaluate(() => window.scrollTo(0, 600))
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(600)
+  await expect(header).not.toHaveAttribute("data-sticky", "")
+  const mainTopBefore = await main.evaluate(
+    (element) => element.getBoundingClientRect().top + scrollY,
+  )
+
+  await page.evaluate(() => window.scrollTo(0, 601))
+  await expect(header).toHaveAttribute("data-sticky", "")
+  await expect(header).toHaveCSS("position", "fixed")
+  await expect(header).toHaveCSS("height", "48px")
+  await expect(header).toHaveCSS("padding-left", "32px")
+  await expect(header).toHaveCSS("padding-right", "32px")
+  await expect(scrollToTop).toBeVisible()
+  const mainTopAfter = await main.evaluate(
+    (element) => element.getBoundingClientRect().top + scrollY,
+  )
+
+  expect(Math.abs(mainTopAfter - mainTopBefore)).toBeLessThanOrEqual(1)
+
+  await page.evaluate(() => window.scrollTo(0, 600))
+  await expect(header).not.toHaveAttribute("data-sticky", "")
+  await expect(scrollToTop).toBeHidden()
+})
+
 test("desktop header links to the four primary sections", async ({ page }) => {
   await page.goto("/")
 
@@ -363,7 +398,13 @@ test("mobile menu opens from the keyboard and Escape restores focus", async ({ p
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/")
 
+  const header = page.locator("[data-site-header]")
   const trigger = page.locator(".mobile-menu-button")
+  await page.evaluate(() => window.scrollTo(0, 700))
+  await expect(header).toHaveAttribute("data-sticky", "")
+  await expect(header).toHaveCSS("height", "48px")
+  await expect(header).toHaveCSS("padding-left", "20px")
+  await expect(header).toHaveCSS("padding-right", "20px")
   await expect(trigger).toHaveAccessibleName("Menú")
   await trigger.focus()
   await page.keyboard.press("Enter")

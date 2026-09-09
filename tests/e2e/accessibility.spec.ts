@@ -37,3 +37,17 @@ test("open mobile controls pass the automated accessibility scan", async ({ page
 
   expect(results.violations).toEqual([])
 })
+
+test("sticky mobile navigation passes the automated accessibility scan", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/notas/el-magnifico-mundo-de-los-jardines-digitales")
+  await page.evaluate(() => window.scrollTo(0, 700))
+  await expect(page.locator("[data-site-header]")).toHaveAttribute("data-sticky", "")
+  await page.locator(".mobile-menu-button").click()
+
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze()
+
+  expect(results.violations).toEqual([])
+})

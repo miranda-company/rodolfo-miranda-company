@@ -93,8 +93,11 @@ revisarse antes del lanzamiento.
   declaradas en Notas, Mediateca y Portafolio producen enlaces directos,
   recíprocos y backlinks automáticos sin JavaScript cliente.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
-- Control global para volver arriba después de 600 px de desplazamiento, con
-  objetivo táctil de 48 px y respeto por movimiento reducido.
+- Cabecera global fija y compacta de 48 px después de 600 px de desplazamiento,
+  con padding lateral responsive compartido, sin duplicar la navegación ni
+  desplazar el contenido.
+- Control global para volver arriba desde el mismo umbral y controlador de
+  scroll, con objetivo táctil de 48 px y respeto por movimiento reducido.
 - Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
   cierra con `Escape` y restaura el foco.
 - Footer global con LinkedIn, GitHub, email, Colofón y Registro; Registro y
@@ -123,7 +126,7 @@ revisarse antes del lanzamiento.
 
 - `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
-- `pnpm run check`: 66 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 67 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run test:content`: correcto; los identificadores publicados y el orden
   publicado de Portafolio son únicos.
 - `pnpm run build`: correcto; genera 34 rutas canónicas, 16 redirects y la
@@ -131,13 +134,13 @@ revisarse antes del lanzamiento.
 - `pnpm run test:production`: correcto; confirma `index, follow`, `Allow: /`,
   las 34 URLs del sitemap, la exclusión permanente de la 404 y los límites
   editoriales publicados.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.471,6 KiB, el HTML 693,4
-  KiB, el CSS 58,4 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.480,6 KiB, el HTML 701,5
+  KiB, el CSS 59,3 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
   la imagen mayor pesa 367,1 KiB.
-- `pnpm run test:e2e:dist`: 53 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 55 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
-  carruseles, conexiones bidireccionales, movimiento reducido, consola,
-  imágenes y overflow.
+  cabecera fija, ausencia de saltos de contenido, carruseles, conexiones
+  bidireccionales, movimiento reducido, consola, imágenes y overflow.
 - `pnpm run audit:lighthouse:dist`: rendimiento 97 en portada, 99 en Syra Coffee
   y 100 en la Nota y Mediateca; accesibilidad 98 en portada y 100 en las demás;
   buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo);

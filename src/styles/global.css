@@ -52,6 +52,8 @@
   --backlink-block-offset: 36px;
   --page-gutter: 32px;
   --content-width: 1360px;
+  --site-header-height: 64px;
+  --sticky-header-height: 48px;
 }
 
 *,
@@ -253,6 +255,10 @@ a {
   pointer-events: none;
 }
 
+.page-shell[data-sticky-header] {
+  padding-top: var(--site-header-height);
+}
+
 .page-main {
   position: relative;
   z-index: 1;
@@ -263,19 +269,43 @@ a {
 }
 
 .site-header {
-  width: 100%;
-  max-width: var(--content-width);
-  margin-inline: auto;
-}
-
-.site-header {
   position: relative;
   z-index: 10;
   display: flex;
-  height: 64px;
+  width: 100%;
+  height: var(--site-header-height);
+  max-width: var(--content-width);
   align-items: center;
   justify-content: space-between;
+  margin-inline: auto;
   border-bottom: 1px solid var(--line);
+}
+
+.site-header[data-sticky] {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  left: 50%;
+  width: calc(100% - 2 * var(--page-gutter));
+  height: var(--sticky-header-height);
+  margin-inline: 0;
+  padding-inline: var(--page-gutter);
+  animation: sticky-header-enter var(--motion-duration-standard) var(--motion-easing-standard);
+  background: var(--surface);
+  box-shadow: 0 6px 18px rgba(29, 30, 25, 0.08);
+  transform: translateX(-50%);
+}
+
+@keyframes sticky-header-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .site-footer {
@@ -363,6 +393,11 @@ a {
   display: block;
   width: 40px;
   height: auto;
+  transition: width var(--motion-duration-short) var(--motion-easing-standard);
+}
+
+.site-header[data-sticky] .brand-symbol {
+  width: 32px;
 }
 
 .site-header nav {
@@ -470,16 +505,13 @@ a {
 
   :root {
     --page-gutter: 20px;
+    --site-header-height: 56px;
   }
 
   #indice,
   #ahora,
   .fragment-target {
     scroll-margin-top: 76px;
-  }
-
-  .site-header {
-    height: 56px;
   }
 
   .site-footer {
@@ -531,7 +563,7 @@ a {
   .site-header .mobile-menu {
     position: absolute;
     z-index: 20;
-    top: 55px;
+    top: calc(var(--site-header-height) - 1px);
     right: 0;
     left: 0;
     display: grid;
@@ -541,6 +573,10 @@ a {
     background: var(--paper);
     padding: 0 20px 16px;
     box-shadow: 0 14px 22px rgba(29, 30, 25, 0.05);
+  }
+
+  .site-header[data-sticky] .mobile-menu {
+    top: calc(var(--sticky-header-height) - 1px);
   }
 
   .mobile-menu a {

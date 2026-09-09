@@ -5,9 +5,10 @@
 The site is a static Astro application. Pages render to HTML at build time; the
 production output does not ship React, React Router, Tailwind, a CMS, a database,
 or authentication. Browser JavaScript remains small and framework-free. It
-handles navigation, route-aware fragment scrolling, the shared scroll-to-top
-control, the Notas and Mediateca filters and sorting, Portafolio search and tag
-filtering, and synchronization of author-inserted image carousels.
+handles navigation, route-aware fragment scrolling, the shared sticky-header
+and scroll-to-top state, the Notas and Mediateca filters and sorting, Portafolio
+search and tag filtering, and synchronization of author-inserted image
+carousels.
 
 ## Presentation
 
@@ -15,9 +16,13 @@ filtering, and synchronization of author-inserted image carousels.
   URLs, JSON-LD, build-aware indexing directives, locally bundled fonts, and
   global page behavior.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
-- `src/components/ScrollToTop.astro` owns the shared, reduced-motion-aware
-  scroll-to-top control.
+- `src/components/Header.astro` owns the single route-aware navigation header
+  and its accessible compact-menu behavior.
+- `src/components/ScrollToTop.astro` owns the shared scroll-to-top button
+  markup.
 - `src/components/Footer.astro` owns the shared contact and archive links.
+- `src/scripts/scroll-controls.ts` coordinates the sticky header and
+  reduced-motion-aware scroll-to-top behavior from one scroll state.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
 - `src/styles/home.css` contains the homepage hero, panels, and Ahora previews;
@@ -44,8 +49,8 @@ global behavior. Every rendered content route uses `PageShell.astro` as the
 visible canvas:
 
 ```html
-<div class="page-shell [route-page-class]">
-  <header class="site-header">...</header>
+<div class="page-shell [route-page-class]" data-scroll-shell data-scroll-threshold="600">
+  <header class="site-header" data-site-header>...</header>
   <main class="page-main [route-main-class]" id="contenido">...</main>
   <footer class="site-footer">...</footer>
   <button class="scroll-to-top" hidden>...</button>
@@ -58,10 +63,20 @@ Redirect-only URLs do not render this structure. `.page-shell` owns the viewport
 responsive gutters, background, technical pattern, overflow and isolation;
 `.page-main` supplies common width and stacking behavior.
 
-The shared scroll-to-top control stays outside the landmark structure and is
-hidden until the visitor has scrolled more than `600px`. It returns the viewport
-to the document start without changing the URL, respects reduced-motion
-preferences, and remains hidden when JavaScript is unavailable.
+The shared scroll controller uses one passive, animation-frame-throttled
+listener and changes the DOM only when the viewport crosses the `600px`
+threshold. Above the threshold, the existing header becomes a fixed `48px`
+compact bar with responsive inline padding from `--page-gutter`, and the page
+shell replaces its original `64px` desktop or `56px` mobile footprint so
+content does not jump. The same header, navigation links, current-page state,
+mobile menu, and keyboard behavior remain in use; no second navigation landmark
+is rendered.
+
+The scroll-to-top control stays outside the landmark structure and becomes
+visible from that same shared state. It returns the viewport to the document
+start without changing the URL and respects reduced-motion preferences. Without
+JavaScript the header remains in its normal document position and the button
+remains hidden.
 
 The shared header links directly to `/yo`, `/portafolio`, `/notas`, and
 `/mediateca` in that order. Expanded and medium layouts expose the links in
