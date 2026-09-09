@@ -19,6 +19,7 @@ const canonicalRoutes = [
   "/notas/mis-lugares-favoritos-de-internet",
   "/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento",
   "/mediateca",
+  "/mediateca/tools-for-thought",
   "/mediateca/string-seed-of-thought",
   "/mediateca/turn-your-ai-into-a-world-class-designer",
   "/mediateca/the-hero-with-a-thousand-faces",
@@ -40,6 +41,7 @@ const canonicalRoutes = [
   "/portafolio/cn-sant-andreu",
   "/portafolio/modulab-barcelona",
   "/portafolio/eloquent",
+  "/portafolio/elespacio",
   "/registro",
 ]
 
@@ -59,6 +61,7 @@ const redirectRoutes = [
   "/biblioteca/thinking-in-systems",
   "/biblioteca/turn-your-ai-into-a-world-class-designer",
   "/biblioteca/wild-rose-poem",
+  "/biblioteca/tools-for-thought",
 ]
 
 const walk = async (directory) => {
@@ -132,13 +135,13 @@ assert.equal(
 )
 assert.equal(
   countCards(mediaHtml, "data-media-card"),
-  14,
-  "Producción debe contener catorce referencias de Mediateca.",
+  15,
+  "Producción debe contener quince referencias de Mediateca.",
 )
 assert.equal(
   countCards(portfolioHtml, "data-portfolio-card"),
-  6,
-  "Producción debe contener seis proyectos de Portafolio.",
+  7,
+  "Producción debe contener siete proyectos de Portafolio.",
 )
 
 const renderedHtml = await Promise.all(
@@ -217,5 +220,5 @@ assert.deepEqual(
 )
 
 console.log(
-  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 5 Notas locales, 4 artículos externos, 14 referencias y 6 proyectos.`,
+  `Producción verificada: ${canonicalRoutes.length} rutas canónicas con metadatos, una página 404 no indexable, sitemap verificado, indexación ${indexingEnabled ? "activa" : "bloqueada"}, ${redirectRoutes.length} redirects, 5 Notas locales, 4 artículos externos, 15 referencias y 7 proyectos.`,
 )

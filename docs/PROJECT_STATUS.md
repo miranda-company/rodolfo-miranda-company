@@ -25,15 +25,15 @@ aprobación editorial.
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
 | Notas                | `/notas`             | 9 notas locales y 4 enlaces externos                     | 5 notas locales y los 4 enlaces externos          |
 | Detalle de Nota      | `/notas/[slug]`      | 9 rutas editoriales locales                              | 5 rutas publicadas                                |
-| Mediateca            | `/mediateca`         | 15 referencias ordinarias                                | 14 referencias publicadas                         |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 15 rutas editoriales y una fixture directa               | Las 14 referencias publicadas                     |
-| Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
-| Caso de Portafolio   | `/portafolio/[slug]` | 14 rutas editoriales y una fixture directa               | Los 6 casos publicados                            |
+| Mediateca            | `/mediateca`         | 16 referencias ordinarias                                | 15 referencias publicadas                         |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 16 rutas editoriales y una fixture directa               | Las 15 referencias publicadas                     |
+| Portafolio           | `/portafolio`        | 15 proyectos ordinarios                                  | 7 proyectos publicados                            |
+| Caso de Portafolio   | `/portafolio/[slug]` | 15 rutas editoriales y una fixture directa               | Los 7 casos publicados                            |
 | Colofón              | `/colofon`           | Explicación técnica y editorial del sitio                | Se genera                                         |
 | Registro             | `/registro`          | Índice alfabético derivado de las rutas publicadas       | Se genera y coincide con el sitemap               |
 | Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`         |
 
-Los seis casos de Portafolio incluidos en producción son:
+Los siete casos de Portafolio incluidos en producción son:
 
 - `syra-coffee`
 - `bsc`
@@ -41,6 +41,7 @@ Los seis casos de Portafolio incluidos en producción son:
 - `cn-sant-andreu`
 - `modulab-barcelona`
 - `eloquent`
+- `elespacio`
 
 Las otras ocho entradas de Portafolio son placeholders con `draft: true`. No
 entran en producción. Antes de publicar una de ellas hay que reemplazar el
@@ -63,10 +64,10 @@ Las otras cuatro Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
 | Notas      |                                 9 |                      5 | Ninguna                                  |
-| Mediateca  |                                15 |                     14 | `M.999`, solo ruta directa en desarrollo |
-| Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
+| Mediateca  |                                16 |                     15 | `M.999`, solo ruta directa en desarrollo |
+| Portafolio |                                15 |                      7 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 47 rutas canónicas en desarrollo y 32 en un build normal de
+En total hay 49 rutas canónicas en desarrollo y 34 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
 rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
 técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
@@ -92,6 +93,8 @@ revisarse antes del lanzamiento.
   declaradas en Notas, Mediateca y Portafolio producen enlaces directos,
   recíprocos y backlinks automáticos sin JavaScript cliente.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
+- Control global para volver arriba después de 600 px de desplazamiento, con
+  objetivo táctil de 48 px y respeto por movimiento reducido.
 - Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
   cierra con `Escape` y restaura el foco.
 - Footer global con LinkedIn, GitHub, email, Colofón y Registro; Registro y
@@ -120,18 +123,18 @@ revisarse antes del lanzamiento.
 
 - `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
-- `pnpm run check`: 65 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 66 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run test:content`: correcto; los identificadores publicados y el orden
   publicado de Portafolio son únicos.
-- `pnpm run build`: correcto; genera 32 rutas canónicas, 15 redirects y la
+- `pnpm run build`: correcto; genera 34 rutas canónicas, 16 redirects y la
   página 404 sin avisos de relaciones obsoletas.
 - `pnpm run test:production`: correcto; confirma `index, follow`, `Allow: /`,
-  las 32 URLs del sitemap, la exclusión permanente de la 404 y los límites
+  las 34 URLs del sitemap, la exclusión permanente de la 404 y los límites
   editoriales publicados.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 13.354,1 KiB, el HTML 620,1
-  KiB, el CSS 58,1 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
-  la imagen mayor pesa 253,8 KiB.
-- `pnpm run test:e2e:dist`: 51 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.471,6 KiB, el HTML 693,4
+  KiB, el CSS 58,4 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
+  la imagen mayor pesa 367,1 KiB.
+- `pnpm run test:e2e:dist`: 53 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.
@@ -146,10 +149,10 @@ revisarse antes del lanzamiento.
 ## Trabajo pendiente
 
 - Completar la revisión editorial de las cinco Notas locales y confirmar las
-  catorce referencias de Mediateca incluidas en producción.
+  quince referencias de Mediateca incluidas en producción.
 - Completar las cuatro Notas draft y sustituir sus `archiveNumber` provisionales
   por identificadores únicos antes de publicarlas.
-- Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,
+- Revisar los siete casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo
   el contenido pendiente y normalizar `archiveNumber` y `displayOrder`.

@@ -5,9 +5,9 @@
 The site is a static Astro application. Pages render to HTML at build time; the
 production output does not ship React, React Router, Tailwind, a CMS, a database,
 or authentication. Browser JavaScript remains small and framework-free. It
-handles navigation, route-aware fragment scrolling, the Notas and Mediateca
-filters and sorting, Portafolio search and tag filtering, and synchronization
-of author-inserted image carousels.
+handles navigation, route-aware fragment scrolling, the shared scroll-to-top
+control, the Notas and Mediateca filters and sorting, Portafolio search and tag
+filtering, and synchronization of author-inserted image carousels.
 
 ## Presentation
 
@@ -15,6 +15,8 @@ of author-inserted image carousels.
   URLs, JSON-LD, build-aware indexing directives, locally bundled fonts, and
   global page behavior.
 - `src/components/PageShell.astro` owns the canonical visible page structure.
+- `src/components/ScrollToTop.astro` owns the shared, reduced-motion-aware
+  scroll-to-top control.
 - `src/components/Footer.astro` owns the shared contact and archive links.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
@@ -46,6 +48,7 @@ visible canvas:
   <header class="site-header">...</header>
   <main class="page-main [route-main-class]" id="contenido">...</main>
   <footer class="site-footer">...</footer>
+  <button class="scroll-to-top" hidden>...</button>
 </div>
 ```
 
@@ -54,6 +57,11 @@ exactly one `.page-shell`, one `.page-main`, one site header, one `main`, and on
 Redirect-only URLs do not render this structure. `.page-shell` owns the viewport,
 responsive gutters, background, technical pattern, overflow and isolation;
 `.page-main` supplies common width and stacking behavior.
+
+The shared scroll-to-top control stays outside the landmark structure and is
+hidden until the visitor has scrolled more than `600px`. It returns the viewport
+to the document start without changing the URL, respects reduced-motion
+preferences, and remains hidden when JavaScript is unavailable.
 
 The shared header links directly to `/yo`, `/portafolio`, `/notas`, and
 `/mediateca` in that order. Expanded and medium layouts expose the links in
@@ -256,11 +264,11 @@ text require no client runtime. Long lines scroll inside the code block rather
 than expanding the page.
 
 The Notas index includes nine local entries in development and five in a normal
-production build. Mediateca includes fifteen ordinary references in development
-and fourteen in production. Portafolio includes 14 ordinary development entries:
-six published case studies and eight draft placeholders. Production includes
+production build. Mediateca includes sixteen ordinary references in development
+and fifteen in production. Portafolio includes 15 ordinary development entries:
+seven published case studies and eight draft placeholders. Production includes
 `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`, `modulab-barcelona`, and
-`eloquent`.
+`eloquent`, and `elespacio`.
 Mediateca and Portafolio each have an isolated `ejemplo-mdx` technical route in
 development. Notas keeps its reusable MDX components and templates but no
 technical fixture entry.
@@ -311,13 +319,13 @@ Mediateca and Portafolio append explicitly typed fixture routes in development
 without inserting fixtures into editorial navigation; production never appends
 them.
 
-Excluding redirect aliases, development exposes 47 canonical routes: seven
-indexes or standalone pages, nine local Notas, fifteen Mediateca references plus
-one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
-A normal production build exposes 32 canonical routes: the seven standalone
-routes, five local Notas, fourteen Mediateca references, and six Portfolio cases.
+Excluding redirect aliases, development exposes 49 canonical routes: seven
+indexes or standalone pages, nine local Notas, sixteen Mediateca references plus
+one media fixture, and 15 ordinary Portfolio entries plus one project fixture.
+A normal production build exposes 34 canonical routes: the seven standalone
+routes, five local Notas, fifteen Mediateca references, and seven Portfolio cases.
 
-Astro also writes fifteen legacy `/biblioteca` redirect artifacts: the index alias
+Astro also writes sixteen legacy `/biblioteca` redirect artifacts: the index alias
 and one redirect for each published Mediateca detail. No overlapping explicit
 redirects are required.
 

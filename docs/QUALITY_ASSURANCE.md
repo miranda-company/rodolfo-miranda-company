@@ -66,6 +66,8 @@ normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
   horizontal; el ruido interno de iframes externos se excluye porque no pertenece
   al código del sitio;
 - navegación por fragmentos desde otra ruta y mediante URL directa;
+- control global para volver arriba, incluido su umbral, objetivo táctil y
+  comportamiento con movimiento reducido;
 - tarjeta comodín de Portafolio con un candidato publicado, enlace e imagen de
   portada coherentes;
 - menú móvil con teclado, cierre con Escape y restauración del foco;
@@ -88,12 +90,12 @@ manual.
 ## Límite editorial de producción
 
 `scripts/verify-production.mjs` trata la lista de rutas publicadas como un
-contrato explícito. Verifica 32 rutas canónicas, quince redirects de
+contrato explícito. Verifica 34 rutas canónicas, dieciséis redirects de
 `/biblioteca` y el archivo `404.html`, además de estos conteos:
 
 - 5 Notas locales y 4 artículos externos;
-- 14 referencias de Mediateca;
-- 6 proyectos de Portafolio.
+- 15 referencias de Mediateca;
+- 7 proyectos de Portafolio.
 
 También impide que `ejemplo-mdx` o los números reservados `N.999`, `M.999` y
 `P.999` aparezcan en `dist`. Cuando se apruebe una entrada nueva para
@@ -129,7 +131,7 @@ conservadores sobre el build actual:
 | -------------------- | -------------------------------: |
 | `dist` completo      |                           16 MiB |
 | HTML total           | 14 KiB × número de archivos HTML |
-| Un archivo HTML      |                           42 KiB |
+| Un archivo HTML      |                           43 KiB |
 | CSS total            |                           90 KiB |
 | JavaScript emitido   |                           25 KiB |
 | Fuentes totales      |                          240 KiB |
@@ -140,10 +142,11 @@ equivalen al peso transferido de una página concreta. Si una decisión editoria
 legítima necesita superarlos, primero hay que optimizar el recurso y después
 ajustar el límite con una explicación en el cambio.
 
-El límite agregado de HTML crece con el número de archivos generados: las 32
-rutas canónicas actuales, quince redirecciones estáticas y la página 404
-permiten 672 KiB en total. El promedio por archivo evita que publicar una ruta
-legítima rompa el presupuesto por sí solo; el límite de 42 KiB por archivo
+El límite agregado de HTML crece con el número de archivos generados: las 34
+rutas canónicas actuales, dieciséis redirecciones estáticas y la página 404
+permiten 714 KiB en total. El promedio por archivo evita que publicar una ruta
+legítima rompa el presupuesto por sí solo; el límite de 43 KiB por archivo
+admite el control global para volver arriba en el caso editorial más extenso y
 sigue evitando que una página concreta crezca sin control.
 
 Astro agrupa el controlador compartido de filtros de Notas y Mediateca en un

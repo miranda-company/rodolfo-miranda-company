@@ -192,13 +192,13 @@ remains editorial metadata but is not exposed as a catalogue filter.
 copy warning and `revisado` removes it. It does not generate or rename article
 sections. The Markdown or MDX body owns the complete reading structure, including
 headings such as “Comentario”, “Por qué está aquí” or any alternative an author
-chooses. `draft` remains the production boundary in both cases. All fifteen
+chooses. `draft` remains the production boundary in both cases. All sixteen
 ordinary references currently use `revisado`; the technical fixture retains its
 provisional warning.
 
-Development includes fifteen ordinary references. A normal production build
-includes fourteen; `casey-neistat-diary-of-a-ceo` remains a draft. The ordinary
-entries use unique archive numbers from `M.001` through `M.015`.
+Development includes sixteen ordinary references. A normal production build
+includes fifteen; `casey-neistat-diary-of-a-ceo` remains a draft. The ordinary
+entries use unique archive numbers from `M.001` through `M.016`.
 
 `ejemplo-mdx` is an additional technical route in development. Validation
 requires `fixture: true` entries to remain drafts, reserves `M.999` for that
@@ -289,7 +289,7 @@ and tags without changing route generation or editorial order.
 
 ### Publication boundary
 
-- Development includes 14 ordinary projects: six published case studies and
+- Development includes 15 ordinary projects: seven published case studies and
   eight provisional placeholders.
 - All eight placeholders use `draft: true` and `placeholder: true`. Their copy,
   organizations, roles and disciplines remain pending, and they contain no
@@ -298,7 +298,7 @@ and tags without changing route generation or editorial order.
   validation rejects either violation.
 - Production excludes every draft and placeholder card and detail route. It
   currently generates `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
-  `modulab-barcelona`, and `eloquent`.
+  `modulab-barcelona`, `eloquent`, and `elespacio`.
 - A genuine non-draft project requires `coverImage` and `coverAlt` and must use
   `placeholder: false`.
 - `ejemplo-mdx` is a separate technical fixture. It must remain a draft, uses
@@ -308,8 +308,8 @@ and tags without changing route generation or editorial order.
 When no genuine project is published, the production index remains valid and
 shows “La selección de proyectos está en preparación.”
 
-The six published projects currently use the ordered identifiers `P.001` to
-`P.006` and matching `displayOrder` values. Several draft placeholders still
+The seven published projects currently use the ordered identifiers `P.001` to
+`P.007` and matching `displayOrder` values. Several draft placeholders still
 reuse identifiers or ordering values. Those fields must be made unique before a
 placeholder becomes a genuine project. The schema validates the `P.###` shape
 and individual field rules; uniqueness across entries is currently an editorial

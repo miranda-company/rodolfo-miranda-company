@@ -20,13 +20,13 @@ de forma explícita.
       `metodos-para-descubrir-el-problema`,
       `mis-lugares-favoritos-de-internet`, `scrum` y
       `zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`.
-- [ ] Confirmar la revisión editorial final de las catorce referencias de
+- [ ] Confirmar la revisión editorial final de las quince referencias de
       Mediateca incluidas en producción.
 - [ ] Retirar los avisos de copia provisional cuando el contenido correspondiente
       esté aprobado.
-- [ ] Revisar y aprobar los seis casos de Portafolio que entran en producción:
+- [ ] Revisar y aprobar los siete casos de Portafolio que entran en producción:
       `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
-      `modulab-barcelona` y `eloquent`.
+      `modulab-barcelona`, `eloquent` y `elespacio`.
 - [ ] Confirmar en cada caso publicado el periodo, rol, organización, resultados,
       derechos, créditos, enlaces, alternativas y leyendas.
 - [ ] Mantener los ocho placeholders restantes de Portafolio como drafts hasta

@@ -167,6 +167,42 @@ test("backlink hash navigation works directly and from another route", async ({ 
   await expect(page.locator("#indice")).toBeInViewport()
 })
 
+test("scroll-to-top control appears after its threshold and returns to the document start", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 600 })
+  await page.goto("/notas/scrum")
+
+  const scrollToTop = page.getByRole("button", { name: "Volver arriba", includeHidden: true })
+  await expect(scrollToTop).toBeHidden()
+
+  await page.evaluate(() => window.scrollTo(0, 700))
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(600)
+  await expect(scrollToTop).toBeVisible()
+  await expect(scrollToTop).toHaveCSS("width", "48px")
+  await expect(scrollToTop).toHaveCSS("height", "48px")
+
+  await scrollToTop.click()
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(1)
+  await expect(scrollToTop).toBeHidden()
+})
+
+test("scroll-to-top control uses immediate scrolling when reduced motion is requested", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" })
+  await page.setViewportSize({ width: 390, height: 600 })
+  await page.goto("/notas/scrum")
+
+  await page.evaluate(() => window.scrollTo(0, 700))
+  const scrollToTop = page.getByRole("button", { name: "Volver arriba" })
+  await expect(scrollToTop).toBeVisible()
+  await scrollToTop.click()
+
+  expect(await page.evaluate(() => window.scrollY)).toBe(0)
+  await expect(scrollToTop).toBeHidden()
+})
+
 test("desktop header links to the four primary sections", async ({ page }) => {
   await page.goto("/")
 
@@ -315,12 +351,12 @@ test("homepage shows the three most recently updated published notes", async ({ 
     "Métodos para descubrir el problema",
     "El magnífico mundo de los jardines digitales",
   ])
-  await expect(notes.locator("time")).toHaveText(["03.09.2026", "01.09.2026", "28.08.2026"])
+  await expect(notes.locator("time")).toHaveText(["09.09.2026", "01.09.2026", "28.08.2026"])
   expect(
     await notes
       .locator("time")
       .evaluateAll((items) => items.map((item) => item.getAttribute("datetime"))),
-  ).toEqual(["2026-09-03", "2026-09-01", "2026-08-28"])
+  ).toEqual(["2026-09-09", "2026-09-01", "2026-08-28"])
 })
 
 test("mobile menu opens from the keyboard and Escape restores focus", async ({ page }) => {
