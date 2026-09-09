@@ -7,7 +7,7 @@ editorialState: "provisional"
 summary: "Resumen breve de la referencia."
 publicationYear: 2026
 status: "por-explorar"
-archiveNumber: "M.014"
+archiveNumber: "M.016"
 updatedAt: 2026-08-03
 externalUrl: "https://example.com/referencia"
 # coverImage: "../../assets/images/mediateca/slug/portada.jpg"

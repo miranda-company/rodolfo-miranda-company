@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 4 de septiembre de 2026.
+- **Fecha de revisión:** 9 de septiembre de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -23,8 +23,8 @@ aprobación editorial.
 | -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
 | Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 8 notas locales y 4 enlaces externos                     | 5 notas locales y los 4 enlaces externos          |
-| Detalle de Nota      | `/notas/[slug]`      | 8 rutas editoriales locales                              | 5 rutas publicadas                                |
+| Notas                | `/notas`             | 9 notas locales y 4 enlaces externos                     | 5 notas locales y los 4 enlaces externos          |
+| Detalle de Nota      | `/notas/[slug]`      | 9 rutas editoriales locales                              | 5 rutas publicadas                                |
 | Mediateca            | `/mediateca`         | 15 referencias ordinarias                                | 14 referencias publicadas                         |
 | Detalle de Mediateca | `/mediateca/[slug]`  | 15 rutas editoriales y una fixture directa               | Las 14 referencias publicadas                     |
 | Portafolio           | `/portafolio`        | 14 proyectos ordinarios                                  | 6 proyectos publicados                            |
@@ -54,19 +54,19 @@ Las cinco Notas locales publicadas, incluidas en desarrollo y producción, son:
 - `mis-lugares-favoritos-de-internet`
 - `scrum`
 
-Las otras tres Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
-`guia-de-estudio-creative-operations` y `operational-excellence`, permanecen
-como drafts visibles solo en desarrollo.
+Las otras cuatro Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
+`guia-de-estudio-creative-operations`, `operational-excellence` y
+`priorizar-decisiones`, permanecen como drafts visibles solo en desarrollo.
 
 ## Límites de publicación
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
-| Notas      |                                 8 |                      5 | Ninguna                                  |
+| Notas      |                                 9 |                      5 | Ninguna                                  |
 | Mediateca  |                                15 |                     14 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                14 |                      6 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 46 rutas canónicas en desarrollo y 32 en un build normal de
+En total hay 47 rutas canónicas en desarrollo y 32 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
 rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
 técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
@@ -112,22 +112,26 @@ revisarse antes del lanzamiento.
 - Fuentes locales y generación estática sin framework cliente.
 - Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
   contratos de producción, presupuestos de salida y workflow de GitHub Actions.
+- Comprobación de integridad editorial para impedir valores `archiveNumber` y
+  `displayOrder` duplicados entre entradas publicadas.
 - Auditoría Lighthouse reproducible sobre cuatro rutas representativas.
 
 ## Verificación actual
 
 - `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
-- `pnpm run check`: 64 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 65 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run test:content`: correcto; los identificadores publicados y el orden
+  publicado de Portafolio son únicos.
 - `pnpm run build`: correcto; genera 32 rutas canónicas, 15 redirects y la
   página 404 sin avisos de relaciones obsoletas.
 - `pnpm run test:production`: correcto; confirma `index, follow`, `Allow: /`,
   las 32 URLs del sitemap, la exclusión permanente de la 404 y los límites
   editoriales publicados.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 13.260,1 KiB, el HTML 619,8
+- `pnpm run test:budgets`: correcto; `dist` ocupa 13.354,1 KiB, el HTML 620,1
   KiB, el CSS 58,1 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
   la imagen mayor pesa 253,8 KiB.
-- `pnpm run test:e2e:dist`: 50 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 51 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
   imágenes y overflow.
@@ -143,10 +147,8 @@ revisarse antes del lanzamiento.
 
 - Completar la revisión editorial de las cinco Notas locales y confirmar las
   catorce referencias de Mediateca incluidas en producción.
-- Asignar un `archiveNumber` único a `the-adolescence-of-technology`; ahora
-  comparte `M.005` con `the-age-of-the-image`.
-- Completar y asignar un `archiveNumber` único a la Nota draft
-  `como-crear-un-sistema-de-contenido-para-li`; ahora reutiliza `N.001`.
+- Completar las cuatro Notas draft y sustituir sus `archiveNumber` provisionales
+  por identificadores únicos antes de publicarlas.
 - Revisar los seis casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo

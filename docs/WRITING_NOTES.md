@@ -11,9 +11,10 @@ otro sitio. Las plantillas omiten `fixture`, que vale `false` por defecto. Sigue
 1. Nombra el archivo con un _slug_ breve y seguro para URL, en minúsculas, sin acentos y con
    guiones, por ejemplo `sistemas-que-respiran.md`. El nombre genera la ruta
    `/notas/sistemas-que-respiran`.
-2. Asigna un `archiveNumber` único con el formato `N.000`. El próximo número disponible para una
-   nota nueva es `N.008`; `N.999` permanece reservado para posibles verificaciones técnicas y no
-   debe usarse en contenido editorial.
+2. Reserva un `archiveNumber` con el formato `N.000`. Debe ser único antes de publicar; la
+   comprobación de integridad detecta duplicados entre entradas publicadas. El próximo número
+   disponible para una nota nueva es `N.010`; `N.999` permanece reservado para posibles
+   verificaciones técnicas y no debe usarse en contenido editorial.
 3. Elige el estado de madurez que describe honestamente el texto:
    - `semilla`: apunte inicial que todavía puede cambiar de forma;
    - `en-crecimiento`: nota desarrollada que sigue incorporando conexiones;
@@ -116,7 +117,7 @@ summary: "Descripción breve para la tarjeta."
 publishedAt: 2026-08-24
 updatedAt: 2026-08-24
 state: "perenne"
-archiveNumber: "N.008"
+archiveNumber: "N.010"
 kind: "external"
 cardFormat: "compact"
 externalSource: "Nombre de la publicación"
@@ -155,8 +156,8 @@ Los artículos externos cuentan como publicaciones visibles en `/notas` y en las
 portada, pero su URL externa no se incorpora al sitemap del sitio.
 
 La colección publicada contiene actualmente cuatro artículos externos de Eloquent, identificados
-como `N.004`–`N.007`. Por eso, `N.008` es el siguiente número libre tanto para una nota local como
-para otro artículo externo.
+como `N.004`–`N.007`. Las Notas locales publicadas usan también `N.008`–`N.009`; por eso, `N.010`
+es el siguiente número libre tanto para una nota local como para otro artículo externo.
 
 ## Markdown o MDX
 
@@ -305,9 +306,10 @@ Las cinco Notas locales publicadas son
 `N.004`–`N.007`.
 
 `como-crear-un-sistema-de-contenido-para-li`,
-`guia-de-estudio-creative-operations` y `operational-excellence` siguen como
-borradores. Sus números de archivo son provisionales y deben normalizarse antes
-de publicarlos. No existe una ruta técnica `/notas/ejemplo-mdx`.
+`guia-de-estudio-creative-operations`, `operational-excellence` y
+`priorizar-decisiones` siguen como borradores. Sus números de archivo son
+provisionales y deben normalizarse antes de publicarlos. No existe una ruta
+técnica `/notas/ejemplo-mdx`.
 
 Usa `docs/templates/nota.md` y `docs/templates/nota-mdx.mdx` como referencias para crear contenido.
 La plantilla MDX documenta `ContentImage`, `ImageCarousel` y `VideoEmbed` sin añadir una fixture al

@@ -17,7 +17,9 @@ language: "es"
 ---
 
 ## RICE
+
 [RICE Scoring Model](https://www.productplan.com/glossary/rice-scoring-model)
 
 ## MoSCoW
+
 [MoSCoW Method](https://en.wikipedia.org/wiki/MoSCoW_method)

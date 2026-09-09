@@ -7,7 +7,7 @@ editorialState: "revisado"
 summary: "Un método para diseñar prompts que varíen los resultados de forma creativa."
 publicationYear: 2026
 status: "de-referencia"
-archiveNumber: "M.005"
+archiveNumber: "M.014"
 updatedAt: "2026-09-02"
 externalUrl: "https://pub.sakana.ai/ssot/"
 tags: ["Diseño", "Sistemas", "Escala"]

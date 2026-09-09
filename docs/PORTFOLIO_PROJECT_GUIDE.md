@@ -42,7 +42,7 @@ tags:
   - "Fotografía"
   - "Video"
 projectStatus: "Finalizado"
-archiveNumber: "P.013"
+archiveNumber: "P.007"
 coverImage: "../../assets/images/portafolio/nombre-del-proyecto/portada.jpg"
 coverAlt: "Descripción concreta de lo que muestra la portada"
 coverCaption: "Leyenda editorial opcional de la portada."
@@ -53,7 +53,7 @@ gallery:
 projectLinks:
   - label: "Visitar proyecto"
     url: "https://example.com"
-displayOrder: 13
+displayOrder: 7
 updatedAt: 2026-08-19
 placeholder: false
 relatedNotes: []
@@ -88,7 +88,7 @@ publicación real tiene requisitos adicionales indicados más abajo.
 | `coverCaption`    | Texto opcional; requiere `coverImage`                             | Leyenda visible bajo la portada del caso. No aparece en la tarjeta compacta del índice.                                                                                                                                            |
 | `gallery`         | Lista opcional; por defecto `[]`                                  | Galería estática estructurada renderizada después del cuerpo. Cada elemento requiere `image` y `alt`; `caption` es opcional. No es el carrusel narrativo.                                                                          |
 | `projectLinks`    | Lista opcional; por defecto `[]`                                  | Enlaces externos verificados con `label` y `url`. El modelo los conserva, pero actualmente no se muestran porque la barra de conexiones de Portafolio fue retirada. Un placeholder no puede incluirlos.                            |
-| `displayOrder`    | Entero obligatorio igual o mayor que 0                            | Orden de las tarjetas y de la navegación anterior/siguiente. Debe revisarse manualmente para evitar duplicados.                                                                                                                    |
+| `displayOrder`    | Entero obligatorio igual o mayor que 0                            | Orden de las tarjetas y de la navegación anterior/siguiente. Debe ser único entre proyectos publicados.                                                                                                                            |
 | `updatedAt`       | Fecha obligatoria                                                 | Fecha mostrada en la ficha, el pie y la tarjeta aleatoria de la homepage cuando el proyecto resulta seleccionado. No determina la selección. Formato recomendado: `YYYY-MM-DD`.                                                    |
 | `placeholder`     | Booleano; por defecto `false`                                     | Marca contenido provisional creado para probar el diseño. Muestra el aviso provisional, exige `draft: true` y prohíbe `projectLinks`.                                                                                              |
 | `relatedNotes`    | Lista opcional de IDs; por defecto `[]`                           | Relaciones validadas con Notas. Usa nombres de archivo sin extensión. Se muestran inline al final del caso y generan backlinks automáticos en las notas enlazadas.                                                                 |
@@ -318,5 +318,7 @@ Comprueba también:
 - enlaces, fechas, cliente, rol, disciplinas y resultados verificados;
 - `archiveNumber` y `displayOrder` únicos.
 
-La validación comprueba tipos, referencias y varias reglas editoriales, pero no
-detecta automáticamente números de archivo ni órdenes duplicados entre entradas.
+El schema comprueba tipos, referencias y reglas de cada entrada. Además,
+`pnpm run test:content` detecta números de archivo y órdenes duplicados entre
+proyectos publicados. Los placeholders draft conservan valores provisionales
+que deben normalizarse antes de publicar.

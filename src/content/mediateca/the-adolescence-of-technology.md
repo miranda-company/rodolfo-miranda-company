@@ -7,7 +7,7 @@ editorialState: "revisado"
 summary: "El CEO de Anthropic enlista los riesgos de la IA."
 publicationYear: 2026
 status: "de-referencia"
-archiveNumber: "M.005"
+archiveNumber: "M.010"
 updatedAt: "2026-08-28"
 externalUrl: "https://darioamodei.com/essay/the-adolescence-of-technology"
 tags: ["Diseño", "Sistemas", "Escala"]

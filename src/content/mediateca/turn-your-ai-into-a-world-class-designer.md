@@ -7,7 +7,7 @@ editorialState: "revisado"
 summary: "El proceso de a-z para sacarle toda su creatividad a la IA"
 publicationYear: 2026
 status: "de-referencia"
-archiveNumber: "M.005"
+archiveNumber: "M.015"
 updatedAt: "2026-09-02"
 externalUrl: "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
 tags: ["Diseño", "IA"]

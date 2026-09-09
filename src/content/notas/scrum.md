@@ -42,7 +42,7 @@ Scrum es una buena estuctura de trabajo para proyectos con ciertas característi
 
 ## Waterfall vs Scrum
 
-El proceso típico de desarrollo de proyectos de software es conocido como [_Waterfall Development Model_](https://en.wikipedia.org/wiki/Waterfall_model). Bajo este modelo, el desarrollo de software toma varios años en completarse y se fundamenta en un plan rígido. 
+El proceso típico de desarrollo de proyectos de software es conocido como [_Waterfall Development Model_](https://en.wikipedia.org/wiki/Waterfall_model). Bajo este modelo, el desarrollo de software toma varios años en completarse y se fundamenta en un plan rígido.
 
 Scrum por otra parte es una _"nueva"_ forma de trabajar que permite a los equipos avanzar de forma progresiva, probando, descubriendo y desarrollando el producto en ciclos iterativos y con enfoque en aportar valor al cliente.
 

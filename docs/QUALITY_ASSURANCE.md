@@ -21,11 +21,13 @@ otro puerto si es necesario.
 ## Comandos
 
 ```sh
-pnpm run test:e2e        # build, navegador, interacción y accesibilidad
-pnpm run test:production # rutas, conteos y exclusión de fixtures en dist
-pnpm run test:budgets    # límites de peso para la salida ya construida
-pnpm run test            # las tres comprobaciones anteriores
-pnpm run verify          # formato, build y todas las pruebas
+pnpm run test:content     # identificadores y orden publicados únicos
+pnpm run test:e2e         # build, navegador, interacción y accesibilidad
+pnpm run test:production  # rutas, conteos y exclusión de fixtures en dist
+pnpm run test:budgets     # límites de peso para la salida ya construida
+pnpm run test:links       # destinos y fragmentos internos de la salida
+pnpm run test             # todas las comprobaciones anteriores
+pnpm run verify           # formato, build y todas las pruebas
 pnpm run audit:lighthouse # build y auditoría de cuatro rutas representativas
 pnpm run audit:lighthouse:dist # audita el dist existente sin reconstruirlo
 pnpm run verify:launch   # suite normal y Lighthouse, con un único build
@@ -43,6 +45,15 @@ revisión previa a publicación: reutiliza el `dist/` generado por `verify` para
 no construir dos veces. `audit:lighthouse:dist` debe ejecutarse solo después de
 generar un build reciente. Lighthouse no se ejecuta en cada push porque es más
 lento y sensible al entorno local que la suite determinista de CI.
+
+## Integridad editorial del contenido
+
+`scripts/check-content-integrity.mjs` lee el frontmatter de Notas, Mediateca y
+Portafolio y comprueba que no existan `archiveNumber` duplicados entre entradas
+publicadas. También exige un `displayOrder` único para los proyectos publicados.
+Los borradores pueden conservar identificadores provisionales, pero deben
+normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
+`pnpm run test:content` impedirá publicar una colisión.
 
 ## Cobertura de navegador
 

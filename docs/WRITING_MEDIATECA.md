@@ -8,7 +8,7 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
 
 1. Elige un _slug_ breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
    `manual-de-sistemas.md`. El archivo genera `/mediateca/manual-de-sistemas`.
-2. Asigna un número único `M.###`. El siguiente número editorial disponible es `M.014`; `M.999`
+2. Asigna un número único `M.###`. El siguiente número editorial disponible es `M.016`; `M.999`
    está reservado para la fixture técnica y se rechaza en una referencia normal.
 3. Empieza con `draft: true` y no añadas `fixture`. Las referencias draft aparecen en desarrollo,
    pero no generan rutas de producción.
@@ -29,6 +29,9 @@ la nota editorial necesite un componente aprobado como `ContentImage`, `VideoEmb
    fecha, se usa `archiveNumber`. Las tres primeras referencias publicadas de esta selección
    aparecen también en el “Anaquel” de la homepage. Déjalo en `false` o elimínalo para mostrar la
    entrada únicamente en el catálogo general.
+
+`pnpm run test:content` comprueba que los números de archivo de las entradas publicadas sean
+únicos. Los borradores también deben reservar un número libre antes de publicarse.
 
 Si borras o renombras una entrada enlazada, las relaciones existentes no se reescriben. Antes de
 publicar, sigue el procedimiento compartido para [interpretar el aviso de Astro y limpiar todas las

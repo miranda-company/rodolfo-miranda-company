@@ -27,10 +27,11 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
 ## Current state
 
-- Production includes 3 local Notas, 4 external-article cards, 11 Mediateca
+- Production includes 5 local Notas, 4 external-article cards, 14 Mediateca
   references, and 6 Portafolio case studies.
-- Notas contains four local entries in development and three in production,
-  plus four external Eloquent articles in both environments. Portafolio also
+- Notas contains nine local entries in development and five in production, plus
+  four external Eloquent articles in both environments. Mediateca contains 15
+  ordinary references in development and 14 in production. Portafolio also
   exposes ordinary drafts; Mediateca and Portafolio expose isolated MDX fixtures
   during local development.
 - Drafts and technical fixtures are excluded from production routes, homepage
@@ -72,6 +73,7 @@ pnpm run format:check  # verify formatting without changing files
 pnpm run check         # run Astro and TypeScript diagnostics
 pnpm run build         # check and generate the production site
 pnpm run preview       # serve the latest production build
+pnpm run test:content  # verify unique published archive identifiers and ordering
 pnpm run test:e2e      # build, then run browser and accessibility checks
 pnpm run verify        # format check, build, boundaries, links, budgets, and browser tests
 pnpm run verify:launch # full verification plus Lighthouse launch audit

@@ -14,14 +14,14 @@ Los casos de estudio se guardan como Markdown o MDX en `src/content/portafolio/`
 1. Elige un _slug_ breve, en minúsculas, sin acentos y separado por guiones, por ejemplo
    `sistema-editorial.md`. El archivo genera `/portafolio/sistema-editorial`.
 2. Copia una plantilla fuera de la colección y asigna un `archiveNumber` único `P.###` después de
-   revisar todos los números existentes. La validación comprueba el formato, pero no detecta
-   duplicados entre archivos. `P.999` está reservado para la fixture técnica y no puede usarse en
-   un proyecto real. Los valores `P.000`, `displayOrder: 0` y la fecha de las plantillas son
-   marcadores: sustitúyelos antes de guardar la nueva entrada en la colección.
+   revisar todos los números existentes. El schema comprueba el formato y `pnpm run test:content`
+   detecta duplicados entre proyectos publicados. `P.999` está reservado para la fixture técnica
+   y no puede usarse en un proyecto real. Los valores `P.000`, `displayOrder: 0` y la fecha de las
+   plantillas son marcadores: sustitúyelos antes de guardar la nueva entrada en la colección.
 3. Mantén `draft: true` mientras se redacta y revisa. Un proyecto real usa `placeholder: false`.
    No añadas `fixture`: su valor normal es `false`.
 4. Completa `displayOrder` con un entero único, ya que controla tanto el índice como la navegación
-   anterior/siguiente. La unicidad también debe comprobarse editorialmente antes de publicar.
+   anterior/siguiente. La suite comprueba la unicidad entre proyectos publicados.
 5. Escribe solo cliente, rol, disciplinas, resultados y enlaces que hayan sido verificados.
 6. Usa los IDs de archivo, sin extensión, en `relatedNotes`, `relatedMedia` y `relatedProjects`.
    Estas relaciones aparecen inline al final del caso y generan backlinks automáticos en sus

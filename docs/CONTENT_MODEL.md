@@ -79,19 +79,24 @@ omit `fixture`; its default is `false`. Validation requires every
 `fixture: true` entry to remain `draft: true`. It also reserves `N.999` for the
 technical fixture and rejects `N.999` on an ordinary note.
 
-Production contains three local Notas entries:
+Production contains five local Notas entries:
 `el-magnifico-mundo-de-los-jardines-digitales`,
-`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`, and
-`mis-lugares-favoritos-de-internet`. They use `N.001`–`N.003` and participate in
-the index, homepage, detail layout, filters, connections, and circular
-navigation. Four external Eloquent articles use `N.004`–`N.007` and render only
-as link cards. Development also includes the ordinary draft
-`como-crear-un-sistema-de-contenido-para-li`; its provisional `N.001` must be
-replaced with a unique archive number before publication. No Notas MDX fixture
-is active.
+`zettelkasten-un-metodo-para-organizar-nuestro-conocimiento`,
+`mis-lugares-favoritos-de-internet`, `metodos-para-descubrir-el-problema`, and
+`scrum`. They use `N.001`–`N.003` and `N.008`–`N.009` and participate in the
+index, homepage, detail layout, filters, connections, and circular navigation.
+Four external Eloquent articles use `N.004`–`N.007` and render only as link
+cards.
 
-All local entries own their editorial body in Markdown. Reusable Markdown and
-MDX authoring remains documented in the templates without requiring a technical
+Development also includes the ordinary drafts
+`como-crear-un-sistema-de-contenido-para-li`,
+`guia-de-estudio-creative-operations`, `operational-excellence`, and
+`priorizar-decisiones`. Their archive numbers are provisional and must be
+replaced with unique values before publication. No Notas MDX fixture is active.
+
+Local entries own their editorial body in Markdown or MDX;
+`metodos-para-descubrir-el-problema` is the current published MDX note. Reusable
+authoring remains documented in the templates without requiring a technical
 fixture route in the collection.
 
 See [WRITING_NOTES.md](WRITING_NOTES.md), [templates/nota.md](templates/nota.md),
@@ -187,12 +192,13 @@ remains editorial metadata but is not exposed as a catalogue filter.
 copy warning and `revisado` removes it. It does not generate or rename article
 sections. The Markdown or MDX body owns the complete reading structure, including
 headings such as “Comentario”, “Por qué está aquí” or any alternative an author
-chooses. `draft` remains the production boundary in both cases. All eleven
+chooses. `draft` remains the production boundary in both cases. All fifteen
 ordinary references currently use `revisado`; the technical fixture retains its
 provisional warning.
 
-Development and a normal production build include eleven ordinary references,
-all with `draft: false`.
+Development includes fifteen ordinary references. A normal production build
+includes fourteen; `casey-neistat-diary-of-a-ceo` remains a draft. The ordinary
+entries use unique archive numbers from `M.001` through `M.015`.
 
 `ejemplo-mdx` is an additional technical route in development. Validation
 requires `fixture: true` entries to remain drafts, reserves `M.999` for that
@@ -454,9 +460,10 @@ routes, images and accessible image descriptions remain in JSON. Static
 metadata stays with Yo, Mediateca and Portafolio; Yo also keeps its static
 reveal label. Collection-driven values are intentionally absent from JSON and
 `src/pages/index.astro` derives them from published Spanish entries at build
-time:
+time.
 
-The hero introduction remains a single editable `connectionLabel` string.
+The hero eyebrow and H1 are editable through `heroEyebrow` and `heroTitle`.
+The introduction remains a single editable `connectionLabel` string.
 `connectionLink.label` identifies the phrase rendered as an inline link and
 must occur inside that string; `connectionLink.href` stores its validated
 internal destination. This keeps the complete sentence readable in the content
@@ -486,3 +493,10 @@ The derived statistics use `getVisibleSpanishNotes(false)`,
 `getVisibleSpanishMedia(false)`, and `getVisibleSpanishProjects(false)`. Drafts
 and `fixture: true` entries therefore never contribute to homepage publication
 statistics.
+
+## Cross-entry integrity
+
+Cross-entry constraints cannot be expressed in an individual collection schema.
+`pnpm run test:content` therefore checks that published archive numbers are
+unique within each editorial collection and that published Portfolio entries
+also have unique `displayOrder` values.

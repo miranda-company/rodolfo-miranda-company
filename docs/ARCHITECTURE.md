@@ -255,12 +255,12 @@ Astro generates fenced-code highlighting statically with Shiki and the
 text require no client runtime. Long lines scroll inside the code block rather
 than expanding the page.
 
-The Notas index includes four local entries in development and three in a
-normal production build. Mediateca includes eleven ordinary references in both
-environments. Portafolio includes 14 ordinary development
-entries: six published case studies and eight draft placeholders. Production
-includes `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
-`modulab-barcelona`, and `eloquent`.
+The Notas index includes nine local entries in development and five in a normal
+production build. Mediateca includes fifteen ordinary references in development
+and fourteen in production. Portafolio includes 14 ordinary development entries:
+six published case studies and eight draft placeholders. Production includes
+`syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`, `modulab-barcelona`, and
+`eloquent`.
 Mediateca and Portafolio each have an isolated `ejemplo-mdx` technical route in
 development. Notas keeps its reusable MDX components and templates but no
 technical fixture entry.
@@ -284,13 +284,15 @@ Editable site copy remains separate from templates:
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
 
-The homepage panel titles, descriptions, routes, kinds, local images and image
-alternatives are validated in `homepage.json`. Only genuinely static metadata
-and reveal labels live there. `src/pages/index.astro` supplies collection-driven
-values at build time: the Notas panel receives the latest published-note date
-and published-note count, while Mediateca and Portafolio receive their published
-entry counts. These statistics use the same centralized helpers and production
-boundary as route generation, so drafts and technical fixtures are excluded.
+The homepage eyebrow, H1, panel titles, descriptions, routes, kinds, local images
+and image alternatives are validated in `homepage.json`. Only genuinely static
+metadata and reveal labels live there. `src/pages/index.astro` supplies
+collection-driven values at build time: the Notas panel receives the latest
+published-note date and published-note count, while Mediateca and Portafolio
+receive their published entry counts. The homepage Notas preview uses the first
+three published entries ordered by `updatedAt`. These values use the same
+centralized helpers and production boundary as route generation, so drafts and
+technical fixtures are excluded.
 `PortfolioWildcard.astro` owns the Portafolio preview in the Ahora section.
 Astro serializes only the published Spanish candidates; a framework-free
 browser script selects one on page load and updates the cover, alternative text,
@@ -309,13 +311,13 @@ Mediateca and Portafolio append explicitly typed fixture routes in development
 without inserting fixtures into editorial navigation; production never appends
 them.
 
-Excluding redirect aliases, development exposes 38 canonical routes: seven
-indexes or standalone pages, four local Notas, eleven Mediateca references plus
+Excluding redirect aliases, development exposes 47 canonical routes: seven
+indexes or standalone pages, nine local Notas, fifteen Mediateca references plus
 one media fixture, and 14 ordinary Portfolio entries plus one project fixture.
-A normal production build exposes 27 canonical routes: the seven standalone
-routes, three local Notas, eleven Mediateca references, and six Portfolio cases.
+A normal production build exposes 32 canonical routes: the seven standalone
+routes, five local Notas, fourteen Mediateca references, and six Portfolio cases.
 
-Astro also writes twelve legacy `/biblioteca` redirect artifacts: the index alias
+Astro also writes fifteen legacy `/biblioteca` redirect artifacts: the index alias
 and one redirect for each published Mediateca detail. No overlapping explicit
 redirects are required.
 
