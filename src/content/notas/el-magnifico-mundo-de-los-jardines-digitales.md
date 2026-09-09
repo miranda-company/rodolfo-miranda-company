@@ -1,5 +1,5 @@
 ---
-title: "El magnífico mundo de los jardínes digitales"
+title: "El magnífico mundo de los jardines digitales"
 summary: "Una filosofía refrescante para compartir nuestras ideas y pensamientos en internet."
 publishedAt: 2026-08-25
 updatedAt: 2026-08-28

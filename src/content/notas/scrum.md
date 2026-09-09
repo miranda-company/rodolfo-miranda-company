@@ -20,7 +20,7 @@ A través de mi experiencia he podido comprobar que hay muchos, pero muchos equi
 
 Temprano en mi carrera aprendí que los equipos más eficientes son aquellos que están mejor organizados y los que tienen una mejor comuncación. Recuerdo que mi cambio de paradigma vino cuando un colega llamado _K._ me dijo **"Tu forma de trabajar es una mierda"**... y en holandés, que suena más fuerte todavía. Tal cual. Sin pelos en la lengua me lo soltó. Acto seguido me enseñó la forma en la cuál se estructura el trabajo en equipos altamente productivos.
 
-Son filosofías de trabajo que se han estudiado a detalle y que han ido evolucionando con el tiempo, pero que en su _core_ predican lo mismo: equipos competitivos, que producen con más calidad, con más frecuencia, se adaptan a cambios en el camino y en los cuáles, sus miembros están mejor conectados.
+Estas filosofías de trabajo se han estudiado a detalle y han evolucionando con el tiempo, pero en su _core_ predican lo mismo: equipos competitivos, que producen con más calidad, con más frecuencia, se adaptan a cambios en el camino y en los cuáles, sus miembros están mejor conectados.
 
 De todos estos métodos de trabajo, quizas el más utilizada hoy en día sea Scrum.
 
@@ -42,13 +42,13 @@ Scrum es una buena estuctura de trabajo para proyectos con ciertas característi
 
 ## Waterfall vs Scrum
 
-El proceso típico de desarrollo de proyectos de software es conocido como [_Waterfall Development Model_](https://en.wikipedia.org/wiki/Waterfall_model). Normalmente toma años lanzar un producto de software usando este modelo y se fundamenta en un plan rígido. El modelo carece de enfoque en los clientes para los que se esta desarrollando el producto.
+El proceso típico de desarrollo de proyectos de software es conocido como [_Waterfall Development Model_](https://en.wikipedia.org/wiki/Waterfall_model). Bajo este modelo, el desarrollo de software toma varios años en completarse y se fundamenta en un plan rígido. 
 
 Scrum por otra parte es una _"nueva"_ forma de trabajar que permite a los equipos avanzar de forma progresiva, probando, descubriendo y desarrollando el producto en ciclos iterativos y con enfoque en aportar valor al cliente.
 
 Los fundamentos de Scrum están basados en el conceptos LEAN y del [control empírico de procesos](https://www.scrum.org/resources/blog/three-pillars-empiricism-scrum). El empirismo implica trabajar de forma basada en hechos, experiencia y evidencia. Scrum implementa un proceso empírico donde el progreso se basa en observaciones de la realidad, no en planes ficticios. Scrum también pone gran énfasis en el cambio de mentalidad y cultura para lograr agilidad empresarial y organizacional.
 
-Hay tres pilares del **empirismo**:
+Son tres los pilares fundamentales del **empirismo**:
 
 - **Transparencia:** Todos tienen acceso a la información que necesitan para hacer sus trabajos. También es tener una comunicación abierta y honesta entre los miembros del equipo.
 - **Inspección:** Aprender sobre lo que hemos hecho. Tenemos que revisar y comprender nuestro trabajo de forma periódica. La pregunta clave es: ¿qué es lo que hemos aprendido de lo que hemos realizado?
@@ -177,3 +177,4 @@ Backlog Refinement es la acción de tomar un PBI y convertirlo en unidades más 
 - [What is Kanban in project management?](https://www.atlassian.com/agile/kanban/)
 - [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
 - [Jira Templates](https://www.atlassian.com/software/jira/templates)
+- [Burndown chart](https://en.wikipedia.org/wiki/Burndown_chart)

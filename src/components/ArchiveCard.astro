@@ -17,6 +17,7 @@ const { panel } = Astro.props
   <a class="panel-link" href={panel.href} aria-label={"Ir a " + panel.title}>
     <div class="panel-top">
       <span>{panel.index}</span>
+      <span>{panel.title}</span>
       <span class="panel-arrow" aria-hidden="true">↗</span>
     </div>
     <div

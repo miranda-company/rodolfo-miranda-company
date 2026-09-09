@@ -1,8 +1,8 @@
 [
   {
     "id": "homepage",
-    "heroTitle": "Me llamo R.",
-    "connectionLabel": "Te doy la bienvenida a mi jardín digital, un espacio donde imagino, colecciono ideas y muestro mi trabajo.",
+    "heroTitle": "Digital Project & Operations Lead",
+    "connectionLabel": "Dirijo proyectos digitales de principio a fin y diseño los procesos y sistemas que permiten a equipos multidisciplinares trabajar con claridad — Este es mi jardín digital.",
     "connectionLink": {
       "label": "jardín digital",
       "href": "/notas/el-magnifico-mundo-de-los-jardines-digitales"
@@ -11,7 +11,7 @@
     "panels": [
       {
         "index": "01",
-        "title": "Bio",
+        "title": "Yo",
         "description": "Conoce un poco más sobre mí y mi forma de trabajar.",
         "metadata": "Currículo · Experiencia",
         "reveal": "Información personal",
