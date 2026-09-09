@@ -6,8 +6,8 @@ updatedAt: 2026-09-03
 state: "semilla"
 archiveNumber: "N.009"
 cardFormat: "visual"
-# coverImage: "../../assets/images/notas/margen/portada.jpg"
-# coverAlt: "Descripción accesible de la imagen de portada"
+coverImage: "../../assets/images/notas/scrum.jpg"
+coverAlt: "Luke Burgess introduces the ball into the scrum - Pierre Selim"
 tags:
   - "NA"
 relatedNotes: []
