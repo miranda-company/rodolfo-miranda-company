@@ -145,8 +145,8 @@ Reglas importantes:
   entrada no tiene una página local donde mostrar esas conexiones.
 - `state` y `tags` siguen alimentando los filtros de `/notas`. `perenne` es un valor razonable para
   un artículo ya publicado, pero puedes elegir el estado editorial que corresponda.
-- `featured: true` permite que el artículo aparezca entre las últimas notas de la portada; también
-  allí se abrirá en una pestaña nueva.
+- La portada selecciona automáticamente las tres notas publicadas con el `updatedAt` más reciente;
+  si este artículo entra en esa selección, también se abrirá allí en una pestaña nueva.
 - Mientras preparas la tarjeta, usa `draft: true`. Cambia a `false` cuando el título, el resumen, la
   fuente y la URL estén revisados.
 - No escribas cuerpo Markdown debajo del frontmatter: no se publica una página de lectura local.

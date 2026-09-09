@@ -305,6 +305,24 @@ test("homepage portfolio wildcard uses a published project and its cover", async
   await expect(wildcard.locator("img")).toHaveAttribute("alt", selectedCandidate?.cover.alt ?? "")
 })
 
+test("homepage shows the three most recently updated published notes", async ({ page }) => {
+  await page.goto("/")
+
+  const notes = page.locator(".growing-section .latest-notes li")
+  await expect(notes).toHaveCount(3)
+  await expect(notes.locator("a")).toHaveText([
+    "Scrum",
+    "Métodos para descubrir el problema",
+    "El magnífico mundo de los jardines digitales",
+  ])
+  await expect(notes.locator("time")).toHaveText(["03.09.2026", "01.09.2026", "28.08.2026"])
+  expect(
+    await notes
+      .locator("time")
+      .evaluateAll((items) => items.map((item) => item.getAttribute("datetime"))),
+  ).toEqual(["2026-09-03", "2026-09-01", "2026-08-28"])
+})
+
 test("mobile menu opens from the keyboard and Escape restores focus", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/")

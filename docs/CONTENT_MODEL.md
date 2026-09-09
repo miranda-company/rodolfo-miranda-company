@@ -467,6 +467,12 @@ editing the Astro template.
 - Mediateca: total published-reference count;
 - Portafolio: total published-project count.
 
+The homepage Ahora preview takes the first three entries from
+`getVisibleSpanishNotes(false)`. That helper already orders published Spanish
+notes by `updatedAt` descending, with `archiveNumber` as the deterministic
+tie-breaker. The preview shows each entry's `updatedAt`; `featured` does not
+control membership in this list.
+
 The Ahora section passes `getVisibleSpanishProjects(false)` to
 `PortfolioWildcard.astro`. This produces the same candidate boundary in
 development and production: Spanish entries with `draft: false`, excluding

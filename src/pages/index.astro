@@ -61,10 +61,7 @@ const panels: RenderedHomepagePanel[] = home.data.panels.map((panel) => {
   return panel
 })
 
-const notes = publishedNotes
-  .filter((entry) => entry.data.featured)
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3)
+const notes = publishedNotes.slice(0, 3)
 
 const mediaShelf = publishedMedia.filter((entry) => entry.data.displayInShelf).slice(0, 3)
 const connectionLinkStart = home.data.connectionLabel.indexOf(home.data.connectionLink.label)
@@ -79,6 +76,7 @@ const connectionLabelAfter = home.data.connectionLabel.slice(
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="text-container">
+          <p class="kicker home-kicker">{home.data.heroEyebrow}</p>
           <h1 id="hero-title">{home.data.heroTitle}</h1>
           <p class="intro-lead home-intro__description">
             {connectionLabelBefore}<a href={home.data.connectionLink.href}

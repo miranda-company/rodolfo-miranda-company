@@ -507,6 +507,7 @@ const homepage = defineCollection({
 
     return z
       .object({
+        heroEyebrow: z.string().trim().min(1),
         heroTitle: z.string().min(1),
         connectionLabel: z.string().min(1),
         connectionLink: z.object({

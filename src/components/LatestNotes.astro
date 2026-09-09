@@ -24,8 +24,8 @@ const { entries, fragmentTargets = false, detailLinks = false } = Astro.props
           class={fragmentTargets ? "fragment-target" : undefined}
           tabindex={fragmentTargets ? "-1" : undefined}
         >
-          <time datetime={toDateValue(entry.data.publishedAt)}>
-            {formatDottedDate(entry.data.publishedAt)}
+          <time datetime={toDateValue(entry.data.updatedAt)}>
+            {formatDottedDate(entry.data.updatedAt)}
           </time>
           <a
             href={destination.href}
