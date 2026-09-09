@@ -2,7 +2,7 @@
 title: "Scrum"
 summary: "Una estructura de trabajo que funciona para, casi, cualquier tipo de proyecto."
 publishedAt: 2026-09-03
-updatedAt: 2026-09-03
+updatedAt: 2026-09-09
 state: "semilla"
 archiveNumber: "N.009"
 cardFormat: "visual"
@@ -16,19 +16,17 @@ draft: false
 language: "es"
 ---
 
-A través de mi experiencia he podido comprobar que hay muchos, pero muchos equipos que no saben trabajar. No es por la falta de competencias, sino por una falta de organización, claridad y enfoque.
+A través de mi experiencia he podido comprobar que hay muchos equipos que no saben trabajar. Y no es por la falta de competencias, sino por una falta de organización, claridad y enfoque.
 
-Temprano en mi carrera aprendí que los equipos más eficientes son aquellos que están mejor organizados y los que tienen una mejor comuncación. Recuerdo que mi cambio de paradigma vino cuando un colega llamado _K._ me dijo **"Tu forma de trabajar es una mierda"**... y en holandés, que suena más fuerte todavía. Tal cual. Sin pelos en la lengua me lo soltó. Acto seguido me enseñó la forma en la cuál se estructura el trabajo en equipos altamente productivos.
+Temprano en mi carrera profesional aprendí que los equipos más eficientes son aquellos que están mejor organizados, emplean las mejores herramientas para el trabajo y tienen una comuncación más clara. Recuerdo que mi cambio de paradigma vino cuando un colega llamado _K._ me dijo **"Tu forma de trabajar es una mierda"**... y en holandés, que suena más fuerte todavía. Tal cual. Sin pelos en la lengua me lo soltó. Acto seguido me enseñó la forma en la cuál se estructura el trabajo en equipos altamente productivos.
 
-Estas filosofías de trabajo se han estudiado a detalle y han evolucionando con el tiempo, pero en su _core_ predican lo mismo: equipos competitivos, que producen con más calidad, con más frecuencia, se adaptan a cambios en el camino y en los cuáles, sus miembros están mejor conectados.
+Estas formas o filosofías de trabajo se han estudiado a detalle y han evolucionando con el tiempo, pero en su _core_ predican lo mismo: equipos competitivos, que producen con más calidad, con más frecuencia y se adaptan a cambios en el camino.
 
 De todos estos métodos de trabajo, quizas el más utilizada hoy en día sea Scrum.
 
 ## ¿Qué es Scrum?
 
-Scrum es una estructura de trabajo que ayuda a equipos a resolver problemas complejos. Scrum pertenece a las [_Agile Methodologies_](https://www.atlassian.com/agile) y se caracteriza por su habilidad para adaptarse al cambio.
-
-Scrum es un sistema de trabajo ciclico e iterativo. La idea principal de Scrum es progresar hacia un objetivo de forma incremental y aprender mientras construimos.
+[Scrum](<https://en.wikipedia.org/wiki/Scrum_(project_management)>) es un marco de trabajo perteneciente a las [Metodologías Ágiles](https://www.atlassian.com/agile) que ayuda a los equipos a resolver problemas complejos. Funciona como un sistema cíclico e iterativo cuya idea principal es progresar hacia un objetivo de forma incremental; esto permite aprender durante el proceso y potenciar la **capacidad de adaptación al cambio**.
 
 > Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.
 

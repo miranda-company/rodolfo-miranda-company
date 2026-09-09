@@ -1,6 +1,6 @@
 ---
 title: "El magnífico mundo de los jardines digitales"
-summary: "Una filosofía refrescante para compartir nuestras ideas y pensamientos en internet."
+summary: "Una forma distinta de compartir nuestras ideas y pensamientos en internet."
 publishedAt: 2026-08-25
 updatedAt: 2026-08-28
 state: "semilla"

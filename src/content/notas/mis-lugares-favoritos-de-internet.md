@@ -41,3 +41,5 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [Animalz](https://www.animalz.co/blog) - Blog y podcast sobre content marketing.
 - [Interaction Design Foundation](https://ixdf.org/) - Sitio sobre UX, UI y HCI.
 - [Lennys Newsletter](https://www.lennysnewsletter.com/) - Sobre gestión de productos y tecnología.
+- [Tiny Computer](https://tinycomputer.co/) - Una chulada de sitio web.
+- [One Page Love](https://onepagelove.com/) - Un compendio de sitios web hechos de una sola página.
