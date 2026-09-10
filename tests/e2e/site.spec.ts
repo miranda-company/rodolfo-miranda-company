@@ -356,6 +356,26 @@ test("mobile primary content blocks keep the compact vertical rhythm", async ({ 
   ).toBeGreaterThanOrEqual(28)
 })
 
+test("Yo intro uses the same top spacing as the collection intros", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  const routes = ["/yo", "/portafolio", "/notas", "/mediateca"]
+  const topSpacing: number[] = []
+
+  for (const route of routes) {
+    await page.goto(route)
+    await page.evaluate(() => document.fonts.ready)
+    topSpacing.push(
+      await page.locator(".page-intro").evaluate((intro) => {
+        const kicker = intro.querySelector<HTMLElement>(".kicker")
+        if (!kicker) throw new Error("The page intro is missing its kicker")
+        return kicker.getBoundingClientRect().top - intro.getBoundingClientRect().top
+      }),
+    )
+  }
+
+  expect(Math.max(...topSpacing) - Math.min(...topSpacing)).toBeLessThanOrEqual(2)
+})
+
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
   await page.goto("/")
 

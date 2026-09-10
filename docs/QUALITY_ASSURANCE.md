@@ -76,6 +76,8 @@ normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
   foco;
 - ritmo vertical compacto entre el texto y la imagen de portada, los avisos y
   el cuerpo editorial, y la portada y el texto de un caso de estudio;
+- separación superior coherente entre los intros de Yo, Portafolio, Notas y
+  Mediateca en escritorio;
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
 - búsqueda, estado vacío y recuperación de Portafolio;

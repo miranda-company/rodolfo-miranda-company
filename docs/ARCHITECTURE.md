@@ -98,9 +98,10 @@ labelled `<section>` with the shared `.page-intro` class plus a route-specific
 `.yo-intro`; the error route uses `.not-found-intro` under the same contract.
 The shared class owns the `40px 0` vertical padding;
 route-specific classes only define the internal composition and visual elements
-unique to that page. Editorial detail pages add `.entry-detail-intro` for their
-shared title, summary and metadata arrangement while retaining their collection
-class.
+unique to that page. Yo top-aligns its lead inside the desktop minimum-height
+grid so that its kicker keeps the same top spacing as the three collection
+intros. Editorial detail pages add `.entry-detail-intro` for their shared title,
+summary and metadata arrangement while retaining their collection class.
 
 Introductory copy uses the global `.intro-lead` typography utility together
 with its route-specific layout hook. This keeps the homepage hero, collection
