@@ -78,6 +78,8 @@ normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
   el cuerpo editorial, y la portada y el texto de un caso de estudio;
 - separación superior coherente entre los intros de Yo, Portafolio, Notas y
   Mediateca en escritorio;
+- navegación anterior/siguiente de Notas alineada con ambos bordes del
+  contenedor de detalle en escritorio y móvil;
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
 - búsqueda, estado vacío y recuperación de Portafolio;

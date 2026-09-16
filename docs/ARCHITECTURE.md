@@ -183,6 +183,11 @@ labels live in the shared component.
 - mobile: one column in logical metadata, article and connections DOM order;
 - sticky side rails only when the viewport supports them.
 
+The optional sequence navigation is a direct child of `.page-main`, after the
+editorial grid, and spans that container's full width in every collection.
+Collection styles own only its internal columns, labels and responsive stacking;
+they must not add a narrower outer width constraint.
+
 Compact layouts use `--section-space-compact` between adjacent primary content
 blocks that otherwise lose their desktop margins: homepage copy and artwork,
 editorial notices and article bodies, and portfolio covers and case-study copy.

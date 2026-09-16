@@ -29,7 +29,7 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 
 - Production includes 5 local Notas, 4 external-article cards, 15 Mediateca
   references, and 7 Portafolio case studies.
-- Notas contains nine local entries in development and five in production, plus
+- Notas contains ten local entries in development and five in production, plus
   four external Eloquent articles in both environments. Mediateca contains 16
   ordinary references in development and 15 in production. Portafolio contains
   15 ordinary projects in development and seven in production. Mediateca and

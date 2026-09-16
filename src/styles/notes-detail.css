@@ -86,7 +86,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  max-width: 1136px;
   margin-top: 70px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);

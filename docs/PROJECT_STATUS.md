@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 10 de septiembre de 2026.
+- **Fecha de revisión:** 16 de septiembre de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -23,8 +23,8 @@ aprobación editorial.
 | -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
 | Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 9 notas locales y 4 enlaces externos                     | 5 notas locales y los 4 enlaces externos          |
-| Detalle de Nota      | `/notas/[slug]`      | 9 rutas editoriales locales                              | 5 rutas publicadas                                |
+| Notas                | `/notas`             | 10 notas locales y 4 enlaces externos                    | 5 notas locales y los 4 enlaces externos          |
+| Detalle de Nota      | `/notas/[slug]`      | 10 rutas editoriales locales                             | 5 rutas publicadas                                |
 | Mediateca            | `/mediateca`         | 16 referencias ordinarias                                | 15 referencias publicadas                         |
 | Detalle de Mediateca | `/mediateca/[slug]`  | 16 rutas editoriales y una fixture directa               | Las 15 referencias publicadas                     |
 | Portafolio           | `/portafolio`        | 15 proyectos ordinarios                                  | 7 proyectos publicados                            |
@@ -55,19 +55,20 @@ Las cinco Notas locales publicadas, incluidas en desarrollo y producción, son:
 - `mis-lugares-favoritos-de-internet`
 - `scrum`
 
-Las otras cuatro Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
-`guia-de-estudio-creative-operations`, `operational-excellence` y
-`priorizar-decisiones`, permanecen como drafts visibles solo en desarrollo.
+Las otras cinco Notas locales, `como-crear-un-sistema-de-contenido-para-li`,
+`contextual-adjacency`, `guia-de-estudio-creative-operations`,
+`operational-excellence` y `priorizar-decisiones`, permanecen como drafts
+visibles solo en desarrollo.
 
 ## Límites de publicación
 
 | Colección  | Entradas ordinarias en desarrollo | Entradas en producción | Fixture técnica                          |
 | ---------- | --------------------------------: | ---------------------: | ---------------------------------------- |
-| Notas      |                                 9 |                      5 | Ninguna                                  |
+| Notas      |                                10 |                      5 | Ninguna                                  |
 | Mediateca  |                                16 |                     15 | `M.999`, solo ruta directa en desarrollo |
 | Portafolio |                                15 |                      7 | `P.999`, solo ruta directa en desarrollo |
 
-En total hay 49 rutas canónicas en desarrollo y 34 en un build normal de
+En total hay 50 rutas canónicas en desarrollo y 34 en un build normal de
 producción, sin contar los aliases de `/biblioteca` ni la página 404. Las dos
 rutas `ejemplo-mdx` de Mediateca y Portafolio se usan para revisar componentes
 técnicos y no aparecen en índices, filtros, conteos, conexiones, navegación
@@ -107,7 +108,8 @@ revisarse antes del lanzamiento.
 - Filtros, orden, búsqueda, conteos y estados vacíos en los índices editoriales;
   Notas y Mediateca comparten el controlador tipado de disclosure y filtros.
 - Layout de detalle compartido por Notas, Mediateca y Portafolio, con una
-  variante de Portafolio sin barra derecha.
+  variante de Portafolio sin barra derecha y navegación anterior/siguiente a
+  todo el ancho del contenedor.
 - Cuerpo `.rich-content` común para Markdown, MDX, imágenes con leyenda,
   carruseles, vídeo, código, tablas y notas al pie.
 - Imágenes locales servidas desde un único archivo importado, con dimensiones
@@ -136,10 +138,10 @@ revisarse antes del lanzamiento.
 - `pnpm run test:production`: queda bloqueado por esa misma colisión, que sitúa
   Elespacio antes de Syra Coffee en el sitemap en lugar de respetar el contrato
   publicado.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.480,6 KiB, el HTML 701,5
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.480,5 KiB, el HTML 701,4
   KiB, el CSS 59,3 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
   la imagen mayor pesa 367,1 KiB.
-- `pnpm run test:e2e:dist`: 56 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 57 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   cabecera fija, alineación de intros, ausencia de saltos de contenido,
   carruseles, conexiones bidireccionales, movimiento reducido, consola,
@@ -156,7 +158,7 @@ revisarse antes del lanzamiento.
 
 - Completar la revisión editorial de las cinco Notas locales y confirmar las
   quince referencias de Mediateca incluidas en producción.
-- Completar las cuatro Notas draft y sustituir sus `archiveNumber` provisionales
+- Completar las cinco Notas draft y sustituir sus `archiveNumber` provisionales
   por identificadores únicos antes de publicarlas.
 - Revisar los siete casos de Portafolio publicados: texto, resultados, derechos,
   créditos, enlaces, alternativas y leyendas.

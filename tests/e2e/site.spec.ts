@@ -376,6 +376,29 @@ test("Yo intro uses the same top spacing as the collection intros", async ({ pag
   expect(Math.max(...topSpacing) - Math.min(...topSpacing)).toBeLessThanOrEqual(2)
 })
 
+test("Notas sequence navigation fills the detail container", async ({ page }) => {
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport)
+    await page.goto("/notas/scrum")
+
+    const dimensions = await page.locator(".note-sequence").evaluate((sequence) => {
+      const parent = sequence.parentElement
+      if (!parent) throw new Error("The note sequence navigation is missing its parent container")
+
+      const sequenceBounds = sequence.getBoundingClientRect()
+      const parentBounds = parent.getBoundingClientRect()
+
+      return {
+        left: sequenceBounds.left - parentBounds.left,
+        right: parentBounds.right - sequenceBounds.right,
+      }
+    })
+
+    expect(Math.abs(dimensions.left), `${viewport.name} left edge`).toBeLessThanOrEqual(1)
+    expect(Math.abs(dimensions.right), `${viewport.name} right edge`).toBeLessThanOrEqual(1)
+  }
+})
+
 test("homepage portfolio wildcard uses a published project and its cover", async ({ page }) => {
   await page.goto("/")
 
@@ -397,21 +420,29 @@ test("homepage portfolio wildcard uses a published project and its cover", async
 })
 
 test("homepage shows the three most recently updated published notes", async ({ page }) => {
+  await page.goto("/notas")
+  const expectedNotes = await page.locator("[data-note-card]").evaluateAll((cards) =>
+    cards.slice(0, 3).map((card) => ({
+      title: card.getAttribute("data-title"),
+      updatedAt: card.getAttribute("data-updated")?.slice(0, 10),
+    })),
+  )
+
   await page.goto("/")
 
   const notes = page.locator(".growing-section .latest-notes li")
   await expect(notes).toHaveCount(3)
-  await expect(notes.locator("a")).toHaveText([
-    "Scrum",
-    "Métodos para descubrir el problema",
-    "El magnífico mundo de los jardines digitales",
-  ])
-  await expect(notes.locator("time")).toHaveText(["09.09.2026", "01.09.2026", "28.08.2026"])
-  expect(
-    await notes
-      .locator("time")
-      .evaluateAll((items) => items.map((item) => item.getAttribute("datetime"))),
-  ).toEqual(["2026-09-09", "2026-09-01", "2026-08-28"])
+  const actualNotes = await notes.evaluateAll((items) =>
+    items.map((item) => ({
+      title: item
+        .querySelector("a")
+        ?.textContent?.replace(/\s*↗\s*$/, "")
+        .trim(),
+      updatedAt: item.querySelector("time")?.getAttribute("datetime"),
+    })),
+  )
+
+  expect(actualNotes).toEqual(expectedNotes)
 })
 
 test("mobile menu opens from the keyboard and Escape restores focus", async ({ page }) => {
