@@ -142,11 +142,12 @@ image objects fail rendering with a Spanish error. Each slide uses its single
 imported source file and preserves that file's intrinsic dimensions.
 
 The carousel uses a stable 16:10 contained-image stage, ordered-list and figure
-semantics, visible Spanish previous/next controls, an independently updated live
-counter, CSS scroll snap, touch and trackpad scrolling, and reduced-motion-aware
-movement. It never autoplays or loops. Without JavaScript every image, caption,
-and alternative text remains available through native horizontal scrolling;
-the small framework-free script adds one-slide controls, counter synchronization,
+semantics, visible Spanish previous/next controls with the shared lime accent
+fill and subtle elevation, an independently updated live counter, CSS scroll
+snap, touch and trackpad scrolling, and reduced-motion-aware movement. It never
+autoplays or loops. Without JavaScript every image, caption, and alternative
+text remains available through native horizontal scrolling; the small
+framework-free script adds one-slide controls, counter synchronization,
 responsive recalculation, and support for multiple independent instances.
 
 Preferred local-image folders are:
@@ -454,21 +455,40 @@ Homepage and Ahora copy use validated JSON collections. Yo uses its own
 validated JSON profile collection. These files are intentionally editable
 without changing Astro components.
 
+`ahora.json` stores the “Acceso rápido” label and the copy for its three
+previews. The heading is intentionally undated; recency comes from the
+collection entries displayed inside the section rather than a manually
+maintained year.
+
 `homepage.json` requires exactly one archive panel for each validated kind:
 `yo`, `notas`, `mediateca`, and `portafolio`. Static titles, descriptions,
 routes, images and accessible image descriptions remain in JSON. Static
 metadata stays with Yo, Mediateca and Portafolio; Yo also keeps its static
-reveal label. Collection-driven values are intentionally absent from JSON and
-`src/pages/index.astro` derives them from published Spanish entries at build
-time.
+reveal label. This panel data is currently dormant: the homepage does not
+render the “Archivos” section, and no collection statistics are derived for it.
 
-The hero eyebrow and H1 are editable through `heroEyebrow` and `heroTitle`.
-The introduction remains a single editable `connectionLabel` string.
+The hero eyebrow and H1 are editable through `heroEyebrow`, `heroTitle`, and
+`heroTitleAccent`. The first title fragment uses the main sans-serif stack; the
+accent fragment uses the shared italic serif treatment. The introduction
+remains a single editable `connectionLabel` string.
 `connectionLink.label` identifies the phrase rendered as an inline link and
 must occur inside that string; `connectionLink.href` stores its validated
 internal destination. This keeps the complete sentence readable in the content
 file while allowing the linked phrase and destination to change without
 editing the Astro template.
+
+The homepage imports the same approved portrait used by `/yo` and reads its
+alternative text from the validated profile entry. Astro emits a single
+optimized WebP presentation for the hero; the source image and its description
+remain centralized rather than duplicated in `homepage.json`.
+
+The portfolio section immediately below the hero takes the six most recently
+updated entries from `getVisibleSpanishProjects(false)`. It therefore includes
+only published Spanish editorial projects and excludes drafts and fixtures.
+`updatedAt` descending controls recency; equal dates use `displayOrder` and then
+`archiveNumber` as deterministic tie-breakers. `PortfolioSection.astro` is
+shared with `/portafolio`, so headings, counts, filters, cards and empty states
+have one implementation.
 
 - Notas: latest `publishedAt` date and total published-note count;
 - Mediateca: total published-reference count;

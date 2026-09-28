@@ -25,10 +25,12 @@ carousels.
   reduced-motion-aware scroll-to-top behavior from one scroll state.
 - `src/styles/global.css` contains design tokens and the semantic typography
   system.
-- `src/styles/home.css` contains the homepage hero, panels, and Ahora previews;
+- `src/styles/home.css` contains the homepage hero, portfolio selection, and
+  Ahora previews;
   it is imported only by `src/pages/index.astro`.
-- `src/pages/index.astro` renders the four-panel homepage index for Yo, Notas,
-  Mediateca, and Portafolio.
+- `src/pages/index.astro` renders the dark, full-bleed portrait hero, recent
+  portfolio work and quick-access previews. The hero reuses the validated
+  `/yo` portrait metadata and respects reduced motion.
 - `/notas` and `NoteArticle.astro` implement the reviewed Notas index and
   reading layout.
 - `/mediateca` and `/mediateca/[slug]` implement the reviewed catalogue and
@@ -78,8 +80,10 @@ start without changing the URL and respects reduced-motion preferences. Without
 JavaScript the header remains in its normal document position and the button
 remains hidden.
 
-The shared header links directly to `/yo`, `/portafolio`, `/notas`, and
-`/mediateca` in that order. Expanded and medium layouts expose the links in
+The shared header brand link pairs the site icon with the visible italic
+“Rodolfo Miranda” wordmark in normal, sticky and compact layouts. The header
+links directly to `/portafolio`, `/notas`, `/mediateca`, and
+`/yo` in that order. Expanded and medium layouts expose the links in
 `.desktop-nav`; compact layouts use the “Menú” trigger and the same destinations
 inside `.mobile-menu`. “Índice” and “Ahora” remain homepage section concepts,
 not global navigation items. Index and detail routes mark their parent section
@@ -98,15 +102,16 @@ labelled `<section>` with the shared `.page-intro` class plus a route-specific
 `.yo-intro`; the error route uses `.not-found-intro` under the same contract.
 The shared class owns the `40px 0` vertical padding;
 route-specific classes only define the internal composition and visual elements
-unique to that page. Yo top-aligns its lead inside the desktop minimum-height
-grid so that its kicker keeps the same top spacing as the three collection
-intros. Editorial detail pages add `.entry-detail-intro` for their shared title,
-summary and metadata arrangement while retaining their collection class.
+unique to that page. The desktop grids for Yo, Notas and Mediateca top-align
+their lead content so their kickers keep the same top spacing as Portafolio,
+independent of font metrics. Editorial detail pages add `.entry-detail-intro`
+for their shared title, summary and metadata arrangement while retaining their
+collection class.
 
 Introductory copy uses the global `.intro-lead` typography utility together
 with its route-specific layout hook. This keeps the homepage hero, collection
 introductions, standalone introductions and editorial summaries on the same
-Instrument Sans size, weight, line-height and tracking while allowing each
+Helvetica size, weight, line-height and tracking while allowing each
 layout to retain its own width and margins.
 
 Pages with a return link use `.page-main--with-back` on the main landmark and
@@ -150,19 +155,23 @@ External-card titles use `h3`; local note-card titles remain `h2`. Both types
 participate in sorting, filtering and counts.
 
 The root token layer keeps the original palette names for authored artwork and
-decorative compositions, then maps interface meaning onto semantic roles:
+decorative compositions, including the shared lime `--accent-color`, then maps
+interface meaning onto semantic roles:
 `--surface`, `--surface-container`, `--on-surface`,
 `--on-surface-variant`, `--primary`, `--on-primary` and `--outline-strong`.
 Interactive focus uses the shared
 `--focus-ring-*` contract. Short, standard and medium interaction timings use
 `--motion-duration-*` with `--motion-easing-standard`; the global reduced-motion
 query disables non-essential animation without hiding content.
+The sticky header and scroll-to-top control use `--accent-color` as their shared
+surface, matching the carousel controls and keeping the active navigation layer
+visually distinct from the page background.
 
 Responsive CSS follows three named ranges even though native media queries must
 repeat their literal values: compact is `<= 767px`, medium is `768px–1100px`,
 and expanded is `>= 1101px`. A small number of documented component-specific
 thresholds remain where a composition needs to change before or after those
-ranges, such as the homepage panel grid and wide archive controls. These are
+ranges, such as the homepage portfolio grid and wide archive controls. These are
 layout decisions, not additional global breakpoint tiers.
 
 ## Shared editorial detail system
@@ -313,15 +322,19 @@ Editable site copy remains separate from templates:
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
 
-The homepage eyebrow, H1, panel titles, descriptions, routes, kinds, local images
-and image alternatives are validated in `homepage.json`. Only genuinely static
-metadata and reveal labels live there. `src/pages/index.astro` supplies
-collection-driven values at build time: the Notas panel receives the latest
-published-note date and published-note count, while Mediateca and Portafolio
-receive their published entry counts. The homepage Notas preview uses the first
-three published entries ordered by `updatedAt`. These values use the same
-centralized helpers and production boundary as route generation, so drafts and
-technical fixtures are excluded.
+The homepage eyebrow, H1 and hero link are validated in `homepage.json`. Its
+archive-panel data remains validated but dormant while the “Archivos” section
+is hidden from the homepage. The homepage Notas preview uses the first three
+published entries ordered by `updatedAt`; the same centralized helpers and
+production boundary as route generation exclude drafts and technical fixtures.
+Immediately below the hero, the homepage renders `PortfolioSection.astro` with
+the six most recently updated published Spanish projects. The same component
+owns the portfolio index heading, metadata, filters and cards; the homepage
+adds only its responsive three-column presentation. Equal update dates are
+ordered by `displayOrder` and then `archiveNumber`.
+The quick-access region uses its visible “Acceso rápido” label as an `h2` and
+accessible section name. `home.css` controls only its layout and border
+treatment; its typography inherits the global H2 contract without overrides.
 `PortfolioWildcard.astro` owns the Portafolio preview in the Ahora section.
 Astro serializes only the published Spanish candidates; a framework-free
 browser script selects one on page load and updates the cover, alternative text,

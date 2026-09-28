@@ -156,15 +156,14 @@ for (const viewport of viewports) {
   })
 }
 
-test("backlink hash navigation works directly and from another route", async ({ page }) => {
+test("back links return home and direct hash navigation reaches quick access", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto("/yo")
   await page.locator(".page-back").click()
-  await expect(page).toHaveURL(/\/#indice$/)
-  await expect(page.locator("#indice")).toBeInViewport()
+  await expect(page).toHaveURL(/\/$/)
 
-  await page.goto("/#indice")
-  await expect(page.locator("#indice")).toBeInViewport()
+  await page.goto("/#ahora")
+  await expect(page.locator("#ahora")).toBeInViewport()
 })
 
 test("scroll-to-top control appears after its threshold and returns to the document start", async ({
@@ -181,6 +180,7 @@ test("scroll-to-top control appears after its threshold and returns to the docum
   await expect(scrollToTop).toBeVisible()
   await expect(scrollToTop).toHaveCSS("width", "48px")
   await expect(scrollToTop).toHaveCSS("height", "48px")
+  await expect(scrollToTop).toHaveCSS("background-color", "rgb(223, 240, 154)")
 
   await scrollToTop.click()
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(1)
@@ -226,6 +226,7 @@ test("header becomes compact after the shared scroll threshold without shifting 
   await expect(header).toHaveCSS("height", "48px")
   await expect(header).toHaveCSS("padding-left", "32px")
   await expect(header).toHaveCSS("padding-right", "32px")
+  await expect(header).toHaveCSS("background-color", "rgb(223, 240, 154)")
   await expect(scrollToTop).toBeVisible()
   const mainTopAfter = await main.evaluate(
     (element) => element.getBoundingClientRect().top + scrollY,
@@ -241,14 +242,24 @@ test("header becomes compact after the shared scroll threshold without shifting 
 test("desktop header links to the four primary sections", async ({ page }) => {
   await page.goto("/")
 
+  const brand = page.locator(".brand")
+  await expect(brand.locator(".brand-name")).toHaveText("Rodolfo Miranda")
+  await expect(brand.locator(".brand-name")).toBeVisible()
+
   const links = page.locator(".desktop-nav a")
-  await expect(links).toHaveText(["Yo", "Portafolio", "Notas", "Mediateca"])
+  await expect(links).toHaveText(["Portafolio", "Notas", "Mediateca", "Yo"])
   expect(
     await links.evaluateAll((items) => items.map((item) => item.getAttribute("href"))),
-  ).toEqual(["/yo", "/portafolio", "/notas", "/mediateca"])
+  ).toEqual(["/portafolio", "/notas", "/mediateca", "/yo"])
+
+  const mobileLinks = page.locator("#mobile-menu a")
+  await expect(mobileLinks).toHaveText(["Portafolio", "Notas", "Mediateca", "Yo"])
 
   await page.locator(".desktop-nav").getByRole("link", { name: "Portafolio" }).click()
   await expect(page).toHaveURL(/\/portafolio$/)
+
+  await page.setViewportSize({ width: 390, height: 844 })
+  await expect(brand.locator(".brand-name")).toBeVisible()
 })
 
 test("footer exposes social, contact, Colofón, and Registro links", async ({ page }) => {
@@ -303,6 +314,109 @@ test("header identifies the current section on indexes and detail pages", async 
   await expect(page.locator('#mobile-menu a[aria-current="page"]')).toHaveText("Mediateca")
 })
 
+test("the shared typography uses the system-font contract", async ({ page }) => {
+  await page.goto("/yo")
+
+  const typography = await page.locator("body").evaluate((body) => {
+    const heading = document.querySelector("h1")
+    const kicker = document.querySelector(".kicker")
+    if (!heading || !kicker) throw new Error("The typography fixtures are missing")
+
+    const bodyStyle = getComputedStyle(body)
+    const headingStyle = getComputedStyle(heading)
+    const kickerStyle = getComputedStyle(kicker)
+
+    return {
+      bodyFamily: bodyStyle.fontFamily,
+      headingFamily: headingStyle.fontFamily,
+      headingWeight: headingStyle.fontWeight,
+      kickerFamily: kickerStyle.fontFamily,
+    }
+  })
+
+  expect(typography.bodyFamily).toContain("Helvetica Neue")
+  expect(typography.headingFamily).toContain("Helvetica Neue")
+  expect(typography.headingWeight).toBe("500")
+  expect(typography.kickerFamily).toContain("Helvetica Neue")
+})
+
+test("homepage hero uses the split title and approved portrait", async ({ page }) => {
+  await page.goto("/")
+
+  const hero = page.locator(".hero")
+  await expect(hero.locator("h1 > span")).toHaveText("Rodolfo Miranda,")
+  await expect(hero.locator("h1 > em")).toHaveText("estrategia digital")
+
+  const portrait = hero.locator(".hero-image")
+  await expect(portrait).toHaveAttribute(
+    "alt",
+    "Retrato de Rodolfo Miranda Company en el puerto de Barcelona. Julio de 2026.",
+  )
+  await expect(portrait).toHaveAttribute("src", /retrato-rodolfo-miranda/)
+
+  const presentation = await hero.evaluate((element) => {
+    const accent = element.querySelector("h1 > em")
+    const image = element.querySelector<HTMLImageElement>(".hero-image")
+    if (!accent || !image) throw new Error("The homepage hero is incomplete")
+
+    const accentStyle = getComputedStyle(accent)
+    return {
+      background: getComputedStyle(element, "::before").backgroundColor,
+      accentColor: accentStyle.color,
+      accentFamily: accentStyle.fontFamily,
+      imageLoaded: image.complete && image.naturalWidth > 0,
+    }
+  })
+
+  expect(presentation.background).toBe("rgb(23, 27, 24)")
+  expect(presentation.accentColor).toBe("rgb(223, 240, 154)")
+  expect(presentation.accentFamily).toContain("Georgia")
+  expect(presentation.imageLoaded).toBe(true)
+})
+
+test("homepage hides archive panels and keeps a correctly styled quick-access H2", async ({
+  page,
+}) => {
+  await page.goto("/")
+
+  const quickAccessSection = page.locator("#ahora")
+
+  await expect(page.locator("#indice")).toHaveCount(0)
+  await expect(page.getByRole("heading", { level: 2, name: "Archivos" })).toHaveCount(0)
+  await expect(
+    quickAccessSection.getByRole("heading", { level: 2, name: "Acceso rápido" }),
+  ).toBeVisible()
+  await expect(quickAccessSection).toHaveAttribute("aria-labelledby", "growing-title")
+
+  const globalH2Typography = await page.evaluate(() => {
+    const heading = document.createElement("h2")
+    document.body.append(heading)
+    const style = getComputedStyle(heading)
+    const typography = {
+      fontFamily: style.fontFamily,
+      fontSize: style.fontSize,
+      fontWeight: style.fontWeight,
+      letterSpacing: style.letterSpacing,
+      lineHeight: style.lineHeight,
+    }
+    heading.remove()
+    return typography
+  })
+
+  const headingTypography = await page.locator("#growing-title").evaluate((heading) => {
+    const style = getComputedStyle(heading)
+    return {
+      fontFamily: style.fontFamily,
+      fontSize: style.fontSize,
+      fontWeight: style.fontWeight,
+      letterSpacing: style.letterSpacing,
+      lineHeight: style.lineHeight,
+    }
+  })
+
+  expect(headingTypography).toEqual(globalH2Typography)
+})
+
 test("mobile detail titles use the compact H1 scale and safe word wrapping", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/notas/zettelkasten-un-metodo-para-organizar-nuestro-conocimiento")
@@ -319,7 +433,7 @@ test("mobile detail titles use the compact H1 scale and safe word wrapping", asy
     }
   })
 
-  expect(typography.fontSize).toBeGreaterThanOrEqual(48)
+  expect(typography.fontSize).toBeGreaterThanOrEqual(44)
   expect(typography.fontSize).toBeLessThanOrEqual(56)
   expect(typography.hyphens).toBe("none")
   expect(typography.overflowWrap).toBe("break-word")
@@ -417,6 +531,25 @@ test("homepage portfolio wildcard uses a published project and its cover", async
   await expect(wildcard).toHaveAttribute("href", selectedCandidate?.href ?? "")
   await expect(wildcard.locator("img")).toHaveAttribute("src", selectedCandidate?.cover.src ?? "")
   await expect(wildcard.locator("img")).toHaveAttribute("alt", selectedCandidate?.cover.alt ?? "")
+})
+
+test("homepage shows the six most recently updated published portfolio projects", async ({
+  page,
+}) => {
+  await page.goto("/")
+
+  const section = page.locator(".home-portfolio")
+  await expect(section.getByRole("heading", { level: 2, name: "Portafolio" })).toBeVisible()
+  await expect(section.locator("[data-portfolio-card]")).toHaveCount(6)
+  await expect(section.locator("[data-portfolio-count]")).toHaveText("6 proyectos")
+  await expect(section.locator(".portfolio-card h3")).toHaveText([
+    "Elespacio",
+    "Syra Coffee",
+    "MINKA ICM",
+    "Club Natació Sant Andreu",
+    "Modulab Barcelona",
+    "Eloquent",
+  ])
 })
 
 test("homepage shows the three most recently updated published notes", async ({ page }) => {
@@ -614,6 +747,9 @@ test("carousel controls expose correct disabled states and respect reduced motio
   await expect(next).toBeEnabled()
   await expect(previous).toHaveCSS("min-height", "48px")
   await expect(next).toHaveCSS("min-height", "48px")
+  await expect(previous).toHaveCSS("background-color", "rgb(223, 240, 154)")
+  await expect(next).toHaveCSS("background-color", "rgb(223, 240, 154)")
+  await expect(next).toHaveCSS("box-shadow", "rgba(29, 30, 25, 0.09) 0px 5px 16px 0px")
   await next.click()
   await expect(counter).toHaveText("02 / 03")
   await expect(secondCarousel.locator("[data-carousel-counter]")).toHaveText("01 / 05")

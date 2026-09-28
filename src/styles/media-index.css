@@ -15,7 +15,7 @@
   min-height: 276px;
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: 70px;
-  align-items: end;
+  align-items: start;
 }
 
 .mediateca-intro h1 {

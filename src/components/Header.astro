@@ -2,10 +2,10 @@
 import brandSymbol from "../assets/images/brand-symbol.jpg"
 
 const navItems = [
-  { href: "/yo", label: "Yo" },
   { href: "/portafolio", label: "Portafolio" },
   { href: "/notas", label: "Notas" },
   { href: "/mediateca", label: "Mediateca" },
+  { href: "/yo", label: "Yo" },
 ] as const
 
 const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/"
@@ -23,6 +23,7 @@ const isCurrentSection = (href: (typeof navItems)[number]["href"]) =>
       alt=""
       aria-hidden="true"
     />
+    <span class="brand-name">Rodolfo Miranda</span>
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">

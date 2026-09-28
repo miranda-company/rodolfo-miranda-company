@@ -509,6 +509,7 @@ const homepage = defineCollection({
       .object({
         heroEyebrow: z.string().trim().min(1),
         heroTitle: z.string().min(1),
+        heroTitleAccent: z.string().min(1),
         connectionLabel: z.string().min(1),
         connectionLink: z.object({
           label: z.string().trim().min(1),
@@ -542,7 +543,6 @@ const ahora = defineCollection({
   loader: file("./src/content/site/ahora.json"),
   schema: z.object({
     label: z.string().min(1),
-    period: z.string().min(1),
     title: z.string().min(1),
     notesHeading: z.string().min(1),
     notesLinkLabel: z.string().min(1),

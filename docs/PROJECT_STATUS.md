@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 16 de septiembre de 2026.
+- **Fecha de revisión:** 28 de septiembre de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -19,19 +19,19 @@ aprobación editorial.
 
 ## Rutas y contenido
 
-| Sección              | Ruta                 | Desarrollo                                               | Producción                                        |
-| -------------------- | -------------------- | -------------------------------------------------------- | ------------------------------------------------- |
-| Portada              | `/`                  | Cuatro paneles y previews derivados de contenido visible | Se genera con estadísticas de entradas publicadas |
-| Yo                   | `/yo`                | Biografía, retrato y trayectoria                         | Se genera; biografía y trayectoria aprobadas      |
-| Notas                | `/notas`             | 10 notas locales y 4 enlaces externos                    | 5 notas locales y los 4 enlaces externos          |
-| Detalle de Nota      | `/notas/[slug]`      | 10 rutas editoriales locales                             | 5 rutas publicadas                                |
-| Mediateca            | `/mediateca`         | 16 referencias ordinarias                                | 15 referencias publicadas                         |
-| Detalle de Mediateca | `/mediateca/[slug]`  | 16 rutas editoriales y una fixture directa               | Las 15 referencias publicadas                     |
-| Portafolio           | `/portafolio`        | 15 proyectos ordinarios                                  | 7 proyectos publicados                            |
-| Caso de Portafolio   | `/portafolio/[slug]` | 15 rutas editoriales y una fixture directa               | Los 7 casos publicados                            |
-| Colofón              | `/colofon`           | Explicación técnica y editorial del sitio                | Se genera                                         |
-| Registro             | `/registro`          | Índice alfabético derivado de las rutas publicadas       | Se genera y coincide con el sitemap               |
-| Página no encontrada | `/404`               | Página de error propia                                   | Se genera siempre con `noindex, nofollow`         |
+| Sección              | Ruta                 | Desarrollo                                         | Producción                                   |
+| -------------------- | -------------------- | -------------------------------------------------- | -------------------------------------------- |
+| Portada              | `/`                  | Hero, seis proyectos recientes y acceso rápido     | La sección “Archivos” está oculta            |
+| Yo                   | `/yo`                | Biografía, retrato y trayectoria                   | Se genera; biografía y trayectoria aprobadas |
+| Notas                | `/notas`             | 10 notas locales y 4 enlaces externos              | 5 notas locales y los 4 enlaces externos     |
+| Detalle de Nota      | `/notas/[slug]`      | 10 rutas editoriales locales                       | 5 rutas publicadas                           |
+| Mediateca            | `/mediateca`         | 16 referencias ordinarias                          | 15 referencias publicadas                    |
+| Detalle de Mediateca | `/mediateca/[slug]`  | 16 rutas editoriales y una fixture directa         | Las 15 referencias publicadas                |
+| Portafolio           | `/portafolio`        | 15 proyectos ordinarios                            | 7 proyectos publicados                       |
+| Caso de Portafolio   | `/portafolio/[slug]` | 15 rutas editoriales y una fixture directa         | Los 7 casos publicados                       |
+| Colofón              | `/colofon`           | Explicación técnica y editorial del sitio          | Se genera                                    |
+| Registro             | `/registro`          | Índice alfabético derivado de las rutas publicadas | Se genera y coincide con el sitemap          |
+| Página no encontrada | `/404`               | Página de error propia                             | Se genera siempre con `noindex, nofollow`    |
 
 Los siete casos de Portafolio incluidos en producción son:
 
@@ -82,14 +82,18 @@ revisarse antes del lanzamiento.
 
 - Estructura común `BaseLayout → PageShell → Header + main + Footer`.
 - Jerarquía tipográfica semántica compartida para H1–H6, cuerpo y metadatos.
-- H1 compacto fluido entre 48 y 56 px, sin guionado automático y con un
+- H1 fluido entre 44 y 92 px, sin guionado automático y con un
   fallback seguro para palabras más anchas que su contenedor.
 - Separación superior de los intros alineada entre Yo, Portafolio, Notas y
   Mediateca, conservando la altura editorial propia de cada título.
 - Tokens semánticos compartidos para superficies, color de interfaz, foco y
   movimiento, con rangos responsivos compact, medium y expanded documentados.
 - CSS específico de la portada aislado en `src/styles/home.css`; las demás
-  rutas no cargan su composición de paneles y previews.
+  rutas no cargan su hero oscuro con retrato, su selección de proyectos ni sus
+  previews.
+- Sección de Portafolio bajo el hero con los seis proyectos publicados
+  actualizados más recientemente, filtros compartidos con `/portafolio` y una
+  cuadrícula responsive de tres, dos o una columna.
 - Colecciones Astro validadas y helpers centrales para separar drafts y
   fixtures.
 - Grafo editorial bidireccional generado durante el build: las relaciones
@@ -98,10 +102,13 @@ revisarse antes del lanzamiento.
 - Navegación por hash con offset de cabecera y respeto por movimiento reducido.
 - Cabecera global fija y compacta de 48 px después de 600 px de desplazamiento,
   con padding lateral responsive compartido, sin duplicar la navegación ni
-  desplazar el contenido.
+  desplazar el contenido. La marca combina el icono del sitio y el nombre
+  visible “Rodolfo Miranda” en todos los tamaños; la variante fija usa el color
+  de acento compartido.
 - Control global para volver arriba desde el mismo umbral y controlador de
-  scroll, con objetivo táctil de 48 px y respeto por movimiento reducido.
-- Navegación global hacia Yo, Portafolio, Notas y Mediateca; el menú móvil se
+  scroll, con fondo de acento, objetivo táctil de 48 px y respeto por movimiento
+  reducido.
+- Navegación global hacia Portafolio, Notas, Mediateca y Yo; el menú móvil se
   cierra con `Escape` y restaura el foco.
 - Footer global con LinkedIn, GitHub, email, Colofón y Registro; Registro y
   el sitemap comparten una única lista de rutas publicadas.
@@ -119,7 +126,8 @@ revisarse antes del lanzamiento.
   contenido e indexación habilitada solo en builds de producción.
 - Página 404 propia, integrada en el layout común y siempre bloqueada para
   indexación aunque el resto del sitio sea rastreable.
-- Fuentes locales y generación estática sin framework cliente.
+- Tipografía basada en fuentes de sistema, sin peticiones ni archivos de fuente,
+  y generación estática sin framework cliente.
 - Pruebas Playwright de rutas, responsive e interacción, escaneos axe-core,
   contratos de producción, presupuestos de salida y workflow de GitHub Actions.
 - Comprobación de integridad editorial para impedir valores `archiveNumber` y
@@ -138,14 +146,14 @@ revisarse antes del lanzamiento.
 - `pnpm run test:production`: queda bloqueado por esa misma colisión, que sitúa
   Elespacio antes de Syra Coffee en el sitemap en lugar de respetar el contrato
   publicado.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.480,5 KiB, el HTML 701,4
-  KiB, el CSS 59,3 KiB, el JavaScript emitido 4,6 KiB y las fuentes 94,9 KiB;
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.337,7 KiB, el HTML 711,3
+  KiB, el CSS 60,6 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
   la imagen mayor pesa 367,1 KiB.
-- `pnpm run test:e2e:dist`: 57 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 60 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   cabecera fija, alineación de intros, ausencia de saltos de contenido,
-  carruseles, conexiones bidireccionales, movimiento reducido, consola,
-  imágenes y overflow.
+  carruseles, conexiones bidireccionales, movimiento reducido, contrato
+  tipográfico, consola, imágenes y overflow.
 - `pnpm run audit:lighthouse:dist`: rendimiento 97 en portada, 99 en Syra Coffee
   y 100 en la Nota y Mediateca; accesibilidad 98 en portada y 100 en las demás;
   buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo);
