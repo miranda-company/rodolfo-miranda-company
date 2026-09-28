@@ -78,7 +78,7 @@ Dense card copy, display positioning statements, bylines and micro-annotations a
 ### Homepage
 
 - H1: the sans-serif “Rodolfo Miranda,” fragment followed by the Georgia italic
-  “estrategia digital” positioning statement.
+  “estrategia digital y marca” positioning statement.
 - H2: “Portafolio” and “Acceso rápido”. Both inherit the shared global H2
   typography without a component-level override.
 - H3 beneath “Acceso rápido”: “Notas”, “Anaquel” and “Proyectos”.

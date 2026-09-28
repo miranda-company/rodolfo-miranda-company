@@ -33,15 +33,17 @@ aprobación editorial.
 | Registro             | `/registro`          | Índice alfabético derivado de las rutas publicadas | Se genera y coincide con el sitemap          |
 | Página no encontrada | `/404`               | Página de error propia                             | Se genera siempre con `noindex, nofollow`    |
 
-Los siete casos de Portafolio incluidos en producción son:
+Los siete casos de Portafolio incluidos en producción mantienen esta secuencia:
 
-- `syra-coffee`
-- `bsc`
-- `minka-icm`
-- `cn-sant-andreu`
-- `modulab-barcelona`
-- `eloquent`
-- `elespacio`
+| Orden | Identificador | Slug                |
+| ----: | ------------- | ------------------- |
+|    01 | `P.001`       | `elespacio`         |
+|    02 | `P.002`       | `syra-coffee`       |
+|    03 | `P.003`       | `bsc`               |
+|    04 | `P.004`       | `minka-icm`         |
+|    05 | `P.005`       | `cn-sant-andreu`    |
+|    06 | `P.006`       | `modulab-barcelona` |
+|    07 | `P.007`       | `eloquent`          |
 
 Las otras ocho entradas de Portafolio son placeholders con `draft: true`. No
 entran en producción. Antes de publicar una de ellas hay que reemplazar el
@@ -138,18 +140,18 @@ revisarse antes del lanzamiento.
 
 - `pnpm run format:check`: correcto.
 - `git diff --check`: correcto.
-- `pnpm run check`: 67 archivos, 0 errores, 0 avisos y 0 sugerencias.
-- `pnpm run test:content`: detecta una incidencia pendiente: `elespacio` y
-  `syra-coffee` comparten actualmente `displayOrder: 1`.
+- `pnpm run check`: 68 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run test:content`: correcto; los identificadores publicados son únicos
+  y los siete proyectos mantienen un orden único y continuo de `P.001` a
+  `P.007`.
 - `pnpm run build`: correcto; genera 34 rutas canónicas, 16 redirects y la
   página 404 sin avisos de relaciones obsoletas.
-- `pnpm run test:production`: queda bloqueado por esa misma colisión, que sitúa
-  Elespacio antes de Syra Coffee en el sitemap en lugar de respetar el contrato
-  publicado.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.337,7 KiB, el HTML 711,3
-  KiB, el CSS 60,6 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
+- `pnpm run test:production`: correcto; las 34 rutas canónicas y su orden
+  coinciden con el sitemap y el Registro.
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.203,8 KiB, el HTML 710,1
+  KiB, el CSS 58,4 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
   la imagen mayor pesa 367,1 KiB.
-- `pnpm run test:e2e:dist`: 60 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 61 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   cabecera fija, alineación de intros, ausencia de saltos de contenido,
   carruseles, conexiones bidireccionales, movimiento reducido, contrato
@@ -172,8 +174,6 @@ revisarse antes del lanzamiento.
   créditos, enlaces, alternativas y leyendas.
 - Mantener los ocho placeholders de Portafolio como drafts hasta sustituir todo
   el contenido pendiente y normalizar `archiveNumber` y `displayOrder`.
-- Resolver el `displayOrder: 1` duplicado entre los proyectos publicados
-  Elespacio y Syra Coffee antes de integrar o desplegar el siguiente build.
 - Elegir hosting, configurar redirects permanentes y conectar el dominio.
 - Revisar previews sociales y datos estructurados con las URLs públicas.
 - Verificar `index, follow`, `robots.txt`, sitemap y canonical en el dominio

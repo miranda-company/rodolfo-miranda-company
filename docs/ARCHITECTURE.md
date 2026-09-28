@@ -297,8 +297,8 @@ The Notas index includes nine local entries in development and five in a normal
 production build. Mediateca includes sixteen ordinary references in development
 and fifteen in production. Portafolio includes 15 ordinary development entries:
 seven published case studies and eight draft placeholders. Production includes
-`syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`, `modulab-barcelona`, and
-`eloquent`, and `elespacio`.
+`elespacio`, `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
+`modulab-barcelona`, and `eloquent`.
 Mediateca and Portafolio each have an isolated `ejemplo-mdx` technical route in
 development. Notas keeps its reusable MDX components and templates but no
 technical fixture entry.

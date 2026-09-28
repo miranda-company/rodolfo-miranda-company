@@ -42,7 +42,7 @@ tags:
   - "Fotografía"
   - "Video"
 projectStatus: "Finalizado"
-archiveNumber: "P.007"
+archiveNumber: "P.000"
 coverImage: "../../assets/images/portafolio/nombre-del-proyecto/portada.jpg"
 coverAlt: "Descripción concreta de lo que muestra la portada"
 coverCaption: "Leyenda editorial opcional de la portada."
@@ -53,7 +53,7 @@ gallery:
 projectLinks:
   - label: "Visitar proyecto"
     url: "https://example.com"
-displayOrder: 7
+displayOrder: 0
 updatedAt: 2026-08-19
 placeholder: false
 relatedNotes: []
@@ -68,6 +68,8 @@ language: "es"
 `endYear`, `client`, `coverImage`, `coverAlt`, `coverCaption`, `translationKey`, las leyendas y
 los elementos de los arrays son opcionales según el estado de la entrada. Una
 publicación real tiene requisitos adicionales indicados más abajo.
+`P.000` y `displayOrder: 0` son marcadores de plantilla: sustitúyelos por
+valores únicos antes de guardar una entrada nueva en la colección.
 
 ## Referencia de metadatos
 

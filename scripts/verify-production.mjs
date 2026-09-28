@@ -35,13 +35,13 @@ const canonicalRoutes = [
   "/mediateca/wild-rose-poem",
   "/mediateca/rick-rubin-en-design-matters",
   "/portafolio",
+  "/portafolio/elespacio",
   "/portafolio/syra-coffee",
   "/portafolio/bsc",
   "/portafolio/minka-icm",
   "/portafolio/cn-sant-andreu",
   "/portafolio/modulab-barcelona",
   "/portafolio/eloquent",
-  "/portafolio/elespacio",
   "/registro",
 ]
 

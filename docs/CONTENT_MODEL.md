@@ -298,8 +298,8 @@ and tags without changing route generation or editorial order.
 - A placeholder must be a draft and cannot contain project links. Schema
   validation rejects either violation.
 - Production excludes every draft and placeholder card and detail route. It
-  currently generates `syra-coffee`, `bsc`, `minka-icm`, `cn-sant-andreu`,
-  `modulab-barcelona`, `eloquent`, and `elespacio`.
+  currently generates `elespacio`, `syra-coffee`, `bsc`, `minka-icm`,
+  `cn-sant-andreu`, `modulab-barcelona`, and `eloquent`.
 - A genuine non-draft project requires `coverImage` and `coverAlt` and must use
   `placeholder: false`.
 - `ejemplo-mdx` is a separate technical fixture. It must remain a draft, uses

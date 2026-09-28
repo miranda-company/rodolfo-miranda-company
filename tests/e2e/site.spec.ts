@@ -345,7 +345,7 @@ test("homepage hero uses the split title and approved portrait", async ({ page }
 
   const hero = page.locator(".hero")
   await expect(hero.locator("h1 > span")).toHaveText("Rodolfo Miranda,")
-  await expect(hero.locator("h1 > em")).toHaveText("estrategia digital")
+  await expect(hero.locator("h1 > em")).toHaveText("estrategia digital y marca")
 
   const portrait = hero.locator(".hero-image")
   await expect(portrait).toHaveAttribute(
@@ -596,10 +596,10 @@ test("mobile menu opens from the keyboard and Escape restores focus", async ({ p
   await expect(trigger).toHaveAccessibleName("Cerrar")
   await expect(page.locator("#mobile-menu")).toBeVisible()
   await expect(page.locator("#mobile-menu a")).toHaveText([
-    "Yo",
     "Portafolio",
     "Notas",
     "Mediateca",
+    "Yo",
   ])
 
   await page.keyboard.press("Escape")
