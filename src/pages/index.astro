@@ -34,6 +34,13 @@ const connectionLabelBefore = home.data.connectionLabel.slice(0, connectionLinkS
 const connectionLabelAfter = home.data.connectionLabel.slice(
   connectionLinkStart + home.data.connectionLink.label.length,
 )
+const connectionEmphasis = new Set(home.data.connectionEmphasis)
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+const emphasisPattern = new RegExp(
+  `(${Array.from(connectionEmphasis, escapeRegExp).join("|")})`,
+  "g",
+)
+const connectionLabelBeforeParts = connectionLabelBefore.split(emphasisPattern)
 ---
 
 <BaseLayout canonicalPath="/" socialImage={portrait} socialImageAlt={profile.data.portrait.alt}>
@@ -41,15 +48,18 @@ const connectionLabelAfter = home.data.connectionLabel.slice(
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="text-container">
-          <p class="kicker home-kicker">{home.data.heroEyebrow}</p>
           <h1 id="hero-title">
             <span>{home.data.heroTitle}</span>
             <em> {home.data.heroTitleAccent}</em>
           </h1>
           <p class="intro-lead home-intro__description">
-            {connectionLabelBefore}<a href={home.data.connectionLink.href}
-              >{home.data.connectionLink.label}</a
-            >{connectionLabelAfter}
+            {
+              connectionLabelBeforeParts.map((part) =>
+                connectionEmphasis.has(part) ? <em>{part}</em> : part,
+              )
+            }<a href={home.data.connectionLink.href}>{home.data.connectionLink.label}</a>{
+              connectionLabelAfter
+            }
           </p>
         </div>
 
@@ -75,6 +85,7 @@ const connectionLabelAfter = home.data.connectionLabel.slice(
         projects={latestProjects}
         headingLevel="h2"
         titleId="home-portfolio-title"
+        showControls={false}
       />
     </section>
 

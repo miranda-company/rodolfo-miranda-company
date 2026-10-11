@@ -98,6 +98,10 @@
   color: #d4d9d4;
 }
 
+.home-intro__description em {
+  font-style: italic;
+}
+
 .home-intro__description a {
   color: var(--hero-accent);
   text-underline-offset: 4px;
@@ -110,14 +114,6 @@
 .home-intro__description a:focus-visible {
   color: #f7f7f2;
   text-decoration-color: var(--hero-accent);
-}
-
-.home-kicker {
-  color: #c4cbc5;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  animation: hero-copy-enter 620ms var(--motion-easing-standard) 80ms both;
 }
 
 .text-container {
@@ -529,7 +525,6 @@ a.portfolio-latest:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-kicker,
   .hero h1 > span,
   .hero h1 > em,
   .home-intro__description,

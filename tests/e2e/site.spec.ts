@@ -262,6 +262,22 @@ test("desktop header links to the four primary sections", async ({ page }) => {
   await expect(brand.locator(".brand-name")).toBeVisible()
 })
 
+test("Yo current context links to Notas and LinkedIn", async ({ page }) => {
+  await page.goto("/yo")
+
+  const currentContext = page.locator(".yo-now")
+  await expect(currentContext.getByRole("link", { name: "notas" })).toHaveAttribute(
+    "href",
+    "/notas",
+  )
+
+  const linkedIn = currentContext.getByRole("link", { name: "LinkedIn" })
+  await expect(linkedIn).toHaveAttribute(
+    "href",
+    "https://www.linkedin.com/in/rodolfo-miranda-company/",
+  )
+})
+
 test("footer exposes social, contact, Colofón, and Registro links", async ({ page }) => {
   await page.goto("/")
 
@@ -344,8 +360,14 @@ test("homepage hero uses the split title and approved portrait", async ({ page }
   await page.goto("/")
 
   const hero = page.locator(".hero")
+  await expect(hero.locator(".home-kicker")).toHaveCount(0)
   await expect(hero.locator("h1 > span")).toHaveText("Rodolfo Miranda,")
-  await expect(hero.locator("h1 > em")).toHaveText("estrategia digital y marca")
+  await expect(hero.locator("h1 > em")).toHaveText("estrategia digital y de marca")
+  await expect(hero.locator(".home-intro__description > em")).toHaveText(["online", "offline"])
+  await expect(hero.locator(".home-intro__description > em").first()).toHaveCSS(
+    "font-style",
+    "italic",
+  )
 
   const portrait = hero.locator(".hero-image")
   await expect(portrait).toHaveAttribute(
@@ -541,7 +563,9 @@ test("homepage shows the six most recently updated published portfolio projects"
   const section = page.locator(".home-portfolio")
   await expect(section.getByRole("heading", { level: 2, name: "Portafolio" })).toBeVisible()
   await expect(section.locator("[data-portfolio-card]")).toHaveCount(6)
-  await expect(section.locator("[data-portfolio-count]")).toHaveText("6 proyectos")
+  await expect(section.locator("[data-portfolio-controls]")).toHaveCount(0)
+  await expect(section.getByPlaceholder("Buscar proyectos")).toHaveCount(0)
+  await expect(section.locator("[data-portfolio-tag]")).toHaveCount(0)
   await expect(section.locator(".portfolio-card h3")).toHaveText([
     "Elespacio",
     "Syra Coffee",
@@ -699,6 +723,7 @@ test("Portafolio empty search state has a working recovery action", async ({ pag
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/portafolio")
 
+  await expect(page.locator("[data-portfolio-controls]")).toBeVisible()
   const search = page.getByPlaceholder("Buscar proyectos")
   await search.fill("resultado-imposible")
   await expect(page.locator("[data-portfolio-count]")).toHaveText("0 proyectos")

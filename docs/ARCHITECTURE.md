@@ -322,16 +322,18 @@ Editable site copy remains separate from templates:
 - `src/content/site/ahora.json`
 - `src/content/site/yo.json`
 
-The homepage eyebrow, H1 and hero link are validated in `homepage.json`. Its
-archive-panel data remains validated but dormant while the “Archivos” section
-is hidden from the homepage. The homepage Notas preview uses the first three
+The homepage H1, emphasized introduction phrases and hero link are validated in
+`homepage.json`; the hero intentionally has no eyebrow. Its archive-panel data
+remains validated but dormant while the “Archivos” section is hidden from the
+homepage. The homepage Notas preview uses the first three
 published entries ordered by `updatedAt`; the same centralized helpers and
 production boundary as route generation exclude drafts and technical fixtures.
 Immediately below the hero, the homepage renders `PortfolioSection.astro` with
 the six most recently updated published Spanish projects. The same component
-owns the portfolio index heading, metadata, filters and cards; the homepage
-adds only its responsive three-column presentation. Equal update dates are
-ordered by `displayOrder` and then `archiveNumber`.
+owns the portfolio index heading, metadata and cards. The homepage disables
+its search and tag controls and adds a responsive three-column presentation;
+the `/portafolio` index keeps the complete filtering interface. Equal update
+dates are ordered by `displayOrder` and then `archiveNumber`.
 The quick-access region uses its visible “Acceso rápido” label as an `h2` and
 accessible section name. `home.css` controls only its layout and border
 treatment; its typography inherits the global H2 contract without overrides.

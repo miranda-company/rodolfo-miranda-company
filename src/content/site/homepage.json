@@ -1,10 +1,10 @@
 [
   {
     "id": "homepage",
-    "heroEyebrow": "Rodolfo Miranda Company",
     "heroTitle": "Rodolfo Miranda,",
-    "heroTitleAccent": "estrategia digital y marca",
-    "connectionLabel": "Construyo la reputación digital de empresas y directivos para que su autoridad online iguale a su experiencia offline. Este es mi jardín digital.",
+    "heroTitleAccent": "estrategia digital y de marca",
+    "connectionLabel": "Ayudo a organizaciones y sus directivos a construir su reputación digital para que su autoridad online iguale a su experiencia offline. Este es mi jardín digital.",
+    "connectionEmphasis": ["online", "offline"],
     "connectionLink": {
       "label": "jardín digital",
       "href": "/notas/el-magnifico-mundo-de-los-jardines-digitales"

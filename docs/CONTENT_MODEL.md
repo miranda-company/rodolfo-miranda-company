@@ -244,6 +244,8 @@ timeline records, approved personal history, and the two closing links. The
 `profile` collection validates this file separately
 from the minimal provisional-page collection.
 
+Linked prose segments accept internal paths and validated HTTPS URLs.
+
 The five timeline records render as normal career history. Exactly one entry
 must use `current: true`; completed historical roles use `current: false` and
 `placeholder: false`. Approved personal-history copy belongs directly in
@@ -467,10 +469,12 @@ metadata stays with Yo, Mediateca and Portafolio; Yo also keeps its static
 reveal label. This panel data is currently dormant: the homepage does not
 render the “Archivos” section, and no collection statistics are derived for it.
 
-The hero eyebrow and H1 are editable through `heroEyebrow`, `heroTitle`, and
-`heroTitleAccent`. The first title fragment uses the main sans-serif stack; the
+The hero H1 is editable through `heroTitle` and `heroTitleAccent`; it has no
+eyebrow. The first title fragment uses the main sans-serif stack, while the
 accent fragment uses the shared italic serif treatment. The introduction
-remains a single editable `connectionLabel` string.
+remains a single editable `connectionLabel` string. `connectionEmphasis` lists
+the phrases rendered with semantic italic emphasis and validates that every
+phrase remains present in the introduction.
 `connectionLink.label` identifies the phrase rendered as an inline link and
 must occur inside that string; `connectionLink.href` stores its validated
 internal destination. This keeps the complete sentence readable in the content
@@ -487,8 +491,9 @@ updated entries from `getVisibleSpanishProjects(false)`. It therefore includes
 only published Spanish editorial projects and excludes drafts and fixtures.
 `updatedAt` descending controls recency; equal dates use `displayOrder` and then
 `archiveNumber` as deterministic tie-breakers. `PortfolioSection.astro` is
-shared with `/portafolio`, so headings, counts, filters, cards and empty states
-have one implementation.
+shared with `/portafolio`, so headings, cards and empty states have one
+implementation. The homepage disables search and tag controls; the complete
+Portafolio index keeps them.
 
 - Notas: latest `publishedAt` date and total published-note count;
 - Mediateca: total published-reference count;

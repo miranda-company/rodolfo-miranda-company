@@ -4,10 +4,11 @@ import { z } from "astro/zod"
 
 const language = z.enum(["es", "en"]).default("es")
 const translationKey = z.string().min(1).optional()
-const internalUrl = z.string().startsWith("/")
+const internalUrl = z.string().regex(/^\/(?!\/)/, "Las rutas internas deben empezar por una barra.")
+const linkedUrl = z.union([internalUrl, z.url().startsWith("https://")])
 const linkedSegment = z.object({
   text: z.string().min(1),
-  href: internalUrl.optional(),
+  href: linkedUrl.optional(),
 })
 const linkedParagraph = z.array(linkedSegment).min(1)
 const contentReference = <Collection extends "notas" | "mediateca" | "portafolio">(
@@ -507,10 +508,10 @@ const homepage = defineCollection({
 
     return z
       .object({
-        heroEyebrow: z.string().trim().min(1),
         heroTitle: z.string().min(1),
         heroTitleAccent: z.string().min(1),
         connectionLabel: z.string().min(1),
+        connectionEmphasis: z.array(z.string().trim().min(1)).min(1),
         connectionLink: z.object({
           label: z.string().trim().min(1),
           href: internalUrl,
@@ -519,6 +520,16 @@ const homepage = defineCollection({
         panels: z.array(panel).length(4),
       })
       .superRefine((entry, context) => {
+        for (const emphasis of entry.connectionEmphasis) {
+          if (entry.connectionLabel.includes(emphasis)) continue
+
+          context.addIssue({
+            code: "custom",
+            message: `El texto de portada debe contener la expresión destacada “${emphasis}”.`,
+            path: ["connectionEmphasis"],
+          })
+        }
+
         if (!entry.connectionLabel.includes(entry.connectionLink.label)) {
           context.addIssue({
             code: "custom",
