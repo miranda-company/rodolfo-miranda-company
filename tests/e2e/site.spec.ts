@@ -433,7 +433,42 @@ test("homepage hero presents an accessible client logo carousel", async ({ page 
     "UN Women",
   ])
   await expect(decorativeGroup).toHaveAttribute("aria-hidden", "true")
-  await expect(accessibleImages.first()).toHaveAttribute("loading", "lazy")
+  await expect(accessibleImages.first()).toHaveAttribute("loading", "eager")
+  await expect(accessibleImages.first()).toHaveAttribute("fetchpriority", "low")
+  await carousel.scrollIntoViewIfNeeded()
+  await expect
+    .poll(
+      () =>
+        decorativeGroup
+          .locator("img")
+          .evaluateAll((images) =>
+            images.every((image) => image instanceof HTMLImageElement && image.complete),
+          ),
+      { timeout: 1_000 },
+    )
+    .toBe(true)
+  const loopGeometry = await carousel.evaluate((element) => {
+    const track = element.querySelector<HTMLElement>(".client-logo-carousel__track")
+    const groups = Array.from(element.querySelectorAll<HTMLElement>(".client-logo-carousel__group"))
+    const firstLastLogo = groups[0]?.querySelector("li:last-child img")
+    const secondFirstLogo = groups[1]?.querySelector("li:first-child img")
+
+    if (!track || groups.length !== 2 || !firstLastLogo || !secondFirstLogo) return null
+
+    return {
+      boundaryGap:
+        secondFirstLogo.getBoundingClientRect().left - firstLastLogo.getBoundingClientRect().right,
+      configuredGap: Number.parseFloat(getComputedStyle(groups[0]).columnGap),
+      groupWidths: groups.map((group) => group.getBoundingClientRect().width),
+      trackWidth: track.getBoundingClientRect().width,
+    }
+  })
+
+  expect(loopGeometry).not.toBeNull()
+  if (!loopGeometry) throw new Error("Missing client logo loop geometry")
+  expect(Math.abs(loopGeometry.groupWidths[0] - loopGeometry.groupWidths[1])).toBeLessThan(1)
+  expect(Math.abs(loopGeometry.trackWidth / 2 - loopGeometry.groupWidths[0])).toBeLessThan(1)
+  expect(Math.abs(loopGeometry.boundaryGap - loopGeometry.configuredGap)).toBeLessThan(1)
   expect(
     await decorativeGroup
       .locator("img")

@@ -81,8 +81,8 @@ normalizarse antes de cambiar `draft` a `false`; la siguiente ejecución de
 - navegación anterior/siguiente de Notas alineada con ambos bordes del
   contenedor de detalle en escritorio y móvil;
 - carrusel de logos del hero con nombres alternativos, duplicado decorativo,
-  carga diferida, fallback de movimiento reducido y contención horizontal en
-  móvil;
+  recursos completos antes de entrar en el bucle, geometría continua en la
+  unión, fallback de movimiento reducido y contención horizontal en móvil;
 - disclosure y filtros de Notas;
 - filtros de formato de Mediateca;
 - búsqueda, estado vacío y recuperación de Portafolio;

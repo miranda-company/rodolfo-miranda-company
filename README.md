@@ -39,8 +39,8 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 - Homepage publication counts and recent-content previews are derived from the
   validated content collections.
 - The homepage hero ends with an automatically moving client-logo strip. It
-  uses lazy optimized images and becomes a static horizontally scrollable list
-  for reduced-motion users.
+  preloads low-priority optimized images to keep the loop continuous and becomes
+  a static horizontally scrollable list for reduced-motion users.
 - Validated relationships across Notas, Mediateca, and Portafolio become
   bidirectional connections at build time, including automatically derived
   backlinks.

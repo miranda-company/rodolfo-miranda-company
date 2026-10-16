@@ -336,7 +336,9 @@ production boundary as route generation exclude drafts and technical fixtures.
 `src/assets/images/client-logos/`. The first list exposes verified organization
 names to assistive technology; a second `aria-hidden` copy makes the CSS loop
 seamless. Astro resizes the source marks to an 80 px output height and emits
-WebP assets, while the component lazy-loads both copies. Under
+WebP assets. Both copies use eager loading at low fetch priority so every frame
+is available before the loop reaches it, while the browser deduplicates their
+shared URLs. Under
 `prefers-reduced-motion: reduce`, `home.css` removes the animation and duplicate
 and leaves the original list horizontally scrollable.
 Immediately below the hero, the homepage renders `PortfolioSection.astro` with

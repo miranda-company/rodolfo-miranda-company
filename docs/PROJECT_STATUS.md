@@ -94,9 +94,9 @@ revisarse antes del lanzamiento.
   rutas no cargan su hero oscuro con retrato, su selección de proyectos ni sus
   previews.
 - Carrusel de once logos de clientes al pie del hero, con imágenes WebP
-  optimizadas y carga diferida, duplicado visual oculto a lectores de pantalla,
-  y alternativa estática desplazable cuando el usuario solicita movimiento
-  reducido.
+  optimizadas precargadas con prioridad baja para mantener el bucle continuo,
+  duplicado visual oculto a lectores de pantalla y alternativa estática
+  desplazable cuando el usuario solicita movimiento reducido.
 - Sección de Portafolio bajo el hero con los seis proyectos publicados
   actualizados más recientemente, filtros compartidos con `/portafolio` y una
   cuadrícula responsive de tres, dos o una columna.
@@ -153,7 +153,7 @@ revisarse antes del lanzamiento.
   página 404 sin avisos de relaciones obsoletas.
 - `pnpm run test:production`: correcto; las 34 rutas canónicas y su orden
   coinciden con el sitemap y el Registro.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.283,0 KiB, el HTML 711,2
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.283,4 KiB, el HTML 711,7
   KiB, el CSS 59,3 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
   la imagen mayor pesa 367,1 KiB.
 - `pnpm run test:e2e:dist`: 64 pruebas correctas en Chromium, incluidos los

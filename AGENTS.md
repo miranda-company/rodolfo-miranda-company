@@ -104,7 +104,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 - Keep the homepage client-logo strip in `ClientLogoCarousel.astro` and its
   route-scoped presentation in `home.css`. Preserve its
   `prefers-reduced-motion` static fallback, semantic first list, hidden
-  decorative duplicate, and lazy Astro image output.
+  decorative duplicate, and eager low-priority Astro image output so the loop
+  never advances into unloaded marks.
 - Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy
   redirect source.
 - Keep site identity and intended origin in `src/lib/site.ts`. Canonical links,
