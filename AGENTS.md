@@ -49,6 +49,8 @@ process with `pnpm exec astro dev stop` before starting another one.
   global navigation and footer links.
 - `src/components/EditorialDetailLayout.astro` — shared detail-page geometry
   for Notas, Mediateca, and Portafolio.
+- `src/components/ClientLogoCarousel.astro` — homepage client-logo markup,
+  pause/resume behavior, and reduced-motion fallback.
 - `src/components/content/` — approved MDX components for images, carousels,
   and YouTube/Vimeo embeds.
 - `src/content.config.ts` — validated content collection schemas.
@@ -67,6 +69,8 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/styles/yo.css` — Yo-specific presentation.
 - `src/scripts/archive-controls.ts` — shared Notas and Mediateca index behavior.
 - `src/assets/images/` — local images processed by Astro.
+- `src/assets/images/client-logos/` — fixed homepage client marks imported by
+  `ClientLogoCarousel.astro`.
 - `public/` — files copied directly to the static output.
 - `docs/` — active editorial and technical documentation.
 - `tests/e2e/` — Playwright route, interaction, responsive, and accessibility
@@ -97,6 +101,10 @@ process with `pnpm exec astro dev stop` before starting another one.
   to be explicitly mutual.
 - Preserve static HTML output and framework-free browser JavaScript. Do not add
   a client framework or dependency unless the task requires it.
+- Keep the homepage client-logo strip in `ClientLogoCarousel.astro` and its
+  route-scoped presentation in `home.css`. Preserve its user-controlled pause,
+  `prefers-reduced-motion` static fallback, semantic first list, hidden
+  decorative duplicate, and lazy Astro image output.
 - Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy
   redirect source.
 - Keep site identity and intended origin in `src/lib/site.ts`. Canonical links,

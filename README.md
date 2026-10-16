@@ -14,7 +14,7 @@ verified by the repository.
 
 | Route         | Purpose                                                       |
 | ------------- | ------------------------------------------------------------- |
-| `/`           | Entrance to the garden and overview of its four sections.     |
+| `/`           | Portrait hero, client logos, recent work, and quick access.   |
 | `/yo`         | Biography, current work, portrait, and professional timeline. |
 | `/notas`      | Notes organized by maturity, theme, and update date.          |
 | `/mediateca`  | Books, articles, websites, videos, podcasts, and tools.       |
@@ -38,6 +38,9 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
   statistics, filters, connections, and sequence navigation.
 - Homepage publication counts and recent-content previews are derived from the
   validated content collections.
+- The homepage hero ends with an automatically moving client-logo strip. It
+  includes a pause/resume control, lazy optimized images, and a static
+  horizontally scrollable fallback for reduced-motion users.
 - Validated relationships across Notas, Mediateca, and Portafolio become
   bidirectional connections at build time, including automatically derived
   backlinks.
@@ -124,7 +127,7 @@ are technical examples and must remain isolated from published content.
 | Page structure and shared layouts           | `src/components/PageShell.astro`, `Header.astro`, `Footer.astro`, `EditorialDetailLayout.astro`               |
 | Header and global scroll controls           | `src/components/Header.astro`, `ScrollToTop.astro`, `src/scripts/scroll-controls.ts`, `src/styles/global.css` |
 | Site tokens and semantic typography         | `src/styles/global.css`                                                                                       |
-| Homepage presentation                       | `src/pages/index.astro`, `src/styles/home.css`                                                                |
+| Homepage presentation                       | `src/pages/index.astro`, `src/components/ClientLogoCarousel.astro`, `src/styles/home.css`                     |
 | Rendered Markdown and MDX                   | `src/styles/rich-content.css`                                                                                 |
 | Collection indexes and controls             | `src/styles/notes-index.css`, `media-index.css`, `portfolio-index.css`                                        |
 | Collection detail and shared visuals        | `src/styles/*-detail.css`, `src/styles/*-shared.css`                                                          |
@@ -167,7 +170,7 @@ through Git history and tags.
 - Custom CSS with semantic color, focus, motion, and responsive contracts; locally bundled fonts.
 - Build-time bidirectional editorial connections with no client runtime.
 - Minimal JavaScript for navigation, sticky-header and scroll-to-top state,
-  filters, search, and image carousels.
+  filters, search, carousel controls, and the homepage logo-loop pause state.
 - Playwright, axe-core, and GitHub Actions quality safeguards.
 - pnpm for dependency and task management.
 

@@ -18,7 +18,7 @@
       "paragraphs": [
         [
           {
-            "text": "Llevo más de 13 años moviéndome en la intersección entre la comunicación, la creatividad y la tecnología."
+            "text": "Llevo más de 15 años moviéndome en la intersección entre la comunicación, la creatividad y la tecnología."
           }
         ],
         [
@@ -29,11 +29,6 @@
         [
           {
             "text": "Me gusta entender qué problema estamos intentando resolver, qué valor queremos crear y qué necesita ocurrir para que el trabajo fluya y sea enriquecedor."
-          }
-        ],
-        [
-          {
-            "text": "Mi forma de trabajar siempre ha sido entender bien el problema, reunir a las personas adecuadas y encontrar una manera clara y práctica de convertir una necesidad en algo útil."
           }
         ],
         [
@@ -73,20 +68,20 @@
       "title": "Trayectoria",
       "entries": [
         {
-          "role": "Fundador | Head of Digital",
+          "role": "Consultor en experiencia digital",
           "organization": "Eloquent",
           "period": "2018-2026",
-          "description": "Ayudo a organizaciones de España y Latinoamérica a fortalecer su comunicación mediante consultoría y el desarrollo de metodologías y sistemas propios.",
+          "description": "Co-fundador. Ayudo a organizaciones en España a construir su experiencia digital y una comunicación memorable.",
           "caseStudyLabel": "Ver portafolio ↗",
           "caseStudyUrl": "/portafolio/eloquent",
           "current": true,
           "placeholder": false
         },
         {
-          "role": "Fundador | Responsable de Operaciones",
+          "role": "Responsable de operaciones",
           "organization": "Modulab Barcelona",
           "period": "2021–2025",
-          "description": "Fundé y dirigí un estudio de fotografía y vídeo, ocupándome del modelo de negocio, la marca, el marketing, la infraestructura digital y las operaciones; aprendí a convertir una idea creativa en un negocio viable y conseguí procesar más de 400 reservas anuales, obtener 100 reseñas de cinco estrellas y traspasar el proyecto a Pixel Estudis en 2025.",
+          "description": "Co-fundador. Dirigí un estudio de producción audiovisual ocupándome del modelo de negocio, la marca, el marketing, la infraestructura digital y las operaciones. Vendí el proyecto (llave en mano) a Pixel Estudis en 2025.",
           "caseStudyLabel": "Ver portafolio ↗",
           "caseStudyUrl": "/portafolio/modulab-barcelona",
           "current": false,
@@ -109,7 +104,7 @@
           "placeholder": false
         },
         {
-          "role": "Content Specialist",
+          "role": "Resp. de contenidos digitales",
           "organization": "CNN Expansión",
           "period": "2011",
           "description": "En CNN Grupo Expansión trabajé como Especialista en Contenidos, creando infografías interactivas y gestionando su archivo digital. Aprendí a transformar información editorial en experiencias visuales claras y contribuí a enriquecer sus publicaciones digitales y a organizar sus activos multimedia.",

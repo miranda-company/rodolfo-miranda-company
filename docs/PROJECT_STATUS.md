@@ -6,7 +6,7 @@ aprobación editorial.
 
 ## Resumen
 
-- **Fecha de revisión:** 28 de septiembre de 2026.
+- **Fecha de revisión:** 16 de octubre de 2026.
 - **Rama de trabajo:** `main`.
 - **Framework:** Astro 7 con salida HTML estática y TypeScript estricto.
 - **Idioma activo:** español en las rutas raíz. No existen rutas inglesas.
@@ -21,7 +21,7 @@ aprobación editorial.
 
 | Sección              | Ruta                 | Desarrollo                                         | Producción                                   |
 | -------------------- | -------------------- | -------------------------------------------------- | -------------------------------------------- |
-| Portada              | `/`                  | Hero, seis proyectos recientes y acceso rápido     | La sección “Archivos” está oculta            |
+| Portada              | `/`                  | Hero, logos, seis proyectos y acceso rápido        | La sección “Archivos” está oculta            |
 | Yo                   | `/yo`                | Biografía, retrato y trayectoria                   | Se genera; biografía y trayectoria aprobadas |
 | Notas                | `/notas`             | 10 notas locales y 4 enlaces externos              | 5 notas locales y los 4 enlaces externos     |
 | Detalle de Nota      | `/notas/[slug]`      | 10 rutas editoriales locales                       | 5 rutas publicadas                           |
@@ -93,6 +93,10 @@ revisarse antes del lanzamiento.
 - CSS específico de la portada aislado en `src/styles/home.css`; las demás
   rutas no cargan su hero oscuro con retrato, su selección de proyectos ni sus
   previews.
+- Carrusel de once logos de clientes al pie del hero, con imágenes WebP
+  optimizadas y carga diferida, duplicado visual oculto a lectores de pantalla,
+  control para pausar/reanudar y alternativa estática desplazable cuando el
+  usuario solicita movimiento reducido.
 - Sección de Portafolio bajo el hero con los seis proyectos publicados
   actualizados más recientemente, filtros compartidos con `/portafolio` y una
   cuadrícula responsive de tres, dos o una columna.
@@ -138,9 +142,10 @@ revisarse antes del lanzamiento.
 
 ## Verificación actual
 
-- `pnpm run format:check`: correcto.
+- `pnpm run format:check`: pendiente; Prettier detecta formato anterior en
+  `src/content/mediateca/the-challenger-sale.mdx`.
 - `git diff --check`: correcto.
-- `pnpm run check`: 68 archivos, 0 errores, 0 avisos y 0 sugerencias.
+- `pnpm run check`: 69 archivos, 0 errores, 0 avisos y 0 sugerencias.
 - `pnpm run test:content`: correcto; los identificadores publicados son únicos
   y los siete proyectos mantienen un orden único y continuo de `P.001` a
   `P.007`.
@@ -148,14 +153,15 @@ revisarse antes del lanzamiento.
   página 404 sin avisos de relaciones obsoletas.
 - `pnpm run test:production`: correcto; las 34 rutas canónicas y su orden
   coinciden con el sitemap y el Registro.
-- `pnpm run test:budgets`: correcto; `dist` ocupa 15.203,8 KiB, el HTML 710,1
-  KiB, el CSS 58,4 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
+- `pnpm run test:budgets`: correcto; `dist` ocupa 15.284,0 KiB, el HTML 711,8
+  KiB, el CSS 59,8 KiB, el JavaScript emitido 4,6 KiB y las fuentes 0 KiB;
   la imagen mayor pesa 367,1 KiB.
-- `pnpm run test:e2e:dist`: 61 pruebas correctas en Chromium, incluidos los
+- `pnpm run test:e2e:dist`: 64 pruebas correctas en Chromium, incluidos los
   escaneos axe-core WCAG A/AA, escritorio, móvil, teclado, filtros, fragmentos,
   cabecera fija, alineación de intros, ausencia de saltos de contenido,
-  carruseles, conexiones bidireccionales, movimiento reducido, contrato
-  tipográfico, consola, imágenes y overflow.
+  carruseles editoriales, carrusel de logos y su pausa, conexiones
+  bidireccionales, movimiento reducido, contrato tipográfico, consola, imágenes
+  y overflow.
 - `pnpm run audit:lighthouse:dist`: rendimiento 97 en portada, 99 en Syra Coffee
   y 100 en la Nota y Mediateca; accesibilidad 98 en portada y 100 en las demás;
   buenas prácticas 100 salvo Syra Coffee (77 por la cookie externa de Vimeo);
@@ -166,6 +172,8 @@ revisarse antes del lanzamiento.
 
 ## Trabajo pendiente
 
+- Formatear `src/content/mediateca/the-challenger-sale.mdx` para recuperar un
+  `pnpm run format:check` completamente verde.
 - Completar la revisión editorial de las cinco Notas locales y confirmar las
   quince referencias de Mediateca incluidas en producción.
 - Completar las cinco Notas draft y sustituir sus `archiveNumber` provisionales

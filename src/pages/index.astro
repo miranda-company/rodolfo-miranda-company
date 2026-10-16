@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import { getEntry } from "astro:content"
+import ClientLogoCarousel from "../components/ClientLogoCarousel.astro"
 import LatestMedia from "../components/LatestMedia.astro"
 import LatestNotes from "../components/LatestNotes.astro"
 import PageShell from "../components/PageShell.astro"
@@ -77,6 +78,10 @@ const connectionLabelBeforeParts = connectionLabelBefore.split(emphasisPattern)
             decoding="async"
           />
         </div>
+      </div>
+
+      <div class="hero-client-logos">
+        <ClientLogoCarousel />
       </div>
     </section>
 

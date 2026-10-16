@@ -161,7 +161,7 @@ a {
   font-size: var(--type-introduction-size);
   font-weight: 300;
   line-height: var(--type-introduction-line-height);
-  letter-spacing: 0;
+  letter-spacing: 0.045em;
 }
 
 .page-intro {

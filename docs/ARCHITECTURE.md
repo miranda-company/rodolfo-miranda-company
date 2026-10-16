@@ -20,6 +20,9 @@ carousels.
   and its accessible compact-menu behavior.
 - `src/components/ScrollToTop.astro` owns the shared scroll-to-top button
   markup.
+- `src/components/ClientLogoCarousel.astro` owns the homepage hero's accessible
+  client-logo list, decorative duplicate used for its continuous loop, and
+  pause/resume control.
 - `src/components/Footer.astro` owns the shared contact and archive links.
 - `src/scripts/scroll-controls.ts` coordinates the sticky header and
   reduced-motion-aware scroll-to-top behavior from one scroll state.
@@ -28,9 +31,11 @@ carousels.
 - `src/styles/home.css` contains the homepage hero, portfolio selection, and
   Ahora previews;
   it is imported only by `src/pages/index.astro`.
-- `src/pages/index.astro` renders the dark, full-bleed portrait hero, recent
-  portfolio work and quick-access previews. The hero reuses the validated
-  `/yo` portrait metadata and respects reduced motion.
+- `src/pages/index.astro` renders the dark, full-bleed portrait hero, client
+  logo carousel, recent portfolio work and quick-access previews. The hero
+  reuses the validated `/yo` portrait metadata and respects reduced motion;
+  the logo loop becomes a static horizontally scrollable list when reduced
+  motion is requested.
 - `/notas` and `NoteArticle.astro` implement the reviewed Notas index and
   reading layout.
 - `/mediateca` and `/mediateca/[slug]` implement the reviewed catalogue and
@@ -328,6 +333,15 @@ remains validated but dormant while the “Archivos” section is hidden from th
 homepage. The homepage Notas preview uses the first three
 published entries ordered by `updatedAt`; the same centralized helpers and
 production boundary as route generation exclude drafts and technical fixtures.
+`ClientLogoCarousel.astro` renders the fixed client marks stored in
+`src/assets/images/client-logos/`. The first list exposes verified organization
+names to assistive technology; a second `aria-hidden` copy makes the CSS loop
+seamless. Astro resizes the source marks to an 80 px output height and emits
+WebP assets, while the component lazy-loads both copies. A visible button pauses
+and resumes the loop without a framework. Under
+`prefers-reduced-motion: reduce`, `home.css` removes the animation and duplicate,
+hides the unnecessary control, and leaves the original list horizontally
+scrollable.
 Immediately below the hero, the homepage renders `PortfolioSection.astro` with
 the six most recently updated published Spanish projects. The same component
 owns the portfolio index heading, metadata and cards. The homepage disables

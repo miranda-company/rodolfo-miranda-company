@@ -363,7 +363,10 @@ test("homepage hero uses the split title and approved portrait", async ({ page }
   await expect(hero.locator(".home-kicker")).toHaveCount(0)
   await expect(hero.locator("h1 > span")).toHaveText("Rodolfo Miranda,")
   await expect(hero.locator("h1 > em")).toHaveText("estrategia digital y de marca")
-  await expect(hero.locator(".home-intro__description > em")).toHaveText(["online", "offline"])
+  await expect(hero.locator(".home-intro__description > em")).toHaveText([
+    "experiencia digital",
+    "comunicación memorable",
+  ])
   await expect(hero.locator(".home-intro__description > em").first()).toHaveCSS(
     "font-style",
     "italic",
@@ -394,6 +397,86 @@ test("homepage hero uses the split title and approved portrait", async ({ page }
   expect(presentation.accentColor).toBe("rgb(223, 240, 154)")
   expect(presentation.accentFamily).toContain("Georgia")
   expect(presentation.imageLoaded).toBe(true)
+})
+
+test("homepage hero presents an accessible client logo carousel", async ({ page }) => {
+  await page.goto("/")
+
+  const carousel = page.locator(".client-logo-carousel")
+  const groups = carousel.locator(".client-logo-carousel__group")
+  const accessibleGroup = groups.first()
+  const decorativeGroup = groups.last()
+
+  await expect(groups).toHaveCount(2)
+  await expect(accessibleGroup).toHaveAttribute(
+    "aria-label",
+    "Organizaciones con las que he trabajado",
+  )
+  const accessibleImages = accessibleGroup.locator("img")
+  await expect(accessibleImages).toHaveCount(11)
+  expect(
+    await accessibleImages.evaluateAll((images) =>
+      images.map((image) => image.getAttribute("alt")),
+    ),
+  ).toEqual([
+    "Ajuntament de L'Hospitalet",
+    "Barcelona Supercomputing Center",
+    "Club Natació Sant Andreu",
+    "European Federation of Biotechnology",
+    "Grupo HEM",
+    "Hispanos con Voz",
+    "Institut de Ciències del Mar",
+    "Museu de L'Hospitalet",
+    "Syra Coffee",
+    "TeclaSala",
+    "UN Women",
+  ])
+  await expect(decorativeGroup).toHaveAttribute("aria-hidden", "true")
+  await expect(accessibleImages.first()).toHaveAttribute("loading", "lazy")
+  expect(
+    await decorativeGroup
+      .locator("img")
+      .evaluateAll((images) => images.map((image) => image.getAttribute("alt"))),
+  ).toEqual(Array(11).fill(""))
+  await expect(carousel.locator(".client-logo-carousel__track")).toHaveCSS(
+    "animation-name",
+    "client-logo-loop",
+  )
+  const motionToggle = carousel.locator(".client-logo-carousel__toggle")
+  await expect(motionToggle).toHaveAccessibleName("Pausar movimiento")
+  await motionToggle.click()
+  await expect(carousel).toHaveAttribute("data-paused", "")
+  await expect(motionToggle).toHaveAttribute("aria-pressed", "true")
+  await expect(carousel.locator(".client-logo-carousel__track")).toHaveCSS(
+    "animation-play-state",
+    "paused",
+  )
+  await expect(motionToggle).toHaveAccessibleName("Reanudar movimiento")
+  await motionToggle.click()
+  await expect(carousel).not.toHaveAttribute("data-paused", "")
+  await expect(motionToggle).toHaveAttribute("aria-pressed", "false")
+
+  await page.emulateMedia({ reducedMotion: "reduce" })
+  await expect(carousel.locator(".client-logo-carousel__track")).toHaveCSS("animation-name", "none")
+  await expect(motionToggle).toBeHidden()
+  await expect(decorativeGroup).toBeHidden()
+})
+
+test("homepage client logos stay contained on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.emulateMedia({ reducedMotion: "reduce" })
+  await page.goto("/")
+
+  const carousel = page.locator(".client-logo-carousel")
+  const dimensions = await carousel.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+    pageWidth: document.documentElement.scrollWidth,
+    viewportWidth: window.innerWidth,
+  }))
+
+  expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth)
+  expect(dimensions.pageWidth).toBeLessThanOrEqual(dimensions.viewportWidth)
 })
 
 test("homepage hides archive panels and keeps a correctly styled quick-access H2", async ({

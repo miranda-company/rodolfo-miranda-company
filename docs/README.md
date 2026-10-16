@@ -49,6 +49,7 @@ en el uso de imágenes, carruseles, vídeo y código.
 | Limpiar relaciones tras borrar o renombrar | [Procedimiento compartido](CONTENT_MODEL.md#cleaning-connections-after-renaming-or-deleting-content) |
 | Consultar todos los campos de contenido    | `CONTENT_MODEL.md`                                                                                   |
 | Cambiar layouts o componentes compartidos  | `ARCHITECTURE.md`                                                                                    |
+| Cambiar el hero o carrusel de logos        | `ARCHITECTURE.md` y `QUALITY_ASSURANCE.md`                                                           |
 | Cambiar tipografía                         | `TYPOGRAPHY_SYSTEM.md`                                                                               |
 | Ejecutar o mantener pruebas                | `QUALITY_ASSURANCE.md`                                                                               |
 | Entender la infraestructura de publicación | `LAUNCH_READINESS.md`                                                                                |

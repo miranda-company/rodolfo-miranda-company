@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets"
+import ajuntamentLogo from "../assets/images/client-logos/logo-ajuntament-lh.png"
+import bscLogo from "../assets/images/client-logos/logo-bsc.png"
+import cnSantAndreuLogo from "../assets/images/client-logos/logo-cn-sant-andreu.png"
+import efbLogo from "../assets/images/client-logos/logo-efb.png"
+import grupoHemLogo from "../assets/images/client-logos/logo-gpo-hem.png"
+import hispanosConVozLogo from "../assets/images/client-logos/logo-hcv.png"
+import icmLogo from "../assets/images/client-logos/logo-icm.png"
+import museuLogo from "../assets/images/client-logos/logo-museu-lh.png"
+import syraLogo from "../assets/images/client-logos/logo-syra.png"
+import teclaSalaLogo from "../assets/images/client-logos/logo-tecla-sala.png"
+import unWomenLogo from "../assets/images/client-logos/logo-un.png"
+
+const logos = [
+  { src: ajuntamentLogo, name: "Ajuntament de L'Hospitalet" },
+  { src: bscLogo, name: "Barcelona Supercomputing Center" },
+  { src: cnSantAndreuLogo, name: "Club Natació Sant Andreu" },
+  { src: efbLogo, name: "European Federation of Biotechnology" },
+  { src: grupoHemLogo, name: "Grupo HEM" },
+  { src: hispanosConVozLogo, name: "Hispanos con Voz" },
+  { src: icmLogo, name: "Institut de Ciències del Mar" },
+  { src: museuLogo, name: "Museu de L'Hospitalet" },
+  { src: syraLogo, name: "Syra Coffee" },
+  { src: teclaSalaLogo, name: "TeclaSala" },
+  { src: unWomenLogo, name: "UN Women" },
+] as const
+---
+
+<div class="client-logo-carousel" data-client-logo-carousel>
+  <button class="client-logo-carousel__toggle" type="button" aria-pressed="false">
+    Pausar movimiento
+  </button>
+  <div class="client-logo-carousel__track">
+    {
+      [false, true].map((duplicate) => (
+        <ul
+          class="client-logo-carousel__group"
+          aria-label={duplicate ? undefined : "Organizaciones con las que he trabajado"}
+          aria-hidden={duplicate ? "true" : undefined}
+        >
+          {logos.map((logo) => (
+            <li>
+              <Image
+                src={logo.src}
+                alt={duplicate ? "" : logo.name}
+                height={80}
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-client-logo-carousel]").forEach((carousel) => {
+    if (carousel.dataset.ready === "true") return
+
+    const toggle = carousel.querySelector<HTMLButtonElement>(".client-logo-carousel__toggle")
+    if (!toggle) return
+
+    carousel.dataset.ready = "true"
+    toggle.addEventListener("click", () => {
+      const paused = carousel.toggleAttribute("data-paused")
+      toggle.setAttribute("aria-pressed", String(paused))
+      toggle.textContent = paused ? "Reanudar movimiento" : "Pausar movimiento"
+    })
+  })
+</script>

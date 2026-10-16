@@ -486,6 +486,11 @@ alternative text from the validated profile entry. Astro emits a single
 optimized WebP presentation for the hero; the source image and its description
 remain centralized rather than duplicated in `homepage.json`.
 
+Client marks are fixed presentation assets rather than editable homepage
+content. Their imported files and verified organization names stay together in
+`ClientLogoCarousel.astro`; changing that set requires reviewing the asset,
+accessible name, visual loop, and reduced-motion fallback as one unit.
+
 The portfolio section immediately below the hero takes the six most recently
 updated entries from `getVisibleSpanishProjects(false)`. It therefore includes
 only published Spanish editorial projects and excludes drafts and fixtures.
