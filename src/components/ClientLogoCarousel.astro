@@ -27,10 +27,7 @@ const logos = [
 ] as const
 ---
 
-<div class="client-logo-carousel" data-client-logo-carousel>
-  <button class="client-logo-carousel__toggle" type="button" aria-pressed="false">
-    Pausar movimiento
-  </button>
+<div class="client-logo-carousel">
   <div class="client-logo-carousel__track">
     {
       [false, true].map((duplicate) => (
@@ -55,19 +52,3 @@ const logos = [
     }
   </div>
 </div>
-
-<script>
-  document.querySelectorAll<HTMLElement>("[data-client-logo-carousel]").forEach((carousel) => {
-    if (carousel.dataset.ready === "true") return
-
-    const toggle = carousel.querySelector<HTMLButtonElement>(".client-logo-carousel__toggle")
-    if (!toggle) return
-
-    carousel.dataset.ready = "true"
-    toggle.addEventListener("click", () => {
-      const paused = carousel.toggleAttribute("data-paused")
-      toggle.setAttribute("aria-pressed", String(paused))
-      toggle.textContent = paused ? "Reanudar movimiento" : "Pausar movimiento"
-    })
-  })
-</script>

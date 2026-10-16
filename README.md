@@ -39,8 +39,8 @@ Legacy `/biblioteca` URLs redirect to `/mediateca`.
 - Homepage publication counts and recent-content previews are derived from the
   validated content collections.
 - The homepage hero ends with an automatically moving client-logo strip. It
-  includes a pause/resume control, lazy optimized images, and a static
-  horizontally scrollable fallback for reduced-motion users.
+  uses lazy optimized images and becomes a static horizontally scrollable list
+  for reduced-motion users.
 - Validated relationships across Notas, Mediateca, and Portafolio become
   bidirectional connections at build time, including automatically derived
   backlinks.
@@ -170,7 +170,7 @@ through Git history and tags.
 - Custom CSS with semantic color, focus, motion, and responsive contracts; locally bundled fonts.
 - Build-time bidirectional editorial connections with no client runtime.
 - Minimal JavaScript for navigation, sticky-header and scroll-to-top state,
-  filters, search, carousel controls, and the homepage logo-loop pause state.
+  filters, search, and image carousels.
 - Playwright, axe-core, and GitHub Actions quality safeguards.
 - pnpm for dependency and task management.
 

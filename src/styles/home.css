@@ -176,27 +176,6 @@
   overflow: hidden;
 }
 
-.client-logo-carousel__toggle {
-  display: block;
-  min-height: 32px;
-  margin: 0 0 12px auto;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: #d4d9d4;
-  cursor: pointer;
-  font: 11px/1.2 var(--font-sans);
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.45);
-  text-underline-offset: 4px;
-}
-
-.client-logo-carousel__toggle:hover,
-.client-logo-carousel__toggle:focus-visible {
-  color: var(--hero-accent);
-  text-decoration-color: currentColor;
-}
-
 .client-logo-carousel__track,
 .client-logo-carousel__group {
   display: flex;
@@ -232,10 +211,6 @@
 @media (prefers-reduced-motion: no-preference) {
   .client-logo-carousel__track {
     animation: client-logo-loop var(--hero-logo-loop-duration) linear infinite;
-  }
-
-  .client-logo-carousel[data-paused] .client-logo-carousel__track {
-    animation-play-state: paused;
   }
 }
 
@@ -620,10 +595,6 @@ a.portfolio-latest:focus-visible {
 
   .client-logo-carousel {
     overflow-x: auto;
-  }
-
-  .client-logo-carousel__toggle {
-    display: none;
   }
 
   .client-logo-carousel__track {

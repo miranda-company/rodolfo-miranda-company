@@ -21,8 +21,7 @@ carousels.
 - `src/components/ScrollToTop.astro` owns the shared scroll-to-top button
   markup.
 - `src/components/ClientLogoCarousel.astro` owns the homepage hero's accessible
-  client-logo list, decorative duplicate used for its continuous loop, and
-  pause/resume control.
+  client-logo list and decorative duplicate used for its continuous loop.
 - `src/components/Footer.astro` owns the shared contact and archive links.
 - `src/scripts/scroll-controls.ts` coordinates the sticky header and
   reduced-motion-aware scroll-to-top behavior from one scroll state.
@@ -337,11 +336,9 @@ production boundary as route generation exclude drafts and technical fixtures.
 `src/assets/images/client-logos/`. The first list exposes verified organization
 names to assistive technology; a second `aria-hidden` copy makes the CSS loop
 seamless. Astro resizes the source marks to an 80 px output height and emits
-WebP assets, while the component lazy-loads both copies. A visible button pauses
-and resumes the loop without a framework. Under
-`prefers-reduced-motion: reduce`, `home.css` removes the animation and duplicate,
-hides the unnecessary control, and leaves the original list horizontally
-scrollable.
+WebP assets, while the component lazy-loads both copies. Under
+`prefers-reduced-motion: reduce`, `home.css` removes the animation and duplicate
+and leaves the original list horizontally scrollable.
 Immediately below the hero, the homepage renders `PortfolioSection.astro` with
 the six most recently updated published Spanish projects. The same component
 owns the portfolio index heading, metadata and cards. The homepage disables

@@ -50,7 +50,7 @@ process with `pnpm exec astro dev stop` before starting another one.
 - `src/components/EditorialDetailLayout.astro` — shared detail-page geometry
   for Notas, Mediateca, and Portafolio.
 - `src/components/ClientLogoCarousel.astro` — homepage client-logo markup,
-  pause/resume behavior, and reduced-motion fallback.
+  optimized images, and reduced-motion fallback.
 - `src/components/content/` — approved MDX components for images, carousels,
   and YouTube/Vimeo embeds.
 - `src/content.config.ts` — validated content collection schemas.
@@ -102,7 +102,7 @@ process with `pnpm exec astro dev stop` before starting another one.
 - Preserve static HTML output and framework-free browser JavaScript. Do not add
   a client framework or dependency unless the task requires it.
 - Keep the homepage client-logo strip in `ClientLogoCarousel.astro` and its
-  route-scoped presentation in `home.css`. Preserve its user-controlled pause,
+  route-scoped presentation in `home.css`. Preserve its
   `prefers-reduced-motion` static fallback, semantic first list, hidden
   decorative duplicate, and lazy Astro image output.
 - Canonical media routes use `/mediateca`; `/biblioteca` exists only as a legacy

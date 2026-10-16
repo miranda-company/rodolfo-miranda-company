@@ -408,6 +408,7 @@ test("homepage hero presents an accessible client logo carousel", async ({ page 
   const decorativeGroup = groups.last()
 
   await expect(groups).toHaveCount(2)
+  await expect(carousel.getByRole("button")).toHaveCount(0)
   await expect(accessibleGroup).toHaveAttribute(
     "aria-label",
     "Organizaciones con las que he trabajado",
@@ -442,23 +443,8 @@ test("homepage hero presents an accessible client logo carousel", async ({ page 
     "animation-name",
     "client-logo-loop",
   )
-  const motionToggle = carousel.locator(".client-logo-carousel__toggle")
-  await expect(motionToggle).toHaveAccessibleName("Pausar movimiento")
-  await motionToggle.click()
-  await expect(carousel).toHaveAttribute("data-paused", "")
-  await expect(motionToggle).toHaveAttribute("aria-pressed", "true")
-  await expect(carousel.locator(".client-logo-carousel__track")).toHaveCSS(
-    "animation-play-state",
-    "paused",
-  )
-  await expect(motionToggle).toHaveAccessibleName("Reanudar movimiento")
-  await motionToggle.click()
-  await expect(carousel).not.toHaveAttribute("data-paused", "")
-  await expect(motionToggle).toHaveAttribute("aria-pressed", "false")
-
   await page.emulateMedia({ reducedMotion: "reduce" })
   await expect(carousel.locator(".client-logo-carousel__track")).toHaveCSS("animation-name", "none")
-  await expect(motionToggle).toBeHidden()
   await expect(decorativeGroup).toBeHidden()
 })
 
