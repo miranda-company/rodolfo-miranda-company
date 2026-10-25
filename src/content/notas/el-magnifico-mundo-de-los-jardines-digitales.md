@@ -9,7 +9,7 @@ cardFormat: "featured"
 coverImage: "../../assets/images/notas/flower-002.jpg"
 coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "NA"
+  - "Herramientas para el pensamiento"
 relatedNotes:
   - "mis-lugares-favoritos-de-internet"
 relatedLinks: []

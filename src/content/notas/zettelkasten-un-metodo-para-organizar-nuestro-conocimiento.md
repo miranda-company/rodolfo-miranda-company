@@ -9,7 +9,7 @@ cardFormat: "visual"
 # coverImage: "../../assets/images/notas/margen/portada.jpg"
 # coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "NA"
+  - "Herramientas para el pensamiento"
 relatedNotes: []
 featured: true
 draft: false

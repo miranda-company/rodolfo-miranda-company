@@ -2,7 +2,7 @@
 title: "Mis lugares favoritos de internet"
 summary: "Un compendio de lugares en la red que visito con frecuencia."
 publishedAt: 2026-06-29
-updatedAt: 2026-08-28
+updatedAt: 2026-10-22
 state: "semilla"
 archiveNumber: "N.003"
 cardFormat: "standard"
@@ -33,7 +33,6 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [David Perell Friday Finds](https://perell.com/friday-finds-links/) - Un compendio, un poco como este mismo compendio.
 - [How I Built This](https://www.npr.org/series/490248027/how-i-built-this) - Podcast sobre emprendimiento de Guy Raz.
 - [Greg Isenberg](https://www.youtube.com/@GregIsenberg) - Canal sobre tecnología e IA.
-- [Cercle](https://www.youtube.com/@Cercle) - Música electrónica que me acompaña al trabajar.
 - [The Art of Photography](https://www.youtube.com/@theartofphotography) - Ted Forbes y su canal de YT sobre fotografía.
 - [Design Matters](https://designmattersmedia.com/) - Un podcast de Debbie Millman sobre diseño.
 - [Gemini Notebook](https://notebook.google.com/) - Una de las herramientas que más uso para investigar.
@@ -41,5 +40,12 @@ Aquí unos cuantos. Por ahora todavía no tienen ningun orden en particular.
 - [Animalz](https://www.animalz.co/blog) - Blog y podcast sobre content marketing.
 - [Interaction Design Foundation](https://ixdf.org/) - Sitio sobre UX, UI y HCI.
 - [Lennys Newsletter](https://www.lennysnewsletter.com/) - Sobre gestión de productos y tecnología.
-- [Tiny Computer](https://tinycomputer.co/) - Una chulada de sitio web.
 - [One Page Love](https://onepagelove.com/) - Un compendio de sitios web hechos de una sola página.
+- [DesignBetter](https://www.designbetter.com/listen) - Un podcast sobre diseño.
+- [Mobbin](https://mobbin.com/discover/sites/latest) - Una plataforma para obtener inspiración sobre interfaces y diseño de experiencias digitales.
+- [Nathan Curtis](https://nathanacurtis.substack.com/) - Todo sobre sistemas de diseño.
+- [Positioning with April Dunford](https://www.positioning.show/episodes/) - Experta en posicionamineto y su podcast.
+- [AJ&Smart](https://www.youtube.com/@AJSmart/videos) - Todo sobre UX, canal de YouTube
+- [Shaders](https://shaders.com/) - Una librería *open source* de *shaders*
+- [Louise Filli](https://www.louisefili.com/) - Todo el trabajo de Louise Filli 👌
+- [Product Talk de Teresa Torres](https://www.producttalk.org/) - Todo sobre cómo descubrir qué construir y todo sobre desarrollo de producto.

@@ -9,7 +9,8 @@ cardFormat: "visual"
 coverImage: "../../assets/images/notas/scrum.jpg"
 coverAlt: "Luke Burgess introduces the ball into the scrum - Pierre Selim"
 tags:
-  - "NA"
+  - "Claridad estratégica"
+  - "Producción de proyectos"
 relatedNotes: []
 featured: false
 draft: false

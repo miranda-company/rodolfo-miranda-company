@@ -9,7 +9,8 @@ cardFormat: "visual"
 # coverImage: "../../assets/images/notas/margen/portada.jpg"
 # coverAlt: "Descripción accesible de la imagen de portada"
 tags:
-  - "NA"
+  - "Procesos"
+  - "Negocios"
 relatedNotes: []
 featured: false
 draft: true
