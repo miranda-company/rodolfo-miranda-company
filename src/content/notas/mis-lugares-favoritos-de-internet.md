@@ -1,6 +1,6 @@
 ---
 title: "Mis lugares favoritos de internet"
-summary: "Un compendio de lugares en la red que visito con frecuencia."
+summary: "Lugares en la red que tienen robado mi ❤️."
 publishedAt: 2026-06-29
 updatedAt: 2026-10-22
 state: "semilla"

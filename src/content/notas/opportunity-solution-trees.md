@@ -6,12 +6,14 @@ updatedAt: 2026-10-22
 state: "semilla"
 archiveNumber: "N.003"
 cardFormat: "standard"
+coverImage: "../../assets/images/notas/opportunity-solution-tree-2.jpg"
+coverAlt: "Opportunity Solution Tree por Teresa Torres"
 tags:
   - "Claridad estratégica"
   - "Producción de proyectos"
 relatedNotes: []
-featured: true
-draft: false
+featured: false
+draft: true
 language: "es"
 ---
 
