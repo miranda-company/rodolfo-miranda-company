@@ -1,10 +1,10 @@
 ---
 title: "Opportunity Solution Trees"
 summary: "Un sistema para visualizar y priorizar qué solución queremos construir."
-publishedAt: 2026-06-29
+publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 state: "semilla"
-archiveNumber: "N.003"
+archiveNumber: "N.010"
 cardFormat: "standard"
 coverImage: "../../assets/images/notas/opportunity-solution-tree-2.jpg"
 coverAlt: "Opportunity Solution Tree por Teresa Torres"
@@ -13,7 +13,7 @@ tags:
   - "Producción de proyectos"
 relatedNotes: []
 featured: false
-draft: true
+draft: false
 language: "es"
 ---
 

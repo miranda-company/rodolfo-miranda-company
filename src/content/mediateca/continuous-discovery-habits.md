@@ -7,8 +7,8 @@ editorialState: "revisado"
 summary: "Métodos para descubrir qué necesitamos construir."
 publicationYear: 2021
 status: "consultado"
-archiveNumber: "M.001"
-updatedAt: "2026-07-24"
+archiveNumber: "M.017"
+updatedAt: "2026-10-27"
 externalUrl: "https://www.goodreads.com/en/book/show/58046715-continuous-discovery-habits"
 tags: ["UX", "Product"]
 relatedNotes: ["opportunity-solution-trees"]
@@ -17,7 +17,7 @@ coverImage: "../../assets/images/mediateca/continous-discovery-habits-teresa-tor
 coverAlt: "Continous Discovery Habits - Teresa Torres"
 coverCaption: "Continous Discovery Habits - Teresa Torres"
 displayInShelf: true
-featured: true
+featured: false
 draft: false
 language: "es"
 ---
